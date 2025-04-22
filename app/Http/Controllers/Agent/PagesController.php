@@ -11,4 +11,9 @@ class PagesController extends Controller
     {
         dd('agent dashboard');
     }
+    public function profile()
+    {
+
+        return view('backend.profile.profile');
+    }
 }

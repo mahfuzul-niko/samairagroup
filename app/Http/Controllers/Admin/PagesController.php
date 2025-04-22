@@ -9,6 +9,6 @@ class PagesController extends Controller
 {
    public function dashboard()
    {
-      dd('admin dashboard');
+     return view('backend.admin.dashboard');
    }
 }

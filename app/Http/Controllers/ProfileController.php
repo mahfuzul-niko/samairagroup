@@ -28,11 +28,8 @@ class ProfileController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-
             'phone' => 'nullable|string|max:20',
-
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-
         ]);
 
         if ($request->hasFile('avatar')) {
@@ -43,13 +40,13 @@ class ProfileController extends Controller
             $user->avatar = $avatarPath;
         }
 
-        $user->update([
-            'name' => $request->name,
-            'phone' => $request->phone,
-        ]);
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->save();
 
         return back()->with('success', 'Profile updated successfully.');
     }
+
 
     public function removeAvatar()
     {
