@@ -163,7 +163,7 @@
                 <div class="image-wrapper">
                   <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
                   <div class="floating-card">
-                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/card.png" alt="Credit Card" class="credit-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
                   </div>
                 </div>
               </div>
@@ -187,7 +187,7 @@
                 <div class="image-wrapper">
                   <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
                   <div class="floating-card">
-                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/card.png" alt="Credit Card" class="credit-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
                   </div>
                 </div>
               </div>
