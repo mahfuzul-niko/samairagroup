@@ -8,6 +8,36 @@
 body{
   font-family: 'Poppins', sans-serif;
 }
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/webfonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/webfonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind Guntur';
+  src: url('../fonts/webfonts/HindGuntur-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Hind Guntur';
+  src: url('../fonts/webfonts/HindGuntur-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('../fonts/webfonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 /*
 ------------------------------------
 	Top Header CSS Start
@@ -55,6 +85,70 @@ body{
 
 .top-header .contact-info img {
   margin-right: 10px;
+}
+
+/* Tablet devices */
+@media (max-width: 991px) {
+  
+  .top-header .contact-info {
+    margin-top: 15px;
+  }
+  
+  .top-header .contact-info > div {
+    margin-bottom: 10px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 767px) {
+  .top-header .contact-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .top-header .contact-info > div {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border: none !important;
+  }
+
+  .top-header .social-icons {
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 575px) {
+  .top-header {
+    padding: 15px 0;
+  }
+
+  .top-header .contact-info > div {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .top-header .contact-info img {
+    margin: 0 0 8px 0;
+  }
+
+  .top-header small {
+    font-size: 11px;
+  }
+
+  .top-header strong {
+    font-size: 13px;
+  }
+
+  .top-header .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
 }
 
 /*
@@ -191,26 +285,107 @@ body{
 }
 
 /* Offcanvas Menu Styles */
-.navbar .offcanvas {
+.offcanvas {
   background-color: #fff;
   width: 300px;
 }
 
-.navbar .offcanvas-header {
+.offcanvas-header {
   border-bottom: 1px solid #eee;
 }
 
-.navbar .offcanvas-body {
+.offcanvas-body {
   padding: 1rem;
 }
 
-.navbar .navbar-nav .nav-link {
+.navbar-nav .nav-link {
   padding: 0.5rem 1rem;
   color: var(--primary-color);
 }
 
-.navbar .navbar-nav .nav-link:hover {
+.navbar-nav .nav-link:hover {
   color: var(--primary-color);
+}
+
+/* Tablet devices */
+@media (max-width: 991px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .navbar .navbar-brand img {
+    height: 60px;
+  }
+
+  .navbar .navbar-collapse {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+  }
+
+  .navbar .navbar-nav {
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  .navbar .nav-link {
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin: 2px 0;
+  }
+
+  .navbar .nav-link::after {
+    display: none;
+  }
+
+  .navbar .nav-link:hover {
+    background: rgba(2, 155, 197, 0.1);
+    color: var(--primary-color);
+    transform: translateX(5px);
+  }
+
+  .navbar .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+  }
+
+  .navbar .sign-in-btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .navbar .btn-outline-dark {
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 767px) {
+  .navbar .navbar-brand img {
+    height: 50px;
+  }
+
+  .navbar .nav-link {
+    font-size: 15px;
+  }
+
+  .navbar .navbar-collapse {
+    padding: 15px;
+  }
+
+  .navbar .nav-link:hover {
+    transform: translateX(3px);
+  }
 }
 
 /*
@@ -278,6 +453,60 @@ Client Acquisition CSS Start
 .client-acquisition .img-fluid {
   max-width: 90%;
   height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .client-acquisition h2 {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .client-acquisition .img-fluid {
+    max-width: 58%;
+    margin-bottom: 20px;
+  }
+  .center-img{
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .client-acquisition p {
+    font-size: 1rem;
+  }
+
+  .client-acquisition ul li {
+    font-size: 0.95rem;
+  }
+
+  .client-acquisition .btn-primary {
+    font-size: 0.95rem;
+    padding: 8px 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .client-acquisition h2 {
+    font-size: 1.8rem;
+  }
+
+  .client-acquisition p, 
+  .client-acquisition ul li {
+    font-size: 0.9rem;
+  }
+
+  .client-acquisition .btn-primary {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+  .margin-right-0{
+    margin-right: 0 !important;
+  }
+  .hero-content {
+    margin-bottom: 0 !important;
+  }
 }
 /* Client Acquisition CSS End */
 
@@ -352,7 +581,29 @@ Our Sister Concern CSS Start
     }
 }
 
+/* Tablet devices */
+@media (max-width: 991px) {
+    .sister-concern .sister-logo {
+        height: 45px;
+    }
+    .sister-concern .d-flex {
+        gap: 30px;
+    }
+}
+
 /* Mobile devices */
+@media (max-width: 767px) {
+    .sister-concern .sister-logo {
+        height: 40px;
+    }
+    .sister-concern .d-flex {
+        gap: 25px;
+    }
+    .sister-concern h3 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
 /*
 ------------------------------------
 Our Sister Concern CSS End
@@ -397,7 +648,7 @@ Our Sister Concern CSS End
 }
 
 .blog .card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   margin-bottom: 1rem;
   color: #2A4A45;
@@ -415,6 +666,123 @@ Our Sister Concern CSS End
 .blog .read-more:hover {
   color: #0288ae;
   transform: translateX(5px);
+}
+
+/* Tablet devices */
+@media (max-width: 991px) {
+  .blog {
+    padding: 2.5rem 0;
+  }
+
+  .blog .card-img-top {
+    height: 180px;
+  }
+
+  .blog .card-title {
+    font-size: 1.1rem;
+  }
+
+  .blog .meta {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 767px) {
+  .blog {
+    padding: 2rem 0;
+  }
+
+  .blog .row {
+    margin: 0 -10px;
+  }
+
+  .blog .col-sm-6,
+  .blog .col-md-4,
+  .blog .col-lg-3 {
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+
+  .blog .card-img-top {
+    height: 160px;
+  }
+
+  .blog .card-body {
+    padding: 1.25rem;
+  }
+
+  .blog .card-title {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog .meta {
+    font-size: 0.75rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 575px) {
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  .blog {
+    padding: 0 !important;
+  }
+
+  .blog .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .blog .col-sm-6,
+  .blog .col-md-4,
+  .blog .col-lg-3 {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    margin-bottom: 20px;
+  }
+
+  .blog .card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .blog .card-img-top {
+    height: 340px;
+  }
+
+  .blog .card-body {
+    padding: 1rem;
+  }
+
+  .blog .card-title {
+    font-size: 0.95rem;
+  }
+
+  .blog .read-more {
+    font-size: 0.875rem;
+  }
+}
+
+/* Even smaller devices */
+@media (max-width: 400px) {
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 0px !important;
+  }
+
+  .blog .card-img-top {
+    height: 120px;
+  }
+
+  .blog .card-body {
+    padding: 0.75rem;
+  }
 }
 
 /* Hover Effects */
@@ -452,7 +820,7 @@ Our Sister Concern CSS End
   z-index: 1;
 }
 
-.subscribe-wrapper .subscribe-title {
+.subscribe-title {
   font-weight: 600;
   color: #5E6282;
   line-height: 1.4;
@@ -464,19 +832,19 @@ Our Sister Concern CSS End
   font-family: 'Poppins', sans-serif;
 }
 
-.subscribe-wrapper .input-group-custom {
+.input-group-custom {
   max-width: 700px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-.subscribe-wrapper .input-group-custom .position-relative {
+.input-group-custom .position-relative {
   flex: 1;
   min-width: 200px;
 }
 
-.subscribe-wrapper .input-group-custom input {
+.input-group-custom input {
   border-radius: 10px;
   padding: 15px 20px 15px 45px;
   width: 100%;
@@ -486,13 +854,13 @@ Our Sister Concern CSS End
   font-family: 'Poppins', sans-serif;
 }
 
-.subscribe-wrapper .input-group-custom input:focus {
+.input-group-custom input:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(2, 155, 197, 0.1);
   outline: none;
 }
 
-.subscribe-wrapper .input-icon {
+.input-icon {
   position: absolute;
   top: 50%;
   left: 15px;
@@ -502,7 +870,7 @@ Our Sister Concern CSS End
   z-index: 2;
 }
 
-.subscribe-wrapper .subscribe-btn {
+.subscribe-btn {
   background: linear-gradient(135deg, #ff7a5c, #ff5858);
   color: white;
   padding: 15px 35px;
@@ -516,13 +884,13 @@ Our Sister Concern CSS End
   font-family: 'Poppins', sans-serif;
 }
 
-.subscribe-wrapper .subscribe-btn:hover {
+.subscribe-btn:hover {
   background: linear-gradient(135deg, #ff5858, #ff7a5c);
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 88, 88, 0.2);
 }
 
-.subscribe-wrapper .paper-plane-icon {
+.paper-plane-icon {
   position: absolute;
   top: -20px;
   right: -20px;
@@ -540,20 +908,20 @@ Our Sister Concern CSS End
   transition: all 0.3s ease;
 }
 
-.subscribe-wrapper .paper-plane-icon:hover {
+.paper-plane-icon:hover {
   transform: rotate(15deg);
 }
 
 /* Background elements */
-.subscribe-wrapper .bg-left-circles,
-.subscribe-wrapper .bg-right-circles,
-.subscribe-wrapper .bg-dots {
+.bg-left-circles,
+.bg-right-circles,
+.bg-dots {
   position: absolute;
   z-index: 1;
   pointer-events: none;
 }
 
-.subscribe-wrapper .bg-left-circles {
+.bg-left-circles {
   left: -69px;
   top: -7px;
   height: 100%;
@@ -562,7 +930,7 @@ Our Sister Concern CSS End
   background-size: contain;
 }
 
-.subscribe-wrapper .bg-right-circles {
+.bg-right-circles {
   right: 0;
   top: 0;
   height: 100%;
@@ -571,7 +939,7 @@ Our Sister Concern CSS End
   background-size: contain;
 }
 
-.subscribe-wrapper .bg-dots {
+.bg-dots {
   right: -77px;
   bottom: -43px;
   width: 202px;
@@ -588,21 +956,21 @@ Our Sister Concern CSS End
     margin: 40px auto;
   }
 
-  .subscribe-wrapper .subscribe-title {
+  .subscribe-title {
     font-size: 1.5rem;
     margin-bottom: 30px;
   }
 
-  .subscribe-wrapper .input-group-custom {
+  .input-group-custom {
     padding: 0 15px;
   }
 
-  .subscribe-wrapper .bg-left-circles,
-  .subscribe-wrapper .bg-right-circles {
+  .bg-left-circles,
+  .bg-right-circles {
     width: 250px;
   }
 
-  .subscribe-wrapper .bg-dots {
+  .bg-dots {
     width: 150px;
     height: 100px;
     display: none;
@@ -617,35 +985,35 @@ Our Sister Concern CSS End
     margin: 30px auto;
   }
 
-  .subscribe-wrapper .subscribe-title {
+  .subscribe-title {
     font-size: 1.3rem;
     margin-bottom: 25px;
     padding: 0 10px;
   }
 
-  .subscribe-wrapper .input-group-custom {
+  .input-group-custom {
     flex-direction: column;
     gap: 15px;
     padding: 0 10px;
   }
 
-  .subscribe-wrapper .input-group-custom .position-relative {
+  .input-group-custom .position-relative {
     width: 100%;
   }
 
-  .subscribe-wrapper .input-group-custom input {
+  .input-group-custom input {
     padding: 12px 15px 12px 40px;
     font-size: 0.95rem;
   }
 
-  .subscribe-wrapper .subscribe-btn {
+  .subscribe-btn {
     width: 100%;
     padding: 12px 20px;
     font-size: 0.95rem;
     min-width: auto;
   }
 
-  .subscribe-wrapper .paper-plane-icon {
+  .paper-plane-icon {
     width: 50px;
     height: 50px;
     font-size: 20px;
@@ -653,12 +1021,12 @@ Our Sister Concern CSS End
     right: -15px;
   }
 
-  .subscribe-wrapper .bg-left-circles,
-  .subscribe-wrapper .bg-right-circles {
+  .bg-left-circles,
+  .bg-right-circles {
     width: 150px;
   }
 
-  .subscribe-wrapper .bg-dots {
+  .bg-dots {
     width: 100px;
     height: 70px;
   }
@@ -673,38 +1041,38 @@ Our Sister Concern CSS End
     width: auto;
   }
 
-  .subscribe-wrapper .subscribe-title {
+  .subscribe-title {
     font-size: 1.2rem;
     line-height: 1.4;
     margin-bottom: 20px;
     padding: 0 10px;
   }
 
-  .subscribe-wrapper .input-group-custom {
+  .input-group-custom {
     gap: 12px;
     padding: 0 10px;
     margin: 0 5px;
   }
 
-  .subscribe-wrapper .input-group-custom input {
+  .input-group-custom input {
     padding: 12px 15px 12px 35px;
     font-size: 0.9rem;
     width: 100%;
   }
 
-  .subscribe-wrapper .subscribe-btn {
+  .subscribe-btn {
     padding: 12px 20px;
     font-size: 0.9rem;
     width: 100%;
     margin: 0 5px;
   }
 
-  .subscribe-wrapper .input-icon {
+  .input-icon {
     font-size: 1rem;
     left: 12px;
   }
 
-  .subscribe-wrapper .paper-plane-icon {
+  .paper-plane-icon {
     width: 40px;
     height: 40px;
     font-size: 16px;
@@ -712,13 +1080,13 @@ Our Sister Concern CSS End
     right: -10px;
   }
 
-  .subscribe-wrapper .bg-left-circles,
-  .subscribe-wrapper .bg-right-circles {
+  .bg-left-circles,
+  .bg-right-circles {
     width: 100px;
     opacity: 0.5;
   }
 
-  .subscribe-wrapper .bg-dots {
+  .bg-dots {
     width: 80px;
     height: 50px;
     opacity: 0.5;
@@ -732,20 +1100,20 @@ Our Sister Concern CSS End
     margin: 20px 12px;
   }
 
-  .subscribe-wrapper .subscribe-title {
+  .subscribe-title {
     font-size: 1.1rem;
     padding: 23px 8px;
   }
 
-  .subscribe-wrapper .input-group-custom {
+  .input-group-custom {
     padding: 0 8px;
   }
 
-  .subscribe-wrapper .input-group-custom input {
+  .input-group-custom input {
     padding: 10px 15px 10px 35px;
   }
 
-  .subscribe-wrapper .subscribe-btn {
+  .subscribe-btn {
     padding: 10px 15px;
   }
 }
@@ -755,6 +1123,33 @@ Our Sister Concern CSS End
           Subscribe CSS End
 -------------------------------------
 */
+@media (max-width: 768px) {
+	.border-start{
+		border-left: none !important;
+	}
+}
+/* Extra small devices (392px and smaller) */
+@media (max-width: 392px) {
+  .top-header .contact-info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-header .contact-info > div {
+    width: 100%; /* Full width */
+    flex-direction: column; /* Icon up, text down */
+    align-items: center;
+    text-align: center;
+    border: none;
+    margin: 10px 0;
+    padding: 0;
+  }
+
+  .top-header .contact-info > div img,
+  .top-header .contact-info > div svg {
+    margin-bottom: 8px;
+  }
+}
 
 /*
 ------------------------------------
@@ -836,6 +1231,26 @@ Our Sister Concern CSS End
   font-family: 'Roboto', sans-serif;
 }
 
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-section {
+    text-align: center;
+  }
+  
+  .footer-section .social-links {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .footer-section .app-buttons {
+    margin: 0 auto;
+  }
+  .bottom-footer{
+    text-align: center;
+  }
+}
+
 /*
 ------------------------------------
           Footer CSS End
@@ -898,6 +1313,86 @@ Logo and Description CSS Start
   background-color: var(--primary-color);
   color: white;
   transform: translateY(-3px);
+}
+
+/* Tablet devices */
+@media (max-width: 991px) {
+  .logo-description {
+    padding: 2.5rem 0;
+  }
+
+  .logo-description .footer-logo {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-description .footer-logo img {
+    height: 70px;
+  }
+
+  .logo-description .follow-title {
+    margin-bottom: 1rem;
+  }
+
+  .logo-description .social-links {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 767px) {
+  .logo-description {
+    padding: 2rem 0;
+  }
+
+  .logo-description .footer-logo {
+    margin-bottom: 1.25rem;
+  }
+
+  .logo-description .footer-logo img {
+    height: 60px;
+  }
+
+  .logo-description .follow-title {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .logo-description .social-links {
+    gap: 12px;
+  }
+
+  .logo-description .social-link {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 575px) {
+  .logo-description {
+    padding: 1.5rem 0;
+  }
+
+  .logo-description .footer-logo img {
+    height: 50px;
+  }
+
+  .logo-description .follow-title {
+    font-size: 1rem;
+  }
+
+  .logo-description .social-links {
+    gap: 10px;
+  }
+
+  .logo-description .social-link {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
 }
 
 /*
@@ -1229,395 +1724,26 @@ Hero Slider CSS Start
   transform: translateX(0);
 }
 
-/*
-------------------------------------
-Hero Slider CSS End
--------------------------------------
-*/
-
-/* Responsive Design Start*/
-@media (max-width: 392px) {
-    /*top header responsive*/
-  .top-header .contact-info {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .top-header .contact-info > div {
-    width: 100%; /* Full width */
-    flex-direction: column; /* Icon up, text down */
-    align-items: center;
-    text-align: center;
-    border: none;
-    margin: 10px 0;
-    padding: 0;
-  }
-
-  .top-header .contact-info > div img,
-  .top-header .contact-info > div svg {
-    margin-bottom: 8px;
-  }
-}
-@media (max-width: 400px) {
-    /*blog responsive*/
-  .container {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    padding-top: 0px !important;
-  }
-
-  .blog .card-img-top {
-    height: auto;
-  }
-
-  .blog .card-body {
-    padding: 0.75rem;
-  }
-}
-@media (max-width: 575px) {
-    /*hero slider responsive*/
-  .hero-slider {
-    padding: 50px 0 18px;
-  }
-
+/* Responsive Design */
+@media (max-width: 1200px) {
   .hero-title {
-    font-size: 1.8rem;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .get-card-btn,
-  .how-works-btn {
-    width: 50%;
-    text-align: center;
+    font-size: 3rem;
   }
 
   .image-wrapper {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 60px;
   }
 
   .main-image {
-    border-radius: 15px;
-  }
-
-  .floating-card {
-    right: 10px;
+    max-width: 450px;
   }
 
   .credit-card {
-    width: 160px;
-  }
-  /*logo description responsive*/
-  .logo-description {
-    padding: 1.5rem 0;
-  }
-
-  .logo-description .footer-logo img {
-    height: 50px;
-  }
-
-  .logo-description .follow-title {
-    font-size: 1rem;
-  }
-
-  .logo-description .social-links {
-    gap: 10px;
-  }
-
-  .logo-description .social-link {
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
-  }
-  
-  /*blog responsive*/
-  .container {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-  }
-
-  .blog {
-    padding: 1.5rem 0;
-  }
-
-  .blog .row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .blog .col-sm-6,
-  .blog .col-md-4,
-  .blog .col-lg-3 {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    margin-bottom: 20px;
-  }
-
-  .blog .card {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .blog .card-img-top {
-    height: auto !important;
-  }
-
-  .blog .card-body {
-    padding: 1rem;
-  }
-
-  .blog .card-title {
-    font-size: 0.95rem;
-  }
-
-  .blog .read-more {
-    font-size: 0.875rem;
-  }
-  /*Top header responsive*/
-  .top-header {
-    padding: 15px 0;
-  }
-
-  .top-header .contact-info > div {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .top-header .contact-info img {
-    margin: 0 0 8px 0;
-  }
-
-  .top-header small {
-    font-size: 11px;
-  }
-
-  .top-header strong {
-    font-size: 13px;
-  }
-
-  .top-header .social-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 14px;
-  }
-}
-@media (max-width: 576px) {
-  .client-acquisition h2 {
-    font-size: 1.8rem;
-  }
-
-  .client-acquisition p, 
-  .client-acquisition ul li {
-    font-size: 0.9rem;
-  }
-
-  .client-acquisition .btn-primary {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-  .margin-right-0{
-    margin-right: 0 !important;
-  }
-  .hero-content {
-    margin-bottom: 0 !important;
+    width: 280px;
   }
 }
 
-@media (max-width: 768px) {
-    /*footer responsive*/
-  .footer-section {
-    text-align: center;
-  }
-  
-  .footer-section .social-links {
-    justify-content: center;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .footer-section .app-buttons {
-    margin: 0 auto;
-  }
-  .bottom-footer{
-    text-align: center;
-  }
-  .border-start{
-		border-left: none !important;
-	}
-	/*client-acquisition responsive*/
-	.client-acquisition p {
-    font-size: 1rem;
-  }
-
-  .client-acquisition ul li {
-    font-size: 0.95rem;
-  }
-
-  .client-acquisition .btn-primary {
-    font-size: 0.95rem;
-    padding: 8px 18px;
-  }
-}
-@media (max-width: 767px) {
-    /*hero slider responsive*/
-  .hero-slider {
-    padding: 30px 0 0;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-  }
-
-  .get-card-btn {
-    padding: 12px 25px;
-    font-size: 1rem;
-  }
-
-  .how-works-btn {
-    font-size: 1rem;
-  }
-
-  .image-wrapper {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 0;
-  }
-
-  .floating-card {
-    top: 55%;
-    right: 10px;
-  }
-
-  .credit-card {
-    width: 200px;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
-  }
-
-  .hero-slider::after {
-    background-size: cover;
-    opacity: 0.4;
-  }
-  /*navbar responsive*/
-  .navbar .navbar-brand img {
-    height: 50px;
-  }
-
-  .navbar .nav-link {
-    font-size: 15px;
-  }
-
-  .navbar .navbar-collapse {
-    padding: 15px;
-  }
-
-  .navbar .nav-link:hover {
-    transform: translateX(3px);
-  }
-  /*Top header responsive*/
-  .top-header .contact-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .top-header .contact-info > div {
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 15px;
-    padding: 10px 0;
-    border: none !important;
-  }
-
-  .top-header .social-icons {
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-  /*logo description responsive*/
-  .logo-description {
-    padding: 2rem 0;
-  }
-
-  .logo-description .footer-logo {
-    margin-bottom: 1.25rem;
-  }
-
-  .logo-description .footer-logo img {
-    height: 60px;
-  }
-
-  .logo-description .follow-title {
-    text-align: center;
-    margin-bottom: 0.75rem;
-  }
-
-  .logo-description .social-links {
-    gap: 12px;
-  }
-
-  .logo-description .social-link {
-    width: 35px;
-    height: 35px;
-    font-size: 0.9rem;
-  }
-  
-  /*blog responsive*/
-  .blog {
-    padding: 2rem 0;
-  }
-
-  .blog .row {
-    margin: 0 -10px;
-  }
-
-  .blog .col-sm-6,
-  .blog .col-md-4,
-  .blog .col-lg-3 {
-    padding: 0 10px;
-    margin-bottom: 20px;
-  }
-
-  .blog .card-img-top {
-    height: 160px;
-  }
-
-  .blog .card-body {
-    padding: 1.25rem;
-  }
-
-  .blog .card-title {
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .blog .meta {
-    font-size: 0.75rem;
-  }
-  /*sister concern responsive*/
-    .sister-concern .sister-logo {
-        height: 40px;
-    }
-    .sister-concern .d-flex {
-        gap: 25px;
-    }
-    .sister-concern h3 {
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-}
 @media (max-width: 991px) {
-    /*hero slider responsive*/
   .hero-slider {
     padding: 40px 0 0;
     min-height: auto;
@@ -1682,153 +1808,205 @@ Hero Slider CSS End
   .swiper-button-prev:after {
     font-size: 20px;
   }
-  /*logo description responsive*/
-  .logo-description {
-    padding: 2.5rem 0;
-  }
-
-  .logo-description .footer-logo {
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .logo-description .footer-logo img {
-    height: 70px;
-  }
-
-  .logo-description .follow-title {
-    margin-bottom: 1rem;
-  }
-
-  .logo-description .social-links {
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  
-   /*blog responsive*/
-  .blog {
-    padding: 2.5rem 0;
-  }
-
-  .blog .card-img-top {
-    height: 180px;
-  }
-
-  .blog .card-title {
-    font-size: 1.1rem;
-  }
-
-  .blog .meta {
-    font-size: 0.8rem;
-  }
-  /*sister concern responsive*/
-    .sister-concern .sister-logo {
-        height: 45px;
-    }
-    .sister-concern .d-flex {
-        gap: 30px;
-    }
-    /*navbar responsive*/
-    .navbar {
-    padding: 10px 0;
-  }
-
-  .navbar .navbar-brand img {
-    height: 60px;
-  }
-
-  .navbar .navbar-collapse {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 15px;
-  }
-
-  .navbar .navbar-nav {
-    gap: 5px;
-    padding: 10px 0;
-  }
-
-  .navbar .nav-link {
-    padding: 12px 20px;
-    border-radius: 5px;
-    text-align: center;
-    margin: 2px 0;
-  }
-
-  .navbar .nav-link::after {
-    display: none;
-  }
-
-  .navbar .nav-link:hover {
-    background: rgba(2, 155, 197, 0.1);
-    color: var(--primary-color);
-    transform: translateX(5px);
-  }
-
-  .navbar .auth-buttons {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
-    margin-top: 10px;
-  }
-
-  .navbar .sign-in-btn {
-    display: block;
-    text-align: center;
-    width: 100%;
-    padding: 8px;
-  }
-
-  .navbar .btn-outline-dark {
-    width: 100%;
-    text-align: center;
-    padding: 8px;
-  }
-  /*Top Header Responsive*/
-  .top-header .contact-info {
-    margin-top: 15px;
-  }
-  
-  .top-header .contact-info > div {
-    margin-bottom: 10px;
-  }
 }
-@media (max-width: 992px) {
-    /*client-acquisition responsive*/
-  .client-acquisition h2 {
-    font-size: 2rem;
-    width: 100%;
-    text-align: center;
+
+@media (max-width: 767px) {
+  .hero-slider {
+    padding: 30px 0 0;
   }
 
-  .client-acquisition .img-fluid {
-    max-width: 58%;
-    margin-bottom: 20px;
-  }
-  .center-img{
-    text-align: center !important;
-  }
-}
-@media (max-width: 1200px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .get-card-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .how-works-btn {
+    font-size: 1rem;
   }
 
   .image-wrapper {
-    padding-right: 60px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
   }
 
-  .main-image {
-    max-width: 450px;
+  .floating-card {
+    top: 55%;
+    right: 10px;
   }
 
   .credit-card {
-    width: 280px;
+    width: 200px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .hero-slider::after {
+    background-size: cover;
+    opacity: 0.4;
   }
 }
 
-/* Responsive Design End*/
+@media (max-width: 575px) {
+  .hero-slider {
+    padding: 50px 0 18px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .get-card-btn,
+  .how-works-btn {
+    width: 50%;
+    text-align: center;
+  }
+
+  .image-wrapper {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .main-image {
+    border-radius: 15px;
+  }
+
+  .floating-card {
+    right: 10px;
+  }
+
+  .credit-card {
+    width: 160px;
+  }
+}
+
+/*
+------------------------------------
+Hero Slider CSS End
+-------------------------------------
+*/
+
+/* Dropdown Menu Styles */
+.navbar .dropdown-menu {
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    min-width: 200px;
+    margin-top: 0.5rem;
+}
+
+.navbar .dropdown-item {
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+    padding-left: 30px;
+}
+
+/* --- Navbar Dropdown Indicator --- */
+
+/* Hide ALL default/previous indicators */
+.navbar .nav-link.dropdown-toggle::after,
+.navbar .nav-item.dropdown > .nav-link::after,
+.navbar .nav-link.dropdown-toggle::before {
+    display: none !important; 
+}
+
+/* Style the new icon span for Desktop */
+@media (min-width: 992px) {
+    .navbar .nav-link.dropdown-toggle {
+        display: inline-flex; /* Align text and icon span */
+        align-items: center;
+    }
+    
+    .dropdown-icon-right {
+        display: inline-block;
+        margin-left: 0.5em; /* Space between text and icon */
+    }
+
+    .dropdown-icon-right i {
+        font-size: 0.8em; /* Adjust icon size */
+        vertical-align: middle; /* Adjust vertical alignment if needed */
+        color: inherit; /* Inherit color from link */
+        transition: transform 0.2s ease-in-out;
+    }
+
+    /* Rotate icon span when dropdown is shown */
+    .navbar .nav-link.dropdown-toggle[aria-expanded="true"] .dropdown-icon-right i {
+       transform: rotate(180deg);
+    }
+}
+
+/* --- Styles for Mobile Offcanvas Dropdown --- */
+
+@media (max-width: 991.98px) {
+    /* Hide the default Bootstrap arrow in offcanvas */
+    .offcanvas .nav-link.dropdown-toggle::after { 
+        display: none !important; 
+    }
+
+    /* Ensure the custom icon span IS visible in offcanvas */
+    .offcanvas .dropdown-icon-right {
+        display: inline-block; /* Make it visible */
+        margin-left: 0.5em; /* Space between text and icon */
+    }
+
+    /* Style the icon within the span in offcanvas */
+    .offcanvas .dropdown-icon-right i {
+        font-size: 0.9em; /* Adjust size if needed */
+        vertical-align: middle;
+        color: inherit;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    /* Align the nav link content (text + icon) */
+    .offcanvas .nav-link.dropdown-toggle {
+        display: inline-flex; /* Use flex to align text and icon */
+        align-items: center;
+        justify-content: flex-start /* Push icon to the far right */
+        width: 100%; /* Ensure it takes full width for justify-content */
+    }
+
+    /* Rotate icon span when dropdown is shown in offcanvas */
+    .offcanvas .nav-link.dropdown-toggle[aria-expanded="true"] .dropdown-icon-right i {
+       transform: rotate(180deg);
+    }
+    
+    /* Keep offcanvas dropdown background */
+    .offcanvas .dropdown-menu { 
+        background: #f8f9fa; 
+        box-shadow: none;
+        border: none;
+        padding: 0.5rem 0 0.5rem 1.5rem;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+
+    .offcanvas .dropdown-item {
+        padding: 0.6rem 1rem;
+        color: #495057;
+    }
+}

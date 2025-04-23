@@ -6,27 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samaira Group</title>
   
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@400;600;700&family=Inter:wght@400;700&family=Manrope:wght@400;600;700&family=Poppins:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   
   <!-- Bootstrap CSS -->
-  <link href="{{asset('assets/frontassets/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
   
   <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="{{asset('assets/frontassets/fonts/css/all.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/fonts/css/all.min.css">
 
   <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
 
   <!-- Custom CSS -->
-  <link href="{{asset('assets/frontassets/css/style.css')}}" rel="stylesheet">
-  <link rel="icon" href="{{asset('assets/frontassets/images/logo.png')}}" type="image/x-icon">
+  <link href="{{ asset('assets/frontassets/') }}/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-{{-- hello --}}
+
   <!-- Top Header Section Start -->
   <section class="top-header py-2 bg-lightblue">
     <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
@@ -43,24 +38,24 @@
       <div class="d-flex flex-wrap text-center text-md-start justify-content-center justify-content-md-end contact-info">
 
         <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0">
-          <img src="{{asset('assets/frontassets/images/top-header/phone.png')}}" alt="Phone Icon" class="me-3 margin-right-0" style="width: 21px;">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="me-3 margin-right-0" style="width: 21px;">
           <div>
             <small class="d-block">Call anytime</small>
-            <strong>+880 1313-770460</strong>
+            <strong>+98 (000) - 9630</strong>
           </div>
         </div>
         <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0 border-start ps-3">
-          <img src="{{asset('assets/frontassets/images/top-header/Email.png')}}" alt="Email Icon" class="me-3" style="width: 21px;">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/email.png" alt="Email Icon" class="me-3" style="width: 21px;">
           <div>
             <small class="d-block">Send email</small>
             <strong>info@samairagroup.com</strong>
           </div>
         </div>
         <div class="d-flex align-items-center border-start ps-3">
-          <img src="{{asset('assets/frontassets/images/top-header/location.png')}}" alt="Location Icon" class="me-3" style="width: 18px;">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="me-3" style="width: 18px;">
           <div>
-            <small class="d-block">Navana Obaid Eternia, 3rd Floor 28/A-29/B</small>
-            <strong>Kakrail, Dhaka 1217 Bangladesh</strong>
+            <small class="d-block">380 St Kilda Road</small>
+            <strong>Melbourne, Australia</strong>
           </div>
         </div>
       </div>
@@ -74,7 +69,7 @@
     <div class="container">
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="{{asset('assets/frontassets/images/logo.png')}}" alt="Logo" style="height: 70px;" class="me-2">
+        <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Logo" style="height: 70px;" class="me-2">
       </a>
 
       <!-- Toggle (for mobile) -->
@@ -93,14 +88,19 @@
             <li class="nav-item">
               <a class="nav-link fw-bold" href="#">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold" href="#">Enterprize</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold" href="#">About Us</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link fw-bold dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Enterprize <span class="dropdown-icon-right"><i class="fas fa-angle-down"></i></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Samaira Skill Development</a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold" href="#">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link fw-bold" href="#">Contact us</a>
@@ -137,9 +137,9 @@
               </div>
               <div class="col-lg-6 hero-image">
                 <div class="image-wrapper">
-                  <img src="{{asset('assets/frontassets/images/hero-slider/man.png')}}" alt="Hero Image" class="main-image">
+                  <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
                   <div class="floating-card">
-                    <img src="{{asset('assets/frontassets/images/hero-slider/Card.png')}}" alt="Credit Card" class="credit-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/card.png" alt="Credit Card" class="credit-card">
                   </div>
                 </div>
               </div>
@@ -161,9 +161,9 @@
               </div>
               <div class="col-lg-6 hero-image">
                 <div class="image-wrapper">
-                  <img src="assets/frontassets/images/hero-slider/man.png" alt="Hero Image" class="main-image">
+                  <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
                   <div class="floating-card">
-                    <img src="assets/frontassets/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/card.png" alt="Credit Card" class="credit-card">
                   </div>
                 </div>
               </div>
@@ -185,9 +185,9 @@
               </div>
               <div class="col-lg-6 hero-image">
                 <div class="image-wrapper">
-                  <img src="assets/frontassets/images/hero-slider/man.png" alt="Hero Image" class="main-image">
+                  <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
                   <div class="floating-card">
-                    <img src="assets/frontassets/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/card.png" alt="Credit Card" class="credit-card">
                   </div>
                 </div>
               </div>
@@ -211,22 +211,22 @@
           <div class="row align-items-center mt-4">
               <!-- Image Section -->
               <div class="col-lg-6 mb-4 mb-lg-0 center-img">
-                  <img src="assets/frontassets/images/client/client.png" alt="Client Image" class="img-fluid rounded-3">
+                  <img src="{{ asset('assets/frontassets/') }}/images/client/client.png" alt="Client Image" class="img-fluid rounded-3">
               </div>
               <!-- Content Section -->
               <div class="col-lg-6">
                   <p class="lead mb-4">You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business and needs to find clients.</p>
                   <p class="mb-4">If you have trouble with any of the following:</p>
                   <ul class="list-unstyled">
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Grabbing and holding your audience's attention</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Turning your audience into potential sales leads</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Crafting appealing offers and services</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Selecting a niche market and building a focused audience</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Building your email subscriber list</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Enhancing your sales skills and mindset</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Employing efficient sales funnels to reduce client acquisition costs</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Reusing content across various online platforms</li>
-                      <li><img src="assets/frontassets/images/client/icon.png" alt="Check" class="me-3"> Lacking scalable systems for content creation and lead generation</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Grabbing and holding your audience's attention</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Turning your audience into potential sales leads</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Crafting appealing offers and services</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Selecting a niche market and building a focused audience</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Building your email subscriber list</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Enhancing your sales skills and mindset</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Employing efficient sales funnels to reduce client acquisition costs</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Reusing content across various online platforms</li>
+                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Lacking scalable systems for content creation and lead generation</li>
                   </ul>
                   <a href="#" class="btn btn-primary btn-lg mt-3">Get Started Free &nbsp;<i class="fas fa-angle-right"></i></a>
               </div>
@@ -245,61 +245,61 @@
           <!-- First set of logos -->
           <div class="d-flex">
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
             </div>
           </div>
           <!-- Duplicate set of logos for seamless loop -->
           <div class="d-flex">
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
             </div>
             <div class="logo-item">
-              <img src="assets/frontassets/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
+              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
             </div>
           </div>
         </div>
@@ -314,9 +314,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">MP Travels</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
           </div>
@@ -325,9 +324,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">Read Unveils the Best Canadian
               Cities for Biking</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -337,9 +335,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">10 Walkable Cities Where You Can
               Live Affordably</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -349,9 +346,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">New Apartment Nice in the Best
               Canadian Cities</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -361,9 +357,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">MP Travels</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
           </div>
@@ -372,9 +367,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">Read Unveils the Best Canadian
               Cities for Biking</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -384,9 +378,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">10 Walkable Cities Where You Can
               Live Affordably</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -396,9 +389,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">New Apartment Nice in the Best
               Canadian Cities</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -408,9 +400,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">MP Travels</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
           </div>
@@ -419,9 +410,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">Read Unveils the Best Canadian
               Cities for Biking</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -431,9 +421,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">10 Walkable Cities Where You Can
               Live Affordably</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -443,9 +432,8 @@
       <!-- Card Start -->
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="assets/frontassets/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-
             <h5 class="card-title mb-3">New Apartment Nice in the Best
               Canadian Cities</h5>
             <a href="#" class="read-more mt-auto">Visit &rarr;</a>
@@ -487,7 +475,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-6 text-center text-lg-start mb-4 mb-lg-0">
           <div class="footer-logo">
-            <img src="assets/frontassets/images/logo.png" alt="Samaira Group Logo" class="img-fluid">
+            <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Group Logo" class="img-fluid">
           </div>
         </div>
         <div class="col-lg-2 col-md-6 text-center text-lg-start mb-3 mb-lg-0">
@@ -541,10 +529,10 @@
         <!-- Contact Us Column -->
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
           <h4 class="mb-4">Contact Us</h4>
-          <p class="text-muted mb-2">info@samairagroup.com</p>
-          <p class="text-muted mb-4">+880 1313-770460</p>
+          <p class="text-muted mb-2">hi@justhome.com</p>
+          <p class="text-muted mb-4">(123) 456-7890</p>
           <h4 class="mb-3">Our Address</h4>
-          <p class="text-muted">Navana Obaid Eternia, 3rd Floor <br>28/A-29/B Kakrail, Dhaka 1217 <br>Bangladesh</p>
+          <p class="text-muted">99 Fifth Avenue, 3rd Floor<br>San Francisco, CA 1980</p>
         </div>
 
         <!-- Get the app Column -->
@@ -552,10 +540,10 @@
           <h4 class="mb-4">Get the app</h4>
           <div class="app-buttons">
             <a href="#" class="store-link mb-3">
-              <img src="assets/frontassets/images/footer/Link.png" alt="Download on Apple Store" class="img-fluid w-100">
+              <img src="{{ asset('assets/frontassets/') }}/images/footer/link.png" alt="Download on Apple Store" class="img-fluid w-100">
             </a>
             <a href="#" class="store-link">
-              <img src="assets/frontassets/images/footer/Link1.png" alt="Get it on Google Play" class="img-fluid w-100">
+              <img src="{{ asset('assets/frontassets/') }}/images/footer/link1.png" alt="Get it on Google Play" class="img-fluid w-100">
             </a>
           </div>
         </div>
@@ -573,11 +561,18 @@
   </div>
   <!-- Bottom Footer Section End -->
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <!-- jQuery -->
+  <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
   <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="{{ asset('assets/frontassets/') }}/js/swiper-bundle.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="{{ asset('assets/frontassets/') }}/js/bootstrap.bundle.min.js"></script>
+  <!-- Popper JS -->
+  <script src="{{ asset('assets/frontassets/') }}/js/popper.min.js"></script>
+  
   <!-- Initialize Swiper -->
   <script>
+    // Hero Swiper
     var swiper = new Swiper(".hero-swiper", {
       slidesPerView: 1,
       spaceBetween: 30,
@@ -610,19 +605,14 @@
         }
       }
     });
-  </script>
-  <!-- Bootstrap JS -->
-  <script src="{{asset('assets/frontassets/js/bootstrap.min.js')}}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  
-  <!-- Initialize Bootstrap Dropdowns -->
-  <script>
-    // Initialize all dropdowns
+
+    // Bootstrap Dropdowns
     var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
     var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
       return new bootstrap.Dropdown(dropdownToggleEl)
     })
   </script>
+
 </body>
 
 </html>
