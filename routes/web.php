@@ -13,6 +13,7 @@ Route::get('/test', function () {
 
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {
     Route::get('/', 'samairagrop')->name('samairagrop');
+    Route::get('/samairaskills', 'samairaskills')->name('samairaskills');
    
 });
 Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], function () {

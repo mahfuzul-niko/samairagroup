@@ -9,4 +9,7 @@ class PagesController extends Controller
    public function samairagrop(){
         return view('frontend.samairagroup.index');
    }
+   public function samairaskills(){
+        return view('frontend.samairaskills.index');
+   }
 }
