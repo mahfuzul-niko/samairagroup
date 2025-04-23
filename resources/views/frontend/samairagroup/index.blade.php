@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0 border-start ps-3">
-          <img src="{{ asset('assets/frontassets/') }}/images/top-header/email.png" alt="Email Icon" class="me-3" style="width: 21px;">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="me-3" style="width: 21px;">
           <div>
             <small class="d-block">Send email</small>
             <strong>info@samairagroup.com</strong>
@@ -139,7 +139,7 @@
                 <div class="image-wrapper">
                   <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
                   <div class="floating-card">
-                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/card.png" alt="Credit Card" class="credit-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
                   </div>
                 </div>
               </div>
@@ -540,10 +540,10 @@
           <h4 class="mb-4">Get the app</h4>
           <div class="app-buttons">
             <a href="#" class="store-link mb-3">
-              <img src="{{ asset('assets/frontassets/') }}/images/footer/link.png" alt="Download on Apple Store" class="img-fluid w-100">
+              <img src="{{ asset('assets/frontassets/') }}/images/footer/Link.png" alt="Download on Apple Store" class="img-fluid w-100">
             </a>
             <a href="#" class="store-link">
-              <img src="{{ asset('assets/frontassets/') }}/images/footer/link1.png" alt="Get it on Google Play" class="img-fluid w-100">
+              <img src="{{ asset('assets/frontassets/') }}/images/footer/Link1.png" alt="Get it on Google Play" class="img-fluid w-100">
             </a>
           </div>
         </div>
