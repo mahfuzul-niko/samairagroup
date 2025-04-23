@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samaira Group</title>
-  
+  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/logo.png" type="image/png">
+
   
   <!-- Bootstrap CSS -->
   <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
@@ -18,6 +19,7 @@
 
   <!-- Custom CSS -->
   <link href="{{ asset('assets/frontassets/') }}/css/style.css" rel="stylesheet">
+  
 </head>
 
 <body>

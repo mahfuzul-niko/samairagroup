@@ -3,7 +3,18 @@
     --text-color: #2D3436;
     --light-bg: #F8F9FA;
 }
-
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/webfonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/webfonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
 /* Top Header Styles */
 .top-header {
     font-family: 'Poppins', sans-serif;
@@ -152,7 +163,7 @@
     }
     .top-header .social-icons-center {
         width: 100%;
-        padding: 15px 0;
+        padding: 15px 0 !important;
         margin: 10px 0;
         border-top: 1px solid rgba(0,0,0,0.1);
         border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -194,7 +205,8 @@
     min-height: 100vh;
     padding: 6rem 0 0 0;
     position: relative;
-    background: linear-gradient(135deg, #fdf5e329 0%, #fdf5e3 100%);
+    /* background: linear-gradient(135deg, #fdf5e329 0%, #fdf5e3 100%); */
+    background: radial-gradient( circle at center, rgba(165, 165, 165, 0) 40%, #FCCA5D14  70% );
     overflow: hidden;
 }
 
@@ -1919,7 +1931,7 @@ We are certified By CSS End
     }
     /* hero section responsive */
     .hero-section .custom-navbar {
-        top: 10px;
+        top: 40px;
     }
     .hero-section .navbar-brand img {
     height: 35px;
@@ -1947,6 +1959,7 @@ We are certified By CSS End
         margin: 0 auto 2rem auto; 
         left: 1%;
         bottom: auto;
+        display: none;
     }
 
     .enrollment-discount-section .enrollment-content {
@@ -2101,26 +2114,30 @@ We are certified By CSS End
 }
 
 .hero-section .navbar-nav .dropdown-toggle::after {
-    margin-left: 5px;
-    vertical-align: middle;
+    display: inline-block;
+    margin-left: 0.5em;
+    vertical-align: .255em;
+    content: "";
     border-top: 0.3em solid;
     border-right: 0.3em solid transparent;
     border-bottom: 0;
     border-left: 0.3em solid transparent;
+    transition: transform 0.2s ease;
+    border-top-color: currentColor;
+    position: static;
+    transform: none;
 }
 
-.hero-section .navbar-nav .dropdown-toggle:hover::after {
-    border-top-color: #6C5CE7;
+.hero-section .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
+    transform: rotate(180deg);
 }
 
 /* Mobile Dropdown Styles */
 @media (max-width: 991px) {
     .hero-section .navbar-nav .dropdown-menu {
-        background: transparent;
+        background:#f8f9fa;
         box-shadow: none;
-        padding: 0;
-        margin: 0;
-        border: none;
+        padding:0.5rem 0 0.5rem 0;
     }
 
     .hero-section .navbar-nav .dropdown-item {
@@ -2138,6 +2155,10 @@ We are certified By CSS End
         right: 0;
         top: 50%;
         transform: translateY(-50%);
+    }
+    .hero-section .navbar-nav{
+        gap:18px !important;
+        align-items: flex-start !important;
     }
 }
 
@@ -2178,41 +2199,54 @@ We are certified By CSS End
 
 /* Offcanvas Dropdown Styles */
 .offcanvas .dropdown-menu {
-  background-color: transparent; /* Match offcanvas background or slightly different */
-  border: none; /* Remove border */
-  box-shadow: none; /* Remove shadow */
-  padding: 0.5rem 0 0.5rem 1.5rem; /* Add indentation */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0.5rem 0 0.5rem 1.5rem;
   margin-top: 0;
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
 }
 
 .offcanvas .dropdown-item {
-  color: #495057; /* Match nav-link color */
-  padding: 0.5rem 1rem; /* Adjust padding */
+  color: #495057;
+  padding: 0.5rem 1rem;
   font-size: 0.95rem;
   border-radius: 4px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .offcanvas .dropdown-item:hover {
-  background-color: rgba(2, 155, 197, 0.15); /* Slightly darker hover */
+  background-color: rgba(2, 155, 197, 0.15);
   color: var(--primary-color);
 }
 
 /* Style for the dropdown toggle arrow in offcanvas */
 .offcanvas .nav-link.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.5em;
+  vertical-align: .255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
   transition: transform 0.2s ease;
-  border-top-color: #495057; /* Match text color */
+  border-top-color: currentColor;
+  position: static;
+  transform: none;
 }
 
 .offcanvas .nav-link.dropdown-toggle[aria-expanded="true"]::after {
-  transform: rotate(90deg); /* Rotate arrow when open */
+  transform: rotate(180deg);
 }
 
 /* Footer Image */
 .offcanvas-footer {
   padding: 1rem;
   border-top: 1px solid #dee2e6;
-  margin-top: auto; /* Pushes to the bottom */
+  margin-top: auto;
 }
 
 /*
