@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/email.png" alt="Email Icon" class="contact-icon">
+            <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="contact-icon">
             <div class="contact-text">
               <small>Send email</small>
               <strong>info@samairagroup.com</strong>

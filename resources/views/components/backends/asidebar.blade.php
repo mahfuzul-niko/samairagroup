@@ -22,65 +22,42 @@
 
         </li><!-- End Dashboard Nav -->
 
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.category.*', 'agent.unit.*') ? '' : 'collapsed' }}"
-                data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="category-nav"
-                class="nav-content collapse {{ request()->routeIs('agent.category.*', 'agent.unit.*') ? 'show' : '' }}"
-                data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('agent.category.list') }}"
-                        class="{{ request()->routeIs('agent.category.list') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Category Listing</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.category.create') }}"
-                        class="{{ request()->routeIs('agent.category.create') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Category Create</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.unit.list') }}"
-                        class="{{ request()->routeIs('agent.unit.list') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Unit Listing</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End Category Nav -->
 
 
-        <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.product.*') ? '' : 'collapsed' }}" 
-               data-bs-target="#product-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="product-nav" class="nav-content collapse {{ request()->routeIs('agent.product.*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('agent.product.list') }}" class="{{ request()->routeIs('agent.product.list') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Product Listing</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.product.grid') }}" class="{{ request()->routeIs('agent.product.grid') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Product Griding</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.product.create') }}" class="{{ request()->routeIs('agent.product.create') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Product Create</span>
-                    </a>
-                </li>
-            </ul>
-        </li><!-- End Product Nav -->
-         --}}
+
+
+
 
 
 
 
         <li class="nav-heading">Pages</li>
+
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
+                data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="category-nav" class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.system.index') }}"
+                        class="{{ request()->routeIs('agent.system.index') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>System</span>
+                    </a>
+                </li>
+                {{-- <li>
+                    <a href="#" class="{{ request()->routeIs('agent.category.create') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Category Create</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="{{ request()->routeIs('agent.unit.list') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Unit Listing</span>
+                    </a>
+                </li> --}}
+            </ul>
+        </li><!-- End Category Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('agent.profile') }}">

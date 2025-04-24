@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/test', function () {
-    return redirect()->back()->with('success', 'Test message');
+    dd(system_key('hello') );
 });
 
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {

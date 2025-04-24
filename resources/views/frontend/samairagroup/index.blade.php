@@ -25,45 +25,7 @@
 <body>
 
   <!-- Top Header Section Start -->
-  <section class="top-header py-2 bg-lightblue">
-    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-      
-      <!-- Social Icons -->
-      <div class="d-flex align-items-center mb-2 mb-md-0">
-        <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-icon me-2"><i class="fab fa-pinterest-p"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-      </div>
-
-      <!-- Contact Info -->
-      <div class="d-flex flex-wrap text-center text-md-start justify-content-center justify-content-md-end contact-info">
-
-        <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0">
-          <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="me-3 margin-right-0" style="width: 21px;">
-          <div>
-            <small class="d-block">Call anytime</small>
-            <strong>+98 (000) - 9630</strong>
-          </div>
-        </div>
-        <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0 border-start ps-3">
-          <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="me-3" style="width: 21px;">
-          <div>
-            <small class="d-block">Send email</small>
-            <strong>info@samairagroup.com</strong>
-          </div>
-        </div>
-        <div class="d-flex align-items-center border-start ps-3">
-          <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="me-3" style="width: 18px;">
-          <div>
-            <small class="d-block">380 St Kilda Road</small>
-            <strong>Melbourne, Australia</strong>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
+    <x-layouts.header/>
   <!-- Top Header Section End -->
 
   <!-- Navbar Section START -->
@@ -497,70 +459,9 @@
   <!-- Logo and Description Column End-->
 
   <!-- Footer Section Start -->
-  <footer class="footer-section mt-5 pt-5">
-    <div class="container">
-      <div class="row">
+  <x-layouts.footer/>
 
-        <!-- Discover Column -->
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h4 class="mb-4">Discover</h4>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Miami</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">New York</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Chicago</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Florida</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Los Angeles</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">San Diego</a></li>
-          </ul>
-        </div>
-
-        <!-- Quick Links Column -->
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h4 class="mb-4">Quick Links</h4>
-          <ul class="list-unstyled">
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Contact</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">FAQ's</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Pricing Plans</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy Policy</a></li>
-            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Terms & Conditions</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact Us Column -->
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <h4 class="mb-4">Contact Us</h4>
-          <p class="text-muted mb-2">hi@justhome.com</p>
-          <p class="text-muted mb-4">(123) 456-7890</p>
-          <h4 class="mb-3">Our Address</h4>
-          <p class="text-muted">99 Fifth Avenue, 3rd Floor<br>San Francisco, CA 1980</p>
-        </div>
-
-        <!-- Get the app Column -->
-        <div class="col-lg-3 col-md-6">
-          <h4 class="mb-4">Get the app</h4>
-          <div class="app-buttons">
-            <a href="#" class="store-link mb-3">
-              <img src="{{ asset('assets/frontassets/') }}/images/footer/Link.png" alt="Download on Apple Store" class="img-fluid w-100">
-            </a>
-            <a href="#" class="store-link">
-              <img src="{{ asset('assets/frontassets/') }}/images/footer/Link1.png" alt="Get it on Google Play" class="img-fluid w-100">
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Bottom Footer Section Start -->
-  <div class="bottom-footer py-3">
-    <div class="container">
-      <div class="text-left">
-        <p class="mb-0">Copyright © 2025. Samaira Group</p>
-      </div>
-    </div>
-  </div>
+  
   <!-- Bottom Footer Section End -->
 
   <!-- jQuery -->
