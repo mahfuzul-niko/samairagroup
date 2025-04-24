@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samaira Skills</title>
-  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-skills/fav-icon.svg" type="image/svg">
+  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/logo.png" type="image/png">
   
   <!-- Bootstrap CSS -->
   <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
@@ -103,7 +103,7 @@
         <nav class="navbar custom-navbar navbar-expand-lg navbar-light">
             <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" alt="logo">
+                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/logo.png" alt="logo">
             </a>
             
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -532,121 +532,133 @@
       </section>
     <!-- Latest Courses Section End  -->
 
-    <!-- Course Categories Section Start -->
-    <section class="course-categories pt-5">
-        <div class="container pt-4">
+    <!-- Success Stories Section Start -->
+    <section class="success-stories py-5">
+        <div class="container">
             <div class="section-header text-center mb-5">
-                <p class="text-uppercase small text-muted mb-2">CHOOSE YOUR DESIRED COURSES</p>
-                <h2 class="section-title">Browse Our Top Courses</h2>
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-desc">The presence of our students in the ever expanding IT industry motivates us, drives us to guide more people towards a sustainable future.</p>
             </div>
 
-            <!-- Category Filter Buttons -->
-            <div class="category-filters text-center mb-4">
-                <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="graphic">Graphic</button>
-                <button class="filter-btn" data-category="business">Business</button>
-                <button class="filter-btn" data-category="finance">Finance and Banking</button>
-                <button class="filter-btn" data-category="photography">Photography</button>
-                <button class="filter-btn" data-category="uiux">UI/UX</button>
-                <button class="filter-btn" data-category="color">Color</button>
-            </div>
-
-            <!-- Course Cards Slider -->
-            <div class="swiper category-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Graphic Design Courses -->
-                    <div class="swiper-slide" data-category="graphic">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course1.png" alt="Graphic Design Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Advanced</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Learn Graphic Design Fundamentals</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 3 Classes</span>
-                                    <span><i class="far fa-clock"></i> 06:00:00</span>
-                                </div>
-                                <div class="price-free">Free</div>
-                            </div>
+            <div class="row">
+                <!-- Success Story 1 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="success-story-card">
+                        <div class="video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/successstory.jpg" alt="Success Story" class="img-fluid w-100">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="story-info">
+                            <h3 class="story-title">Ilias Ahmed Sami</h3>
+                            <p class="story-meta">Student Of Digital Marketing</p>
                         </div>
                     </div>
-                    <div class="swiper-slide" data-category="graphic">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course2.png" alt="Graphic Design Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Advanced</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Learn Graphic Design Fundamentals</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 3 Classes</span>
-                                    <span><i class="far fa-clock"></i> 06:00:00</span>
-                                </div>
-                                <div class="price-free">Free</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Business Courses -->
-                    <div class="swiper-slide" data-category="business">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course3.png" alt="Business Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Beginner</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Business Strategy Fundamentals</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 4 Classes</span>
-                                    <span><i class="far fa-clock"></i> 08:00:00</span>
-                                </div>
-                                <div class="price-free">Free</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Finance Courses -->
-                    <div class="swiper-slide" data-category="finance">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course1.png" alt="Finance Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Intermediate</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Financial Planning and Analysis</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 5 Classes</span>
-                                    <span><i class="far fa-clock"></i> 10:00:00</span>
-                                </div>
-                                <div class="price-free">Free</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- More slides for other categories... -->
                 </div>
-                <!-- Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+
+                <!-- Success Story 2 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="success-story-card">
+                        <div class="video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/successstory.jpg" alt="Success Story" class="img-fluid w-100">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="story-info">
+                            <h3 class="story-title">Golam Rabbi Chowdhury</h3>
+                            <p class="story-meta">Student of Interior & Exterior Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Story 3 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="success-story-card">
+                        <div class="video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/successstory.jpg" alt="Success Story" class="img-fluid w-100">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="story-info">
+                            <h3 class="story-title">Golam Rabbi Chowdhury</h3>
+                            <p class="story-meta">Student of Interior & Exterior Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Story 4 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="success-story-card">
+                        <div class="video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/successstory.jpg" alt="Success Story" class="img-fluid w-100">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="story-info">
+                            <h3 class="story-title">Golam Rabbi Chowdhury</h3>
+                            <p class="story-meta">Student of Interior & Exterior Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Story 5 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="success-story-card">
+                        <div class="video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/successstory.jpg" alt="Success Story" class="img-fluid w-100">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="story-info">
+                            <h3 class="story-title">Golam Rabbi Chowdhury</h3>
+                            <p class="story-meta">Student of Interior & Exterior Design</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success Story 6 -->
+                <div class="col-lg-4 mb-4">
+                    <div class="success-story-card">
+                        <div class="video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/successstory.jpg" alt="Success Story" class="img-fluid w-100">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <div class="story-info">
+                            <h3 class="story-title">Golam Rabbi Chowdhury</h3>
+                            <p class="story-meta">Student of Interior & Exterior Design</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Pagination -->
-            <!-- <div class="swiper-pagination"></div> -->
+        </div>
+        
+        <!-- Video Modal -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="videoModalLabel">Success Story</h5> -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="videoFrame" src="" title="Success Story Video" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- Course Categories Section End -->
+    <!-- Success Stories Section End -->
+
+    <!-- Course Categories Section Start -->
 
     <!-- How it Works Section Start -->
     <section class="how-it-works">
@@ -916,7 +928,7 @@
                 <!-- Footer Widget 1: About -->
                 <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                     <div class="footer-widget">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" alt="Logo" class="footer-logo mb-3">
+                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills-japan/logo.png" alt="Logo" class="footer-logo mb-3">
                         <p class="footer-description">A service a treansaction in which no physical goods are transferred from the seller, to the buyer. the benefits of such a service are</p>
                         <div class="footer-social-icons">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1127,6 +1139,51 @@
                     categorySwiper.slideTo(0);
                 });
             });
+            
+            // Success Stories Video Modal
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            const videoTriggers = document.querySelectorAll('.video-trigger');
+            
+            if (videoModal) {
+                const bsVideoModal = new bootstrap.Modal(videoModal);
+                
+                videoTriggers.forEach(trigger => {
+                    trigger.addEventListener('click', function() {
+                        let videoUrl = this.closest('.video-thumbnail').getAttribute('data-video-url');
+                        
+                        // Convert YouTube URL to embed format
+                        if (videoUrl.includes('youtu.be') || videoUrl.includes('youtube.com')) {
+                            // Extract video ID from various YouTube URL formats
+                            let videoId = '';
+                            
+                            if (videoUrl.includes('youtu.be')) {
+                                // Format: https://youtu.be/VIDEO_ID
+                                videoId = videoUrl.split('youtu.be/')[1];
+                                if (videoId.includes('?')) {
+                                    videoId = videoId.split('?')[0];
+                                }
+                            } else if (videoUrl.includes('youtube.com/watch')) {
+                                // Format: https://www.youtube.com/watch?v=VIDEO_ID
+                                const urlParams = new URLSearchParams(videoUrl.split('?')[1]);
+                                videoId = urlParams.get('v');
+                            }
+                            
+                            if (videoId) {
+                                videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                            }
+                        }
+                        
+                        videoFrame.src = videoUrl;
+                        bsVideoModal.show();
+                    });
+                });
+                
+                // Clear iframe src when modal is closed to stop video
+                videoModal.addEventListener('hidden.bs.modal', function () {
+                    videoFrame.src = '';
+                });
+            }
         });
     </script>
 </body>

@@ -22,7 +22,7 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: #CBD4FF;
+    background: linear-gradient(45deg, #fff 30%, #CBD4FF 100%);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -51,7 +51,7 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
-    padding: 0 30px;
+    padding: 0 0 0 30px;
     position: relative;
 }
 
@@ -78,8 +78,8 @@
     width: 35px;
     height: 35px;
     border-radius:50%;
-    background:#f8f9fa;
-    color: #000;
+    background: var(--primary-color);
+    color: #fff;
     justify-content: center;
     align-items: center;
     transition:all 0.3s ease;
@@ -87,8 +87,8 @@
 }
 
 .top-header .social-icon:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: rgb(245, 245, 249);
+    color: var(--primary-color);
     transform: translateY(-2px);
 }
 
@@ -142,12 +142,15 @@
     line-height: 1.2;
     font-weight: 600;
 }
-
+.mobile-top-header{
+    display: none;
+}
 
 
 @media (max-width: 576px) {
     .top-header {
         padding: 15px 0;
+        display: none;
     }
     .top-header .header-content {
         flex-direction: column;
@@ -193,6 +196,7 @@
     .top-header .contact-text strong {
         text-align: center;
     }
+    
 }
 /* Top Header Styles End */
 
@@ -203,11 +207,14 @@
 /* Hero Section start*/
 .hero-section {
     min-height: 100vh;
-    padding: 6rem 0 0 0;
+    padding: 1rem 0 0 0;
     position: relative;
+    height: 100vh;
     /* background: linear-gradient(135deg, #fdf5e329 0%, #fdf5e3 100%); */
     background: radial-gradient( circle at center, rgba(165, 165, 165, 0) 40%, #FCCA5D14  70% );
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .hero-section .hero-content {
@@ -368,7 +375,7 @@
 
 .hero-section .courses-count {
     left: 20px; /* Adjust position */
-    bottom: 15%; /* Adjust position */
+    bottom: 8%; /* Adjust position */
     z-index: 3;
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(13px);
@@ -376,11 +383,15 @@
 
 /* Hero Image Section */
 .hero-section .hero-image {
-    position: relative; /* Needed for absolute positioning of children */
+    position: absolute;
     z-index: 2;
     padding-right: 2rem;
     display: flex;
-  justify-content: end;
+    justify-content: end;
+    bottom: 0; /* Keep at bottom */
+    right: 90px;
+    height: auto; /* Auto height instead of fixed percentage */
+    align-items: flex-end; /* Align to bottom */
 }
 
 .hero-section .student-img {
@@ -388,6 +399,9 @@
     max-width: 500px;
     position: relative;
     z-index: 2;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure image fits properly */
+    margin-bottom: 0; /* No bottom margin */
 }
 
 .hero-section .pattern-bg {
@@ -443,104 +457,96 @@
 }
 
 @media (max-width: 768px) {
-    .hero-section .top-nav ul {
-        gap: 1rem;
+    .hero-section {
+        padding: 3.5rem 0 2rem 0;
+        height: auto;
+        min-height: auto;
     }
-    
+    .hero-section .hero-content {
+        padding-top: 60px;
+        text-align: center;
+    }
     .hero-section .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
-    
     .hero-section .hero-subtitle {
-        font-size: 1.8rem;
+        font-size: 1.4rem;
     }
-    
+    .hero-section .hero-text {
+        font-size: 1rem;
+    }
+    .hero-section .join-text {
+        font-size: 1rem;
+    }
     .hero-section .hero-image {
-        margin-top: 3rem;
-        padding-right: 1rem;
-        text-align: center; /* Center image on smaller screens */
-    }
-    
-    .hero-section .student-img {
-        max-width: 80%; /* Reduce image size */
-    }
-    
-    .hero-section .pattern-bg {
+        position: relative;
+        height: auto;
         right: 0;
-    }
-    
-    .hero-section .stats {
         justify-content: center;
-        margin-top: 2rem;
+        margin-top: 1rem;
+        padding-right: 0;
+        bottom: auto;
+    }
+    .hero-section .student-img {
+        max-width: 280px;
+    }
+    .hero-section .active-students {
+        left: 10px;
+        top: 50%;
+    }
+    .hero-section .lifetime-access {
+        left: 10px;
+        top: 30%;
+    }
+    .hero-section .courses-count {
+        left: 10px;
+        bottom: 10%;
     }
 }
 
 @media (max-width: 576px) {
-    .hero-section .top-nav .login-btn {
-        padding: 0.5rem 1rem;
+    .hero-section {
+        padding: 3rem 0 1.5rem 0;
     }
-    
+    .hero-section .hero-content {
+        padding-top: 45px;
+    }
     .hero-section .hero-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
-    
     .hero-section .hero-subtitle {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
-    
-    .hero-section .stats {
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 1.5rem;
+    .hero-section .hero-text {
+        font-size: 0.9rem;
     }
-    
+    .hero-section .join-text {
+        font-size: 0.9rem;
+    }
+    .hero-section .join-btn {
+        padding: 0.8rem 2.5rem;
+    }
+    .hero-section .student-img {
+        max-width: 240px;
+    }
     .hero-section .stat-item {
         min-width: 150px;
         padding: 0.6rem 1rem;
     }
-
     .hero-section .stat-icon {
         width: 35px;
         height: 35px;
     }
-
     .hero-section .stat-icon img {
         width: 20px;
         height: 20px;
     }
-
     .hero-section .stat-text .number {
         font-size: 1.1rem;
     }
-
     .hero-section .stat-text .label {
         font-size: 0.7rem;
     }
-    
-    .hero-section .stat-text span:not(.number):not(.label) {
-        font-size: 0.8rem; 
-    }
-
-    .hero-section .dots-pattern {
-        width: 100px;
-        height: 100px;
-        bottom: 1rem;
-        right: 1rem;
-    }
-    .hero-section .active-students{
-        left: 16px;
-        top: 54%;
-    }
-    .hero-section .top-nav {
-        top: 8rem;
-        right: -2rem;
-    }
-    .hero-section .top-nav ul {
-        justify-content: center;
-    }
-    .hero-section .hero-content {
-        margin-top: -74px;
-      }
 }
 /* Navbar Styles */
 .hero-section .custom-navbar {
@@ -854,6 +860,19 @@
     clear: both; /* Clear the float from price */
 }
 
+.courses-section .course-rating a{
+    background:#FF5D06;
+    padding:7px 12px;
+    color: white;
+    text-decoration:none;
+    border-radius:10px;
+    transition: all 0.3s ease;
+}
+.courses-section .course-rating a:hover{
+    background:white;
+    color: #FF5D06;
+    border:1px solid #FF5D06;
+}
 .courses-section .course-rating,
 .courses-section .course-lessons {
     display: flex;
@@ -933,6 +952,43 @@
     /* hero section responsive */
     .hero-section{
         padding: 11rem 0 0 0;
+    }
+    .top-header{
+        display: none;
+    }
+    .mobile-top-header{
+        display: block;
+    }
+    /* mobile top header  */
+    .mobile-top-header{
+        display: block;
+        padding: 2px 0 2px 0;
+        background:linear-gradient(45deg, #fff 30%, #CBD4FF 100%);
+    }
+    .mobile-top-header .col-lg-12{
+        display: flex;
+        justify-content: space-between;
+    }
+    .mobile-top-header img{
+        width: 100px;
+    }
+    .mobile-top-header .social-icons-center{
+        margin: 15px 5px;
+    }
+    .mobile-top-header .social-icons-center a{
+        background: var(--primary-color);
+        padding:3px 7px 5px 8px;
+        border-radius:50px;
+        color: white;
+        margin:0 4px;
+        height: 31px;
+        width: 31px;
+        display: inline-block;
+        text-align: center;
+    }
+    .mobile-top-header .social-icons-center a:hover{
+        background: rgb(245, 245, 249);
+        color: var(--primary-color);
     }
 }
 
@@ -1679,7 +1735,7 @@ We are certified By CSS End
 
 /* Footer Section Start */
 .site-footer {
-    background-color: #FDFBF6;
+    background: radial-gradient( circle at center, rgba(165, 165, 165, 0) 40%, #FCCA5D14 70% ) !important;
     padding: 80px 0 0 0;
     color: #555;
     font-size: 0.95rem;
@@ -1718,6 +1774,7 @@ We are certified By CSS End
 .site-footer .footer-social-icons a:hover {
     background-color: #6C5CE7;
     color: white;
+    transform: translateY(-2px);
 }
 
 .site-footer .widget-title {
@@ -2254,3 +2311,465 @@ We are certified By CSS End
         Offcanvas Menu CSS End
 -------------------------------------
 */
+
+/* Responsive Styles for Hero Section */
+@media (min-width: 1921px) {
+    .hero-section {
+        padding: 8rem 0 0 0;
+    }
+    .hero-section .hero-image {
+        right: 100px;
+    }
+    .hero-section .student-img {
+        max-width: 550px;
+    }
+}
+
+@media (max-width: 1920px) {
+    .hero-section .hero-title {
+        font-size: 3.8rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 2.3rem;
+    }
+    .hero-section .hero-image {
+        right: 80px;
+    }
+}
+
+@media (max-width: 1600px) {
+    .hero-section .hero-image {
+        right: 70px;
+    }
+    .hero-section{
+        min-height: 100vh !important;
+        height: 100vh !important;
+    }
+    .hero-section .active-students{
+        top: 51%;
+    }
+    .hero-section .courses-count {
+        bottom: 24%;
+      }
+
+}
+@media (max-width: 1500px) {
+    .hero-section{
+        min-height: 80vh !important;
+        height: 80vh !important;
+    }
+}
+
+@media (max-width: 1440px) {
+    .hero-section .hero-title {
+        font-size: 3.5rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 2.1rem;
+    }
+    .hero-section .student-img {
+        max-width: 450px;
+    }
+    .hero-section .hero-image {
+        right: 60px;
+    }
+    .hero-section{
+        min-height: 80vh !important;
+        height: 80vh !important;
+    }
+}
+
+@media (max-width: 1366px) {
+    .hero-section .hero-title {
+        font-size: 3.2rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 2rem;
+    }
+    .hero-section .student-img {
+        max-width: 400px;
+    }
+    .hero-section .hero-image {
+        right: 50px;
+    }
+    .hero-section {
+        min-height: 100vh !important;
+        height: 100vh !important;
+    }
+    .hero-section .courses-count {
+        bottom: 20%;
+    }
+}
+
+@media (max-width: 1280px) {
+    .hero-section .hero-title {
+        font-size: 3rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 1.9rem;
+    }
+    .hero-section .student-img {
+        max-width: 380px;
+    }
+    .hero-section .hero-image {
+        right: 40px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 5rem 0 0 0;
+        height: auto;
+        min-height: 90vh;
+    }
+    .hero-section .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 1.8rem;
+    }
+    .hero-section .student-img {
+        max-width: 350px;
+    }
+    .hero-section .hero-image {
+        right: 30px;
+    }
+    .hero-section .active-students {
+        left: -60px;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero-section {
+        padding: 4rem 0 0 0;
+        min-height: 60vh !important;
+        height: 60vh !important;
+    }
+    .hero-section .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 1.6rem;
+    }
+    .hero-section .hero-text {
+        font-size: 1.1rem;
+    }
+    .hero-section .join-text {
+        font-size: 1.1rem;
+    }
+    .hero-section .student-img {
+        max-width: 320px;
+    }
+    .hero-section .hero-image {
+        right: 20px;
+    }
+    .hero-section .active-students {
+        left: -40px;
+        top: 230px;
+    }
+    .hero-section .courses-count {
+        bottom: 14%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 1.5rem 0 0px 0 !important;
+        height: 100vh !important;
+    }
+    .hero-section .hero-content {
+        padding-top: 80px;
+        text-align: center;
+    }
+    .hero-section .hero-title {
+        font-size: 2.2rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 1.4rem;
+    }
+    .hero-section .hero-text {
+        font-size: 1rem;
+    }
+    .hero-section .join-text {
+        font-size: 1rem;
+    }
+    .hero-section .hero-image {
+        position: relative;
+        height: auto;
+        right: 0;
+        justify-content: center;
+        margin-top: 2rem;
+        padding-right: 0;
+    }
+    .hero-section .student-img {
+        max-width: 300px;
+        max-height: 450px;
+    }
+    .hero-section .active-students {
+        left: 10px;
+        top: 50%;
+    }
+    .hero-section .lifetime-access {
+        left: 10px;
+        top: 30%;
+    }
+    .hero-section .courses-count {
+        left: 10px;
+        bottom: 12%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section .courses-count {
+        bottom: 16%;
+    }
+}
+@media (max-width: 430px) {
+    .hero-section .hero-title {
+        font-size: 1.6rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    .hero-section .stat-item {
+        min-width: 130px;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .hero-section {
+        padding: 2.5rem 0 1rem 0;
+    }
+    .hero-section .hero-content {
+        padding-top: 30px;
+    }
+    .hero-section .hero-title {
+        font-size: 1.5rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 1rem;
+    }
+    .hero-section .student-img {
+        max-width: 200px;
+    }
+    .hero-section .stat-item {
+        min-width: 120px;
+    }
+    .hero-section .courses-count {
+        bottom: 4%;
+    }
+    .hero-section .active-students {
+        top: 52%;
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-section .hero-title {
+        font-size: 1.4rem;
+    }
+    .hero-section .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    .hero-section .student-img {
+        max-width: 180px;
+    }
+    .hero-section .stat-item {
+        min-width: 110px;
+    }
+}
+
+/* Success Stories Section */
+.success-stories {
+    padding: 60px 0;
+    background-color: rgba(245, 245, 249, 1);
+}
+
+.success-stories .section-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.success-stories .section-desc {
+    font-size: 16px;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.success-story-card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    background-color: #fff;
+}
+
+.success-story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.video-thumbnail {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.success-story-card:hover .video-thumbnail::before {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.video-thumbnail img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+}
+
+.success-story-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65px;
+    height: 65px;
+    background-color: rgba(255, 93, 6, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 22px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 2;
+    box-shadow: 0 0 0 0 rgba(255, 93, 6, 0.7);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 93, 6, 0.7);
+    }
+    
+    70% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 0 15px rgba(255, 93, 6, 0);
+    }
+    
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        box-shadow: 0 0 0 0 rgba(255, 93, 6, 0);
+    }
+}
+
+.play-btn:hover {
+    background-color: #FF5D06;
+    color: white;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 93, 6, 0.7);
+}
+
+.play-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: rgba(255, 93, 6, 0.6);
+    z-index: -1;
+    animation: ripple 1.5s ease-out infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.story-logo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    max-width: 40px;
+    z-index: 2;
+}
+
+.story-info {
+    padding: 20px;
+}
+
+.story-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.story-meta {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+}
+
+@media (max-width: 991px) {
+    .success-stories .section-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .success-stories {
+        padding: 40px 0;
+    }
+    
+    .success-stories .section-title {
+        font-size: 30px;
+    }
+    
+    .success-stories .section-desc {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .success-stories .section-title {
+        font-size: 26px;
+    }
+    
+    .play-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+    
+    .story-info {
+        padding: 15px;
+    }
+}
