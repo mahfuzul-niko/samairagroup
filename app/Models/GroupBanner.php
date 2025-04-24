@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupBanner extends Model
 {
-    //
+    protected $guarded = [];
 }
