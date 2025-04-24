@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="contact-icon">
+            <img src="{{ asset('assets/frontassets/') }}/images/top-header/email.png" alt="Email Icon" class="contact-icon">
             <div class="contact-text">
               <small>Send email</small>
               <strong>info@samairagroup.com</strong>
@@ -74,6 +74,27 @@
   </section>
   <!-- Top Header Section End -->
 
+  <!-- Mobile Top Header Section Start -->
+  <section class="mobile-top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="site-logo">
+            <a href="index.html">
+              <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Travels Logo" class="logo-img">
+            </a>
+          </div>
+          <div class="social-icons-center">
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Mobile Top Header Section End -->
 
     <!-- Hero Section Start -->
     <section class="hero-section">
@@ -86,6 +107,9 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                  </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         My Courses
@@ -125,6 +149,9 @@
             </div>
             <div class="offcanvas-body">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Home</a>
+                </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     My Courses
@@ -176,8 +203,8 @@
                 <div class="col-lg-6">
                     <div class="hero-image">
                         <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/student.png" alt="Student" class="student-img">
-                        <div class="pattern-bg"></div>
-                        <div class="dots-pattern"></div>
+                        <!-- <div class="pattern-bg"></div>
+                        <div class="dots-pattern"></div> -->
 
                         <!-- Stats moved here -->
                         <div class="stats">
@@ -212,7 +239,6 @@
             </div>
         </div>
     </section>
-
     <!-- Hero Section End -->
 
     <!-- Latest Courses Section Start -->
@@ -248,6 +274,9 @@
                     <h3 class="course-title">Learn modern architecture Online course</h3>
                     <div class="course-meta">
                       <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
+                      <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
                       </span>
                       <span class="course-lessons">
@@ -276,6 +305,9 @@
                     <span class="course-price">$120</span>
                     <h3 class="course-title">Learn modern architecture Online course</h3>
                     <div class="course-meta">
+                      <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
                       <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
                       </span>
@@ -306,6 +338,9 @@
                     <h3 class="course-title">Learn modern architecture Online course</h3>
                     <div class="course-meta">
                       <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
+                      <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
                       </span>
                       <span class="course-lessons">
@@ -334,6 +369,9 @@
                     <span class="course-price">$99</span>
                     <h3 class="course-title">Advanced Web Development Masterclass</h3>
                     <div class="course-meta">
+                      <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
                       <span class="course-rating">
                         <i class="fas fa-star"></i> 4.9 (500)
                       </span>
@@ -374,6 +412,9 @@
                     <h3 class="course-title">Learn modern architecture Online course</h3>
                     <div class="course-meta">
                       <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
+                      <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
                       </span>
                       <span class="course-lessons">
@@ -402,6 +443,9 @@
                     <span class="course-price">$120</span>
                     <h3 class="course-title">Learn modern architecture Online course</h3>
                     <div class="course-meta">
+                      <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
                       <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
                       </span>
@@ -432,6 +476,9 @@
                     <h3 class="course-title">Learn modern architecture Online course</h3>
                     <div class="course-meta">
                       <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
+                      <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
                       </span>
                       <span class="course-lessons">
@@ -460,6 +507,9 @@
                     <span class="course-price">$99</span>
                     <h3 class="course-title">Advanced Web Development Masterclass</h3>
                     <div class="course-meta">
+                      <span class="course-rating">
+                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                      </span>
                       <span class="course-rating">
                         <i class="fas fa-star"></i> 4.9 (500)
                       </span>
