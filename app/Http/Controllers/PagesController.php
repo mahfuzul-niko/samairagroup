@@ -12,4 +12,7 @@ class PagesController extends Controller
    public function samairaskills(){
         return view('frontend.samairaskills.index');
    }
+   public function samairaskillsJapan(){
+        return view('frontend.samairaskillsjapan.index');
+   }
 }
