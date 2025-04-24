@@ -102,9 +102,9 @@
               <div class="col-lg-6 hero-image">
                 <div class="image-wrapper">
                   <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
-                  <div class="floating-card">
+                  {{-- <div class="floating-card">
                     <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
@@ -126,9 +126,9 @@
               <div class="col-lg-6 hero-image">
                 <div class="image-wrapper">
                   <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
-                  <div class="floating-card">
+                  {{-- <div class="floating-card">
                     <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
@@ -150,9 +150,9 @@
               <div class="col-lg-6 hero-image">
                 <div class="image-wrapper">
                   <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
-                  <div class="floating-card">
+                  {{-- <div class="floating-card">
                     <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
-                  </div>
+                  </div> --}}
                 </div>
               </div>
             </div>
@@ -170,7 +170,7 @@
   <section class="client-acquisition py-5">
       <div class="container">
         <div class="row">
-          <h2 class="display-4 mb-3 text-center">Solve Your Client <br><span>Acquisition Challenges</span></h2>
+          <h2 class="display-4 mb-3 text-center">Solve Your Client <br><span><strong>Acquisition Challenges</strong></span></h2>
         </div>
           <div class="row align-items-center mt-4">
               <!-- Image Section -->

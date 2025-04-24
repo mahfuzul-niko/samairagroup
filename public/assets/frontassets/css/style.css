@@ -172,7 +172,7 @@ body{
 }
 
 .navbar .navbar-brand img {
-  height: 70px;
+  height: 60px !important;
   transition: all 0.3s ease;
 }
 
@@ -317,7 +317,7 @@ body{
   }
 
   .navbar .navbar-brand img {
-    height: 60px;
+    height: 50px !important;
   }
 
   .navbar .navbar-collapse {
@@ -472,6 +472,9 @@ Client Acquisition CSS Start
   }
   .center-img{
     text-align: center !important;
+  }
+  .top-header{
+    display: none;;
   }
 }
 
@@ -970,6 +973,7 @@ Our Sister Concern CSS End
   .bg-left-circles,
   .bg-right-circles {
     width: 250px;
+    display: none;
   }
 
   .bg-dots {
