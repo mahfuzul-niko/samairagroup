@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samaira Skills</title>
-  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" type="image/png">
+  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-skills/fav-icon.svg" type="image/svg">
   
   <!-- Bootstrap CSS -->
   <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">

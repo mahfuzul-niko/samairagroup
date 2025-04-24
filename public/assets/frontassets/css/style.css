@@ -97,6 +97,9 @@ body{
   .top-header .contact-info > div {
     margin-bottom: 10px;
   }
+  .top-header{
+    display: none;
+  }
 }
 
 /* Mobile devices */
@@ -747,8 +750,7 @@ Our Sister Concern CSS End
   }
 
   .blog .card {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin:0 20px;
   }
 
   .blog .card-img-top {
@@ -1830,6 +1832,7 @@ Hero Slider CSS Start
 
   .how-works-btn {
     font-size: 1rem;
+    color: black;
   }
 
   .image-wrapper {
@@ -1986,7 +1989,7 @@ Hero Slider CSS End
     .offcanvas .nav-link.dropdown-toggle {
         display: inline-flex; /* Use flex to align text and icon */
         align-items: center;
-        justify-content: flex-start /* Push icon to the far right */
+        justify-content: flex-start; /* Push icon to the far right */
         width: 100%; /* Ensure it takes full width for justify-content */
     }
 
@@ -2009,4 +2012,31 @@ Hero Slider CSS End
         padding: 0.6rem 1rem;
         color: #495057;
     }
+}
+
+@media (max-width: 320px) {
+  .hero-title {
+    font-size: 19px;
+    line-height: 28px;
+  }
+  .hero-description {
+    font-size: 14px;
+  }  
+  .get-card-btn{
+    width: 68%;
+  }
+  .blog .card-title {
+    font-size: 13px;
+  }
+  .subscribe-title {
+    font-size: 14px;
+    padding: 23px 8px 0 8px;
+    line-height: 25px;
+  }
+  .footer-section ul li a{
+    font-size: 13px;
+  }
+  .footer-section h4{
+    font-size: 16px;
+  }
 }
