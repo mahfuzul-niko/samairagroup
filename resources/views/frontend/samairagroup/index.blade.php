@@ -30,10 +30,10 @@
       
       <!-- Social Icons -->
       <div class="d-flex align-items-center mb-2 mb-md-0">
-        <a href="{{system_key('header_twitter') ?? 'header_twitter'}}" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
-        <a href="{{system_key('header_facebook') ?? 'header_facebook'}}" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
-        <a href="{{system_key('header_pinterest') ?? 'header_pinterest'}}" class="social-icon me-2"><i class="fab fa-pinterest-p"></i></a>
-        <a href="{{system_key('header_instagram') ?? 'header_instagram'}}" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="{{system_key('systemtwitter') ?? 'systemtwitter'}}" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+        <a href="{{system_key('systemfacebook') ?? 'systemfacebook'}}" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="{{system_key('systempinterest') ?? 'systempinterest'}}" class="social-icon me-2"><i class="fab fa-pinterest-p"></i></a>
+        <a href="{{system_key('systeminstagram') ?? 'systeminstagram'}}" class="social-icon"><i class="fab fa-instagram"></i></a>
       </div>
 
       <!-- Contact Info -->
@@ -43,21 +43,21 @@
           <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="me-3 margin-right-0" style="width: 21px;">
           <div>
             <small class="d-block">Call anytime</small>
-            <strong>{{system_key('header_number') ?? 'header_number'}}</strong>
+            <strong>{{system_key('systemnumber') ?? 'systemnumber'}}</strong>
           </div>
         </div>
         <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0 border-start ps-3">
           <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="me-3" style="width: 21px;">
           <div>
             <small class="d-block">Send email</small>
-            <strong>{{system_key('header_email') ?? 'header_email'}}</strong>
+            <strong>{{system_key('systememail') ?? 'systememail'}}</strong>
           </div>
         </div>
         <div class="d-flex align-items-center border-start ps-3">
           <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="me-3" style="width: 18px;">
           <div>
-            <small class="d-block">{{system_key('header_address') ?? 'header_address'}}</small>
-            <strong>{{system_key('header_country') ?? 'header_country'}}</strong>
+            <small class="d-block">{{system_key('systemaddress') ?? 'systemaddress'}}</small>
+            <strong>{{system_key('systemcountry') ?? 'systemcountry'}}</strong>
           </div>
         </div>
       </div>
@@ -279,10 +279,10 @@
         </div>
         <div class="col-lg-4 col-md-12 text-center text-lg-start">
           <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="{{system_key('systemfacebook') ?? 'systemfacebook'}}" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{system_key('systemfacebook') ?? 'systemfacebook'}}" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="{{system_key('systemfacebook') ?? 'systemfacebook'}}" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="{{system_key('systemfacebook') ?? 'systemfacebook'}}" class="social-link"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
       </div>
