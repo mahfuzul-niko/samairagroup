@@ -98,6 +98,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="{{route('page.samairaskills')}}">Samaira Skill Development</a></li>
                 <li><a class="dropdown-item" href="{{route('page.samairaskills.japan')}}">Samaira Skill Development Japan</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairatravels')}}">Samaira Travels</a></li>
               </ul>
             </li>
             <li class="nav-item">
