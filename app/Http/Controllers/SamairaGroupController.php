@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroupAbout;
 use App\Models\GroupBanner;
+use App\Models\Partner;
 use App\Models\SamairaGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -13,8 +15,10 @@ class SamairaGroupController extends Controller
     {
         $banners = GroupBanner::latest()->get();
         $concerns = SamairaGroup::latest()->get();
-        // dd($concerns);
-        return view('backend.agent.sisters.group.index', compact('banners', 'concerns'));
+        $partners = Partner::latest()->get();
+        $about = GroupAbout::latest()->first();
+
+        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'about'));
     }
     public function storeBanner(Request $request)
     {
@@ -71,18 +75,18 @@ class SamairaGroupController extends Controller
             'concern_title' => 'nullable|string|max:255',
             'concern_link' => 'nullable|string|max:255',
         ]);
-    
+
         $data = $request->only(['concern_title', 'concern_link']);
-    
+
         if ($request->hasFile('concern_image')) {
             $data['concern_image'] = $request->file('concern_image')->store('concerns', 'public');
         }
-    
+
         SamairaGroup::create($data);
-    
+
         return back()->with('success', 'Concern added successfully');
     }
-    
+
     public function updateConcern(Request $request, $id)
     {
         $request->validate([
@@ -90,35 +94,176 @@ class SamairaGroupController extends Controller
             'concern_title' => 'nullable|string|max:255',
             'concern_link' => 'nullable|string|max:255',
         ]);
-    
+
         $concern = SamairaGroup::findOrFail($id);
-    
+
         $data = $request->only(['concern_title', 'concern_link']);
-    
+
         if ($request->hasFile('concern_image')) {
             if ($concern->concern_image && Storage::disk('public')->exists($concern->concern_image)) {
                 Storage::disk('public')->delete($concern->concern_image);
             }
-    
+
             $data['concern_image'] = $request->file('concern_image')->store('concerns', 'public');
         }
-    
+
         $concern->update($data);
-    
+
         return back()->with('success', 'Concern updated successfully');
     }
-    
+
     public function destroyConcern($id)
     {
         $concern = SamairaGroup::findOrFail($id);
-    
+
         if ($concern->concern_image && Storage::disk('public')->exists($concern->concern_image)) {
             Storage::disk('public')->delete($concern->concern_image);
         }
-    
+
         $concern->delete();
-    
+
         return back()->with('success', 'Concern deleted successfully');
     }
+
+
+    //partner
+    public function storePartner(Request $request)
+    {
+
+        $data = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'logo' => 'required|image|mimes:jpg,jpeg,png,gif',
+        ]);
+
+        if ($request->hasFile('logo')) {
+            $data['logo'] = $request->file('logo')->store('partners', 'public');
+        }
+
+        Partner::create($data);
+
+        return redirect()->back()->with('success', 'Partner created successfully.');
+    }
+
+    public function updatePartner(Request $request, Partner $partner)
+    {
+        $data = $request->validate([
+            'name' => 'nullable|string|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,gif',
+        ]);
+
+        if ($request->hasFile('logo')) {
+
+            if ($partner->logo && Storage::disk('public')->exists($partner->logo)) {
+                Storage::disk('public')->delete($partner->logo);
+            }
+            $data['logo'] = $request->file('logo')->store('partners', 'public');
+        }
+
+        $partner->update($data);
+
+        return redirect()->back()->with('success', 'Partner updated successfully.');
+    }
+
+    public function destroyPartner(Partner $partner)
+    {
+
+        if ($partner->logo && Storage::disk('public')->exists($partner->logo)) {
+            Storage::disk('public')->delete($partner->logo);
+        }
+
+        $partner->delete();
+
+        return redirect()->back()->with('success', 'Partner deleted successfully.');
+    }
+
+
+    // Group About
+    public function storeAbout(Request $request)
+    {
+        
+        $validated = $request->validate([
+            'title' => 'nullable|string',
+            'subtitle' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif',
+            'old_image' => 'nullable|string',
+            'about' => 'nullable',
+            'link' => 'nullable|url',
+        ]);
+
+        // Handle image upload if present
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('group_abouts', 'public');
+        } else {
+            $imagePath = $request->input('old_image') ?: null;
+        }
+        
+
+        $groupAbout = GroupAbout::create([
+            'title' => $validated['title'],
+            'subtitle' => $validated['subtitle'],
+            'image' => $imagePath,
+            'about' => $validated['about'],
+            'link' => $validated['link'],
+        ]);
+        if ($groupAbout->id >= 3){
+            $did = $groupAbout->id -2 ;
+
+            $groupAbout = GroupAbout::findOrFail($did);
+    
+            // Delete the image if it exists
+            if ($groupAbout->image) {
+                Storage::disk('public')->delete($groupAbout->image);
+            }
+    
+            $groupAbout->delete();
+        }
+
+            return redirect()->back()->with('success', 'Group About created successfully.');
+    }
+
+    public function updateAbout(Request $request, $id)
+    {
+        $groupAbout = GroupAbout::findOrFail($id);
+
+        $validated = $request->validate([
+            'title' => 'nullable|string',
+            'subtitle' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif',
+            'about' => 'nullable|string',
+            'link' => 'nullable|url',
+        ]);
+
+        // Delete the old image if a new one is uploaded
+        if ($request->hasFile('image')) {
+            if ($groupAbout->image) {
+                Storage::disk('public')->delete($groupAbout->image);
+            }
+            $imagePath = $request->file('image')->store('group_abouts', 'public');
+        } else {
+            $imagePath = $groupAbout->image; // Retain the old image if no new one is provided
+        }
+
+        $groupAbout->update([
+            'title' => $validated['title'],
+            'subtitle' => $validated['subtitle'],
+            'image' => $imagePath,
+            'about' => $validated['about'],
+            'link' => $validated['link'],
+        ]);
+
+        return redirect()->back()->with('success', 'Group About updated successfully.');
+    }
+
+    public function destroyAbout($id)
+    {
+        $groupAbout = GroupAbout::findOrFail($id);
+        // Delete the image if it exists
+        if ($groupAbout->image) {
+            Storage::disk('public')->delete($groupAbout->image);
+        }
+        $groupAbout->delete();
+        return redirect()->back()->with('success', 'Group About deleted successfully.');
+    }
+
 
 }

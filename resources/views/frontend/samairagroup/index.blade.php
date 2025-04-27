@@ -25,7 +25,46 @@
 <body>
 
   <!-- Top Header Section Start -->
-    <x-layouts.header/>
+  <section class="top-header py-2 bg-lightblue">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      
+      <!-- Social Icons -->
+      <div class="d-flex align-items-center mb-2 mb-md-0">
+        <a href="{{system_key('header_twitter') ?? 'header_twitter'}}" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+        <a href="{{system_key('header_facebook') ?? 'header_facebook'}}" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="{{system_key('header_pinterest') ?? 'header_pinterest'}}" class="social-icon me-2"><i class="fab fa-pinterest-p"></i></a>
+        <a href="{{system_key('header_instagram') ?? 'header_instagram'}}" class="social-icon"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="d-flex flex-wrap text-center text-md-start justify-content-center justify-content-md-end contact-info">
+
+        <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="me-3 margin-right-0" style="width: 21px;">
+          <div>
+            <small class="d-block">Call anytime</small>
+            <strong>{{system_key('header_number') ?? 'header_number'}}</strong>
+          </div>
+        </div>
+        <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0 border-start ps-3">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="me-3" style="width: 21px;">
+          <div>
+            <small class="d-block">Send email</small>
+            <strong>{{system_key('header_email') ?? 'header_email'}}</strong>
+          </div>
+        </div>
+        <div class="d-flex align-items-center border-start ps-3">
+          <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="me-3" style="width: 18px;">
+          <div>
+            <small class="d-block">{{system_key('header_address') ?? 'header_address'}}</small>
+            <strong>{{system_key('header_country') ?? 'header_country'}}</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  
   <!-- Top Header Section End -->
 
   <!-- Navbar Section START -->
@@ -33,7 +72,7 @@
     <div class="container">
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="#">
-        <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Logo" style="height: 70px;" class="me-2">
+        <img src="{{Storage::url(system_key('samaira_group_logo'))}}" alt="samaira_group_logo" style="height: 70px;" class="me-2">
       </a>
 
       <!-- Toggle (for mobile) -->
@@ -89,77 +128,36 @@
   <section class="hero-slider">
     <div class="swiper hero-swiper">
       <div class="swiper-wrapper">
+        @foreach ($banners as $banner)
+            
+        <div class="swiper-slide">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6 hero-content">
+                <h1 class="hero-title">{{$banner->title}}</h1>
+                <p class="hero-description">{{$banner->description}}</p>
+                <div class="hero-buttons">
+                  <a href="{{$banner->link}}" class="btn btn-primary get-card-btn">How it works</a>
+                  {{-- <a href="#" class="btn btn-link how-works-btn">How it works</a> --}}
+                </div>
+              </div>
+              <div class="col-lg-6 hero-image">
+                <div class="image-wrapper">
+                  <img src="{{$banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png')}}" alt="Hero Image" class="main-image">
+                  {{-- <div class="floating-card">
+                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
+                  </div> --}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
         <!-- Slide 1 -->
-        <div class="swiper-slide">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-lg-6 hero-content">
-                <h1 class="hero-title">The easiest way to manage personal finances</h1>
-                <p class="hero-description">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</p>
-                <div class="hero-buttons">
-                  <a href="#" class="btn btn-primary get-card-btn">Get Your Card</a>
-                  <a href="#" class="btn btn-link how-works-btn">How it works</a>
-                </div>
-              </div>
-              <div class="col-lg-6 hero-image">
-                <div class="image-wrapper">
-                  <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
-                  {{-- <div class="floating-card">
-                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
-                  </div> --}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-lg-6 hero-content">
-                <h1 class="hero-title">Smart banking for a smarter future</h1>
-                <p class="hero-description">Experience next-generation banking with our innovative digital solutions and personalized services tailored just for you.</p>
-                <div class="hero-buttons">
-                  <a href="#" class="btn btn-primary get-card-btn">Start Banking</a>
-                  <a href="#" class="btn btn-link how-works-btn">Learn More</a>
-                </div>
-              </div>
-              <div class="col-lg-6 hero-image">
-                <div class="image-wrapper">
-                  <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
-                  {{-- <div class="floating-card">
-                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
-                  </div> --}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
 
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="container">
-            <div class="row align-items-center">
-              <div class="col-lg-6 hero-content">
-                <h1 class="hero-title">Secure payments, anytime, anywhere</h1>
-                <p class="hero-description">Take control of your finances with our secure payment solutions and worldwide accessibility features.</p>
-                <div class="hero-buttons">
-                  <a href="#" class="btn btn-primary get-card-btn">Join Now</a>
-                  <a href="#" class="btn btn-link how-works-btn">Discover More</a>
-                </div>
-              </div>
-              <div class="col-lg-6 hero-image">
-                <div class="image-wrapper">
-                  <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/man.png" alt="Hero Image" class="main-image">
-                  {{-- <div class="floating-card">
-                    <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/Card.png" alt="Credit Card" class="credit-card">
-                  </div> --}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
@@ -172,29 +170,17 @@
   <section class="client-acquisition py-5">
       <div class="container">
         <div class="row">
-          <h2 class="display-4 mb-3 text-center">Solve Your Client <br><span><strong>Acquisition Challenges</strong></span></h2>
+          <h2 class="display-4 mb-3 text-center">{{$about->title}}<br><span><strong>{{$about->subtitle}}</strong></span></h2>
         </div>
           <div class="row align-items-center mt-4">
               <!-- Image Section -->
               <div class="col-lg-6 mb-4 mb-lg-0 center-img">
-                  <img src="{{ asset('assets/frontassets/') }}/images/client/client.png" alt="Client Image" class="img-fluid rounded-3">
+                  <img src="{{$about->image ? Storage::url($about->image) : asset('assets/img/no-profile.png')}}" alt="Client Image" class="img-fluid rounded-3">
               </div>
               <!-- Content Section -->
               <div class="col-lg-6">
-                  <p class="lead mb-4">You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business and needs to find clients.</p>
-                  <p class="mb-4">If you have trouble with any of the following:</p>
-                  <ul class="list-unstyled">
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Grabbing and holding your audience's attention</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Turning your audience into potential sales leads</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Crafting appealing offers and services</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Selecting a niche market and building a focused audience</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Building your email subscriber list</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Enhancing your sales skills and mindset</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Employing efficient sales funnels to reduce client acquisition costs</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Reusing content across various online platforms</li>
-                      <li><img src="{{ asset('assets/frontassets/') }}/images/client/icon.png" alt="Check" class="me-3"> Lacking scalable systems for content creation and lead generation</li>
-                  </ul>
-                  <a href="#" class="btn btn-primary btn-lg mt-3">Get Started Free &nbsp;<i class="fas fa-angle-right"></i></a>
+                {!! $about->about !!}
+                  <a href="{{$about->link}}" class="btn btn-primary btn-lg mt-3">Get Started Free &nbsp;<i class="fas fa-angle-right"></i></a>
               </div>
           </div>
       </div>
@@ -210,64 +196,23 @@
         <div class="logos-slider">
           <!-- First set of logos -->
           <div class="d-flex">
+            @foreach ($partners as $partner)
             <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
+              <img src="{{$partner->logo ? Storage::url($partner->logo) : asset('assets/img/no-profile.png')}}" alt="{{$partner->name}}" class="sister-logo">
             </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
-            </div>
+            @endforeach
+            
           </div>
           <!-- Duplicate set of logos for seamless loop -->
           <div class="d-flex">
+            @foreach ($partners as $partner)
             <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
+              <img src="{{$partner->logo ? Storage::url($partner->logo) : asset('assets/img/no-profile.png')}}" alt="{{$partner->name}}" class="sister-logo">
             </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
-            </div>
-            <div class="logo-item">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
-            </div>
+            @endforeach
+            
           </div>
+          
         </div>
       </div>
     </div>
@@ -278,134 +223,19 @@
   <div class="container py-5 blog text-center">
     <div class="row g-4">
       <!-- Card Start -->
+      @foreach ($concerns as $concern)
+          
       <div class="col-sm-6 col-md-4 col-lg-3">
         <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
+          <img src="{{$concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png')}}" class="card-img-top" alt="Blog Image">
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">MP Travels</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
+            <h5 class="card-title mb-3">{{$concern->concern_title}}</h5>
+            <a href="{{$concern->concern_link}}" class="read-more mt-auto">Visit &rarr;</a>
           </div>
         </div>
       </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">Read Unveils the Best Canadian
-              Cities for Biking</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">10 Walkable Cities Where You Can
-              Live Affordably</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">New Apartment Nice in the Best
-              Canadian Cities</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">MP Travels</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">Read Unveils the Best Canadian
-              Cities for Biking</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">10 Walkable Cities Where You Can
-              Live Affordably</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">New Apartment Nice in the Best
-              Canadian Cities</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">MP Travels</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">Read Unveils the Best Canadian
-              Cities for Biking</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">10 Walkable Cities Where You Can
-              Live Affordably</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-3">New Apartment Nice in the Best
-              Canadian Cities</h5>
-            <a href="#" class="read-more mt-auto">Visit &rarr;</a>
-          </div>
-        </div>
-      </div>
+      @endforeach
+      
     </div>
   </div>
   <!-- Blog Section End-->
@@ -461,7 +291,70 @@
   <!-- Logo and Description Column End-->
 
   <!-- Footer Section Start -->
-  <x-layouts.footer/>
+  <footer class="footer-section mt-5 pt-5">
+    <div class="container">
+      <div class="row">
+
+        <!-- Discover Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h4 class="mb-4">Discover</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Miami</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">New York</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Chicago</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Florida</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Los Angeles</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">San Diego</a></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h4 class="mb-4">Quick Links</h4>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">About</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Contact</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">FAQ's</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Pricing Plans</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Privacy Policy</a></li>
+            <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Us Column -->
+        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+          <h4 class="mb-4">Contact Us</h4>
+          <p class="text-muted mb-2">hi@justhome.com</p>
+          <p class="text-muted mb-4">(123) 456-7890</p>
+          <h4 class="mb-3">Our Address</h4>
+          <p class="text-muted">99 Fifth Avenue, 3rd Floor<br>San Francisco, CA 1980</p>
+        </div>
+
+        <!-- Get the app Column -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="mb-4">Get the app</h4>
+          <div class="app-buttons">
+            <a href="#" class="store-link mb-3">
+              <img src="{{ asset('assets/frontassets/') }}/images/footer/Link.png" alt="Download on Apple Store" class="img-fluid w-100">
+            </a>
+            <a href="#" class="store-link">
+              <img src="{{ asset('assets/frontassets/') }}/images/footer/Link1.png" alt="Get it on Google Play" class="img-fluid w-100">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bottom Footer Section Start -->
+  <div class="bottom-footer py-3">
+    <div class="container">
+      <div class="text-left">
+        <p class="mb-0">Copyright © 2025. Samaira Group</p>
+      </div>
+    </div>
+  </div>
 
   
   <!-- Bottom Footer Section End -->

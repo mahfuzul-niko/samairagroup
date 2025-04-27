@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/test', function () {
-    dd(system_key('hello') );
+    dd(system_key('header_twitter') ?? 'header_twitter');
 });
+
 
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {
     Route::get('/', 'samairagrop')->name('samairagrop');

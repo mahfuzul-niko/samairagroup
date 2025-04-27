@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function dashboard()
     {
-        dd('agent dashboard');
+        return view('backend.agent.dashboard');
     }
     public function profile()
     {

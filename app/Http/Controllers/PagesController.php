@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GroupAbout;
+use App\Models\GroupBanner;
+use App\Models\Partner;
+use App\Models\SamairaGroup;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
    public function samairagrop(){
-        return view('frontend.samairagroup.index');
+     $banners = GroupBanner::latest()->get();
+     $concerns = SamairaGroup::latest()->get();
+     $partners = Partner::latest()->get();
+     $about = GroupAbout::latest()->first();
+        return view('frontend.samairagroup.index', compact('banners', 'concerns', 'partners', 'about'));
    }
    public function samairaskills(){
         return view('frontend.samairaskills.index');
