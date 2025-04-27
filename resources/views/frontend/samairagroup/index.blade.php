@@ -280,9 +280,9 @@
         <div class="col-lg-4 col-md-12 text-center text-lg-start">
           <div class="social-links">
             <a href="{{system_key('system_facebook') ?? 'system_facebook'}}" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="{{system_key('system_facebook') ?? 'system_facebook'}}" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="{{system_key('system_facebook') ?? 'system_facebook'}}" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="{{system_key('system_facebook') ?? 'system_facebook'}}" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="{{system_key('system_twitter') ?? 'system_twitter'}}" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="{{system_key('system_instagram') ?? 'system_instagram'}}" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="{{system_key('system_linkedin') ?? 'system_linkedin'}}" class="social-link"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
       </div>
