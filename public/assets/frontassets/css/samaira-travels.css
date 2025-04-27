@@ -223,6 +223,20 @@
         background: var(--primary-color);
         color: white;
     }
+    .heroCarousel .offcanvas .dropdown-menu {
+      display: none;
+      position: static !important;
+      min-width: 100%;
+      margin-top: 0;
+      box-shadow: none;
+      border-radius: 10px;
+      background: #f8f9fa;
+      animation: none;
+  }
+  .heroCarousel .offcanvas .dropdown.show .dropdown-menu {
+      display: block;
+      transform: none !important;
+  }
     
 }
 @media (max-width: 767px) {

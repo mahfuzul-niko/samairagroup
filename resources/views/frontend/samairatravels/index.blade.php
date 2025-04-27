@@ -157,41 +157,54 @@
       </div>
     </nav>
 
-    <!-- Offcanvas Sidebar -->
-    <div class="offcanvas offcanvas-start" id="navbarOffcanvas">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Menu</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="mobile-nav">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Destinations
-                </a>
-                <ul class="dropdown-menu" data-bs-popper="static">
-                    <li><a class="dropdown-item" href="#">All Destinations</a></li>
-                    <li><a class="dropdown-item" href="#">Asia</a></li>
-                    <li><a class="dropdown-item" href="#">Europe</a></li>
-                    <li><a class="dropdown-item" href="#">America</a></li>
-                    <li><a class="dropdown-item" href="#">Africa</a></li>
-                    <li><a class="dropdown-item" href="#">Australia</a></li>
-                </ul>
-            </li>
-          <li><a href="#">Hotels</a></li>
-          <li><a href="#">Flights</a></li>
-          <li><a href="#">Bookings</a></li>
-          <li><a href="#" class="signup-link">Sign up</a></li>
-        </ul>
-        <div class="mobile-language">
-          <select class="form-select">
-            <option value="en">English</option>
-            <option value="bn">Bengali</option>
-            <option value="hi">Hindi</option>
-          </select>
+     <!-- Offcanvas Sidebar -->
+     <div class="offcanvas offcanvas-start" id="navbarOffcanvas">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="mobile-nav">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Destinations
+                  </a>
+                  <ul class="dropdown-menu" data-bs-popper="static">
+                      <li><a class="dropdown-item" href="#">All Destinations</a></li>
+                      <li><a class="dropdown-item" href="#">Asia</a></li>
+                      <li><a class="dropdown-item" href="#">Europe</a></li>
+                      <li><a class="dropdown-item" href="#">America</a></li>
+                      <li><a class="dropdown-item" href="#">Africa</a></li>
+                      <li><a class="dropdown-item" href="#">Australia</a></li>
+                  </ul>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Destinations
+                  </a>
+                  <ul class="dropdown-menu" data-bs-popper="static">
+                      <li><a class="dropdown-item" href="#">All Destinations</a></li>
+                      <li><a class="dropdown-item" href="#">Asia</a></li>
+                      <li><a class="dropdown-item" href="#">Europe</a></li>
+                      <li><a class="dropdown-item" href="#">America</a></li>
+                      <li><a class="dropdown-item" href="#">Africa</a></li>
+                      <li><a class="dropdown-item" href="#">Australia</a></li>
+                  </ul>
+              </li>
+            <li><a href="#">Hotels</a></li>
+            <li><a href="#">Flights</a></li>
+            <li><a href="#">Bookings</a></li>
+            <li><a href="#" class="signup-link">Sign up</a></li>
+          </ul>
+          <div class="mobile-language">
+            <select class="form-select">
+              <option value="en">English</option>
+              <option value="bn">Bengali</option>
+              <option value="hi">Hindi</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
 
 
     <!-- Slides -->
@@ -817,6 +830,30 @@
     });
   </script>
 
+<script>
+    // Bootstrap Dropdown initialization (if available)
+    if (window.bootstrap && window.bootstrap.Dropdown) {
+      var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
+      var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+        return new bootstrap.Dropdown(dropdownToggleEl);
+      });
+    }
+    // Manual fallback for offcanvas dropdowns
+    document.querySelectorAll('.offcanvas .dropdown-toggle').forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        // Only for offcanvas
+        if (window.innerWidth <= 992) {
+          e.preventDefault();
+          var parent = this.closest('.dropdown');
+          parent.classList.toggle('show');
+          var menu = parent.querySelector('.dropdown-menu');
+          if (menu) {
+            menu.classList.toggle('show');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
