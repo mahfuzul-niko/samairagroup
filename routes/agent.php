@@ -30,5 +30,13 @@ Route::middleware(['role:agent,admin'])
             Route::post('/SamairaGroup/concern/update/{concern}', 'updateConcern')->name('update.concern');
             Route::delete('/SamairaGroup/concern/delete/{concern}', 'destroyConcern')->name('delete.concern');
 
+            Route::post('/SamairaGroup/partner/store', 'storePartner')->name('store.partner');
+            Route::post('/SamairaGroup/partner/update/{partner}', 'updatePartner')->name('update.partner');
+            Route::delete('/SamairaGroup/partner/delete/{partner}', 'destroyPartner')->name('delete.partner');
+
+            Route::post('/SamairaGroup/about/store', 'storeAbout')->name('store.about');
+            Route::post('/SamairaGroup/about/update/{about}', 'updateAbout')->name('update.about');
+            Route::delete('/SamairaGroup/about/delete/{about}', 'destroyAbout')->name('delete.about');
+
         });
     });
