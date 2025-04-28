@@ -15,6 +15,7 @@
 
   <!-- Custom CSS -->
   <link href="{{ asset('assets/frontassets/') }}/css/samaira-skill.css" rel="stylesheet">
+  <link href="{{ asset('assets/frontassets/') }}/css/samaira-main.css" rel="stylesheet">
 
    <!-- Swiper CSS -->
    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
@@ -27,75 +28,8 @@
 <body>
 
     <!-- Top Header Section Start -->
-  <section class="top-header py-2 bg-lightblue">
-    <div class="container">
-      <div class="header-content d-flex align-items-center">
-        <!-- Logo -->
-        <div class="site-logo">
-          <a href="index.html">
-            <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Travels Logo" class="logo-img">
-          </a>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="contact-info">
-          <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="contact-icon">
-            <div class="contact-text">
-              <small>Call anytime</small>
-              <strong>+98 (000) - 9630</strong>
-            </div>
-          </div>
-          <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="contact-icon">
-            <div class="contact-text">
-              <small>Send email</small>
-              <strong>info@samairagroup.com</strong>
-            </div>
-          </div>
-          <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="contact-icon">
-            <div class="contact-text">
-              <small>380 St Kilda Road</small>
-              <strong>Melbourne, Australia</strong>
-            </div>
-          </div>
-          <div class="contact-item">
-            <!-- Social Icons -->
-            <div class="social-icons-center">
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Top Header Section End -->
-
-  <!-- Mobile Top Header Section Start -->
-  <section class="mobile-top-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="site-logo">
-            <a href="index.html">
-              <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Travels Logo" class="logo-img">
-            </a>
-          </div>
-          <div class="social-icons-center">
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Mobile Top Header Section End -->
+    <x-layouts.header />
+    <!-- Top Header Section End -->
 
     <!-- Hero Section Start -->
     <section class="hero-section">
