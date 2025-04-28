@@ -1,5 +1,37 @@
 <x-app>
     <x-slot name="title">System Edit Header</x-slot>
+    <section class="logo-section">
+        <div class="card">
+            <div class="card-body ">
+                <h5 class="card-title">Header Logo</h5>
+
+                <div class="text-center my-3">
+                    <div class=" d-inline-block" style="height: 150px; width: auto;">
+                        <img src="{{ system_key('system_logo') ? Storage::url(system_key('system_logo')) : asset('assets/img/no-profile.png') }}"
+                            alt="system_logo" class="img-fluid rounded " style="height: 100px; object-fit: cover;">
+
+                        <form action="{{ route('agent.system.destroy.image', 'system_logo') }}" method="POST"
+                            class="mt-2">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="key" placeholder="Enter key" class="form-control"
+                        value="system_logo" required>
+                    <div class="form-group my-3">
+                        <label for="value">Logo</label>
+                        <input type="file" name="value" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
     <section class="social">
         <div class="card">
             <div class="card-body">
