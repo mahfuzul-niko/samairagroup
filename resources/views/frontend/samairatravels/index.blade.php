@@ -27,52 +27,7 @@
 <body>
 
    <!-- Top Header Section Start -->
-   <section class="top-header py-2 bg-lightblue">
-    <div class="container">
-      <div class="header-content d-flex align-items-center">
-        <!-- Logo -->
-        <div class="site-logo">
-          <a href="index.html">
-            <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Travels Logo" class="logo-img">
-          </a>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="contact-info">
-          <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="contact-icon">
-            <div class="contact-text">
-              <small>Call anytime</small>
-              <strong>+98 (000) - 9630</strong>
-            </div>
-          </div>
-          <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/Email.png" alt="Email Icon" class="contact-icon">
-            <div class="contact-text">
-              <small>Send email</small>
-              <strong>info@samairagroup.com</strong>
-            </div>
-          </div>
-          <div class="contact-item">
-            <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="contact-icon">
-            <div class="contact-text">
-              <small>380 St Kilda Road</small>
-              <strong>Melbourne, Australia</strong>
-            </div>
-          </div>
-          <div class="contact-item">
-            <!-- Social Icons -->
-            <div class="social-icons-center">
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <x-layouts.header/>
   <!-- Mobile Top Header Section Start -->
   <section class="mobile-top-header">
     <div class="container">
@@ -683,81 +638,7 @@
   <!-- Subscribe Section End-->
 
   <!-- Footer Section Start -->
-  <footer class="footer-section travel-footer">
-    <div class="container">
-      <div class="row">
-        <!-- Logo and Description -->
-        <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-          <div class="footer-logo">
-            <img src="{{ asset('assets/frontassets/') }}/images/samaira-travels/logo.png" alt="Jadoo Logo">
-          </div>
-          <p class="footer-desc">Book your trip in minute, get full Control for much longer.</p>
-        </div>
-
-        <!-- Company Links -->
-        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-          <h4 class="footer-title">Company</h4>
-          <ul class="footer-links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Mobile</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact Links -->
-        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-          <h4 class="footer-title">Contact</h4>
-          <ul class="footer-links">
-            <li><a href="#">Help/FAQ</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Affiliates</a></li>
-          </ul>
-        </div>
-
-        <!-- More Links -->
-        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-          <h4 class="footer-title">More</h4>
-          <ul class="footer-links">
-            <li><a href="#">Airlinefees</a></li>
-            <li><a href="#">Airline</a></li>
-            <li><a href="#">Low fare tips</a></li>
-          </ul>
-        </div>
-
-        <!-- Social and App Links -->
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-social">
-            <div class="social-icons">
-              <a href="#" class="social-icon facebook">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="#" class="social-icon twitter">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </div>
-            <h5 class="app-title">Discover our app</h5>
-            <div class="app-buttons">
-              <a href="#" class="app-btn">
-                <img src="{{ asset('assets/frontassets/') }}/images/samaira-travels/footer/GooglePlay.png" alt="Google Play">
-              </a>
-              <a href="#" class="app-btn">
-                <img src="{{ asset('assets/frontassets/') }}/images/samaira-travels/footer/PlayStore.png" alt="App Store">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Copyright -->
-      <div class="footer-bottom">
-        <p class="copyright">All rights reserved@jadoo.co</p>
-      </div>
-      
-    </div>
-  </footer>
+  <x-layouts.footer/>
   <!-- Footer Section End -->
 
    <!-- jQuery -->
