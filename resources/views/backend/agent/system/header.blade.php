@@ -36,7 +36,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    Soccial Section
+                    Social Section
                 </div>
                 <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf

@@ -232,7 +232,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-6 text-center text-lg-start mb-4 mb-lg-0">
           <div class="footer-logo">
-            <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Group Logo" class="img-fluid">
+            <img src="{{Storage::url(system_key('samaira_group_logo'))}}" alt="samaira_group_logo" class="img-fluid">
           </div>
         </div>
         <div class="col-lg-2 col-md-6 text-center text-lg-start mb-3 mb-lg-0">
@@ -240,10 +240,10 @@
         </div>
         <div class="col-lg-4 col-md-12 text-center text-lg-start">
           <div class="social-links">
-            <a href="{{system_key('system_facebook') ?? 'system_facebook'}}" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="{{system_key('system_twitter') ?? 'system_twitter'}}" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="{{system_key('system_instagram') ?? 'system_instagram'}}" class="social-link"><i class="fab fa-instagram"></i></a>
-            <a href="{{system_key('system_linkedin') ?? 'system_linkedin'}}" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="{{system_key('samaira_group_facebook') ?? 'samaira_group_facebook'}}" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="{{system_key('samaira_group_twitter') ?? 'samaira_group_twitter'}}" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="{{system_key('samaira_group_instagram') ?? 'samaira_group_instagram'}}" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="{{system_key('samaira_group_linkedin') ?? 'samaira_group_linkedin'}}" class="social-link"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
       </div>

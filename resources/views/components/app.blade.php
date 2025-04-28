@@ -36,22 +36,22 @@
 
 <body>
 
-   
-    <x-backends.header/>
-    <x-backends.asidebar/>
-    
+
+    <x-backends.header />
+    <x-backends.asidebar />
+
 
     <main id="main" class="main">
 
-       <x-backends.pagetitle :title="$title"/>
-        {{$slot}}
-        
+        <x-backends.pagetitle :title="$title" />
+        {{ $slot }}
+
 
     </main><!-- End #main -->
 
-    
-    
-    
+
+
+
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
@@ -68,7 +68,10 @@
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
     @stack('scripts')
+
 </body>
+{{-- this backend was developed by <a href="https://www.thisismahfuz.com/" target="_blank">Mahfuzul islam</a> --}}
 
 </html>
