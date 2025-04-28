@@ -13,12 +13,17 @@ Route::middleware(['role:agent,admin'])
             Route::get('/profile', 'profile')->name('profile');
         });
         Route::group(['controller' => SystemController::class, 'as' => 'system.'], function () {
+
+            Route::get('/system/header', 'systemHeader')->name('header');
+            Route::get('/system/footer', 'systemFooter')->name('footer');
+
             Route::get('/system', 'system')->name('index');
             Route::post('/system/store', 'store')->name('store');
             Route::post('/system/store-image','storeImage')->name('storeImage');
             Route::post('/system/update/{id}', 'update')->name('update');
             Route::Delete('/system/delete/{id}', 'destroy')->name('destroy');
             Route::post('/system/image/delete/{key}', 'destroyImage')->name('destroy.image');
+
         });
         Route::group(['controller' => SamairaGroupController::class, 'as' => 'group.'], function () {
             Route::get('/SamairaGroup', 'index')->name('index');

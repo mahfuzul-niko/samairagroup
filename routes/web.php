@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/test', function () {
-    dd(system_key('header_twitter') ?? 'header_twitter');
+    dd(system_key('system_facebook') ?? 'system_facebook');
 });
 
 

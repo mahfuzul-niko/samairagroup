@@ -17,18 +17,17 @@ class SystemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'key' => 'required|string|unique:systems,key',
+            'key' => 'required|string',
             'value' => 'required|string',
         ]);
-
-        System::create([
-            'key' => $request->key,
-            'value' => $request->value,
-        ]);
-
-
+    
+        System::updateOrCreate(
+            ['key' => $request->key],
+            ['value' => $request->value] 
+        );
         return redirect()->back()->with('success', 'System information saved successfully.');
     }
+    
     public function storeImage(Request $request)
     {
 
@@ -48,21 +47,7 @@ class SystemController extends Controller
         return redirect()->back()->with('success', 'Image uploaded and saved successfully.');
     }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'key' => 'required|string',
-            'value' => 'required|string',
-        ]);
-
-        $system = System::findOrFail($id);
-        $system->update([
-            'key' => $request->key,
-            'value' => $request->value,
-        ]);
-
-        return redirect()->back()->with('success', 'System information updated successfully.');
-    }
+   
     public function destroy($id)
     {
         $system = System::findOrFail($id);
@@ -83,6 +68,18 @@ class SystemController extends Controller
         }
 
         return redirect()->back()->with('success', 'Image and key removed successfully.');
+    }
+
+    //header
+    public function systemHeader()
+    {
+        
+        return view('backend.agent.system.header');
+    }
+    public function systemFooter()
+    {
+        
+        return view('backend.agent.system.footer');
     }
 
 

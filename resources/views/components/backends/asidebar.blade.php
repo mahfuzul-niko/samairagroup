@@ -42,11 +42,11 @@
 
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.group.*') ? '' : 'collapsed' }}"
-                data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
+                data-bs-target="#group-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Sister Concern</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="category-nav" class="nav-content collapse {{ request()->routeIs('agent.group.*') ? 'show' : '' }}"
+            <ul id="group-nav" class="nav-content collapse {{ request()->routeIs('agent.group.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('agent.group.index') }}"
@@ -54,11 +54,10 @@
                         <i class="bi bi-circle"></i><span>Samaira Group</span>
                     </a>
                 </li>
-
             </ul>
-        </li><!-- End Category Nav -->
+        </li><!-- End Group Nav -->
 
-       
+
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.profile') ? '' : 'collapsed' }}"
                 href="{{ route('agent.profile') }}">
@@ -66,13 +65,30 @@
                 <span>Profile</span>
             </a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.system.index') ? '' : 'collapsed' }}"
-                href="{{ route('agent.system.index') }}">
-                <i class="bi bi-gear"></i>
-                <span>System</span>
+            <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
+                data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>System</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
-        </li>
+            <ul id="system-nav" class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.system.header') }}"
+                        class="{{ request()->routeIs('agent.system.header') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>System Header</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.system.footer') }}"
+                        class="{{ request()->routeIs('agent.system.footer') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>System Footer</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End System Nav -->
+        
 
 
 
