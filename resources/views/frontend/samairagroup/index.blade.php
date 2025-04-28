@@ -19,6 +19,7 @@
 
   <!-- Custom CSS -->
   <link href="{{ asset('assets/frontassets/') }}/css/style.css" rel="stylesheet">
+  <link href="{{ asset('assets/frontassets/') }}/css/samaira-main.css" rel="stylesheet">
   
 </head>
 

@@ -15,6 +15,7 @@
   
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/fonts/css/all.min.css">
+  <link href="{{ asset('assets/frontassets/') }}/css/samaira-main.css" rel="stylesheet">
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
@@ -28,27 +29,7 @@
 
    <!-- Top Header Section Start -->
   <x-layouts.header/>
-  <!-- Mobile Top Header Section Start -->
-  <section class="mobile-top-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="site-logo">
-            <a href="index.html">
-              <img src="{{ asset('assets/frontassets/') }}/images/logo.png" alt="Samaira Travels Logo" class="logo-img">
-            </a>
-          </div>
-          <div class="social-icons-center">
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Mobile Top Header Section End -->
+  <!-- Top Header Section End -->
 
   <!-- Hero Carousel Start-->
   <div id="heroCarousel" class="carousel slide heroCarousel" data-bs-ride="carousel" data-bs-interval="5000">
