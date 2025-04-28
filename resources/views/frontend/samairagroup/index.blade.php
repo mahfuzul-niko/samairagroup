@@ -43,7 +43,7 @@
           <img src="{{ asset('assets/frontassets/') }}/images/top-header/phone.png" alt="Phone Icon" class="me-3 margin-right-0" style="width: 21px;">
           <div>
             <small class="d-block">Call anytime</small>
-            <strong>{{system_key('system_number') ?? 'system_number'}}</strong>
+            <strong>{{system_key('system_phone') ?? 'system_phone'}}</strong>
           </div>
         </div>
         <div class="d-flex align-items-center me-md-4 mb-2 mb-md-0 border-start ps-3">
@@ -56,8 +56,8 @@
         <div class="d-flex align-items-center border-start ps-3">
           <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon" class="me-3" style="width: 18px;">
           <div>
-            <small class="d-block">{{system_key('system_address') ?? 'system_address'}}</small>
-            <strong>{{system_key('system_country') ?? 'system_country'}}</strong>
+            <small class="d-block">{{system_key('system_address_top') ?? 'system_address_top'}}</small>
+            <strong>{{system_key('system_address_bottom') ?? 'system_address_bottom'}}</strong>
           </div>
         </div>
       </div>
