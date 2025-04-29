@@ -17,6 +17,12 @@ Route::middleware(['role:agent,admin'])
             Route::get('/system/header', 'systemHeader')->name('header');
             Route::get('/system/footer', 'systemFooter')->name('footer');
 
+            Route::post('/system/store/footer/concern', 'storeFooterConcern')->name('store.footerConcern');
+            Route::Delete('/system/delete/footer/concern/{id}', 'destroyFooterConcern')->name('destroy.footerConcern');
+
+            Route::post('/system/store/footer/link', 'storeFooterLink')->name('store.footerlink');
+            Route::Delete('/system/delete/footer/link/{id}', 'destroyFooterLink')->name('destroy.footerlink');
+
             Route::get('/system', 'system')->name('index');
             Route::post('/system/store', 'store')->name('store');
             Route::post('/system/store-image','storeImage')->name('storeImage');

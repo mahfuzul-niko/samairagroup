@@ -451,10 +451,65 @@
                             @endforeach
                         </tbody>
 
-
+                    </table>
                 </div>
             </div>
     </section>
+
+
+    <section class="social">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Social Section
+                </div>
+                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <select class="form-select" aria-label="Default select example" name="key" required>
+                                <option selected>Select social option</option>
+                                <option value="samaira_group_facebook">Facebook</option>
+                                <option value="samaira_group_instagram">Instagram</option>
+                                <option value="samaira_group_twitter">Twitter</option>
+                                <option value="samaira_group_linkedin">Linkedin</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="url" class="form-control" id="inputEmail4" placeholder="Enter social url"
+                                name="value" required value="https://">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3">Submit</button>
+                </form>
+                <div class="card-title">
+                    Soccial List
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="bg-light">Facebook:</th>
+                            <td>{{ system_key('samaira_group_facebook') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Instagram:</th>
+                            <td>{{ system_key('samaira_group_instagram') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Twitter:</th>
+                            <td>{{ system_key('samaira_group_twitter') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">linkedin:</th>
+                            <td>{{ system_key('samaira_group_linkedin') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+   
+
     @push('scripts')
         <script>
             $(document).ready(function() {
