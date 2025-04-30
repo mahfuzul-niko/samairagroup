@@ -34,4 +34,8 @@ class PagesController extends Controller
      {
           return view('frontend.samairatravels.index');
      }
+     public function samairamptravels()
+     {
+          return view('frontend.samairamptravels.index');
+     }
 }
