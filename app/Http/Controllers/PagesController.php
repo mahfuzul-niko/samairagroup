@@ -6,24 +6,32 @@ use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\Partner;
 use App\Models\SamairaGroup;
+use App\Models\SkillAdvertise;
+use App\Models\SkillCertified;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-   public function samairagrop(){
-     $banners = GroupBanner::latest()->get();
-     $concerns = SamairaGroup::latest()->get();
-     $partners = Partner::latest()->get();
-     $about = GroupAbout::latest()->first();
-        return view('frontend.samairagroup.index', compact('banners', 'concerns', 'partners', 'about'));
-   }
-   public function samairaskills(){
-        return view('frontend.samairaskills.index');
-   }
-   public function samairaskillsJapan(){
-        return view('frontend.samairaskillsjapan.index');
-   }
-   public function samairatravels(){
-        return view('frontend.samairatravels.index');
-   }
+     public function samairagroup()
+     {
+          $banners = GroupBanner::latest()->get();
+          $concerns = SamairaGroup::latest()->get();
+          $partners = Partner::latest()->get();
+          $about = GroupAbout::latest()->first();
+          return view('frontend.samairagroup.index', compact('banners', 'concerns', 'partners', 'about'));
+     }
+     public function samairaskills()
+     {
+          $certifieds = SkillCertified::latest()->get();
+          $advertise = SkillAdvertise::latest()->first();
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise'));
+     }
+     public function samairaskillsJapan()
+     {
+          return view('frontend.samairaskillsjapan.index');
+     }
+     public function samairatravels()
+     {
+          return view('frontend.samairatravels.index');
+     }
 }

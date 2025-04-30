@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
     dd(system_key('system_facebook') ?? 'system_facebook');
 });
-
+Route::get('/admin', function () {
+    return redirect(route('login'));
+})->name('login');
 
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {
-    Route::get('/', 'samairagrop')->name('samairagrop');
+    Route::get('/', 'samairagroup')->name('samairagroup');
     Route::get('/samairaskills', 'samairaskills')->name('samairaskills');
     Route::get('/samairaskills/japan', 'samairaskillsJapan')->name('samairaskills.japan');
     Route::get('/samairatravels', 'samairatravels')->name('samairatravels');

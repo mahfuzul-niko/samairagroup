@@ -1,0 +1,347 @@
+<x-app>
+    @push('styles')
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
+    @endpush
+    <x-slot name="title">Wecome To Samaira Skills Development</x-slot>
+    <section class="logo-section">
+        <div class="card">
+            <div class="card-body ">
+                <div class="card-title">Logo</div>
+
+                <div class="text-center my-3">
+                    <div class=" d-inline-block" style="height: 100px; width: auto;">
+                        <img src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}"
+                            alt="Group Logo" class="img-fluid rounded " style="height: 100px; object-fit: cover;">
+
+                        <form action="{{ route('agent.system.destroy.image', 'samaira_skills_logo') }}" method="POST"
+                            class="mt-2">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                        </form>
+                    </div>
+                </div>
+                <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="key" placeholder="Enter key" class="form-control"
+                        value="samaira_skills_logo" required>
+                    <div class="form-group my-3">
+                        <label for="value">Logo</label>
+                        <input type="file" name="value" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+    <section class="banner">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Banner Image
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="text-center my-3">
+                            <div class=" d-inline-block" style="height: 100px; width: auto;">
+                                <img src="{{ system_key('samaira_skills_banner') ? Storage::url(system_key('samaira_skills_banner')) : asset('assets/img/no-profile.png') }}"
+                                    alt="Group Logo" class="img-fluid rounded "
+                                    style="height: 100px; object-fit: cover;">
+
+                                <form action="{{ route('agent.system.destroy.image', 'samaira_skills_banner') }}"
+                                    method="POST" class="mt-2">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="key" placeholder="Enter key" class="form-control"
+                                value="samaira_skills_banner" required>
+                            <div class="form-group my-3">
+                                <label for="value">Logo</label>
+                                <input type="file" name="value" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="banner-secton">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Banner Section
+                </div>
+                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <select class="form-select" aria-label="Default select example" name="key" required>
+                                <option selected>Select social option</option>
+                                <option value="system_sill_banner_title">Banner Title</option>
+                                <option value="system_sill_banner_sub_title">Banner Subtitle</option>
+                                <option value="system_sill_banner_count">Banner Count</option>
+                                <option value="system_sill_banner_btn_link">Banner Button Link</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="inputEmail4" name="value" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3 btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Banner List
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="bg-light">Banner Title:</th>
+                            <td>{{ system_key('system_sill_banner_title') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Banner Subtitle:</th>
+                            <td>{{ system_key('system_sill_banner_sub_title') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Banner Count:</th>
+                            <td>{{ system_key('system_sill_banner_count') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Banner Button Link:</th>
+                            <td>{{ system_key('system_sill_banner_btn_link') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="how-it-works">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    How it works
+                </div>
+                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <select class="form-select" aria-label="Default select example" name="key" required>
+                                <option selected>Select social option</option>
+                                <option value="system_sill_register">Register</option>
+                                <option value="system_sill_new_course">New Course</option>
+                                <option value="system_sill_success">Success</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="inputEmail4" name="value" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3 btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    how it works List
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="bg-light">Register:</th>
+                            <td>{{ system_key('system_sill_register') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">New Course:</th>
+                            <td>{{ system_key('system_sill_new_course') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Success:</th>
+                            <td>{{ system_key('system_sill_success') }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="logos">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Certificate Logo
+                </div>
+                <form action="{{ route('agent.group.store.certified') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group mt-2">
+                        <label for="">Certificate Title</label>
+                        <input type="text" class="form-control" id="" name="name">
+                    </div>
+
+                    <div class="form-gorup my-3">
+                        <label for="logo">Logo</label>
+                        <input type="file" class="form-control" id="logo" placeholder="logo"
+                            name="logo">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Certificate Logo List
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Logo</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($certifieds as $certified)
+                                <tr>
+                                    <td>
+                                        <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
+                                            alt="" style="height: 100px; width: 100px;">
+                                    </td>
+                                    <td>{{ $certified->name }}</td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#certified{{ $certified->id }}">Edit</a>
+
+                                            <form action="{{ route('agent.group.delete.certified', $certified->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-outline-danger btn-sm">Delete</button>
+                                            </form>
+                                        </div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="certified{{ $certified->id }}" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="btn-close"
+                                                            data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form
+                                                            action="{{ route('agent.group.update.certified', $certified) }}"
+                                                            method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            <div class="form-group mt-2">
+                                                                <label for="">Logo Title</label>
+                                                                <input type="text" class="form-control"
+                                                                    name="name" value="{{ $certified->name }}">
+                                                            </div>
+                                                            <div class="form-group my-3">
+                                                                <label for="logo">Logo</label>
+                                                                <input type="file" class="form-control"
+                                                                    id="logo" name="logo">
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary btn-sm">Save
+                                                                changes</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+    </section>
+    <section class="advertise-section">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Advertise Section
+                </div>
+                <form action="{{ route('agent.group.store.advertise') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $advertise->id ?? '' }}">
+
+                    <div class="form-group">
+                        <label for="">Advertisement Image</label>
+                        <input type="file" class="form-control" id="" name="image"
+                            value="{{ $advertise->image }}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="">Advertisement Box</label>
+                        <textarea  name="description" class="form-control">{{ $advertise->description }}</textarea>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="">Advertisement Button Link</label>
+                        <input type="url" class="form-control" id="" name="link"
+                            value="{{ $advertise->link }}">
+                    </div>
+                    <div class="form-group my-3">
+                        <label for="">Advertisement Price</label>
+                        <input type="text" class="form-control" id="" name="price"
+                            value="{{ $advertise->price }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+
+                <div class="card-title">
+                    Advertise Section List
+                </div>
+
+                <table class="table table-bordered rounded table-striped table-sm">
+                    <tr>
+                        <th>About Image</th>
+                        <td>
+                            <img src="{{ $advertise->image ? Storage::url($advertise->image) : asset('assets/img/no-profile.png') }}"
+                                alt="About Image" class="img-fluid" style="height: 200px; width: auto;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ $advertise->description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td>{{ $advertise->price }}</td>
+                    </tr>
+                    <tr>
+                        <th class="w-25">Link</th>
+                        <td>{{ $advertise->link }}</td>
+                    </tr>
+                    
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+
+    @push('scripts')
+        <script>
+            $(document).ready(function() {
+                $('#summernote').summernote({
+                    height: 300 // Set editor height
+                });
+            });
+        </script>
+    @endpush
+</x-app>

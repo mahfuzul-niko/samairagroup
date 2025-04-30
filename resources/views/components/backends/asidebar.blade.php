@@ -54,6 +54,12 @@
                         <i class="bi bi-circle"></i><span>Samaira Group</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.samairaskill') }}"
+                        class="{{ request()->routeIs('agent.group.samairaskill') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Samaira Skils</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 

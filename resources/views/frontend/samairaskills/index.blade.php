@@ -37,7 +37,7 @@
         <nav class="navbar custom-navbar navbar-expand-lg navbar-light">
             <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" alt="logo">
+                <img src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" alt="logo">
             </a>
             
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -128,16 +128,16 @@
                         <h1 class="hero-title">
                             Build Your <span class="highlight">Skills</span> <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/cap.png" alt="Graduation Cap" class="cap-icon">
                         </h1>
-                        <h2 class="hero-subtitle">With Experts Any Time, Anywhere</h2>
-                        <p class="hero-text">Free online courses from the world's Leading experts.</p>
-                        <p class="join-text">Join <span class="highlight">10+ Million</span> Learners today</p>
-                        <a href="#" class="join-btn">Join Us Today</a>
+                        <h2 class="hero-subtitle">{{system_key('system_sill_banner_title')}}</h2>
+                        <p class="hero-text">{{system_key('system_sill_banner_sub_title')}}</p>
+                        <p class="join-text">Join <span class="highlight">{{system_key('system_sill_banner_count')}}+ Million</span> Learners today</p>
+                        <a href="{{system_key('system_sill_banner_btn_link')}}" class="join-btn">Join Us Today</a>
                         
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/student.png" alt="Student" class="student-img">
+                        <img src="{{ system_key('samaira_skills_banner') ? Storage::url(system_key('samaira_skills_banner')) : asset('assets/img/no-profile.png') }}" alt="Student" class="student-img">
                         <!-- <div class="pattern-bg"></div>
                         <div class="dots-pattern"></div> -->
 
@@ -595,7 +595,7 @@
                             <i class="fas fa-bars"></i>
                         </div>
                         <h3>Register</h3>
-                        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                        <p>{{ system_key('system_sill_register') }}</p>
                     </div>
                 </div>
 
@@ -606,7 +606,7 @@
                             <i class="fas fa-plus"></i>
                         </div>
                         <h3>Add New Course</h3>
-                        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                        <p>{{ system_key('system_sill_new_course') }}</p>
                     </div>
                 </div>
 
@@ -617,7 +617,7 @@
                             <i class="fas fa-check"></i>
                         </div>
                         <h3>Success</h3>
-                        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                        <p>{{ system_key('system_sill_success') }}</p>
                     </div>
                 </div>
             </div>
@@ -747,7 +747,6 @@
         </div>
     </section>
     <!-- Testimonials Section End -->
-
     <!-- We are certified By start  -->
     <section class="sister-concern py-5">
       <div class="container text-center">
@@ -756,63 +755,23 @@
           <div class="logos-slider">
             <!-- First set of logos -->
             <div class="d-flex">
+              @foreach ($certifieds as $certified)
+                  
               <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
+                <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}" alt="Logo 1" class="{{$certified->name }}">
               </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
-              </div>
+              @endforeach
+              
             </div>
             <!-- Duplicate set of logos for seamless loop -->
             <div class="d-flex">
+              @foreach ($certifieds as $certified)
+                  
               <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
+                <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}" alt="Logo 1" class="{{$certified->name }}">
               </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
-              </div>
+              @endforeach
+             
             </div>
           </div>
         </div>
@@ -826,15 +785,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="enrollment-image">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/enroll_student.png" alt="Student Image">
+                        <img src="{{ $advertise->image ? Storage::url($advertise->image) : asset('assets/img/no-profile.png') }}" alt="Student Image">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="enrollment-content">
-                        <h2>Register & Enroll Now, and Get 69% Discount</h2>
+                        <h2>{{ $advertise->description }}</h2>
                         <div class="cta-group">
-                            <a href="#" class="btn btn-primary enrollment-btn">Start Free Trial</a>
-                            <span class="price-info">$19.00/month</span>
+                            <a href="{{ $advertise->link }}" class="btn btn-primary enrollment-btn">Start Free Trial</a>
+                            <span class="price-info">{{ $advertise->price }}</span>
                         </div>
                     </div>
                 </div>

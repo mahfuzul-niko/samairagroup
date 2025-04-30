@@ -6,7 +6,7 @@
     @endpush
     <x-slot name="title">Wecome To Samaira Group</x-slot>
 
-    <section class="banner-section">
+    <section class="logo-section">
         <div class="card">
 
             <div class="card-body ">

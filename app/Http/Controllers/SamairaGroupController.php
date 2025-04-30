@@ -17,6 +17,7 @@ class SamairaGroupController extends Controller
         $concerns = SamairaGroup::latest()->get();
         $partners = Partner::latest()->get();
         $about = GroupAbout::latest()->first();
+        // dd($about);
 
         return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'about'));
     }

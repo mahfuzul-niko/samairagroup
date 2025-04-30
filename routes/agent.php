@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\SamairaGroupController;
+use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,4 +51,14 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/SamairaGroup/about/delete/{about}', 'destroyAbout')->name('delete.about');
 
         });
+        Route::group(['controller' => SamariaSkill::class,'as'=>'group.'], function () {
+            Route::get('/samairaskills', 'samairaSkill')->name('samairaskill');
+            Route::post('/SamairaGroup/certified/store', 'storeCertified')->name('store.certified');
+            Route::post('/SamairaGroup/certified/update/{certified}', 'updateCertified')->name('update.certified');
+            Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
+
+            Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
+        });
+        
+
     });

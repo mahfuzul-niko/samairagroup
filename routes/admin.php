@@ -7,6 +7,7 @@ Route::middleware(['role:admin'])
     ->prefix('admin')
     ->group(function () {
         Route::group(['controller' => PagesController::class], function () {
+            
             Route::get('/dashboard', 'dashboard')->name('dashboard');
         });
     });
