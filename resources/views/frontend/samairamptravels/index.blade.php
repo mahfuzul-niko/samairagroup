@@ -194,11 +194,11 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-auto d-flex align-items-center justify-content-center">
+                <div class="col-auto d-flex align-items-center justify-content-center">
                   <div class="swap-icon-box d-flex align-items-center justify-content-center">
-                    <i class="fas fa-exchange-alt swap-icon"></i>
+                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/repeat.png" alt="Swap Icon" />
                   </div>
-                </div> -->
+                </div>
                 <div class="col-md-2">
                   <div class="journey-input-box clickable" tabindex="0">
                     <div class="journey-label-sm text-orange mb-1">Flying to</div>
@@ -240,18 +240,20 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="journey-input-box clickable" tabindex="0">
-                    <div class="journey-label-sm text-orange mb-1">Travelers Class</div>
+                    <div class="journey-label-sm text-orange">Travelers Class</div>
                     <div class="journey-input-content d-flex align-items-center justify-content-between">
                       <span class="journey-icon-center"><i class="fas fa-user-friends"></i></span>
-                      <select class="journey-value-input journey-select" name="travelers">
+                      <input type="text" class="journey-value-input" placeholder="1 Travelers" name="travelers" autocomplete="off">
+                      <!-- <select class="journey-value-input journey-select" name="travelers">
                         <option>1 Travelers, Economy</option>
                         <option>2 Travelers, Economy</option>
                         <option>1 Traveler, Business</option>
                         <option>2 Travelers, Business</option>
-                      </select>
+                      </select> -->
                     </div>
+                    <div class="journey-label-sm">Economy</div>
                   </div>
                 </div>
                 <div class="col-md-1 d-flex align-items-center mt-0">
@@ -260,91 +262,182 @@
               </form>
             </div>
             <div class="tab-pane fade show" id="roundway" role="tabpanel">
-                <form class="row g-3 align-items-end journey-form">
-                    <div class="col-md-2">
-                      <div class="journey-input-box clickable" tabindex="0">
-                        <div class="journey-label-sm text-orange mb-1">Flying from</div>
-                        <div class="journey-input-content d-flex align-items-center justify-content-between">
-                          <span class="journey-icon-center"><img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/plane.png" alt="Plane Departure"></span>
-                          <div class="custom-dropdown w-100 position-relative">
-                            <input type="text" class="journey-value-input custom-dropdown-input" placeholder="Dhaka" name="from" autocomplete="off">
-                            <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1" style="z-index: 10; max-height: 220px; overflow-y: auto;">
-                              <div class="custom-dropdown-option">Dhaka</div>
-                              <div class="custom-dropdown-option">Chittagong</div>
-                              <div class="custom-dropdown-option">Sylhet</div>
-                              <div class="custom-dropdown-option">Barisal</div>
-                              <div class="custom-dropdown-option">Rajshahi</div>
-                              <div class="custom-dropdown-option">Singapore</div>
-                              <div class="custom-dropdown-option">Kolkata</div>
-                            </div>
-                          </div>
+              <form class="row g-3 align-items-end journey-form">
+                <div class="col-md-2">
+                  <div class="journey-input-box clickable" tabindex="0">
+                    <div class="journey-label-sm text-orange mb-1">Flying from</div>
+                    <div class="journey-input-content d-flex align-items-center justify-content-between">
+                      <span class="journey-icon-center"><img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/plane.png" alt="Plane Departure"></span>
+                      <div class="custom-dropdown w-100 position-relative">
+                        <input type="text" class="journey-value-input custom-dropdown-input" placeholder="Dhaka" name="from" autocomplete="off">
+                        <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1" style="z-index: 10; max-height: 220px; overflow-y: auto;">
+                          <div class="custom-dropdown-option">Dhaka</div>
+                          <div class="custom-dropdown-option">Chittagong</div>
+                          <div class="custom-dropdown-option">Sylhet</div>
+                          <div class="custom-dropdown-option">Barisal</div>
+                          <div class="custom-dropdown-option">Rajshahi</div>
+                          <div class="custom-dropdown-option">Singapore</div>
+                          <div class="custom-dropdown-option">Kolkata</div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-auto d-flex align-items-end justify-content-center">
-                      <div class="swap-icon-box d-flex align-items-center justify-content-center">
-                        <i class="fas fa-exchange-alt swap-icon"></i>
-                      </div>
-                    </div>
-                    <div class="col-md-2">
-                      <div class="journey-input-box clickable" tabindex="0">
-                        <div class="journey-label-sm text-orange mb-1">Flying to</div>
-                        <div class="journey-input-content d-flex align-items-center justify-content-between">
-                          <span class="journey-icon-center"><img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/location.png" alt="Location"></span>
-                          <div class="custom-dropdown w-100 position-relative">
-                            <input type="text" class="journey-value-input custom-dropdown-input" placeholder="Singapore" name="to" autocomplete="off">
-                            <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1" style="z-index: 10; max-height: 220px; overflow-y: auto;">
-                              <div class="custom-dropdown-option">Dhaka</div>
-                              <div class="custom-dropdown-option">Chittagong</div>
-                              <div class="custom-dropdown-option">Sylhet</div>
-                              <div class="custom-dropdown-option">Barisal</div>
-                              <div class="custom-dropdown-option">Rajshahi</div>
-                              <div class="custom-dropdown-option">Singapore</div>
-                              <div class="custom-dropdown-option">Kolkata</div>
-                            </div>
-                          </div>
+                  </div>
+                </div>
+                <div class="col-auto d-flex align-items-center justify-content-center">
+                  <div class="swap-icon-box d-flex align-items-center justify-content-center">
+                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/repeat.png" alt="Swap Icon" />
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="journey-input-box clickable" tabindex="0">
+                    <div class="journey-label-sm text-orange mb-1">Flying to</div>
+                    <div class="journey-input-content d-flex align-items-center justify-content-between">
+                      <span class="journey-icon-center"><img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/location.png" alt="Location"></span>
+                      <div class="custom-dropdown w-100 position-relative">
+                        <input type="text" class="journey-value-input custom-dropdown-input" placeholder="Singapore" name="to" autocomplete="off">
+                        <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1" style="z-index: 10; max-height: 220px; overflow-y: auto;">
+                          <div class="custom-dropdown-option">Dhaka</div>
+                          <div class="custom-dropdown-option">Chittagong</div>
+                          <div class="custom-dropdown-option">Sylhet</div>
+                          <div class="custom-dropdown-option">Barisal</div>
+                          <div class="custom-dropdown-option">Rajshahi</div>
+                          <div class="custom-dropdown-option">Singapore</div>
+                          <div class="custom-dropdown-option">Kolkata</div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-4">
-                      <div class="journey-input-box date-input-box clickable d-flex align-items-center gap-3 w-100"  tabindex="0">
-                        <div class="date-mini-box flex-grow-1">
-                          <div class="journey-label-sm text-orange mb-1">Journey Date</div>
-                          <div class="d-flex align-items-center">
-                            <span class="journey-icon-center me-2"><i class="fas fa-calendar-alt"></i></span>
-                            <input type="text" class="journey-value-input date-picker" placeholder="24 April, 2025" name="date" autocomplete="off">
-                            <a href="#" class="journey-add-return ms-2">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/hyperlink.png" alt="Return"> Add Return Trip
-                            </a>
-                        </div>
-                        </div>
-                        <div class="date-mini-box date-return-box flex-grow-1 d-none">
-                          <div class="journey-label-sm text-orange mb-1">Return Date</div>
-                          <div class="d-flex align-items-center">
-                            <span class="journey-icon-center me-2"><i class="fas fa-calendar-alt"></i></span>
-                            <input type="text" class="journey-value-input date-picker" placeholder="Return Date" name="return_date" autocomplete="off">
-                          </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="journey-input-box date-input-box clickable d-flex align-items-center gap-3 w-100"  tabindex="0">
+                    <div class="date-mini-box flex-grow-1">
+                      <div class="journey-label-sm text-orange mb-1">Journey Date</div>
+                      <div class="d-flex align-items-center">
+                        <span class="journey-icon-center me-2"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="text" class="journey-value-input date-picker" placeholder="24 April, 2025" name="date" autocomplete="off">
+                        <a href="#" class="journey-add-return ms-2">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/hyperlink.png" alt="Return"> Add Return Trip
+                        </a>
+                    </div>
+                    </div>
+                    <div class="date-mini-box date-return-box flex-grow-1 d-none">
+                      <div class="journey-label-sm text-orange mb-1">Return Date</div>
+                      <div class="d-flex align-items-center">
+                        <span class="journey-icon-center me-2"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="text" class="journey-value-input date-picker" placeholder="Return Date" name="return_date" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="journey-input-box clickable" tabindex="0">
+                    <div class="journey-label-sm text-orange">Travelers Class</div>
+                    <div class="journey-input-content d-flex align-items-center justify-content-between">
+                      <span class="journey-icon-center"><i class="fas fa-user-friends"></i></span>
+                      <input type="text" class="journey-value-input" placeholder="1 Travelers" name="travelers" autocomplete="off">
+                      <!-- <select class="journey-value-input journey-select" name="travelers">
+                        <option>1 Travelers, Economy</option>
+                        <option>2 Travelers, Economy</option>
+                        <option>1 Traveler, Business</option>
+                        <option>2 Travelers, Business</option>
+                      </select> -->
+                    </div>
+                    <div class="journey-label-sm">Economy</div>
+                  </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center mt-0">
+                  <button type="submit" class="btn journey-search-btn w-100"><i class="fas fa-search"></i> Search</button>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane fade show" id="multicity" role="tabpanel">
+              <form class="row g-3 align-items-end journey-form">
+                <div class="col-md-2">
+                  <div class="journey-input-box clickable" tabindex="0">
+                    <div class="journey-label-sm text-orange mb-1">Flying from</div>
+                    <div class="journey-input-content d-flex align-items-center justify-content-between">
+                      <span class="journey-icon-center"><img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/plane.png" alt="Plane Departure"></span>
+                      <div class="custom-dropdown w-100 position-relative">
+                        <input type="text" class="journey-value-input custom-dropdown-input" placeholder="Dhaka" name="from" autocomplete="off">
+                        <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1" style="z-index: 10; max-height: 220px; overflow-y: auto;">
+                          <div class="custom-dropdown-option">Dhaka</div>
+                          <div class="custom-dropdown-option">Chittagong</div>
+                          <div class="custom-dropdown-option">Sylhet</div>
+                          <div class="custom-dropdown-option">Barisal</div>
+                          <div class="custom-dropdown-option">Rajshahi</div>
+                          <div class="custom-dropdown-option">Singapore</div>
+                          <div class="custom-dropdown-option">Kolkata</div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
-                      <div class="journey-input-box clickable" tabindex="0">
-                        <div class="journey-label-sm text-orange mb-1">Travelers Class</div>
-                        <div class="journey-input-content d-flex align-items-center justify-content-between">
-                          <span class="journey-icon-center"><i class="fas fa-user-friends"></i></span>
-                          <select class="journey-value-input journey-select" name="travelers">
-                            <option>1 Travelers, Economy</option>
-                            <option>2 Travelers, Economy</option>
-                            <option>1 Traveler, Business</option>
-                            <option>2 Travelers, Business</option>
-                          </select>
+                  </div>
+                </div>
+                <div class="col-auto d-flex align-items-center justify-content-center">
+                  <div class="swap-icon-box d-flex align-items-center justify-content-center">
+                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/repeat.png" alt="Swap Icon" />
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="journey-input-box clickable" tabindex="0">
+                    <div class="journey-label-sm text-orange mb-1">Flying to</div>
+                    <div class="journey-input-content d-flex align-items-center justify-content-between">
+                      <span class="journey-icon-center"><img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/location.png" alt="Location"></span>
+                      <div class="custom-dropdown w-100 position-relative">
+                        <input type="text" class="journey-value-input custom-dropdown-input" placeholder="Singapore" name="to" autocomplete="off">
+                        <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1" style="z-index: 10; max-height: 220px; overflow-y: auto;">
+                          <div class="custom-dropdown-option">Dhaka</div>
+                          <div class="custom-dropdown-option">Chittagong</div>
+                          <div class="custom-dropdown-option">Sylhet</div>
+                          <div class="custom-dropdown-option">Barisal</div>
+                          <div class="custom-dropdown-option">Rajshahi</div>
+                          <div class="custom-dropdown-option">Singapore</div>
+                          <div class="custom-dropdown-option">Kolkata</div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-1 d-flex align-items-center mt-0">
-                      <button type="submit" class="btn journey-search-btn w-100"><i class="fas fa-search"></i> Search</button>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="journey-input-box date-input-box clickable d-flex align-items-center gap-3 w-100"  tabindex="0">
+                    <div class="date-mini-box flex-grow-1">
+                      <div class="journey-label-sm text-orange mb-1">Journey Date</div>
+                      <div class="d-flex align-items-center">
+                        <span class="journey-icon-center me-2"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="text" class="journey-value-input date-picker" placeholder="24 April, 2025" name="date" autocomplete="off">
+                        <a href="#" class="journey-add-return ms-2">
+                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/hyperlink.png" alt="Return"> Add Return Trip
+                        </a>
                     </div>
-                  </form>
+                    </div>
+                    <div class="date-mini-box date-return-box flex-grow-1 d-none">
+                      <div class="journey-label-sm text-orange mb-1">Return Date</div>
+                      <div class="d-flex align-items-center">
+                        <span class="journey-icon-center me-2"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="text" class="journey-value-input date-picker" placeholder="Return Date" name="return_date" autocomplete="off">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="journey-input-box clickable" tabindex="0">
+                    <div class="journey-label-sm text-orange">Travelers Class</div>
+                    <div class="journey-input-content d-flex align-items-center justify-content-between">
+                      <span class="journey-icon-center"><i class="fas fa-user-friends"></i></span>
+                      <input type="text" class="journey-value-input" placeholder="1 Travelers" name="travelers" autocomplete="off">
+                      <!-- <select class="journey-value-input journey-select" name="travelers">
+                        <option>1 Travelers, Economy</option>
+                        <option>2 Travelers, Economy</option>
+                        <option>1 Traveler, Business</option>
+                        <option>2 Travelers, Business</option>
+                      </select> -->
+                    </div>
+                    <div class="journey-label-sm">Economy</div>
+                  </div>
+                </div>
+                <div class="col-md-1 d-flex align-items-center mt-0">
+                  <button type="submit" class="btn journey-search-btn w-100"><i class="fas fa-search"></i> Search</button>
+                </div>
+              </form>
             </div>
           </div>
           <div class="journey-popular-search mt-3">
