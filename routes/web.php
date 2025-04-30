@@ -20,6 +20,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samairaskills/japan', 'samairaskillsJapan')->name('samairaskills.japan');
     Route::get('/samairatravels', 'samairatravels')->name('samairatravels');
     Route::get('/samairamptravels', 'samairamptravels')->name('samairamptravels');
+    Route::get('/samairaskills/singlecourse', 'samairasinglecourse')->name('samairasinglecourse');
+    Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
    
 });
 Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], function () {

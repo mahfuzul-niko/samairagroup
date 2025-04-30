@@ -40,4 +40,12 @@ class PagesController extends Controller
      {
           return view('frontend.samairamptravels.index');
      }
+     public function samairasinglecourse()
+     {
+          return view('frontend.samairaskills.single-course');
+     }
+     public function samairacontact()
+     {
+          return view('frontend.samairaskills.contact');
+     }
 }
