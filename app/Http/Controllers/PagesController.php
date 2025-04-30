@@ -23,7 +23,9 @@ class PagesController extends Controller
      public function samairaskills()
      {
           $certifieds = SkillCertified::latest()->get();
-          $advertise = SkillAdvertise::latest()->first();
+          $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
+
+          // dd($advertise);
           return view('frontend.samairaskills.index', compact('certifieds', 'advertise'));
      }
      public function samairaskillsJapan()

@@ -12,7 +12,7 @@ class SamariaSkill extends Controller
     public function samairaSkill()
     {
         $certifieds = SkillCertified::latest()->get();
-        $advertise = SkillAdvertise::latest()->first();
+        $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
         // dd($advertise);
         return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise'));
     }
