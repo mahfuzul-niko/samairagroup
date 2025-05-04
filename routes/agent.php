@@ -86,6 +86,7 @@ Route::middleware(['role:agent,admin'])
             Route::get('/courses/language', 'courseLanguage')->name('language');
             Route::get('/courses/view/{course:slug}', 'courseView')->name('view');
             Route::post('/course/store', 'storeCourse')->name('store');
+            Route::post('/course/update/{course}', 'updateCourse')->name('update');
             
             
             

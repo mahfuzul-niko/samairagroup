@@ -128,6 +128,56 @@ class CourseController extends Controller
 
         return view('backend.agent.sisters.skill.editcourse', compact('categories', 'trainers','course'));
     }
+    public function updateCourse(Request $request, Course $course)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category_id' => 'required|exists:course_categories,id',
+            'trainer_id' => 'required|exists:users,id',
+            'price' => 'required',
+        ]);
+    
+        $course->title = $request->title;
+        $course->category_id = $request->category_id;
+        $course->user_id = $request->trainer_id;
+        $course->course_for = $request->course_for;
+        $course->slug = Str::slug($request->title);
+    
+        $course->subtitle = $request->subtitle;
+        $course->start_date = $request->start_date;
+        $course->registration_date = $request->registration_date;
+        $course->deadline = $request->deadline;
+        $course->duration = $request->duration;
+        $course->batch = $request->batch;
+        $course->price = $request->price;
+        $course->total_lessons = $request->total_lessons;
+        $course->status = $request->status;
+        $course->class_schedule = $request->class_schedule;
+        $course->description = $request->description;
+    
+        $keywords = $request->keywords
+            ? array_map('trim', explode(',', $request->keywords))
+            : null;
+        $course->keywords = $keywords ? json_encode($keywords) : null;
+    
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('courses/images', 'public');
+            $course->image = $imagePath;
+        }
+    
+        // Handle file upload
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('courses/files', 'public');
+            $course->file = $filePath;
+        }
+    
+        $course->save();
+    
+        return redirect(route("agent.course.{$request->course_for}"))->with('success', 'Course updated successfully.');
+
+    }
+    
     public function courseView(Course $course)
     {
         
