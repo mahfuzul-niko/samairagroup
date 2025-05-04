@@ -41,8 +41,8 @@
         </li><!-- End Category Nav --> --}}
 
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.group.*') ? '' : 'collapsed' }}"
-                data-bs-target="#group-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link {{ request()->routeIs('agent.group.*') ? '' : 'collapsed' }}" data-bs-target="#group-nav"
+                data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Sister Concern</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -57,26 +57,67 @@
                 <li>
                     <a href="{{ route('agent.group.samairaskill') }}"
                         class="{{ request()->routeIs('agent.group.samairaskill') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Samaira Skils</span>
+                        <i class="bi bi-circle"></i><span>SSDI</span>
                     </a>
                 </li>
             </ul>
         </li><!-- End Group Nav -->
 
-
         <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.course.*') ? '' : 'collapsed' }}"
+                data-bs-target="#course-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Course</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="course-nav" class="nav-content collapse {{ request()->routeIs('agent.course.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.course.category') }}"
+                        class="{{ request()->routeIs('agent.course.category') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Course Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.create') }}"
+                        class="{{ request()->routeIs('agent.course.create') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Course</span>
+                    </a>
+                </li>
+                {{-- <li>
+                    <a href="{{ route('agent.course.course') }}"
+                        class="{{ request()->routeIs('agent.course.course') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Course List</span>
+                    </a>
+                </li> --}}
+                <li>
+                    <a href="{{ route('agent.course.ssdi') }}"
+                        class="{{ request()->routeIs('agent.course.ssdi') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>SSDI Course List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.language') }}"
+                        class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Language Course List</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End course Nav -->
+
+
+
+        {{-- <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.profile') ? '' : 'collapsed' }}"
                 href="{{ route('agent.profile') }}">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
             </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
                 data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>System</span><i
-                    class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="system-nav" class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
@@ -92,9 +133,23 @@
                         <i class="bi bi-circle"></i><span>System Footer</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.system.role') }}"
+                        class="{{ request()->routeIs('agent.system.role') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>System Role</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.system.member') }}"
+                        class="{{ request()->routeIs('agent.system.member') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>System Member</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End System Nav -->
-        
+
+
+    
 
 
 
@@ -102,5 +157,5 @@
 
 
     </ul>
-    
+
 </aside><!-- End Sidebar-->

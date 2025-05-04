@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Agent\PagesController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
@@ -31,6 +32,15 @@ Route::middleware(['role:agent,admin'])
             Route::Delete('/system/delete/{id}', 'destroy')->name('destroy');
             Route::post('/system/image/delete/{key}', 'destroyImage')->name('destroy.image');
 
+            Route::get('/system/roles', 'systemRole')->name('role');
+            Route::post('/system/store/role', 'storeRole')->name('store.role');
+            Route::post('/system/update/role/{id}', 'updateRole')->name('update.role');
+            Route::Delete('/system/delete/role/{id}', 'destroyRole')->name('destroy.role');
+
+            Route::get('/system/member', 'systemMember')->name('member');
+            Route::post('/system/store/member', 'storeMember')->name('store.member');
+            Route::Delete('/system/delete/member/{id}', 'destroyMember')->name('destroy.member');
+
         });
         Route::group(['controller' => SamairaGroupController::class, 'as' => 'group.'], function () {
             Route::get('/SamairaGroup', 'index')->name('index');
@@ -56,8 +66,33 @@ Route::middleware(['role:agent,admin'])
             Route::post('/SamairaGroup/certified/store', 'storeCertified')->name('store.certified');
             Route::post('/SamairaGroup/certified/update/{certified}', 'updateCertified')->name('update.certified');
             Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
-
             Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
+
+           
+
+        });
+        
+        Route::group(['controller' => CourseController::class,'as'=>'course.'], function () {
+            Route::get('/course/category', 'courseCategory')->name('category');
+            Route::post('/course/category/store', 'storeCategory')->name('category.store');
+            Route::post('/course/category/update/{category}', 'updateCategory')->name('category.update');
+            Route::delete('/course/category/delete/{category}', 'destroyCategory')->name('category.delete');
+
+
+            Route::get('/create/course', 'createCourse')->name('create');
+            Route::get('/edit/course/{course:slug}', 'createEdit')->name('edit');
+            // Route::get('/courses', 'course')->name('course');
+            Route::get('/courses/ssdi', 'courseSsdi')->name('ssdi');
+            Route::get('/courses/language', 'courseLanguage')->name('language');
+            Route::get('/courses/view/{course:slug}', 'courseView')->name('view');
+            Route::post('/course/store', 'storeCourse')->name('store');
+            
+            
+            
+            Route::post('/course/store/module', 'storeModule')->name('store.module');
+            Route::delete('/course/module/delete/{module}', 'destroyModule')->name('delete.module');
+           
+
         });
         
 

@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\FooterConcern;
 use App\Models\FooterLink;
 use App\Models\header;
+use App\Models\Role;
 use App\Models\System;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Storage;
 
 class SystemController extends Controller
@@ -128,6 +131,80 @@ class SystemController extends Controller
 
         return redirect()->back()->with('success', 'Footer Link information deleted successfully.');
     }
+
+
+
+    public function systemRole()
+    {
+        $roles = Role::all();
+        return view('backend.agent.system.role', compact('roles'));
+    }
+    public function storeRole(Request $request){
+        $request->validate([
+            'name' => 'required|string',
+        ]);
+        $data = new Role;
+        $data->name = $request->name;
+        $data->save();
+        return redirect()->back()->with('success', 'Role information saved successfully.');
+    }
+    public function updateRole(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'status' => 'required|in:active,inactive',
+        ]);
+        $data = Role::findOrFail($id);
+        $data->name = $request->name;
+        $data->status = $request->status;
+        $data->save();
+        return redirect()->back()->with('success', 'Role information updated successfully.');
+    }
+    public function destroyRole($id)
+    {
+        $role = Role::findOrFail($id);
+        $role->delete();
+
+        return redirect()->back()->with('success', 'Role information deleted successfully.');
+    }
+
+    public function systemMember(){
+        $members = User::whereHas('role', function($query) {
+            $query->whereIn('name', ['member', 'trainer']);
+        })->get();
+        $roles = Role::whereIn('name', ['member', 'trainer'])->get();
+        
+        return view('backend.agent.system.member', compact('members', 'roles'));
+    }
+    public function storeMember(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|string|min:6|confirmed', // `confirmed` checks password_confirmation
+        'role' => 'required|exists:roles,id',
+    ]);
+
+    $user = User::create([
+        'name' => $validated['name'],
+        'email' => $validated['email'],
+        'username' => str_replace(' ', '_', $validated['name']),
+        'password' => Hash::make($validated['password']),
+        'role_id' => $validated['role'],
+    ]);
+
+    return redirect()->back()->with('success', 'User created successfully.');
+}
+    public function destroyMember($id)
+    {
+        $member = User::findOrFail($id);
+        $member->delete();
+
+        return redirect()->back()->with('success', 'Member information deleted successfully.');
+    }
+
+
+    
 
 
 

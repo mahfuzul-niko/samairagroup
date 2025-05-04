@@ -17,7 +17,9 @@ class PagesController extends Controller
           $banners = GroupBanner::latest()->get();
           $concerns = SamairaGroup::latest()->get();
           $partners = Partner::latest()->get();
-          $about = GroupAbout::latest()->first();
+          $about = GroupAbout::latestOrEmpty();
+
+
           return view('frontend.samairagroup.index', compact('banners', 'concerns', 'partners', 'about'));
      }
      public function samairaskills()

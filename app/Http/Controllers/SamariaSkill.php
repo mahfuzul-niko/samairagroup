@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CourseCategory;
 use App\Models\SkillAdvertise;
 use App\Models\SkillCertified;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class SamariaSkill extends Controller
     {
         $certifieds = SkillCertified::latest()->get();
         $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
-        // dd($advertise);
+       
         return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise'));
     }
 
@@ -100,6 +101,7 @@ class SamariaSkill extends Controller
         return redirect()->back()->with('success', 'Advertisement saved successfully.');
     }
 
+ 
 
 
 

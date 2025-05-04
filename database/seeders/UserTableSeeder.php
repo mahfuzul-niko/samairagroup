@@ -24,6 +24,13 @@ class UserTableSeeder extends Seeder
             [
                 'name' => 'agent',
             ],
+            [
+                'name' => 'member',
+            ],
+            [
+                'name' => 'trainer',
+            ],
+
 
         ]);
         DB::table('users')->insert([
@@ -60,6 +67,24 @@ class UserTableSeeder extends Seeder
                 'phone' => '1234567893',
                 'role_id' => Role::where('name', 'admin')->first()->id,
                 'email' => 'mahfuzul1125@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Trainer User',
+                'username' => 'trainer_user',
+                'phone' => '1234567894',
+                'role_id' => Role::where('name', 'trainer')->first()->id,
+                'email' => 'trainer@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Member User',
+                'username' => 'member_user',
+                'phone' => '1234567895',
+                'role_id' => Role::where('name', 'member')->first()->id,
+                'email' => 'member@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
             ],

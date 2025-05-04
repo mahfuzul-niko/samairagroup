@@ -130,7 +130,7 @@
             <div class="course-meta-grid">
               <div class="course-meta-item"><i class="fas fa-calendar-alt"></i> <span>Start: <strong>16 Feb 2025</strong></span></div>
               <div class="course-meta-item"><i class="fas fa-clock"></i> <span>Duration: <strong>32 hours</strong></span></div>
-              <div class="course-meta-item"><i class="fas fa-layer-group"></i> <span>Sessions: <strong>16</strong></span></div>
+              <div class="course-meta-item"><i class="fas fa-layer-group"></i> <span>Lessons: <strong>16</strong></span></div>
               <div class="course-meta-item"><i class="fas fa-user-friends"></i> <span>Batch: <strong>1</strong></span></div>
               <div class="course-meta-item"><i class="fas fa-calendar-check"></i> <span>Registration Deadline: <strong>16 Feb 2025</strong></span></div>
             </div>

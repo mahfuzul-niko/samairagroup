@@ -5,7 +5,7 @@
             <!-- Logo -->
             @if (!Route::is('page.samairagroup'))
                 <div class="site-logo">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ route('page.samairagroup') }}">
                         <img src="{{ system_key('system_logo') ? Storage::url(system_key('system_logo')) : asset('assets/img/no-profile.png') }}"
                             alt="Samaira Group Logo" class="logo-img"
                             style="height: 50px; object-fit: cover; width: auto;">
