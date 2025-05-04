@@ -137,7 +137,9 @@
           <div class="row align-items-center mt-4">
               <!-- Image Section -->
               <div class="col-lg-6 mb-4 mb-lg-0 center-img">
+                <div class="client-acquisition-img">
                   <img src="{{$about->image ? Storage::url($about->image) : asset('assets/img/no-profile.png')}}" alt="Client Image" class="img-fluid rounded-3">
+                </div>
               </div>
               <!-- Content Section -->
               <div class="col-lg-6">

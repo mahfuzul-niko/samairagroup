@@ -284,6 +284,23 @@ Client Acquisition CSS Start
 .client-acquisition {
   padding: 3rem 0;
 }
+.client-acquisition .container .row{
+  position: relative;
+}
+.client-acquisition .client-acquisition-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 89%;
+}
+@media (max-width: 1400px) {
+  .client-acquisition .client-acquisition-img {
+    width: 50%;
+  }
+}
 
 .client-acquisition h2 {
   font-size: 2.5rem;
@@ -351,6 +368,11 @@ Client Acquisition CSS Start
   }
   .center-img{
     text-align: center !important;
+  }
+  .client-acquisition .client-acquisition-img{
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 }
 
