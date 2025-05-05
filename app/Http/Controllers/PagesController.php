@@ -30,7 +30,8 @@ class PagesController extends Controller
           $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
 
 
-          $categories = CourseCategory::with('courses')->latest()->get();
+          $categories = CourseCategory::latest()->get();
+          
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
           return view('frontend.samairaskills.index', compact('certifieds', 'advertise','categories','courses'));
      }

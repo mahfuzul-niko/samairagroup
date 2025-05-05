@@ -217,6 +217,7 @@
                         <div class="">
                           {!!$course->description!!}
                         </div>
+                        @if ($course->modules)
                         <div class="course-training-modules mt-5">
                             <h4 class="mb-3">Training Modules :</h4>
                             <div class="accordion" id="trainingModulesAccordion">
@@ -243,6 +244,7 @@
                                 <!-- Add more modules as needed -->
                             </div>
                         </div>
+                        @endif
                         <a href="#" class="btn btn-enroll mt-4">Admission Now</a>
                     </div>
                 </div>
