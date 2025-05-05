@@ -56,4 +56,12 @@ class PagesController extends Controller
      {
           return view('frontend.samairaskills.contact');
      }
+     public function samairajoypurhomes()
+     {
+          return view('frontend.samairajoypurhomes.index');
+     }
+     public function enrollpage()
+     {
+          return view('frontend.samairaskills.enroll');
+     }
 }

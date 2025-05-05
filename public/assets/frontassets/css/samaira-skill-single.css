@@ -3,6 +3,7 @@
     --secondary-color: #ffb347;
     --link-color: #2a5298;
     --text-color: #1e3c72;
+    --enroll-color:#1e3c72;
   }
   /* Navbar Section Styles Start*/
   .custom-navbar {
@@ -959,3 +960,304 @@
     }
   }
   
+
+  
+  /* =====================================================================================
+  =====================================================================================
+                                 Enroll Page Styles Start
+  =====================================================================================
+  ===================================================================================== */
+  .enroll-page-section {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.07);
+    margin: 48px auto 0 auto;
+    max-width: 950px;
+    padding-right: 23px;
+  }
+  .enroll-page-section .form-control:focus{
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.25rem rgba(var(--primary-color), 0.25) !important;
+  }
+  .enroll-page-section .btn-primary {
+    background: var(--enroll-color);
+    border: none;
+    border-radius: 14px;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .enroll-page-section .btn-primary:hover {
+    background: var(--enroll-color) !important;
+  }
+  .enroll-page-section .btn-outline-primary {
+    border: 2px solid var(--enroll-color);
+    color: var(--enroll-color);
+    font-weight: 600;
+    border-radius: 7px;
+    background: #fff;
+  }
+  .enroll-page-section .btn-outline-primary:hover {
+    background: var(--enroll-color);
+    color: #fff !important;
+  }
+  .enroll-page-section .fw-bold {
+    font-weight: 700 !important;
+  }
+  .enroll-page-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .enroll-page-section img[alt="Course Banner"] {
+    background: #ffe23a;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    border: none;
+    box-shadow: none;
+  }
+  .enroll-page-section .enroll-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .enroll-page-section .enroll-apply-btn {
+    background: var(--enroll-color);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 38px;
+    margin-bottom: 18px;
+    display: inline-block;
+    box-shadow: 0 2px 8px rgba(10,25,112,0.08);
+  }
+  .enroll-page-section .enroll-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #111;
+  }
+  .enroll-page-section .enroll-content-row {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .enroll-page-section .enroll-banner-col {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .enroll-page-section .enroll-back-btn {
+    background: #fff;
+    color: var(--enroll-color);
+    border: 2px solid var(--enroll-color);
+    border-radius: 7px;
+    padding: 8px 32px;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 8px;
+    margin-bottom: 0;
+    transition: background 0.2s, color 0.2s;
+  }
+  .enroll-page-section .enroll-back-btn:hover {
+    background: var(--enroll-color);
+    color: #fff;
+  }
+  .enroll-page-section .enroll-form-col {
+    flex: 1 1 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 0 0 0 0;
+  }
+  .enroll-page-section .enroll-form-col label {
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 2px;
+    margin-top: 8px;
+  }
+  .enroll-page-section .enroll-form-col input,
+  .enroll-page-section .enroll-form-col select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #bfc7d1;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    background: #fafbfc;
+    color: #222;
+  }
+  .enroll-page-section .enroll-form-col input:focus,
+  .enroll-page-section .enroll-form-col select:focus {
+    border-color: var(--enroll-color);
+    outline: none;
+  }
+  .enroll-page-section .enroll-phone-row {
+    display: flex;
+    gap: 8px;
+  }
+  .enroll-page-section .enroll-phone-row select {
+    width: 80px;
+    min-width: 60px;
+    max-width: 100px;
+    flex: 0 0 80px;
+  }
+  .enroll-page-section .enroll-apply-now-btn {
+    background: var(--enroll-color);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 0;
+    margin-top: 12px;
+    margin-bottom: 0;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  .enroll-page-section .enroll-apply-now-btn:hover {
+    background: var(--enroll-color);
+  }
+  .enroll-page-section .enroll-login-row {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 1rem;
+  }
+  .enroll-page-section .enroll-or {
+    color: #e74c3c;
+    font-weight: 700;
+    margin: 0 8px;
+  }
+  .enroll-page-section .enroll-login-link b {
+    color: var(--enroll-color);
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  @media (max-width: 991.98px) {
+    .enroll-page-section {
+      max-width: 100%;
+      margin: 24px 0 0 0;
+      padding: 0 8px;
+    }
+    .enroll-page-section img[alt="Course Banner"] {
+      width: 100%;
+      max-width: 350px;
+      height: 220px;
+      margin: 0 auto 18px auto;
+    }
+    .enroll-page-section .enroll-content-row {
+      flex-direction: column;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .enroll-page-section .enroll-banner-col, .enroll-page-section .enroll-form-col {
+      width: 100%;
+      max-width: 100%;
+      align-items: center;
+      padding: 0;
+    }
+    .enroll-page-section .enroll-banner-img {
+      width: 100%;
+      max-width: 350px;
+      height: 220px;
+      margin: 0 auto 18px auto;
+    }
+  }
+  .enroll-page-section .enroll-apply-btn {
+    background: var(--enroll-color);
+    border-radius: 14px;
+    font-size: 1.4rem;
+    border: none;
+    font-weight: 700;
+  }
+  .enroll-page-section .enroll-title {
+    font-size: 2rem;
+  }
+  .enroll-page-section .enroll-banner-img {
+    background: #ffe23a;
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    border: none;
+    box-shadow: none;
+  }
+  .enroll-page-section .enroll-back-btn {
+    border-radius: 7px;
+    font-size: 1.1rem;
+    border: 2px solid var(--enroll-color);
+    color: white !important;
+    font-weight: 600;
+    background: var(--enroll-color);
+  }
+  .enroll-page-section .enroll-back-btn:hover {
+    background: var(--enroll-color);
+    color: #fff !important;
+  }
+  .enroll-page-section .enroll-arrow {
+    font-size: 1.1em;
+    margin-left: 6px;
+    color:white;
+  }
+  .enroll-page-section .enroll-apply-now-btn {
+    background: var(--enroll-color);
+    border-radius: 7px;
+    font-size: 1.1rem;
+    border: none;
+    font-weight: 700;
+  }
+  .enroll-page-section .enroll-apply-now-btn:hover {
+    background: var(--enroll-color);
+  }
+  .enroll-page-section .enroll-phone-select {
+    max-width: 90px;
+  }
+  @media (max-width: 600px) {
+    .enroll-page-section .enroll-title {
+      font-size: 1.2rem;
+    }
+    .enroll-page-section .enroll-apply-btn {
+      font-size: 1rem;
+      padding: 8px 18px;
+    }
+    .enroll-page-section .enroll-banner-img {
+      height: 120px;
+      font-size: 0.95rem;
+    }
+    .enroll-page-section {
+      padding: 8px 0 18px 0;
+    }
+    .enroll-page-section h2 {
+      font-size: 1.2rem;
+    }
+    .enroll-page-section .enroll-apply-btn {
+      font-size: 1rem;
+      padding: 8px 18px;
+    }
+    .enroll-page-section img[alt="Course Banner"] {
+      height: 120px;
+      font-size: 0.95rem;
+    }
+    .enroll-page-section .enroll-form-col input, .enroll-page-section .enroll-form-col select {
+      font-size: 0.95rem;
+      padding: 8px 8px;
+    }
+    .enroll-page-section .enroll-apply-now-btn {
+      font-size: 1rem;
+      padding: 10px 0;
+    }
+  }
+  
+  /* =====================================================================================
+  =====================================================================================
+                                 Enroll Page Styles End
+  =====================================================================================
+  ===================================================================================== */

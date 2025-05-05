@@ -61,6 +61,7 @@
                 <li><a class="dropdown-item" href="{{route('page.samairaskills.japan')}}">Samaira Skill Development Japan</a></li>
                 <li><a class="dropdown-item" href="{{route('page.samairatravels')}}">Samaira Travels</a></li>
                 <li><a class="dropdown-item" href="{{route('page.samairamptravels')}}">Samaira MP Travels</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairajoypurhomes')}}">Joypur Homes</a></li>
               </ul>
             </li>
             <li class="nav-item">
