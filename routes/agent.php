@@ -77,16 +77,17 @@ Route::middleware(['role:agent,admin'])
             Route::post('/course/category/store', 'storeCategory')->name('category.store');
             Route::post('/course/category/update/{category}', 'updateCategory')->name('category.update');
             Route::delete('/course/category/delete/{category}', 'destroyCategory')->name('category.delete');
-
-
+            
+            
             Route::get('/create/course', 'createCourse')->name('create');
             Route::get('/edit/course/{course:slug}', 'createEdit')->name('edit');
-            // Route::get('/courses', 'course')->name('course');
+            Route::get('/courses', 'course')->name('course');
             Route::get('/courses/ssdi', 'courseSsdi')->name('ssdi');
             Route::get('/courses/language', 'courseLanguage')->name('language');
             Route::get('/courses/view/{course:slug}', 'courseView')->name('view');
             Route::post('/course/store', 'storeCourse')->name('store');
             Route::post('/course/update/{course}', 'updateCourse')->name('update');
+            Route::delete('/course/delete/{course}', 'destroyCourse')->name('delete');
             
             
             

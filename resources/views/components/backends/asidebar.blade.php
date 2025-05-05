@@ -82,12 +82,12 @@
                         <i class="bi bi-circle"></i><span>Create Course</span>
                     </a>
                 </li>
-                {{-- <li>
+                <li>
                     <a href="{{ route('agent.course.course') }}"
                         class="{{ request()->routeIs('agent.course.course') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>All Course List</span>
                     </a>
-                </li> --}}
+                </li>
                 <li>
                     <a href="{{ route('agent.course.ssdi') }}"
                         class="{{ request()->routeIs('agent.course.ssdi') ? 'active' : '' }}">

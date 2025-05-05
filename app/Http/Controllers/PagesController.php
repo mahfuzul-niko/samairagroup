@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\CourseCategory;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\Partner;
@@ -27,8 +29,14 @@ class PagesController extends Controller
           $certifieds = SkillCertified::latest()->get();
           $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
 
-          // dd($advertise);
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise'));
+
+          $categories = CourseCategory::with('courses')->latest()->get();
+          $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise','categories','courses'));
+     }
+
+     public function ssdiCourse(Course $course){
+          return view('frontend.samairaskills.single-course',compact('course') );
      }
      public function samairaskillsJapan()
      {
@@ -42,10 +50,7 @@ class PagesController extends Controller
      {
           return view('frontend.samairamptravels.index');
      }
-     public function samairasinglecourse()
-     {
-          return view('frontend.samairaskills.single-course');
-     }
+    
      public function samairacontact()
      {
           return view('frontend.samairaskills.contact');

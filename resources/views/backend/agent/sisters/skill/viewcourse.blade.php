@@ -10,6 +10,12 @@
             <div class="card-body">
                 <div class="text-end p-3">
                     <a href="{{route('agent.course.edit',$course)}}" class="btn btn-primary btn-sm">Edit Course</a>
+                    <form action="{{ route('agent.course.delete', $course) }}"
+                        method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
                 </div>
                 <div class="text-center my-3">
                     <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
@@ -71,8 +77,15 @@
                     </tr>
                     <tr>
                         <th>File</th>
-                        <td>{{ $course->file ?? 'N/A' }}</td>
+                        <td>
+                            @if (!empty($course->file))
+                                <a href="{{ asset('storage/' . $course->file) }}" target="_blank">View File</a>
+                            @else
+                                N/A
+                            @endif
+                        </td>
                     </tr>
+                    
                     <tr>
                         <th>Status</th>
                         <td class="text-{{ $course->status == 'active' ? 'success' : 'danger' }}">

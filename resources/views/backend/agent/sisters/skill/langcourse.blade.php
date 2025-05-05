@@ -44,7 +44,7 @@
                                     <p class="mb-1"><strong>Batch:</strong> {{ $course->batch }}</p>
 
                                     <!-- View Button -->
-                                    <a href="" class="mt-auto btn btn-outline-primary btn-sm">View Details</a>
+                                    <a href="{{route('agent.course.view',$course)}}" class="mt-auto btn btn-outline-primary btn-sm">View Details</a>
                                 </div>
                             </div>
                         </div>

@@ -408,7 +408,7 @@
   .course-highlight-section .course-highlight-bg {
     position: relative;
     /* background: url('../images/samaira-skills/samaira-single-course/training-details-bg.web') center center/cover no-repeat, #181c2f; */
-    background: url('../images/samaira-skills/samaira-single-course/training-details-bg.webp') center center/cover no-repeat, #09090a;
+    /* background: url('../images/samaira-skills/samaira-single-course/training-details-bg.webp') center center/cover no-repeat, #09090a; */
     min-height: 420px;
     padding: 64px 0 48px 0;
     border-radius: 0 0 32px 32px;
