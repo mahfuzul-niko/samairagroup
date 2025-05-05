@@ -22,6 +22,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samairamptravels', 'samairamptravels')->name('samairamptravels');
     Route::get('/samairaskills/singlecourse', 'samairasinglecourse')->name('samairasinglecourse');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
+    Route::get('/samairajoypurhomes', 'samairajoypurhomes')->name('samairajoypurhomes');
+    Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
    
 });
 Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], function () {
