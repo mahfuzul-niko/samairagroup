@@ -2091,6 +2091,71 @@ Logo and Description CSS End
 .blog {
   padding: 3rem 0;
 }
+.blog .video-thumbnail-wrapper {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.blog .video-thumbnail-wrapper img {
+  width: 100%;
+  height: 200px;
+  transition: transform 0.3s ease;
+}
+.blog .play-button-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.blog .play-button {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  animation: glow 1.5s infinite;
+}
+
+.blog .play-button i {
+  color: #000;
+  font-size: 24px;
+  margin-left: 4px;
+}
+
+.blog .video-thumbnail-wrapper:hover .play-button {
+  transform: scale(1.1);
+  background: #fff;
+}
+
+.video-player {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
 .blog .blog-title h2{
   font-weight: bold;
 }

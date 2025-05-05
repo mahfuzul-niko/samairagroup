@@ -823,62 +823,106 @@
     <!-- Testimonial Slider Section End -->
 
     <!-- Blog Section Start-->
-  <div class="container py-5 blog text-center">
-    <div class="blog-title">
-      <h2>Recent Articles & News</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="container py-5 blog text-center">
+      <div class="blog-title">
+        <h2>Our Recent Projects</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="row g-4 mt-3">
+        <!-- Card Start -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="video-thumbnail-wrapper">
+              <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png" class="card-img-top" alt="Video Thumbnail">
+              <div class="play-button-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <video class="card-img-top video-player" controls>
+                <source src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="meta mb-2">Apartment • March 19, 2024</div>
+              <h5 class="card-title mb-3">Housing Markets That Changed
+                the Most This Week</h5>
+              <a href="#" class="read-more mt-auto">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card Start -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="video-thumbnail-wrapper">
+              <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png" class="card-img-top" alt="Video Thumbnail">
+              <div class="play-button-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <video class="card-img-top video-player" controls>
+                <source src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="meta mb-2">Apartment • March 19, 2024</div>
+              <h5 class="card-title mb-3">Housing Markets That Changed
+                the Most This Week</h5>
+              <a href="#" class="read-more mt-auto">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card Start -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="video-thumbnail-wrapper">
+              <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png" class="card-img-top" alt="Video Thumbnail">
+              <div class="play-button-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <video class="card-img-top video-player" controls>
+                <source src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="meta mb-2">Apartment • March 19, 2024</div>
+              <h5 class="card-title mb-3">Housing Markets That Changed
+                the Most This Week</h5>
+              <a href="#" class="read-more mt-auto">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <!-- Card Start -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="video-thumbnail-wrapper">
+              <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png" class="card-img-top" alt="Video Thumbnail">
+              <div class="play-button-overlay">
+                <div class="play-button">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <video class="card-img-top video-player" controls>
+                <source src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <div class="meta mb-2">Apartment • March 19, 2024</div>
+              <h5 class="card-title mb-3">Housing Markets That Changed
+                the Most This Week</h5>
+              <a href="#" class="read-more mt-auto">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row g-4 mt-3">
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <div class="meta mb-2">Apartment • March 19, 2024</div>
-            <h5 class="card-title mb-3">Housing Markets That Changed
-              the Most This Week</h5>
-            <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <div class="meta mb-2">Apartment • March 19, 2024</div>
-            <h5 class="card-title mb-3">Read Unveils the Best Canadian
-              Cities for Biking</h5>
-            <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <div class="meta mb-2">Apartment • March 19, 2024</div>
-            <h5 class="card-title mb-3">10 Walkable Cities Where You Can
-              Live Affordably</h5>
-            <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <!-- Card Start -->
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm">
-          <img src="{{ asset('assets/frontassets/') }}/images/blog/blog1.png" class="card-img-top" alt="Blog Image">
-          <div class="card-body d-flex flex-column">
-            <div class="meta mb-2">Apartment • March 19, 2024</div>
-            <h5 class="card-title mb-3">New Apartment Nice in the Best
-              Canadian Cities</h5>
-            <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- Blog Section End-->
 
   <!-- Our Sister Concern Section Start-->
@@ -1122,6 +1166,25 @@
         }
       });
     </script>
+    <!-- Video Player Script -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const videoWrappers = document.querySelectorAll('.video-thumbnail-wrapper');
+        
+        videoWrappers.forEach(wrapper => {
+          wrapper.addEventListener('click', function() {
+            const video = this.querySelector('.video-player');
+            const thumbnail = this.querySelector('img');
+            const overlay = this.querySelector('.play-button-overlay');
+            
+            thumbnail.style.display = 'none';
+            overlay.style.display = 'none';
+            video.style.display = 'block';
+            video.play();
+          });
+        });
+      });
+      </script>
 </body>
 
 </html>
