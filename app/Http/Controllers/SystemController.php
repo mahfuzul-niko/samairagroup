@@ -25,7 +25,7 @@ class SystemController extends Controller
             'key' => 'required|string',
             'value' => 'required|string',
         ]);
-
+        
         System::updateOrCreate(
             ['key' => $request->key],
             ['value' => $request->value]
@@ -35,11 +35,12 @@ class SystemController extends Controller
 
     public function storeImage(Request $request)
     {
+        
         $request->validate([
             'key' => 'required|string|unique:systems,key',
-            'value' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'value' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-
+       
         $image = $request->file('value');
         $imagePath = $image->store('uploads/system', 'public'); // storage/app/public/uploads/system
 

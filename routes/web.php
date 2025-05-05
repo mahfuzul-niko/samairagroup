@@ -17,10 +17,10 @@ Route::get('/admin', function () {
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {
     Route::get('/', 'samairagroup')->name('samairagroup');
     Route::get('/samairaskills', 'samairaskills')->name('samairaskills');
+    Route::get('/samairaskills/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
     Route::get('/samairaskills/japan', 'samairaskillsJapan')->name('samairaskills.japan');
     Route::get('/samairatravels', 'samairatravels')->name('samairatravels');
     Route::get('/samairamptravels', 'samairamptravels')->name('samairamptravels');
-    Route::get('/samairaskills/singlecourse', 'samairasinglecourse')->name('samairasinglecourse');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/samairajoypurhomes', 'samairajoypurhomes')->name('samairajoypurhomes');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');

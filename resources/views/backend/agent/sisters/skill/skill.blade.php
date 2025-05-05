@@ -67,7 +67,7 @@
                             <input type="hidden" name="key" placeholder="Enter key" class="form-control"
                                 value="samaira_skills_banner" required>
                             <div class="form-group my-3">
-                                <label for="value">Logo</label>
+                                <label for="value">Banner Image</label>
                                 <input type="file" name="value" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-sm">Upload</button>
@@ -89,10 +89,10 @@
                         <div class="col-md-6">
                             <select class="form-select" aria-label="Default select example" name="key" required>
                                 <option selected>Select social option</option>
-                                <option value="system_sill_banner_title">Banner Title</option>
-                                <option value="system_sill_banner_sub_title">Banner Subtitle</option>
-                                <option value="system_sill_banner_count">Banner Count</option>
-                                <option value="system_sill_banner_btn_link">Banner Button Link</option>
+                                <option value="system_skill_banner_title">Banner Title</option>
+                                <option value="system_skill_banner_sub_title">Banner Subtitle</option>
+                                <option value="system_skill_banner_count">Banner Count</option>
+                                <option value="system_skill_banner_btn_link">Banner Button Link</option>
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -108,19 +108,19 @@
                     <tbody>
                         <tr>
                             <th class="bg-light">Banner Title:</th>
-                            <td>{{ system_key('system_sill_banner_title') }}</td>
+                            <td>{{ system_key('system_skill_banner_title') }}</td>
                         </tr>
                         <tr>
                             <th class="bg-light">Banner Subtitle:</th>
-                            <td>{{ system_key('system_sill_banner_sub_title') }}</td>
+                            <td>{{ system_key('system_skill_banner_sub_title') }}</td>
                         </tr>
                         <tr>
                             <th class="bg-light">Banner Count:</th>
-                            <td>{{ system_key('system_sill_banner_count') }}</td>
+                            <td>{{ system_key('system_skill_banner_count') }}</td>
                         </tr>
                         <tr>
                             <th class="bg-light">Banner Button Link:</th>
-                            <td>{{ system_key('system_sill_banner_btn_link') }}</td>
+                            <td>{{ system_key('system_skill_banner_btn_link') }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -139,9 +139,9 @@
                         <div class="col-md-6">
                             <select class="form-select" aria-label="Default select example" name="key" required>
                                 <option selected>Select social option</option>
-                                <option value="system_sill_register">Register</option>
-                                <option value="system_sill_new_course">New Course</option>
-                                <option value="system_sill_success">Success</option>
+                                <option value="system_skill_register">Register</option>
+                                <option value="system_skill_new_course">New Course</option>
+                                <option value="system_skill_success">Success</option>
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -157,15 +157,15 @@
                     <tbody>
                         <tr>
                             <th class="bg-light">Register:</th>
-                            <td>{{ system_key('system_sill_register') }}</td>
+                            <td>{{ system_key('system_skill_register') }}</td>
                         </tr>
                         <tr>
                             <th class="bg-light">New Course:</th>
-                            <td>{{ system_key('system_sill_new_course') }}</td>
+                            <td>{{ system_key('system_skill_new_course') }}</td>
                         </tr>
                         <tr>
                             <th class="bg-light">Success:</th>
-                            <td>{{ system_key('system_sill_success') }}</td>
+                            <td>{{ system_key('system_skill_success') }}</td>
                         </tr>
 
                     </tbody>
@@ -288,7 +288,7 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Advertisement Box</label>
-                        <textarea  name="description" class="form-control">{{ $advertise->description }}</textarea>
+                        <textarea name="description" class="form-control">{{ $advertise->description }}</textarea>
                     </div>
                     <div class="form-group mt-3">
                         <label for="">Advertisement Button Link</label>
@@ -327,10 +327,90 @@
                         <th class="w-25">Link</th>
                         <td>{{ $advertise->link }}</td>
                     </tr>
-                    
+
                 </table>
             </div>
 
+        </div>
+    </section>
+    <section class="single-page-info">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Single Page Image
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="text-center my-3">
+                            <div class=" d-inline-block" style="height: 100px; width: auto;">
+                                <img src="{{ system_key('samaira_skills_single_image') ? Storage::url(system_key('samaira_skills_single_image')) : asset('assets/img/no-profile.png') }}"
+                                    alt="Group Logo" class="img-fluid rounded "
+                                    style="height: 100px; object-fit: cover;">
+
+                                <form action="{{ route('agent.system.destroy.image', 'samaira_skills_single_image') }}"
+                                    method="POST" class="mt-2">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="key" placeholder="Enter key" class="form-control"
+                                value="samaira_skills_single_image" required>
+                            <div class="form-group my-3">
+                                <label for="value">Single Page Image</label>
+                                <input type="file" name="value" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-title">
+                    Single Page Contact
+                </div>
+                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <select class="form-select" aria-label="Default select example" name="key" required>
+                                <option selected>Select Contact option</option>
+                                <option value="system_skill_number_top">Number Top</option>
+                                <option value="system_skill_number_bottom">Number Bottom</option>
+                                <option value="system_skill_email">Email</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="inputEmail4" name="value" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3 btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Single Page Contact List
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="bg-light">Number Top:</th>
+                            <td>{{ system_key('system_skill_number_top') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Number Bottom:</th>
+                            <td>{{ system_key('system_skill_number_bottom') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">Email:</th>
+                            <td>{{ system_key('system_skill_email') }}</td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
 
