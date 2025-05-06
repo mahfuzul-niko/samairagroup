@@ -57,11 +57,11 @@
                 Enterprize <span class="dropdown-icon-right"><i class="fas fa-angle-down"></i></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{route('page.samairaskills')}}">Samaira Skill Development</a></li>
-                <li><a class="dropdown-item" href="{{route('page.samairaskills.japan')}}">Samaira Skill Development Japan</a></li>
-                <li><a class="dropdown-item" href="{{route('page.samairatravels')}}">Samaira Travels</a></li>
-                <li><a class="dropdown-item" href="{{route('page.samairamptravels')}}">Samaira MP Travels</a></li>
-                <li><a class="dropdown-item" href="{{route('page.samairajoypurhomes')}}">Joypur Homes</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairaskills')}}">Samaira Skill Development Institute</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairaskills.japan')}}">Samaira Language Institute</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairatravels')}}">Samaira Aviation Limited</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairamptravels')}}">MP Travels Limited</a></li>
+                <li><a class="dropdown-item" href="{{route('page.samairajoypurhomes')}}">Joypur Homes Limited</a></li>
               </ul>
             </li>
             <li class="nav-item">
