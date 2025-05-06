@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samaira Skills Contact Page</title>
+  <title>Samaira Skills Enroll Page</title>
   <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-skills/fav-icon.svg" type="image/svg">
   
   <!-- Bootstrap CSS -->

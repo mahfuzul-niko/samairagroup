@@ -150,7 +150,7 @@
                                 Schedule:</span>
                             <span class="schedule-time">{{ $course->class_schedule }}</span>
                         </div>
-                        <a href="#" class="btn btn-enroll mt-4">Enroll Now</a>
+                        <a href="{{route('page.ssdi.course.enroll',$course)}}" class="btn btn-enroll mt-4">Enroll Now</a>
                         @if ($course->file)
                             <a href="{{ asset('storage/' . $course->file) }}" target="_blank"
                                 class="btn btn-enroll mt-4">Course Details</a>

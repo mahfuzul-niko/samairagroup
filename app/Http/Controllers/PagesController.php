@@ -39,6 +39,11 @@ class PagesController extends Controller
      public function ssdiCourse(Course $course){
           return view('frontend.samairaskills.single-course',compact('course') );
      }
+     public function ssdiCourseEnroll(Course $course){
+          return view('frontend.samairaskills.enroll',compact('course') );
+     }
+
+     
      public function samairaskillsJapan()
      {
           return view('frontend.samairaskillsjapan.index');
