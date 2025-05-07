@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Models\CourseCategory;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -10,6 +12,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/test', function () {
     dd(system_key('system_facebook') ?? 'system_facebook');
 });
+
+Route::get('/test-mail', function () {
+    return view('mail.enroll');
+});
+
+
 Route::get('/admin', function () {
     return redirect(route('login'));
 })->name('login');
@@ -25,12 +33,15 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/joypur-homes-limited', 'samairajoypurhomes')->name('samairajoypurhomes');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
-   
+
 });
 Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], function () {
     Route::post('/update-password', 'updatePassword')->name('update-password');
     Route::post('/profile/update', 'updateProfile')->name('update-profile');
     Route::get('/profile/remove-avatar', 'removeAvatar')->name('removeAvatar');
+});
+Route::group(['controller' => CourseController::class, 'as' => 'course.'], function () {
+    Route::post('/store/enroll', 'storeCourseEnroll')->name('store.enroll');
 });
 
 Auth::routes();

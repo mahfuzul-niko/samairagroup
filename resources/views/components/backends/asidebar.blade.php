@@ -95,6 +95,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('agent.course.ssdi.enroll') }}"
+                        class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('agent.course.language') }}"
                         class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Language Course List</span>

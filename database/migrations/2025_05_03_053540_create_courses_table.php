@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('course_code');
             $table->foreignId('category_id');
             $table->foreignId('user_id')->nullable();
             $table->enum('course_for',['ssdi','language','both'])->default('ssdi');

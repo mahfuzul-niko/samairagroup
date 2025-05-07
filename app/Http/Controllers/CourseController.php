@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseModule;
+use App\Models\Enroll;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\CourseEnrolledMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class CourseController extends Controller
 {
@@ -89,8 +93,9 @@ class CourseController extends Controller
         $course->category_id = $request->category_id;
         $course->user_id = $request->trainer_id;
         $course->course_for = $request->course_for;
+        $course->course_type = $request->course_type;
+        $course->course_code = $request->course_code;
         $course->slug = Str::slug($request->title);
-
         $course->subtitle = $request->subtitle;
         $course->start_date = $request->start_date;
         $course->registration_date = $request->registration_date;
@@ -143,8 +148,9 @@ class CourseController extends Controller
         $course->category_id = $request->category_id;
         $course->user_id = $request->trainer_id;
         $course->course_for = $request->course_for;
+        $course->course_type = $request->course_type;
+        $course->course_code = $request->course_code;
         $course->slug = Str::slug($request->title);
-
         $course->subtitle = $request->subtitle;
         $course->start_date = $request->start_date;
         $course->registration_date = $request->registration_date;
@@ -219,5 +225,49 @@ class CourseController extends Controller
     {
         $module->delete();
         return redirect()->back()->with('success', 'Module deleted successfully.');
+    }
+
+    //enroll
+    public function storeCourseEnroll(Request $request)
+    {
+        $enroll = new Enroll;
+        $enroll->course_id = $request->course_id;
+        $enroll->name = $request->name;
+        $enroll->email = $request->email;
+        $enroll->phone = $request->number;
+        $enroll->at = $request->at;
+        $enroll->save();
+
+        $course = Course::find($request->course_id);
+
+        Mail::to($enroll->email)->send(new CourseEnrolledMail($enroll, $course));
+
+        return redirect(route('page.samairaskills'))->with('success', 'Course Enroll Successfully')->with('info', 'Please check your email');
+    }
+
+    public function ssdiEnrollList()
+    {
+        $enrolls = Enroll::latest()->where('at', 'ssdi')->get();
+        return view('backend.agent.sisters.skill.ssdi-enroll', compact('enrolls'));
+    }
+    public function updateMark(Request $request, Enroll $enroll)
+    {
+        $enroll->mark = $request->has('mark') ? 1 : 0;
+        $enroll->save();
+
+        $message = $enroll->mark ? 'Enrollment approved successfully.' : 'Enrollment approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
+    public function destroyEnroll(Enroll $enroll)
+    {
+        $enroll->delete();
+        return redirect()->back()->with('success', 'Enroll deleted successfully.');
+    }
+    public function updateEnroll(Request $request,Enroll $enroll){
+        $enroll->name = $request->name;
+        $enroll->email = $request->email;
+        $enroll->phone = $request->phone;
+        $enroll->save();
+        return redirect()->back()->with('success', 'Enroll Updated successfully.');
     }
 }

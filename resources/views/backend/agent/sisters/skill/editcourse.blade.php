@@ -47,7 +47,7 @@
                     </div>
                 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group mb-3">
                                 <label for="category">Category</label>
                                 <select class="form-select" name="category_id" id="category" required>
@@ -60,7 +60,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group mb-3">
                                 <label for="level">Course For</label>
                                 <select class="form-select" name="course_for" id="level" required>
@@ -68,6 +68,19 @@
                                     <option value="ssdi" {{ $course->course_for == 'ssdi' ? 'selected' : '' }}>SSDI</option>
                                     <option value="language" {{ $course->course_for == 'language' ? 'selected' : '' }}>Language</option>
                                     <option value="both" {{ $course->course_for == 'both' ? 'selected' : '' }}>Both</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="course_type">Course Type</label>
+                                <select class="form-select" name="course_type" id="course_type" required>
+                                    <option disabled {{ is_null($course->course_type) ? 'selected' : '' }}>Select Course type</option>
+                                    <option value="online" {{ $course->course_type == 'online' ? 'selected' : '' }}>Online</option>
+                                    <option value="offline" {{ $course->course_type == 'offline' ? 'selected' : '' }}>Offline</option>
+                                    <option value="both" {{ $course->course_type == 'both' ? 'selected' : '' }}>Both</option>
+                                    <option value="workshop" {{ $course->course_type == 'workshop' ? 'selected' : '' }}>Workshop</option>
+                                    <option value="event" {{ $course->course_type == 'event' ? 'selected' : '' }}>Event</option>
                                 </select>
                             </div>
                         </div>

@@ -28,6 +28,10 @@
                         <td>{{ $course->title }}</td>
                     </tr>
                     <tr>
+                        <th>Course Code</th>
+                        <td>{{ $course->course_code }}</td>
+                    </tr>
+                    <tr>
                         <th>Subtitle</th>
                         <td>{{ $course->subtitle ?? 'N/A' }}</td>
                     </tr>

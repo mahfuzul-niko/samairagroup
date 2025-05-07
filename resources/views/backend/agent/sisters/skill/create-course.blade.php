@@ -25,12 +25,15 @@
 
                 <form action="{{ route('agent.course.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <div class="form-group mb-3">
+                        <label for="title">Course Title</label>
+                        <input type="text" class="form-control" name="title" placeholder="Course title" required>
+                    </div>
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group mb-3">
-                                <label for="title">Course Title</label>
-                                <input type="text" class="form-control" name="title" placeholder="Course title"
-                                    required>
+                                <label for="title">Course Code</label>
+                                <input type="text" class="form-control" name="course_code" placeholder="Course code" required>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -46,7 +49,7 @@
                         <textarea class="form-control" name="subtitle" id="" rows="2"></textarea>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
 
                             <div class="form-group mb-3">
                                 <label for="category">Category</label>
@@ -58,7 +61,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group mb-3">
                                 <label for="level">Course For</label>
                                 <select class="form-select" name="course_for" id="level" required>
@@ -66,6 +69,19 @@
                                     <option value="ssdi">SSDI</option>
                                     <option value="language">Language</option>
                                     <option value="both">Both</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group mb-3">
+                                <label for="level">Course type</label>
+                                <select class="form-select" name="course_type" id="level" required>
+                                    <option selected disabled>Select Course type</option>
+                                    <option value="online">Onlice</option>
+                                    <option value="offline">Offline</option>
+                                    <option value="both">Both</option>
+                                    <option value="workshop">Workshop</option>
+                                    <option value="event">Event</option>
                                 </select>
                             </div>
                         </div>
@@ -172,7 +188,7 @@
                         <label for="keywords" class="form-label">Keywords</label>
                         <textarea class="form-control" name="keywords" id="keywords" rows="2" placeholder="keyword1, keyword2"></textarea>
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
 
                 </form>

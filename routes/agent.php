@@ -93,8 +93,11 @@ Route::middleware(['role:agent,admin'])
             
             Route::post('/course/store/module', 'storeModule')->name('store.module');
             Route::delete('/course/module/delete/{module}', 'destroyModule')->name('delete.module');
-           
-
+            
+            Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('ssdi.enroll');
+            Route::post('/enroll/mark/{enroll}', 'updateMark')->name('enroll.mark');
+            Route::post('/enroll/update/{enroll}', 'updateEnroll')->name('update.enroll');
+            Route::delete('/course/enroll/delete/{enroll}', 'destroyEnroll')->name('delete.enroll');
         });
         
 

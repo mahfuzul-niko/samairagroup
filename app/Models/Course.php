@@ -20,6 +20,11 @@ class Course extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function enrolls()
+    {
+        return $this->hasMany(Enroll::class);
+    }
+
     protected $casts = [
         'start_date' => 'date',
         'registration_date' => 'date',
