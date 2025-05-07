@@ -245,7 +245,7 @@
                             </div>
                         </div>
                         @endif
-                        <a href="#" class="btn btn-enroll mt-4">Admission Now</a>
+                        <a href="{{route('page.ssdi.course.enroll',$course)}}" class="btn btn-enroll mt-4">Admission Now</a>
                     </div>
                 </div>
                 <!-- Right: Sticky Info Card -->

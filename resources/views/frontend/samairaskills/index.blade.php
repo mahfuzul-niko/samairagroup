@@ -363,7 +363,7 @@
                                     </a>
                                     <div class="course-meta">
                                         <span class="course-rating">
-                                            <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
+                                            <a href="{{route('page.ssdi.course.enroll',$course)}}" class="btn-sm" title="Enroll Now">Enroll Now</a>
                                         </span>
                                         {{-- <span class="course-rating">
                         <i class="fas fa-star"></i> 4.8 (250)
