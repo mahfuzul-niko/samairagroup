@@ -70,7 +70,7 @@
                                     <form action="{{ route('agent.system.destroy.member', $member->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

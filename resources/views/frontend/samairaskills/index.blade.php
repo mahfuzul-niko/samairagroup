@@ -491,7 +491,7 @@
                         @foreach ($certifieds as $certified)
                             <div class="logo-item">
                                 <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
-                                    alt="Logo 1" class="{{ $certified->name }}">
+                                    alt="Logo 1" class="img-fluid" style="height: 50px">
                             </div>
                         @endforeach
 
@@ -501,7 +501,7 @@
                         @foreach ($certifieds as $certified)
                             <div class="logo-item">
                                 <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
-                                    alt="Logo 1" class="{{ $certified->name }}">
+                                    alt="Logo 1" class="img-fluid" style="height: 50px">
                             </div>
                         @endforeach
 

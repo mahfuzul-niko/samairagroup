@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -28,7 +29,6 @@ class LoginController extends Controller
     protected function redirectTo(): string
     {
         if (Auth::check()) {
-            // dd(Auth::user()->role->name);
             return match (Auth::user()->role->name) {
                 'admin' => '/admin/dashboard',
                 'agent' => '/agent/dashboard',
@@ -38,6 +38,19 @@ class LoginController extends Controller
 
         return '/';
     }
+
+
+
+
+    public function showLoginForm()
+    {
+        if (Auth::check()) {
+            return redirect($this->redirectTo());
+        }
+
+        return view('auth.login');
+    }
+
     /**
      * Create a new controller instance.
      *

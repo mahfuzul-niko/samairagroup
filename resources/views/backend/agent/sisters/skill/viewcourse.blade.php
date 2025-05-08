@@ -14,7 +14,7 @@
                         method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this course?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                     </form>
                 </div>
                 <div class="text-center my-3">
@@ -126,7 +126,7 @@
                             method="POST" class="d-inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                         </form>
                         </div>
                           

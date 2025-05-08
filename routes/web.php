@@ -6,6 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Models\CourseCategory;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Auth;
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -20,7 +23,7 @@ Route::get('/test-mail', function () {
 
 Route::get('/admin', function () {
     return redirect(route('login'));
-})->name('login');
+});
 
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {
     Route::get('/', 'samairagroup')->name('samairagroup');

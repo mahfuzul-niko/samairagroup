@@ -36,7 +36,7 @@
                         <label for="value">Logo</label>
                         <input type="file" name="value" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Upload</button>
                 </form>
             </div>
 
@@ -65,7 +65,7 @@
                         <label for="">Banner Button Link</label>
                         <input type="url" class="form-control" id="" name="link">
                     </div>
-                    <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    <button class="btn btn-sm btn-primary mt-3" type="submit">Submit</button>
                 </form>
             </div>
             <div class="card-body">
@@ -103,7 +103,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                             </form>
                                         </div>
 
@@ -142,7 +142,7 @@
                                                                 <input type="url" class="form-control"
                                                                     name="link" value="{{ $banner->link }}">
                                                             </div>
-                                                            <button class="btn btn-primary mt-3"
+                                                            <button class="btn btn-sm btn-primary mt-3"
                                                                 type="submit">Submit</button>
                                                         </form>
                                                     </div>
@@ -194,7 +194,7 @@
                         <label for="">About Button Link</label>
                         <input type="url" class="form-control" id="" name="link" value="{{ $about->link }}">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                 </form>
             </div>
             <div class="card-body">
@@ -267,7 +267,7 @@
                         <label for="">Concern Button Link</label>
                         <input type="url" class="form-control" id="" name="concern_link">
                     </div>
-                    <button class="btn btn-primary mt-3" type="submit">Submit</button>
+                    <button class="btn btn-sm btn-primary mt-3" type="submit">Submit</button>
                 </form>
             </div>
             <div class="card-body">
@@ -303,7 +303,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                             </form>
                                         </div>
 
@@ -341,7 +341,7 @@
                                                                     name="concern_link"
                                                                     value="{{ $concern->concern_link }}">
                                                             </div>
-                                                            <button class="btn btn-primary mt-3"
+                                                            <button class="btn btn-sm btn-primary mt-3"
                                                                 type="submit">Submit</button>
                                                         </form>
                                                     </div>
@@ -378,7 +378,7 @@
                         <input type="file" class="form-control" id="logo" placeholder="logo"
                             name="logo">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
                 </form>
                 <div class="card-title">
                     Partners Logo List
@@ -410,7 +410,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                    class="btn btn-outline-danger btn-sm">Delete</button>
+                                                    class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
                                             </form>
                                         </div>
 
@@ -438,7 +438,7 @@
                                                                 <input type="file" class="form-control"
                                                                     id="logo" name="logo">
                                                             </div>
-                                                            <button type="submit" class="btn btn-primary">Save
+                                                            <button type="submit" class="btn btn-sm btn-primary">Save
                                                                 changes</button>
                                                         </form>
                                                     </div>
@@ -480,7 +480,7 @@
                                 name="value" required value="https://">
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-3">Submit</button>
+                    <button class="btn btn-sm btn-primary mt-3">Submit</button>
                 </form>
                 <div class="card-title">
                     Soccial List
