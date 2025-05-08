@@ -40,7 +40,7 @@
                             </td>
                             <td>
                                 <a href="" class="btn btn-info btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#enrol{{ $enroll->id }}">edit</a>
+                                    data-bs-target="#enrol{{ $enroll->id }}"><i class="bi bi-pencil-square"></i></a>
 
 
                                 <!-- Modal -->

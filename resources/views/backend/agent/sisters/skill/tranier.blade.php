@@ -71,7 +71,7 @@
                                 <td>
                                     <div class="d-flex gap-2">
                                         <a class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#trainer{{ $trainer->id }}">Edit</a>
+                                            data-bs-target="#trainer{{ $trainer->id }}"><i class="bi bi-pencil-square"></i></a>
 
                                         <form action="{{ route('agent.course.delete.trainer', $trainer) }}"
                                             method="POST">

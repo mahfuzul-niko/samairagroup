@@ -37,7 +37,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->title }}</td>
                                 <td><a class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#categoryModal{{ $category->id }}">Edit</a>
+                                        data-bs-target="#categoryModal{{ $category->id }}"><i class="bi bi-pencil-square"></i></a>
                                     <form action="{{ route('agent.course.category.delete', $category->id) }}"
                                         method="POST" class="d-inline-block">
                                         @csrf
