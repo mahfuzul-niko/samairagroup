@@ -31,19 +31,22 @@ class PagesController extends Controller
 
 
           $categories = CourseCategory::latest()->get();
-          
+
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise','categories','courses'));
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'categories', 'courses'));
+     }
+     public function ssdiCourse(Course $course)
+     {
+          
+          return view('frontend.samairaskills.single-course', compact('course'));
      }
 
-     public function ssdiCourse(Course $course){
-          return view('frontend.samairaskills.single-course',compact('course') );
-     }
-     public function ssdiCourseEnroll(Course $course){
-          return view('frontend.samairaskills.enroll',compact('course') );
+     public function ssdiCourseEnroll(Course $course)
+     {
+          return view('frontend.samairaskills.enroll', compact('course'));
      }
 
-     
+
      public function samairaskillsJapan()
      {
           return view('frontend.samairaskillsjapan.index');
@@ -56,7 +59,7 @@ class PagesController extends Controller
      {
           return view('frontend.samairamptravels.index');
      }
-    
+
      public function samairacontact()
      {
           return view('frontend.samairaskills.contact');

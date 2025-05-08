@@ -40,8 +40,8 @@
                         <td>{{ $course->category->title }}</td>
                     </tr>
                     <tr>
-                        <th>User ID</th>
-                        <td>{{ $course->trainer->name }}</td>
+                        <th>Trainer</th>
+                        <td>{{ optional($course->trainer)->name ?? 'Unknown Trainer' }}</td>
                     </tr>
                     <tr>
                         <th>Course For</th>
