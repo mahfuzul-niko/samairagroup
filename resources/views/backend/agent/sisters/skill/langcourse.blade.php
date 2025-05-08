@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">All Courses</x-slot>
+    <x-slot name="title">All Language Courses</x-slot>
     <section>
         <div class="card">
             <div class="card-body">
@@ -30,7 +30,7 @@
                                     </div>
 
                                     <!-- Trainer -->
-                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->user->name ?? 'N/A' }}</p>
+                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->trainer->name ?? 'N/A' }}</p>
 
                                     <!-- Start Date, Deadline -->
                                     <p class="mb-1"><strong>Start Date:</strong>

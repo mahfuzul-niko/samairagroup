@@ -1,14 +1,13 @@
 <x-app>
     <x-slot name="title">All Courses</x-slot>
-    <section class="both-course">
-        <div class="card">
+    <section class="course">
+        {{-- <div class="card">
             <div class="card-body">
                 <div class="card-title">
                     Both Courses
                 </div>
                 <div class="row">
                     @foreach ($bothCourses as $course)
-                        {{-- @dd($course) --}}
                         <div class="col-md-4 mb-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body d-flex flex-column">
@@ -30,7 +29,7 @@
                                     </div>
 
                                     <!-- Trainer -->
-                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->user->name ?? 'N/A' }}</p>
+                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->trainer->name ?? 'N/A' }}</p>
 
                                     <!-- Start Date, Deadline -->
                                     <p class="mb-1"><strong>Start Date:</strong>
@@ -53,7 +52,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -83,7 +82,7 @@
                                     </div>
 
                                     <!-- Trainer -->
-                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->user->name ?? 'N/A' }}</p>
+                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->trainer->name ?? 'N/A' }}</p>
 
                                     <!-- Start Date, Deadline -->
                                     <p class="mb-1"><strong>Start Date:</strong>
@@ -136,7 +135,7 @@
                                     </div>
 
                                     <!-- Trainer -->
-                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->user->name ?? 'N/A' }}</p>
+                                    <p class="mb-1"><strong>Trainer:</strong> {{ $course->trainer->name ?? 'N/A' }}</p>
 
                                     <!-- Start Date, Deadline -->
                                     <p class="mb-1"><strong>Start Date:</strong>

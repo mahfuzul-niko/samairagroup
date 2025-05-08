@@ -200,143 +200,7 @@
                 </div>
             </div>
 
-            {{-- <!-- Swiper -->
-          <div class="swiper courses-swiper">
-            <div class="swiper-wrapper">
-              <!-- Slide 1 -->
-              <div class="swiper-slide">
-                <div class="course-card h-100">
-                  <div class="card-image position-relative overflow-hidden">
-                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/course1.png" class="img-fluid w-100" alt="Course Image">
-                    <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
-                        <a href="{{ asset('assets/frontassets/') }}/images/samaira-skills/course1.png" class="btn btn-light btn-sm rounded-circle overlay-btn glightbox" data-gallery="course-gallery">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-light btn-sm rounded-circle overlay-btn" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                  </div>
-                  <div class="course-content">
-                    <span class="course-price">$120</span>
-                    <h3 class="course-title">Learn modern architecture Online course</h3>
-                    <div class="course-meta">
-                      <span class="course-rating">
-                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
-                      </span>
-                      <span class="course-rating">
-                        <i class="fas fa-star"></i> 4.8 (250)
-                      </span>
-                      <span class="course-lessons">
-                        <i class="fas fa-play"></i> 12 Lessons
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- Slide 2 -->
-              <div class="swiper-slide">
-                <div class="course-card h-100">
-                  <div class="card-image position-relative overflow-hidden">
-                     <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/course2.png" class="img-fluid w-100" alt="Course Image">
-                    <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
-                        <a href="{{ asset('assets/frontassets/') }}/images/samaira-skills/course2.png" class="btn btn-light btn-sm rounded-circle overlay-btn glightbox" data-gallery="course-gallery">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-light btn-sm rounded-circle overlay-btn" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                  </div>
-                  <div class="course-content">
-                    <span class="course-price">$120</span>
-                    <h3 class="course-title">Learn modern architecture Online course</h3>
-                    <div class="course-meta">
-                      <span class="course-rating">
-                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
-                      </span>
-                      <span class="course-rating">
-                        <i class="fas fa-star"></i> 4.8 (250)
-                      </span>
-                      <span class="course-lessons">
-                        <i class="fas fa-play"></i> 12 Lessons
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-              <!-- Slide 3 -->
-              <div class="swiper-slide">
-                <div class="course-card h-100">
-                  <div class="card-image position-relative overflow-hidden">
-                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/course3.png" class="img-fluid w-100" alt="Course Image">
-                    <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
-                        <a href="{{ asset('assets/frontassets/') }}/images/samaira-skills/course3.png" class="btn btn-light btn-sm rounded-circle overlay-btn glightbox" data-gallery="course-gallery">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-light btn-sm rounded-circle overlay-btn" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                  </div>
-                  <div class="course-content">
-                    <span class="course-price">$120</span>
-                    <h3 class="course-title">Learn modern architecture Online course</h3>
-                    <div class="course-meta">
-                      <span class="course-rating">
-                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
-                      </span>
-                      <span class="course-rating">
-                        <i class="fas fa-star"></i> 4.8 (250)
-                      </span>
-                      <span class="course-lessons">
-                        <i class="fas fa-play"></i> 12 Lessons
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-               <!-- Slide 4 (Add more slides as needed) -->
-              <div class="swiper-slide">
-                <div class="course-card h-100">
-                  <div class="card-image position-relative overflow-hidden">
-                     <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/course1.png" class="img-fluid w-100" alt="Course Image">
-                    <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
-                        <a href="{{ asset('assets/frontassets/') }}/images/samaira-skills/course1.png" class="btn btn-light btn-sm rounded-circle overlay-btn glightbox" data-gallery="course-gallery">
-                            <i class="fas fa-eye"></i>
-                        </a>
-                        <a href="#" class="btn btn-light btn-sm rounded-circle overlay-btn" title="Add to Cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </div>
-                  </div>
-                  <div class="course-content">
-                    <span class="course-price">$99</span>
-                    <h3 class="course-title">Advanced Web Development Masterclass</h3>
-                    <div class="course-meta">
-                      <span class="course-rating">
-                        <a href="#" class="btn-sm" title="Enroll Now">Enroll Now</a>
-                      </span>
-                      <span class="course-rating">
-                        <i class="fas fa-star"></i> 4.9 (500)
-                      </span>
-                      <span class="course-lessons">
-                        <i class="fas fa-play"></i> 25 Lessons
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-    
-            <!-- Add Navigation -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div> --}}
+         
 
             <!-- Swiper -->
             <div class="swiper courses-swiper pt-4">
@@ -365,9 +229,7 @@
                                         <span class="course-rating">
                                             <a href="{{route('page.ssdi.course.enroll',$course)}}" class="btn-sm" title="Enroll Now">Enroll Now</a>
                                         </span>
-                                        {{-- <span class="course-rating">
-                        <i class="fas fa-star"></i> 4.8 (250)
-                      </span> --}}
+                                        
                                         <span class="course-lessons">
                                             <i class="fas fa-play"></i> {{ $course->total_lessons }} Lessons
                                         </span>
@@ -487,7 +349,7 @@
     </section>
     <!-- How it Works Section End -->
 
-    <!-- Testimonials Section Start -->
+    {{-- <!-- Testimonials Section Start -->
     <section class="testimonials-section">
         <div class="container">
             <div class="text-center mb-5">
@@ -617,7 +479,7 @@
             </div>
         </div>
     </section>
-    <!-- Testimonials Section End -->
+    <!-- Testimonials Section End --> --}}
     <!-- We are certified By start  -->
     <section class="sister-concern py-5">
         <div class="container text-center">

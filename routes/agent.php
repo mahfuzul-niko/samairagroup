@@ -98,6 +98,12 @@ Route::middleware(['role:agent,admin'])
             Route::post('/enroll/mark/{enroll}', 'updateMark')->name('enroll.mark');
             Route::post('/enroll/update/{enroll}', 'updateEnroll')->name('update.enroll');
             Route::delete('/course/enroll/delete/{enroll}', 'destroyEnroll')->name('delete.enroll');
+            
+            Route::get('/course/all/trainers', 'trainer')->name('trainer');
+            Route::post('/course/store/trainer', 'storeTrainer')->name('store.trainer');
+            Route::post('/course/updaye/trainer/{trainer}', 'updateTrainer')->name('update.trainer');
+            Route::delete('/course/trainer/delete/{trainer}', 'destroyTrainer')->name('delete.trainer');
+
         });
         
 

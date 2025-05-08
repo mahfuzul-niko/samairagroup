@@ -25,7 +25,7 @@ class SystemController extends Controller
             'key' => 'required|string',
             'value' => 'required|string',
         ]);
-        
+
         System::updateOrCreate(
             ['key' => $request->key],
             ['value' => $request->value]
@@ -35,12 +35,12 @@ class SystemController extends Controller
 
     public function storeImage(Request $request)
     {
-        
+
         $request->validate([
             'key' => 'required|string|unique:systems,key',
             'value' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-       
+
         $image = $request->file('value');
         $imagePath = $image->store('uploads/system', 'public'); // storage/app/public/uploads/system
 
@@ -98,7 +98,7 @@ class SystemController extends Controller
         ]);
         $data = new FooterConcern;
         $data->key = $request->key;
-        $data->value = $request->value; 
+        $data->value = $request->value;
         $data->order = $request->order;
         $data->save();
         return redirect()->back()->with('success', 'Footer Concern information saved successfully.');
@@ -120,7 +120,7 @@ class SystemController extends Controller
         ]);
         $data = new FooterLink;
         $data->key = $request->key;
-        $data->value = $request->value; 
+        $data->value = $request->value;
         $data->order = $request->order;
         $data->save();
         return redirect()->back()->with('success', 'Footer Link information saved successfully.');
@@ -140,7 +140,8 @@ class SystemController extends Controller
         $roles = Role::all();
         return view('backend.agent.system.role', compact('roles'));
     }
-    public function storeRole(Request $request){
+    public function storeRole(Request $request)
+    {
         $request->validate([
             'name' => 'required|string',
         ]);
@@ -169,33 +170,34 @@ class SystemController extends Controller
         return redirect()->back()->with('success', 'Role information deleted successfully.');
     }
 
-    public function systemMember(){
-        $members = User::whereHas('role', function($query) {
+    public function systemMember()
+    {
+        $members = User::whereHas('role', function ($query) {
             $query->whereIn('name', ['member', 'trainer']);
         })->get();
         $roles = Role::whereIn('name', ['member', 'trainer'])->get();
-        
+
         return view('backend.agent.system.member', compact('members', 'roles'));
     }
     public function storeMember(Request $request)
-{
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:6|confirmed', // `confirmed` checks password_confirmation
-        'role' => 'required|exists:roles,id',
-    ]);
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed', // `confirmed` checks password_confirmation
+            'role' => 'required|exists:roles,id',
+        ]);
 
-    $user = User::create([
-        'name' => $validated['name'],
-        'email' => $validated['email'],
-        'username' => str_replace(' ', '_', $validated['name']),
-        'password' => Hash::make($validated['password']),
-        'role_id' => $validated['role'],
-    ]);
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'username' => str_replace(' ', '_', $validated['name']),
+            'password' => Hash::make($validated['password']),
+            'role_id' => $validated['role'],
+        ]);
 
-    return redirect()->back()->with('success', 'User created successfully.');
-}
+        return redirect()->back()->with('success', 'User created successfully.');
+    }
     public function destroyMember($id)
     {
         $member = User::findOrFail($id);
@@ -205,7 +207,7 @@ class SystemController extends Controller
     }
 
 
-    
+
 
 
 

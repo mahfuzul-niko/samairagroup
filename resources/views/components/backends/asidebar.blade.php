@@ -77,6 +77,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('agent.course.trainer') }}"
+                        class="{{ request()->routeIs('agent.course.trainer') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Course Trainer</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('agent.course.create') }}"
                         class="{{ request()->routeIs('agent.course.create') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Create Course</span>
@@ -95,17 +101,17 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('agent.course.ssdi.enroll') }}"
-                        class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{ route('agent.course.language') }}"
-                        class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Language Course List</span>
-                    </a>
-                </li>
+                    class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>Language Course List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('agent.course.ssdi.enroll') }}"
+                    class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
+                </a>
+            </li>
 
             </ul>
         </li><!-- End course Nav -->

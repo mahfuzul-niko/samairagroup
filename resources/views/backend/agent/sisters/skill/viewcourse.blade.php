@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <th>User ID</th>
-                        <td>{{ $course->user->name }}</td>
+                        <td>{{ $course->trainer->name }}</td>
                     </tr>
                     <tr>
                         <th>Course For</th>

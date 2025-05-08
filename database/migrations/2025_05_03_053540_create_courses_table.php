@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('course_code');
             $table->foreignId('category_id');
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('trainer_id')->nullable();
             $table->enum('course_for',['ssdi','language','both'])->default('ssdi');
             $table->enum('course_type',['online','offline','both','workshop','event'])->default('offline');
             $table->string('slug')->unique();

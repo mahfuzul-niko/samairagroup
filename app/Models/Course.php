@@ -16,14 +16,15 @@ class Course extends Model
     {
         return $this->belongsTo(CourseCategory::class,'category_id');
     }
-    public function user()
+    public function trainer()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Trainer::class);
     }
     public function enrolls()
     {
         return $this->hasMany(Enroll::class);
     }
+
 
     protected $casts = [
         'start_date' => 'date',

@@ -253,10 +253,10 @@
                     <div class="course-details-sticky-card pro-card">
                         <div class="speaker-badge">trainer</div>
                         <div class="speaker-img-wrap">
-                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/samaira-single-course/Syed_Tanvir_Ahmed_bitBirds.jpg"
+                            <img src="{{ $course->trainer->image ? Storage::url($course->trainer->image) : asset('assets/img/no-profile.png') }}"
                                 class="speaker-img-pro" alt="Speaker">
                         </div>
-                        <div class="speaker-name-pro">{{$course->user->name}}</div>
+                        <div class="speaker-name-pro">{{$course->trainer->name}}</div>
                         <div class="speaker-contact-pro mb-3">
                           {{-- <a href="#" target="_blank" class="icon-btn" title="Send Email">
                             <i class="fas fa-envelope"></i>

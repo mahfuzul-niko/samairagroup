@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseModule;
 use App\Models\Enroll;
+use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -50,31 +51,29 @@ class CourseController extends Controller
 
     public function course()
     {
-        $courses = Course::latest()->with('category', 'user')->get();
-        $ssdiCourses = Course::latest()->where('course_for', 'ssdi')->with('category', 'user')->get();
-        $lagCourses = Course::latest()->where('course_for', 'language')->with('category', 'user')->get();
-        $bothCourses = Course::latest()->where('course_for', 'both')->with('category', 'user')->get();
-
+        $courses = Course::latest()->with('category')->get();
+        $ssdiCourses = Course::latest()->where('course_for', 'ssdi')->with('category' )->get();
+        $lagCourses = Course::latest()->where('course_for', 'language')->with('category' )->get();
+        $bothCourses = Course::latest()->where('course_for', 'both')->with('category')->get();
+        
         return view('backend.agent.sisters.skill.allcourse', compact('courses', 'ssdiCourses', 'lagCourses', 'bothCourses'));
     }
     public function courseSsdi()
     {
-        $ssdiCourses = Course::latest()->where('course_for', 'ssdi')->with('category', 'user')->get();
+        $ssdiCourses = Course::latest()->where('course_for', 'ssdi')->with('category')->get();
         return view('backend.agent.sisters.skill.ssdicourse', compact('ssdiCourses'));
     }
     public function courseLanguage()
     {
 
-        $lagCourses = Course::latest()->where('course_for', 'language')->with('category', 'user')->get();
+        $lagCourses = Course::latest()->where('course_for', 'language')->with('category')->get();
 
         return view('backend.agent.sisters.skill.langcourse', compact('lagCourses'));
     }
     public function createCourse(Request $request)
     {
         $categories = CourseCategory::latest()->get();
-        $trainers = User::whereHas('role', function ($query) {
-            $query->where('name', 'trainer');
-        })->latest()->get();
+        $trainers = Trainer::latest()->get();
 
         return view('backend.agent.sisters.skill.create-course', compact('categories', 'trainers'));
     }
@@ -91,7 +90,7 @@ class CourseController extends Controller
         $course = new Course;
         $course->title = $request->title;
         $course->category_id = $request->category_id;
-        $course->user_id = $request->trainer_id;
+        $course->trainer_id = $request->trainer_id;
         $course->course_for = $request->course_for;
         $course->course_type = $request->course_type;
         $course->course_code = $request->course_code;
@@ -129,9 +128,7 @@ class CourseController extends Controller
     public function createEdit(Course $course, Request $request)
     {
         $categories = CourseCategory::latest()->get();
-        $trainers = User::whereHas('role', function ($query) {
-            $query->where('name', 'trainer');
-        })->latest()->get();
+        $trainers = Trainer::latest()->get();
 
         return view('backend.agent.sisters.skill.editcourse', compact('categories', 'trainers', 'course'));
     }
@@ -140,13 +137,12 @@ class CourseController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'category_id' => 'required|exists:course_categories,id',
-            'trainer_id' => 'required|exists:users,id',
             'price' => 'required',
         ]);
 
         $course->title = $request->title;
         $course->category_id = $request->category_id;
-        $course->user_id = $request->trainer_id;
+        $course->trainer_id = $request->trainer_id;
         $course->course_for = $request->course_for;
         $course->course_type = $request->course_type;
         $course->course_code = $request->course_code;
@@ -263,11 +259,63 @@ class CourseController extends Controller
         $enroll->delete();
         return redirect()->back()->with('success', 'Enroll deleted successfully.');
     }
-    public function updateEnroll(Request $request,Enroll $enroll){
+    public function updateEnroll(Request $request, Enroll $enroll)
+    {
         $enroll->name = $request->name;
         $enroll->email = $request->email;
         $enroll->phone = $request->phone;
         $enroll->save();
         return redirect()->back()->with('success', 'Enroll Updated successfully.');
     }
+
+    ///trainer
+    public function trainer()
+    {
+        $trainers = Trainer::latest()->get();
+        return view('backend.agent.sisters.skill.tranier', compact('trainers'));
+    }
+    public function storeTrainer(Request $request)
+    {
+        $imagePath = $request->file('image')->store('trainers', 'public');
+
+        // Save the trainer
+        $trainer = new Trainer;
+        $trainer->name = $request->name;
+        $trainer->skills = $request->skills;
+        $trainer->image = $imagePath;
+        $trainer->email = $request->email;
+        $trainer->phone = $request->phone;
+        $trainer->save();
+        return redirect()->back()->with('success', 'Trainer Added successfully.');
+    }
+    public function updateTrainer(Request $request, Trainer $trainer)
+    {
+
+        if ($request->hasFile('image')) {
+            $trainer->image = $request->file('image')->store('trainers', 'public');
+        }
+
+        $trainer->name = $request->name;
+        $trainer->skills = $request->skills;
+        $trainer->email = $request->email;
+        $trainer->phone = $request->phone;
+        $trainer->save();
+
+        return redirect()->back()->with('success', 'Trainer updated.');
+    }
+    public function destroyTrainer(Trainer $trainer)
+    {
+        // Optionally delete image file
+        if ($trainer->image && Storage::disk('public')->exists($trainer->image)) {
+            Storage::disk('public')->delete($trainer->image);
+        }
+
+        $trainer->delete();
+
+        return redirect()->back()->with('success', 'Trainer deleted successfully.');
+    }
+
+
+
+
 }
