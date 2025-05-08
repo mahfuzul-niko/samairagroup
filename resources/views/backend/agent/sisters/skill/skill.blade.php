@@ -218,7 +218,7 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#certified{{ $certified->id }}">Edit</a>
+                                                data-bs-target="#certified{{ $certified->id }}"><i class="bi bi-pencil-square"></i></a>
 
                                             <form action="{{ route('agent.group.delete.certified', $certified->id) }}"
                                                 method="POST">

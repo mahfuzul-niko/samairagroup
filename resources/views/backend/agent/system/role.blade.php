@@ -54,7 +54,7 @@
                                         </div>
                                     </td>
                                     <td><a class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#roleModal{{ $role->id }}">Edit</a>
+                                            data-bs-target="#roleModal{{ $role->id }}"><i class="bi bi-pencil-square"></i></a>
                                         <form action="{{ route('agent.system.destroy.role', $role->id) }}"
                                             method="POST" class="d-inline-block">
                                             @csrf

@@ -88,7 +88,7 @@
                                 <tr>
                                     <td>
                                         <img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
-                                            alt="" style="height: 100px; width: 100px;">
+                                            alt="" style="height: 50px; width: auto;">
                                     </td>
                                     <td>{{ $banner->title }}</td>
                                     <td>{{ $banner->description }}</td>
@@ -96,7 +96,7 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a data-bs-toggle="modal" data-bs-target="#banner{{ $banner->id }}"
-                                                class="btn btn-outline-primary btn-sm">Edit</a>
+                                                class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
 
                                             <form action="{{ route('agent.group.delete.banner', $banner->id) }}"
                                                 method="POST" style="display:inline-block;">
@@ -296,7 +296,7 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#concern{{ $concern->id }}">Edit</a>
+                                                data-bs-target="#concern{{ $concern->id }}"><i class="bi bi-pencil-square"></i></a>
 
                                             <form action="{{ route('agent.group.delete.concern', $concern->id) }}"
                                                 method="POST" style="display:inline-block;">
@@ -403,7 +403,7 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#partner{{ $partner->id }}">Edit</a>
+                                                data-bs-target="#partner{{ $partner->id }}"><i class="bi bi-pencil-square"></i></a>
 
                                             <form action="{{ route('agent.group.delete.partner', $partner->id) }}"
                                                 method="POST">
