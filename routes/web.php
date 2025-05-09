@@ -36,6 +36,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/joypur-homes-limited', 'samairajoypurhomes')->name('samairajoypurhomes');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
+    Route::get('/about/us', 'aboutus')->name('aboutus');
+    Route::get('/contact/us', 'contactus')->name('contactus');
 
 });
 Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], function () {

@@ -46,7 +46,7 @@
           <div class="rg-slices rg-slices-rows">
             <div class="rg-slice" data-index="0"></div>
             <div class="rg-slice" data-index="1"></div>
-            <div class="rg-slice" data-index="2"></div>
+            <div class="rg-slice" data-index="2" style="margin-top:-1px;"></div>
           </div>
           <div class="rg-hero-content">
             <h1>Power</h1>
@@ -55,7 +55,7 @@
           </div>
         </div>
          <!-- Slide 1: Power (col-wise) -->
-        <div class="swiper-slide rg-slide" data-bg="{{ asset('assets/frontassets/') }}/images/hero-slider/bg0.png" data-slice="row">
+        <div class="swiper-slide rg-slide" data-bg="{{ asset('assets/frontassets/') }}/images/hero-slider/bg1.png" data-slice="row">
           <div class="rg-slices rg-slices-rows">
             <div class="rg-slice" data-index="0"></div>
             <div class="rg-slice" data-index="1"></div>
@@ -66,7 +66,7 @@
             <p>To meet the high expectation of our customers for world class products and to become the leader and role model in diversified power business sector in Bangladesh that caters to every human growing need. </p>
             <a href="#" class="rg-explore">EXPLORE MORE <span>&rarr;</span></a>
           </div>
-        </div>
+        </div> 
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -128,9 +128,9 @@
             <a href="#">Samaira Aviation Limited</a>
           </div>
         </li> -->
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <!-- <li><a href="#">Blog</a></li> -->
+        <li><a href="{{ route('page.aboutus') }}">About Us</a></li>
+        <li><a href="{{ route('page.contactus') }}">Contact Us</a></li>
       </ul>
     </div>
   </nav>
@@ -371,7 +371,7 @@
       setTimeout(() => {
         document.body.classList.add('loaded');
         document.getElementById('content').style.display = 'block';
-      }, 2000); // Delay to allow full animation
+      }, 2500); // Delay to allow full animation
     });
   </script>
 </body>

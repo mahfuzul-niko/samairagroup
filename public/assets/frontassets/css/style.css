@@ -1,9 +1,11 @@
-
 :root{
   --primary-color: #2293ce;
   --secondary-color: #ffcd31;
   --text-color: #fff;
   --text-color-dark: #000;
+}
+.bg-lightblue {
+background-color: #d6f0ff; /* Very light blue */
 }
 body{
 font-family: 'Poppins', sans-serif;
@@ -197,7 +199,7 @@ font-style: normal;
 }
 .rg-slices-rows .rg-slice {
   width: 100%;
-  height: 33.3333%;
+  height: 40%;
   background-size: 100% 300%;
   background-repeat: no-repeat;
   opacity: 0;
@@ -330,7 +332,7 @@ font-style: normal;
 }
 @media (max-width: 1400px) {
   .rg-navbar-container{
-    max-width: 1330px !important;
+    max-width: 1350px !important;
   }
   .rg-hero-content h1{
     font-size: 30px;
@@ -343,10 +345,6 @@ font-style: normal;
   }
   .subscribe-wrapper{
     padding: 50px 20px !important;
-  }
-  .bg-left-circles{
-    left: -46px !important;
-    top: -12px !important;
   }
 }
 @media (max-width: 700px) {
@@ -369,6 +367,8 @@ font-style: normal;
     margin-top: 40px;
     padding: 18px 10px 18px 10px;
     max-width: 98vw;
+    background: rgba(0,0,0,.4117647059);
+    color: var(--text-color);
   }
   .rg-hero-content h1 {
     font-size: 32px;
@@ -539,7 +539,7 @@ font-style: normal;
 .rg-mega-menu {
   display: none;
   position: absolute;
-  left: -20%;
+  left: -110%;
   top: 130%;
   transform: translateX(-50%);
   background: rgba(255,255,255,0.98);
@@ -1280,7 +1280,7 @@ transform: translateY(-3px);
 }
 
 .logo-description .footer-logo img {
-  height: 70px;
+  height: 150px;
 }
 
 .logo-description .follow-title {
@@ -1304,7 +1304,7 @@ transform: translateY(-3px);
 }
 
 .logo-description .footer-logo img {
-  height: 60px;
+  height: 150px;
 }
 
 .logo-description .follow-title {
@@ -1330,7 +1330,7 @@ transform: translateY(-3px);
 }
 
 .logo-description .footer-logo img {
-  height: 50px;
+  height: 150px;
 }
 
 .logo-description .follow-title {
