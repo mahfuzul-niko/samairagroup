@@ -72,4 +72,12 @@ class PagesController extends Controller
      {
           return view('frontend.samairaskills.enroll');
      }
+     public function aboutus()
+     {
+          return view('frontend.samairagroup.about');
+     }
+     public function contactus()
+     {
+          return view('frontend.samairagroup.contact');
+     }
 }

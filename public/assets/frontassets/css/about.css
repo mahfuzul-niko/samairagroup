@@ -1,0 +1,336 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+/* Slider Styles */
+.about-slider-container {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 400px;
+  overflow: visible;
+  background: #222;
+  margin-bottom:38rem;
+}
+.about-swiper, .about-swiper .swiper-wrapper, .about-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+.about-swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* About Overlap Section */
+.about-overlap {
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -40px);
+    background: white;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    border-radius: 16px;
+    padding: 40px 32px 32px 32px;
+    max-width: 1400px;
+    width: 90vw;
+    z-index: 10;
+    border-top: 10px solid #2293ce;
+}
+.about-overlap h1 {
+  font-size: 20px;
+  color: #222;
+  margin-bottom: 18px;
+  font-weight: normal;
+}
+.about-overlap h2 {
+  font-size: 30px;
+  color: #2293ce;
+  margin-bottom: 18px;
+  position: relative;
+  padding-left: 52px;
+}
+.about-overlap h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3%;
+  height: 2px;
+  background: #2293ce;
+  top: 32%;
+}
+
+.about-overlap p {
+  font-size: 1.1rem;
+  color: #222;
+  line-height: 1.6;
+  padding-left: 52px;
+}
+
+
+/* Responsive */
+@media all and (max-width: 600px) {
+  .about-overlap h1 {
+    font-size: 1.2rem;
+  }
+}
+@media all and (max-width: 768px) {
+  .about-slider-container,
+  .contact-slider-container {
+    height: 50vh !important;
+    min-height: 220px !important;
+    text-align: center;
+  }
+  .about-overlap h1{
+    font-size: 16px;
+  }
+  .about-overlap h2{
+    font-size: 20px;
+    padding-left:0;
+  }
+  .about-overlap p{
+    font-size: 14px;
+    padding-left: 0;
+  }
+  .about-overlap h2::before{
+    display: none;
+  }
+}
+@media all and (max-width: 500px) {
+  .about-slider-container,
+  .contact-slider-container {
+    height: 30vh !important;
+  }
+  .about-slider-container {
+    margin-bottom: 60rem;
+  }
+}
+
+/* 
+=========================================
+Contact Page Css Start 
+=========================================
+*/
+/* Contact Overlap Section */
+.contact-slider-container{
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 350px;
+  overflow: visible;
+  background: #222;
+  margin-bottom:50rem;
+}
+.contact-overlap {
+  padding: 0;
+  background: #fff;
+  border-top: 10px solid #2293ce;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  border-radius: 16px;
+  max-width: 1400px;
+  width: 95vw;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 95%;
+  transform: translate(-50%, -20px);
+  z-index: 10;
+}
+
+.contact-container {
+  display: flex;
+  gap: 40px;
+  padding: 48px 32px 32px 32px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1 1 320px;
+  background: #f7f9fa;
+  border-radius: 12px;
+  padding: 32px 24px;
+  min-width: 270px;
+  max-width: 370px;
+  box-sizing: border-box;
+}
+.contact-info h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+.contact-info p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+.contact-method {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 22px;
+  font-size: 1rem;
+}
+.contact-method i {
+  font-size: 1.3rem;
+  color: #2293ce;
+  margin-top: 3px;
+  min-width: 22px;
+}
+.contact-method strong {
+  font-weight: 600;
+  color: #222;
+}
+.contact-method a {
+  color: #2293ce;
+  text-decoration: none;
+  font-size: 1rem;
+  word-break: break-all;
+}
+.contact-method a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form {
+  flex: 2 1 400px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  min-width: 300px;
+  box-shadow: 0 2px 8px rgba(34,147,206,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-form h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+.contact-form .wave {
+  font-size: 1.5rem;
+}
+.form-row {
+  display: flex;
+  gap: 18px;
+}
+.form-group {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group label {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #dbe3ea;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border 0.2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2293ce;
+  background: #fff;
+}
+.phone-input {
+  display: flex;
+  gap: 6px;
+}
+.phone-input select {
+  width: 70px;
+  min-width: 60px;
+  padding: 10px 6px;
+}
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+.send-btn {
+  background: #2293ce;
+  color: #fff;
+  border: none;
+  padding: 13px 0;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.send-btn:hover {
+  background: #176fa1;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 8px;
+  }
+  .contact-info, .contact-form {
+    max-width: 100%;
+    min-width: 0;
+    padding: 24px 10px;
+  }
+  .contact-form h2 {
+    font-size: 1.3rem;
+  }
+}
+@media (max-width: 600px) {
+  .contact-overlap {
+    padding: 20px;
+  }
+  .contact-container {
+    padding: 16px 2px;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .contact-form {
+    padding: 30px 3px;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+  .contact-info {
+    padding: 30px 40px;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+  .form-group{
+    flex: 1 1 90px;
+  }
+  .form-group input{
+    width: 100%;
+  }
+  .contact-logo-description{
+    margin-top: 95rem !important;
+  }
+}
+/* 
+=========================================
+Contact Page Css End 
+=========================================
+*/
