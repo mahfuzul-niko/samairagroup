@@ -22,6 +22,8 @@
     <!-- GLightbox CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/glightbox.min.css" />
 
+
+    {{-- <link href="{{ asset('assets/frontassets/') }}/css/samaira-main.css" rel="stylesheet"> --}}
 </head>
 
 <body>
@@ -380,69 +382,7 @@
     <!-- Enrollment Discount Section End -->
 
     <!-- Footer Section Start -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="row">
-                <!-- Footer Widget 1: About -->
-                <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                    <div class="footer-widget">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" alt="Logo"
-                            class="footer-logo mb-3">
-                        <p class="footer-description">A service a treansaction in which no physical goods are
-                            transferred from the seller, to the buyer. the benefits of such a service are</p>
-                        <div class="footer-social-icons">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-google"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer Widget 2: Company Links -->
-                <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
-                    <div class="footer-widget">
-                        <h4 class="widget-title">Company</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Test Exam</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Footer Widget 3: Courses Links -->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <div class="footer-widget">
-                        <h4 class="widget-title">Courses</h4>
-                        <ul class="footer-links">
-                            <li><a href="#">UIUX</a></li>
-                            <li><a href="#">Design</a></li>
-                            <li><a href="#">Business</a></li>
-                            <li><a href="#">Mobile and Banking</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Footer Widget 4: Newsletter -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="footer-widget">
-                        <h4 class="widget-title">Get Update Newsletter</h4>
-                        <p class="newsletter-description">Subscribe to get the latest news from us</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Email" class="form-control">
-                            <button type="submit" class="btn-submit"><i class="fas fa-arrow-right"></i></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p class="copyright-text">Copyright@2022</p>
-            </div>
-        </div>
-    </footer>
+<x-layouts.footer/>
     <!-- Footer Section End -->
 
     <!-- jQuery -->
