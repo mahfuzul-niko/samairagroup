@@ -100,4 +100,8 @@ class PagesController extends Controller
           $about = About::latest()->where('key','ssdi')->first();
           return view('frontend.content.about',compact('banners','about','concerns'));
      }
+     public function comingsoon()
+     {
+          return view('frontend.content.coming-soon');
+     }
 }

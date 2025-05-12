@@ -40,6 +40,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
     Route::get('/about/us', 'aboutus')->name('aboutus');
     Route::get('/contact/us', 'contactus')->name('contactus');
+    Route::get('/coming/soon', 'comingsoon')->name('comingsoon');
 
 });
 Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], function () {
