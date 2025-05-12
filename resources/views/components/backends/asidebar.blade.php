@@ -89,6 +89,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('agent.course.feature') }}"
+                        class="{{ request()->routeIs('agent.course.feature') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Featured Course</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('agent.course.course') }}"
                         class="{{ request()->routeIs('agent.course.course') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>All Course List</span>

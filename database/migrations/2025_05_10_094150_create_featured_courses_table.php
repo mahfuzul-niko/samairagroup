@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('samaira_groups', function (Blueprint $table) {
+        Schema::create('featured_courses', function (Blueprint $table) {
             $table->id();
-            $table->text('concern_image')->nullable();
-            $table->string('concern_text')->nullable();
-            $table->string('concern_link')->nullable();
+            $table->string('title');
+            $table->text('image');
+            $table->foreignId('course_id');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('samaira_groups');
+        Schema::dropIfExists('featured_courses');
     }
 };

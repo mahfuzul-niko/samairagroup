@@ -114,8 +114,8 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/student.png" alt="Student"
-                            class="student-img">
+                        <img src="{{ system_key('samaira_skills_banner') ? Storage::url(system_key('samaira_skills_banner')) : asset('assets/img/no-profile.png') }}"
+                            alt="Student" class="student-img">
                         <!-- <div class="pattern-bg"></div>
                         <div class="dots-pattern"></div> -->
 
@@ -171,44 +171,44 @@
             <!-- Swiper -->
             <div class="swiper courses-swiper pt-3">
                 <div class="swiper-wrapper">
-                  @foreach ($courses as $course)
-                      
-                  <!-- Slide 1 -->
-                  <div class="swiper-slide">
-                      <div class="course-card h-100">
-                          <div class="card-image position-relative">
-                              <div class="ribbon">{{$course->course_type}}</div>
-                              <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
-                                  class="img-fluid w-100" alt="Course Image">
-                              <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
-                                  <a href="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
-                                      class="btn btn-light btn-sm rounded-circle overlay-btn glightbox"
-                                      data-gallery="course-gallery">
-                                      <i class="fas fa-eye"></i>
-                                  </a>
-                                  
-                              </div>
-                          </div>
-                          <div class="course-content">
-                              <span class="course-price">{{$course->price}} Taka</span>
-                              <a href="{{ route('page.ssdi.course', $course) }}">
-                                  <h3 class="course-title">{{$course->title}}</h3>
-                              </a>
-                              <div class="course-meta">
-                                  <span class="course-rating">
-                                      <a href="{{route('page.ssdi.course.enroll',$course)}}" class="btn-sm" title="Enroll Now">Enroll Now</a>
-                                  </span>
-                                  
-                                  <span class="course-lessons">
-                                      <i class="fas fa-play"></i> {{$course->total_lessons}} Lessons
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  @endforeach
+                    @foreach ($courses as $course)
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="course-card h-100">
+                                <div class="card-image position-relative">
+                                    <div class="ribbon">{{ $course->course_type }}</div>
+                                    <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
+                                        class="img-fluid w-100" alt="Course Image">
+                                    <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
+                                        <a href="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
+                                            class="btn btn-light btn-sm rounded-circle overlay-btn glightbox"
+                                            data-gallery="course-gallery">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
 
-                    
+                                    </div>
+                                </div>
+                                <div class="course-content">
+                                    <span class="course-price">{{ $course->price }} Taka</span>
+                                    <a href="{{ route('page.ssdi.course', $course) }}">
+                                        <h3 class="course-title">{{ $course->title }}</h3>
+                                    </a>
+                                    <div class="course-meta">
+                                        <span class="course-rating">
+                                            <a href="{{ route('page.ssdi.course.enroll', $course) }}" class="btn-sm"
+                                                title="Enroll Now">Enroll Now</a>
+                                        </span>
+
+                                        <span class="course-lessons">
+                                            <i class="fas fa-play"></i> {{ $course->total_lessons }} Lessons
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
 
                 </div>
 
@@ -217,7 +217,7 @@
                 <div class="swiper-button-prev"></div>
             </div>
 
-            
+
         </div>
     </section>
     <!-- Latest Courses Section End  -->
@@ -233,132 +233,50 @@
             <!-- Category Filter Buttons -->
             <div class="category-filters text-center mb-4">
                 <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="graphic">Graphic</button>
-                <button class="filter-btn" data-category="business">Business</button>
-                <button class="filter-btn" data-category="finance">Finance and Banking</button>
-                <button class="filter-btn" data-category="photography">Photography</button>
-                <button class="filter-btn" data-category="uiux">UI/UX</button>
-                <button class="filter-btn" data-category="color">Color</button>
+                @foreach ($categories as $category)
+                    <button class="filter-btn text-capitalize"
+                        data-category="{{ $category->title }}">{{ $category->title }}</button>
+                @endforeach
             </div>
 
             <!-- Course Cards Slider -->
             <div class="swiper category-swiper">
                 <div class="swiper-wrapper">
                     <!-- Graphic Design Courses -->
-                    <div class="swiper-slide" data-category="graphic">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <div class="ribbon">Online Course</div>
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course1.png"
-                                    alt="Graphic Design Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Advanced</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Learn Graphic Design Fundamentals</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 3 Classes</span>
-                                    <span><i class="far fa-clock"></i> 06:00:00</span>
-                                </div>
-                                <div class="course-bottom-row">
-                                    <div class="price-free">Free</div>
-                                    <a href="#" class="enroll-btn">Enroll Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" data-category="graphic">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <div class="ribbon">Online Course</div>
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course2.png"
-                                    alt="Graphic Design Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Advanced</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Learn Graphic Design Fundamentals</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 3 Classes</span>
-                                    <span><i class="far fa-clock"></i> 06:00:00</span>
-                                </div>
-                                <div class="course-bottom-row">
-                                    <div class="price-free">Free</div>
-                                    <a href="#" class="enroll-btn">Enroll Now</a>
+                    @foreach ($categories as $category)
+                        @foreach ($category->courses as $course)
+                            <div class="swiper-slide" data-category="{{ $category->title }}">
+                                <div class="course-card">
+                                    <div class="card-image">
+                                        <div class="ribbon">{{ $course->course_type }}</div>
+                                        <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
+                                            alt="Graphic Design Course">
+                                    </div>
+                                    <div class="course-info">
+                                        <span class="course-level text-capitalize">{{ $category->title }}</span>
+                                    </div>
+                                    <div class="card-content">
+                                        <h3>{{ $course->title }} {{ $course->batch }}</h3>
+                                        <div class="course-meta">
+                                            <span><i class="fas fa-book-open"></i> {{ $course->total_lessons }}
+                                                Lessons</span>
+                                        </div>
+                                        <div class="course-bottom-row">
+                                            <div class="price-free">{{ $course->price }} Taka</div>
+                                            <a href="{{ route('page.ssdi.course.enroll', $course) }}" class="enroll-btn">Enroll Now</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Business Courses -->
-                    <div class="swiper-slide" data-category="business">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <div class="ribbon">Online Course</div>
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course3.png"
-                                    alt="Business Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Beginner</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Business Strategy Fundamentals</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 4 Classes</span>
-                                    <span><i class="far fa-clock"></i> 08:00:00</span>
-                                </div>
-                                <div class="course-bottom-row">
-                                    <div class="price-free">Free</div>
-                                    <a href="#" class="enroll-btn">Enroll Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Finance Courses -->
-                    <div class="swiper-slide" data-category="finance">
-                        <div class="course-card">
-                            <div class="card-image">
-                                <div class="ribbon">Online Course</div>
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/top-course1.png"
-                                    alt="Finance Course">
-                            </div>
-                            <div class="course-info">
-                                <span class="course-level">Intermediate</span>
-                                <button class="wishlist-btn"><i class="far fa-heart"></i></button>
-                            </div>
-                            <div class="card-content">
-                                <h3>Financial Planning and Analysis</h3>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-book-open"></i> 5 Classes</span>
-                                    <span><i class="far fa-clock"></i> 10:00:00</span>
-                                </div>
-                                <div class="course-bottom-row">
-                                    <div class="price-free">Free</div>
-                                    <a href="#" class="enroll-btn">Enroll Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- More slides for other categories... -->
+                        @endforeach
+                    @endforeach
                 </div>
                 <!-- Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-            <!-- Pagination -->
-            <!-- <div class="swiper-pagination"></div> -->
         </div>
     </section>
-    <!-- Course Categories Section End -->
-
-    <!-- How it Works Section Start -->
     <section class="how-it-works">
         <div class="container">
             <h2 class="section-title text-center">How it Works</h2>
@@ -371,7 +289,7 @@
                             <i class="fas fa-bars"></i>
                         </div>
                         <h3>Register</h3>
-                        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                        <p>{{ system_key('system_skill_register') }}</p>
                     </div>
                 </div>
 
@@ -382,7 +300,7 @@
                             <i class="fas fa-plus"></i>
                         </div>
                         <h3>Add New Course</h3>
-                        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                        <p>{{ system_key('system_skill_new_course') }}</p>
                     </div>
                 </div>
 
@@ -393,145 +311,13 @@
                             <i class="fas fa-check"></i>
                         </div>
                         <h3>Success</h3>
-                        <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.</p>
+                        <p>{{ system_key('system_skill_success') }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- How it Works Section End -->
-
-    <!-- Testimonials Section Start -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="section-title">Nothing less than excellent</h2>
-                <div class="trustpilot-info">
-                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/trustpilot.png"
-                        alt="Trustpilot" class="trustpilot-logo">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <p class="review-count">Reviews 4,317 <span>Excellent</span></p>
-            </div>
-
-            <!-- Testimonial Slider -->
-            <div class="swiper testimonial-swiper">
-                <div class="swiper-wrapper">
-                    <!-- Testimonial 1 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and
-                                user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser1.png"
-                                    alt="Orlando Diggs" class="author-image">
-                                <div class="author-info">
-                                    <h4>Orlando Diggs</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and
-                                user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser2.png"
-                                    alt="Mollie Hall" class="author-image">
-                                <div class="author-info">
-                                    <h4>Mollie Hall</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and
-                                user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser3.png"
-                                    alt="Lori Bryson" class="author-image">
-                                <div class="author-info">
-                                    <h4>Lori Bryson</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 4 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and
-                                user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser1.png"
-                                    alt="Lori Bryson" class="author-image">
-                                <div class="author-info">
-                                    <h4>Lori Bryson</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Navigation and Pagination Container -->
-                <div class="testimonial-controls">
-                    <div class="control-wrapper">
-                        <div class="swiper-button-prev testimonial-prev">
-                            <i class="fas fa-arrow-left"></i>
-                        </div>
-                        <div class="swiper-pagination testimonial-pagination"></div>
-                        <div class="swiper-button-next testimonial-next">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonials Section End -->
 
     <!-- We are certified By start  -->
     <section class="sister-concern py-5">
@@ -541,82 +327,26 @@
                 <div class="logos-slider">
                     <!-- First set of logos -->
                     <div class="d-flex">
+                        @foreach ($certifieds as $certified)
+                            
                         <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png"
+                            <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
                                 alt="Logo 1" class="sister-logo">
                         </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png"
-                                alt="Logo 2" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png"
-                                alt="Logo 3" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png"
-                                alt="Logo 4" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png"
-                                alt="Logo 5" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png"
-                                alt="Logo 6" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                alt="Logo 7" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png"
-                                alt="Logo 8" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png"
-                                alt="Logo 9" class="sister-logo">
-                        </div>
+                        @endforeach
+                       
                     </div>
-                    <!-- Duplicate set of logos for seamless loop -->
                     <div class="d-flex">
+                        @foreach ($certifieds as $certified)
+                            
                         <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png"
+                            <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
                                 alt="Logo 1" class="sister-logo">
                         </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png"
-                                alt="Logo 2" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png"
-                                alt="Logo 3" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png"
-                                alt="Logo 4" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png"
-                                alt="Logo 5" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png"
-                                alt="Logo 6" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                alt="Logo 7" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png"
-                                alt="Logo 8" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png"
-                                alt="Logo 9" class="sister-logo">
-                        </div>
+                        @endforeach
+                       
                     </div>
+                   
                 </div>
             </div>
         </div>
@@ -629,16 +359,15 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="enrollment-image">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/enroll_student.png"
+                        <img src="{{ $featured->image ? Storage::url($featured->image) : asset('assets/img/no-profile.png') }}"
                             alt="Student Image">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="enrollment-content">
-                        <h2>Register & Enroll Now, and Get 69% Discount</h2>
+                        <h2>{{ $featured->title }}</h2>
                         <div class="cta-group">
-                            <a href="#" class="btn btn-primary enrollment-btn">Start Free Trial</a>
-                            <span class="price-info">$19.00/month</span>
+                            <a href="{{ route('page.ssdi.course.enroll',  $featured->course) }}" class="btn btn-primary enrollment-btn">Start Free Trial</a>
                         </div>
                     </div>
                 </div>
