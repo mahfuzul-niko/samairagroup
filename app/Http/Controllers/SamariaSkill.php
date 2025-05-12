@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\AboutBanner;
 use App\Models\CourseCategory;
 use App\Models\SkillAdvertise;
 use App\Models\SkillCertified;
@@ -14,8 +16,9 @@ class SamariaSkill extends Controller
     {
         $certifieds = SkillCertified::latest()->get();
         $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
-       
-        return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise'));
+       $aboutbanners = AboutBanner::latest()->where('key', 'ssdi')->get();
+        $about = About::latest()->where('key', 'ssdi')->first();
+        return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise','aboutbanners','about'));
     }
 
     //skills

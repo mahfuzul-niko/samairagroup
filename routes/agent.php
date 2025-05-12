@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Agent\PagesController;
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
@@ -27,7 +28,7 @@ Route::middleware(['role:agent,admin'])
 
             Route::get('/system', 'system')->name('index');
             Route::post('/system/store', 'store')->name('store');
-            Route::post('/system/store-image','storeImage')->name('storeImage');
+            Route::post('/system/store-image', 'storeImage')->name('storeImage');
             Route::post('/system/update/{id}', 'update')->name('update');
             Route::Delete('/system/delete/{id}', 'destroy')->name('destroy');
             Route::post('/system/image/delete/{key}', 'destroyImage')->name('destroy.image');
@@ -47,7 +48,7 @@ Route::middleware(['role:agent,admin'])
             Route::post('/SamairaGroup/banner/store', 'storeBanner')->name('store.banner');
             Route::post('/SamairaGroup/banner/update/{group_banner}', 'updateBanner')->name('update.banner');
             Route::delete('/SamairaGroup/banner/delete/{group_banner}', 'destroyBanner')->name('delete.banner');
-            
+
             Route::post('/SamairaGroup/concern/store', 'storeConcern')->name('store.concern');
             Route::post('/SamairaGroup/concern/update/{concern}', 'updateConcern')->name('update.concern');
             Route::delete('/SamairaGroup/concern/delete/{concern}', 'destroyConcern')->name('delete.concern');
@@ -61,24 +62,24 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/SamairaGroup/about/delete/{about}', 'destroyAbout')->name('delete.about');
 
         });
-        Route::group(['controller' => SamariaSkill::class,'as'=>'group.'], function () {
+        Route::group(['controller' => SamariaSkill::class, 'as' => 'group.'], function () {
             Route::get('/samairaskills', 'samairaSkill')->name('samairaskill');
             Route::post('/SamairaGroup/certified/store', 'storeCertified')->name('store.certified');
             Route::post('/SamairaGroup/certified/update/{certified}', 'updateCertified')->name('update.certified');
             Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
             Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
 
-           
+
 
         });
-        
-        Route::group(['controller' => CourseController::class,'as'=>'course.'], function () {
+
+        Route::group(['controller' => CourseController::class, 'as' => 'course.'], function () {
             Route::get('/course/category', 'courseCategory')->name('category');
             Route::post('/course/category/store', 'storeCategory')->name('category.store');
             Route::post('/course/category/update/{category}', 'updateCategory')->name('category.update');
             Route::delete('/course/category/delete/{category}', 'destroyCategory')->name('category.delete');
-            
-            
+
+
             Route::get('/create/course', 'createCourse')->name('create');
             Route::get('/edit/course/{course:slug}', 'createEdit')->name('edit');
             Route::get('/courses', 'course')->name('course');
@@ -88,28 +89,41 @@ Route::middleware(['role:agent,admin'])
             Route::post('/course/store', 'storeCourse')->name('store');
             Route::post('/course/update/{course}', 'updateCourse')->name('update');
             Route::delete('/course/delete/{course}', 'destroyCourse')->name('delete');
-            
-            
-            
+
+
+
             Route::post('/course/store/module', 'storeModule')->name('store.module');
             Route::delete('/course/module/delete/{module}', 'destroyModule')->name('delete.module');
-            
+
             Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('ssdi.enroll');
             Route::post('/enroll/mark/{enroll}', 'updateMark')->name('enroll.mark');
             Route::post('/enroll/update/{enroll}', 'updateEnroll')->name('update.enroll');
             Route::delete('/course/enroll/delete/{enroll}', 'destroyEnroll')->name('delete.enroll');
-            
+
             Route::get('/course/all/trainers', 'trainer')->name('trainer');
             Route::post('/course/store/trainer', 'storeTrainer')->name('store.trainer');
             Route::post('/course/updaye/trainer/{trainer}', 'updateTrainer')->name('update.trainer');
             Route::delete('/course/trainer/delete/{trainer}', 'destroyTrainer')->name('delete.trainer');
-            
+
             Route::get('/course/feature', 'courseFeatured')->name('feature');
             Route::post('/course/store/feature', 'storeFeature')->name('store.feature');
             Route::post('/course/update/feature/{feature}', 'updateFeature')->name('update.feature');
             Route::delete('/course/feature/delete/{feature}', 'destroyFeature')->name('delete.feature');
-
         });
-        
+
+        Route::group(['controller' => ContentController::class, 'as' => 'content.'], function () {
+            //about banner
+             Route::post('/content/store/about/banner', 'storeAboutBanner')->name('about.store.banner');
+             Route::delete('/content/delete/about/banner/{banner}', 'deleteAboutBanner')->name('about.delete.banner');
+
+
+             Route::post('/content/store/about', 'storeAbout')->name('store.about');
+             Route::post('/content/update/about/{about}', 'updateAbout')->name('update.about');
+             Route::delete('/content/delete/about/{about}', 'deleteAbout')->name('delete.about');
+
+
+            });
+
+
 
     });

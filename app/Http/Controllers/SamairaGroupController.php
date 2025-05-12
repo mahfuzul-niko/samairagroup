@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\AboutBanner;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\Partner;
@@ -15,12 +17,12 @@ class SamairaGroupController extends Controller
     {
         $banners = GroupBanner::latest()->get();
         $concerns = SamairaGroup::latest()->get();
-
         $partners = Partner::latest()->get();
-        $about = GroupAbout::latestOrEmpty();
-        // dd($about);
 
-        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'about'));
+        $aboutbanners = AboutBanner::latest()->where('key', 'samairagroup')->get();
+        $about = About::latest()->where('key', 'samairagroup')->first();
+       
+        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners','about'));
     }
     public function storeBanner(Request $request)
     {
@@ -182,7 +184,7 @@ class SamairaGroupController extends Controller
     // Group About
     public function storeAbout(Request $request)
     {
-        
+
         $validated = $request->validate([
             'title' => 'nullable|string',
             'subtitle' => 'nullable|string',
@@ -198,7 +200,7 @@ class SamairaGroupController extends Controller
         } else {
             $imagePath = $request->input('old_image') ?: null;
         }
-        
+
 
         $groupAbout = GroupAbout::create([
             'title' => $validated['title'],
@@ -207,20 +209,20 @@ class SamairaGroupController extends Controller
             'about' => $validated['about'],
             'link' => $validated['link'],
         ]);
-        if ($groupAbout->id >= 3){
-            $did = $groupAbout->id -2 ;
+        if ($groupAbout->id >= 3) {
+            $did = $groupAbout->id - 2;
 
             $groupAbout = GroupAbout::findOrFail($did);
-    
+
             // Delete the image if it exists
             if ($groupAbout->image) {
                 Storage::disk('public')->delete($groupAbout->image);
             }
-    
+
             $groupAbout->delete();
         }
 
-            return redirect()->back()->with('success', 'Group About created successfully.');
+        return redirect()->back()->with('success', 'Group About created successfully.');
     }
 
     public function updateAbout(Request $request, $id)
