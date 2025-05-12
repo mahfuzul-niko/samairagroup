@@ -69,12 +69,17 @@
                 @endforeach
             </div>
         </div>
-        <!-- About Section Overlap -->
+        @if (!is_null($about))
+            
+       
         <section class="about-overlap">
             <h1>About {{$about->name}}</h1>
             <h2>{{$about->title}}</h2>
           <p>{{$about->description}}</p>
         </section>
+            
+        @endif
+        <!-- About Section Overlap -->
     </div>
     <!-- Slider End -->
 

@@ -87,13 +87,6 @@ class PagesController extends Controller
      }
 
 
-
-
-
-
-
-
-
      //abouts
      public function samairagroupAbout(){
           $concerns = SamairaGroup::latest()->get();
