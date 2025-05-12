@@ -15,6 +15,7 @@ class SamairaGroupController extends Controller
     {
         $banners = GroupBanner::latest()->get();
         $concerns = SamairaGroup::latest()->get();
+
         $partners = Partner::latest()->get();
         $about = GroupAbout::latestOrEmpty();
         // dd($about);
@@ -73,11 +74,11 @@ class SamairaGroupController extends Controller
     {
         $request->validate([
             'concern_image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
-            'concern_title' => 'nullable|string|max:255',
+            'concern_text' => 'nullable',
             'concern_link' => 'nullable|string|max:255',
         ]);
 
-        $data = $request->only(['concern_title', 'concern_link']);
+        $data = $request->only(['concern_text', 'concern_link']);
 
         if ($request->hasFile('concern_image')) {
             $data['concern_image'] = $request->file('concern_image')->store('concerns', 'public');

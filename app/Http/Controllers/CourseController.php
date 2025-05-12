@@ -6,6 +6,7 @@ use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\CourseModule;
 use App\Models\Enroll;
+use App\Models\FeaturedCourse;
 use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -52,10 +53,10 @@ class CourseController extends Controller
     public function course()
     {
         $courses = Course::latest()->with('category')->get();
-        $ssdiCourses = Course::latest()->where('course_for', 'ssdi')->with('category' )->get();
-        $lagCourses = Course::latest()->where('course_for', 'language')->with('category' )->get();
+        $ssdiCourses = Course::latest()->where('course_for', 'ssdi')->with('category')->get();
+        $lagCourses = Course::latest()->where('course_for', 'language')->with('category')->get();
         $bothCourses = Course::latest()->where('course_for', 'both')->with('category')->get();
-        
+
         return view('backend.agent.sisters.skill.allcourse', compact('courses', 'ssdiCourses', 'lagCourses', 'bothCourses'));
     }
     public function courseSsdi()
@@ -314,6 +315,56 @@ class CourseController extends Controller
 
         return redirect()->back()->with('success', 'Trainer deleted successfully.');
     }
+
+    //featured course
+    public function courseFeatured()
+    {
+        $courses = Course::where('course_for', 'ssdi')->latest()->get();
+        $features = FeaturedCourse::latest()->get();
+        return view('backend.agent.sisters.skill.featured', compact('courses','features'));
+    }
+    public function storeFeature(Request $request)
+    {
+        $feature = new FeaturedCourse;
+        $feature->title = $request->title;
+        $feature->course_id = $request->course_id;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('feature/images', 'public');
+            $feature->image = $imagePath;
+        }
+        $feature->save();
+        return redirect()->back()->with('success', 'New Feature Added Successfully');
+    }
+    public function updateFeature(Request $request, FeaturedCourse $feature)
+    {
+
+        $feature->title = $request->title;
+        $feature->course_id = $request->course_id;
+        if ($request->hasFile('image')) {
+
+            if ($feature->image && Storage::disk('public')->exists($feature->image)) {
+                Storage::disk('public')->delete($feature->image);
+            }
+
+
+            $imagePath = $request->file('image')->store('feature/images', 'public');
+            $feature->image = $imagePath;
+        }
+        $feature->save();
+        return redirect()->back()->with('success', 'New Feature Updated Successfully');
+    }
+    public function destroyFeature(FeaturedCourse $feature)
+    {
+
+        if ($feature->image && Storage::disk('public')->exists($feature->image)) {
+            Storage::disk('public')->delete($feature->image);
+        }
+
+        $feature->delete();
+
+        return redirect()->back()->with('success', 'Featured course deleted successfully.');
+    }
+
 
 
 

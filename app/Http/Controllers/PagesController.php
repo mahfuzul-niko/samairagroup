@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\FeaturedCourse;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\Partner;
@@ -31,9 +32,10 @@ class PagesController extends Controller
 
 
           $categories = CourseCategory::latest()->get();
-
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'categories', 'courses'));
+          $featured = FeaturedCourse::latest()->first();
+          
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'categories', 'courses','featured'));
      }
      public function ssdiCourse(Course $course)
      {

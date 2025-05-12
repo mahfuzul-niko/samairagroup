@@ -161,91 +161,6 @@
         </div>
     </section>
 
-
-    <section class="about">
-        <div class="card">
-
-            <div class="card-body ">
-                <h5 class="card-title">About</h5>
-                <form method="POST" action="{{ route('agent.group.store.about', $about) }}"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group mt-2">
-                        <label for="">About Title</label>
-                        <input type="text" class="form-control" id="" name="title"
-                            value="{{ $about->title }}">
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="">Sub Title</label>
-                        <input type="text" class="form-control" id="" name="subtitle"
-                            value="{{ $about->subtitle }}">
-                    </div>
-                    <div class="form-group mt-2">
-                        <label for="">About Image</label>
-
-                        <input type="hidden" class="form-control" id="" name="old_image" value="{{ $about->image }}">
-                        <input type="file" class="form-control" id="" name="image">
-                    </div>
-                    <div class="my-3">
-                        <label for="">About Description</label>
-                        <textarea id="summernote" name="about">{{$about->about}}</textarea>
-                    </div>
-                    <div class="form-group my-2">
-                        <label for="">About Button Link</label>
-                        <input type="url" class="form-control" id="" name="link" value="{{ $about->link }}">
-                    </div>
-                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                </form>
-            </div>
-            <div class="card-body">
-                <div class="card-title">
-                    view About
-                </div>
-                <table class="table table-bordered rounded table-striped table-sm">
-                    <tr>
-                        <th class="w-25">Title</th>
-                        <td>{{ $about->title }}</td>
-                    </tr>
-                    <tr>
-                        <th>Sub Title</th>
-                        <td>{{ $about->subtitle }}</td>
-                    </tr>
-                    <tr>
-                        <th>About Image</th>
-                        <td>
-                            <img src="{{ $about->image ? Storage::url($about->image) : asset('assets/img/no-profile.png') }}"
-                                alt="About Image" class="img-fluid" style="height: 200px; width: auto;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>About Description</th>
-                        <td>{!! $about->about !!}</td>
-                    </tr>
-                    <tr>
-                        <th>About Button Link</th>
-                        <td><a href="{{ $about->link }}" class="btn btn-link"
-                                target="_blank">{{ $about->link }}</a></td>
-                    </tr>
-                </table>
-                {{-- <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                    data-bs-target="#editabout">Edit About</button> --}}
-
-
-
-          
-              
-            </div>
-
-        </div>
-    </section>
-
-
-
-
-
-
-
-
     <section class="sister-concern">
         <div class="card">
             <div class="card-body">
@@ -256,12 +171,12 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mt-2">
-                        <label for="">Concern Title</label>
-                        <input type="text" class="form-control" id="" name="concern_title">
-                    </div>
-                    <div class="form-group mt-2">
                         <label for="">Concern Image</label>
                         <input type="file" class="form-control" id="" name="concern_image">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="">Concern Decsription</label>
+                        <textarea name="concern_text" id="" rows="5" class="form-control"></textarea>
                     </div>
                     <div class="form-group mt-2">
                         <label for="">Concern Button Link</label>
@@ -291,7 +206,7 @@
                                         <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
                                             alt="" style="height: 100px; width: 100px;">
                                     </td>
-                                    <td>{{ $concern->concern_title }}</td>
+                                    <td>{{ $concern->concern_text }}</td>
                                     <td><a href="{{ $concern->concern_link }}">{{ $concern->concern_link }}</a></td>
                                     <td>
                                         <div class="d-flex gap-2">
@@ -326,9 +241,7 @@
                                                             @csrf
                                                             <div class="form-group mt-2">
                                                                 <label for="">Concern Title</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="concern_title"
-                                                                    value="{{ $concern->concern_title }}">
+                                                                <textarea name="concern_text" id="" rows="4" class="form-control">{{ $concern->concern_text }}</textarea>
                                                             </div>
                                                             <div class="form-group mt-2">
                                                                 <label for="">Concern Image</label>
@@ -359,105 +272,8 @@
         </div>
     </section>
 
-    <section class="logos">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title">
-                    Partners Logo
-                </div>
-                <form action="{{ route('agent.group.store.partner') }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group mt-2">
-                        <label for="">Logo Title</label>
-                        <input type="text" class="form-control" id="" name="name">
-                    </div>
-
-                    <div class="form-gorup my-3">
-                        <label for="logo">Logo</label>
-                        <input type="file" class="form-control" id="logo" placeholder="logo"
-                            name="logo">
-                    </div>
-                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-                </form>
-                <div class="card-title">
-                    Partners Logo List
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Logo</th>
-                                <th>Name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($partners as $partner)
-                                <tr>
-                                    <td>
-                                        <img src="{{ $partner->logo ? Storage::url($partner->logo) : asset('assets/img/no-profile.png') }}"
-                                            alt="" style="height: 100px; width: 100px;">
-                                    </td>
-                                    <td>{{ $partner->name }}</td>
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#partner{{ $partner->id }}"><i class="bi bi-pencil-square"></i></a>
-
-                                            <form action="{{ route('agent.group.delete.partner', $partner->id) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                            </form>
-                                        </div>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="partner{{ $partner->id }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form
-                                                            action="{{ route('agent.group.update.partner', $partner) }}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            <div class="form-group mt-2">
-                                                                <label for="">Logo Title</label>
-                                                                <input type="text" class="form-control"
-                                                                    name="name" value="{{ $partner->name }}">
-                                                            </div>
-                                                            <div class="form-group my-3">
-                                                                <label for="logo">Logo</label>
-                                                                <input type="file" class="form-control"
-                                                                    id="logo" name="logo">
-                                                            </div>
-                                                            <button type="submit" class="btn btn-sm btn-primary">Save
-                                                                changes</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-
-                    </table>
-                </div>
-            </div>
-    </section>
-
-
-    <section class="social">
+   
+    {{-- <section class="social">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -508,7 +324,7 @@
             </div>
         </div>
     </section>
-   
+    --}}
 
     @push('scripts')
         <script>

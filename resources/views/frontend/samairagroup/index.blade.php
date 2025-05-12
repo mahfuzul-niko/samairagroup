@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samaira Group</title>
-  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/loader-logo.png" type="image/png">
-  
-  <!-- Bootstrap CSS -->
-  <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/fonts/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samaira Group</title>
+    <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/loader-logo.png" type="image/png">
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link href="{{ asset('assets/frontassets/') }}/css/style.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/fonts/css/all.min.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('assets/frontassets/') }}/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,231 +29,113 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="rg-hero-slider">
-    <div class="swiper rg-swiper">
-      <div class="swiper-wrapper">
-        <!-- Slide 1: Power (col-wise) -->
-        <div class="swiper-slide rg-slide" data-bg="{{ asset('assets/frontassets/') }}/images/hero-slider/bg0.png" data-slice="row">
-          <div class="rg-slices rg-slices-rows">
-            <div class="rg-slice" data-index="0"></div>
-            <div class="rg-slice" data-index="1"></div>
-            <div class="rg-slice" data-index="2" style="margin-top:-1px;"></div>
-          </div>
-          <div class="rg-hero-content">
-            <h1>Power</h1>
-            <p>To meet the high expectation of our customers for world class products and to become the leader and role model in diversified power business sector in Bangladesh that caters to every human growing need. </p>
-            <a href="#" class="rg-explore">EXPLORE MORE <span>&rarr;</span></a>
-          </div>
+    <section class="rg-hero-slider">
+        <div class="swiper rg-swiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1: Power (col-wise) -->
+                @foreach ($banners as $banner)
+                    <div class="swiper-slide rg-slide"
+                        data-bg="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                        data-slice="row">
+                        <div class="rg-slices rg-slices-rows">
+                            <div class="rg-slice" data-index="0"></div>
+                            <div class="rg-slice" data-index="1"></div>
+                            <div class="rg-slice" data-index="2" style="margin-top:-1px;"></div>
+                        </div>
+                        <div class="rg-hero-content">
+                            <h2 class="fw-bold">{{ $banner->title }}</h2>
+                            <p>{{ $banner->description }}</p>
+                            <a href="{{ $banner->link }}" class="rg-explore">EXPLORE MORE <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
-         <!-- Slide 1: Power (col-wise) -->
-        <div class="swiper-slide rg-slide" data-bg="{{ asset('assets/frontassets/') }}/images/hero-slider/bg1.png" data-slice="row">
-          <div class="rg-slices rg-slices-rows">
-            <div class="rg-slice" data-index="0"></div>
-            <div class="rg-slice" data-index="1"></div>
-            <div class="rg-slice" data-index="2"></div>
-          </div>
-          <div class="rg-hero-content">
-            <h1>Power</h1>
-            <p>To meet the high expectation of our customers for world class products and to become the leader and role model in diversified power business sector in Bangladesh that caters to every human growing need. </p>
-            <a href="#" class="rg-explore">EXPLORE MORE <span>&rarr;</span></a>
-          </div>
-        </div> 
-      </div>
-      <div class="swiper-pagination"></div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Responsive Transparent Navbar with Mega Menu -->
-  <nav class="rg-navbar">
-    <div class="rg-navbar-container">
-      <a href="#" class="rg-navbar-logo"><img src="{{ asset('assets/frontassets/') }}/images/logo.png" /></a>
-      <button class="rg-navbar-toggle" aria-label="Toggle menu">
-        <span class="rg-navbar-hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
-      </button>
-      <ul class="rg-navbar-menu">
-        <li><a href="#">Home</a></li>
-        <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Home <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Overview</a>
-            <a href="#">Our Mission</a>
-            <a href="#">Leadership</a>
-          </div>
-        </li> -->
-        <li class="rg-navbar-has-mega">
-          <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-mega-menu">
-            <div class="rg-mega-menu-content">
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Teer"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Bengal"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Natural"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Jibon"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Sun"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Quick Bite"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-            </div>
-          </div>
-        </li>
-        <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Samaira Skill Development Institute</a>
-            <a href="#">Samaira Language Institute</a>
-            <a href="#">Samaira Aviation Limited</a>
-          </div>
-        </li> -->
-        <!-- <li><a href="#">Blog</a></li> -->
-        <li><a href="{{ route('page.aboutus') }}">About Us</a></li>
-        <li><a href="{{ route('page.contactus') }}">Contact Us</a></li>
-      </ul>
-    </div>
-  </nav>
+    <!-- Responsive Transparent Navbar with Mega Menu -->
+    <nav class="rg-navbar">
+        <div class="rg-navbar-container">
+            <a href="#" class="rg-navbar-logo"><img
+                    src="{{ system_key('samaira_group_logo') ? Storage::url(system_key('samaira_group_logo')) : asset('assets/img/no-profile.png') }}" /></a>
+            <button class="rg-navbar-toggle" aria-label="Toggle menu">
+                <span class="rg-navbar-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
+            </button>
+            <ul class="rg-navbar-menu">
+                <li><a href="#">Home</a></li>
 
-  <!-- Brands Section -->
-  <section class="rg-brands-section py-5">
-    <div class="container py-5">
-      <div class="row justify-content-center g-4">
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products. </p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-          <div class="rg-brand-card h-100">
-            <div class="rg-brand-logo mx-auto">
-              <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="TEER">
-            </div>
-            <div class="rg-brand-content">
-              <!-- <h3>TEER</h3> -->
-              <p>TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products.</p>
-              <a href="#" class="rg-brand-btn">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                <li class="rg-navbar-has-mega">
+                    <a href="#">Our Concern<span class="rg-navbar-chevron"><i
+                                class="fa fa-chevron-down"></i></span></a>
+                    <div class="rg-mega-menu">
+                        <div class="row row-cols-6 ">
+                            @foreach ($concerns as $concern)
+                                <a href="{{ $concern->concern_link }}"><img
+                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Teer" style="height: 50px; width: auto;"></a>
+                            @endforeach
+                        </div>
+                    </div>
+                </li>
 
-  <!-- Subscribe Section Start-->
-  <section class="subscribe-wrapper container">
-    <div class="paper-plane-icon">
-      <i class="fas fa-paper-plane"></i>
-    </div>
+                <li><a href="{{ route('page.aboutus') }}">About Us</a></li>
+                <li><a href="{{ route('page.contactus') }}">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="bg-left-circles"></div>
-    <div class="bg-right-circles"></div>
-    <div class="bg-dots"></div>
+    <!-- Brands Section -->
+    <section class="rg-brands-section py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center g-4">
+                @foreach ($concerns as $concern)
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
+                        <div class="rg-brand-card h-100">
+                            <div class="rg-brand-logo mx-auto">
+                                <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                    alt="TEER">
+                            </div>
+                            <div class="rg-brand-content">
+                                <p>{{ $concern->concern_text }}</p>
+                                <a href="{{ $concern->concern_link }}" class="rg-brand-btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
-    <h2 class="subscribe-title">
-      Subscribe to get information
-    </h2>
+    <!-- Subscribe Section Start-->
+    <section class="subscribe-wrapper container">
+        <div class="paper-plane-icon">
+            <i class="fas fa-paper-plane"></i>
+        </div>
 
-    <form class="d-flex input-group-custom align-items-center justify-content-center position-relative gap-3 flex-wrap">
-      <div class="position-relative flex-grow-1 me-2">
-        <i class="fas fa-envelope input-icon"></i>
-        <input type="email" class="form-control ps-5" placeholder="Your email" required>
-      </div>
-      <button type="submit" class="subscribe-btn">Subscribe</button>
-    </form>
-  </section>
-  <!-- Subscribe Section End-->
+        <div class="bg-left-circles"></div>
+        <div class="bg-right-circles"></div>
+        <div class="bg-dots"></div>
+
+        <h2 class="subscribe-title">
+            Subscribe to get information
+        </h2>
+
+        <form
+            class="d-flex input-group-custom align-items-center justify-content-center position-relative gap-3 flex-wrap">
+            <div class="position-relative flex-grow-1 me-2">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" class="form-control ps-5" placeholder="Your email" required>
+            </div>
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+        </form>
+    </section>
+    <!-- Subscribe Section End-->
 
   <!-- Custom Footer Section Start -->
   <footer class="cg-footer-section py-4">
@@ -307,25 +189,25 @@
   </footer>
   <!-- Custom Footer Section End -->
 
-  <!-- jQuery -->
-  <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
-  <!-- Swiper JS -->
-  <script src="{{ asset('assets/frontassets/') }}/js/swiper-bundle.min.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="{{ asset('assets/frontassets/') }}/js/bootstrap.bundle.min.js"></script>
-  <!-- Popper JS -->
-  <script src="{{ asset('assets/frontassets/') }}/js/popper.min.js"></script>
-  <!-- Custom JS -->
-  <script src="{{ asset('assets/frontassets/') }}/js/samaira-new-index.js"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="{{ asset('assets/frontassets/') }}/js/swiper-bundle.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('assets/frontassets/') }}/js/bootstrap.bundle.min.js"></script>
+    <!-- Popper JS -->
+    <script src="{{ asset('assets/frontassets/') }}/js/popper.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ asset('assets/frontassets/') }}/js/samaira-new-index.js"></script>
 
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.body.classList.add('loaded');
-        document.getElementById('content').style.display = 'block';
-      }, 2500); // Delay to allow full animation
-    });
-  </script>
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+                document.getElementById('content').style.display = 'block';
+            }, 2500); // Delay to allow full animation
+        });
+    </script>
 </body>
 
 </html>

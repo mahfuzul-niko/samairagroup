@@ -103,6 +103,11 @@ Route::middleware(['role:agent,admin'])
             Route::post('/course/store/trainer', 'storeTrainer')->name('store.trainer');
             Route::post('/course/updaye/trainer/{trainer}', 'updateTrainer')->name('update.trainer');
             Route::delete('/course/trainer/delete/{trainer}', 'destroyTrainer')->name('delete.trainer');
+            
+            Route::get('/course/feature', 'courseFeatured')->name('feature');
+            Route::post('/course/store/feature', 'storeFeature')->name('store.feature');
+            Route::post('/course/update/feature/{feature}', 'updateFeature')->name('update.feature');
+            Route::delete('/course/feature/delete/{feature}', 'destroyFeature')->name('delete.feature');
 
         });
         
