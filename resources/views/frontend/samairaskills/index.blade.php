@@ -46,7 +46,7 @@
                             <a class="nav-link" href="#">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="{{route('page.ssdi.about')}}">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contact</a>
@@ -80,7 +80,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
+                        <a class="nav-link" href="">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -354,6 +354,8 @@
     <!-- We are certified By End  -->
 
     <!-- Enrollment Discount Section Start -->
+    @if (!is_null($featured))
+        
     <section class="enrollment-discount-section mt-5 pt-5">
         <div class="container">
             <div class="row align-items-center">
@@ -374,6 +376,7 @@
             </div>
         </div>
     </section>
+    @endif
     <!-- Enrollment Discount Section End -->
 
     <!-- Footer Section Start -->

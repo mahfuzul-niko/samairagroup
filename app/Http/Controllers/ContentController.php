@@ -41,6 +41,8 @@ class ContentController extends Controller
     {
         $about = new About;
         $about->key = $request->key;
+
+        $about->name = $request->name;
         $about->title = $request->title;
         $about->description = $request->description;
         $about->save();
@@ -49,7 +51,7 @@ class ContentController extends Controller
     public function updateAbout(Request $request, About $about)
     {
         $about->key = $request->key;
-        $about->title = $request->title;
+        $about->name = $request->name;
         $about->description = $request->description;
         $about->save();
 

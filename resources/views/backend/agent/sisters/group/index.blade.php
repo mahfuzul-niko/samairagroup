@@ -331,6 +331,11 @@
                         enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="key" value="samairagroup">
+
+                        <div class="mb-3">
+                            <div class="label">About Name</div>
+                            <input type="text" name="name" class="form-control">
+                        </div>
                         <div class="mb-3">
                             <div class="label">About Title</div>
                             <input type="text" name="title" class="form-control">
@@ -369,6 +374,10 @@
                                         @csrf
                                         <input type="hidden" name="key" value="samairagroup">
                                         <div class="mb-3">
+                                            <div class="label">About Name</div>
+                                            <input type="text" name="name" value="{{$about->name}}" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
                                             <div class="label">About Title</div>
                                             <input type="text" name="title" class="form-control"
                                                 value="{{ $about->title }}">
@@ -384,6 +393,10 @@
                         </div>
                     </div>
                     <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ $about->name }}</td>
+                        </tr>
                         <tr>
                             <th>Title</th>
                             <td>{{ $about->title }}</td>

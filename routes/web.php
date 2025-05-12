@@ -26,8 +26,10 @@ Route::get('/admin', function () {
 });
 
 Route::group(['controller' => PagesController::class, 'as' => 'page.'], function () {
-    Route::get('/', 'samairagroup')->name('samairagroup');
+    Route::get('/', 'samairagroup')->name('home');
+    Route::get('/about-us', 'samairagroupAbout')->name('home.about');
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('samairaskills');
+    Route::get('/samaira-skill-development-institute/about', 'samairaskillsAbout')->name('ssdi.about');
     Route::get('/samaira-skill-development-institute/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
     Route::get('/samaira-skill-development-institute/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('ssdi.course.enroll');
     Route::get('/samaira-language-institute', 'samairaskillsJapan')->name('samairaskills.japan');

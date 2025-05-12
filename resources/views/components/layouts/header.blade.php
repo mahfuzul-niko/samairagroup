@@ -3,9 +3,9 @@
     <div class="container">
         <div class="header-content d-flex align-items-center">
             <!-- Logo -->
-            @if (!Route::is('page.samairagroup'))
+            @if (!Route::is('page.home'))
                 <div class="site-logo">
-                    <a href="{{ route('page.samairagroup') }}">
+                    <a href="{{ route('page.home') }}">
                         <img src="{{ system_key('system_logo') ? Storage::url(system_key('system_logo')) : asset('assets/img/no-profile.png') }}"
                             alt="Samaira Group Logo" class="logo-img"
                             style="height: 50px; object-fit: cover; width: auto;">

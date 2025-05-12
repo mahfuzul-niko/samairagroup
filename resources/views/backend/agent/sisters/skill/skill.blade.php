@@ -271,69 +271,7 @@
                 </div>
             </div>
     </section>
-    <section class="advertise-section">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title">
-                    Advertise Section
-                </div>
-                <form action="{{ route('agent.group.store.advertise') }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <input type="hidden" name="id" value="{{ $advertise->id ?? '' }}">
 
-                    <div class="form-group">
-                        <label for="">Advertisement Image</label>
-                        <input type="file" class="form-control" id="" name="image"
-                            value="{{ $advertise->image }}">
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="">Advertisement Box</label>
-                        <textarea name="description" class="form-control">{{ $advertise->description }}</textarea>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="">Advertisement Button Link</label>
-                        <input type="url" class="form-control" id="" name="link"
-                            value="{{ $advertise->link }}">
-                    </div>
-                    <div class="form-group my-3">
-                        <label for="">Advertisement Price</label>
-                        <input type="text" class="form-control" id="" name="price"
-                            value="{{ $advertise->price }}">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                </form>
-
-                <div class="card-title">
-                    Advertise Section List
-                </div>
-
-                <table class="table table-bordered rounded table-striped table-sm">
-                    <tr>
-                        <th>About Image</th>
-                        <td>
-                            <img src="{{ $advertise->image ? Storage::url($advertise->image) : asset('assets/img/no-profile.png') }}"
-                                alt="About Image" class="img-fluid" style="height: 200px; width: auto;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td>{{ $advertise->description }}</td>
-                    </tr>
-                    <tr>
-                        <th>Price</th>
-                        <td>{{ $advertise->price }}</td>
-                    </tr>
-                    <tr>
-                        <th class="w-25">Link</th>
-                        <td>{{ $advertise->link }}</td>
-                    </tr>
-
-                </table>
-            </div>
-
-        </div>
-    </section>
     <section class="single-page-info">
         <div class="card">
             <div class="card-body">
@@ -473,6 +411,10 @@
                         @csrf
                         <input type="hidden" name="key" value="ssdi">
                         <div class="mb-3">
+                            <div class="label">About Name</div>
+                            <input type="text" name="name" class="form-control">
+                        </div>
+                        <div class="mb-3">
                             <div class="label">About Title</div>
                             <input type="text" name="title" class="form-control">
                         </div>
@@ -510,6 +452,10 @@
                                         @csrf
                                         <input type="hidden" name="key" value="ssdi">
                                         <div class="mb-3">
+                                            <div class="label">About Name</div>
+                                            <input type="text" name="name" value="{{$about->name}}" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
                                             <div class="label">About Title</div>
                                             <input type="text" name="title" class="form-control"
                                                 value="{{ $about->title }}">
@@ -525,6 +471,10 @@
                         </div>
                     </div>
                     <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ $about->name }}</td>
+                        </tr>
                         <tr>
                             <th>Title</th>
                             <td>{{ $about->title }}</td>

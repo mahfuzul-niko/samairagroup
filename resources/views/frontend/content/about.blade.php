@@ -25,7 +25,7 @@
     <!-- Navbar Start -->
     <nav class="rg-navbar">
         <div class="rg-navbar-container">
-            <a href="#" class="rg-navbar-logo"><img
+            <a href="{{ route('page.home') }}" class="rg-navbar-logo"><img
                     src="{{ asset('assets/frontassets/') }}/images/logo.png" /></a>
             <button class="rg-navbar-toggle" aria-label="Toggle menu">
                 <span class="rg-navbar-hamburger">
@@ -36,90 +36,22 @@
                 <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
             </button>
             <ul class="rg-navbar-menu">
-                <li><a href="#">Home</a></li>
-                <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Home <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Overview</a>
-            <a href="#">Our Mission</a>
-            <a href="#">Leadership</a>
-          </div>
-        </li> -->
+                <li><a href="{{ route('page.home') }}">Home</a></li>
+
                 <li class="rg-navbar-has-mega">
-                    <a href="#">Brands <span class="rg-navbar-chevron"><i
+                    <a href="#">Our Concern<span class="rg-navbar-chevron"><i
                                 class="fa fa-chevron-down"></i></span></a>
                     <div class="rg-mega-menu">
-                        <div class="rg-mega-menu-content">
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png"
-                                    alt="Teer"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png"
-                                    alt="Bengal"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png"
-                                    alt="Natural"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png"
-                                    alt="Jibon"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png"
-                                    alt="Sun"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png"
-                                    alt="Quick Bite"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
-                            <a href="#"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                    alt="Candy"></a>
+                        <div class="row row-cols-6 ">
+                            @foreach ($concerns as $concern)
+                                <a href="{{ $concern->concern_link }}"><img
+                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Teer" style="height: 50px; width: auto;"></a>
+                            @endforeach
                         </div>
                     </div>
                 </li>
-                <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Samaira Skill Development Institute</a>
-            <a href="#">Samaira Language Institute</a>
-            <a href="#">Samaira Aviation Limited</a>
-          </div>
-        </li> -->
-                <!-- <li><a href="#">Blog</a></li> -->
-                <li><a href="#">About Us</a></li>
+                <li><a href="">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </div>
@@ -130,47 +62,18 @@
     <div class="about-slider-container">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg1.png"
-                        alt="Slide 1"></div>
-                <div class="swiper-slide"><img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg0.png"
-                        alt="Slide 2"></div>
-                <div class="swiper-slide"><img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg1.png"
-                        alt="Slide 3"></div>
+                @foreach ($banners as $banner)
+                    <div class="swiper-slide"><img
+                            src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                            alt="Slide 1"></div>
+                @endforeach
             </div>
         </div>
         <!-- About Section Overlap -->
         <section class="about-overlap">
-            <h1>About Samaira Group</h1>
-            <h2>Samaira Group is a leading conglomerate in Bangladesh</h2>
-            <p>
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-                You are a coach, consultant, agency owner, or anyone who runs or wants to run an online service business
-                and needs to find clients
-                If you have trouble with any of the following:
-            </p>
+            <h1>About {{$about->name}}</h1>
+            <h2>{{$about->title}}</h2>
+          <p>{{$about->description}}</p>
         </section>
     </div>
     <!-- Slider End -->
