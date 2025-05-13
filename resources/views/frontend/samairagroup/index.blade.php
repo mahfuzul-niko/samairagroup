@@ -72,22 +72,21 @@
             <ul class="rg-navbar-menu">
                 <li><a href="#">Home</a></li>
 
-                <li class="rg-navbar-has-mega">
-                    <a href="#">Our Concern<span class="rg-navbar-chevron"><i
-                                class="fa fa-chevron-down"></i></span></a>
-                    <div class="rg-mega-menu">
-                        <div class="row row-cols-6 ">
-                            @foreach ($concerns as $concern)
-                                <a href="{{ $concern->concern_link }}"><img
-                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Teer" style="height: 50px; width: auto;"></a>
-                            @endforeach
-                        </div>
-                    </div>
-                </li>
+                 <li class="rg-navbar-has-mega">
+          <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+          <div class="rg-mega-menu">
+            <div class="rg-mega-menu-content">
+                @foreach ($concerns as $concern)
+                    
+                <a href="#"><img src="{{$concern->concern_image ? Storage::url($concern->concern_image):asset('assets/img/no-profile.png')}}" alt="Teer"></a>
+                @endforeach
+              
+            </div>
+          </div>
+        </li>
 
                 <li><a href="{{ route('page.home.about') }}">About Us</a></li>
-                <li><a href="{{ route('page.contactus') }}">Contact Us</a></li>
+                <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
             </ul>
         </div>
     </nav>

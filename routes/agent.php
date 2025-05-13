@@ -113,16 +113,21 @@ Route::middleware(['role:agent,admin'])
 
         Route::group(['controller' => ContentController::class, 'as' => 'content.'], function () {
             //about banner
-             Route::post('/content/store/about/banner', 'storeAboutBanner')->name('about.store.banner');
-             Route::delete('/content/delete/about/banner/{banner}', 'deleteAboutBanner')->name('about.delete.banner');
-
-
-             Route::post('/content/store/about', 'storeAbout')->name('store.about');
-             Route::post('/content/update/about/{about}', 'updateAbout')->name('update.about');
-             Route::delete('/content/delete/about/{about}', 'deleteAbout')->name('delete.about');
-
-
-            });
+            Route::post('/content/store/about/banner', 'storeAboutBanner')->name('about.store.banner');
+            Route::delete('/content/delete/about/banner/{banner}', 'deleteAboutBanner')->name('about.delete.banner');
+            //about
+            Route::post('/content/store/about', 'storeAbout')->name('store.about');
+            Route::post('/content/update/about/{about}', 'updateAbout')->name('update.about');
+            Route::delete('/content/delete/about/{about}', 'deleteAbout')->name('delete.about');
+            //contact banner
+            Route::post('/content/store/contact/banner', 'storeContactBanner')->name('contact.store.banner');
+            Route::delete('/content/delete/contact/banner/{banner}', 'deleteContactBanner')->name('contact.delete.banner');
+            //contact info
+            Route::post('/content/save/contact/info', 'saveContactInfo')->name('save.contact.info');
+            //contact subject
+            Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
+            Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');
+        });
 
 
 

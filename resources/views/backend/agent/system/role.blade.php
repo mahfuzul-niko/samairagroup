@@ -53,18 +53,18 @@
                                             {{ $role->status }}
                                         </div>
                                     </td>
-                                    <td><a class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#roleModal{{ $role->id }}"><i class="bi bi-pencil-square"></i></a>
+                                    <td><a class="btn btn-success" href="#"><i class="bi bi-eye"></i></a>
+                                        <a class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                            data-bs-target="#roleModal{{ $role->id }}"><i
+                                                class="bi bi-pencil-square"></i></a>
                                         <form action="{{ route('agent.system.destroy.role', $role->id) }}"
                                             method="POST" class="d-inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="bi bi-trash"></i></button>
                                         </form>
                                     </td>
-
-
-
                                     <!-- Modal -->
                                     <div class="modal fade" id="roleModal{{ $role->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\ContactBanner;
+use App\Models\ContactInfo;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\Partner;
@@ -21,8 +23,11 @@ class SamairaGroupController extends Controller
 
         $aboutbanners = AboutBanner::latest()->where('key', 'samairagroup')->get();
         $about = About::latest()->where('key', 'samairagroup')->first();
-       
-        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners','about'));
+        
+        $contactbanners = ContactBanner::latest()->where('key', 'samairagroup')->get();
+        $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
+        
+        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners','about','contactbanners','info'));
     }
     public function storeBanner(Request $request)
     {
