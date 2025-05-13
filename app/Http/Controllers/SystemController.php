@@ -172,10 +172,8 @@ class SystemController extends Controller
 
     public function systemMember()
     {
-        $members = User::whereHas('role', function ($query) {
-            $query->whereIn('name', ['member', 'trainer']);
-        })->get();
-        $roles = Role::whereIn('name', ['member', 'trainer'])->get();
+        $members = User::latest()->get();
+        $roles = Role::latest()->get();
 
         return view('backend.agent.system.member', compact('members', 'roles'));
     }

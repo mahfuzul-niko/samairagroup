@@ -51,7 +51,7 @@
                             <a class="nav-link" href="{{route('page.ssdi.about')}}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="{{route('page.ssdi.contact')}}">Contact</a>
                         </li>
 
 

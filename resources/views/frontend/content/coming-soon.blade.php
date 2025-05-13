@@ -244,44 +244,6 @@
                 <!-- Title -->
                 <h1 class="coming-soon-title">Coming Soon</h1>
                 <p class="coming-soon-subtitle">We're working hard to bring you something amazing. Stay tuned!</p>
-
-                <!-- Countdown Timer -->
-                {{-- <div class="countdown-timer">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days">20</div>
-                        <div class="countdown-label">Days</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours">23</div>
-                        <div class="countdown-label">Hours</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">59</div>
-                        <div class="countdown-label">Minutes</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">Seconds</div>
-                    </div>
-                </div> --}}
-
-                <!-- Newsletter Form -->
-                <div class="newsletter-form">
-                    <form>
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Enter your email address" required>
-                            <button type="submit" class="subscribe-btn">Notify Me</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Social Links -->
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
             </div>
         </div>
     </section>

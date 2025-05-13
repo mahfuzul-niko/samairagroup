@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\ContactBanner;
+use App\Models\ContactInfo;
+use App\Models\ContactSubject;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -62,6 +65,71 @@ class ContentController extends Controller
         $about->delete();
         return redirect()->back()->with('success', 'About deleted successfully.');
     }
+
+    //contact 
+    public function storeContactBanner(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('banners', 'public');
+        }
+
+        $banner = new ContactBanner;
+
+        $banner->key = $request->key;
+
+        if (isset($data['image'])) {
+            $banner->image = $data['image'];
+        }
+
+        $banner->save();
+
+        return redirect()->back()->with('success', 'Contact banner saved successfully.');
+    }
+    public function deleteContactBanner(ContactBanner $banner)
+    {
+
+        if ($banner->image && \Storage::disk('public')->exists($banner->image)) {
+            \Storage::disk('public')->delete($banner->image);
+        }
+
+        $banner->delete();
+
+        return redirect()->back()->with('success', 'Contact banner deleted successfully.');
+    }
+    public function saveContactInfo(Request $request)
+    {
+        $phones = array_map('trim', explode(',', $request->phone)); // Trim spaces
+
+        ContactInfo::updateOrCreate(
+            ['key' => $request->key], // Search by unique key
+            [
+                'reach_mail' => $request->reach_mail,
+                'careers_mail' => $request->careers_mail,
+                'phone' => json_encode($phones),
+                'address_title' => $request->address_title,
+                'address' => $request->address,
+            ]
+        );
+
+        return redirect()->back()->with('success', 'Contact Info saved successfully.');
+    }
+
+    
+    public function storeContactSubject(Request $request)
+    {
+        $subject = new ContactSubject;
+        $subject->contact_info_id = $request->info_id;
+        $subject->subject = $request->subject;
+        $subject->save();
+        return redirect()->back()->with('success', 'Contact Subject Added successfully.');
+    }
+    public function deleteContactSubject(ContactSubject $subject)
+    {
+        $subject->delete();
+        return redirect()->back()->with('success', 'Contact Subject deleted successfully.');
+    }
+
+
 
 
 

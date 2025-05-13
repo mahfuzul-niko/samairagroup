@@ -67,11 +67,12 @@
                                 <td>{{ $member->email }}</td>
                                 <td>{{ $member->role->name }}</td>
                                 <td>
-                                    <form action="{{ route('agent.system.destroy.member', $member->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                                    </form>
+                                   <form action="{{ route('agent.system.destroy.member', $member->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Are you sure you want to delete this member?')">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+</form>
+
                                 </td>
                             </tr>
                         @endforeach

@@ -19,8 +19,22 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/about.css">
     <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/style.css">
-    
+
 </head>
+@php
+    use Illuminate\Support\Facades\Route;
+
+    $contactRoute = match (true) {
+        Route::is('page.home.about') => route('page.home.contact'),
+        Route::is('page.ssdi.about') => route('page.ssdi.contact'),
+        default => route('page.home.contact'),
+    };
+     $aboutRoute = match (true) {
+        Route::is('page.home.contact') => route('page.home.about'),
+        Route::is('page.ssdi.contact') => route('page.ssdi.about'),
+        default => route('page.home.about'),
+    };
+@endphp
 
 <body>
     <!-- Navbar Start -->
@@ -40,20 +54,21 @@
                 <li><a href="{{ route('page.home') }}">Home</a></li>
 
                 <li class="rg-navbar-has-mega">
-                    <a href="#">Our Concern<span class="rg-navbar-chevron"><i
+                    <a href="#">Brands <span class="rg-navbar-chevron"><i
                                 class="fa fa-chevron-down"></i></span></a>
                     <div class="rg-mega-menu">
-                        <div class="row row-cols-6 ">
+                        <div class="rg-mega-menu-content">
                             @foreach ($concerns as $concern)
-                                <a href="{{ $concern->concern_link }}"><img
+                                <a href="{{$concern->concern_link}}"><img
                                         src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Teer" style="height: 50px; width: auto;"></a>
+                                        alt="Teer"></a>
                             @endforeach
+
                         </div>
                     </div>
                 </li>
-                <li><a href="">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{{$aboutRoute}}">About Us</a></li>
+                <li><a href="{{$contactRoute}}">Contact Us</a></li>
             </ul>
         </div>
     </nav>
@@ -71,29 +86,16 @@
             </div>
         </div>
         @if (!is_null($about))
-            
-       
-        <section class="about-overlap">
-            <h1>About {{$about->name}}</h1>
-            <h2>{{$about->title}}</h2>
-          <p>{{$about->description}}</p>
-        </section>
-            
+            <section class="about-overlap">
+                <h1>About {{ $about->name }}</h1>
+                <h2>{{ $about->title }}</h2>
+                <p>{{ $about->description }}</p>
+            </section>
         @endif
         <!-- About Section Overlap -->
     </div>
     <!-- Slider End -->
-<x-layouts.footer/>
-
-    <!-- Bottom Footer Section Start -->
-    <div class="bottom-footer py-3">
-        <div class="container">
-            <div class="text-left">
-                <p class="mb-0">Copyright © 2025. Samaira Group</p>
-            </div>
-        </div>
-    </div>
-    <!-- Bottom Footer Section End -->
+    <x-layouts.footer />
 
     <!-- jQuery -->
     <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
