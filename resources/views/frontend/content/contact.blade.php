@@ -95,7 +95,7 @@
                         <div>
                             <strong>Reach us on email</strong>
                             <div>Our friendly team is here to help.</div>
-                            <a href="mailto:{{ $info->reach_mail }}">{{ $info->reach_mail }}</a>
+                            <a href="mailto:{{ $info->reach_mail ?? '' }}">{{ $info->reach_mail ?? '' }}</a>
                         </div>
                     </div>
                     <div class="contact-method">
@@ -103,7 +103,7 @@
                         <div>
                             <strong>For Careers</strong>
                             <div>Send your resume on</div>
-                            <a href="mailto:{{ $info->careers_mail }}">{{ $info->careers_mail }}</a>
+                            <a href="mailto:{{ $info->careers_mail ?? '' }}">{{ $info->careers_mail ?? '' }}</a>
                         </div>
                     </div>
                     <div class="contact-method">
@@ -111,17 +111,19 @@
                         <div>
                             <strong>Phone</strong>
                             <div>Mon-Fri from 9.30am to 6.00pm.</div>
+                            @if ($info->phone)
                             @foreach (json_decode($info->phone, true) as $phone)
                                 <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
                             @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="contact-method">
                         <i class="fa fa-map-marker-alt"></i>
                         <div>
                             <strong>Office</strong>
-                            <div>{{ $info->address_title }}</div>
-                            <a href="#">{{ $info->address }}</a>
+                            <div>{{ $info->address_title ?? '' }}</div>
+                            <a href="#">{{ $info->address ?? '' }}</a>
                         </div>
                     </div>
                 </div>
@@ -145,6 +147,8 @@
                                 <input type="tel" placeholder="Enter your phone no.">
                             </div>
                         </div>
+                        @if ($info->subjects)
+                        
                         <div class="form-group">
                             <label>What you are interested</label>
                             <select>
@@ -155,6 +159,7 @@
                                
                             </select>
                         </div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Message</label>
