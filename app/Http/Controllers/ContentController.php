@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\Contact;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\ContactSubject;
@@ -114,7 +115,7 @@ class ContentController extends Controller
         return redirect()->back()->with('success', 'Contact Info saved successfully.');
     }
 
-    
+
     public function storeContactSubject(Request $request)
     {
         $subject = new ContactSubject;
@@ -131,6 +132,24 @@ class ContentController extends Controller
 
 
 
+    //front contact
+    public function storeContact(Request $request)
+    {
+        $contact = new Contact;
+        $contact->key = $request->key;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        return redirect()->back()->with('success', 'Your message has been sent successfully.');
+    }
+
+    public function viewContact($key){
+        $contacts = Contact::latest()->where('key', $key)->get();
+        return view('backend.agent.content.contact',compact('contacts'));
+    }
 
 
 

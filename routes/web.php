@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -59,6 +60,9 @@ Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], fun
 });
 Route::group(['controller' => CourseController::class, 'as' => 'course.'], function () {
     Route::post('/store/enroll', 'storeCourseEnroll')->name('store.enroll');
+});
+Route::group(['controller' => ContentController::class, 'as' => 'content.'], function () {
+    Route::post('/store/contct', 'storeContact')->name('store.contact');
 });
 
 Auth::routes();

@@ -127,6 +127,9 @@ Route::middleware(['role:agent,admin'])
             //contact subject
             Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
             Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');
+
+            //backed views
+            Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
         });
 
 
