@@ -79,8 +79,9 @@
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
                 @foreach ($banners as $item)
-                <div class="swiper-slide"><img src="{{$item->image ? Storage::url($item->image) : asset('assets/img/no-profile.png')}}"
-                        alt="Slide 1"></div>
+                    <div class="swiper-slide"><img
+                            src="{{ $item->image ? Storage::url($item->image) : asset('assets/img/no-profile.png') }}"
+                            alt="Slide 1"></div>
                 @endforeach
             </div>
         </div>
@@ -111,10 +112,10 @@
                         <div>
                             <strong>Phone</strong>
                             <div>Mon-Fri from 9.30am to 6.00pm.</div>
-                            @if ($info->phone)
-                            @foreach (json_decode($info->phone, true) as $phone)
-                                <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
-                            @endforeach
+                            @if (!is_null($info->phone))
+                                @foreach (json_decode($info->phone, true) as $phone)
+                                    <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -148,17 +149,17 @@
                             </div>
                         </div>
                         @if ($info->subjects)
-                        
-                        <div class="form-group">
-                            <label>What you are interested</label>
-                            <select>
-                                <option selected disabled>Select Subject</option>
-                                @foreach ($info->subjects as $subject)
-                                <option>{{$subject->subject}}</option>
-                                @endforeach
-                               
-                            </select>
-                        </div>
+
+                            <div class="form-group">
+                                <label>What you are interested</label>
+                                <select>
+                                    <option selected disabled>Select Subject</option>
+                                    @foreach ($info->subjects as $subject)
+                                        <option>{{ $subject->subject }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
                         @endif
                     </div>
                     <div class="form-group">
