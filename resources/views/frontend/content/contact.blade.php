@@ -176,7 +176,7 @@
                 </form>
                     
                 @else
-                    <h2>You Cann't Contact This Page Currently</h2>
+                    <h2>You Can't Contact This Page Currently</h2>
                 @endif
             </div>
         </section>
