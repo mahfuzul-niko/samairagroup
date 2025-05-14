@@ -417,7 +417,7 @@ font-style: normal;
  @media (max-width: 500px) {
     .rg-hero-slider {
       min-height: 400px;
-      height: 40vh;
+      height: 40vh !important;
     }
     .rg-hero-content h2{
       font-size:18px;
