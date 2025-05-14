@@ -117,6 +117,7 @@
                                     <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
                                 @endforeach
                             @endif
+
                         </div>
                     </div>
                     <div class="contact-method">
