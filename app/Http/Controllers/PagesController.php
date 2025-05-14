@@ -22,7 +22,7 @@ class PagesController extends Controller
      public function samairagroup()
      {
           $banners = GroupBanner::latest()->get();
-          $concerns = SamairaGroup::get();
+          $concerns = SamairaGroup::orderBy('order')->get();
 
 
           return view('frontend.samairagroup.index', compact('banners', 'concerns', ));
@@ -90,14 +90,14 @@ class PagesController extends Controller
      //abouts
      public function samairagroupAbout()
      {
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'samairagroup')->get();
           $about = About::latest()->where('key', 'samairagroup')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
      public function samairaskillsAbout()
      {
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'ssdi')->get();
           $about = About::latest()->where('key', 'ssdi')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
@@ -108,14 +108,14 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'samairagroup')->get();
           $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
      public function ssdiContact()
      {
           $banners = ContactBanner::latest()->where('key', 'ssdi')->get();
           $info = ContactInfo::latest()->where('key', 'ssdi')->first();
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
 
