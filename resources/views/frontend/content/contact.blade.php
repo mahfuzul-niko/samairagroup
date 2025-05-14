@@ -51,14 +51,7 @@
             </button>
             <ul class="rg-navbar-menu">
                 <li><a href="{{ route('page.home') }}">Home</a></li>
-                <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Home <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Overview</a>
-            <a href="#">Our Mission</a>
-            <a href="#">Leadership</a>
-          </div>
-        </li> -->
+
                 <li class="rg-navbar-has-mega">
                     <a href="#">Brands <span class="rg-navbar-chevron"><i
                                 class="fa fa-chevron-down"></i></span></a>
@@ -72,17 +65,10 @@
                         </div>
                     </div>
                 </li>
-                <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Samaira Skill Development Institute</a>
-            <a href="#">Samaira Language Institute</a>
-            <a href="#">Samaira Aviation Limited</a>
-          </div>
-        </li> -->
-                <!-- <li><a href="#">Blog</a></li> -->
+
+
                 <li><a href="{{ $aboutRoute }}">About Us</a></li>
-                <li><a href="{{$contactRoute}}">Contact Us</a></li>
+                <li><a href="{{ $contactRoute }}">Contact Us</a></li>
             </ul>
         </div>
     </nav>
@@ -92,12 +78,10 @@
     <div class="contact-slider-container">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg1.png"
+                @foreach ($banners as $item)
+                <div class="swiper-slide"><img src="{{$item->image ? Storage::url($item->image) : asset('assets/img/no-profile.png')}}"
                         alt="Slide 1"></div>
-                <div class="swiper-slide"><img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg0.png"
-                        alt="Slide 2"></div>
-                <div class="swiper-slide"><img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg1.png"
-                        alt="Slide 3"></div>
+                @endforeach
             </div>
         </div>
         <section class="contact-overlap">
@@ -111,7 +95,7 @@
                         <div>
                             <strong>Reach us on email</strong>
                             <div>Our friendly team is here to help.</div>
-                            <a href="mailto:info@yourmail.com">info@yourmail.com</a>
+                            <a href="mailto:{{ $info->reach_mail }}">{{ $info->reach_mail }}</a>
                         </div>
                     </div>
                     <div class="contact-method">
@@ -119,7 +103,7 @@
                         <div>
                             <strong>For Careers</strong>
                             <div>Send your resume on</div>
-                            <a href="mailto:careers@yourmail.com">careers@yourmail.com</a>
+                            <a href="mailto:{{ $info->careers_mail }}">{{ $info->careers_mail }}</a>
                         </div>
                     </div>
                     <div class="contact-method">
@@ -127,16 +111,17 @@
                         <div>
                             <strong>Phone</strong>
                             <div>Mon-Fri from 9.30am to 6.00pm.</div>
-                            <a href="tel:+01614875005">+01 (614) 875 8005</a><br>
-                            <a href="tel:+01614652625">+01 (614) 652 6254</a>
+                            @foreach (json_decode($info->phone, true) as $phone)
+                                <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
+                            @endforeach
                         </div>
                     </div>
                     <div class="contact-method">
                         <i class="fa fa-map-marker-alt"></i>
                         <div>
                             <strong>Office</strong>
-                            <div>Come say hello at our office HQ.</div>
-                            <a href="#">2814 Fisher Rd, 1st Floor, Opp. alex street, Columbus, Ohio 43204</a>
+                            <div>{{ $info->address_title }}</div>
+                            <a href="#">{{ $info->address }}</a>
                         </div>
                     </div>
                 </div>
@@ -157,21 +142,17 @@
                         <div class="form-group">
                             <label>Phone No.</label>
                             <div class="phone-input">
-                                <select>
-                                    <option>+91</option>
-                                    <option>+880</option>
-                                    <option>+1</option>
-                                </select>
                                 <input type="tel" placeholder="Enter your phone no.">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>What you are interested</label>
                             <select>
-                                <option>Design & Branding</option>
-                                <option>Web Development</option>
-                                <option>Consulting</option>
-                                <option>Other</option>
+                                <option selected disabled>Select Subject</option>
+                                @foreach ($info->subjects as $subject)
+                                <option>{{$subject->subject}}</option>
+                                @endforeach
+                               
                             </select>
                         </div>
                     </div>
