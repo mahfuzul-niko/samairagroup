@@ -411,9 +411,18 @@ font-style: normal;
   }
   .rg-hero-content p,
   .rg-explore{
-    font-size: 14px;
+    font-size: 12px;
   }
 }
+ @media (max-width: 500px) {
+    .rg-hero-slider {
+      min-height: 400px;
+      height: 40vh;
+    }
+    .rg-hero-content h2{
+      font-size:18px;
+    }
+  }
 
 .rg-slide.rg-animate .rg-hero-content {
     animation: rg-hero-content-in 1s ease-out 0.3s forwards;
@@ -461,6 +470,11 @@ font-style: normal;
 .rg-navbar-logo img{
   height: 75px;
   width: auto;
+}
+@media (max-width: 500px) {
+  .rg-navbar-logo img{
+    height: 60px;
+  }
 }
 .rg-navbar-toggle {
   position: relative;
