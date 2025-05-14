@@ -112,7 +112,7 @@
                         <div>
                             <strong>Phone</strong>
                             <div>Mon-Fri from 9.30am to 6.00pm.</div>
-                            @if (!is_null($info->phone))
+                            @if (!is_null($info) && !is_null($info->phone))
                                 @foreach (json_decode($info->phone, true) as $phone)
                                     <a href="tel:{{ trim($phone) }}">{{ trim($phone) }}</a><br>
                                 @endforeach
@@ -124,8 +124,11 @@
                         <i class="fa fa-map-marker-alt"></i>
                         <div>
                             <strong>Office</strong>
-                            <div>{{ $info->address_title ?? '' }}</div>
-                            <a href="#">{{ $info->address ?? '' }}</a>
+                            @if ($info)
+                                <div>{{ $info->address_title }}</div>
+                                <a href="#">{{ $info->address }}</a>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -149,19 +152,18 @@
                                 <input type="tel" placeholder="Enter your phone no.">
                             </div>
                         </div>
-                        @if ($info->subjects)
-
+                        @if (!empty($info->subjects))
                             <div class="form-group">
-                                <label>What you are interested</label>
-                                <select>
+                                <label>What you are interested in</label>
+                                <select class="form-control">
                                     <option selected disabled>Select Subject</option>
                                     @foreach ($info->subjects as $subject)
-                                        <option>{{ $subject->subject }}</option>
+                                        <option value="{{ $subject->id }}">{{ $subject->subject }}</option>
                                     @endforeach
-
                                 </select>
                             </div>
                         @endif
+
                     </div>
                     <div class="form-group">
                         <label>Message</label>

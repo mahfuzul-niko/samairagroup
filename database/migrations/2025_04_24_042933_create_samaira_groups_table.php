@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('samaira_groups', function (Blueprint $table) {
             $table->id();
+             $table->integer('order')->default(0);
             $table->text('concern_image')->nullable();
             $table->string('concern_text')->nullable();
             $table->string('concern_link')->nullable();
