@@ -242,6 +242,7 @@ Contact Page Css Start
   background: #f8fafc;
   transition: border 0.2s;
   outline: none;
+  width: 100%;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -328,6 +329,30 @@ Contact Page Css Start
   .contact-logo-description{
     margin-top: 95rem !important;
   }
+}
+@media (max-width: 900px) {
+    .contact-slider-container{
+        margin-bottom: 80rem;
+    }
+}
+  @media (max-width: 602px) {
+    .contact-slider-container{
+        margin-bottom: 90rem;
+    }
+}
+  @media (max-width: 440px) {
+    .contact-slider-container{
+        margin-bottom: 96rem;
+    }
+}
+  @media (max-width: 375px) {
+    .contact-slider-container{
+        margin-bottom: 100rem;
+    }
+  @media (max-width: 328px) {
+    .contact-slider-container{
+        margin-bottom: 110rem;
+    }
 }
 /* 
 =========================================
