@@ -15,6 +15,7 @@ use App\Models\Partner;
 use App\Models\SamairaGroup;
 use App\Models\SkillAdvertise;
 use App\Models\SkillCertified;
+use App\Models\SuccessStorie;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -37,24 +38,29 @@ class PagesController extends Controller
 
           $categories = CourseCategory::latest()->get();
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
-          $featured = FeaturedCourse::latest()->first();
+          $featured = FeaturedCourse::latest()->where('for','ssdi')->first();
           return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'categories', 'courses', 'featured'));
      }
      public function ssdiCourse(Course $course)
      {
-
           return view('frontend.samairaskills.single-course', compact('course'));
      }
-
+     
      public function ssdiCourseEnroll(Course $course)
      {
           return view('frontend.samairaskills.enroll', compact('course'));
      }
-
-
+     
+     
      public function samairaskillsJapan()
      {
-          return view('frontend.samairaskillsjapan.index');
+
+
+          $featured = FeaturedCourse::latest()->where('for','language')->first();
+          $certifieds = SkillCertified::latest()->get();
+          $courses = Course::where('course_for', 'language')->latest()->take(6)->get();
+          $stories = SuccessStorie::latest()->get();
+          return view('frontend.samairaskillsjapan.index',compact('certifieds','featured','courses','stories'));
      }
      public function samairatravels()
      {

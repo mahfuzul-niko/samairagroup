@@ -3,6 +3,7 @@
 use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
@@ -131,6 +132,13 @@ Route::middleware(['role:agent,admin'])
             //backed views
             Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
         });
+        Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
+            Route::get('/samaira-language-japan', 'language')->name('language');
+            Route::post('/samaira-language-japan/store/stories', 'storeStory')->name('store.story');
+            Route::post('/samaira-language-japan/store/{story}', 'updateStory')->name('update.story');
+            Route::delete('/samaira-language-japan/delete/{story}', 'deleteStory')->name('delete.story');
+        });
+
 
 
 

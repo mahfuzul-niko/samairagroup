@@ -319,14 +319,17 @@ class CourseController extends Controller
     //featured course
     public function courseFeatured()
     {
-        $courses = Course::where('course_for', 'ssdi')->latest()->get();
+        $courses = Course::latest()->get();
         $features = FeaturedCourse::latest()->get();
         return view('backend.agent.sisters.skill.featured', compact('courses','features'));
     }
     public function storeFeature(Request $request)
     {
+        $course = Course::findOrFail($request->course_id);
+        
         $feature = new FeaturedCourse;
         $feature->title = $request->title;
+        $feature->for = $course->course_for;
         $feature->course_id = $request->course_id;
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('feature/images', 'public');
@@ -337,9 +340,10 @@ class CourseController extends Controller
     }
     public function updateFeature(Request $request, FeaturedCourse $feature)
     {
-
+$course = Course::findOrFail($request->course_id);
         $feature->title = $request->title;
         $feature->course_id = $request->course_id;
+        $feature->for = $course->course_for;
         if ($request->hasFile('image')) {
 
             if ($feature->image && Storage::disk('public')->exists($feature->image)) {

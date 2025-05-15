@@ -60,6 +60,12 @@
                         <i class="bi bi-circle"></i><span>SSDI</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.language') }}"
+                        class="{{ request()->routeIs('agent.group.language') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Language</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 
