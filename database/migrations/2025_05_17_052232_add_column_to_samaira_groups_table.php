@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('samaira_groups', function (Blueprint $table) {
-            $table->id();
-             
-            $table->text('concern_image')->nullable();
-            $table->string('concern_text')->nullable();
-            $table->string('concern_link')->nullable();
-            $table->timestamps();
+        Schema::table('samaira_groups', function (Blueprint $table) {
+            $table->integer('order')->default(0);
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('samaira_groups');
+        Schema::table('samaira_groups', function (Blueprint $table) {
+            $table->dropColumn('order');
+        });
     }
 };
