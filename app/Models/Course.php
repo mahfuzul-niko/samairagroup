@@ -27,6 +27,9 @@ class Course extends Model
     public function featuredcourses(){
         return $this->hasMany(FeaturedCourse::class);
     }
+    public function reviews(){
+        return $this->hasMany(Review::class);
+    }
 
 
     protected $casts = [

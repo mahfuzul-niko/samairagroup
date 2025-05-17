@@ -403,7 +403,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    Samaira Group About Section
+                    SSDI About Section
                 </div>
                 @if (is_null($about))
                     <form action="{{ route('agent.content.store.about') }}" method="POST"
@@ -437,8 +437,8 @@
                                     class="bi bi-trash"></i></button>
                         </form>
                     </div>
-                    <div class="modal fade" id="about-modal" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="about-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -453,7 +453,8 @@
                                         <input type="hidden" name="key" value="ssdi">
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
-                                            <input type="text" name="name" value="{{$about->name}}" class="form-control">
+                                            <input type="text" name="name" value="{{ $about ? $about->name : '' }}"
+                                                class="form-control">
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>
@@ -491,7 +492,7 @@
         </div>
     </section>
 
-        <section>
+    <section>
         <div class="card">
             <div class="card-body">
                 <div class="card-title">

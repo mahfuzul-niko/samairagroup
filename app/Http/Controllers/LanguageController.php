@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
+use App\Models\ContactBanner;
+use App\Models\ContactInfo;
 use App\Models\SuccessStorie;
 use Illuminate\Http\Request;
 
@@ -10,7 +13,11 @@ class LanguageController extends Controller
     public function language()
     {
         $stories = SuccessStorie::latest()->get();
-        return view('backend.agent.sisters.japan.language', compact('stories'));
+        $about = About::latest()->where('key', 'language')->first();
+
+        $contactbanners = ContactBanner::latest()->where('key', 'language')->get();
+        $info = ContactInfo::latest()->where('key', 'language')->first();
+        return view('backend.agent.sisters.japan.language', compact('stories','about','info','contactbanners'));
     }
     public function storeStory(Request $request)
     {

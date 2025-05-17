@@ -131,6 +131,12 @@ Route::middleware(['role:agent,admin'])
 
             //backed views
             Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
+            Route::get('/content/review', 'review')->name('view.review');
+            Route::post('/content/store/review', 'storeReview')->name('store.review');
+            Route::post('/content/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/content/delete/review/{review}', 'deleteReview')->name('delete.review');
+
+
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-language-japan', 'language')->name('language');

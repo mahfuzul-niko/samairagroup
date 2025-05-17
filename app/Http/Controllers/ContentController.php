@@ -8,6 +8,8 @@ use App\Models\Contact;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\ContactSubject;
+use App\Models\Course;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class ContentController extends Controller
@@ -146,10 +148,59 @@ class ContentController extends Controller
         return redirect()->back()->with('success', 'Your message has been sent successfully.');
     }
 
-    public function viewContact($key){
+    public function viewContact($key)
+    {
         $contacts = Contact::latest()->where('key', $key)->get();
-        return view('backend.agent.content.contact',compact('contacts'));
+        return view('backend.agent.content.contact', compact('contacts'));
     }
+
+
+    public function review()
+    {
+        $reviews = Review::latest()->get();
+        $courses = Course::latest()->get();
+        return view('backend.agent.content.reviews', compact('reviews','courses'));
+    }
+    public function storeReview(Request $request)
+    {
+        $review = new Review;
+        $review->name = $request->name;
+        $review->course_id = $request->course_id;
+        $review->review = $request->review;
+
+        if ($request->hasFile('image')) {
+            $review->image = $request->file('image')->store('review', 'public');
+        }
+
+        $review->save();
+        return redirect()->back()->with('success', 'Review added successfully.');
+    }
+    public function updateReview(Request $request, Review $review)
+    {
+        $review->name = $request->name;
+        $review->course_id = $request->course_id;
+        $review->review = $request->review;
+
+        if ($request->hasFile('image')) {
+            $review->image = $request->file('image')->store('review', 'public');
+        }
+
+        $review->save();
+
+        return redirect()->back()->with('success', 'Review updated successfully.');
+    }
+    public function deleteReview(Review $review)
+    {
+
+        if ($review->image && \Storage::disk('public')->exists($review->image)) {
+            \Storage::disk('public')->delete($review->image);
+        }
+
+        $review->delete();
+
+        return redirect()->back()->with('success', 'Review deleted successfully.');
+    }
+
 
 
 
