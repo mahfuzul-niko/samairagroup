@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
              
             $table->text('concern_image')->nullable();
-            $table->string('concern_text')->nullable();
-            $table->string('concern_link')->nullable();
+            $table->text('concern_text')->nullable();
+            $table->text('concern_link')->nullable();
             $table->timestamps();
         });
     }

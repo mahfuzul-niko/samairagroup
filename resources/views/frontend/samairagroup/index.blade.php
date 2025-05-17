@@ -78,7 +78,7 @@
             <div class="rg-mega-menu-content">
                 @foreach ($concerns as $concern)
                     
-                <a href="#"><img src="{{$concern->concern_image ? Storage::url($concern->concern_image):asset('assets/img/no-profile.png')}}" alt="Teer"></a>
+                <a href="{{$concern->concern_link}}"><img src="{{$concern->concern_image ? Storage::url($concern->concern_image):asset('assets/img/no-profile.png')}}" alt="Teer"></a>
                 @endforeach
               
             </div>

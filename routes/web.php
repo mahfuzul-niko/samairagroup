@@ -40,6 +40,10 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samaira-skill-development-institute/contact-us', 'ssdiContact')->name('ssdi.contact');
     //language
     Route::get('/samaira-language-institute', 'samairaskillsJapan')->name('samairaskills.japan');
+    Route::get('/samaira-language-institute/about-us', 'samairaskillsJapanAbout')->name('japan.about');
+    Route::get('/samaira-language-institute/contact-us', 'samairaskillsJapanContact')->name('japan.contact');
+
+
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');

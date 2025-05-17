@@ -24,8 +24,6 @@ class PagesController extends Controller
      {
           $banners = GroupBanner::latest()->get();
           $concerns = SamairaGroup::orderBy('order')->get();
-
-
           return view('frontend.samairagroup.index', compact('banners', 'concerns', ));
      }
 
@@ -108,6 +106,13 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'ssdi')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function samairaskillsJapanAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'slij')->get();
+          $about = About::latest()->where('key', 'slij')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -121,6 +126,13 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'ssdi')->get();
           $info = ContactInfo::latest()->where('key', 'ssdi')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function samairaskillsJapanContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'slij')->get();
+          $info = ContactInfo::latest()->where('key', 'slij')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
