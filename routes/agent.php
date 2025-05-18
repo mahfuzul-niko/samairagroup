@@ -3,6 +3,7 @@
 use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
@@ -127,7 +128,23 @@ Route::middleware(['role:agent,admin'])
             //contact subject
             Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
             Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');
+
+            //backed views
+            Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
+            Route::get('/content/review', 'review')->name('view.review');
+            Route::post('/content/store/review', 'storeReview')->name('store.review');
+            Route::post('/content/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/content/delete/review/{review}', 'deleteReview')->name('delete.review');
+
+
         });
+        Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
+            Route::get('/samaira-language-japan', 'language')->name('language');
+            Route::post('/samaira-language-japan/store/stories', 'storeStory')->name('store.story');
+            Route::post('/samaira-language-japan/store/{story}', 'updateStory')->name('update.story');
+            Route::delete('/samaira-language-japan/delete/{story}', 'deleteStory')->name('delete.story');
+        });
+
 
 
 

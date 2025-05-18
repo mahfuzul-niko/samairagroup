@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Models\CourseCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -34,11 +36,15 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     //ssdi
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('ssdi');
     Route::get('/samaira-skill-development-institute/about', 'samairaskillsAbout')->name('ssdi.about');
-    Route::get('/samaira-skill-development-institute/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
-    Route::get('/samaira-skill-development-institute/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('ssdi.course.enroll');
+    Route::get('/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
+    Route::get('/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('ssdi.course.enroll');
     Route::get('/samaira-skill-development-institute/contact-us', 'ssdiContact')->name('ssdi.contact');
     //language
     Route::get('/samaira-language-institute', 'samairaskillsJapan')->name('samairaskills.japan');
+    Route::get('/samaira-language-institute/about-us', 'samairaskillsJapanAbout')->name('japan.about');
+    Route::get('/samaira-language-institute/contact-us', 'samairaskillsJapanContact')->name('japan.contact');
+
+
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
@@ -60,7 +66,18 @@ Route::group(['controller' => ProfileController::class, 'as' => 'profile.'], fun
 Route::group(['controller' => CourseController::class, 'as' => 'course.'], function () {
     Route::post('/store/enroll', 'storeCourseEnroll')->name('store.enroll');
 });
+Route::group(['controller' => ContentController::class, 'as' => 'content.'], function () {
+    Route::post('/store/contct', 'storeContact')->name('store.contact');
+});
 
 Auth::routes();
+
+
+Route::middleware(['auth', 'role:student,admin'])->prefix('student')->as('student.')->group(function () {
+    Route::controller(StudentController::class)->group(function () {
+        Route::get('/dashboard', 'studentDashboard')->name('dashboard');
+    });
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

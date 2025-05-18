@@ -15,6 +15,7 @@ use App\Models\Partner;
 use App\Models\SamairaGroup;
 use App\Models\SkillAdvertise;
 use App\Models\SkillCertified;
+use App\Models\SuccessStorie;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -22,9 +23,7 @@ class PagesController extends Controller
      public function samairagroup()
      {
           $banners = GroupBanner::latest()->get();
-          $concerns = SamairaGroup::get();
-
-
+          $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.samairagroup.index', compact('banners', 'concerns', ));
      }
 
@@ -34,15 +33,14 @@ class PagesController extends Controller
           $certifieds = SkillCertified::latest()->get();
           $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
 
-
+          $concerns = SamairaGroup::orderBy('order')->get();
           $categories = CourseCategory::latest()->get();
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
-          $featured = FeaturedCourse::latest()->first();
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'categories', 'courses', 'featured'));
+          $featured = FeaturedCourse::latest()->where('for', 'ssdi')->first();
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise','concerns', 'categories', 'courses', 'featured'));
      }
      public function ssdiCourse(Course $course)
      {
-
           return view('frontend.samairaskills.single-course', compact('course'));
      }
 
@@ -54,7 +52,13 @@ class PagesController extends Controller
 
      public function samairaskillsJapan()
      {
-          return view('frontend.samairaskillsjapan.index');
+
+
+          $featured = FeaturedCourse::latest()->where('for', 'language')->first();
+          $certifieds = SkillCertified::latest()->get();
+          $courses = Course::where('course_for', 'language')->latest()->take(6)->get();
+          $stories = SuccessStorie::latest()->get();
+          return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories'));
      }
      public function samairatravels()
      {
@@ -90,16 +94,23 @@ class PagesController extends Controller
      //abouts
      public function samairagroupAbout()
      {
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'samairagroup')->get();
           $about = About::latest()->where('key', 'samairagroup')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
      public function samairaskillsAbout()
      {
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'ssdi')->get();
           $about = About::latest()->where('key', 'ssdi')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
+     public function samairaskillsJapanAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'language')->get();
+          $about = About::latest()->where('key', 'language')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
 
@@ -108,14 +119,21 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'samairagroup')->get();
           $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
      public function ssdiContact()
      {
           $banners = ContactBanner::latest()->where('key', 'ssdi')->get();
           $info = ContactInfo::latest()->where('key', 'ssdi')->first();
-          $concerns = SamairaGroup::latest()->get();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function samairaskillsJapanContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'language')->get();
+          $info = ContactInfo::latest()->where('key', 'language')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
 

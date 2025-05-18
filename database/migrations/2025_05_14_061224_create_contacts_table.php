@@ -4,18 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('samaira_groups', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->integer('order')->default(0);
-            $table->text('concern_image')->nullable();
-            $table->text('concern_text')->nullable();
-            $table->text('concern_link')->nullable();
+
+            $table->string('key');
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('subject');
+            $table->text('message');
+            
             $table->timestamps();
         });
     }
@@ -25,6 +30,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('samaira_groups');
+        Schema::dropIfExists('contacts');
     }
 };

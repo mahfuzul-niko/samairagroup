@@ -18,16 +18,17 @@ class SamairaGroupController extends Controller
     public function index()
     {
         $banners = GroupBanner::latest()->get();
-        $concerns = SamairaGroup::latest()->get();
+        $concerns = SamairaGroup::orderBy('order')->get();
+        // dd($concerns);
         $partners = Partner::latest()->get();
 
         $aboutbanners = AboutBanner::latest()->where('key', 'samairagroup')->get();
         $about = About::latest()->where('key', 'samairagroup')->first();
-        
+
         $contactbanners = ContactBanner::latest()->where('key', 'samairagroup')->get();
         $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
-        
-        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners','about','contactbanners','info'));
+
+        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners', 'about', 'contactbanners', 'info'));
     }
     public function storeBanner(Request $request)
     {
@@ -80,12 +81,13 @@ class SamairaGroupController extends Controller
     public function storeConcern(Request $request)
     {
         $request->validate([
+            'order' => 'required|integer',
             'concern_image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
-            'concern_text' => 'nullable',
+            'concern_text' => 'nullable|string',
             'concern_link' => 'nullable|string|max:255',
         ]);
 
-        $data = $request->only(['concern_text', 'concern_link']);
+        $data = $request->only(['order', 'concern_text', 'concern_link']);
 
         if ($request->hasFile('concern_image')) {
             $data['concern_image'] = $request->file('concern_image')->store('concerns', 'public');
@@ -96,17 +98,19 @@ class SamairaGroupController extends Controller
         return back()->with('success', 'Concern added successfully');
     }
 
+
     public function updateConcern(Request $request, $id)
     {
         $request->validate([
+            'order' => 'required|integer',
             'concern_image' => 'nullable|image|mimes:jpeg,png,jpg,webp',
-            'concern_title' => 'nullable|string|max:255',
+            'concern_text' => 'nullable|string',
             'concern_link' => 'nullable|string|max:255',
         ]);
 
         $concern = SamairaGroup::findOrFail($id);
 
-        $data = $request->only(['concern_title', 'concern_link']);
+       $data = $request->only(['order', 'concern_text', 'concern_link']);
 
         if ($request->hasFile('concern_image')) {
             if ($concern->concern_image && Storage::disk('public')->exists($concern->concern_image)) {

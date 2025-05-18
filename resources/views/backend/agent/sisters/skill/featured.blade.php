@@ -8,6 +8,7 @@
                 </div>
                 <form action="{{ route('agent.course.store.feature') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+
                     <div class="mb-3">
                         <label for="">Post title</label>
                         <input type="text" name="title" class="form-control" required>
@@ -43,6 +44,7 @@
                         <th>Image</th>
                         <th>Title</th>
                         <th>Course Code</th>
+                        <th>For</th>
                         <th>Action</th>
                     </tr>
                     @foreach ($features as $key => $item)
@@ -53,6 +55,7 @@
                                     alt="" style="height: 100px; width: auto;"></td>
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->course->course_code }}</td>
+                            <td>{{ $item->for }}</td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-warning btn-sm" data-bs-toggle="modal"
@@ -88,13 +91,12 @@
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="">Image</label>
-                                                    <input type="file" name="image" class="form-control" required>
+                                                    <input type="file" name="image" class="form-control" >
                                                 </div>
                                                 <div class="mb-3">
                                                     <select class="form-select" name="course_id" required
                                                         aria-label="nice">
-                                                        <option disabled {{ $item->course_id ? '' : 'selected' }}>Open
-                                                            this select menu</option>
+                                                        <option disabled {{ $item->course_id ? '' : 'selected' }}>Select Course</option>
                                                         @foreach ($courses as $course)
                                                             <option value="{{ $course->id }}"
                                                                 {{ $item->course_id == $course->id ? 'selected' : '' }}>

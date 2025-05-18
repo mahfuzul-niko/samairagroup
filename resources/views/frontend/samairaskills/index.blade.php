@@ -912,6 +912,7 @@
 
     <!-- Footer Section Start -->
     <x-layouts.footer />
+    <x-layouts.footer />
     <!-- Footer Section End -->
 
   <!-- jQuery -->

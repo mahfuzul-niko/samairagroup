@@ -10,12 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('samaira_groups', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('order')->default(0);
-            $table->text('concern_image')->nullable();
-            $table->text('concern_text')->nullable();
-            $table->text('concern_link')->nullable();
+            $table->foreignId('course_id');
+            $table->string('name');
+            $table->text('review');
+            $table->text('image');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('samaira_groups');
+        Schema::dropIfExists('reviews');
     }
 };

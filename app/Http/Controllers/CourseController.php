@@ -7,6 +7,7 @@ use App\Models\CourseCategory;
 use App\Models\CourseModule;
 use App\Models\Enroll;
 use App\Models\FeaturedCourse;
+use App\Models\Role;
 use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Mail\CourseEnrolledMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 
 class CourseController extends Controller
@@ -227,6 +229,12 @@ class CourseController extends Controller
     //enroll
     public function storeCourseEnroll(Request $request)
     {
+        $request->validate([
+            'course_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|email',
+            'number' => 'required',
+        ]);
         $enroll = new Enroll;
         $enroll->course_id = $request->course_id;
         $enroll->name = $request->name;
@@ -234,12 +242,21 @@ class CourseController extends Controller
         $enroll->phone = $request->number;
         $enroll->at = $request->at;
         $enroll->save();
-
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            $user = new User;
+            $user->name = $request->name;
+            $user->username = Str::slug($request->name) . rand(10000, 99999);
+            $user->role_id = Role::where('name', 'student')->first()->id;
+            $user->email = $request->email;
+            $user->phone = $request->number;
+            $user->password = Hash::make($request->number);
+            $user->save();
+        }
         $course = Course::find($request->course_id);
-
+        $course->users()->syncWithoutDetaching([$user->id]);
         Mail::to($enroll->email)->send(new CourseEnrolledMail($enroll, $course));
-
-        return redirect(route('page.samairaskills'))->with('success', 'Course Enroll Successfully')->with('info', 'Please check your email');
+        return redirect(route('page.ssdi'))->with('success', 'Course Enroll Successfully')->with('info', 'Please check your email');
     }
 
     public function ssdiEnrollList()
@@ -319,14 +336,17 @@ class CourseController extends Controller
     //featured course
     public function courseFeatured()
     {
-        $courses = Course::where('course_for', 'ssdi')->latest()->get();
+        $courses = Course::latest()->get();
         $features = FeaturedCourse::latest()->get();
-        return view('backend.agent.sisters.skill.featured', compact('courses','features'));
+        return view('backend.agent.sisters.skill.featured', compact('courses', 'features'));
     }
     public function storeFeature(Request $request)
     {
+        $course = Course::findOrFail($request->course_id);
+
         $feature = new FeaturedCourse;
         $feature->title = $request->title;
+        $feature->for = $course->course_for;
         $feature->course_id = $request->course_id;
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('feature/images', 'public');
@@ -337,9 +357,10 @@ class CourseController extends Controller
     }
     public function updateFeature(Request $request, FeaturedCourse $feature)
     {
-
+        $course = Course::findOrFail($request->course_id);
         $feature->title = $request->title;
         $feature->course_id = $request->course_id;
+        $feature->for = $course->course_for;
         if ($request->hasFile('image')) {
 
             if ($feature->image && Storage::disk('public')->exists($feature->image)) {

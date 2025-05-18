@@ -72,18 +72,20 @@
             <ul class="rg-navbar-menu">
                 <li><a href="#">Home</a></li>
 
-                 <li class="rg-navbar-has-mega">
-          <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-mega-menu">
-            <div class="rg-mega-menu-content">
-                @foreach ($concerns as $concern)
-                    
-                <a href="#"><img src="{{$concern->concern_image ? Storage::url($concern->concern_image):asset('assets/img/no-profile.png')}}" alt="Teer"></a>
-                @endforeach
-              
-            </div>
-          </div>
-        </li>
+                <li class="rg-navbar-has-mega">
+                    <a href="#">Brands <span class="rg-navbar-chevron"><i
+                                class="fa fa-chevron-down"></i></span></a>
+                    <div class="rg-mega-menu">
+                        <div class="rg-mega-menu-content">
+                            @foreach ($concerns as $concern)
+                                <a href="{{ $concern->concern_link }}"><img
+                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Teer"></a>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </li>
 
                 <li><a href="{{ route('page.home.about') }}">About Us</a></li>
                 <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
@@ -139,7 +141,7 @@
     <!-- Subscribe Section End-->
 
     <!-- Custom Footer Section Start -->
-    <x-layouts.footer/>
+    <x-layouts.footer />
     <!-- Custom Footer Section End -->
 
     <!-- jQuery -->

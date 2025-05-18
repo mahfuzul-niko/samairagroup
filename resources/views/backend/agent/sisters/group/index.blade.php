@@ -171,6 +171,11 @@
                 <form action="{{ route('agent.group.store.concern') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
+
+                    <div class="form-group mt-2">
+                        <label for="">Order</label>
+                        <input type="number" class="form-control" id="" name="order">
+                    </div>
                     <div class="form-group mt-2">
                         <label for="">Concern Image</label>
                         <input type="file" class="form-control" id="" name="concern_image">
@@ -204,6 +209,9 @@
                             @foreach ($concerns as $concern)
                                 <tr>
                                     <td>
+                                        {{$concern->order}}
+                                    </td>
+                                    <td>
                                         <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
                                             alt="" style="height: 100px; width: 100px;">
                                     </td>
@@ -230,8 +238,8 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content ">
                                                     <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal
-                                                            title</h1>
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update
+                                                        </h1>
                                                         <button type="button" class="btn-close"
                                                             data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
@@ -241,6 +249,11 @@
                                                             action="{{ route('agent.group.update.concern', $concern) }}"
                                                             method="POST" enctype="multipart/form-data">
                                                             @csrf
+                                                            <div class="form-group mt-2">
+                                                                <label for="">Order</label>
+                                                                <input type="number" class="form-control"
+                                                                    id="" name="order" value="{{ $concern->order }}">
+                                                            </div>
                                                             <div class="form-group mt-2">
                                                                 <label for="">Concern Title</label>
                                                                 <textarea name="concern_text" id="" rows="4" class="form-control">{{ $concern->concern_text }}</textarea>
@@ -554,7 +567,7 @@
     @endif
 
 
-   
+
 
     @push('scripts')
         <script>

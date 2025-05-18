@@ -132,33 +132,36 @@
                         </div>
                     </div>
                 </div>
+                @if ($info)
                 <!-- Right: Contact Form -->
-                <form class="contact-form">
+                <form class="contact-form" action="{{route('content.store.contact')}}" method="POST">
+                    @csrf
                     <h2>Love to hear from you,<br>Get in touch <span class="wave">👋</span></h2>
+                    <input type="hidden" name="key" value="{{$info->key}}">
                     <div class="form-row">
                         <div class="form-group">
                             <label>Your Name</label>
-                            <input type="text" placeholder="Edward Snowden" required>
+                            <input type="text" placeholder="Edward Snowden" required name="name">
                         </div>
                         <div class="form-group">
                             <label>Your Email</label>
-                            <input type="email" placeholder="itanexmple@gmail.com" required>
+                            <input type="email" placeholder="itanexmple@gmail.com" required name="email">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label>Phone No.</label>
                             <div class="phone-input">
-                                <input type="tel" placeholder="Enter your phone no.">
+                                <input type="tel" placeholder="Enter your phone no." name="phone">
                             </div>
                         </div>
                         @if (!empty($info->subjects))
                             <div class="form-group">
                                 <label>What you are interested in</label>
-                                <select class="form-control">
-                                    <option selected disabled>Select Subject</option>
+                                <select class="form-control" name="subject" required>
+                                    <option  disabled>Select Subject</option>
                                     @foreach ($info->subjects as $subject)
-                                        <option value="{{ $subject->id }}">{{ $subject->subject }}</option>
+                                        <option value="{{ $subject->subject }}">{{ $subject->subject }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -167,10 +170,14 @@
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea rows="3" placeholder="Let tell us know your project about"></textarea>
+                        <textarea rows="3" placeholder="Let tell us know your project about" name="message"></textarea>
                     </div>
                     <button type="submit" class="send-btn">Send message <i class="fa fa-arrow-right"></i></button>
                 </form>
+                    
+                @else
+                    <h2>You Can't Contact This Page Currently</h2>
+                @endif
             </div>
         </section>
     </div>

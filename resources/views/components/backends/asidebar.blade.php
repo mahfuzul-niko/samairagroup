@@ -60,6 +60,12 @@
                         <i class="bi bi-circle"></i><span>SSDI</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.language') }}"
+                        class="{{ request()->routeIs('agent.group.language') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Language</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 
@@ -108,16 +114,16 @@
                 </li>
                 <li>
                     <a href="{{ route('agent.course.language') }}"
-                    class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>Language Course List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('agent.course.ssdi.enroll') }}"
-                    class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
-                </a>
-            </li>
+                        class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Language Course List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.ssdi.enroll') }}"
+                        class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
+                    </a>
+                </li>
 
             </ul>
         </li><!-- End course Nav -->
@@ -132,6 +138,34 @@
             </a>
         </li> --}}
 
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.content.*') ? '' : 'collapsed' }}"
+                data-bs-target="#content-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Contact</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="content-nav" class="nav-content collapse {{ request()->routeIs('agent.content.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.content.view.review') }}"
+                        class="{{ request()->routeIs('agent.content.view.review') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Review Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.content.view.contact', 'samairagroup') }}"
+                        class="{{ request()->routeIs('agent.content.view.contact', 'samairagroup') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Samaira Group</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.content.view.contact', 'ssdi') }}"
+                        class="{{ request()->routeIs('agent.content.view.contact', 'ssdi') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>SSDI</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End contact Nav -->
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
                 data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">
@@ -167,7 +201,7 @@
         </li><!-- End System Nav -->
 
 
-    
+
 
 
 
