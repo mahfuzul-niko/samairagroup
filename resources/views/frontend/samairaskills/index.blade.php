@@ -45,14 +45,14 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('page.home')}}">Home</a>
+                            <a class="nav-link" href="{{ route('page.home') }}">Home</a>
                         </li>
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('page.ssdi.about')}}">About</a>
+                            <a class="nav-link" href="{{ route('page.ssdi.about') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('page.ssdi.contact')}}">Contact</a>
+                            <a class="nav-link" href="{{ route('page.ssdi.contact') }}">Contact</a>
                         </li>
 
 
@@ -266,7 +266,8 @@
                                         </div>
                                         <div class="course-bottom-row">
                                             <div class="price-free">{{ $course->price }} Taka</div>
-                                            <a href="{{ route('page.ssdi.course.enroll', $course) }}" class="enroll-btn">Enroll Now</a>
+                                            <a href="{{ route('page.ssdi.course.enroll', $course) }}"
+                                                class="enroll-btn">Enroll Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -331,25 +332,23 @@
                     <!-- First set of logos -->
                     <div class="d-flex">
                         @foreach ($certifieds as $certified)
-                            
-                        <div class="logo-item">
-                            <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
-                                alt="Logo 1" class="sister-logo">
-                        </div>
+                            <div class="logo-item">
+                                <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
+                                    alt="Logo 1" class="sister-logo">
+                            </div>
                         @endforeach
-                       
+
                     </div>
                     <div class="d-flex">
                         @foreach ($certifieds as $certified)
-                            
-                        <div class="logo-item">
-                            <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
-                                alt="Logo 1" class="sister-logo">
-                        </div>
+                            <div class="logo-item">
+                                <img src="{{ $certified->logo ? Storage::url($certified->logo) : asset('assets/img/no-profile.png') }}"
+                                    alt="Logo 1" class="sister-logo">
+                            </div>
                         @endforeach
-                       
+
                     </div>
-                   
+
                 </div>
             </div>
         </div>
@@ -358,32 +357,32 @@
 
     <!-- Enrollment Discount Section Start -->
     @if (!is_null($featured))
-        
-    <section class="enrollment-discount-section mt-5 pt-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="enrollment-image">
-                        <img src="{{ $featured->image ? Storage::url($featured->image) : asset('assets/img/no-profile.png') }}"
-                            alt="Student Image">
+        <section class="enrollment-discount-section mt-5 pt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="enrollment-image">
+                            <img src="{{ $featured->image ? Storage::url($featured->image) : asset('assets/img/no-profile.png') }}"
+                                alt="Student Image">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="enrollment-content">
-                        <h2>{{ $featured->title }}</h2>
-                        <div class="cta-group">
-                            <a href="{{ route('page.ssdi.course.enroll',  $featured->course) }}" class="btn btn-primary enrollment-btn">Start Free Trial</a>
+                    <div class="col-lg-6">
+                        <div class="enrollment-content">
+                            <h2>{{ $featured->title }}</h2>
+                            <div class="cta-group">
+                                <a href="{{ route('page.ssdi.course.enroll', $featured->course) }}"
+                                    class="btn btn-primary enrollment-btn">Start Free Trial</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
     <!-- Enrollment Discount Section End -->
 
     <!-- Footer Section Start -->
-<x-layouts.footer/>
+    <x-layouts.footer />
     <!-- Footer Section End -->
 
     <!-- jQuery -->
