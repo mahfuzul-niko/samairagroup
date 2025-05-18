@@ -4,6 +4,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Models\CourseCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -70,5 +71,13 @@ Route::group(['controller' => ContentController::class, 'as' => 'content.'], fun
 });
 
 Auth::routes();
+
+
+Route::middleware(['auth', 'role:student,admin'])->prefix('student')->as('student.')->group(function () {
+    Route::controller(StudentController::class)->group(function () {
+        Route::get('/dashboard', 'studentDashboard')->name('dashboard');
+    });
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

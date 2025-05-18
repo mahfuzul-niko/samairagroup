@@ -32,6 +32,7 @@ class LoginController extends Controller
             return match (Auth::user()->role->name) {
                 'admin' => '/admin/dashboard',
                 'agent' => '/agent/dashboard',
+                'student' => '/student/dashboard',
                 default => '/',
             };
         }

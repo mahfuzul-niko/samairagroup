@@ -151,8 +151,22 @@
 
                 </div>
                 <div class="col-md-6">
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
+
+
                     <form action="{{ route('course.store.enroll') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
                         @if ($course->course_type == 'both')
                             <div class="mb-2">
                                 <div class="form-check form-check-inline">
@@ -167,34 +181,46 @@
                                 </div>
                             </div>
                         @endif
+
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
                         <input type="hidden" name="at" value="ssdi">
+
                         <div class="mb-3">
                             <label class="form-label">Your Name</label>
                             <input type="text" class="form-control bg-light" placeholder="Name Here"
-                                name="name" required />
+                                name="name" value="{{ auth()->check() ? auth()->user()->name : '' }}" required
+                                {{ auth()->check() ? 'readonly' : '' }} />
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Your Email</label>
                             <input type="email" class="form-control" placeholder="Your Mail Here" name="email"
-                                required />
+                                value="{{ auth()->check() ? auth()->user()->email : '' }}"
+                                {{ auth()->check() ? 'readonly' : '' }} required />
+
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Phone No.</label>
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light"
                                     placeholder="Enter your phone no." name="number" maxlength="11"
                                     pattern="01[3-9][0-9]{8}"
-                                    title="Enter a valid Bangladeshi phone number (e.g., 017XXXXXXXX)" required />
+                                    title="Enter a valid Bangladeshi phone number (e.g., 017XXXXXXXX)"
+                                    value="{{ auth()->check() ? auth()->user()->phone : '' }}"
+                                    {{ auth()->check() ? 'readonly' : '' }} required />
                             </div>
                         </div>
 
-                        <button type="submit"
-                            class="btn btn-primary w-100 fw-bold py-2 mb-2 enroll-apply-now-btn">Apply Now <span
-                                class="enroll-arrow"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-skills/enroll-page/northeastrrow.png"
-                                    alt="North East Arrow" class="enroll-arrow-img"></span></button>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold py-2 mb-2 enroll-apply-now-btn">
+                            Apply Now
+                            <span class="enroll-arrow">
+                                <img src="{{ asset('assets/frontassets/images/samaira-skills/enroll-page/northeastrrow.png') }}"
+                                    alt="North East Arrow" class="enroll-arrow-img">
+                            </span>
+                        </button>
                     </form>
+
                     <div class="text-center mt-2">
                         <span class="fw-bold text-danger mx-2">or</span>
                         <span class="fw-bold text-primary"><a href=""

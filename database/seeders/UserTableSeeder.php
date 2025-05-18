@@ -30,6 +30,9 @@ class UserTableSeeder extends Seeder
             [
                 'name' => 'trainer',
             ],
+            [
+                'name' => 'student',
+            ],
 
 
         ]);
@@ -85,6 +88,15 @@ class UserTableSeeder extends Seeder
                 'phone' => '1234567895',
                 'role_id' => Role::where('name', 'member')->first()->id,
                 'email' => 'member@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+            ],
+            [
+                'name' => 'Student User',
+                'username' => 'student_user',
+                'phone' => '1234567895',
+                'role_id' => Role::where('name', 'student')->first()->id,
+                'email' => 'student@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
             ],

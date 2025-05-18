@@ -14,7 +14,7 @@ class Course extends Model
     }
     public function category()
     {
-        return $this->belongsTo(CourseCategory::class,'category_id');
+        return $this->belongsTo(CourseCategory::class, 'category_id');
     }
     public function trainer()
     {
@@ -24,11 +24,17 @@ class Course extends Model
     {
         return $this->hasMany(Enroll::class);
     }
-    public function featuredcourses(){
+    public function featuredcourses()
+    {
         return $this->hasMany(FeaturedCourse::class);
     }
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany(Review::class);
+    }
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 
 
@@ -39,6 +45,6 @@ class Course extends Model
         'keywords' => 'array',
     ];
 
-    
-    
+
+
 }
