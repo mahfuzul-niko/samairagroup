@@ -69,6 +69,10 @@ Route::middleware(['role:agent,admin'])
             Route::post('/SamairaGroup/certified/update/{certified}', 'updateCertified')->name('update.certified');
             Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
             Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
+            
+            Route::post('samairaskills/banner/store', 'storeBanner')->name('store.banner');
+            Route::post('samairaskills/banner/update/{banner}', 'updateBanner')->name('update.banner');
+            Route::delete('samairaskills/banner/delete/{banner}', 'destroyBanner')->name('delete.banner');
 
 
 

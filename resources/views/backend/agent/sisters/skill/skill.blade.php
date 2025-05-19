@@ -37,96 +37,121 @@
 
         </div>
     </section>
-    <section class="banner">
+
+    <section class="benner">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    Banner Image
+                    Add New Banner
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="text-center my-3">
-                            <div class=" d-inline-block" style="height: 100px; width: auto;">
-                                <img src="{{ system_key('samaira_skills_banner') ? Storage::url(system_key('samaira_skills_banner')) : asset('assets/img/no-profile.png') }}"
-                                    alt="Group Logo" class="img-fluid rounded "
-                                    style="height: 100px; object-fit: cover;">
-
-                                <form action="{{ route('agent.system.destroy.image', 'samaira_skills_banner') }}"
-                                    method="POST" class="mt-2">
-                                    @csrf
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
-                            enctype="multipart/form-data">
-                            @csrf
-                            <input type="hidden" name="key" placeholder="Enter key" class="form-control"
-                                value="samaira_skills_banner" required>
-                            <div class="form-group my-3">
-                                <label for="value">Banner Image</label>
-                                <input type="file" name="value" class="form-control" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-sm">Upload</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="banner-secton">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title">
-                    Banner Section
-                </div>
-                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.group.store.banner') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <select class="form-select" aria-label="Default select example" name="key" required>
-                                <option selected>Select social option</option>
-                                <option value="system_skill_banner_title">Banner Title</option>
-                                <option value="system_skill_banner_sub_title">Banner Subtitle</option>
-                                <option value="system_skill_banner_count">Banner Count</option>
-                                <option value="system_skill_banner_btn_link">Banner Button Link</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="inputEmail4" name="value" required>
-                        </div>
+                    <input type="hidden" name="key" value="ssdi">
+                    <div class="mb-3">
+                        <label for="">Title</label>
+                        <input type="text" name="title" class="form-control" required>
                     </div>
-                    <button class="btn btn-primary mt-3 btn-sm">Submit</button>
+                    <div class="mb-3">
+                        <label for="">Banner Image</label>
+                        <input type="file" name="image" id="" class="form-control" required>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Sub Title</label>
+                        <textarea name="subtitle" class="form-control" rows="5" id="" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Url</label>
+                        <input type="url" class="form-control" name="url">
+                    </div>
+                    <button class="btn btn-sm btn-primary" type="submit">
+                        Submit
+                    </button>
                 </form>
                 <div class="card-title">
-                    Banner List
+                    Banner Info
                 </div>
-                <table class="table table-bordered">
-                    <tbody>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
+                        <th>Url</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($banners as $banner)
                         <tr>
-                            <th class="bg-light">Banner Title:</th>
-                            <td>{{ system_key('system_skill_banner_title') }}</td>
+                            <td>
+                                <img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                    class="img-fluid" style="height: 100px ; width: auto;" alt="">
+                            </td>
+                            <td>{{ $banner->title }}</td>
+                            <td>{{ $banner->subtitle }}</td>
+                            <td>{{ $banner->url }}</td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#banner{{ $banner->id }}"><i
+                                            class="bi bi-pencil-square"></i></a>
+
+                                    <form action="{{ route('agent.group.delete.banner', $banner) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="banner{{ $banner->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('agent.group.update.banner',$banner) }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="key" value="ssdi">
+                                                    <div class="mb-3">
+                                                        <label for="">Title</label>
+                                                        <input type="text" name="title" class="form-control"
+                                                            required value="{{$banner->title}}">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="">Banner Image</label>
+                                                        <input type="file" name="image" id=""
+                                                            class="form-control" >
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="">Sub Title</label>
+                                                        <textarea name="subtitle" class="form-control" rows="5" id="" required>{{$banner->subtitle}}</textarea>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="">Url</label>
+                                                        <input type="url" class="form-control" name="url" value="{{$banner->url}}">
+                                                    </div>
+                                                    <button class="btn btn-sm btn-primary" type="submit">
+                                                        Submit
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
-                        <tr>
-                            <th class="bg-light">Banner Subtitle:</th>
-                            <td>{{ system_key('system_skill_banner_sub_title') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-light">Banner Count:</th>
-                            <td>{{ system_key('system_skill_banner_count') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-light">Banner Button Link:</th>
-                            <td>{{ system_key('system_skill_banner_btn_link') }}</td>
-                        </tr>
-                    </tbody>
+                    @endforeach
                 </table>
             </div>
         </div>
     </section>
+
+
     <section class="how-it-works">
         <div class="card">
             <div class="card-body">
@@ -453,8 +478,8 @@
                                         <input type="hidden" name="key" value="ssdi">
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
-                                            <input type="text" name="name" value="{{ $about ? $about->name : '' }}"
-                                                class="form-control">
+                                            <input type="text" name="name"
+                                                value="{{ $about ? $about->name : '' }}" class="form-control">
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>

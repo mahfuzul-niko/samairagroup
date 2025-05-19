@@ -15,6 +15,7 @@ use App\Models\Partner;
 use App\Models\Review;
 use App\Models\SamairaGroup;
 use App\Models\SkillAdvertise;
+use App\Models\SkillBanner;
 use App\Models\SkillCertified;
 use App\Models\SuccessStorie;
 use Illuminate\Http\Request;
@@ -39,8 +40,8 @@ class PagesController extends Controller
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
           $featured = FeaturedCourse::latest()->where('for', 'ssdi')->first();
           $reviews = Review::latest()->get();
-          // dd($reviews);
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise','concerns', 'categories', 'courses', 'featured','reviews'));
+           $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise','concerns', 'categories', 'courses', 'featured','reviews','banners'));
      }
      public function ssdiCourse(Course $course)
      {

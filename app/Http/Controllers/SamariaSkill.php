@@ -8,6 +8,7 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\CourseCategory;
 use App\Models\SkillAdvertise;
+use App\Models\SkillBanner;
 use App\Models\SkillCertified;
 use Illuminate\Http\Request;
 use Storage;
@@ -18,12 +19,12 @@ class SamariaSkill extends Controller
     {
         $certifieds = SkillCertified::latest()->get();
         $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
-       $aboutbanners = AboutBanner::latest()->where('key', 'ssdi')->get();
+        $aboutbanners = AboutBanner::latest()->where('key', 'ssdi')->get();
         $about = About::latest()->where('key', 'ssdi')->first();
-
         $contactbanners = ContactBanner::latest()->where('key', 'ssdi')->get();
         $info = ContactInfo::latest()->where('key', 'ssdi')->first();
-        return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise','aboutbanners','about','contactbanners','info'));
+        $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
+        return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise', 'aboutbanners', 'about', 'contactbanners', 'info','banners'));
     }
 
     //skills
@@ -109,7 +110,56 @@ class SamariaSkill extends Controller
         return redirect()->back()->with('success', 'Advertisement saved successfully.');
     }
 
- 
+
+    public function storeBanner(Request $request)
+    {
+        $banner = new SkillBanner;
+        $banner->key = $request->key;
+        $banner->title = $request->title;
+        $banner->subtitle = $request->subtitle;
+        $banner->url = $request->url;
+        if ($request->hasFile('image')) {
+            $banner->image = $request->file('image')->store('review', 'public');
+        }
+        $banner->save();
+        return redirect()->back()->with('success', 'Banner saved successfully.');
+
+    }
+    public function updateBanner(Request $request, SkillBanner $banner)
+    {
+        $banner->key = $request->key;
+        $banner->title = $request->title;
+        $banner->subtitle = $request->subtitle;
+        $banner->url = $request->url;
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($banner->image && Storage::disk('public')->exists($banner->image)) {
+                Storage::disk('public')->delete($banner->image);
+            }
+            // Store new image
+            $banner->image = $request->file('image')->store('review', 'public');
+        }
+
+        $banner->save();
+
+        return redirect()->back()->with('success', 'Banner updated successfully.');
+    }
+    public function deleteBanner(SkillBanner $banner)
+    {
+        // Delete image if exists
+        if ($banner->image && Storage::disk('public')->exists($banner->image)) {
+            Storage::disk('public')->delete($banner->image);
+        }
+
+        $banner->delete();
+
+        return redirect()->back()->with('success', 'Banner deleted successfully.');
+    }
+
+
+
+
 
 
 

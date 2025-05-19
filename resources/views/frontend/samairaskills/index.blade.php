@@ -93,57 +93,23 @@
     <div class="contact-slider-container">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="hero-content">
-                        <h1 class="hero-title">
-                            Build Your <span class="highlight">Skills</span> <img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-skills/cap.png"
-                                alt="Graduation Cap" class="cap-icon">
-                        </h1>
-                        <h2 class="hero-subtitle">With Experts Any Time, Anywhere</h2>
-                        <p class="hero-text">Free online courses from the world's Leading experts.</p>
-                        <p class="join-text">Join <span class="highlight">10+ Million</span> Learners today</p>
-                        <a href="#" class="join-btn">Join Us Today</a>
+                @foreach ($banners as $banner)
+                    <div class="swiper-slide">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                {{ $banner->title }}<img
+                                    src="{{ asset('assets/frontassets/') }}/images/samaira-skills/cap.png"
+                                    alt="Graduation Cap" class="cap-icon">
+                            </h1>
+                            <p class="hero-text">{{ $banner->subtitle }}</p>
+                            <a href="{{ $banner->url }}" class="join-btn">Join Us Today</a>
+                        </div>
+                        <div class="slide-bg-wrap">
+                            <img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                alt="Slide 1" class="slide-bg-img">
+                        </div>
                     </div>
-                    <div class="slide-bg-wrap">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/1.jpg" alt="Slide 1"
-                            class="slide-bg-img">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="hero-content">
-                        <h1 class="hero-title">
-                            Build Your <span class="highlight">Skills</span> <img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-skills/cap.png"
-                                alt="Graduation Cap" class="cap-icon">
-                        </h1>
-                        <h2 class="hero-subtitle">With Experts Any Time, Anywhere</h2>
-                        <p class="hero-text">Free online courses from the world's Leading experts.</p>
-                        <p class="join-text">Join <span class="highlight">10+ Million</span> Learners today</p>
-                        <a href="#" class="join-btn">Join Us Today</a>
-                    </div>
-                    <div class="slide-bg-wrap">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/1.jpg" alt="Slide 2"
-                            class="slide-bg-img">
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="hero-content">
-                        <h1 class="hero-title">
-                            Build Your <span class="highlight">Skills</span> <img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-skills/cap.png"
-                                alt="Graduation Cap" class="cap-icon">
-                        </h1>
-                        <h2 class="hero-subtitle">With Experts Any Time, Anywhere</h2>
-                        <p class="hero-text">Free online courses from the world's Leading experts.</p>
-                        <p class="join-text">Join <span class="highlight">10+ Million</span> Learners today</p>
-                        <a href="#" class="join-btn">Join Us Today</a>
-                    </div>
-                    <div class="slide-bg-wrap">
-                        <img src="{{ asset('assets/frontassets/') }}/images/hero-slider/bg0.png" alt="Slide 3"
-                            class="slide-bg-img">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -192,7 +158,7 @@
                         </div>
                     </div>
                 @endforeach
-              
+
             </div>
 
 
