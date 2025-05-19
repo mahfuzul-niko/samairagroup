@@ -1009,12 +1009,11 @@
     margin-bottom: 1.5rem;
   }
   .enroll-page-section img[alt="Course Banner"] {
-    background: #ffe23a;
+    background: transparent;
     width: 320px;
-    height: 320px;
+    height: auto;
     object-fit: cover;
     object-position: center;
-    border-radius: 10px;
     border: none;
     box-shadow: none;
   }
@@ -1181,12 +1180,11 @@
     font-size: 2rem;
   }
   .enroll-page-section .enroll-banner-img {
-    background: #ffe23a;
+    background: transparent;
     width: 320px;
-    height: 320px;
+    height: auto;
     object-fit: cover;
     object-position: center;
-    border-radius: 10px;
     border: none;
     box-shadow: none;
   }
