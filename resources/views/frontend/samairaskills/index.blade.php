@@ -41,7 +41,7 @@
         <x-slot name="nav">
             <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
             <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
-            <li><a href="#our-courses">Our Courses</a></li>
+            
 
 
             <li>

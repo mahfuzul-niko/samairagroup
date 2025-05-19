@@ -43,9 +43,17 @@
     <!-- Navbar End -->
 
     <!-- Register/Login Split Section Start -->
-    <section class="">
-
-    </section>
+    <section class="already-loggedin-unique py-5">
+        <div class="already-loggedin-glass">
+        <div class="already-loggedin-icon-unique">
+            <span class="icon-bg"></span>
+            <i class="fas fa-question"></i>
+        </div>
+        <div class="already-loggedin-title-unique">You are Already Logged In!</div>
+        <div class="already-loggedin-desc-unique">No need to login again. Go directly to your dashboard and continue learning!</div>
+        <a href="dashboard.html" class="already-loggedin-btn-unique">Go to Dashboard</a>
+        </div>
+  </section>
     <!-- Register/Login Split Section End -->
 
     <!-- Custom Footer Section Start -->
