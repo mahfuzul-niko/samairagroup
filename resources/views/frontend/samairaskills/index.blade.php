@@ -160,57 +160,44 @@
                 </div>
             </div>
 
-            <!-- Swiper -->
-            <div class="swiper courses-swiper pt-3">
-                <div class="swiper-wrapper">
-                    @foreach ($courses as $course)
-                        <!-- Slide 1 -->
-                        <div class="swiper-slide">
-                            <div class="course-card h-100">
-                                <div class="card-image position-relative">
-                                    <div class="ribbon">{{ $course->course_type }}</div>
-                                    <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
-                                        class="img-fluid w-100" alt="Course Image">
-                                    <div class="image-overlay d-flex justify-content-center align-items-center gap-2">
-                                        <a href="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
-                                            class="btn btn-light btn-sm rounded-circle overlay-btn glightbox"
-                                            data-gallery="course-gallery">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+            <div class="row g-3">
+                @foreach ($courses as $course)
+                    <div class="col-md-4">
+                        <div class="card shadow">
+                            <div class="ribbon">nice</div>
+                            <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
+                                class="img-fluid w-100" alt="Course Image">
 
-                                    </div>
-                                </div>
-                                <div class="course-content">
-                                    <span class="course-price">{{ $course->price }} Taka</span>
-                                    <a href="{{ route('page.ssdi.course', $course) }}">
-                                        <h3 class="course-title">{{ $course->title }}</h3>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+
+                                    <a href="{{ route('page.ssdi.course', $course) }}"
+                                        class="text-decoration-none text-dark">
+                                        <h5 class="card-title">{{ $course->title }}</h5>
                                     </a>
-                                    <div class="course-meta">
-                                        <span class="course-rating">
-                                            <a href="{{ route('page.ssdi.course.enroll', $course) }}" class="btn-sm"
-                                                title="Enroll Now">Enroll Now</a>
-                                        </span>
-
-                                        <span class="course-lessons">
-                                            <i class="fas fa-play"></i> {{ $course->total_lessons }} Lessons
-                                        </span>
-                                    </div>
+                                    <span class="course-price">{{ $course->price }} Taka</span>
                                 </div>
+                                <div class="course-meta mt-3">
+                                    <span class="course-rating">
+                                        <a href="{{ route('page.ssdi.course.enroll', $course) }}" class="btn-sm"
+                                            title="Enroll Now">Enroll Now</a>
+                                    </span>
+
+                                    <span class="course-lessons">
+                                        <i class="fas fa-play"></i> {{ $course->total_lessons }} Lessons
+                                    </span>
+                                </div>
+
                             </div>
                         </div>
-                    @endforeach
-
-
-
-                </div>
-
-                <!-- Add Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                    </div>
+                @endforeach
+              
             </div>
 
 
         </div>
+
     </section>
     <!-- Latest Courses Section End  -->
 
@@ -332,13 +319,14 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <p class="testimonial-text">{{$review->review}}</p>
+                                <p class="testimonial-text">{{ $review->review }}</p>
                                 <div class="testimonial-author">
-                                    <img src="{{$review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png')}}"
+                                    <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
                                         alt="Orlando Diggs" class="author-image">
                                     <div class="author-info">
-                                        <h4>{{$review->name}}</h4>
-                                        <p><a href="{{ route('page.ssdi.course', $review->course) }}" class="text-decoration-none ">{{$review->course->title}}</a></p>
+                                        <h4>{{ $review->name }}</h4>
+                                        <p><a href="{{ route('page.ssdi.course', $review->course) }}"
+                                                class="text-decoration-none ">{{ $review->course->title }}</a></p>
                                     </div>
                                 </div>
                             </div>
