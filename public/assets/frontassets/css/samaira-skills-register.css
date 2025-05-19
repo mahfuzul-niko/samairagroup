@@ -679,3 +679,264 @@ input::placeholder {
 .login-section .register-login-illustration{
     bottom:90px;
 }
+
+/* ===========================================================
+Student Dashboard Page Start
+=========================================================== */
+.student-dashboard-wrapper {
+  background: #f7fafd;
+  min-height: 80vh;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.student-dashboard-wrapper .student-sidebar {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+  padding: 24px 12px 24px 12px;
+  min-height: 100%;
+}
+.student-dashboard-wrapper .student-profile-box {
+  background: #f4f8fc;
+  border-radius: 14px;
+  padding: 24px 10px 18px 10px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
+}
+.student-dashboard-wrapper .student-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--secondary-color);
+  background: #fff;
+}
+.student-dashboard-wrapper .student-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+.student-dashboard-wrapper .student-logout {
+  font-size: 0.95rem;
+  color: #6c757d;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 4px;
+  transition: color 0.2s;
+}
+.student-dashboard-wrapper .student-logout:hover { color: var(--secondary-color); }
+.student-dashboard-wrapper .student-nav-list {
+  margin: 0;
+  padding: 0;
+}
+.student-dashboard-wrapper .student-nav-list li {
+  margin-bottom: 12px;
+}
+.student-dashboard-wrapper .student-nav-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #222;
+  font-size: 1.05rem;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.student-dashboard-wrapper .student-nav-list a:hover, .student-dashboard-wrapper .student-nav-list a.active {
+  background: var(--secondary-color);
+  color: #fff;
+}
+
+.student-dashboard-wrapper .student-dashboard-main {
+  min-height: 100%;
+}
+.student-dashboard-wrapper .dashboard-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 18px;
+  min-height: 90px;
+}
+.student-dashboard-wrapper .dashboard-card-blue {
+  border-left: 6px solid var(--secondary-color);
+}
+.student-dashboard-wrapper .dashboard-card-icon {
+  font-size: 2.1rem;
+  color: var(--secondary-color);
+  background: #eaf6fb;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.student-dashboard-wrapper .dashboard-card-label {
+  font-size: 1.05rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+.student-dashboard-wrapper .dashboard-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222 !important;
+}
+.student-dashboard-wrapper .dashboard-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+.student-dashboard-wrapper .dashboard-enrolled-courses {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 16px;
+  min-height: 60px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
+}
+.student-dashboard-wrapper .suggested-course-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+  padding: 14px 14px 10px 14px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+.student-dashboard-wrapper .suggested-course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.10);
+}
+.student-dashboard-wrapper .suggested-course-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.student-dashboard-wrapper .suggested-course-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+  min-height: 48px;
+}
+.student-dashboard-wrapper .suggested-course-meta {
+  font-size: 0.97rem;
+  color: #6c757d;
+}
+.student-dashboard-wrapper .suggested-course-bottom {
+  margin-top: 8px;
+}
+.student-dashboard-wrapper .suggested-course-price {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--secondary-color) !important;
+}
+.student-dashboard-wrapper .suggested-course-bottom a {
+  background: var(--secondary-color) !important;
+  border:1px solid var(--secondary-color) !important;
+}
+.student-dashboard-wrapper .suggested-course-bottom a:hover {
+  background: var(--tertiary-color) !important;
+  border:1px solid var(--tertiary-color) !important;
+}
+.student-dashboard-wrapper .old-price {
+  text-decoration: line-through;
+  color: #bbb;
+  font-size: 0.98rem;
+  margin-left: 4px;
+}
+.student-dashboard-wrapper .dashboard-announcement .announcement-box {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+}
+.student-dashboard-wrapper .calendar-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+.student-dashboard-wrapper .calendar-title {
+  font-weight: 600;
+}
+.student-dashboard-wrapper .calendar-month {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 6px;
+}
+.student-dashboard-wrapper .calendar-table {
+  width: 100%;
+  text-align: center;
+  font-size: 0.98rem;
+  margin-bottom: 0;
+}
+.student-dashboard-wrapper .calendar-table th,
+.student-dashboard-wrapper .calendar-table td {
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.student-dashboard-wrapper .calendar-today {
+  background: var(--tertiary-color);
+  color: #fff;
+  font-weight: 700;
+}
+.student-dashboard-wrapper .calendar-event {
+  font-size: 0.98rem;
+  color: #6c757d;
+  margin-top: 6px;
+}
+.student-dashboard-wrapper .calendar-event-day {
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-right: 8px;
+}
+.student-dashboard-wrapper .announcement-header {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+}
+.student-dashboard-wrapper .announcement-title {
+  font-weight: 600;
+}
+.student-dashboard-wrapper .announcement-highlight {
+  font-size: 1.01rem;
+}
+.student-dashboard-wrapper .announcement-text {
+  color: #444;
+}
+@media (max-width: 1200px) {
+  .student-dashboard-wrapper .student-sidebar { margin-bottom: 24px; }
+  .student-dashboard-wrapper .student-dashboard-main { margin-bottom: 24px; }
+}
+@media (max-width: 992px) {
+  .student-dashboard-wrapper .student-sidebar { min-height: unset; }
+  .student-dashboard-wrapper .student-dashboard-main { min-height: unset; }
+  .student-dashboard-wrapper .student-dashboard-right { margin-top: 24px; }
+}
+@media (max-width: 768px) {
+  .student-dashboard-wrapper { padding: 0 4px; }
+  .student-dashboard-wrapper .student-sidebar, .student-dashboard-wrapper .student-dashboard-main, .student-dashboard-wrapper .student-dashboard-right {
+    border-radius: 10px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+    padding: 10px 40px;
+  }
+  .student-dashboard-wrapper .dashboard-card { flex-direction: column; gap: 8px; text-align: center; }
+  .student-dashboard-wrapper .dashboard-section-title { font-size: 1rem; }
+  .student-dashboard-wrapper .suggested-course-title { min-height: unset; }
+}
+@media (max-width: 576px) {
+  .student-dashboard-wrapper { padding: 0 40px; }
+  .student-dashboard-wrapper .student-sidebar, .student-dashboard-wrapper .student-dashboard-main, .student-dashboard-wrapper .student-dashboard-right {
+    padding: 6px 2px;
+  }
+  .student-dashboard-wrapper .dashboard-card { padding: 12px 6px; }
+  .student-dashboard-wrapper .suggested-course-img { height: 80px; }
+}
+/* ===========================================================
+Student Dashboard Page End
+=========================================================== */
