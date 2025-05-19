@@ -140,7 +140,14 @@ class PagesController extends Controller
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
 
-
+     public function newregister()
+     {
+          return view('frontend.content.register');
+     }
+     public function newlogin()
+     {
+          return view('frontend.content.login');
+     }
 
 
 
