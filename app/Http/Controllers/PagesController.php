@@ -149,6 +149,10 @@ class PagesController extends Controller
      {
           return view('frontend.content.login');
      }
+     public function newdashboard()
+     {
+          return view('frontend.content.dashboard');
+     }
 
 
 

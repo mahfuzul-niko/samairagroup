@@ -32,9 +32,9 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/', 'samairagroup')->name('home');
     Route::get('/about-us', 'samairagroupAbout')->name('home.about');
     Route::get('/contact-us', 'samairagroupContact')->name('home.contact');
-
-
-
+    Route::get('/new-register', 'newregister')->name('newregister');
+    Route::get('/new-login', 'newlogin')->name('newlogin');
+    Route::get('/new-dashboard', 'newdashboard')->name('newdashboard');
 
     //ssdi
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('ssdi');
