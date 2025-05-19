@@ -32,8 +32,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/', 'samairagroup')->name('home');
     Route::get('/about-us', 'samairagroupAbout')->name('home.about');
     Route::get('/contact-us', 'samairagroupContact')->name('home.contact');
-    Route::get('/new-register', 'newregister')->name('newregister');
-    Route::get('/new-login', 'newlogin')->name('newlogin');
+
     Route::get('/new-dashboard', 'newdashboard')->name('newdashboard');
 
     //ssdi
@@ -83,8 +82,8 @@ Route::middleware(['auth', 'role:student,admin'])->prefix('student')->as('studen
 });
 Route::middleware('guest')->prefix('student')->as('student.')->group(function () {
     Route::controller(StudentController::class)->group(function () {
-        Route::get('/student/register', 'studentLogin')->name('register');
-        Route::get('/student/login', 'studentRegister')->name('login');
+        Route::get('/register', 'studentLogin')->name('register');
+        Route::get('/login', 'studentRegister')->name('login');
     });
 });
 
