@@ -141,7 +141,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.content.*') ? '' : 'collapsed' }}"
                 data-bs-target="#content-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Contact</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Content</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="content-nav" class="nav-content collapse {{ request()->routeIs('agent.content.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
