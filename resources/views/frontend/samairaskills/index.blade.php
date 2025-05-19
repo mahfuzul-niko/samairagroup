@@ -33,60 +33,26 @@
 
 
     <!-- Navbar Start -->
-    <nav class="rg-navbar">
-        <div class="rg-navbar-container">
+    <x-layouts.navbar>
+        <x-slot name="logo">
             <a href="#" class="rg-navbar-logo"><img
                     src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
-            <button class="rg-navbar-toggle" aria-label="Toggle menu">
-                <span class="rg-navbar-hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
-            </button>
-            <ul class="rg-navbar-menu">
-                <li><a href="{{ route('page.home') }}">Home</a></li>
+        </x-slot>
+        <x-slot name="nav">
+            <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
+            <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
+            <li><a href="#our-courses">Our Courses</a></li>
 
-                <li class="rg-navbar-has-mega">
-                    <a href="#">Brands <span class="rg-navbar-chevron"><i
-                                class="fa fa-chevron-down"></i></span></a>
-                    <div class="rg-mega-menu">
-                        <div class="rg-mega-menu-content">
-                            @foreach ($concerns as $concern)
-                                <a href="{{ $concern->concern_link }}"><img
-                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Teer"></a>
-                            @endforeach
 
-                        </div>
+            <li>
+                <div class="nav-auth">
+                    <div class="nav-item signup-btn">
+                        <a class="nav-link" href="{{route('student.login')}}">Login</a>
                     </div>
-                </li>
-                <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Samaira Skill Development Institute</a>
-            <a href="#">Samaira Language Institute</a>
-            <a href="#">Samaira Aviation Limited</a>
-          </div>
-        </li> -->
-                <!-- <li><a href="#">Blog</a></li> -->
-                <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
-                <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
-                <li><a href="#our-courses">Our Courses</a></li>
-
-
-                <li>
-                    <div class="nav-auth">
-                        <div class="nav-item signup-btn">
-                            <a class="nav-link" href="#">Login</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-    </nav>
+                </div>
+            </li>
+        </x-slot>
+    </x-layouts.navbar>
     <!-- Navbar End -->
 
     <!-- Slider Start -->
