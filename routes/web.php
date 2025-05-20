@@ -78,6 +78,7 @@ Auth::routes();
 Route::middleware(['auth', 'role:student,admin'])->prefix('student')->as('student.')->group(function () {
     Route::controller(StudentController::class)->group(function () {
         Route::get('/dashboard', 'studentDashboard')->name('dashboard');
+        Route::get('/profile', 'studentProfile')->name('profile');
     });
 });
 Route::middleware('guest')->prefix('student')->as('student.')->group(function () {

@@ -30,15 +30,7 @@ $concerns = App\Models\SamairaGroup::orderBy('order')->get();
                         </div>
                     </div>
                 </li>
-                <!-- <li class="rg-navbar-has-dropdown">
-          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a href="#">Samaira Skill Development Institute</a>
-            <a href="#">Samaira Language Institute</a>
-            <a href="#">Samaira Aviation Limited</a>
-          </div>
-        </li> -->
-                <!-- <li><a href="#">Blog</a></li> -->
+              
                 {{$nav}}
             </ul>
 

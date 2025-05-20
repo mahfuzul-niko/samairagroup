@@ -45,11 +45,15 @@
 
 
             <li>
-                <div class="nav-auth">
+               <div class="nav-auth">
                     <div class="nav-item signup-btn">
-                        <a class="nav-link" href="{{route('student.login')}}">Login</a>
+                        @auth
+                        <a href=""><i class="fa-solid fa-user"></i> <span>{{auth()->user()->name}}</span></a>
+                        @else
+                        <a class="nav-link" href="{{ route('student.login') }}">Login</a>
+                        @endauth
                     </div>
-                </div>
+                </div>  
             </li>
         </x-slot>
     </x-layouts.navbar>
@@ -234,7 +238,7 @@
     <section class="testimonials-section">
         <div class="container">
             <div class="text-center mb-3 margin-bottom-100">
-                <h2 class="section-title">Nothing less than excellent</h2>
+                <h2 class="section-title">Student's Review</h2>
             </div>
 
             <!-- Testimonial Slider -->
@@ -348,7 +352,6 @@
     @endif
 
     <!-- Footer Section Start -->
-    <x-layouts.footer />
     <x-layouts.footer />
     <!-- Footer Section End -->
 

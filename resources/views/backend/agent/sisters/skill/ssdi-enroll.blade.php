@@ -31,9 +31,9 @@
                                     @csrf
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch"
-                                            id="switchCheckDefault" name="mark" value="1"
+                                            id="enroll{{$enroll->id}}" name="mark" value="1"
                                             {{ $enroll->mark == 1 ? 'checked' : '' }} onchange="this.form.submit()">
-                                        <label class="form-check-label" for="switchCheckDefault">Approve</label>
+                                        <label class="form-check-label" for="enroll{{$enroll->id}}">Approve</label>
                                     </div>
                                 </form>
 
