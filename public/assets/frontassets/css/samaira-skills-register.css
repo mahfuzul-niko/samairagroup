@@ -1038,6 +1038,6 @@ Redirect Page Start
 }
 @media all and (max-width:440px){
     .already-loggedin-unique{
-        margin: 0 20px;
+        padding: 0 20px;
     }
 }
