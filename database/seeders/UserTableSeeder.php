@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
             [
                 'name' => 'student',
             ],
-
+            
 
         ]);
         DB::table('users')->insert([

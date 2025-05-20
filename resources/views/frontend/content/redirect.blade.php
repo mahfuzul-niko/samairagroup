@@ -38,7 +38,6 @@
         <x-slot name="nav">
             <li><a href="{{ route('page.home.about') }}">About Us</a></li>
             <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
-
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
