@@ -79,6 +79,8 @@ Route::middleware(['auth', 'role:student,admin'])->prefix('student')->as('studen
     Route::controller(StudentController::class)->group(function () {
         Route::get('/dashboard', 'studentDashboard')->name('dashboard');
         Route::get('/profile', 'studentProfile')->name('profile');
+        Route::post('/store/review', 'storeReview')->name('store.review');
+
     });
 });
 Route::middleware('guest')->prefix('student')->as('student.')->group(function () {

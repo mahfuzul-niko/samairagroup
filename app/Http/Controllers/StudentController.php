@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,8 +15,8 @@ class StudentController extends Controller
                 $query->where('mark', true);
             })->get();
         // dd($courses);
-         $scourses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
-        return view('frontend.content.dashboard',compact('courses','scourses'));
+        $scourses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
+        return view('frontend.content.dashboard', compact('courses', 'scourses'));
     }
     public function studentLogin()
     {
@@ -24,6 +25,17 @@ class StudentController extends Controller
     public function studentRegister()
     {
         return view('frontend.content.register');
+    }
+
+    public function storeReview(Request $request)
+    {
+        $review = new Review;
+        $review->course_id = $request->course_id;
+        $review->name = auth()->user()->name;
+        $review->image = auth()->user()->image;
+        $review->review = $request->review;
+        $review->save();
+        return redirect()->back()->with('success', 'Review Added successfully.');
     }
 
 }

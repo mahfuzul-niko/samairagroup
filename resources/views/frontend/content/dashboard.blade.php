@@ -131,11 +131,38 @@
                                             <span class="suggested-course-price text-primary">TK.
                                                 {{ $course->price }}</span>
                                             <div class="">
+                                                <a class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                                    data-bs-target="#course{{ $course->id }}">Review</a>
                                                 <a href="{{ route('page.ssdi.course', $course) }}"
-                                                class="btn btn-primary btn-sm">Review</a>
-                                            <a href="{{ route('page.ssdi.course', $course) }}"
-                                                class="btn btn-primary btn-sm">View</a>
+                                                    class="btn btn-primary btn-sm">View</a>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" id="course{{ $course->id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Write A Review
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('student.store.review') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" name="course_id" value="{{$course->id}}">
+                                                    <div class="mb-3">
+                                                        <label for="">Review text</label>
+                                                        <textarea id="" rows="5" name="review" class="form-control" required></textarea>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-primary">save</button>
+                                                </form>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
