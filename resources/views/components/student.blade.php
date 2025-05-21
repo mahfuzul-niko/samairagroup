@@ -33,8 +33,10 @@
 
     <x-layouts.navbar>
         <x-slot name="logo">
+            {{-- <a href="#" class="rg-navbar-logo"><img
+                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a> --}}
             <a href="#" class="rg-navbar-logo"><img
-                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
+                    src="" /></a>
         </x-slot>
         <x-slot name="nav">
             <li><a href="{{ route('page.home.about') }}">About Us</a></li>
@@ -60,7 +62,7 @@
             <!-- Sidebar -->
             <aside class="student-sidebar col-lg-2 col-md-3 mb-4">
                 <div class="student-profile-box text-center mb-4">
-                    <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : asset('assets/frontassets/') }}/images/samaira-skills/user-profile.png"
+                    <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : asset('assets/img/no-profile.png') }}"
                         alt="User Avatar" class="student-avatar mb-2">
                     <h5 class="student-name mb-1">{{ auth()->user()->name }}</h5>
                     <a href="{{ route('logout') }}"
@@ -72,18 +74,19 @@
                 </div>
                 <nav class="student-nav">
                     <ul class="student-nav-list list-unstyled">
-                        <li><a href="#"><i class="fa fa-th-large "></i> Dashboard</a></li>
+                        <li><a href="{{ route('student.dashboard') }}"><i class="fa fa-th-large "></i> Dashboard</a>
+                        </li>
                         {{-- <li><a href="#"><i class="fa fa-book"></i> Enrolled Courses</a></li> --}}
                         {{-- <li><a href="#"><i class="fa fa-credit-card"></i> Payment Info</a></li> --}}
                         <li><a href="#"><i class="fa fa-star"></i> Course Reviews</a></li>
                         <li><a href="#"><i class="fa fa-certificate"></i> Certificate</a></li>
-                        <li><a href="{{route('student.profile')}}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="{{ route('student.profile') }}"><i class="fa fa-user"></i> Profile</a></li>
                     </ul>
                 </nav>
             </aside>
             <!-- Main Dashboard -->
             <main class="student-dashboard-main col-lg-8 col-md-9 mb-4">
-                {{$slot}}
+                {{ $slot }}
             </main>
             <!-- Right Sidebar -->
             <aside class="student-dashboard-right col-lg-2 col-md-12">
