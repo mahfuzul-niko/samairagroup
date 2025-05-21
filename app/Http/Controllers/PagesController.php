@@ -36,12 +36,18 @@ class PagesController extends Controller
           $advertise = SkillAdvertise::latest()->first() ?? new SkillAdvertise();
 
           $concerns = SamairaGroup::orderBy('order')->get();
-          $categories = CourseCategory::latest()->get();
+          $categories = CourseCategory::with([
+               'courses' => function ($query) {
+                    $query->where('course_for', 'ssdi');
+               }
+          ])->whereHas('courses', function ($query) {
+               $query->where('course_for', 'ssdi');
+          })->latest()->get();
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
           $featured = FeaturedCourse::latest()->where('for', 'ssdi')->first();
           $reviews = Review::latest()->get();
-           $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise','concerns', 'categories', 'courses', 'featured','reviews','banners'));
+          $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'concerns', 'categories', 'courses', 'featured', 'reviews', 'banners'));
      }
      public function ssdiCourse(Course $course)
      {
@@ -60,9 +66,11 @@ class PagesController extends Controller
 
           $featured = FeaturedCourse::latest()->where('for', 'language')->first();
           $certifieds = SkillCertified::latest()->get();
+          $reviews = Review::latest()->get();
           $courses = Course::where('course_for', 'language')->latest()->take(6)->get();
-          $stories = SuccessStorie::latest()->get();
-          return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories'));
+          $stories = SuccessStorie::latest()->take(6)->get();
+          $banners = ContactBanner::latest()->where('key', 'language')->get();
+          return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories', 'banners', 'reviews'));
      }
      public function samairatravels()
      {

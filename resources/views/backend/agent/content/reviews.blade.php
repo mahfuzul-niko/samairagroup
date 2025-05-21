@@ -49,6 +49,7 @@
                             <td>{{ $review->name }}</td>
                             <td>{{ $review->course->course_code }}</td>
                             <td>{{ $review->review }}</td>
+                            
                             <td>
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
