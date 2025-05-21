@@ -98,10 +98,9 @@
   </section>
   <!-- Mobile Top Header Section End -->
 
-  <!-- Navbar Start -->
-  <nav class="rg-navbar">
+  <nav class="rg-navbar all-page-navbar">
     <div class="rg-navbar-container">
-      <a href="#" class="rg-navbar-logo"><img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" /></a>
+      <a href="#" class="rg-navbar-logo"><img src="assets/images/samaira-skills/logo.png" /></a>
       <button class="rg-navbar-toggle" aria-label="Toggle menu">
         <span class="rg-navbar-hamburger">
           <span></span>
@@ -120,25 +119,28 @@
             <a href="#">Leadership</a>
           </div>
         </li> -->
-        <li class="rg-navbar-has-mega">
+        <li class="rg-navbar-has-mega" id="brands-trigger">
           <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-mega-menu">
+          <!-- Mobile Mega Menu (inside <li>) -->
+          <div class="rg-mega-menu mobile-mega-menu" id="brands-mega-menu-mobile">
             <div class="rg-mega-menu-content">
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Teer"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Bengal"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Natural"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Jibon"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Sun"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Quick Bite"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
-              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo1.png" alt="Teer"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo2.png" alt="Bengal"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo3.png" alt="Natural"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo4.png" alt="Jibon"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo5.png" alt="Sun"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo6.png" alt="Quick Bite"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
             </div>
           </div>
         </li>
@@ -149,33 +151,45 @@
             <a href="#">Samaira Language Institute</a>
             <a href="#">Samaira Aviation Limited</a>
           </div>
+        </li>
+        <li class="rg-navbar-has-dropdown">
+          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+          <div class="rg-dropdown-menu">
+            <a href="#">Samaira Skill Development Institute</a>
+            <a href="#">Samaira Language Institute</a>
+            <a href="#">Samaira Aviation Limited</a>
+          </div>
         </li> -->
-        <!-- <li><a href="#">Blog</a></li> -->
+        <!-- <li><a href="#">Blog</a></li>
         <li><a href="#">About Us</a></li>
         <li><a href="#">Contact Us</a></li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Our Courses <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span>
-        </a>
-        <ul class="dropdown-menu" data-bs-popper="static">
-            <li><a class="dropdown-item" href="#">All Courses</a></li>
-            <li><a class="dropdown-item" href="#">In Progress</a></li>
-            <li><a class="dropdown-item" href="#">Completed</a></li>
-            <li><a class="dropdown-item" href="#">Wishlist</a></li>
-        </ul>
-    </li>
-    <li>
-        <div class="nav-auth">
-            <div class="nav-item signup-btn">
-                <a class="nav-link" href="#">Login</a>
-            </div>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li> -->
+      </ul>
+      <!-- Desktop Mega Menu (outside <li>) -->
+      <div class="rg-mega-menu desktop-mega-menu" id="brands-mega-menu-desktop">
+        <div class="rg-mega-menu-content">
+          <a href="#"><img src="assets/images/sister-concern/logo1.png" alt="Teer"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo2.png" alt="Bengal"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo3.png" alt="Natural"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo4.png" alt="Jibon"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo5.png" alt="Sun"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo6.png" alt="Quick Bite"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="assets/images/sister-concern/logo7.png" alt="Candy"></a>
         </div>
-    </li>
-    </ul>
+      </div>
     </div>
   </nav>
-  <!-- Navbar End -->
 
   <!-- Slider Start -->
   <div class="contact-slider-container">

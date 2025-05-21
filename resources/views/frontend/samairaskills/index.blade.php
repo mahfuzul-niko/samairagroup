@@ -15,6 +15,7 @@
 
     <!-- Custom CSS -->
     <link href="{{ asset('assets/frontassets/') }}/css/samaira-skill.css" rel="stylesheet">
+    <link href="{{ asset('assets/frontassets/') }}/css/samaira-main.css" rel="stylesheet">
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
