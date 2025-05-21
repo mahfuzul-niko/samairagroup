@@ -77,7 +77,7 @@
                                 <label for="level">Course type</label>
                                 <select class="form-select" name="course_type" id="level" required>
                                     <option selected disabled>Select Course type</option>
-                                    <option value="online">Onlice</option>
+                                    <option value="online">Online</option>
                                     <option value="offline">Offline</option>
                                     <option value="both">Both</option>
                                     <option value="workshop">Workshop</option>

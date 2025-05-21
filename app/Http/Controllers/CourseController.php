@@ -268,7 +268,6 @@ class CourseController extends Controller
     {
         $enroll->mark = $request->has('mark') ? 1 : 0;
         $enroll->save();
-
         $message = $enroll->mark ? 'Enrollment approved successfully.' : 'Enrollment approval removed.';
         return redirect()->back()->with('success', $message);
     }
@@ -382,7 +381,6 @@ class CourseController extends Controller
         }
 
         $feature->delete();
-
         return redirect()->back()->with('success', 'Featured course deleted successfully.');
     }
 

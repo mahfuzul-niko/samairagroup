@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('course_id');
             $table->string('name');
             $table->text('review');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->timestamps();
         });
     }

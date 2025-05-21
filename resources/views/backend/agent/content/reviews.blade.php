@@ -15,7 +15,7 @@
 
                     <div class="mb-3">
                         <label for="">Image</label>
-                        <input type="file" class="form-control" name="image" required>
+                        <input type="file" class="form-control" name="image" >
                     </div>
                     <div class="mb-3">
                         <select class="form-select" aria-label="Default select example" name="course_id" required>
@@ -40,6 +40,7 @@
                         <th>name</th>
                         <th>course code</th>
                         <th>review</th>
+                        <th>Approve</th>
                         <th>action</th>
                     </tr>
                     @foreach ($reviews as $review)
@@ -49,7 +50,18 @@
                             <td>{{ $review->name }}</td>
                             <td>{{ $review->course->course_code }}</td>
                             <td>{{ $review->review }}</td>
-                            
+                            <td>
+                                <form action="{{ route('agent.content.review.mark', $review) }}" method="POST">
+                                    @csrf
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="review{{$review->id}}" name="mark" value="1"
+                                            {{ $review->mark == 1 ? 'checked' : '' }} onchange="this.form.submit()">
+                                        <label class="form-check-label" for="review{{$review->id}}">Approve</label>
+                                    </div>
+                                </form>
+
+                            </td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
