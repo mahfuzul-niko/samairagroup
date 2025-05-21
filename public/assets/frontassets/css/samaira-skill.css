@@ -208,6 +208,7 @@
   min-height: 350px;
   background: #222;
   overflow: visible;
+  margin-top: 74px;
 }
 .about-swiper, .about-swiper .swiper-wrapper, .about-swiper .swiper-slide {
   width: 100%;
