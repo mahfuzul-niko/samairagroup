@@ -37,5 +37,8 @@ class StudentController extends Controller
         $review->save();
         return redirect()->back()->with('success', 'Review Added successfully.');
     }
+    public function studentProfile(){
+        return view('frontend.content.student-profile');
+    }
 
 }
