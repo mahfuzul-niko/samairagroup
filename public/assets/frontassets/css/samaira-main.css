@@ -843,7 +843,7 @@
 }
 .text-info{
   color: var(--text-color-dark) !important;
-  font-size: 17px !important;
+  font-size: 15px !important;
 }
 .bottom-footer a{
   width:38px;
