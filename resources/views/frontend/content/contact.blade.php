@@ -36,46 +36,41 @@
 
 <body>
 
+   <!-- Top Header Section Start -->
+    <x-layouts.header />
+    <!-- Top Header Section End -->
+
+
+
     <!-- Navbar Start -->
-    <nav class="rg-navbar">
-        <div class="rg-navbar-container">
+    <x-layouts.navbar>
+        <x-slot name="logo">
             <a href="#" class="rg-navbar-logo"><img
-                    src="{{ asset('assets/frontassets/') }}/images/logo.png" /></a>
-            <button class="rg-navbar-toggle" aria-label="Toggle menu">
-                <span class="rg-navbar-hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
-            </button>
-            <ul class="rg-navbar-menu">
-                <li><a href="{{ route('page.home') }}">Home</a></li>
+                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
+        </x-slot>
+        <x-slot name="nav">
+            <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
+            <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
+            
 
-                <li class="rg-navbar-has-mega">
-                    <a href="#">Brands <span class="rg-navbar-chevron"><i
-                                class="fa fa-chevron-down"></i></span></a>
-                    <div class="rg-mega-menu">
-                        <div class="rg-mega-menu-content">
-                            @foreach ($concerns as $concern)
-                                <a href="#"><img
-                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Teer"></a>
-                            @endforeach
-                        </div>
+
+            <li>
+               <div class="nav-auth">
+                    <div class="nav-item signup-btn">
+                        @auth
+                        <a href=""><i class="fa-solid fa-user"></i> <span>{{auth()->user()->name}}</span></a>
+                        @else
+                        <a class="nav-link" href="{{ route('student.login') }}">Login</a>
+                        @endauth
                     </div>
-                </li>
-
-
-                <li><a href="{{ $aboutRoute }}">About Us</a></li>
-                <li><a href="{{ $contactRoute }}">Contact Us</a></li>
-            </ul>
-        </div>
-    </nav>
+                </div>  
+            </li>
+        </x-slot>
+    </x-layouts.navbar>
     <!-- Navbar End -->
 
     <!-- Slider Start -->
-    <div class="contact-slider-container">
+    <div class="contact-slider-container content-margin-top">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
                 @foreach ($banners as $item)

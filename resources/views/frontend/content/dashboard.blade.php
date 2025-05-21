@@ -55,7 +55,7 @@
     </x-layouts.navbar>
 
     <!-- Student Dashboard Start -->
-    <div class="student-dashboard-wrapper container-fluid py-4">
+    <div class="student-dashboard-wrapper container-fluid py-4 content-margin-top">
         <div class="row">
             <!-- Sidebar -->
             <aside class="student-sidebar col-lg-2 col-md-3 mb-4">

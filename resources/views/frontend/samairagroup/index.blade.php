@@ -58,40 +58,97 @@
 
     <!-- Responsive Transparent Navbar with Mega Menu -->
     <nav class="rg-navbar">
-        <div class="rg-navbar-container">
-            <a href="#" class="rg-navbar-logo"><img
-                    src="{{ system_key('samaira_group_logo') ? Storage::url(system_key('samaira_group_logo')) : asset('assets/img/no-profile.png') }}" /></a>
-            <button class="rg-navbar-toggle" aria-label="Toggle menu">
-                <span class="rg-navbar-hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-                <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
-            </button>
-            <ul class="rg-navbar-menu">
-                <li><a href="#">Home</a></li>
-
-                <li class="rg-navbar-has-mega">
-                    <a href="#">Brands <span class="rg-navbar-chevron"><i
-                                class="fa fa-chevron-down"></i></span></a>
-                    <div class="rg-mega-menu">
-                        <div class="rg-mega-menu-content">
-                            @foreach ($concerns as $concern)
-                                <a href="{{ $concern->concern_link }}"><img
-                                        src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Teer"></a>
-                            @endforeach
-
-                        </div>
-                    </div>
-                </li>
-
-                <li><a href="{{ route('page.home.about') }}">About Us</a></li>
-                <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
-            </ul>
+    <div class="rg-navbar-container">
+      <a href="#" class="rg-navbar-logo"><img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" /></a>
+      <button class="rg-navbar-toggle" aria-label="Toggle menu">
+        <span class="rg-navbar-hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+        <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
+      </button>
+      <ul class="rg-navbar-menu">
+        <li><a href="#">Home</a></li>
+        <!-- <li class="rg-navbar-has-dropdown">
+          <a href="#">Home <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+          <div class="rg-dropdown-menu">
+            <a href="#">Overview</a>
+            <a href="#">Our Mission</a>
+            <a href="#">Leadership</a>
+          </div>
+        </li> -->
+        <li class="rg-navbar-has-mega" id="brands-trigger">
+          <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+          <!-- Mobile Mega Menu (inside <li>) -->
+          <div class="rg-mega-menu mobile-mega-menu" id="brands-mega-menu-mobile">
+            <div class="rg-mega-menu-content">
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Teer"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Bengal"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Natural"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Jibon"></a>
+              <!-- <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Sun"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Quick Bite"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+              <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a> -->
+            </div>
+          </div>
+        </li>
+        <!-- <li class="rg-navbar-has-dropdown">
+          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+          <div class="rg-dropdown-menu">
+            <a href="#">Samaira Skill Development Institute</a>
+            <a href="#">Samaira Language Institute</a>
+            <a href="#">Samaira Aviation Limited</a>
+          </div>
+        </li>
+        <li class="rg-navbar-has-dropdown">
+          <a href="#">Enterprize <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+          <div class="rg-dropdown-menu">
+            <a href="#">Samaira Skill Development Institute</a>
+            <a href="#">Samaira Language Institute</a>
+            <a href="#">Samaira Aviation Limited</a>
+          </div>
+        </li> -->
+        {{-- <li><a href="#">Blog</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>  --}}
+      </ul>
+      <!-- Desktop Mega Menu (outside <li>) -->
+      <div class="rg-mega-menu desktop-mega-menu" id="brands-mega-menu-desktop">
+        <div class="rg-mega-menu-content">
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Teer"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Bengal"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Natural"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Jibon"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Sun"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Quick Bite"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
+          <a href="#"><img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Candy"></a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
     <!-- Brands Section -->
     <section class="rg-brands-section py-5">
