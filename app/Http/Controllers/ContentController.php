@@ -153,7 +153,7 @@ class ContentController extends Controller
         $contacts = Contact::latest()->where('key', $key)->get();
         return view('backend.agent.content.contact', compact('contacts'));
     }
-
+//review
 
     public function review()
     {
@@ -200,7 +200,13 @@ class ContentController extends Controller
 
         return redirect()->back()->with('success', 'Review deleted successfully.');
     }
-
+    public function updateMarkReview(Request $request, Review $review)
+    {
+        $review->mark = $request->has('mark') ? 1 : 0;
+        $review->save();
+        $message = $review->review ? 'Review approved successfully.' : 'Review approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
 
 
 

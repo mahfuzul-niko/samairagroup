@@ -133,13 +133,13 @@ Route::middleware(['role:agent,admin'])
             Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
             Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');
 
-            //backed views
             Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
+            //review views
             Route::get('/content/review', 'review')->name('view.review');
             Route::post('/content/store/review', 'storeReview')->name('store.review');
             Route::post('/content/update/review/{review}', 'updateReview')->name('update.review');
             Route::delete('/content/delete/review/{review}', 'deleteReview')->name('delete.review');
-
+            Route::post('/content/review/{review}', 'updateMarkReview')->name('review.mark');
 
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {

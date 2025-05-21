@@ -45,7 +45,7 @@ class PagesController extends Controller
           })->latest()->get();
           $courses = Course::where('course_for', 'ssdi')->latest()->take(6)->get();
           $featured = FeaturedCourse::latest()->where('for', 'ssdi')->first();
-          $reviews = Review::latest()->get();
+          $reviews = Review::where('mark', true)->latest()->take(9)->get();
           $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
           return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'concerns', 'categories', 'courses', 'featured', 'reviews', 'banners'));
      }
