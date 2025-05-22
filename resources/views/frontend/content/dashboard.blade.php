@@ -5,7 +5,7 @@
                 <div class="dashboard-card-icon"><i class="fa fa-graduation-cap"></i></div>
                 <div>
                     <div class="dashboard-card-label">Course Completed</div>
-                    <div class="dashboard-card-value">0</div>
+                    <div class="dashboard-card-value">{{$complete}}</div>
                 </div>
             </div>
         </div>
@@ -14,7 +14,7 @@
                 <div class="dashboard-card-icon"><i class="fa fa-undo"></i></div>
                 <div>
                     <div class="dashboard-card-label">Course in Progress</div>
-                    <div class="dashboard-card-value">0</div>
+                    <div class="dashboard-card-value">{{$inprogress}}</div>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="dashboard-card-icon"><i class="fa fa-undo"></i></div>
                 <div>
                     <div class="dashboard-card-label">Total Due:</div>
-                    <div class="dashboard-card-value text-success">BDT 0.00</div>
+                    <div class="dashboard-card-value text-success">BDT {{$due}}</div>
                 </div>
             </div>
         </div>

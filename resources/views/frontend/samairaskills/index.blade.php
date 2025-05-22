@@ -44,7 +44,7 @@
                 <div class="nav-auth">
                     <div class="nav-item signup-btn">
                         @auth
-                            <a href=""><i class="fa-solid fa-user"></i> <span>{{ auth()->user()->name }}</span></a>
+                            <a href="{{ route('student.dashboard') }}"><i class="fa-solid fa-user"></i> <span>{{ auth()->user()->name }}</span></a>
                         @else
                             <a class="nav-link" href="{{ route('student.login') }}">Login</a>
                         @endauth
