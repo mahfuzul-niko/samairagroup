@@ -1,6 +1,6 @@
 
 .content-margin-top{
-    margin-top: 74px;
+    margin-top: 71px;
 }
 /* Top Header Styles Start*/
 .top-header {
@@ -634,7 +634,7 @@
 
   /* All Page Navbar Start*/
   .all-page-navbar.rg-navbar{
-    top:70px !important;
+    top:67px !important;
   }
   .all-page-navbar .rg-navbar-menu li a{
     color: var(--text-color-dark) !important;

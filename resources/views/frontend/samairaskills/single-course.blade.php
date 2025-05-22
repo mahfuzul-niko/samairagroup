@@ -48,60 +48,11 @@
         </x-slot>
     </x-layouts.navbar>
 
-    <!-- Mobile Navbar Start -->
-    <div class="offcanvas offcanvas-start" id="navbarOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        My Courses
-                    </a>
-                    <ul class="dropdown-menu" data-bs-popper="static">
-                        <li><a class="dropdown-item" href="#">All Courses</a></li>
-                        <li><a class="dropdown-item" href="#">In Progress</a></li>
-                        <li><a class="dropdown-item" href="#">Completed</a></li>
-                        <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Support
-                    </a>
-                    <ul class="dropdown-menu" data-bs-popper="static">
-                        <li><a class="dropdown-item" href="#">Help Center</a></li>
-                        <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                        <li><a class="dropdown-item" href="#">FAQ</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Notifications</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>
-            </ul>
-            <!-- Footer Image in Offcanvas -->
-            <!-- <div class="offcanvas-footer mt-auto text-center">
-        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/menu-bottom.png" alt="Menu Footer Image" class="img-fluid" style="max-width: 150px;">
-      </div> -->
-        </div>
-    </div>
-    <!-- Mobile Navbar End -->
 
-    <!-- Navbar End -->
 
 
     <!-- Course Highlight Section Start -->
-    <section class="course-highlight-section"
+    <section class="course-highlight-section content-margin-top"
         style="background: url('{{ system_key('samaira_skills_single_image') ? Storage::url(system_key('samaira_skills_single_image')) : asset('assets/img/no-profile.png') }}') center center/cover no-repeat, #09090a;">
         <div class="course-highlight-bg">
             <div class="container">
