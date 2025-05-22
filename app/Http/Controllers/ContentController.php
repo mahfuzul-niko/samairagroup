@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\Certificate;
 use App\Models\Contact;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\ContactSubject;
 use App\Models\Course;
+use App\Models\Enroll;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Storage;
 
 class ContentController extends Controller
 {
@@ -153,13 +157,13 @@ class ContentController extends Controller
         $contacts = Contact::latest()->where('key', $key)->get();
         return view('backend.agent.content.contact', compact('contacts'));
     }
-//review
+    //review
 
     public function review()
     {
         $reviews = Review::latest()->get();
         $courses = Course::latest()->get();
-        return view('backend.agent.content.reviews', compact('reviews','courses'));
+        return view('backend.agent.content.reviews', compact('reviews', 'courses'));
     }
     public function storeReview(Request $request)
     {
@@ -192,8 +196,8 @@ class ContentController extends Controller
     public function deleteReview(Review $review)
     {
 
-        if ($review->image && \Storage::disk('public')->exists($review->image)) {
-            \Storage::disk('public')->delete($review->image);
+        if ($review->image && Storage::disk('public')->exists($review->image)) {
+            Storage::disk('public')->delete($review->image);
         }
 
         $review->delete();
@@ -208,6 +212,39 @@ class ContentController extends Controller
         return redirect()->back()->with('success', $message);
     }
 
+    //certificates
+    public function certificate()
+    {
+        $certificates = Certificate::latest()->get();
+        $enrolls = Enroll::where('mark', true)->latest()->get();
+        
+        
+        return view('backend.agent.content.certificate', compact('certificates', 'enrolls'));
+    }
+    public function storeCertificate(Request $request)
+    {
+        $enroll = Enroll::find($request->enroll_id);
+        $user = User::where('email', $enroll->email)->first();
+        $certificate = new Certificate;
+        $certificate->enroll_id = $request->enroll_id;
+        $certificate->user_id = $user->id;
+        $certificate->name = $request->name;
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('certificate/files', 'public');
+            $certificate->file = $filePath;
+        }
+        $certificate->save();
+        return redirect()->back()->with('success', 'Certificate added successfully.');
+    }
 
+    public function deleteCertificate(Certificate $certificate)
+    {
+        if ($certificate->file && Storage::exists($certificate->file)) {
+            Storage::delete($certificate->file);
+        }
+        $certificate->delete();
+
+        return redirect()->back()->with('success', 'Certificate deleted successfully.');
+    }
 
 }

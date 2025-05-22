@@ -152,6 +152,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('agent.content.certificate') }}"
+                        class="{{ request()->routeIs('agent.content.certificate') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Certificate</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('agent.content.view.contact', 'samairagroup') }}"
                         class="{{ request()->routeIs('agent.content.view.contact', 'samairagroup') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Samaira Group</span>

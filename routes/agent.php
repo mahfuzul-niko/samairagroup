@@ -141,6 +141,11 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/content/delete/review/{review}', 'deleteReview')->name('delete.review');
             Route::post('/content/review/{review}', 'updateMarkReview')->name('review.mark');
 
+            //certificate
+            Route::get('/content/certificate', 'certificate')->name('certificate');
+            Route::post('/content/store/certificate', 'storeCertificate')->name('store.certificate');
+            Route::delete('/content/delete/certificate/{certificate}', 'deleteCertificate')->name('delete.certificate');
+
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-language-japan', 'language')->name('language');

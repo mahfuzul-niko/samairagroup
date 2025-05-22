@@ -108,10 +108,10 @@
                             Starts:
                             {{ $course->start_date ? \Carbon\Carbon::parse($course->start_date)->format('d M Y') : 'N/A' }}
                         </div>
-                        <div class="suggested-course-meta mb-1"><i class="fa fa-clock"></i> Lessons:
+                        <div class="suggested-course-meta mb-3"><i class="fa fa-clock"></i> Lessons:
                             {{ $course->total_lessons }}
                         </div>
-                        <div class="suggested-course-bottom d-flex align-items-center justify-content-between">
+                        <div class="suggested-course-bottom mt-auto d-flex align-items-center justify-content-between">
                             <span class="suggested-course-price text-primary">TK.
                                 {{ $course->price }}</span>
                             <a href="{{ route('page.ssdi.course.enroll', $course) }}"

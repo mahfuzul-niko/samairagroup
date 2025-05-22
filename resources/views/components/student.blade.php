@@ -79,7 +79,7 @@
                         {{-- <li><a href="#"><i class="fa fa-book"></i> Enrolled Courses</a></li> --}}
                         {{-- <li><a href="#"><i class="fa fa-credit-card"></i> Payment Info</a></li> --}}
                         <li><a href="#"><i class="fa fa-star"></i> Course Reviews</a></li>
-                        <li><a href="#"><i class="fa fa-certificate"></i> Certificate</a></li>
+                        <li><a href="{{route('student.certificate')}}"><i class="fa fa-certificate"></i> Certificate</a></li>
                         <li><a href="{{ route('student.profile') }}"><i class="fa fa-user"></i> Profile</a></li>
                     </ul>
                 </nav>

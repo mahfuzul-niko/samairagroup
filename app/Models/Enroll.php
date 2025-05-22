@@ -10,4 +10,8 @@ class Enroll extends Model
     public function course(){
         return $this->belongsTo(Course::class);
     }
+    public function certificate()
+{
+    return $this->hasOne(Certificate::class);
+}
 }
