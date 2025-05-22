@@ -23,18 +23,8 @@
 
 </head>
 @php
-    use Illuminate\Support\Facades\Route;
+    
 
-    $contactRoute = match (true) {
-        Route::is('page.home.about') => route('page.home.contact'),
-        Route::is('page.ssdi.about') => route('page.ssdi.contact'),
-        default => route('page.home.contact'),
-    };
-     $aboutRoute = match (true) {
-        Route::is('page.home.contact') => route('page.home.about'),
-        Route::is('page.ssdi.contact') => route('page.ssdi.about'),
-        default => route('page.home.about'),
-    };
 @endphp
 
 <body>
@@ -44,29 +34,12 @@
 
 
 
+
     <!-- Navbar Start -->
     <x-layouts.navbar>
-        <x-slot name="logo">
-            <a href="#" class="rg-navbar-logo"><img
-                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
-        </x-slot>
+       
         <x-slot name="nav">
-            <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
-            <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
-            
-
-
-            <li>
-               <div class="nav-auth">
-                    <div class="nav-item signup-btn">
-                        @auth
-                        <a href=""><i class="fa-solid fa-user"></i> <span>{{auth()->user()->name}}</span></a>
-                        @else
-                        <a class="nav-link" href="{{ route('student.login') }}">Login</a>
-                        @endauth
-                    </div>
-                </div>  
-            </li>
+           
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->

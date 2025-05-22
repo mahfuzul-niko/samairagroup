@@ -20,23 +20,11 @@
     <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/about.css">
     <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/style.css">
 </head>
-@php
-    use Illuminate\Support\Facades\Route;
-    $contactRoute = match (true) {
-        Route::is('page.home.about') => route('page.home.contact'),
-        Route::is('page.ssdi.about') => route('page.ssdi.contact'),
-        default => route('page.home.contact'),
-    };
-    $aboutRoute = match (true) {
-        Route::is('page.home.contact') => route('page.home.about'),
-        Route::is('page.ssdi.contact') => route('page.ssdi.about'),
-        default => route('page.home.about'),
-    };
-@endphp
+
 
 <body>
 
-   <!-- Top Header Section Start -->
+    <!-- Top Header Section Start -->
     <x-layouts.header />
     <!-- Top Header Section End -->
 
@@ -44,27 +32,9 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-        <x-slot name="logo">
-            <a href="#" class="rg-navbar-logo"><img
-                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
-        </x-slot>
+        
         <x-slot name="nav">
-            <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
-            <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
             
-
-
-            <li>
-               <div class="nav-auth">
-                    <div class="nav-item signup-btn">
-                        @auth
-                        <a href=""><i class="fa-solid fa-user"></i> <span>{{auth()->user()->name}}</span></a>
-                        @else
-                        <a class="nav-link" href="{{ route('student.login') }}">Login</a>
-                        @endauth
-                    </div>
-                </div>  
-            </li>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -128,48 +98,47 @@
                     </div>
                 </div>
                 @if ($info)
-                <!-- Right: Contact Form -->
-                <form class="contact-form" action="{{route('content.store.contact')}}" method="POST">
-                    @csrf
-                    <h2>Love to hear from you,<br>Get in touch <span class="wave">👋</span></h2>
-                    <input type="hidden" name="key" value="{{$info->key}}">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" placeholder="Edward Snowden" required name="name">
-                        </div>
-                        <div class="form-group">
-                            <label>Your Email</label>
-                            <input type="email" placeholder="itanexmple@gmail.com" required name="email">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Phone No.</label>
-                            <div class="phone-input">
-                                <input type="tel" placeholder="Enter your phone no." name="phone">
-                            </div>
-                        </div>
-                        @if (!empty($info->subjects))
+                    <!-- Right: Contact Form -->
+                    <form class="contact-form" action="{{ route('content.store.contact') }}" method="POST">
+                        @csrf
+                        <h2>Love to hear from you,<br>Get in touch <span class="wave">👋</span></h2>
+                        <input type="hidden" name="key" value="{{ $info->key }}">
+                        <div class="form-row">
                             <div class="form-group">
-                                <label>What you are interested in</label>
-                                <select class="form-control" name="subject" required>
-                                    <option  disabled>Select Subject</option>
-                                    @foreach ($info->subjects as $subject)
-                                        <option value="{{ $subject->subject }}">{{ $subject->subject }}</option>
-                                    @endforeach
-                                </select>
+                                <label>Your Name</label>
+                                <input type="text" placeholder="Edward Snowden" required name="name">
                             </div>
-                        @endif
+                            <div class="form-group">
+                                <label>Your Email</label>
+                                <input type="email" placeholder="itanexmple@gmail.com" required name="email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone No.</label>
+                                <div class="phone-input">
+                                    <input type="tel" placeholder="Enter your phone no." name="phone">
+                                </div>
+                            </div>
+                            @if (!empty($info->subjects))
+                                <div class="form-group">
+                                    <label>What you are interested in</label>
+                                    <select class="form-control" name="subject" required>
+                                        <option disabled>Select Subject</option>
+                                        @foreach ($info->subjects as $subject)
+                                            <option value="{{ $subject->subject }}">{{ $subject->subject }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            @endif
 
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea rows="3" placeholder="Let tell us know your project about" name="message"></textarea>
-                    </div>
-                    <button type="submit" class="send-btn">Send message <i class="fa fa-arrow-right"></i></button>
-                </form>
-                    
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea rows="3" placeholder="Let tell us know your project about" name="message"></textarea>
+                        </div>
+                        <button type="submit" class="send-btn">Send message <i class="fa fa-arrow-right"></i></button>
+                    </form>
                 @else
                     <h2>You Can't Contact This Page Currently</h2>
                 @endif

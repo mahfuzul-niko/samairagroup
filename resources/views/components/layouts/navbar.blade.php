@@ -1,42 +1,76 @@
 @php
-$concerns = App\Models\SamairaGroup::orderBy('order')->get();
+    $concerns = App\Models\SamairaGroup::orderBy('order')->get();
+    use Illuminate\Support\Facades\Route;
+
+    $aboutRoute = match (true) {
+        Route::is('page.home.contact') => route('page.home.about'),
+        Route::is('page.ssdi') || Route::is('page.ssdi.contact') || Route::is('page.ssdi.about') => route(
+            'page.ssdi.about',
+        ),
+        default => route('page.home.about'),
+    };
+    $contactRoute = match (true) {
+        Route::is('page.home.about') => route('page.home.contact'),
+        Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route(
+            'page.ssdi.contact',
+        ),
+        default => route('page.home.contact'),
+    };
+    $logourl = match (true) {
+        Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route('page.ssdi'),
+
+        default => route('page.home'),
+    };
+    $logo = match (true) {
+        Route::is('page.home.contact') => null,
+        Route::is('page.home.about') => null,
+        Route::is('page.ssdi') || Route::is('page.ssdi.contact') || Route::is('page.ssdi.about') => system_key(
+            'samaira_skills_logo',
+        ),
+        default => system_key('samaira_group_logo'),
+    };
 @endphp
 
 <nav class="rg-navbar all-page-navbar">
     <div class="rg-navbar-container">
-     {{$logo}}
-      <button class="rg-navbar-toggle" aria-label="Toggle menu">
-        <span class="rg-navbar-hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-        <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
-      </button>
-      <ul class="rg-navbar-menu">
-        <li><a href="{{ route('page.home') }}">Home</a></li>
-       
-        <li class="rg-navbar-has-mega" id="brands-trigger">
-          <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <!-- Mobile Mega Menu (inside <li>) -->
-          <div class="rg-mega-menu mobile-mega-menu" id="brands-mega-menu-mobile">
+        <a href="{{ $logourl }}" class="rg-navbar-logo"><img src="{{ $logo ? Storage::url($logo) : '' }}" /></a>
+        <button class="rg-navbar-toggle" aria-label="Toggle menu">
+            <span class="rg-navbar-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
+        </button>
+        <ul class="rg-navbar-menu">
+            <li><a href="{{ route('page.home') }}">Home</a></li>
+
+            <li class="rg-navbar-has-mega" id="brands-trigger">
+                <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+                <!-- Mobile Mega Menu (inside <li>) -->
+                <div class="rg-mega-menu mobile-mega-menu" id="brands-mega-menu-mobile">
+                    <div class="rg-mega-menu-content">
+                        @foreach ($concerns as $concern)
+                            <a href="{{ $concern->concern_link }}"><img
+                                    src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                    alt="Teer"></a>
+                        @endforeach
+                    </div>
+                </div>
+            </li>
+            <li><a href="{{ $aboutRoute }}">About Us</a></li>
+            <li><a href="{{ $contactRoute }}">Contact Us</a></li>
+            {{ $nav }}
+        </ul>
+        <!-- Desktop Mega Menu (outside <li>) -->
+        <div class="rg-mega-menu desktop-mega-menu" id="brands-mega-menu-desktop">
             <div class="rg-mega-menu-content">
-              @foreach ($concerns as $concern)
-              <a href="{{ $concern->concern_link }}"><img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}" alt="Teer"></a>
-              @endforeach
+                @foreach ($concerns as $concern)
+                    <a href="{{ $concern->concern_link }}"><img
+                            src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                            alt="Teer"></a>
+                @endforeach
             </div>
-          </div>
-        </li>
-         
-        {{$nav}}
-      </ul>
-      <!-- Desktop Mega Menu (outside <li>) -->
-      <div class="rg-mega-menu desktop-mega-menu" id="brands-mega-menu-desktop">
-        <div class="rg-mega-menu-content">
-          @foreach ($concerns as $concern)
-              <a href="{{ $concern->concern_link }}"><img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}" alt="Teer"></a>
-              @endforeach
         </div>
-      </div>
     </div>
-  </nav>
+</nav>
