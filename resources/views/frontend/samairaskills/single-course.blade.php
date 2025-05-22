@@ -27,49 +27,26 @@
     <!-- Top Header Section End -->
 
     <!-- Navbar Start -->
-    <nav class="navbar custom-navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}"
-                    alt="logo">
-            </a>
+    <x-layouts.navbar>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            My Courses
-                        </a>
-                        <ul class="dropdown-menu" data-bs-popper="static">
-                            <li><a class="dropdown-item" href="#">All Courses</a></li>
-                            <li><a class="dropdown-item" href="#">In Progress</a></li>
-                            <li><a class="dropdown-item" href="#">Completed</a></li>
-                            <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Support</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </li>
-                </ul>
+        <x-slot name="nav">
+            <li>
+                <a href="#our-course">Our Courses</a>
+            </li>
+            <li>
                 <div class="nav-auth">
                     <div class="nav-item signup-btn">
-                        <a class="nav-link" href="#">Login</a>
+                        @auth
+                            <a href=""><i class="fa-solid fa-user"></i> <span>{{ auth()->user()->name }}</span></a>
+                        @else
+                            <a class="nav-link" href="{{ route('student.login') }}">Login</a>
+                        @endauth
                     </div>
                 </div>
-            </div>
+            </li>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+        </x-slot>
+    </x-layouts.navbar>
 
     <!-- Mobile Navbar Start -->
     <div class="offcanvas offcanvas-start" id="navbarOffcanvas">
@@ -251,7 +228,7 @@
                 <!-- Right: Sticky Info Card -->
                 <div class="col-lg-5 d-flex align-items-start justify-content-center">
                     <div class="course-details-sticky-card pro-card">
-                        <div class="speaker-badge">trainer</div>
+                        <div class="speaker-badge">Trainer</div>
                         <div class="speaker-img-wrap">
                             <img src="{{ optional($course->trainer)->image ? Storage::url($course->trainer->image) : asset('assets/img/no-profile.png') }}"
      class="speaker-img-pro" alt="Speaker">

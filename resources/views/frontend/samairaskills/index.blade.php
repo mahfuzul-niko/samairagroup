@@ -35,19 +35,23 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-        
+
         <x-slot name="nav">
             <li>
-               <div class="nav-auth">
+                <a href="#our-course">Our Courses</a>
+            </li>
+            <li>
+                <div class="nav-auth">
                     <div class="nav-item signup-btn">
                         @auth
-                        <a href=""><i class="fa-solid fa-user"></i> <span>{{auth()->user()->name}}</span></a>
+                            <a href=""><i class="fa-solid fa-user"></i> <span>{{ auth()->user()->name }}</span></a>
                         @else
-                        <a class="nav-link" href="{{ route('student.login') }}">Login</a>
+                            <a class="nav-link" href="{{ route('student.login') }}">Login</a>
                         @endauth
                     </div>
-                </div>  
+                </div>
             </li>
+
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -93,7 +97,8 @@
                 @foreach ($courses as $course)
                     <div class="col-md-4">
                         <div class="card shadow">
-                            <div class="ribbon">nice</div>
+                            <div class="ribbon">
+                                {{ $course->course_type == 'both' ? 'online/offline' : $course->course_type }}</div>
                             <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
                                 class="img-fluid w-100" alt="Course Image">
 
@@ -130,7 +135,7 @@
     </section>
     <!-- Latest Courses Section End  -->
 
-    <section class="course-categories pt-5">
+    <section class="course-categories pt-5" id="our-course">
         <div class="container pt-4">
             <div class="section-header text-center mb-5">
                 <p class="text-uppercase small text-muted mb-2">CHOOSE YOUR DESIRED COURSES</p>
@@ -154,16 +159,23 @@
                         @foreach ($category->courses as $course)
                             <div class="swiper-slide" data-category="{{ $category->title }}">
                                 <div class="course-card">
-                                    <div class="card-image">
-                                        <div class="ribbon">{{ $course->course_type }}</div>
-                                        <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
-                                            alt="Graphic Design Course">
-                                    </div>
+                                    <a href="{{ route('page.ssdi.course', $course) }}">
+                                        <div class="card-image">
+                                            <div class="ribbon">
+                                                {{ $course->course_type == 'both' ? 'online/offline' : $course->course_type }}
+                                            </div>
+                                            <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
+                                                alt="Graphic Design Course">
+                                        </div>
+                                    </a>
                                     <div class="course-info">
                                         <span class="course-level text-capitalize">{{ $category->title }}</span>
                                     </div>
                                     <div class="card-content">
-                                        <h3>{{ $course->title }} {{ $course->batch }}</h3>
+                                        <a href="{{ route('page.ssdi.course', $course) }}"
+                                            class="text-decoration-none text-dark">
+                                            <h3>{{ $course->title }} {{ $course->batch }}</h3>
+                                        </a>
                                         <div class="course-meta">
                                             <span><i class="fas fa-book-open"></i> {{ $course->total_lessons }}
                                                 Lessons</span>
