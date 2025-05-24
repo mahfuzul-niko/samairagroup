@@ -11,9 +11,16 @@ class PropertyController extends Controller
 {
     public function Property()
     {
-        $categories = PropertyCategory::latest()->get();
+        
         $banners = Banner::latest()->where('key', 'jphomes')->get();
-        return view('backend.agent.sisters.property.jphomes', compact('banners', 'categories'));
+        return view('backend.agent.sisters.property.jphomes', compact('banners'));
+    }
+
+    //category
+    public function category()
+    {
+        $categories = PropertyCategory::latest()->get();
+        return view('backend.agent.sisters.property.category', compact('categories'));
     }
     public function storePropertyCategory(Request $request)
     {
@@ -48,6 +55,17 @@ class PropertyController extends Controller
         $property->area = $request->area;
         $property->save();
         return redirect()->back()->with('success', 'Property created successfully.');
+    }
+    //property
+    public function properties()
+    {
+        $properties = Property::latest()->get();
+        return view('backend.agent.sisters.property.properties', compact('properties'));
+    }
+    public function createProperty()
+    {
+        $categories = PropertyCategory::latest()->get();
+        return view('backend.agent.sisters.property.create', compact('categories'));
     }
 
 

@@ -31,8 +31,8 @@
                             </td>
                         </tr>
                     @endforeach
-                    {{ $contacts->links() }}
                 </table>
+                {{ $contacts->links() }}
             </div>
         </div>
     </section>

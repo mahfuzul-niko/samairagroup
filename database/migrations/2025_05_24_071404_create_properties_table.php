@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->text('image')->nullable();
+            $table->text('description')->nullable();
             $table->string('slug');
             $table->foreignId('category_id')->constrained('property_categories')->onDelete('cascade');
             $table->decimal('price', 10, 2)->nullable();

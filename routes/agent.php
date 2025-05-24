@@ -163,9 +163,14 @@ Route::middleware(['role:agent,admin'])
         });
         Route::group(['controller' => PropertyController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-joypur-homes-limited', 'Property')->name('jphomes');
-            Route::post('/samaira-joypur-homes-limited/store/category', 'storePropertyCategory')->name('jphomes.store.category');
-            Route::post('/samaira-joypur-homes-limited/update/category/{category}', 'updatePropertyCategory')->name('jphomes.update.category');
-            Route::delete('/samaira-joypur-homes-limited/delete/category/{category}', 'deletePropertyCategory')->name('jphomes.delete.category');
+        });
+        Route::group(['controller' => PropertyController::class, 'as' => 'jphomes.'], function () {
+            Route::get('/samaira-joypur-homes-limited/list/category', 'category')->name('category');
+            Route::post('/samaira-joypur-homes-limited/store/category', 'storePropertyCategory')->name('store.category');
+            Route::post('/samaira-joypur-homes-limited/update/category/{category}', 'updatePropertyCategory')->name('update.category');
+            Route::delete('/samaira-joypur-homes-limited/delete/category/{category}', 'deletePropertyCategory')->name('delete.category');
+
+            Route::get('/samaira-joypur-homes-limited/create/property', 'createProperty')->name('create.property');
         });
 
 
