@@ -149,7 +149,8 @@
                 data-bs-target="#property-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Property</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="property-nav" class="nav-content collapse {{ request()->routeIs('agent.jphomes.*') ? 'show' : '' }}"
+            <ul id="property-nav"
+                class="nav-content collapse {{ request()->routeIs('agent.jphomes.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('agent.jphomes.category') }}"
@@ -163,7 +164,13 @@
                         <i class="bi bi-circle"></i><span>Create Property</span>
                     </a>
                 </li>
-                
+                <li>
+                    <a href="{{ route('agent.jphomes.properties') }}"
+                        class="{{ request()->routeIs('agent.jphomes.properties') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Property List</span>
+                    </a>
+                </li>
+
             </ul>
         </li><!-- End property Nav -->
         <li class="nav-item">

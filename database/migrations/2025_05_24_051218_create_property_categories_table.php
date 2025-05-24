@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('property_categories', function (Blueprint $table) {
             $table->id();
+            $table->text('image')->nullable();
             $table->string('title');
             $table->string('slug');
             $table->timestamps();

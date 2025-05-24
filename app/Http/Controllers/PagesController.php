@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\Banner;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\Course;
@@ -12,6 +13,8 @@ use App\Models\FeaturedCourse;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\Partner;
+use App\Models\Property;
+use App\Models\PropertyCategory;
 use App\Models\Review;
 use App\Models\SamairaGroup;
 use App\Models\SkillAdvertise;
@@ -72,6 +75,15 @@ class PagesController extends Controller
           $banners = ContactBanner::latest()->where('key', 'language')->get();
           return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories', 'banners', 'reviews'));
      }
+
+     public function jphomes()
+     {
+          $banners = Banner::latest()->where('key', 'jphomes')->get();
+          $categories = PropertyCategory::latest()->get();
+          $properties = Property::latest()->take(6)->get();
+          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties'));
+     }
+
      public function samairatravels()
      {
           return view('frontend.samairatravels.index');
@@ -85,10 +97,7 @@ class PagesController extends Controller
      {
           return view('frontend.samairaskills.contact');
      }
-     public function jphomes()
-     {
-          return view('frontend.samairajoypurhomes.index');
-     }
+
      public function enrollpage()
      {
           return view('frontend.samairaskills.enroll');
