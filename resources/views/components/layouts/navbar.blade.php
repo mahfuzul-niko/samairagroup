@@ -24,7 +24,8 @@
     };
     $logourl = match (true) {
         Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route('page.ssdi'),
-        Route::is('page.japan') || Route::is('page.japan.about') || Route::is('page.japan.contact') => route('page.japan'),
+        Route::is('page.japan') || Route::is( 'page.japan.about') || Route::is('page.japan.contact') => route('page.japan'),
+        Route::is('page.jphomes') || Route::is( 'page.jphomes.about') || Route::is('page.jphomes.contact') => route('page.jphomes'),
 
         default => route('page.home'),
     };
@@ -36,6 +37,9 @@
         ),
         Route::is('page.japan') || Route::is('page.japan.contact') || Route::is('page.japan.about') => system_key(
             'samaira_language_logo',
+        ),
+        Route::is('page.jphomes') || Route::is('page.jphomes.contact') || Route::is('page.jphomes.about') => system_key(
+            'samaira_jphomes_logo',
         ),
         default => system_key('samaira_group_logo'),
     };
@@ -56,7 +60,7 @@
             <li><a href="{{ route('page.home') }}">Home</a></li>
 
             <li class="rg-navbar-has-mega" id="brands-trigger">
-                <a href="#">Brands <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+                <a href="#">Our Concerns <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
                 <!-- Mobile Mega Menu (inside <li>) -->
                 <div class="rg-mega-menu mobile-mega-menu" id="brands-mega-menu-mobile">
                     <div class="rg-mega-menu-content">

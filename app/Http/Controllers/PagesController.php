@@ -85,7 +85,7 @@ class PagesController extends Controller
      {
           return view('frontend.samairaskills.contact');
      }
-     public function samairajoypurhomes()
+     public function jphomes()
      {
           return view('frontend.samairajoypurhomes.index');
      }

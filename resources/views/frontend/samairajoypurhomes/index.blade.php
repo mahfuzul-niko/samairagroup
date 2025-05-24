@@ -28,27 +28,9 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-        <x-slot name="logo">
-            <a href="#" class="rg-navbar-logo"><img
-                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
-        </x-slot>
+       
         <x-slot name="nav">
-            <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
-            <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
             
-
-
-            <li>
-               <div class="nav-auth">
-                    <div class="nav-item signup-btn">
-                        @auth
-                        <a href=""><i class="fa-solid fa-user"></i> <span>{{auth()->user()->name}}</span></a>
-                        @else
-                        <a class="nav-link" href="{{ route('student.login') }}">Login</a>
-                        @endauth
-                    </div>
-                </div>  
-            </li>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -70,12 +52,9 @@
     <div class="container">
       <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
         <div>
-          <h2 class="joypur-cities-title mb-1">Find Properties in These Cities</h2>
-          <div class="joypur-cities-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+          <h2 class="joypur-cities-title mb-1">Find Properties in These Category</h2>
         </div>
-        <a href="#" class="joypur-cities-viewall d-inline-flex align-items-center fw-semibold">
-          View All Cities <span class="ms-1 joypur-cities-arrow">&#8594;</span>
-        </a>
+       
       </div>
       <div class="row justify-content-center g-3 mt-4">
         <div class="col-6 col-md-4 col-lg-3">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\Banner;
 use App\Models\Certificate;
 use App\Models\Contact;
 use App\Models\ContactBanner;
@@ -154,8 +155,13 @@ class ContentController extends Controller
 
     public function viewContact($key)
     {
-        $contacts = Contact::latest()->where('key', $key)->get();
+        $contacts = Contact::latest()->where('key', $key)->paginate(10);
         return view('backend.agent.content.contact', compact('contacts'));
+    }
+    public function deleteContact(Contact $contact)
+    {
+        $contact->delete();
+        return redirect()->back()->with('success', 'Contact deleted successfully.');
     }
     //review
 
@@ -245,6 +251,67 @@ class ContentController extends Controller
         $certificate->delete();
 
         return redirect()->back()->with('success', 'Certificate deleted successfully.');
+    }
+    public function storebanner(Request $request)
+    {
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('banners', 'public');
+        }
+
+        $banner = new Banner;
+        if ($request->has('title')) {
+            $banner->title = $request->title;
+        }
+        if ($request->has('subtitle')) {
+            $banner->subtitle = $request->subtitle;
+        }
+        if ($request->has('url')) {
+            $banner->url = $request->url;
+        }
+        $banner->key = $request->key;
+
+        if (isset($data['image'])) {
+            $banner->image = $data['image'];
+        }
+
+        $banner->save();
+
+        return redirect()->back()->with('success', 'Banner saved successfully.');
+    }
+    public function updateBanner(Request $request, Banner $banner)
+    {
+        if ($request->hasFile('image')) {
+            if ($banner->image && Storage::disk('public')->exists($banner->image)) {
+                Storage::disk('public')->delete($banner->image);
+            }
+            $banner->image = $request->file('image')->store('banners', 'public');
+        }
+
+        if ($request->has('title')) {
+            $banner->title = $request->title;
+        }
+        if ($request->has('subtitle')) {
+            $banner->subtitle = $request->subtitle;
+        }
+        if ($request->has('url')) {
+            $banner->url = $request->url;
+        }
+
+        $banner->key = $request->key;
+
+        $banner->save();
+
+        return redirect()->back()->with('success', 'Banner updated successfully.');
+    }
+    public function deleteBanner(Banner $banner)
+    {
+        if ($banner->image && Storage::disk('public')->exists($banner->image)) {
+            Storage::disk('public')->delete($banner->image);
+        }
+
+        $banner->delete();
+
+        return redirect()->back()->with('success', 'Banner deleted successfully.');
     }
 
 }

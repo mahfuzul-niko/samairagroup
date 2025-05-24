@@ -32,28 +32,24 @@
     <!-- Navbar Start -->
 
     <x-layouts.navbar>
-        <x-slot name="logo">
-            <a href=""></a>
-        </x-slot>
         <x-slot name="nav">
-            <li><a href="{{ route('page.home.about') }}">About Us</a></li>
-            <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
 
     <!-- Register/Login Split Section Start -->
-    <section class="already-loggedin-unique py-5">
+    <section class="already-loggedin-unique py-5 content-margin-top">
         <div class="already-loggedin-glass">
-        <div class="already-loggedin-icon-unique">
-            <span class="icon-bg"></span>
-            <i class="fas fa-question"></i>
+            <div class="already-loggedin-icon-unique">
+                <span class="icon-bg"></span>
+                <i class="fas fa-question"></i>
+            </div>
+            <div class="already-loggedin-title-unique">You are Already Logged In!</div>
+            <div class="already-loggedin-desc-unique">No need to login again. Go directly to your dashboard and continue
+                learning!</div>
+            <a href="dashboard.html" class="already-loggedin-btn-unique">Go to Dashboard</a>
         </div>
-        <div class="already-loggedin-title-unique">You are Already Logged In!</div>
-        <div class="already-loggedin-desc-unique">No need to login again. Go directly to your dashboard and continue learning!</div>
-        <a href="dashboard.html" class="already-loggedin-btn-unique">Go to Dashboard</a>
-        </div>
-  </section>
+    </section>
     <!-- Register/Login Split Section End -->
 
     <!-- Custom Footer Section Start -->

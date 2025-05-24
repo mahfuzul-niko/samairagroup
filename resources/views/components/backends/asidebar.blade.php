@@ -66,6 +66,12 @@
                         <i class="bi bi-circle"></i><span>Language</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.jphomes') }}"
+                        class="{{ request()->routeIs('agent.group.jphomes') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>JP Homes</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 

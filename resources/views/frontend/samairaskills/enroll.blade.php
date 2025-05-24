@@ -33,98 +33,26 @@
     <!-- Top Header Section End -->
 
     <!-- Navbar Start -->
-    <nav class="navbar custom-navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/logo.png" alt="logo">
-            </a>
+       <x-layouts.navbar>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            My Courses
-                        </a>
-                        <ul class="dropdown-menu" data-bs-popper="static">
-                            <li><a class="dropdown-item" href="#">All Courses</a></li>
-                            <li><a class="dropdown-item" href="#">In Progress</a></li>
-                            <li><a class="dropdown-item" href="#">Completed</a></li>
-                            <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Support</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </li>
-                </ul>
+        <x-slot name="nav">
+
+            <li>
                 <div class="nav-auth">
                     <div class="nav-item signup-btn">
-                        <a class="nav-link" href="#">Login</a>
+                        @auth
+                            <a href="{{ route('student.dashboard') }}"><i class="fa-solid fa-user"></i> <span>{{ auth()->user()->name }}</span></a>
+                        @else
+                            <a class="nav-link" href="{{ route('student.login') }}">Login</a>
+                        @endauth
                     </div>
                 </div>
-            </div>
+            </li>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+        </x-slot>
+    </x-layouts.navbar>
 
-    <!-- Mobile Navbar Start -->
-    <div class="offcanvas offcanvas-start" id="navbarOffcanvas">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        My Courses
-                    </a>
-                    <ul class="dropdown-menu" data-bs-popper="static">
-                        <li><a class="dropdown-item" href="#">All Courses</a></li>
-                        <li><a class="dropdown-item" href="#">In Progress</a></li>
-                        <li><a class="dropdown-item" href="#">Completed</a></li>
-                        <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Support
-                    </a>
-                    <ul class="dropdown-menu" data-bs-popper="static">
-                        <li><a class="dropdown-item" href="#">Help Center</a></li>
-                        <li><a class="dropdown-item" href="#">Contact Us</a></li>
-                        <li><a class="dropdown-item" href="#">FAQ</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Notifications</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>
-            </ul>
-            <!-- Footer Image in Offcanvas -->
-            <!-- <div class="offcanvas-footer mt-auto text-center">
-        <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/menu-bottom.png" alt="Menu Footer Image" class="img-fluid" style="max-width: 150px;">
-      </div> -->
-        </div>
-    </div>
-    <!-- Mobile Navbar End -->
-    <!-- Navbar End -->
+   
 
     <section class="enroll-page-section py-5 mb-5">
         <div class="container">
@@ -223,7 +151,7 @@
 
                     <div class="text-center mt-2">
                         <span class="fw-bold text-danger mx-2">or</span>
-                        <span class="fw-bold text-primary"><a href=""
+                        <span class="fw-bold text-primary"><a href="{{ route('student.login') }}"
                                 class="text-decoration-none">Login</a></span> with Existing account
                     </div>
                 </div>

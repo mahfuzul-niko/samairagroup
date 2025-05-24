@@ -32,7 +32,7 @@ class SamairaGroupController extends Controller
     }
     public function storeBanner(Request $request)
     {
-
+        
         $data = $request->validate([
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',

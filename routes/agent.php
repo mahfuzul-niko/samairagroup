@@ -4,6 +4,7 @@ use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
@@ -70,9 +71,9 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
             Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
             
-            Route::post('samairaskills/banner/store', 'storeBanner')->name('store.banner');
-            Route::post('samairaskills/banner/update/{banner}', 'updateBanner')->name('update.banner');
-            Route::delete('samairaskills/banner/delete/{banner}', 'destroyBanner')->name('delete.banner');
+            Route::post('samairaskills/banner/store', 'storeBanner')->name('ssdi.store.banner');
+            Route::post('samairaskills/banner/update/{banner}', 'updateBanner')->name('ssdi.update.banner');
+            Route::delete('samairaskills/banner/delete/{banner}', 'destroyBanner')->name('ssdi.delete.banner');
 
 
 
@@ -132,8 +133,10 @@ Route::middleware(['role:agent,admin'])
             //contact subject
             Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
             Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');
-
+            
             Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
+            Route::delete('/content/delete/contact/{contact}}', 'deleteContact')->name('contact.delete');
+
             //review views
             Route::get('/content/review', 'review')->name('view.review');
             Route::post('/content/store/review', 'storeReview')->name('store.review');
@@ -146,6 +149,11 @@ Route::middleware(['role:agent,admin'])
             Route::post('/content/store/certificate', 'storeCertificate')->name('store.certificate');
             Route::delete('/content/delete/certificate/{certificate}', 'deleteCertificate')->name('delete.certificate');
 
+            //banner 
+            Route::post('/content/store/banner', 'storeBanner')->name('store.banner');
+            Route::post('/content/update/banner/{banner}', 'updateBanner')->name('update.banner');
+            Route::delete('/content/delete/banner/{banner}', 'deleteBanner')->name('delete.banner');
+
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-language-japan', 'language')->name('language');
@@ -153,6 +161,13 @@ Route::middleware(['role:agent,admin'])
             Route::post('/samaira-language-japan/store/{story}', 'updateStory')->name('update.story');
             Route::delete('/samaira-language-japan/delete/{story}', 'deleteStory')->name('delete.story');
         });
+        Route::group(['controller' => PropertyController::class, 'as' => 'group.'], function () {
+            Route::get('/samaira-joypur-homes-limited', 'Property')->name('jphomes');
+            Route::post('/samaira-joypur-homes-limited/store/category', 'storePropertyCategory')->name('jphomes.store.category');
+            Route::post('/samaira-joypur-homes-limited/update/category/{category}', 'updatePropertyCategory')->name('jphomes.update.category');
+            Route::delete('/samaira-joypur-homes-limited/delete/category/{category}', 'deletePropertyCategory')->name('jphomes.delete.category');
+        });
+
 
 
 

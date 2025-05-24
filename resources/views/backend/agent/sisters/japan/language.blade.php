@@ -148,14 +148,14 @@
                     @endforeach
                 </table>
             </div>
-        </div>
+        </div>  
     </section>
 
     <section class="about-section">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    SSDI About Section
+                    Language About Section
                 </div>
                 @if (is_null($about))
                     <form action="{{ route('agent.content.store.about') }}" method="POST"
@@ -164,15 +164,15 @@
                         <input type="hidden" name="key" value="language">
                         <div class="mb-3">
                             <div class="label">About Name</div>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <div class="label">About Title</div>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="">Description</label>
-                            <textarea name="description" rows="5" class="form-control"></textarea>
+                            <textarea name="description" rows="5" class="form-control" required></textarea>
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit">save</button>
                     </form>
@@ -205,17 +205,17 @@
                                         <input type="hidden" name="key" value="language">
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
-                                            <input type="text" name="name" value="{{ $about ? $about->name : '' }}"
+                                            <input type="text" name="name" value="{{ $about ? $about->name : '' }}" required
                                                 class="form-control">
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>
-                                            <input type="text" name="title" class="form-control"
+                                            <input type="text" name="title" class="form-control" required
                                                 value="{{ $about ? $about->title : '' }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="">Description</label>
-                                            <textarea name="description" rows="5" class="form-control">{{ $about ? $about->description : '' }}<</textarea>
+                                            <textarea name="description" rows="5" class="form-control" required>{{ $about ? $about->description : '' }}<</textarea>
                                         </div>
                                         <button class="btn btn-sm btn-primary" type="submit">save</button>
                                     </form>
