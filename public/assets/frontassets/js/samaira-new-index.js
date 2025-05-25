@@ -231,6 +231,10 @@ document.querySelectorAll('.rg-slide').forEach(slide => {
     if (isMobile && mobileMegaMenu) {
       // Mobile: open/close on click
       brandsTrigger.onclick = function(e) {
+        // If clicking a link inside the mega menu content, do nothing (let the link work)
+        if (e.target.closest('.rg-mega-menu-content a')) {
+          return;
+        }
         e.preventDefault();
         const isOpen = mobileMegaMenu.classList.contains('show');
         mobileMegaMenu.classList.toggle('show');

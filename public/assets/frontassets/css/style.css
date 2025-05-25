@@ -654,6 +654,9 @@ font-style: normal;
   .rg-dropdown-menu a:last-child {
     border-bottom: none;
   }
+  .rg-mega-menu{
+    transform: translateX(0%) !important;
+  }
 }
 
 /* Dropdown Chevron Icon */
