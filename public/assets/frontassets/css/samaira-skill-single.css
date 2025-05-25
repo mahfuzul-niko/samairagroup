@@ -1241,7 +1241,7 @@
       padding: 8px 18px;
     }
     .enroll-page-section img[alt="Course Banner"] {
-      height: 120px;
+      /* height: 120px; */
       font-size: 0.95rem;
     }
     .enroll-page-section .enroll-form-col input, .enroll-page-section .enroll-form-col select {

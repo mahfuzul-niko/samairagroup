@@ -86,7 +86,7 @@
     <section class="courses-section py-5">
         <div class="container">
             <!-- Section Header -->
-            <div class="row mb-4 margin-bottom-100">
+            <div class="row mb-4">
                 <div class="col text-center">
                     <p class="text-uppercase text-muted small mb-1">Our new courses for you</p>
                     <h2 class="fw-bold">Latest Courses</h2>
