@@ -505,7 +505,7 @@
     <!-- Our Sister Concern Section Start-->
     <section class="sister-concern py-5 mt-5">
         <div class="container text-center">
-            <h3 class="mb-4">Thousands of world's leading companies trust Space</h3>
+            <h3 class="mb-4">Our Partners</h3>
             <div class="logos-wrapper">
                 <div class="logos-slider">
                     <!-- First set of logos -->

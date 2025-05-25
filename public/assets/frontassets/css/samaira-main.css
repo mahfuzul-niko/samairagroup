@@ -918,3 +918,99 @@
   }
 }
 /* New Footer Section End */
+
+/*
+------------------------------------
+Sister Concern CSS Start
+-------------------------------------
+*/
+.sister-concern {
+    padding: 40px 0;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.sister-concern h3 {
+    font-size: 28px;
+    color: rgb(201, 155, 32);
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sister-concern .logos-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.sister-concern .logos-slider {
+    padding: 10px 0;
+    display: flex;
+    width: max-content;
+    animation: slide 30s linear infinite;
+}
+
+.sister-concern .logos-slider:hover {
+    animation-play-state: paused;
+}
+
+.sister-concern .d-flex {
+    gap: 30px;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.sister-concern .logo-item {
+    flex: 0 0 auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+}
+
+.sister-concern .sister-logo {
+    height: 60px;
+        width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.sister-concern .logo-item:hover {
+    /* transform: scale(1.1); */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@media (max-width: 767px) {
+    .sister-concern .sister-logo {
+        height: 40px;
+    }
+    .sister-concern .d-flex {
+        gap: 25px;
+    }
+    .sister-concern h3 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 991px) {
+    .sister-concern .sister-logo {
+        height: 45px;
+    }
+    .sister-concern .d-flex {
+        gap: 30px;
+    }
+}
+/*
+------------------------------------
+Sister Concern CSS End
+-------------------------------------
+*/
