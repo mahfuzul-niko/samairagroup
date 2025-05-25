@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\JpReview;
 use App\Models\Property;
 use App\Models\PropertyCategory;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class PropertyController extends Controller
     {
 
         $banners = Banner::latest()->where('key', 'jphomes')->get();
-        return view('backend.agent.sisters.property.jphomes', compact('banners'));
+        $reviews = JpReview::latest()->get();
+        return view('backend.agent.sisters.property.jphomes', compact('banners','reviews'));
     }
 
     //category
@@ -116,6 +118,31 @@ class PropertyController extends Controller
         }
         $property->delete();
         return redirect()->back()->with('success', 'Property deleted successfully.');
+    }
+    //reviews
+    public function storeReview(Request $request)
+    {
+        $review = new JpReview;
+        $review->type = $request->type;
+        $review->name = $request->name;
+        $review->review = $request->review;
+
+        if ($request->hasFile('image')) {
+            $review->image = $request->file('image')->store('reviews', 'public');
+        } else {
+            $review->image = null;
+        }
+
+        $review->save();
+        return redirect()->back()->with('success', 'Review created successfully.');
+    }
+    public function deleteReview(JpReview $review)
+    {
+        if ($review->image && \Storage::disk('public')->exists($review->image)) {
+            \Storage::disk('public')->delete($review->image);
+        }
+        $review->delete();
+        return redirect()->back()->with('success', 'Review deleted successfully.');
     }
 
 }

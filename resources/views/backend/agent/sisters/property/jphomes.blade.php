@@ -159,7 +159,9 @@
                                     alt="Top Image" class="img-fluid" style="height: 100px; object-fit: cover;">
                             </td>
                             <td class="text-center align-middle">
-                                <form action="{{ route('agent.system.destroy.image', 'system_jp_advertise_top_image') }}" method="POST">
+                                <form
+                                    action="{{ route('agent.system.destroy.image', 'system_jp_advertise_top_image') }}"
+                                    method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
                                 </form>
@@ -172,7 +174,9 @@
                                     alt="Bottom Image" class="img-fluid" style="height: 100px; object-fit: cover;">
                             </td>
                             <td class="text-center align-middle">
-                                <form action="{{ route('agent.system.destroy.image', 'system_jp_advertise_bottom_image') }}" method="POST">
+                                <form
+                                    action="{{ route('agent.system.destroy.image', 'system_jp_advertise_bottom_image') }}"
+                                    method="POST">
                                     @csrf
                                     <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
                                 </form>
@@ -189,7 +193,7 @@
                 <div class="card-title">
                     Advertise Text
                 </div>
-                     <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-4">
                         <div class="col-md-6">
@@ -231,7 +235,84 @@
 
                     </tbody>
                 </table>
-                
+
+            </div>
+        </div>
+    </section>
+    <section class="review">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Review
+                </div>
+                <form action="{{ route('agent.jphomes.store.review') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">Review type</label>
+                                <select class="form-select" aria-label="Default select example" name="type"
+                                    required>
+                                    <option selected>Select Review Type</option>
+                                    <option value="customer">Customer</option>
+                                    <option value="owner">Owner</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" id="inputEmail4" name="name" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Image</label>
+                            <input type="file" class="form-control" name="image" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Review</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                                name="review" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Review List
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Review</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($reviews as $review)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $review->type }}</td>
+                                <td>{{ $review->name }}</td>
+                                <td>
+                                    <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Review Image" class="img-fluid" style="height: 100px; object-fit: cover;">
+                                </td>
+                                <td>{{ $review->review }}</td>
+                                <td class="text-center">
+                                    <form action="{{ route('agent.jphomes.delete.review', $review) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
