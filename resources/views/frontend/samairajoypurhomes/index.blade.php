@@ -61,15 +61,15 @@
 
             </div>
             <div class="row justify-content-center g-3 mt-4">
-                @foreach ($categories as $categoy)
+                @foreach ($categories as $category)
                     <div class="col-md-4 col-lg-3">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{route('page.jphomes.properties',$category)}}" class="text-decoration-none">
                             <div class="joypur-city-card">
-                                <img src="{{ $categoy->image ? Storage::url($categoy->image) : asset('assets/img/no-profile.png') }}"
+                                <img src="{{ $category->image ? Storage::url($category->image) : asset('assets/img/no-profile.png') }}"
                                     alt="New York" class="joypur-city-img">
                                 <div>
-                                    <div class="joypur-city-name">{{ $categoy->title }}</div>
-                                    <div class="joypur-city-count">{{ $categoy->properties->count() }}</div>
+                                    <div class="joypur-city-name">{{ $category->title }}</div>
+                                    <div class="joypur-city-count">{{ $category->properties->count() }}</div>
                                 </div>
                             </div>
                         </a>
@@ -331,23 +331,21 @@
                     <!-- First set of logos -->
                     <div class="d-flex">
                         @foreach ($partners as $partner)
-                            
-                        <div class="logo-item">
-                            <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
-                                alt="{{$partner->name}}" class="sister-logo">
-                        </div>
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $partner->name }}" class="sister-logo">
+                            </div>
                         @endforeach
-                        
+
                     </div>
                     <div class="d-flex">
                         @foreach ($partners as $partner)
-                            
-                        <div class="logo-item">
-                            <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
-                                alt="{{$partner->name}}" class="sister-logo">
-                        </div>
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $partner->name }}" class="sister-logo">
+                            </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>

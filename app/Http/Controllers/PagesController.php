@@ -91,6 +91,11 @@ class PagesController extends Controller
           $partners = JpPartner::latest()->get();
           return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews', 'videos','partners'));
      }
+     public function properties(PropertyCategory $category)
+     {
+          
+          return view('frontend.samairajoypurhomes.properties', compact('category'));
+     }
 
      public function samairatravels()
      {
