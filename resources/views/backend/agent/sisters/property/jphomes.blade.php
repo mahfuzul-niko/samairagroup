@@ -270,8 +270,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="">Review</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                name="review" required></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="review" required></textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -298,11 +297,70 @@
                                 <td>{{ $review->name }}</td>
                                 <td>
                                     <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Review Image" class="img-fluid" style="height: 100px; object-fit: cover;">
+                                        alt="Review Image" class="img-fluid"
+                                        style="height: 100px; object-fit: cover;">
                                 </td>
                                 <td>{{ $review->review }}</td>
                                 <td class="text-center">
-                                    <form action="{{ route('agent.jphomes.delete.review', $review) }}" method="POST">
+                                    <form action="{{ route('agent.jphomes.delete.review', $review) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="partners">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Partners store
+                </div>
+                <form action="{{ route('agent.jphomes.store.partner') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="">Partner Name</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Image</label>
+                        <input type="file" class="form-control" name="image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Partners List
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($partners as $partner)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $partner->name }}</td>
+                                <td>
+                                    <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Partner Image" class="img-fluid"
+                                        style="height: 80px; object-fit: cover;">
+                                </td>
+                                <td class="text-center">
+                                    <form action="{{ route('agent.jphomes.delete.partner', $partner) }}"
+                                        method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i

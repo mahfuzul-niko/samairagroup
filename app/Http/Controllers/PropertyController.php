@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\Property;
 use App\Models\PropertyCategory;
@@ -16,7 +17,8 @@ class PropertyController extends Controller
 
         $banners = Banner::latest()->where('key', 'jphomes')->get();
         $reviews = JpReview::latest()->get();
-        return view('backend.agent.sisters.property.jphomes', compact('banners', 'reviews'));
+        $partners = JpPartner::latest()->get();
+        return view('backend.agent.sisters.property.jphomes', compact('banners', 'reviews','partners'));
     }
 
     //category
@@ -191,6 +193,29 @@ class PropertyController extends Controller
         $videoProperty->delete();
         return redirect()->back()->with('success', 'Video property deleted successfully.');
     }
+    public function storePartner(Request $request)
+    {
+
+
+        $partner = new JpPartner();
+        $partner->name = $request->name;
+        if ($request->hasFile('image')) {
+            $partner->image = $request->file('image')->store('partners', 'public');
+        }
+        $partner->save();
+
+        return redirect()->back()->with('success', 'Partner added successfully.');
+    }
+    public function deletePartner(JpPartner $partner)
+    {
+        if ($partner->image && \Storage::disk('public')->exists($partner->image)) {
+            \Storage::disk('public')->delete($partner->image);
+        }
+        $partner->delete();
+
+        return redirect()->back()->with('success', 'Partner deleted successfully.');
+    }
+
 
 
 }
