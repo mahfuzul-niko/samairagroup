@@ -34,6 +34,11 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/contact-us', 'samairagroupContact')->name('home.contact');
 
     Route::get('/new-dashboard', 'newdashboard')->name('newdashboard');
+    Route::get('/awards', 'awards')->name('awards');
+    Route::get('/chairman', 'chairman')->name('chairman');
+    Route::get('/news', 'news')->name('news');
+    Route::get('/news/single', 'newssingle')->name('newssingle');
+    Route::get('/carrer', 'carrer')->name('carrer');
 
     //ssdi
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('ssdi');

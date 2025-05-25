@@ -161,6 +161,26 @@ class PagesController extends Controller
      {
           return view('frontend.content.dashboard');
      }
+     public function awards()
+     {
+          return view('frontend.content.awards-and-achievement');
+     }
+     public function chairman()
+     {
+          return view('frontend.content.chairman-and-managing-diretor');
+     }
+     public function news()
+     {
+          return view('frontend.content.news-and-events');
+     }
+     public function newssingle()
+     {
+          return view('frontend.content.news-and-events-single');
+     }
+     public function carrer()
+     {
+          return view('frontend.content.carrer');
+     }
 
 
 

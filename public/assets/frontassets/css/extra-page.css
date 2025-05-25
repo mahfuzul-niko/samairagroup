@@ -1,0 +1,754 @@
+:root {
+    --primary-color: #2293ce;
+    --secondary-color: #fecc30;
+  }
+  /* -------------------------------------------------------
+  Awards and Achievements Page Css Start
+  ------------------------------------------------------- */
+  .awards-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  /* .awards-title-underline {
+      width: 180px;
+      height: 5px;
+      margin: 0 auto 32px auto;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(34,147,206,0.10);
+    } */
+  .awards-section .awards-title {
+    font-size: 2.7rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .awards-section .awards-title span {
+    color: var(--secondary-color);
+    font-weight: 800;
+  }
+  .awards-section .awards-title-flourish {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .awards-section .awards-title-flourish svg {
+    display: block;
+    max-width: 100px;
+    width: 80px;
+    height: 24px;
+  }
+  .awards-section .awards-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+    margin-right: -8px;
+    gap: 16px 0;
+  }
+  .awards-section .awards-gallery > .col-md-4 {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  @media (min-width: 768px) {
+    .awards-section .awards-gallery > .col-md-4 {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+    }
+  }
+  .awards-section .awards-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    cursor: pointer;
+  }
+  .awards-section .awards-img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 32px rgba(0,184,148,0.18);
+  }
+  .awards-section .awards-lightbox-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 1);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s;
+  }
+  .awards-section .awards-lightbox-modal.open {
+    display: flex;
+    flex-direction: column;
+  }
+  .awards-section .awards-lightbox-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+    position: relative;
+  }
+  .awards-section .awards-lightbox-content {
+    max-width: 80vw;
+    max-height: 80vh;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    animation: zoomIn 0.4s;
+    margin: 0;
+  }
+  .awards-section .awards-lightbox-close {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 10001;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    transition: color 0.2s;
+  }
+  .awards-section .awards-lightbox-close:hover {
+    color: var(--secondary-color);
+  }
+  @media (max-width: 575px) {
+    .awards-section .awards-title {
+      font-size: 2rem;
+    }
+    .awards-section {
+      padding: 1.5rem 0;
+    }
+    .awards-section .awards-img {
+      height: 234px;
+    }
+    .awards-section .awards-gallery > .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes zoomIn {
+    from { transform: scale(0.7); }
+    to { transform: scale(1); }
+  }
+  .awards-section .awards-lightbox-caption {
+    color: #fff;
+    padding: 18px 24px 12px 24px;
+    font-size: 1.15rem;
+    text-align: center;
+    border-radius: 0 0 18px 18px;
+    max-width: 80vw;
+    margin: 0 auto 0 auto;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .awards-section .awards-lightbox-prev, .awards-section .awards-lightbox-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(34, 147, 206, 0.7);
+    color: #fff;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 2px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10002;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    outline: none;
+    user-select: none;
+    align-self: center;
+  }
+  .awards-section .awards-lightbox-prev {
+    left: 24px;
+  }
+  .awards-section .awards-lightbox-next {
+    right: 24px;
+  }
+  .awards-section .awards-lightbox-prev:hover, .awards-section .awards-lightbox-next:hover {
+    background: var(--secondary-color);
+    color: #fff;
+  }
+  @media (max-width: 991px) {
+    .awards-section .awards-lightbox-prev, .awards-section .awards-lightbox-next {
+      font-size: 1.8rem;
+      padding: 0 10px;
+    }
+    .awards-section .awards-lightbox-caption {
+        font-size: 1rem;
+        max-width: 95vw;
+        padding: 12px 8px 8px 8px;
+      }
+      .awards-section .awards-img {
+          height: 180px;
+      }
+      .awards-section .awards-lightbox-flex {
+      flex-direction: row;
+      height: auto;
+      max-width: 100vw;
+      }
+      .awards-section .awards-lightbox-content {
+      max-width: 95vw;
+      max-height: 60vh;
+      }
+      .awards-section .awards-lightbox-close {
+      top: 20px;
+      right: 20px;
+      font-size: 2.2rem;
+      }
+      .awards-gallery > .col-md-4 {
+          flex: 0 0 50%;
+          max-width: 50%;
+      }
+  } 
+
+/* -------------------------------------------------------
+  Awards and Achievements Page Css End
+  ------------------------------------------------------- */
+
+/* -------------------------------------------------------
+Chairman and Managing Director Page Css Start
+------------------------------------------------------- */
+.cmd-profile-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+ .cmd-profile-section .cmd-title,
+ .cmd-profile-section2 .cmd-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .cmd-profile-section .cmd-title span,
+  .cmd-profile-section2 .cmd-title span {
+    color: var(--secondary-color);
+    font-weight: 800;
+  }
+  .cmd-profile-section .cmd-title-flourish,
+  .cmd-profile-section2 .cmd-title-flourish {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .cmd-profile-section .cmd-title-flourish svg,
+  .cmd-profile-section2 .cmd-title-flourish svg {
+    display: block;
+    max-width: 100px;
+    width: 80px;
+    height: 24px;
+  }
+  .cmd-profile-section .cmd-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(34,147,206,0.07);
+    padding: 2.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+  .cmd-profile-section .cmd-img-wrapper,
+  .cmd-profile-section2 .cmd-img-wrapper {
+    flex: 0 0 400px;
+    max-width: 400px;
+    width: 100%;
+  }
+  .cmd-profile-section2 p{
+    margin-right: 50px;
+  }
+  .cmd-profile-section2 p,
+  .cmd-profile-section p{
+    text-align: justify;
+  }
+  .cmd-profile-section .cmd-img-wrapper .cmd-img,
+  .cmd-profile-section2 .cmd-img-wrapper .cmd-img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(34,147,206,0.13);
+  }
+  .cmd-profile-section .cmd-profile-text,
+  .cmd-profile-section2 .cmd-profile-text {
+    flex: 1 1 0%;
+    color: #222;
+  }
+  .cmd-profile-section .cmd-name,
+  .cmd-profile-section2 .cmd-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  .cmd-profile-section2{
+    background: linear-gradient(135deg, #f8fafc 0%, #f0f0f0 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .cmd-profile-section2 .cmd-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(34,147,206,0.07);
+    padding: 2.5rem 2rem;
+    display: flex;
+  }
+  @media (max-width: 991px) {
+    .cmd-profile-section .cmd-card,
+    .cmd-profile-section2 .cmd-card {
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      gap: 1.5rem;
+    }
+    .cmd-profile-section .cmd-img-wrapper,
+    .cmd-profile-section2 .cmd-img-wrapper {
+      max-width: 350px;
+    }
+    .cmd-profile-section .cmd-title,
+    .cmd-profile-section2 .cmd-title {
+      font-size: 1.5rem;
+    }
+    .cmd-profile-section2 p{
+      margin-right: 0;
+    }
+  } 
+  @media (max-width: 768px) {
+    .cmd-profile-section .cmd-img-wrapper,
+    .cmd-profile-section2 .cmd-img-wrapper{
+        flex: 0 0 0;
+    }
+    .cmd-profile-section2 .cmd-img-wrapper-mobile{
+        display: block !important;
+    }
+    .cmd-profile-section2 .cmd-img-wrapper-desktop{
+        display: none !important;
+    }
+  } 
+/* -------------------------------------------------------
+Chairman and Managing Director Page Css End
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+News and Events Blog Page Start
+------------------------------------------------------- */
+.news-events-section {
+  background: #fff;
+  border-radius: 24px;
+  margin-bottom: 40px;
+}
+.news-events-section .news-events-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.news-events-section .news-events-title span {
+  color: var(--secondary-color);
+  font-weight: 800;
+}
+.news-events-section .news-events-title-flourish {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.news-events-section .lead {
+  color: #555;
+}
+.news-events-section .blog-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #e0f7fa;
+}
+.news-events-section .blog-card:hover {
+  /* transform: translateY(-8px) scale(1.03); */
+  box-shadow: 0 8px 32px rgba(34,147,206,0.13);
+}
+.news-events-section .blog-card-img-wrapper {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #eaf6fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news-events-section .blog-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.news-events-section .blog-card:hover .blog-card-img {
+  /* transform: scale(1.07) rotate(0deg); */
+}
+.news-events-section .blog-card-body {
+  padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.news-events-section .blog-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+.news-events-section .blog-card-text {
+  color: #444;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  flex: 1 1 auto;
+}
+.news-events-section .blog-card-link {
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+  align-self: flex-start;
+  padding:9px 25px;
+  border-radius: 20px;
+  background: var(--secondary-color);
+  color: #fff;
+}
+.news-events-section .blog-card-link:hover {
+  background: var(--primary-color);
+  text-decoration: none;
+}
+@media (max-width: 991px) {
+  .news-events-section .news-events-title {
+    font-size: 2rem;
+  }
+  .news-events-section .blog-card-img-wrapper {
+    height: 180px;
+  }
+}
+@media (max-width: 575px) {
+  .news-events-section {
+    padding: 1.5rem 0.5rem;
+    border-radius: 14px;
+  }
+  .news-events-section .news-events-title {
+    font-size: 1.5rem;
+  }
+  .news-events-section .blog-card-body {
+    padding: 1rem 0.7rem 0.7rem 0.7rem;
+  }
+  .news-events-section .lead{
+    font-size: 16px;
+  }
+}
+/* -------------------------------------------------------
+News and Events Blog Page End
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+Single News Blog Page Start
+------------------------------------------------------- */
+.single-news-section {
+  background: #fff;
+  border-radius: 24px;
+  margin-bottom: 40px;
+}
+.single-news-section .single-news-main {
+  background: #f8fafc;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(34,147,206,0.07);
+  padding: 2.5rem 2rem 2rem 2rem;
+}
+.single-news-section .single-news-img-wrapper {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(34,147,206,0.13);
+}
+.single-news-section .single-news-img {
+  width: 100%;
+  /* height: 320px; */
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+.single-news-section .single-news-title-bar {
+  background: linear-gradient(90deg, #e0f7fa 0%, #f8fafc 100%);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(34,147,206,0.06);
+  margin-bottom: 1.5rem;
+}
+.single-news-section .author-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--primary-color);
+  background: #fff;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.single-news-section .author-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.single-news-section .single-news-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.2rem;
+}
+.single-news-section .single-news-meta {
+  font-size: 1rem;
+  color: #666;
+}
+.single-news-section .single-news-meta .author-name i,
+.single-news-section .single-news-meta .news-date i {
+  color: var(--secondary-color);
+  margin-right: 4px;
+}
+.single-news-section .single-news-content {
+  font-size: 1.13rem;
+  color: #222;
+  line-height: 1.8;
+}
+.single-news-section .single-news-sidebar {
+  background: #f8fafc;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(34,147,206,0.07);
+  padding: 2rem 1.5rem;
+}
+.single-news-section .recent-news-box {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(34,147,206,0.06);
+  padding: 1.5rem 1rem;
+}
+.single-news-section .recent-news-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e0f7fa;
+  padding-bottom: 0.5rem;
+}
+.single-news-section .recent-news-list li {
+  margin-bottom: 0.7rem;
+}
+.single-news-section .recent-news-list li:last-child {
+  margin-bottom: 0;
+}
+.single-news-section .recent-news-list a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.single-news-section .recent-news-list a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+@media (max-width: 991px) {
+  .single-news-section .single-news-main {
+    padding: 1.5rem 0.7rem 1.2rem 0.7rem;
+  }
+  .single-news-section .single-news-img {
+    height: 200px;
+  }
+  .single-news-section .single-news-title {
+    font-size: 1.3rem;
+  }
+  .single-news-section .single-news-sidebar {
+    padding: 1.2rem 0.7rem;
+  }
+}
+@media (max-width: 575px) {
+  .single-news-section {
+    padding: 1.5rem 0.5rem;
+    border-radius: 14px;
+  }
+  .single-news-section .single-news-main {
+    padding: 1rem 0.2rem 0.7rem 0.2rem;
+  }
+  .single-news-section .single-news-img {
+    height: 230px;
+  }
+  .single-news-section .single-news-content p,
+  .single-news-section .single-news-meta {
+    font-size: 14px;
+  }
+  .single-news-section .single-news-title-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.7rem 0.7rem;
+  }
+  .single-news-section .author-avatar {
+    margin-bottom: 0.5rem;
+  }
+  .single-news-section .single-news-title {
+    font-size: 1.1rem;
+  }
+  .single-news-section .single-news-sidebar {
+    padding: 0.7rem 0.2rem;
+  }
+}
+/* -------------------------------------------------------
+Single News Blog Page End
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+Career Page Section Start
+------------------------------------------------------- */
+.career-section {
+  background: #fff;
+  border-radius: 24px;
+  margin-bottom: 40px;
+}
+.career-section .career-img-wrapper {
+  padding: 2rem 1rem 2rem 1rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(34,147,206,0.07);
+}
+.career-section .career-img {
+  width: 220px;
+  max-width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(34,147,206,0.13);
+}
+.career-section .career-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.career-section .career-title-flourish {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.career-section .career-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+.career-section .career-intro {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 0;
+}
+.career-section .career-form-wrapper {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f7fa 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(34,147,206,0.07);
+}
+.career-section .career-form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #b12c74;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.career-section .career-form .form-label {
+  font-weight: 600;
+  color: #222;
+}
+.career-section .career-form .form-select,
+.career-section .career-form .form-control[type="file"],
+.career-section .career-form .form-control {
+  border-radius: 10px;
+  border: 1px solid #d1e7ef;
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  background: #fff;
+  box-shadow: none;
+  margin-bottom: 0.5rem;
+}
+.career-section .career-form .form-select:focus,
+.career-section .career-form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px #2293ce22;
+}
+.career-section .career-submit-btn {
+  background: var(--primary-color);
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  padding: 0.8rem 0;
+  transition: background 0.2s;
+}
+.career-section .career-submit-btn:hover {
+  background: var(--secondary-color);
+  color: #fff;
+}
+@media (max-width: 991px) {
+  .career-section .career-title {
+    font-size: 1.5rem;
+  }
+  .career-section .career-img {
+    width: 140px;
+  }
+  .career-section .career-form-title {
+    font-size: 1.3rem;
+  }
+  .career-section .career-img-wrapper, .career-section .career-form-wrapper {
+    padding: 1.2rem 0.7rem;
+  }
+  .career-section .career-title-flourish{
+    justify-content: center;
+  }
+  .career-section .career-section-first-row{
+    margin-bottom: 0 !important;
+  }
+}
+@media (max-width: 575px) {
+  .career-section {
+    padding: 1.5rem 0.5rem;
+    border-radius: 14px;
+  }
+  .career-section .career-img-wrapper, .career-section .career-form-wrapper {
+    padding: 1rem 0.2rem;
+    border-radius: 10px;
+  }
+  .career-section .career-img {
+    width: 90px;
+  }
+}
+/* -------------------------------------------------------
+Career Page Section End
+------------------------------------------------------- */
