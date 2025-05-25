@@ -70,7 +70,7 @@
                 <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
             </button>
             <ul class="rg-navbar-menu">
-                <li><a href="{{route('page.home')}}">Home</a></li>
+                <li><a href="{{ route('page.home') }}">Home</a></li>
 
                 <li class="rg-navbar-has-mega" id="brands-trigger">
                     <a href="#">Our Concern <span class="rg-navbar-chevron"><i
@@ -89,19 +89,19 @@
                 </li>
 
                 {{-- <li><a href="#">Blog</a></li> --}}
-                <li><a href="{{route('page.home.about')}}">About Us</a></li>
-                <li><a href="{{route('page.home.contact')}}">Contact Us</a></li>
+                <li><a href="{{ route('page.home.about') }}">About Us</a></li>
+                <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
             </ul>
             <!-- Desktop Mega Menu (outside <li>) -->
             <div class="rg-mega-menu desktop-mega-menu" id="brands-mega-menu-desktop">
                 <div class="rg-mega-menu-content">
                     @foreach ($concerns as $concern)
-                                <a href="{{ $concern->concern_link }}">
-                                    <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                        alt="concern">
-                                </a>
-                            @endforeach
-                    
+                        <a href="{{ $concern->concern_link }}">
+                            <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                alt="concern">
+                        </a>
+                    @endforeach
+
                 </div>
             </div>
         </div>

@@ -22,6 +22,7 @@ use App\Models\SkillAdvertise;
 use App\Models\SkillBanner;
 use App\Models\SkillCertified;
 use App\Models\SuccessStorie;
+use App\Models\VideoProperty;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -85,7 +86,8 @@ class PagesController extends Controller
           $propertiesCount = Property::count();
           $creviews = JpReview::latest()->where('type', 'customer')->get();
           $oreviews = JpReview::latest()->where('type', 'owner')->get();
-          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews'));
+          $videos = VideoProperty::latest()->take(6)->get();
+          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews', 'videos'));
      }
 
      public function samairatravels()

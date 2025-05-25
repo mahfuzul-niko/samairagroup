@@ -166,10 +166,16 @@
                 </li>
                 <li>
                     <a href="{{ route('agent.jphomes.properties') }}"
-                        class="{{ request()->routeIs('agent.jphomes.properties') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>All Property List</span>
-                    </a>
-                </li>
+                    class="{{ request()->routeIs('agent.jphomes.properties') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>All Property List</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('agent.jphomes.create.property.video') }}"
+                    class="{{ request()->routeIs('agent.jphomes.create.property.video') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>Video Property</span>
+                </a>
+            </li>
 
             </ul>
         </li><!-- End property Nav -->

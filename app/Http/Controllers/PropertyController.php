@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\JpReview;
 use App\Models\Property;
 use App\Models\PropertyCategory;
+use App\Models\VideoProperty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class PropertyController extends Controller
@@ -15,7 +16,7 @@ class PropertyController extends Controller
 
         $banners = Banner::latest()->where('key', 'jphomes')->get();
         $reviews = JpReview::latest()->get();
-        return view('backend.agent.sisters.property.jphomes', compact('banners','reviews'));
+        return view('backend.agent.sisters.property.jphomes', compact('banners', 'reviews'));
     }
 
     //category
@@ -144,5 +145,52 @@ class PropertyController extends Controller
         $review->delete();
         return redirect()->back()->with('success', 'Review deleted successfully.');
     }
+
+    public function createVideoProperty()
+    {
+        $videoProperties = VideoProperty::latest()->paginate(20);
+        return view('backend.agent.sisters.property.create-video', compact('videoProperties'));
+    }
+    public function storeVideoProperty(Request $request)
+    {
+        $videoProperty = new VideoProperty;
+        $videoProperty->title = $request->title;
+        $videoProperty->url = $request->url;
+        $videoProperty->video_url = $request->video_url;
+
+        if ($request->hasFile('image')) {
+            $videoProperty->image = $request->file('image')->store('video_properties', 'public');
+        } else {
+            $videoProperty->image = null;
+        }
+
+        $videoProperty->save();
+        return redirect()->back()->with('success', 'Video property created successfully.');
+    }
+    public function updateVideoProperty(Request $request, VideoProperty $videoProperty)
+    {
+        $videoProperty->title = $request->title;
+        $videoProperty->url = $request->url;
+        $videoProperty->video_url = $request->video_url;
+
+        if ($request->hasFile('image')) {
+            if ($videoProperty->image && \Storage::disk('public')->exists($videoProperty->image)) {
+                \Storage::disk('public')->delete($videoProperty->image);
+            }
+            $videoProperty->image = $request->file('image')->store('video_properties', 'public');
+        }
+
+        $videoProperty->save();
+        return redirect()->back()->with('success', 'Video property updated successfully.');
+    }
+    public function deleteVideoProperty(VideoProperty $videoProperty)
+    {
+        if ($videoProperty->image && \Storage::disk('public')->exists($videoProperty->image)) {
+            \Storage::disk('public')->delete($videoProperty->image);
+        }
+        $videoProperty->delete();
+        return redirect()->back()->with('success', 'Video property deleted successfully.');
+    }
+
 
 }
