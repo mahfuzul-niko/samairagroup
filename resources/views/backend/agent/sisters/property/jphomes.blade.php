@@ -375,5 +375,235 @@
         </div>
     </section>
 
+    <section class="about-section">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    JP Homes About Section
+                </div>
+                @if (is_null($about))
+                    <form action="{{ route('agent.content.store.about') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="key" value="jphomes">
+                        <div class="mb-3">
+                            <div class="label">About Name</div>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <div class="label">About Title</div>
+                            <input type="text" name="title" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="">Description</label>
+                            <textarea name="description" rows="5" class="form-control" required></textarea>
+                        </div>
+                        <button class="btn btn-sm btn-primary" type="submit">save</button>
+                    </form>
+                @endif
+                @if (!is_null($about))
+                    <div class="text-end mb-2">
+                        <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#about-modal"><i class="bi bi-pencil-square"></i></a>
+                        <form action="{{ route('agent.content.delete.about', $about) }}" method="POST"
+                            style="display:inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-danger btn-sm"><i
+                                    class="bi bi-trash"></i></button>
+                        </form>
+                    </div>
+                    <div class="modal fade" id="about-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update About</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ route('agent.content.update.about', $about) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="key" value="jphomes">
+                                        <div class="mb-3">
+                                            <div class="label">About Name</div>
+                                            <input type="text" name="name" value="{{ $about ? $about->name : '' }}" required
+                                                class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="label">About Title</div>
+                                            <input type="text" name="title" class="form-control" required
+                                                value="{{ $about ? $about->title : '' }}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="">Description</label>
+                                            <textarea name="description" rows="5" class="form-control" required>{{ $about ? $about->description : '' }}<</textarea>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary" type="submit">save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ $about->name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ $about->title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ $about->description }}</td>
+                        </tr>
+
+                    </table>
+                @endif
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Contact Banner
+                </div>
+                <form action="{{ route('agent.content.contact.store.banner') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="key" value="jphomes">
+                    <div class="mb-3">
+                        <label for="">Banner Image</label>
+                        <input type="file" name="image" id="" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btnsm btn-primary">Save</button>
+                </form>
+                <div class="card-title">
+                    View Contact Banner
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>action</th>
+                    </tr>
+                    @foreach ($contactbanners as $key => $banner)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td><img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="" style="height: 100px; width: auto;"></td>
+                            <td>
+                                <form action="{{ route('agent.content.contact.delete.banner', $banner) }}"
+                                    method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm"><i
+                                            class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Contact Info
+                </div>
+                <form action="{{ route('agent.content.save.contact.info') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="key" value="jphomes">
+
+                    <div class="mb-3">
+                        <label for="">Reach Email</label>
+                        <input type="email" class="form-control" name="reach_mail"
+                            value="{{ $info->reach_mail ?? '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="">Careers Email</label>
+                        <input type="email" class="form-control" name="careers_mail"
+                            value="{{ $info->careers_mail ?? '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Phone">Phone Numbers</label>
+                        <input type="text" class="form-control" name="phone"
+                            placeholder="+8801xxxxxxxxx, +8801xxxxxxxxx"
+                            value="{{ isset($info->phone) ? implode(', ', json_decode($info->phone, true)) : '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="">Address Title</label>
+                        <input type="text" class="form-control" name="address_title"
+                            value="{{ $info->address_title ?? '' }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="">Address</label>
+                        <textarea name="address" class="form-control" rows="4">{{ $info->address ?? '' }}</textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+    @if (!is_null($info))
+
+        <section>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        Contact Add Subject
+                    </div>
+                    <form action="{{ route('agent.content.contact.store.subject') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="info_id" value="{{ $info->id }}">
+                        <div class="mb-3">
+                            <label for="">Subject Title</label>
+                            <input type="text" name="subject" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    </form>
+                    <div class="card-title">
+                        View Subjects
+                    </div>
+                    <table class="table table-striped">
+                        <tr>
+                            <th>#</th>
+                            <th>Subject</th>
+                            <th>Action</th>
+                        </tr>
+                        @foreach ($info->subjects as $key => $subject)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $subject->subject }}</td>
+                                <td>
+                                    <form action="{{ route('agent.content.contact.delete.subject', $subject) }}"
+                                        method="POST" style="display:inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+            </div>
+        </section>
+    @endif
 
 </x-app>

@@ -14,7 +14,6 @@ class LanguageController extends Controller
     {
         $stories = SuccessStorie::latest()->get();
         $about = About::latest()->where('key', 'language')->first();
-
         $contactbanners = ContactBanner::latest()->where('key', 'language')->get();
         $info = ContactInfo::latest()->where('key', 'language')->first();
         return view('backend.agent.sisters.japan.language', compact('stories','about','info','contactbanners'));

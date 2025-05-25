@@ -10,6 +10,9 @@
         Route::is('page.japan') || Route::is('page.japan.contact') || Route::is('page.japan.about') => route(
             'page.japan.about',
         ),
+         Route::is('page.jphomes') || Route::is('page.jphomes.properties') || Route::is( 'page.jphomes.about') || Route::is('page.jphomes.contact')=> route(
+            'page.jphomes.about',
+        ),
         default => route('page.home.about'),
     };
     $contactRoute = match (true) {
@@ -20,12 +23,15 @@
         Route::is('page.japan') || Route::is('page.japan.about') || Route::is('page.japan.contact') => route(
             'page.japan.contact',
         ),
+         Route::is('page.jphomes') || Route::is('page.jphomes.properties') || Route::is( 'page.jphomes.about') || Route::is('page.jphomes.contact') => route(
+            'page.jphomes.contact',
+        ),
         default => route('page.home.contact'),
     };
     $logourl = match (true) {
         Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route('page.ssdi'),
         Route::is('page.japan') || Route::is( 'page.japan.about') || Route::is('page.japan.contact') => route('page.japan'),
-        Route::is('page.jphomes') || Route::is( 'page.jphomes.about') || Route::is('page.jphomes.contact') => route('page.jphomes'),
+        Route::is('page.jphomes') || Route::is('page.jphomes.properties') || Route::is( 'page.jphomes.about') || Route::is('page.jphomes.contact') => route('page.jphomes'),
 
         default => route('page.home'),
     };
@@ -35,10 +41,10 @@
         Route::is('page.ssdi') || Route::is('page.ssdi.contact') || Route::is('page.ssdi.about') => system_key(
             'samaira_skills_logo',
         ),
-        Route::is('page.japan') || Route::is('page.japan.contact') || Route::is('page.japan.about') => system_key(
+        Route::is('page.japan')  || Route::is('page.japan.contact') || Route::is('page.japan.about') => system_key(
             'samaira_language_logo',
         ),
-        Route::is('page.jphomes') || Route::is('page.jphomes.contact') || Route::is('page.jphomes.about') => system_key(
+        Route::is('page.jphomes') || Route::is('page.jphomes.properties') || Route::is('page.jphomes.contact') || Route::is('page.jphomes.about') => system_key(
             'samaira_jphomes_logo',
         ),
         default => system_key('samaira_group_logo'),

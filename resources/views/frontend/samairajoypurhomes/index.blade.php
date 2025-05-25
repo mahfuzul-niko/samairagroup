@@ -61,15 +61,15 @@
 
             </div>
             <div class="row justify-content-center g-3 mt-4">
-                @foreach ($categories as $categoy)
+                @foreach ($categories as $category)
                     <div class="col-md-4 col-lg-3">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ route('page.jphomes.properties', $category) }}" class="text-decoration-none">
                             <div class="joypur-city-card">
-                                <img src="{{ $categoy->image ? Storage::url($categoy->image) : asset('assets/img/no-profile.png') }}"
+                                <img src="{{ $category->image ? Storage::url($category->image) : asset('assets/img/no-profile.png') }}"
                                     alt="New York" class="joypur-city-img">
                                 <div>
-                                    <div class="joypur-city-name">{{ $categoy->title }}</div>
-                                    <div class="joypur-city-count">{{ $categoy->properties->count() }}</div>
+                                    <div class="joypur-city-name">{{ $category->title }}</div>
+                                    <div class="joypur-city-count">{{ $category->properties->count() }}</div>
                                 </div>
                             </div>
                         </a>
@@ -251,7 +251,7 @@
                                                 <h4>What our clients are saying</h4>
                                                 <p class="testimonial-text">{{ $review->review }}</p>
                                                 <div class="testimonial-author">{{ $review->name }}</div>
-                                                <div class="testimonial-role">Homeowner</div>
+                                                <div class="testimonial-role">Landowner</div>
                                                 <div class="testimonial-nav">
                                                     <button class="testimonial-prev-customer"><i
                                                             class="fa fa-chevron-left"></i></button>
@@ -283,45 +283,48 @@
         </div>
         <div class="row g-4 mt-3">
             <!-- Card Start -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <div class="video-thumbnail-wrapper video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png"
-                            alt="Testimonial Video" class="testimonial-video-img rounded-3">
-                        <a href="javascript:void(0);" class="play-btn video-trigger">
-                            <div class="play-button-overlay">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
+            @foreach ($videos as $video)
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card h-100 shadow-sm">
+                        <div class="video-thumbnail-wrapper video-thumbnail position-relative"
+                            data-video-url="{{ $video->video_url }}">
+                            
+                            <img src="{{ $video->image ? Storage::url($video->image) : asset('assets/img/no-profile.png') }}"
+                                alt="Testimonial Video" class="testimonial-video-img rounded-3">
+                            <a href="javascript:void(0);" class="play-btn video-trigger">
+                                <div class="play-button-overlay">
+                                    <div class="play-button">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title mb-3">Housing Markets That Changed
-                            the Most This Week</h5>
-                        <a href="#" class="read-more mt-auto">Read More &rarr;</a>
+                            </a>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title mb-3">{{$video->title}}</h5>
+                            <a href="{{$video->url}}" class="read-more mt-auto">Read More &rarr;</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <!-- Video Modal -->
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <!-- <h5 class="modal-title" id="videoModalLabel">Success Story</h5> -->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body p-0">
-                        <div class="ratio ratio-16x9">
-                            <iframe id="videoFrame" src="" title="Success Story Video" allowfullscreen
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            @endforeach
+            <!-- Video Modal -->
+            <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!-- <h5 class="modal-title" id="videoModalLabel">Success Story</h5> -->
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-0">
+                            <div class="ratio ratio-16x9">
+                                <iframe id="videoFrame" src="" title="Success Story Video" allowfullscreen
+                                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
     <!-- Blog Section End-->
@@ -335,23 +338,21 @@
                     <!-- First set of logos -->
                     <div class="d-flex">
                         @foreach ($partners as $partner)
-                            
-                        <div class="logo-item">
-                            <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
-                                alt="{{$partner->name}}" class="sister-logo">
-                        </div>
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $partner->name }}" class="sister-logo">
+                            </div>
                         @endforeach
-                        
+
                     </div>
                     <div class="d-flex">
                         @foreach ($partners as $partner)
-                            
-                        <div class="logo-item">
-                            <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
-                                alt="{{$partner->name}}" class="sister-logo">
-                        </div>
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $partner->name }}" class="sister-logo">
+                            </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>
