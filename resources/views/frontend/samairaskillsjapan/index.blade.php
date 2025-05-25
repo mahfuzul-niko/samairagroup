@@ -175,7 +175,7 @@
                     <div class="modal-body p-0">
                         <div class="ratio ratio-16x9">
                             <iframe id="videoFrame" src="" title="Success Story Video" allowfullscreen
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                         </div>
                     </div>
                 </div>

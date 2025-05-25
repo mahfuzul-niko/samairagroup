@@ -285,10 +285,10 @@
             <!-- Card Start -->
             <div class="col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <div class="video-thumbnail-wrapper">
+                    <div class="video-thumbnail-wrapper video-thumbnail position-relative" data-video-url="https://youtu.be/GcsjhHhVunI?si=GK4ci8BU6mMsqy2d">
                         <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png"
                             alt="Testimonial Video" class="testimonial-video-img rounded-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#testimonialVideoModal1">
+                        <a href="javascript:void(0);" class="play-btn video-trigger">
                             <div class="play-button-overlay">
                                 <div class="play-button">
                                     <i class="fas fa-play"></i>
@@ -303,21 +303,25 @@
                     </div>
                 </div>
             </div>
-            {{-- Modal For Video --}}
-            <div class="modal fade" id="testimonialVideoModal1" tabindex="-1"
-                aria-labelledby="testimonialVideoModalLabel1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body p-0">
-                            <div class="ratio ratio-16x9">
-                                <video
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4"
-                                    controls autoplay loop></video>
-                            </div>
+        <!-- Video Modal -->
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!-- <h5 class="modal-title" id="videoModalLabel">Success Story</h5> -->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div class="ratio ratio-16x9">
+                            <iframe id="videoFrame" src="" title="Success Story Video" allowfullscreen
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     <!-- Blog Section End-->
@@ -421,7 +425,6 @@
     </script>
 
     <!-- Testimonial Slider Script -->
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             function showTestimonial(group, idx) {
@@ -547,6 +550,53 @@
         });
     </script>
 
+    <!-- Video Modal Script -->
+    <script>
+        // Success Stories Video Modal
+        const videoModal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+        const videoTriggers = document.querySelectorAll('.video-trigger');
+
+        if (videoModal) {
+            const bsVideoModal = new bootstrap.Modal(videoModal);
+
+            videoTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    let videoUrl = this.closest('.video-thumbnail').getAttribute('data-video-url');
+
+                    // Convert YouTube URL to embed format
+                    if (videoUrl.includes('youtu.be') || videoUrl.includes('youtube.com')) {
+                        // Extract video ID from various YouTube URL formats
+                        let videoId = '';
+
+                        if (videoUrl.includes('youtu.be')) {
+                            // Format: https://youtu.be/VIDEO_ID
+                            videoId = videoUrl.split('youtu.be/')[1];
+                            if (videoId.includes('?')) {
+                                videoId = videoId.split('?')[0];
+                            }
+                        } else if (videoUrl.includes('youtube.com/watch')) {
+                            // Format: https://www.youtube.com/watch?v=VIDEO_ID
+                            const urlParams = new URLSearchParams(videoUrl.split('?')[1]);
+                            videoId = urlParams.get('v');
+                        }
+
+                        if (videoId) {
+                            videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                        }
+                    }
+
+                    videoFrame.src = videoUrl;
+                    bsVideoModal.show();
+                });
+            });
+
+            // Clear iframe src when modal is closed to stop video
+            videoModal.addEventListener('hidden.bs.modal', function() {
+                videoFrame.src = '';
+            });
+        }
+    </script>
 </body>
 
 </html>
