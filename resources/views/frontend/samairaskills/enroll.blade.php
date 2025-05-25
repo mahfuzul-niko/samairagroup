@@ -36,7 +36,6 @@
        <x-layouts.navbar>
 
         <x-slot name="nav">
-
             <li>
                 <div class="nav-auth">
                     <div class="nav-item signup-btn">
@@ -48,7 +47,6 @@
                     </div>
                 </div>
             </li>
-
         </x-slot>
     </x-layouts.navbar>
 

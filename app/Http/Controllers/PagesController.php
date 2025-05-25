@@ -12,6 +12,7 @@ use App\Models\CourseCategory;
 use App\Models\FeaturedCourse;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
+use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\Partner;
 use App\Models\Property;
@@ -87,7 +88,8 @@ class PagesController extends Controller
           $creviews = JpReview::latest()->where('type', 'customer')->get();
           $oreviews = JpReview::latest()->where('type', 'owner')->get();
           $videos = VideoProperty::latest()->take(6)->get();
-          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews', 'videos'));
+          $partners = JpPartner::latest()->get();
+          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews', 'videos','partners'));
      }
 
      public function samairatravels()
@@ -204,4 +206,5 @@ class PagesController extends Controller
      {
           return view('frontend.content.coming-soon');
      }
+    
 }

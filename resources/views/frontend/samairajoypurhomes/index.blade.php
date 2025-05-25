@@ -330,81 +330,24 @@
                 <div class="logos-slider">
                     <!-- First set of logos -->
                     <div class="d-flex">
+                        @foreach ($partners as $partner)
+                            
                         <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png"
-                                alt="Logo 1" class="sister-logo">
+                            <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                alt="{{$partner->name}}" class="sister-logo">
                         </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png"
-                                alt="Logo 2" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png"
-                                alt="Logo 3" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png"
-                                alt="Logo 4" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png"
-                                alt="Logo 5" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png"
-                                alt="Logo 6" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                alt="Logo 7" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png"
-                                alt="Logo 8" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png"
-                                alt="Logo 9" class="sister-logo">
-                        </div>
+                        @endforeach
+                        
                     </div>
-                    <!-- Duplicate set of logos for seamless loop -->
                     <div class="d-flex">
+                        @foreach ($partners as $partner)
+                            
                         <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png"
-                                alt="Logo 1" class="sister-logo">
+                            <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                alt="{{$partner->name}}" class="sister-logo">
                         </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png"
-                                alt="Logo 2" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png"
-                                alt="Logo 3" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png"
-                                alt="Logo 4" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png"
-                                alt="Logo 5" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png"
-                                alt="Logo 6" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png"
-                                alt="Logo 7" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png"
-                                alt="Logo 8" class="sister-logo">
-                        </div>
-                        <div class="logo-item">
-                            <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png"
-                                alt="Logo 9" class="sister-logo">
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>

@@ -70,7 +70,7 @@ Route::middleware(['role:agent,admin'])
             Route::post('/SamairaGroup/certified/update/{certified}', 'updateCertified')->name('update.certified');
             Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
             Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
-            
+
             Route::post('samairaskills/banner/store', 'storeBanner')->name('ssdi.store.banner');
             Route::post('samairaskills/banner/update/{banner}', 'updateBanner')->name('ssdi.update.banner');
             Route::delete('samairaskills/banner/delete/{banner}', 'destroyBanner')->name('ssdi.delete.banner');
@@ -133,7 +133,7 @@ Route::middleware(['role:agent,admin'])
             //contact subject
             Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
             Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');
-            
+
             Route::get('/content/contact/{key}', 'viewContact')->name('view.contact');
             Route::delete('/content/delete/contact/{contact}}', 'deleteContact')->name('contact.delete');
 
@@ -184,6 +184,9 @@ Route::middleware(['role:agent,admin'])
             Route::post('/samaira-joypur-homes-limited/store/video/property', 'storeVideoProperty')->name('store.property.video');
             Route::post('/samaira-joypur-homes-limited/update/video/property/{videoProperty}', 'updateVideoProperty')->name('update.property.video');
             Route::delete('/samaira-joypur-homes-limited/delete/video/property/{videoProperty}', 'deleteVideoProperty')->name('delete.property.video');
+
+            Route::post('/samaira-joypur-homes-limited/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/samaira-joypur-homes-limited/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
         });
 
 
