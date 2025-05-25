@@ -63,6 +63,7 @@ class ContentController extends Controller
     {
         $about->key = $request->key;
         $about->name = $request->name;
+        $about->title = $request->title;
         $about->description = $request->description;
         $about->save();
 

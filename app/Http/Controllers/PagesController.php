@@ -115,14 +115,8 @@ class PagesController extends Controller
      {
           return view('frontend.samairaskills.enroll');
      }
-     public function aboutus()
-     {
-          return view('frontend.content.about');
-     }
-     public function contactus()
-     {
-          return view('frontend.content.contact');
-     }
+     
+    
 
 
      //abouts
@@ -138,6 +132,13 @@ class PagesController extends Controller
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'ssdi')->get();
           $about = About::latest()->where('key', 'ssdi')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
+     public function jphomesAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'jphomes')->get();
+          $about = About::latest()->where('key', 'jphomes')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
      public function samairaskillsJapanAbout()
@@ -167,6 +168,13 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'language')->get();
           $info = ContactInfo::latest()->where('key', 'language')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function jphomesContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'jphomes')->get();
+          $info = ContactInfo::latest()->where('key', 'jphomes')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
