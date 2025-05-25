@@ -540,6 +540,9 @@
     .rg-mega-menu-content a{
       border-bottom: 1px solid black;
     }
+    .rg-mega-menu{
+      transform: translateX(0%) !important;
+    }
   }
   /* Mega menu visibility for desktop/mobile */
 .desktop-mega-menu,
