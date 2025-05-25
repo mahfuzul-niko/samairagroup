@@ -198,6 +198,10 @@ class PagesController extends Controller
      {
           return view('frontend.content.carrer');
      }
+     public function jphomesSingleProperty()
+     {
+          return view('frontend.samairajoypurhomes.single-property');
+     }
 
 
 
