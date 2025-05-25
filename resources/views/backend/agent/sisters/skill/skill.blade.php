@@ -44,7 +44,7 @@
                 <div class="card-title">
                     Add New Banner
                 </div>
-                <form action="{{ route('agent.group.store.banner') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.group.ssdi.store.banner') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="key" value="ssdi">
                     <div class="mb-3">
@@ -94,7 +94,7 @@
                                         data-bs-target="#banner{{ $banner->id }}"><i
                                             class="bi bi-pencil-square"></i></a>
 
-                                    <form action="{{ route('agent.group.delete.banner', $banner) }}" method="POST">
+                                    <form action="{{ route('agent.group.ssdi.delete.banner', $banner) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger btn-sm"><i
@@ -112,7 +112,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('agent.group.update.banner',$banner) }}" method="POST"
+                                                <form action="{{ route('agent.group.ssdi.update.banner',$banner) }}" method="POST"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="key" value="ssdi">
@@ -437,15 +437,15 @@
                         <input type="hidden" name="key" value="ssdi">
                         <div class="mb-3">
                             <div class="label">About Name</div>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <div class="label">About Title</div>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label for="">Description</label>
-                            <textarea name="description" rows="5" class="form-control"></textarea>
+                            <textarea name="description" rows="5" class="form-control" required></textarea>
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit">save</button>
                     </form>
@@ -479,16 +479,16 @@
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
                                             <input type="text" name="name"
-                                                value="{{ $about ? $about->name : '' }}" class="form-control">
+                                                value="{{ $about ? $about->name : '' }}" class="form-control" required>
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>
                                             <input type="text" name="title" class="form-control"
-                                                value="{{ $about ? $about->title : '' }}">
+                                                value="{{ $about ? $about->title : '' }}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="">Description</label>
-                                            <textarea name="description" rows="5" class="form-control">{{ $about ? $about->description : '' }}<</textarea>
+                                            <textarea name="description" rows="5" class="form-control" required>{{ $about ? $about->description : '' }}<</textarea>
                                         </div>
                                         <button class="btn btn-sm btn-primary" type="submit">save</button>
                                     </form>

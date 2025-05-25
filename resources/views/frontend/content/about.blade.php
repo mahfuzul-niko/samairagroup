@@ -57,7 +57,7 @@
         </div>
         @if (!is_null($about))
             <section class="about-overlap">
-                <h1>About {{ $about->name }}</h1>
+                <h1>{{ $about->name }}</h1>
                 <h2>{{ $about->title }}</h2>
                 <p>{{ $about->description }}</p>
             </section>

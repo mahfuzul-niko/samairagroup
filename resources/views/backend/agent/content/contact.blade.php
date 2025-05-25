@@ -13,6 +13,7 @@
                         <th>Phone</th>
                         <th>subject</th>
                         <th>Messages</th>
+                        <th>Action</th>
                     </tr>
                     @foreach ($contacts as $contact)
                         <tr>
@@ -21,9 +22,17 @@
                             <td>{{$contact->phone}}</td>
                             <td>{{$contact->subject}}</td>
                             <td>{{$contact->message}}</td>
+                            <td>
+                                <form action="{{ route('agent.content.contact.delete', $contact) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
+                {{ $contacts->links() }}
             </div>
         </div>
     </section>

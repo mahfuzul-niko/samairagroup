@@ -32,20 +32,13 @@
     <!-- Navbar Start -->
 
     <x-layouts.navbar>
-        <x-slot name="logo">
-            <a href="#" class="rg-navbar-logo"><img
-                    src="{{ system_key('samaira_skills_logo') ? Storage::url(system_key('samaira_skills_logo')) : asset('assets/img/no-profile.png') }}" /></a>
-        </x-slot>
+        
         <x-slot name="nav">
-            <li><a href="{{ route('page.ssdi.about') }}">About Us</a></li>
-            <li><a href="{{ route('page.ssdi.contact') }}">Contact Us</a></li>
-            <li><a href="#our-courses">Our Courses</a></li>
-
-
+           
             <li>
                 <div class="nav-auth">
                     <div class="nav-item signup-btn">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="{{route('student.login')}}">Login</a>
                     </div>
                 </div>
             </li>
@@ -54,12 +47,12 @@
     <!-- Navbar End -->
 
     <!-- Register/Login Split Section Start -->
-    <section class="register-login-section">
+    <section class="register-login-section content-margin-top">
         <div class="register-login-container">
             <!-- Left Side: Already Have an Account -->
             {{ $left }}
             <div class="register-login-illustration">
-                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/register-illus.png"
+                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/register-illus.png" class=""
                     alt="Login Illustration">
             </div>
             <!-- Right Side: Sign Up Form -->

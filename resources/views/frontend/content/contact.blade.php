@@ -106,11 +106,11 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Your Name</label>
-                                <input type="text" placeholder="Edward Snowden" required name="name">
+                                <input type="text" placeholder="Your Name" required name="name">
                             </div>
                             <div class="form-group">
                                 <label>Your Email</label>
-                                <input type="email" placeholder="itanexmple@gmail.com" required name="email">
+                                <input type="email" placeholder="Your Email" required name="email">
                             </div>
                         </div>
                         <div class="form-row">

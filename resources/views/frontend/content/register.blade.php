@@ -3,7 +3,7 @@
         <div class="register-login-left">
             <h2 class="register-login-title">Already Have an Account ?</h2>
             <p class="register-login-subtitle">Please login to your account</p>
-            <a href="#" class="register-login-btn">Login</a>
+            <a href="{{ route('student.login') }}" class="register-login-btn">Login</a>
         </div>
     </x-slot>
     <div class="register-login-right">
@@ -49,7 +49,7 @@
 
             <div class="register-input-group">
                 <span class="register-input-icon"><i class="fa fa-mobile-alt"></i></span>
-                <input type="text" name="mobile" placeholder="Enter Your Mobile" value="{{ old('mobile') }}"
+                <input type="text" name="phone" placeholder="Enter Your Mobile" value="{{ old('mobile') }}"
                     required>
                 {{-- No validation yet for mobile, but you can add one in your controller --}}
             </div>

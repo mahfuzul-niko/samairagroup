@@ -66,6 +66,12 @@
                         <i class="bi bi-circle"></i><span>Language</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.jphomes') }}"
+                        class="{{ request()->routeIs('agent.group.jphomes') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>JP Homes</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 
@@ -138,6 +144,35 @@
             </a>
         </li> --}}
 
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.jphomes.*') ? '' : 'collapsed' }}"
+                data-bs-target="#property-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Property</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="property-nav"
+                class="nav-content collapse {{ request()->routeIs('agent.jphomes.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.jphomes.category') }}"
+                        class="{{ request()->routeIs('agent.jphomes.category') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.jphomes.create.property') }}"
+                        class="{{ request()->routeIs('agent.jphomes.create.property') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Property</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.jphomes.properties') }}"
+                        class="{{ request()->routeIs('agent.jphomes.properties') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Property List</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End property Nav -->
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.content.*') ? '' : 'collapsed' }}"
                 data-bs-target="#content-nav" data-bs-toggle="collapse" href="#">

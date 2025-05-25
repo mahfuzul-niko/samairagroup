@@ -3,7 +3,7 @@
         <div class="register-login-left">
             <h2 class="register-login-title">New Here ?</h2>
             <p class="register-login-subtitle">Please Register to join a course in SSDI</p>
-            <a href="#" class="register-login-btn">Sign Up</a>
+            <a href="{{ route('student.register') }}" class="register-login-btn">Sign Up</a>
         </div>
     </x-slot>
     <div class="register-login-right">

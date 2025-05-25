@@ -42,20 +42,23 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
     //ssdi
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('ssdi');
-    Route::get('/samaira-skill-development-institute/about', 'samairaskillsAbout')->name('ssdi.about');
+    Route::get('/samaira-skill-development-institute/about-us', 'samairaskillsAbout')->name('ssdi.about');
     Route::get('/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
     Route::get('/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('ssdi.course.enroll');
     Route::get('/samaira-skill-development-institute/contact-us', 'ssdiContact')->name('ssdi.contact');
     //language
-    Route::get('/samaira-language-institute', 'samairaskillsJapan')->name('samairaskills.japan');
+    Route::get('/samaira-language-institute', 'samairaskillsJapan')->name('japan');
     Route::get('/samaira-language-institute/about-us', 'samairaskillsJapanAbout')->name('japan.about');
     Route::get('/samaira-language-institute/contact-us', 'samairaskillsJapanContact')->name('japan.contact');
 
+    Route::get('/joypur-homes-limited', 'jphomes')->name('jphomes');
+    Route::get('/joypur-homes-limited/about-us', 'jphomesAbout')->name('jphomes.about');
+    Route::get('/joypur-homes-limited/contact-us', 'jphomesContact')->name('jphomes.contact');
 
+    
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
-    Route::get('/joypur-homes-limited', 'samairajoypurhomes')->name('samairajoypurhomes');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
 
 

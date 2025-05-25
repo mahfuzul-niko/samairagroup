@@ -17,7 +17,14 @@ class StudentController extends Controller
                 $query->where('mark', true);
             })->get();
         $scourses = Course::latest()->take(6)->get();
-        return view('frontend.content.dashboard', compact('courses', 'scourses'));
+        $complete = auth()->user()->certificates->count();
+        $inprogress = $courses->count() - $complete;
+        $due = $courses->sum(function ($course) {
+            return (float) $course->price;
+        });
+        
+
+        return view('frontend.content.dashboard', compact('courses', 'scourses', 'complete', 'inprogress','due'));
     }
     public function studentLogin()
     {
@@ -44,7 +51,7 @@ class StudentController extends Controller
     }
     public function certificate()
     {
-         $certificates = auth()->user()->certificates;
+        $certificates = auth()->user()->certificates;
         return view('frontend.content.certificate', compact('certificates'));
     }
 
