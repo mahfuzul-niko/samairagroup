@@ -211,6 +211,8 @@
   <script src="{{ asset('assets/frontassets/') }}/js/bootstrap.bundle.min.js"></script>
   <!-- Popper JS -->
   <script src="{{ asset('assets/frontassets/') }}/js/popper.min.js"></script>
+  <!-- Custom JS -->
+    <script src="{{ asset('assets/frontassets/') }}/js/samaira-new-index.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
