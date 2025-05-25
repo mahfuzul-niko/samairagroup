@@ -176,6 +176,14 @@ Route::middleware(['role:agent,admin'])
             Route::get('/samaira-joypur-homes-limited/edit/property/{property:slug}', 'editProperty')->name('edit.property');
             Route::post('/samaira-joypur-homes-limited/update/property/{property}', 'updateProperty')->name('update.property');
             Route::delete('/samaira-joypur-homes-limited/delete/property/{property}', 'deleteProperty')->name('delete.property');
+
+            Route::post('/samaira-joypur-homes-limited/store/review', 'storeReview')->name('store.review');
+            Route::delete('/samaira-joypur-homes-limited/delete/review/{review}', 'deleteReview')->name('delete.review');
+
+            Route::get('/samaira-joypur-homes-limited/create/video/property', 'createVideoProperty')->name('create.property.video');
+            Route::post('/samaira-joypur-homes-limited/store/video/property', 'storeVideoProperty')->name('store.property.video');
+            Route::post('/samaira-joypur-homes-limited/update/video/property/{videoProperty}', 'updateVideoProperty')->name('update.property.video');
+            Route::delete('/samaira-joypur-homes-limited/delete/video/property/{videoProperty}', 'deleteVideoProperty')->name('delete.property.video');
         });
 
 

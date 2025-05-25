@@ -62,7 +62,7 @@
             </div>
             <div class="row justify-content-center g-3 mt-4">
                 @foreach ($categories as $categoy)
-                    <div class="col-6 col-md-4 col-lg-3">
+                    <div class="col-md-4 col-lg-3">
                         <a href="#" class="text-decoration-none">
                             <div class="joypur-city-card">
                                 <img src="{{ $categoy->image ? Storage::url($categoy->image) : asset('assets/img/no-profile.png') }}"
@@ -129,7 +129,6 @@
         <div class="container">
             <div class="text-center mb-5">
                 <h2 class="howitworks-title mb-2">How It works? Find a perfect home</h2>
-                <div class="howitworks-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
             </div>
             <div class="row justify-content-center text-center g-4">
                 <div class="col-md-4">
@@ -139,8 +138,7 @@
                                 alt="Find Real Estate" class="howitworks-icon-img">
                         </div>
                         <div class="howitworks-step-title">Find Real Estate</div>
-                        <div class="howitworks-step-desc">Sumo petentium ut per, at his wisiim utinam adipiscing. Est
-                            ei graeco</div>
+                        <div class="howitworks-step-desc">{{ system_key('system_jp_findrealestate') }}</div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -150,8 +148,7 @@
                                 alt="Meet Relator" class="howitworks-icon-img">
                         </div>
                         <div class="howitworks-step-title">Meet Relator</div>
-                        <div class="howitworks-step-desc">Sumo petentium ut per, at his wisiim utinam adipiscing. Est
-                            ei graeco</div>
+                        <div class="howitworks-step-desc">{{ system_key('system_jp_meetrelator') }}</div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -161,8 +158,7 @@
                                 alt="Take The Keys" class="howitworks-icon-img">
                         </div>
                         <div class="howitworks-step-title">Take The Keys</div>
-                        <div class="howitworks-step-desc">Sumo petentium ut per, at his wisiim utinam adipiscing. Est
-                            ei graeco</div>
+                        <div class="howitworks-step-desc">{{ system_key('system_jp_takekey') }}</div>
                     </div>
                 </div>
             </div>
@@ -176,33 +172,29 @@
             <!-- Left Images/Stats -->
             <div class="col-lg-6 d-flex justify-content-center align-items-center position-relative mb-5 mb-lg-0">
                 <div class="whywork-img-stack position-relative">
-                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png" alt="Happy Family"
-                        class="whywork-img-rect" />
+                    <img src="{{ system_key('system_jp_advertise_top_image') ? Storage::url(system_key('system_jp_advertise_top_image')) : asset('assets/img/no-profile.png') }}"
+                        alt="Happy Family" class="whywork-img-rect" />
                     <div class="whywork-img-arch-wrap">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/2.png"
+                        <img src="{{ system_key('system_jp_advertise_bottom_image') ? Storage::url(system_key('system_jp_advertise_bottom_image')) : asset('assets/img/no-profile.png') }}"
                             alt="Modern House" class="whywork-img-arch" />
                         <div class="whywork-stats-card">
                             <i class="fa fa-home home-icon"></i>
                             <div class="whywork-stats-label">Properties For Sale</div>
-                            <div class="whywork-stats-value">14K</div>
+                            <div class="whywork-stats-value">{{ $propertiesCount }}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Right Content -->
             <div class="whywork-content">
-                <h2>Why You Should Work With Us</h2>
+                <h2>{{ system_key('system_jp_adtitle') }}</h2>
                 <p class="whywork-desc">
-                    Pellentesque egestas elementum egestas faucibus sem. Velit nunc egestas ut morbi. Leo diam diam.
+                    {{ system_key('system_jp_adsubtitle') }}
                 </p>
                 <div class="">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque excepturi sunt at ratione
-                        aliquam nobis assumenda voluptatum voluptate! Esse vero, error consectetur tempore debitis amet
-                        temporibus, recusandae odit nostrum ut reprehenderit corporis incidunt? Perferendis non nihil
-                        voluptate ipsa suscipit laudantium illo ratione, delectus, obcaecati cupiditate rerum
-                        consequuntur numquam optio sint.</p>
+                    <p>{{ system_key('system_jp_adtext') }}</p>
                 </div>
-                <a href="#" class="whywork-btn">Learn More <span>&#8594;</span></a>
+                <a href="{{ system_key('system_jp_adurl') }}" class="whywork-btn">Learn More <span>&#8594;</span></a>
             </div>
         </div>
     </section>
@@ -218,70 +210,29 @@
                         <h3 class="testimonial-title">Customer says</h3>
                         <div class="swiper testimonial-swiper-customer">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="testimonial-row">
-                                        <div class="testimonial-info">
-                                            <h4>What our clients are saying</h4>
-                                            <p class="testimonial-text">"Excellent service and support. I found my new
-                                                apartment within days. Highly recommended!"</p>
-                                            <div class="testimonial-author">Sarah Johnson</div>
-                                            <div class="testimonial-role">Homeowner</div>
-                                            <div class="testimonial-nav">
-                                                <button class="testimonial-prev-customer"><i
-                                                        class="fa fa-chevron-left"></i></button>
-                                                <button class="testimonial-next-customer"><i
-                                                        class="fa fa-chevron-right"></i></button>
+                                @foreach ($creviews as $review)
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-row">
+                                            <div class="testimonial-info">
+                                                <h4>What our clients are saying</h4>
+                                                <p class="testimonial-text">{{ $review->review }}</p>
+                                                <div class="testimonial-author">{{ $review->name }}</div>
+                                                <div class="testimonial-role">Homeowner</div>
+                                                <div class="testimonial-nav">
+                                                    <button class="testimonial-prev-customer"><i
+                                                            class="fa fa-chevron-left"></i></button>
+                                                    <button class="testimonial-next-customer"><i
+                                                            class="fa fa-chevron-right"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-img-wrapper">
+                                                <div class="testimonial-img-bg"></div>
+                                                <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                                    class="testimonial-img" alt="Customer">
                                             </div>
                                         </div>
-                                        <div class="testimonial-img-wrapper">
-                                            <div class="testimonial-img-bg"></div>
-                                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/caticon1.png"
-                                                class="testimonial-img" alt="Customer">
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="testimonial-row">
-                                        <div class="testimonial-info">
-                                            <h4>What our clients are saying</h4>
-                                            <p class="testimonial-text">"Excellent service"</p>
-                                            <div class="testimonial-author">Sarah Johnson</div>
-                                            <div class="testimonial-role">Homeowner</div>
-                                            <div class="testimonial-nav">
-                                                <button class="testimonial-prev-customer"><i
-                                                        class="fa fa-chevron-left"></i></button>
-                                                <button class="testimonial-next-customer"><i
-                                                        class="fa fa-chevron-right"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-img-wrapper">
-                                            <div class="testimonial-img-bg"></div>
-                                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/testimonial.png"
-                                                class="testimonial-img" alt="Customer">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="testimonial-row">
-                                        <div class="testimonial-info">
-                                            <h4>What our clients are saying</h4>
-                                            <p class="testimonial-text">"Excellent service 0"</p>
-                                            <div class="testimonial-author">Sarah Johnson</div>
-                                            <div class="testimonial-role">Homeowner</div>
-                                            <div class="testimonial-nav">
-                                                <button class="testimonial-prev-customer"><i
-                                                        class="fa fa-chevron-left"></i></button>
-                                                <button class="testimonial-next-customer"><i
-                                                        class="fa fa-chevron-right"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-img-wrapper">
-                                            <div class="testimonial-img-bg"></div>
-                                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/testimonial.png"
-                                                class="testimonial-img" alt="Customer">
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -292,51 +243,30 @@
                         <h3 class="testimonial-title">Land owner says</h3>
                         <div class="swiper testimonial-swiper-owner">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="testimonial-row">
-                                        <div class="testimonial-info">
-                                            <h4>What our clients are saying</h4>
-                                            <p class="testimonial-text">"Selling my property was seamless and
-                                                hassle-free. The team handled everything professionally and I got a
-                                                great price."</p>
-                                            <div class="testimonial-author">Robert Williams</div>
-                                            <div class="testimonial-role">Land Owner</div>
-                                            <div class="testimonial-nav">
-                                                <button class="testimonial-prev-owner"><i
-                                                        class="fa fa-chevron-left"></i></button>
-                                                <button class="testimonial-next-owner"><i
-                                                        class="fa fa-chevron-right"></i></button>
+
+                                @foreach ($oreviews as $review)
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-row">
+                                            <div class="testimonial-info">
+                                                <h4>What our clients are saying</h4>
+                                                <p class="testimonial-text">{{ $review->review }}</p>
+                                                <div class="testimonial-author">{{ $review->name }}</div>
+                                                <div class="testimonial-role">Homeowner</div>
+                                                <div class="testimonial-nav">
+                                                    <button class="testimonial-prev-customer"><i
+                                                            class="fa fa-chevron-left"></i></button>
+                                                    <button class="testimonial-next-customer"><i
+                                                            class="fa fa-chevron-right"></i></button>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-img-wrapper">
+                                                <div class="testimonial-img-bg"></div>
+                                                <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                                    class="testimonial-img" alt="Customer">
                                             </div>
                                         </div>
-                                        <div class="testimonial-img-wrapper">
-                                            <div class="testimonial-img-bg"></div>
-                                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/testimonial.png"
-                                                class="testimonial-img" alt="Customer">
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="testimonial-row">
-                                        <div class="testimonial-info">
-                                            <h4>What our clients are saying</h4>
-                                            <p class="testimonial-text">"The marketing strategy they used to sell my
-                                                property was impressive. Multiple offers within the first week!"</p>
-                                            <div class="testimonial-author">Jennifer Lopez</div>
-                                            <div class="testimonial-role">Property Investor</div>
-                                            <div class="testimonial-nav">
-                                                <button class="testimonial-prev-owner"><i
-                                                        class="fa fa-chevron-left"></i></button>
-                                                <button class="testimonial-next-owner"><i
-                                                        class="fa fa-chevron-right"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="testimonial-img-wrapper">
-                                            <div class="testimonial-img-bg"></div>
-                                            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/city1.png"
-                                                class="testimonial-img" alt="Customer">
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -350,7 +280,6 @@
     <div class="container py-5 blog text-center">
         <div class="blog-title py-3">
             <h2>Our Recent Projects</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
         <div class="row g-4 mt-3">
             <!-- Card Start -->
@@ -368,7 +297,6 @@
                         </a>
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <div class="meta mb-2">Apartment • March 19, 2024</div>
                         <h5 class="card-title mb-3">Housing Markets That Changed
                             the Most This Week</h5>
                         <a href="#" class="read-more mt-auto">Read More &rarr;</a>
@@ -378,114 +306,6 @@
             {{-- Modal For Video --}}
             <div class="modal fade" id="testimonialVideoModal1" tabindex="-1"
                 aria-labelledby="testimonialVideoModalLabel1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body p-0">
-                            <div class="ratio ratio-16x9">
-                                <video
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4"
-                                    controls autoplay loop></video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Start -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <div class="video-thumbnail-wrapper">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png"
-                            alt="Testimonial Video" class="testimonial-video-img rounded-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#testimonialVideoModal2">
-                            <div class="play-button-overlay">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="meta mb-2">Apartment • March 19, 2024</div>
-                        <h5 class="card-title mb-3">Housing Markets That Changed
-                            the Most This Week</h5>
-                        <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="testimonialVideoModal2" tabindex="-1"
-                aria-labelledby="testimonialVideoModalLabel2" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body p-0">
-                            <div class="ratio ratio-16x9">
-                                <video
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4"
-                                    controls autoplay loop></video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Start -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <div class="video-thumbnail-wrapper">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png"
-                            alt="Testimonial Video" class="testimonial-video-img rounded-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#testimonialVideoModal3">
-                            <div class="play-button-overlay">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="meta mb-2">Apartment • March 19, 2024</div>
-                        <h5 class="card-title mb-3">Housing Markets That Changed
-                            the Most This Week</h5>
-                        <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="testimonialVideoModal3" tabindex="-1"
-                aria-labelledby="testimonialVideoModalLabel3" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body p-0">
-                            <div class="ratio ratio-16x9">
-                                <video
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/samaira-testimonial.mp4"
-                                    controls autoplay loop></video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Card Start -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <div class="video-thumbnail-wrapper">
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png"
-                            alt="Testimonial Video" class="testimonial-video-img rounded-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#testimonialVideoModal4">
-                            <div class="play-button-overlay">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="meta mb-2">Apartment • March 19, 2024</div>
-                        <h5 class="card-title mb-3">Housing Markets That Changed
-                            the Most This Week</h5>
-                        <a href="#" class="read-more mt-auto">Read More &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="testimonialVideoModal4" tabindex="-1"
-                aria-labelledby="testimonialVideoModalLabel4" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content bg-transparent border-0">
                         <div class="modal-body p-0">

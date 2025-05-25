@@ -12,6 +12,7 @@ use App\Models\CourseCategory;
 use App\Models\FeaturedCourse;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
+use App\Models\JpReview;
 use App\Models\Partner;
 use App\Models\Property;
 use App\Models\PropertyCategory;
@@ -21,6 +22,7 @@ use App\Models\SkillAdvertise;
 use App\Models\SkillBanner;
 use App\Models\SkillCertified;
 use App\Models\SuccessStorie;
+use App\Models\VideoProperty;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -81,7 +83,11 @@ class PagesController extends Controller
           $banners = Banner::latest()->where('key', 'jphomes')->get();
           $categories = PropertyCategory::latest()->get();
           $properties = Property::latest()->take(6)->get();
-          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties'));
+          $propertiesCount = Property::count();
+          $creviews = JpReview::latest()->where('type', 'customer')->get();
+          $oreviews = JpReview::latest()->where('type', 'owner')->get();
+          $videos = VideoProperty::latest()->take(6)->get();
+          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews', 'videos'));
      }
 
      public function samairatravels()
