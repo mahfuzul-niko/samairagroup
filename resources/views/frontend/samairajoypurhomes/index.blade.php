@@ -61,22 +61,21 @@
 
             </div>
             <div class="row justify-content-center g-3 mt-4">
-              @foreach ($categories as $categoy)
-                  
-              <div class="col-6 col-md-4 col-lg-3">
-                  <a href="#" class="text-decoration-none">
-                      <div class="joypur-city-card">
-                          <img src="{{ $categoy->image ? Storage::url($categoy->image) : asset('assets/img/no-profile.png') }}"
-                              alt="New York" class="joypur-city-img">
-                          <div>
-                              <div class="joypur-city-name">{{$categoy->title}}</div>
-                              <div class="joypur-city-count">{{$categoy->properties->count()}}</div>
-                          </div>
-                      </div>
-                  </a>
-              </div>
-              @endforeach
-                
+                @foreach ($categories as $categoy)
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <a href="#" class="text-decoration-none">
+                            <div class="joypur-city-card">
+                                <img src="{{ $categoy->image ? Storage::url($categoy->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="New York" class="joypur-city-img">
+                                <div>
+                                    <div class="joypur-city-name">{{ $categoy->title }}</div>
+                                    <div class="joypur-city-count">{{ $categoy->properties->count() }}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+
 
             </div>
         </div>
@@ -92,34 +91,34 @@
                 </div>
             </div>
             <div class="row joypur-featured-cards g-4 mt-2">
-              @foreach ($properties as $property)
-                  
-              <!-- Property Card 1 -->
-              <div class="col-md-6 col-lg-4 joypur-featured-card" data-status="sale">
-                  <div class="property-card">
-                      <div class="property-img-wrapper">
-                          <img src="{{ $property->image ? Storage::url($property->image) : asset('assets/img/no-profile.png') }}"
-                              alt="{{$property->title}}" class="property-img">
-                          <div class="property-badges">
-                              <span class="badge badge-sale">{{$property->category->title}}</span>
-                          </div>
-                      </div>
-                      <div class="property-body">
-                          <div class="property-title-price-row">
-                              <div class="property-title">{{$property->title}}</div>
-                              <div class="property-price text-sale">{{$property->price}} Taka</div>
-                          </div>
-                          <div class="property-address"><i class="fa fa-map-marker-alt"></i> {{$property->address}}</div>
-                          <div class="property-meta">
-                              <span><i class="fa fa-bed"></i> {{$property->bed}} Beds</span>
-                              <span><i class="fa fa-bath"></i> {{$property->bath}} Baths</span>
-                              <span><i class="fa fa-expand"></i> {{$property->area}} sqft</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              @endforeach
-                
+                @foreach ($properties as $property)
+                    <!-- Property Card 1 -->
+                    <div class="col-md-6 col-lg-4 joypur-featured-card" data-status="sale">
+                        <div class="property-card">
+                            <div class="property-img-wrapper">
+                                <img src="{{ $property->image ? Storage::url($property->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $property->title }}" class="property-img">
+                                <div class="property-badges">
+                                    <span class="badge badge-sale">{{ $property->category->title }}</span>
+                                </div>
+                            </div>
+                            <div class="property-body">
+                                <div class="property-title-price-row">
+                                    <div class="property-title">{{ $property->title }}</div>
+                                    <div class="property-price text-sale">{{ $property->price }} Taka</div>
+                                </div>
+                                <div class="property-address"><i class="fa fa-map-marker-alt"></i>
+                                    {{ $property->address }}</div>
+                                <div class="property-meta">
+                                    <span><i class="fa fa-bed"></i> {{ $property->bed }} Beds</span>
+                                    <span><i class="fa fa-bath"></i> {{ $property->bath }} Baths</span>
+                                    <span><i class="fa fa-expand"></i> {{ $property->area }} sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
         </div>
     </section>
@@ -177,8 +176,8 @@
             <!-- Left Images/Stats -->
             <div class="col-lg-6 d-flex justify-content-center align-items-center position-relative mb-5 mb-lg-0">
                 <div class="whywork-img-stack position-relative">
-                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png"
-                        alt="Happy Family" class="whywork-img-rect" />
+                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/1.png" alt="Happy Family"
+                        class="whywork-img-rect" />
                     <div class="whywork-img-arch-wrap">
                         <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/2.png"
                             alt="Modern House" class="whywork-img-arch" />
@@ -196,11 +195,12 @@
                 <p class="whywork-desc">
                     Pellentesque egestas elementum egestas faucibus sem. Velit nunc egestas ut morbi. Leo diam diam.
                 </p>
-                <div class="whywork-features">
-                    <div><span class="whywork-check"><i class="fa fa-check"></i></span> 100% Secure</div>
-                    <div><span class="whywork-check"><i class="fa fa-check"></i></span> Wide Range of Properties</div>
-                    <div><span class="whywork-check"><i class="fa fa-check"></i></span> Buy or Rent Homes</div>
-                    <div><span class="whywork-check"><i class="fa fa-check"></i></span> Trusted by Thousands</div>
+                <div class="">
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque excepturi sunt at ratione
+                        aliquam nobis assumenda voluptatum voluptate! Esse vero, error consectetur tempore debitis amet
+                        temporibus, recusandae odit nostrum ut reprehenderit corporis incidunt? Perferendis non nihil
+                        voluptate ipsa suscipit laudantium illo ratione, delectus, obcaecati cupiditate rerum
+                        consequuntur numquam optio sint.</p>
                 </div>
                 <a href="#" class="whywork-btn">Learn More <span>&#8594;</span></a>
             </div>
