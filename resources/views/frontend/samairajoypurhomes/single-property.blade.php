@@ -166,39 +166,50 @@
 
                             <h5>Commentes</h5>
                             <div class="review-list">
-                                <div class="review-item d-flex mb-4">
-                                    <div class="review-avatar me-3">
-                                        <span class="avatar-circle">A.T</span>
+                                @foreach ($comments as $comment)
+                                    <div class="review-item d-flex mb-4">
+                                        <div class="review-avatar me-3">
+                                            <span
+                                                class="avatar-circle">{{ strtoupper(substr($comment->name, 0, 2)) }}</span>
+
+                                        </div>
+                                        <div class="review-content">
+                                            <div class="review-user fw-bold">
+                                                {{ $comment->name }}
+                                                <span
+                                                    class="review-date">{{ $comment->created_at->diffForHumans() }}</span>
+                                            </div>
+
+
+
+                                            <div class="review-text mb-2">{{$comment->comment}}</div>
+
+                                        </div>
                                     </div>
-                                    <div class="review-content">
-                                        <div class="review-user fw-bold">Nicolas Cage <span class="review-date">3 days
-                                                ago</span></div>
+                                @endforeach
 
-
-                                        <div class="review-text mb-2">There are many variations of passages of Lorem
-                                            Ipsum available, but the majority have suffered alteration in some form, by
-                                            injected humour</div>
-
-                                    </div>
-                                </div>
 
                             </div>
 
                             <div class="write-review-form mb-5">
                                 <h5 class="mb-3 fw-bold">Write a Comment</h5>
-                                <form>
+                                <form action="{{ route('property.store.comment') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="property_id" value="{{ $property->id }}">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Your Name<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control"
+                                                <label class="form-label">Your Name<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="name"
                                                     placeholder="Enter Your Name">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Your Email<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control"
+                                                <label class="form-label">Your Email<span
+                                                        class="text-danger">*</span></label>
+                                                <input type="email" class="form-control" name="email"
                                                     placeholder="Enter Your Email">
                                             </div>
                                         </div>
@@ -206,8 +217,7 @@
 
                                     <div class="mb-4">
                                         <label class="form-label">Comment <span class="text-danger">*</span></label>
-                                        <textarea class="form-control" rows="4"
-                                            placeholder="Enter Your Comment"></textarea>
+                                        <textarea class="form-control" rows="4" name="comment" placeholder="Enter Your Comment"></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary px-5 py-2"
                                         style="border-radius: 30px; font-weight: 600; font-size: 1.1rem; background: #3b4266; border: none;">Submit

@@ -99,7 +99,8 @@ class PagesController extends Controller
      {
           $category = $property->category_id;
           $properties = Property::where('category_id', $category)->latest()->take(6)->get();
-          return view('frontend.samairajoypurhomes.single-property', compact('property','properties'));
+          $comments = $property->comments()->where('mark', true)->latest()->take(10)->get();
+          return view('frontend.samairajoypurhomes.single-property', compact('property','properties', 'comments'));
      }
 
 

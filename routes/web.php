@@ -84,6 +84,7 @@ Route::group(['controller' => ContentController::class, 'as' => 'content.'], fun
 });
 Route::group(['controller' => PropertyController::class, 'as' => 'property.'], function () {
     Route::post('/store/agent', 'storeAgent')->name('store.agent');
+    Route::post('/store/comment', 'storeComment')->name('store.comment');
 });
 
 Auth::routes();

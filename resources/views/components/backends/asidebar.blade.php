@@ -182,6 +182,12 @@
                     <i class="bi bi-circle"></i><span>Agent Request</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('agent.jphomes.comments') }}"
+                    class="{{ request()->routeIs('agent.jphomes.comments') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>Comments</span>
+                </a>
+            </li>
 
             </ul>
         </li><!-- End property Nav -->

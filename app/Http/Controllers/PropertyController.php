@@ -11,6 +11,7 @@ use App\Models\JpReview;
 use App\Models\Property;
 use App\Models\PropertyAgent;
 use App\Models\PropertyCategory;
+use App\Models\PropertyComment;
 use App\Models\PropertyImage;
 use App\Models\VideoProperty;
 use Illuminate\Http\Request;
@@ -55,8 +56,8 @@ class PropertyController extends Controller
         $category->title = $request->title;
         $category->slug = Str::slug($request->title);
         if ($request->hasFile('image')) {
-            if ($category->image && \Storage::disk('public')->exists($category->image)) {
-                \Storage::disk('public')->delete($category->image);
+            if ($category->image && Storage::disk('public')->exists($category->image)) {
+                Storage::disk('public')->delete($category->image);
             }
             $category->image = $request->file('image')->store('properties', 'public');
         }
@@ -158,8 +159,8 @@ class PropertyController extends Controller
     }
     public function deleteReview(JpReview $review)
     {
-        if ($review->image && \Storage::disk('public')->exists($review->image)) {
-            \Storage::disk('public')->delete($review->image);
+        if ($review->image && Storage::disk('public')->exists($review->image)) {
+            Storage::disk('public')->delete($review->image);
         }
         $review->delete();
         return redirect()->back()->with('success', 'Review deleted successfully.');
@@ -193,8 +194,8 @@ class PropertyController extends Controller
         $videoProperty->video_url = $request->video_url;
 
         if ($request->hasFile('image')) {
-            if ($videoProperty->image && \Storage::disk('public')->exists($videoProperty->image)) {
-                \Storage::disk('public')->delete($videoProperty->image);
+            if ($videoProperty->image && Storage::disk('public')->exists($videoProperty->image)) {
+                Storage::disk('public')->delete($videoProperty->image);
             }
             $videoProperty->image = $request->file('image')->store('video_properties', 'public');
         }
@@ -204,8 +205,8 @@ class PropertyController extends Controller
     }
     public function deleteVideoProperty(VideoProperty $videoProperty)
     {
-        if ($videoProperty->image && \Storage::disk('public')->exists($videoProperty->image)) {
-            \Storage::disk('public')->delete($videoProperty->image);
+        if ($videoProperty->image && Storage::disk('public')->exists($videoProperty->image)) {
+            Storage::disk('public')->delete($videoProperty->image);
         }
         $videoProperty->delete();
         return redirect()->back()->with('success', 'Video property deleted successfully.');
@@ -225,8 +226,8 @@ class PropertyController extends Controller
     }
     public function deletePartner(JpPartner $partner)
     {
-        if ($partner->image && \Storage::disk('public')->exists($partner->image)) {
-            \Storage::disk('public')->delete($partner->image);
+        if ($partner->image && Storage::disk('public')->exists($partner->image)) {
+            Storage::disk('public')->delete($partner->image);
         }
         $partner->delete();
 
@@ -296,6 +297,35 @@ class PropertyController extends Controller
         $image->delete();
 
         return back()->with('success', 'Image deleted successfully.');
+    }
+
+    //comments
+    public function storeComment(Request $request)
+    {
+        $comment = new PropertyComment;
+        $comment->property_id = $request->property_id;
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+        $comment->save();
+        return redirect()->back()->with('success', 'Comment added successfully.');
+    }
+    public function deleteComment(PropertyComment $comment)
+    {
+        $comment->delete();
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
+    }
+    public function updateCommentMark(Request $request, PropertyComment $comment)
+    {
+        $comment->mark = $request->has('mark') ? 1 : 0;
+        $comment->save();
+        $message = $comment->mark ? 'Comment approved successfully.' : 'Comment approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
+    
+    public function comments(){
+        $comments = PropertyComment::latest()->paginate(20);
+        return view('backend.agent.sisters.property.comments', compact('comments'));
     }
 
 

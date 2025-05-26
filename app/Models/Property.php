@@ -17,5 +17,10 @@ class Property extends Model
         return $this->hasMany(PropertyImage::class);
     }
     
+    public function comments()
+    {
+        return $this->hasMany(PropertyComment::class);
+    }
+    
     
 }
