@@ -176,6 +176,12 @@
                     <i class="bi bi-circle"></i><span>Video Property</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('agent.jphomes.agent.requests') }}"
+                    class="{{ request()->routeIs('agent.jphomes.agent.requests') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>Agent Request</span>
+                </a>
+            </li>
 
             </ul>
         </li><!-- End property Nav -->

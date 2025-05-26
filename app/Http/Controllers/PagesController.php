@@ -78,7 +78,7 @@ class PagesController extends Controller
           $banners = ContactBanner::latest()->where('key', 'language')->get();
           return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories', 'banners', 'reviews'));
      }
-
+     //jphomes
      public function jphomes()
      {
           $banners = Banner::latest()->where('key', 'jphomes')->get();
@@ -89,34 +89,18 @@ class PagesController extends Controller
           $oreviews = JpReview::latest()->where('type', 'owner')->get();
           $videos = VideoProperty::latest()->take(6)->get();
           $partners = JpPartner::latest()->get();
-          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories','properties','propertiesCount', 'creviews','oreviews', 'videos','partners'));
+          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories', 'properties', 'propertiesCount', 'creviews', 'oreviews', 'videos', 'partners'));
      }
      public function properties(PropertyCategory $category)
      {
-          
           return view('frontend.samairajoypurhomes.properties', compact('category'));
      }
-
-     public function samairatravels()
+     public function jphomesSingleProperty(Property $property)
      {
-          return view('frontend.samairatravels.index');
+          $category = $property->category_id;
+          $properties = Property::where('category_id', $category)->latest()->take(6)->get();
+          return view('frontend.samairajoypurhomes.single-property', compact('property','properties'));
      }
-     public function samairamptravels()
-     {
-          return view('frontend.samairamptravels.index');
-     }
-
-     public function samairacontact()
-     {
-          return view('frontend.samairaskills.contact');
-     }
-
-     public function enrollpage()
-     {
-          return view('frontend.samairaskills.enroll');
-     }
-     
-    
 
 
      //abouts
@@ -178,6 +162,28 @@ class PagesController extends Controller
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
+     //others
+
+     public function samairatravels()
+     {
+          return view('frontend.samairatravels.index');
+     }
+     public function samairamptravels()
+     {
+          return view('frontend.samairamptravels.index');
+     }
+
+     public function samairacontact()
+     {
+          return view('frontend.samairaskills.contact');
+     }
+
+     public function enrollpage()
+     {
+          return view('frontend.samairaskills.enroll');
+     }
+
+
 
      public function newregister()
      {
@@ -211,10 +217,7 @@ class PagesController extends Controller
      {
           return view('frontend.content.carrer');
      }
-     public function jphomesSingleProperty()
-     {
-          return view('frontend.samairajoypurhomes.single-property');
-     }
+
 
 
 
@@ -223,5 +226,5 @@ class PagesController extends Controller
      {
           return view('frontend.content.coming-soon');
      }
-    
+
 }
