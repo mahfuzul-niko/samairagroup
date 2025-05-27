@@ -219,6 +219,10 @@ class PagesController extends Controller
           return view('frontend.content.carrer');
      }
 
+     public function samairamedica()
+     {
+          return view('frontend.samairamedica.index');
+     }
 
 
 
