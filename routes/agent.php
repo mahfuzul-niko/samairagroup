@@ -197,6 +197,9 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/samaira-joypur-homes-limited/delete/comment/{comment}', 'deleteComment')->name('delete.comment');
             Route::post('/asamaira-joypur-homes-limited/mark/comment/{comment}', 'updateCommentMark')->name('comment.approve');
 
+            Route::get('/samaira-joypur-homes-limited/orders', 'orders')->name('orders');
+            Route::delete('/samaira-joypur-homes-limited/delete/order/{order}', 'deleteOrder')->name('delete.order');
+            Route::post('/asamaira-joypur-homes-limited/mark/order/{order}', 'updateOrderMark')->name('order.approve');
         });
 
 

@@ -13,6 +13,7 @@ use App\Models\PropertyAgent;
 use App\Models\PropertyCategory;
 use App\Models\PropertyComment;
 use App\Models\PropertyImage;
+use App\Models\PropertyOrder;
 use App\Models\VideoProperty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -322,10 +323,42 @@ class PropertyController extends Controller
         $message = $comment->mark ? 'Comment approved successfully.' : 'Comment approval removed.';
         return redirect()->back()->with('success', $message);
     }
-    
-    public function comments(){
+
+    public function comments()
+    {
         $comments = PropertyComment::latest()->paginate(20);
         return view('backend.agent.sisters.property.comments', compact('comments'));
+    }
+
+    //order property
+    public function storeOrder(Request $request)
+    {
+        $order = new PropertyOrder;
+        $order->property_id = $request->property_id;
+        $order->name = $request->name;
+        $order->email = $request->email;
+        $order->phone = $request->phone;
+        $order->comment = $request->comment;
+        $order->mark = $request->has('mark') ? 1 : 0;
+        $order->save();
+        return redirect()->back()->with('success', 'Order placed successfully.');
+    }
+    public function orders()
+    {
+        $orders = PropertyOrder::latest()->paginate(20);
+        return view('backend.agent.sisters.property.orders', compact('orders'));
+    }
+    public function deleteOrder(PropertyOrder $order)
+    {
+        $order->delete();
+        return redirect()->back()->with('success', 'Order deleted successfully.');
+    }
+    public function updateOrderMark(Request $request, PropertyOrder $order)
+    {
+        $order->mark = $request->has('mark') ? 1 : 0;
+        $order->save();
+        $message = $order->mark ? 'Order approved successfully.' : 'Order approval removed.';
+        return redirect()->back()->with('success', $message);
     }
 
 

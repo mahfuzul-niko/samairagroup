@@ -188,6 +188,12 @@
                     <i class="bi bi-circle"></i><span>Comments</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('agent.jphomes.orders') }}"
+                    class="{{ request()->routeIs('agent.jphomes.orders') ? 'active' : '' }}">
+                    <i class="bi bi-circle"></i><span>Orders</span>
+                </a>
+            </li>
 
             </ul>
         </li><!-- End property Nav -->
