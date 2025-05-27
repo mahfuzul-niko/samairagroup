@@ -75,7 +75,7 @@ class PagesController extends Controller
           $reviews = Review::latest()->get();
           $courses = Course::where('course_for', 'language')->latest()->take(6)->get();
           $stories = SuccessStorie::latest()->take(6)->get();
-          $banners = ContactBanner::latest()->where('key', 'language')->get();
+          $banners = Banner::latest()->where('key', 'language')->get();
           return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories', 'banners', 'reviews'));
      }
      //jphomes
@@ -100,7 +100,7 @@ class PagesController extends Controller
           $category = $property->category_id;
           $properties = Property::where('category_id', $category)->latest()->take(6)->get();
           $comments = $property->comments()->where('mark', true)->latest()->take(10)->get();
-          return view('frontend.samairajoypurhomes.single-property', compact('property','properties', 'comments'));
+          return view('frontend.samairajoypurhomes.single-property', compact('property', 'properties', 'comments'));
      }
 
 

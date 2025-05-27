@@ -39,7 +39,7 @@
     <!-- Navbar End -->
 
     <!-- Slider Start -->
-    <div class="about-slider-container">
+    <div class="about-slider-container content-margin-top">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
                 @foreach ($banners as $banner)

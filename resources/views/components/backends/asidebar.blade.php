@@ -72,6 +72,12 @@
                         <i class="bi bi-circle"></i><span>JP Homes</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.medica') }}"
+                        class="{{ request()->routeIs('agent.group.medica') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Medica</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 
