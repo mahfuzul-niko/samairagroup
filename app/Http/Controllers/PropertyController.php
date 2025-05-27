@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\AboutBanner;
 use App\Models\Banner;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
@@ -23,14 +24,15 @@ class PropertyController extends Controller
     public function Property()
     {
 
-        $banners = Banner::latest()->where('key', 'jphomes')->get();
         $reviews = JpReview::latest()->get();
         $partners = JpPartner::latest()->get();
-
+        
+        $banners = Banner::latest()->where('key', 'jphomes')->get();
+         $aboutbanners = AboutBanner::latest()->where('key', 'jphomes')->get();
         $about = About::latest()->where('key', 'jphomes')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'jphomes')->get();
         $info = ContactInfo::latest()->where('key', 'jphomes')->first();
-        return view('backend.agent.sisters.property.jphomes', compact('banners', 'reviews', 'partners', 'about', 'info', 'contactbanners'));
+        return view('backend.agent.sisters.property.jphomes', compact('banners','aboutbanners', 'reviews', 'partners', 'about', 'info', 'contactbanners'));
     }
 
     //category

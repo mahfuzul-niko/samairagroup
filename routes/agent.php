@@ -4,6 +4,7 @@ use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\MedicaController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
@@ -201,7 +202,9 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/samaira-joypur-homes-limited/delete/order/{order}', 'deleteOrder')->name('delete.order');
             Route::post('/asamaira-joypur-homes-limited/mark/order/{order}', 'updateOrderMark')->name('order.approve');
         });
-
+        Route::group(['controller' => MedicaController::class, 'as' => 'group.'], function () {
+            Route::get('/samaira-medica-limited', 'Medica')->name('medica');
+        });
 
 
 

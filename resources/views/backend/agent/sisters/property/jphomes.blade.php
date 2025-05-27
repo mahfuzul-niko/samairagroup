@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joyput Homes</x-slot>
+    <x-slot name="title">Wecome Joypur Homes</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -374,7 +374,51 @@
             </div>
         </div>
     </section>
-
+    <section class="about-image">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                   About Banner Image
+                </div>
+                <form action="{{ route('agent.content.about.store.banner') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="key" value="jphomes">
+                    <div class="mb-3">
+                        <label for="">Banner Image</label>
+                        <input type="file" name="image" id="" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btnsm btn-primary">Save</button>
+                </form>
+                <div class="card-title">
+                    View about Banner
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>action</th>
+                    </tr>
+                    @foreach ($aboutbanners as $key => $banner)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td><img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="" style="height: 100px; width: auto;"></td>
+                            <td>
+                                <form action="{{ route('agent.content.about.delete.banner', $banner) }}"
+                                    method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-outline-danger btn-sm"><i
+                                            class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    </section>
     <section class="about-section">
         <div class="card">
             <div class="card-body">
@@ -429,7 +473,8 @@
                                         <input type="hidden" name="key" value="jphomes">
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
-                                            <input type="text" name="name" value="{{ $about ? $about->name : '' }}" required
+                                            <input type="text" name="name"
+                                                value="{{ $about ? $about->name : '' }}" required
                                                 class="form-control">
                                         </div>
                                         <div class="mb-3">

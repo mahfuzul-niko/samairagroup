@@ -1,32 +1,36 @@
 <x-app>
-    <x-slot name="title">Wecome To Samaira Language</x-slot>
+    <x-slot name="title">Wecome Medica</x-slot>
     <section class="logo-section">
         <div class="card">
+
             <div class="card-body ">
-                <div class="card-title">Logo</div>
+                <h5 class="card-title">Logo</h5>
 
                 <div class="text-center my-3">
-                    <div class=" d-inline-block" style="height: 100px; width: auto;">
-                        <img src="{{ system_key('samaira_language_logo') ? Storage::url(system_key('samaira_language_logo')) : asset('assets/img/no-profile.png') }}"
-                            alt="Group Logo" class="img-fluid rounded " style="height: 100px; object-fit: cover;">
+                    <div class=" d-inline-block" style="height: 150px; width: auto;">
+                        <img src="{{ system_key('samaira_medica_logo') ? Storage::url(system_key('samaira_medica_logo')) : asset('assets/img/no-profile.png') }}"
+                            alt="Group Logo" class="img-fluid rounded " style="height: 200px; object-fit: cover;">
 
-                        <form action="{{ route('agent.system.destroy.image', 'samaira_language_logo') }}" method="POST"
+                        <form action="{{ route('agent.system.destroy.image', 'samaira_medica_logo') }}" method="POST"
                             class="mt-2">
                             @csrf
                             <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
                         </form>
                     </div>
                 </div>
+
+
+
                 <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="key" placeholder="Enter key" class="form-control"
-                        value="samaira_language_logo" required>
+                        value="samaira_medica_logo" required>
                     <div class="form-group my-3">
                         <label for="value">Logo</label>
                         <input type="file" name="value" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Upload</button>
                 </form>
             </div>
 
@@ -38,7 +42,7 @@
                 <h5 class="card-title">Banner</h5>
                 <form action="{{ route('agent.content.store.banner') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="key" value="language" class="form-control" required>
+                    <input type="hidden" name="key" value="medica" class="form-control" required>
                     <div class="form-group my-3">
                         <label for="banner">Banner Image</label>
                         <input type="file" name="image" class="form-control" required>
@@ -109,7 +113,7 @@
                                             <form action="{{ route('agent.content.update.banner', $banner) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
-                                                <input type="hidden" name="key" value="language"
+                                                <input type="hidden" name="key" value="medica"
                                                     class="form-control" required>
                                                 <div class="form-group my-3">
                                                     <label for="banner">Banner Image</label>
@@ -145,134 +149,26 @@
         </div>
     </section>
 
-    <section>
-        <div class="card">
-            <div class="card-body">
-                <div class="card-title">
-                    Success Stories
-                </div>
-                <form action="{{ route('agent.group.store.story') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="">Title</label>
-                        <input type="text" name="title" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Student Of</label>
-                        <input type="text" name="student_of" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Image</label>
-                        <input type="file" name="image" id="" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Youtube Url</label>
-                        <input type="url" name="url" id="" class="form-control" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                </form>
-                <div class="card-title">
-                    View Stories
-                </div>
-                <table class="table table-striped">
-                    <tr>
-                        <th>#</th>
-                        <th>Image</th>
-                        <th>Title</th>
-                        <th>Student of</th>
-                        <th>View Url</th>
-                        <th>Action</th>
-                    </tr>
-                    @foreach ($stories as $key => $story)
-                        <tr>
-                            <td>
-                                {{ $key + 1 }}
-                            </td>
-                            <td>
-                                <img src="{{ $story->image ? Storage::url($story->image) : asset('assets/img/no-profile.png') }}"
-                                    alt="" class="img-fluid" style="height: 100px ; width: auto;">
-                            </td>
-                            <td>{{ $story->title }}</td>
-                            <td>{{ $story->student_of }}</td>
-                            <td><a href="{{ $story->url }}" target="_blank">view video</a></td>
 
-                            <td>
-                                <div class="d-flex gap-2">
-                                    <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#story{{ $story->id }}"><i
-                                            class="bi bi-pencil-square"></i></a>
 
-                                    <form action="{{ route('agent.group.delete.story', $story) }}" method="POST"
-                                        style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i
-                                                class="bi bi-trash"></i></button>
-                                    </form>
-                                </div>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="story{{ $story->id }}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content ">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
 
-                                                <form action="{{ route('agent.group.update.story', $story) }}"
-                                                    method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="mb-3">
-                                                        <label for="">Title</label>
-                                                        <input type="text" name="title" class="form-control"
-                                                            value="{{ $story->title }}" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="">Student Of</label>
-                                                        <input type="text" name="student_of" class="form-control"
-                                                            value="{{ $story->student_of }}" required>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="">Image</label>
-                                                        <input type="file" name="image" id=""
-                                                            class="form-control">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="">Youtube Url</label>
-                                                        <input type="url" name="url" id=""
-                                                            value="{{ $story->url }}" class="form-control"
-                                                            required>
-                                                    </div>
-                                                    <button type="submit"
-                                                        class="btn btn-primary btn-sm">Save</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
 
-                        </tr>
-                    @endforeach
-                </table>
-            </div>
-        </div>
-    </section>
+
+
+
+    {{-- //about and contact   --}}
+
     <section class="about-image">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    About Banner Image
+                    Samaira Group About Banner Image
                 </div>
                 <form action="{{ route('agent.content.about.store.banner') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="key" value="language">
+                    <input type="hidden" name="key" value="medica">
                     <div class="mb-3">
                         <label for="">Banner Image</label>
                         <input type="file" name="image" id="" class="form-control">
@@ -312,13 +208,13 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    Language About Section
+                 About Section
                 </div>
                 @if (is_null($about))
                     <form action="{{ route('agent.content.store.about') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="key" value="language">
+                        <input type="hidden" name="key" value="medica">
                         <div class="mb-3">
                             <div class="label">About Name</div>
                             <input type="text" name="name" class="form-control" required>
@@ -359,17 +255,17 @@
                                     <form action="{{ route('agent.content.update.about', $about) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input type="hidden" name="key" value="language">
+                                        <input type="hidden" name="key" value="medica">
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
                                             <input type="text" name="name"
-                                                value="{{ $about ? $about->name : '' }}" required
-                                                class="form-control">
+                                                value="{{ $about ? $about->name : '' }}" class="form-control"
+                                                required>
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>
-                                            <input type="text" name="title" class="form-control" required
-                                                value="{{ $about ? $about->title : '' }}">
+                                            <input type="text" name="title" class="form-control"
+                                                value="{{ $about ? $about->title : '' }}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label for="">Description</label>
@@ -411,7 +307,7 @@
                 <form action="{{ route('agent.content.contact.store.banner') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="key" value="language">
+                    <input type="hidden" name="key" value="medica">
                     <div class="mb-3">
                         <label for="">Banner Image</label>
                         <input type="file" name="image" id="" class="form-control">
@@ -455,7 +351,7 @@
                 </div>
                 <form action="{{ route('agent.content.save.contact.info') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="key" value="language">
+                    <input type="hidden" name="key" value="medica">
 
                     <div class="mb-3">
                         <label for="">Reach Email</label>
@@ -493,51 +389,4 @@
             </div>
         </div>
     </section>
-    @if (!is_null($info))
-
-        <section>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-title">
-                        Contact Add Subject
-                    </div>
-                    <form action="{{ route('agent.content.contact.store.subject') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="info_id" value="{{ $info->id }}">
-                        <div class="mb-3">
-                            <label for="">Subject Title</label>
-                            <input type="text" name="subject" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-sm btn-primary">Save</button>
-                    </form>
-                    <div class="card-title">
-                        View Subjects
-                    </div>
-                    <table class="table table-striped">
-                        <tr>
-                            <th>#</th>
-                            <th>Subject</th>
-                            <th>Action</th>
-                        </tr>
-                        @foreach ($info->subjects as $key => $subject)
-                            <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $subject->subject }}</td>
-                                <td>
-                                    <form action="{{ route('agent.content.contact.delete.subject', $subject) }}"
-                                        method="POST" style="display:inline-block;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger btn-sm"><i
-                                                class="bi bi-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </table>
-                </div>
-            </div>
-        </section>
-    @endif
-
 </x-app>
