@@ -21,6 +21,10 @@ class Property extends Model
     {
         return $this->hasMany(PropertyComment::class);
     }
+    public function orders()
+    {
+        return $this->hasMany(PropertyOrder::class);
+    }
     
     
 }

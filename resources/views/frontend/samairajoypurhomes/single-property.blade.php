@@ -130,8 +130,72 @@
 
                         <div class="mb-4">
 
-                            <button class="btn btn-primary add-to-cart-btn enhanced-cart-btn"><i
-                                    class="fa-solid fa-cart-shopping"></i> Buy Now</button>
+                            <button type="button" class="btn btn-primary add-to-cart-btn enhanced-cart-btn"
+                                data-bs-toggle="modal" data-bs-target="#buynowbutton"><i
+                                    class="fa-solid fa-cart-shopping"></i> Order Now</button>
+
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="buynowbutton" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Prebook your
+                                                property
+                                            </h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <i class="text-secondary fs-6">Our agent Will contact you soon</i>
+                                            <form action="{{ route('property.store.order') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="property_id"
+                                                    value="{{ $property->id }}">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating my-3">
+                                                            <input type="text" class="form-control" id="Name"
+                                                                name="name" placeholder="Enter Your Name" required>
+                                                            <label for="floatingInput">Name<span
+                                                                    class="text-danger">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control" id="Phone"
+                                                                name="phone" placeholder="Enter Your Phone Number"
+                                                                required>
+                                                            <label for="floatingInput">Phone Number<span
+                                                                    class="text-danger">*</span></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" class="form-control" id="floatingInput"
+                                                        name="email" placeholder="name@example.com">
+                                                    <label for="floatingInput">Email address</label>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="form-floating">
+                                                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"
+                                                            name="comment"></textarea>
+                                                        <label for="floatingTextarea2">Comments</label>
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <button type="submit" class="btn agent-btn">Prebook
+                                                        Property</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             <a class="btn btn-primary add-to-cart-btn enhanced-cart-btn"
                                 href="https://wa.me/{{ $property->whats_app }}?text={{ urlencode('I want more information on this:') }}%0A{{ urlencode(url()->current()) }}%0A%0A"
                                 target="_blank">
@@ -182,7 +246,7 @@
 
 
 
-                                            <div class="review-text mb-2">{{$comment->comment}}</div>
+                                            <div class="review-text mb-2">{{ $comment->comment }}</div>
 
                                         </div>
                                     </div>
@@ -297,14 +361,19 @@
                         </div>
                     </div>
                     <div class="share-icons mb-3">
-                        <a href="#" class="share-social-btn facebook" id="fbShareBtn"
-                            title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="share-social-btn twitter" id="twShareBtn"
-                            title="Share on Twitter"><i class="fab fa-twitter"></i></a>
-                        <button class="share-social-btn email" id="showEmailForm" title="Share via Email"
-                            type="button"><i class="fa fa-envelope"></i></button>
-                        <button class="share-social-btn copylink" id="copyLinkBtn" title="Copy Link"
-                            type="button"><i class="fa fa-link"></i></button>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank"
+                            class="share-social-btn facebook" id="fbShareBtn" title="Share on Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <a href="https://twitter.com/intent/tweet?url=&text=" target="_blank"
+                            class="share-social-btn twitter" id="twShareBtn" title="Share on Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+
+                        <button class="share-social-btn copylink" id="copyLinkBtn" title="Copy Link" type="button">
+                            <i class="fa fa-link"></i>
+                        </button>
                     </div>
                     <form id="emailShareForm" style="display:none; width:100%; max-width:340px;">
                         <input type="email" class="form-control mb-2" placeholder="Your email*" required>
@@ -514,6 +583,26 @@
                 document.querySelector('.similar-swiper-prev').style.display = '';
                 document.querySelector('.similar-swiper-next').style.display = '';
             }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageUrl = encodeURIComponent(window.location.href);
+            const pageTitle = encodeURIComponent(document.title);
+
+            // Update hrefs dynamically
+            document.getElementById('fbShareBtn').href =
+                `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+
+            document.getElementById('twShareBtn').href =
+                `https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}`;
+
+            // Copy link
+            document.getElementById('copyLinkBtn').addEventListener('click', function() {
+                navigator.clipboard.writeText(window.location.href)
+                    .then(() => alert('Link copied to clipboard!'))
+                    .catch(() => alert('Failed to copy link.'));
+            });
         });
     </script>
 

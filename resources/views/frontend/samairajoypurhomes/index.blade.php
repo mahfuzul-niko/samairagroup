@@ -94,7 +94,7 @@
             <div class="row joypur-featured-cards g-4 mt-2">
                 @foreach ($properties as $property)
                     <!-- Property Card 1 -->
-                    <div class="col-md-6 col-lg-4 joypur-featured-card" data-status="sale">
+                    <div class="col-lg-4 joypur-featured-card" data-status="sale">
                         <div class="property-card">
                             <div class="property-img-wrapper">
                                 <img src="{{ $property->image ? Storage::url($property->image) : asset('assets/img/no-profile.png') }}"
@@ -105,16 +105,89 @@
                             </div>
                             <div class="property-body">
                                 <div class="property-title-price-row">
-                                    <a href="{{route('page.jphomes.SingleProperty',$property)}}" class="text-decoration-none"><div class="property-title">{{ $property->title }}</div></a>
+                                    <a href="{{ route('page.jphomes.SingleProperty', $property) }}"
+                                        class="text-decoration-none">
+                                        <div class="property-title">{{ $property->title }}</div>
+                                    </a>
                                     <div class="property-price text-sale">{{ $property->price }} Taka</div>
                                 </div>
                                 <div class="property-address"><i class="fa fa-map-marker-alt"></i>
                                     {{ $property->address }}</div>
-                                <div class="property-meta">
-                                    <span><i class="fa fa-bed"></i> {{ $property->bed }} Beds</span>
-                                    <span><i class="fa fa-bath"></i> {{ $property->bath }} Baths</span>
-                                    <span><i class="fa fa-expand"></i> {{ $property->area }} sqft</span>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="property-meta">
+                                        <span style="white-space: nowrap;"><i class="fa fa-bed"></i>
+                                            {{ $property->bed }} Beds</span>
+                                        <span style="white-space: nowrap;"><i class="fa fa-bath"></i>
+                                            {{ $property->bath }} Baths</span>
+                                        <span style="white-space: nowrap;"><i class="fa fa-expand"></i>
+                                            {{ $property->area }} sqft</span>
+                                    </div>
+                                    <a type="button" data-bs-toggle="modal" data-bs-target="#buynowbutton"
+                                        class="btn btn-sm agent-btn" style="white-space: nowrap;">Order
+                                        Now</a>
+                                    <div class="modal fade" id="buynowbutton" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Prebook your
+                                                        property
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <i class="text-secondary fs-6">Our agent Will contact you soon</i>
+                                                    <form action="{{ route('property.store.order') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="property_id"
+                                                            value="{{ $property->id }}">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating my-3">
+                                                                    <input type="text" class="form-control"
+                                                                        id="Name" name="name"
+                                                                        placeholder="Enter Your Name" required>
+                                                                    <label for="floatingInput">Name<span
+                                                                            class="text-danger">*</span></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-floating mb-3">
+                                                                    <input type="text" class="form-control"
+                                                                        id="Phone" name="phone"
+                                                                        placeholder="Enter Your Phone Number" required>
+                                                                    <label for="floatingInput">Phone Number<span
+                                                                            class="text-danger">*</span></label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-floating mb-3">
+                                                            <input type="email" class="form-control"
+                                                                id="floatingInput" name="email"
+                                                                placeholder="name@example.com">
+                                                            <label for="floatingInput">Email address</label>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <div class="form-floating">
+                                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"
+                                                                    name="comment"></textarea>
+                                                                <label for="floatingTextarea2">Comments</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-end">
+                                                            <button type="submit" class="btn agent-btn">Prebook
+                                                                Property</button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -395,19 +468,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('property.store.agent')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('property.store.agent') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="name" placeholder="name" name="name" required>
+                                    <input type="text" class="form-control" id="name" placeholder="name"
+                                        name="name" required>
                                     <label for="name">Your Name<span class="text-danger">*</span></label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" id="floatingInput" name="email"
-                                        placeholder="name@example.com" >
+                                        placeholder="name@example.com">
                                     <label for="floatingInput">Your Email</label>
                                 </div>
                             </div>
@@ -415,13 +489,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="phone" placeholder="phone" name="phone" required>
+                                    <input type="text" class="form-control" id="phone" placeholder="phone"
+                                        name="phone" required>
                                     <label for="phone">Your Phone<span class="text-danger">*</span></label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="address" placeholder="address" name="address">
+                                    <input type="text" class="form-control" id="address" placeholder="address"
+                                        name="address">
                                     <label for="address">Your Address</label>
                                 </div>
                             </div>
