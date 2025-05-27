@@ -611,6 +611,7 @@
     </script>
 
     <!-- Hero Slider Init -->
+    <!-- Hero Slider Init -->
     <script>
       // Initialize Swiper
       var heroSwiper = new Swiper('.hero-swiper', {
@@ -624,6 +625,26 @@
         fadeEffect: {
           crossFade: true
         }
+      });
+  
+      // Custom Navigation
+      const navButtons = document.querySelectorAll('.nav-button');
+  
+      // Update active button
+      function updateActiveButton(index) {
+        navButtons.forEach(button => button.classList.remove('active'));
+        navButtons[index].classList.add('active');
+      }
+  
+      // Initial active state
+      updateActiveButton(0);
+  
+      // Add click handlers
+      navButtons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+          heroSwiper.slideTo(index);
+          updateActiveButton(index);
+        });
       });
   
       // Update buttons on slide change
