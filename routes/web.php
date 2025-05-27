@@ -34,10 +34,9 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/about-us', 'samairagroupAbout')->name('home.about');
     Route::get('/contact-us', 'samairagroupContact')->name('home.contact');
 
-    Route::get('/new-dashboard', 'newdashboard')->name('newdashboard');
     Route::get('/awards', 'awards')->name('awards');
     Route::get('/chairman', 'chairman')->name('chairman');
-    Route::get('/news', 'news')->name('news');
+    Route::get('/blogs', 'blogs')->name('blogs');
     Route::get('/news/single', 'newssingle')->name('newssingle');
     Route::get('/carrer', 'carrer')->name('carrer');
 
@@ -58,17 +57,18 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/joypur-homes-limited/contact-us', 'jphomesContact')->name('jphomes.contact');
     Route::get('/joypur-homes-limited/single-property/{property:slug}', 'jphomesSingleProperty')->name('jphomes.SingleProperty');
     //medica
-    Route::get('/samaira-medica-limited', 'samairamedica')->name('samairamedica');
-    Route::get('/samaira-medica-limited/single-product', 'samairamedicasingleproduct')->name('samairamedicasingleproduct');
+    Route::get('/samaira-medica-limited', 'samairamedica')->name('medica');
+    Route::get('/samaira-medica-limited/single-product', 'samairamedicasingleproduct')->name('medica.singleproduct');
+    Route::get('/samaira-medica-limited/about-us', 'samairamedicaAbout')->name('medica.about');
+    Route::get('/samaira-medica-limited/contact-us', 'samairamedicaContact')->name('medica.contact');
 
-    
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
 
 
-    Route::get('/contact/us', 'contactus')->name('contactus');
+
 
 
     Route::get('/coming/soon', 'comingsoon')->name('comingsoon');
@@ -99,7 +99,7 @@ Route::middleware(['auth', 'role:student,admin'])->prefix('student')->as('studen
         Route::get('/dashboard', 'studentDashboard')->name('dashboard');
         Route::get('/profile', 'studentProfile')->name('profile');
         Route::post('/store/review', 'storeReview')->name('store.review');
-        
+
         Route::get('/certificate', 'certificate')->name('certificate');
     });
 });

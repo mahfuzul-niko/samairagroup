@@ -133,6 +133,13 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'language')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function samairamedicaAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'medica')->get();
+          $about = About::latest()->where('key', 'medica')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -160,6 +167,13 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'jphomes')->get();
           $info = ContactInfo::latest()->where('key', 'jphomes')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function samairamedicaContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'medica')->get();
+          $info = ContactInfo::latest()->where('key', 'medica')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
@@ -206,7 +220,7 @@ class PagesController extends Controller
      {
           return view('frontend.content.chairman-and-managing-diretor');
      }
-     public function news()
+     public function blogs()
      {
           return view('frontend.content.news-and-events');
      }

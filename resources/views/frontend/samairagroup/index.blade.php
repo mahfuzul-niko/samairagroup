@@ -88,8 +88,23 @@
                     </div>
                 </li>
 
-                {{-- <li><a href="#">Blog</a></li> --}}
-                <li><a href="{{ route('page.home.about') }}">About Us</a></li>
+                <li>
+
+                    <div class="dropdown">
+                        <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            About Us
+                        </button>
+                        <ul class="dropdown-menu bg-transparent">
+                            <li><a class="dropdown-item" href="{{ route('page.home.about') }}">About Us</a></li>
+                            <li><a class="dropdown-item" href="{{ route('page.awards') }}">Awards</a></li>
+                            <li><a class="dropdown-item" href="{{ route('page.chairman') }}">Chairman</a></li>
+                            <li><a class="dropdown-item" href="{{ route('page.blogs') }}">Blogs</a></li>
+
+                        </ul>
+                    </div>
+
+                </li>
                 <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
             </ul>
             <!-- Desktop Mega Menu (outside <li>) -->
