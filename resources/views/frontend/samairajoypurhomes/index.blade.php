@@ -541,7 +541,7 @@
     <!-- About Slider Script -->
     <script>
         var swiper = new Swiper('.about-swiper', {
-            effect: 'coverflow',
+            effect: 'fade',
             loop: true,
             autoplay: {
                 delay: 4000,

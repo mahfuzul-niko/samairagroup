@@ -224,6 +224,11 @@ class PagesController extends Controller
           return view('frontend.samairamedica.index');
      }
 
+     public function samairamedicasingleproduct()
+     {
+          return view('frontend.samairamedica.single-product');
+     }
+
 
 
      //soon
