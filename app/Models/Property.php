@@ -12,6 +12,15 @@ class Property extends Model
     {
         return $this->belongsTo(PropertyCategory::class, 'category_id');
     }
+    public function images()
+    {
+        return $this->hasMany(PropertyImage::class);
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany(PropertyComment::class);
+    }
     
     
 }

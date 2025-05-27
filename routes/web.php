@@ -4,6 +4,7 @@ use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\StudentController;
 use App\Models\CourseCategory;
 use Illuminate\Support\Facades\Route;
@@ -55,7 +56,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/joypur-homes-limited/properties/{category:slug}', 'properties')->name('jphomes.properties');
     Route::get('/joypur-homes-limited/about-us', 'jphomesAbout')->name('jphomes.about');
     Route::get('/joypur-homes-limited/contact-us', 'jphomesContact')->name('jphomes.contact');
-    Route::get('/joypur-homes-limited/single-property', 'jphomesSingleProperty')->name('jphomes.SingleProperty');
+    Route::get('/joypur-homes-limited/single-property/{property:slug}', 'jphomesSingleProperty')->name('jphomes.SingleProperty');
     //medica
     Route::get('/samaira-medica-limited', 'samairamedica')->name('samairamedica');
 
@@ -82,6 +83,10 @@ Route::group(['controller' => CourseController::class, 'as' => 'course.'], funct
 });
 Route::group(['controller' => ContentController::class, 'as' => 'content.'], function () {
     Route::post('/store/contct', 'storeContact')->name('store.contact');
+});
+Route::group(['controller' => PropertyController::class, 'as' => 'property.'], function () {
+    Route::post('/store/agent', 'storeAgent')->name('store.agent');
+    Route::post('/store/comment', 'storeComment')->name('store.comment');
 });
 
 Auth::routes();

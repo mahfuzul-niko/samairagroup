@@ -32,7 +32,8 @@
     <x-layouts.navbar>
 
         <x-slot name="nav">
-
+            <a type="button" data-bs-toggle="modal" data-bs-target="#agentrequestmodal"
+                class="become-real-estate-agent btn agent-btn">Become An Agent <span class="ms-1">&#8594;</span></a>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -104,7 +105,7 @@
                             </div>
                             <div class="property-body">
                                 <div class="property-title-price-row">
-                                    <div class="property-title">{{ $property->title }}</div>
+                                    <a href="{{route('page.jphomes.SingleProperty',$property)}}" class="text-decoration-none"><div class="property-title">{{ $property->title }}</div></a>
                                     <div class="property-price text-sale">{{ $property->price }} Taka</div>
                                 </div>
                                 <div class="property-address"><i class="fa fa-map-marker-alt"></i>
@@ -288,7 +289,7 @@
                     <div class="card h-100 shadow-sm">
                         <div class="video-thumbnail-wrapper video-thumbnail position-relative"
                             data-video-url="{{ $video->video_url }}">
-                            
+
                             <img src="{{ $video->image ? Storage::url($video->image) : asset('assets/img/no-profile.png') }}"
                                 alt="Testimonial Video" class="testimonial-video-img rounded-3">
                             <a href="javascript:void(0);" class="play-btn video-trigger">
@@ -300,8 +301,8 @@
                             </a>
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title mb-3">{{$video->title}}</h5>
-                            <a href="{{$video->url}}" class="read-more mt-auto">Read More &rarr;</a>
+                            <h5 class="card-title mb-3">{{ $video->title }}</h5>
+                            <a href="{{ $video->url }}" class="read-more mt-auto">Read More &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -352,7 +353,6 @@
                                     alt="{{ $partner->name }}" class="sister-logo">
                             </div>
                         @endforeach
-
                     </div>
                 </div>
             </div>
@@ -369,7 +369,7 @@
                         <h2 class="text-white mb-2">Become a Real Estate Agent</h2>
                         <div class="text-white-50 mb-0">We only work with the best companies around the globe</div>
                     </div>
-                    <a href="#"
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#agentrequestmodal"
                         class="featured-categories-link text-white-50 d-inline-flex align-items-center ms-auto">
                         Sign in or create an account <span class="ms-1">&#8594;</span>
                     </a>
@@ -382,7 +382,75 @@
     <!-- Footer Section Start -->
     <x-layouts.footer />
     <!-- Footer Section End -->
+    <!-- Button trigger modal -->
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="agentrequestmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Work With Us</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{route('property.store.agent')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="name" placeholder="name" name="name" required>
+                                    <label for="name">Your Name<span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput" name="email"
+                                        placeholder="name@example.com" >
+                                    <label for="floatingInput">Your Email</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="phone" placeholder="phone" name="phone" required>
+                                    <label for="phone">Your Phone<span class="text-danger">*</span></label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="address" placeholder="address" name="address">
+                                    <label for="address">Your Address</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nidfile" class="form-label">Uoload Your NID</label>
+                                    <input class="form-control" type="file" id="nidfile" name="nid">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="resumeFile" class="form-label">Upload Your Resume</label>
+                                    <input class="form-control" type="file" id="resumeFile" name="resume">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn agent-btn">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <!-- jQuery -->
     <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
     <!-- Swiper JS -->

@@ -9,10 +9,14 @@ use App\Models\ContactInfo;
 use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\Property;
+use App\Models\PropertyAgent;
 use App\Models\PropertyCategory;
+use App\Models\PropertyComment;
+use App\Models\PropertyImage;
 use App\Models\VideoProperty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Storage;
 class PropertyController extends Controller
 {
     public function Property()
@@ -52,8 +56,8 @@ class PropertyController extends Controller
         $category->title = $request->title;
         $category->slug = Str::slug($request->title);
         if ($request->hasFile('image')) {
-            if ($category->image && \Storage::disk('public')->exists($category->image)) {
-                \Storage::disk('public')->delete($category->image);
+            if ($category->image && Storage::disk('public')->exists($category->image)) {
+                Storage::disk('public')->delete($category->image);
             }
             $category->image = $request->file('image')->store('properties', 'public');
         }
@@ -76,6 +80,10 @@ class PropertyController extends Controller
         $property->bath = $request->bath;
         $property->bed = $request->bed;
         $property->area = $request->area;
+        $property->start_date = $request->start_date;
+        $property->end_date = $request->end_date;
+        $property->whats_app = $request->whats_app;
+
         if ($request->hasFile('image')) {
             $property->image = $request->file('image')->store('properties', 'public');
         } else {
@@ -83,7 +91,7 @@ class PropertyController extends Controller
         }
         $property->description = $request->description;
         $property->save();
-        return redirect()->back()->with('success', 'Property created successfully.');
+        return redirect(route('agent.jphomes.properties'))->with('success', 'Property created successfully.');
     }
     //property
     public function properties()
@@ -111,9 +119,12 @@ class PropertyController extends Controller
         $property->bath = $request->bath;
         $property->bed = $request->bed;
         $property->area = $request->area;
+        $property->start_date = $request->start_date;
+        $property->end_date = $request->end_date;
+        $property->whats_app = $request->whats_app;
         if ($request->hasFile('image')) {
-            if ($property->image && \Storage::disk('public')->exists($property->image)) {
-                \Storage::disk('public')->delete($property->image);
+            if ($property->image && Storage::disk('public')->exists($property->image)) {
+                Storage::disk('public')->delete($property->image);
             }
             $property->image = $request->file('image')->store('properties', 'public');
         }
@@ -123,8 +134,8 @@ class PropertyController extends Controller
     }
     public function deleteProperty(Property $property)
     {
-        if ($property->image && \Storage::disk('public')->exists($property->image)) {
-            \Storage::disk('public')->delete($property->image);
+        if ($property->image && Storage::disk('public')->exists($property->image)) {
+            Storage::disk('public')->delete($property->image);
         }
         $property->delete();
         return redirect()->back()->with('success', 'Property deleted successfully.');
@@ -148,8 +159,8 @@ class PropertyController extends Controller
     }
     public function deleteReview(JpReview $review)
     {
-        if ($review->image && \Storage::disk('public')->exists($review->image)) {
-            \Storage::disk('public')->delete($review->image);
+        if ($review->image && Storage::disk('public')->exists($review->image)) {
+            Storage::disk('public')->delete($review->image);
         }
         $review->delete();
         return redirect()->back()->with('success', 'Review deleted successfully.');
@@ -183,8 +194,8 @@ class PropertyController extends Controller
         $videoProperty->video_url = $request->video_url;
 
         if ($request->hasFile('image')) {
-            if ($videoProperty->image && \Storage::disk('public')->exists($videoProperty->image)) {
-                \Storage::disk('public')->delete($videoProperty->image);
+            if ($videoProperty->image && Storage::disk('public')->exists($videoProperty->image)) {
+                Storage::disk('public')->delete($videoProperty->image);
             }
             $videoProperty->image = $request->file('image')->store('video_properties', 'public');
         }
@@ -194,8 +205,8 @@ class PropertyController extends Controller
     }
     public function deleteVideoProperty(VideoProperty $videoProperty)
     {
-        if ($videoProperty->image && \Storage::disk('public')->exists($videoProperty->image)) {
-            \Storage::disk('public')->delete($videoProperty->image);
+        if ($videoProperty->image && Storage::disk('public')->exists($videoProperty->image)) {
+            Storage::disk('public')->delete($videoProperty->image);
         }
         $videoProperty->delete();
         return redirect()->back()->with('success', 'Video property deleted successfully.');
@@ -215,14 +226,107 @@ class PropertyController extends Controller
     }
     public function deletePartner(JpPartner $partner)
     {
-        if ($partner->image && \Storage::disk('public')->exists($partner->image)) {
-            \Storage::disk('public')->delete($partner->image);
+        if ($partner->image && Storage::disk('public')->exists($partner->image)) {
+            Storage::disk('public')->delete($partner->image);
         }
         $partner->delete();
 
         return redirect()->back()->with('success', 'Partner deleted successfully.');
     }
 
+    public function storeAgent(Request $request)
+    {
+        // dd($request->all());
+        $agent = new PropertyAgent;
+        $agent->name = $request->name;
+        $agent->number = $request->phone;
+        $agent->email = $request->email;
+        $agent->address = $request->address;
+        if ($request->hasFile('nid')) {
+            $agent->nid = $request->file('nid')->store('agents/nid', 'public');
+        }
+        if ($request->hasFile('resume')) {
+            $agent->resume = $request->file('resume')->store('agents/resume', 'public');
+        }
+        $agent->save();
+        return redirect()->back()->with('success', 'Agent request sent successfully.');
+    }
+
+    public function agentRequests()
+    {
+        $requests = PropertyAgent::latest()->paginate(20);
+        return view('backend.agent.sisters.property.agent-requests', compact('requests'));
+    }
+    public function updateMark(Request $request, PropertyAgent $agent)
+    {
+        $agent->mark = $request->has('mark') ? 1 : 0;
+        $agent->save();
+        $message = $agent->mark ? 'Request approved successfully.' : 'Request approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
+
+    //multiple images
+    public function storeImages(Request $request)
+    {
+        $request->validate([
+            'property_id' => 'required|exists:properties,id',
+
+        ]);
+
+        if ($request->hasFile('multi_images')) {
+            foreach ($request->file('multi_images') as $image) {
+                $path = $image->store('property_images', 'public');
+
+                PropertyImage::create([
+                    'property_id' => $request->property_id,
+                    'image' => $path,
+                ]);
+            }
+        }
+
+        return back()->with('success', 'Images uploaded successfully.');
+    }
+    public function deleteImage($id)
+    {
+        $image = PropertyImage::findOrFail($id);
+
+        // Delete the file from storage
+        Storage::disk('public')->delete($image->image);
+
+        // Delete the database record
+        $image->delete();
+
+        return back()->with('success', 'Image deleted successfully.');
+    }
+
+    //comments
+    public function storeComment(Request $request)
+    {
+        $comment = new PropertyComment;
+        $comment->property_id = $request->property_id;
+        $comment->name = $request->name;
+        $comment->email = $request->email;
+        $comment->comment = $request->comment;
+        $comment->save();
+        return redirect()->back()->with('success', 'Comment added successfully.');
+    }
+    public function deleteComment(PropertyComment $comment)
+    {
+        $comment->delete();
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
+    }
+    public function updateCommentMark(Request $request, PropertyComment $comment)
+    {
+        $comment->mark = $request->has('mark') ? 1 : 0;
+        $comment->save();
+        $message = $comment->mark ? 'Comment approved successfully.' : 'Comment approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
+    
+    public function comments(){
+        $comments = PropertyComment::latest()->paginate(20);
+        return view('backend.agent.sisters.property.comments', compact('comments'));
+    }
 
 
 }

@@ -81,6 +81,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="">Start Date</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date"
+                                    placeholder="Enter start date" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="">Complie Date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date"
+                                    placeholder="Enter Complite date" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="">Whats App Number</label>
+                                <input type="text" class="form-control" id="whats_app" name="whats_app"
+                                    placeholder="Enter Whats App number" required>
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn btn-primary btn-sm">Save</button>
                 </form>
             </div>
