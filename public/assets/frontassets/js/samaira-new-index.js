@@ -126,6 +126,8 @@ document.querySelectorAll('.rg-slide').forEach(slide => {
             const menu = dropdown.querySelector('.rg-dropdown-menu');
             if (menu) menu.style.display = 'none';
             dropdown.classList.remove('open');
+            // Find the toggle element (first <a> or .rg-dropdown-toggle)
+            const toggle = dropdown.querySelector('.rg-dropdown-toggle') || dropdown.querySelector('a');
             const clickFn = function(e) {
               e.preventDefault();
               e.stopPropagation();
@@ -142,8 +144,10 @@ document.querySelectorAll('.rg-slide').forEach(slide => {
               dropdown.classList.toggle('open', isOpen);
               if (menu) menu.style.display = isOpen ? 'block' : 'none';
             };
-            dropdown.addEventListener('click', clickFn);
-            listeners[idx].push({type: 'click', fn: clickFn});
+            if (toggle) {
+              toggle.addEventListener('click', clickFn);
+              listeners[idx].push({type: 'click', fn: clickFn, el: toggle});
+            }
           });
           // Close on outside click
           if (!window._dropdownOutsideClick) {
