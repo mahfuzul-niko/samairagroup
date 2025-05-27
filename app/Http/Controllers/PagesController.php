@@ -215,6 +215,10 @@ class PagesController extends Controller
      {
           return view('frontend.samairajoypurhomes.single-property');
      }
+     public function samairamedica()
+     {
+          return view('frontend.samairamedica.index');
+     }
 
 
 
