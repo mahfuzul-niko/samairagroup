@@ -25,7 +25,7 @@
 
                                     <!-- Category & Price -->
                                     <div class="d-flex justify-content-between mb-2">
-                                        <span class="badge bg-secondary">{{ $course->category->title }}</span>
+                                       
                                         <span class="text-success font-weight-bold">{{ $course->price }} BDT</span>
                                     </div>
 
@@ -44,7 +44,7 @@
                                     <p class="mb-1"><strong>Batch:</strong> {{ $course->batch }}</p>
 
                                     <!-- View Button -->
-                                    <a href="{{route('agent.course.view',$course)}}" class="mt-auto btn btn-outline-primary btn-sm">View Details</a>
+                                    <a href="{{route('agent.language.view',$course)}}" class="mt-auto btn btn-outline-primary btn-sm">View Details</a>
                                 </div>
                             </div>
                         </div>

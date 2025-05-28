@@ -103,6 +103,13 @@ class PagesController extends Controller
           return view('frontend.samairajoypurhomes.single-property', compact('property', 'properties', 'comments'));
      }
 
+     //medica
+     public function samairamedica()
+     {
+          $banners = Banner::latest()->where('key', 'medica')->get();
+          return view('frontend.samairamedica.index', compact('banners'));
+     }
+
 
      //abouts
      public function samairagroupAbout()
@@ -233,10 +240,7 @@ class PagesController extends Controller
           return view('frontend.content.carrer');
      }
 
-     public function samairamedica()
-     {
-          return view('frontend.samairamedica.index');
-     }
+
 
      public function samairamedicasingleproduct()
      {

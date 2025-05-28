@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\Award;
 use App\Models\Banner;
 use App\Models\Certificate;
+use App\Models\Chairman;
 use App\Models\Contact;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
@@ -224,8 +226,8 @@ class ContentController extends Controller
     {
         $certificates = Certificate::latest()->get();
         $enrolls = Enroll::where('mark', true)->latest()->get();
-        
-        
+
+
         return view('backend.agent.content.certificate', compact('certificates', 'enrolls'));
     }
     public function storeCertificate(Request $request)
@@ -313,6 +315,90 @@ class ContentController extends Controller
         $banner->delete();
 
         return redirect()->back()->with('success', 'Banner deleted successfully.');
+    }
+
+    //awards
+    public function awards()
+    {
+        $awards = Award::latest()->get();
+        $banners = Banner::where('key', 'award_banner')->latest()->get();
+        return view('backend.agent.content.awards', compact('awards', 'banners'));
+    }
+    public function storeAward(Request $request)
+    {
+        $award = new Award();
+        $award->title = $request->title;
+
+        if ($request->hasFile('image')) {
+            $award->image = $request->file('image')->store('awards', 'public');
+        }
+
+        $award->save();
+
+        return redirect()->back()->with('success', 'Award saved successfully.');
+    }
+    public function updateAward(Request $request, Award $award)
+    {
+        $award->title = $request->title;
+
+        if ($request->hasFile('image')) {
+            if ($award->image && Storage::disk('public')->exists($award->image)) {
+                Storage::disk('public')->delete($award->image);
+            }
+
+            $award->image = $request->file('image')->store('awards', 'public');
+        }
+
+        $award->save();
+
+        return redirect()->back()->with('success', 'Award updated successfully.');
+    }
+    public function deleteAward(Award $award)
+    {
+        if ($award->image && Storage::disk('public')->exists($award->image)) {
+            Storage::disk('public')->delete($award->image);
+        }
+
+        $award->delete();
+
+        return redirect()->back()->with('success', 'Award deleted successfully.');
+    }
+    //awards
+    public function chairman()
+    {
+        $chairman = Chairman::all()->pluck('value', 'key');
+        $banners = Banner::where('key', 'chairman_banner')->latest()->get();
+        $info = Chairman::all();
+        return view('backend.agent.content.chairman ', compact('chairman', 'banners', 'info'));
+    }
+    public function storeChairman(Request $request)
+    {
+
+
+        Chairman::updateOrCreate(
+            ['key' => $request->key],
+            ['value' => $request->value]
+        );
+        return redirect()->back()->with('success', 'Chairman updated successfully.');
+    }
+    public function storeChairmanImage(Request $request)
+    {
+       
+
+       
+        if ($request->hasFile('value')) {
+            $image = $request->file('value');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('uploads/chairman', $filename, 'public');
+
+            
+            Chairman::updateOrCreate(
+                ['key' => $request->key],
+                ['value' => $path]
+            );
+        }
+
+        return redirect()->back()->with('success', 'Chairman image updated successfully.');
     }
 
 }

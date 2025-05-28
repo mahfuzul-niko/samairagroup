@@ -152,7 +152,7 @@
                         </div>
                         <div class="story-info">
                             <h3 class="story-title">{{$story->title}}</h3>
-                            <p class="story-meta">Student Of Digital Marketing</p>
+                            <p class="story-meta">Student Of {{$story->student_of}}</p>
                         </div>
                     </div>
                 </div>
