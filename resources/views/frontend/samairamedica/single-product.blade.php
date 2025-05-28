@@ -380,6 +380,10 @@
     </div>
   </div>
 
+  <!-- Custom Footer Section Start -->
+    <x-layouts.footer />
+    <!-- Custom Footer Section End -->
+
   <!-- Share Popup Modal -->
   <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

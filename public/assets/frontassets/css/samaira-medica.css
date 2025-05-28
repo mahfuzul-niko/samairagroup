@@ -2224,3 +2224,325 @@ body{
 /* -----------------------------------------------------------------
             Single Product Page Styles End
 ----------------------------------------------------------------- */
+
+
+/*
+-----------------------------------------------------------------------------
+                          Category Page CSS Start
+-----------------------------------------------------------------------------
+*/
+/* Category & Product Section - Redesign for Sidebar Category */
+.category-product-section .category-tabs {
+  background: #fff;
+  border: 1px solid var(--swiper-pagination-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  padding: 28px 24px 24px 24px;
+  min-width: 220px;
+}
+.category-product-section .category-tabs .category-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-color-dark);
+  margin-bottom: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+.category-product-section .category-tabs .category-title-underline {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+.category-product-section .category-tabs .nav-link {
+  color: var(--text-color-dark);
+  background: none;
+  border: none;
+  border-radius: 0;
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 0 8px 0;
+  margin-bottom: 2px;
+  transition: color 0.2s, background 0.2s, font-weight 0.2s;
+  box-shadow: none;
+  outline: none;
+  position: relative;
+  display: block;
+}
+.category-product-section .category-tabs .nav-link.active,
+.category-product-section .category-tabs .nav-link:focus,
+.category-product-section .category-tabs .nav-link:hover {
+  color: var(--secondary-color);
+  background: none;
+}
+.category-product-section .category-tabs .nav-link:last-child {
+  margin-bottom: 0;
+}
+/* Card */
+.category-product-section .product-card {
+  background: var(--text-color-white);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 410px;
+  height: 100%;
+  padding: 0;
+}
+.category-product-section .product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+/* Image & Hover */
+.category-product-section .product-img {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
+  border-radius: 14px 14px 0 0;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+.category-product-section .product-img img {
+  max-width: 100%;
+  max-height: 140px;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.category-product-section .product-card:hover .product-img img {
+  transform: scale(1.08);
+}
+.category-product-section .product-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: linear-gradient(90deg, #0EBBEB 60%, #1363DF 100%);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(14, 187, 235, 0.12);
+  z-index: 3;
+}
+.category-product-section .product-info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 18px 16px 20px 16px;
+  position: relative;
+}
+.category-product-section .product-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  min-height: 48px;
+  max-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.category-product-section .price {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.category-product-section .new-price {
+  color: var(--tertiary-color);
+  font-weight: 600;
+  margin-right: 8px;
+}
+.category-product-section .old-price {
+  color: #aaa;
+  text-decoration: line-through;
+}
+.category-product-section .add-to-cart-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  background: rgba(0, 0, 0, 1);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: none;
+  z-index: 3;
+  text-decoration: none;
+  text-align: center;
+}
+.category-product-section .product-card:hover .add-to-cart-btn {
+  display: block;
+}
+.category-product-section .buy-now-btn {
+  width: 100%;
+  background: linear-gradient(90deg, #1363DF 60%, #0EBBEB 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 2;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+}
+.category-product-section .buy-now-btn:hover {
+  background: linear-gradient(90deg, #0EBBEB 60%, #1363DF 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+@media (max-width: 991.98px) {
+  .category-product-section .product-card {
+    min-height: 340px;
+  }
+  .category-product-section .product-img {
+    height: 140px;
+    padding: 10px;
+  }
+  .category-product-section .product-title {
+    font-size: 14px;
+    min-height: 36px;
+    max-height: 36px;
+  }
+}
+@media (max-width: 767.98px) {
+  .category-product-section .product-card {
+    min-height: 260px;
+  }
+  .category-product-section .product-img {
+    padding: 6px;
+    height: 250px;
+  }
+  .category-product-section .product-title {
+    font-size: 13px;
+  }
+}
+/*
+-----------------------------------------------------------------------------
+                          Category Page CSS End
+-----------------------------------------------------------------------------
+*/
+
+/*
+-----------------------------------------------------------------------------
+                          Checkout Page CSS Start
+-----------------------------------------------------------------------------
+*/
+.checkout-summary{
+  background: var(--checkout-summary);
+}
+.checkout-summary .product-image{
+  width: 80px; height: 80px; background: var(--swiper-pagination-color); object-fit: cover;
+}
+.checkout-summary .summary-logo{
+  width: 60px; margin-bottom: 30px;
+}
+.checkout-section-title{
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 22px;
+}
+.checkout-form-wrap .form-label{
+  color: var(--checkout-summary);
+  font-size: 14px;
+  font-weight: 700;
+}
+.checkout-form-wrap .form-control{
+  border-radius: 6px;
+  box-shadow: none;
+  transition: border 0.2s;
+  font-size: 13px;
+}
+.checkout-payment-method label.form-check-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color-dark);
+  margin-right: 32px;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.checkout-payment-method .form-check-input[type="radio"] {
+  accent-color: var(--tertiary-color);
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  border: 2px solid var(--tertiary-color);
+  box-shadow: none;
+  outline: none;
+  transition: border 0.2s;
+}
+.complete-purchase-btn{
+  background: var(--secondary-color);
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  border:1px solid var(--secondary-color);
+}
+.complete-purchase-btn:hover{
+  background: var(--checkout-summary);
+}
+.checkout-payment-method .form-check-input[type="radio"]:checked {
+  border: 6px solid var(--tertiary-color);
+  background: #fff;
+}
+.checkout-payment-method .bkash-logo {
+  height: 70px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+#bkash-transaction {
+  margin-top: 18px;
+  animation: fadeIn 0.3s;
+}
+#bkash-transaction .form-label {
+  font-weight: 500;
+  color: var(--tertiary-color);
+}
+#bkash-transaction .form-control {
+  border: 1.5px solid var(--tertiary-color);
+  border-radius: 6px;
+  box-shadow: none;
+  transition: border 0.2s;
+}
+#bkash-transaction .form-control:focus {
+  border-color: var(--tertiary-color);
+  box-shadow: 0 0 0 2px rgba(219,68,68,0.08);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media all and (max-width: 484px) {
+  .complete-purchase-btn{
+    width: 100% !important;
+  }
+}
+/*
+-----------------------------------------------------------------------------
+                          Checkout Page CSS End
+-----------------------------------------------------------------------------
+*/
