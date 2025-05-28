@@ -82,18 +82,94 @@
         </li><!-- End Group Nav -->
 
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.course.*') ? '' : 'collapsed' }}"
-                data-bs-target="#course-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Course</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link {{ request()->routeIs('agent.ssdi.*') ? '' : 'collapsed' }}"
+                data-bs-target="#ssdi-course-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>SSDI Course</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="course-nav" class="nav-content collapse {{ request()->routeIs('agent.course.*') ? 'show' : '' }}"
+            <ul id="ssdi-course-nav"
+                class="nav-content collapse {{ request()->routeIs('agent.ssdi.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('agent.course.category') }}"
-                        class="{{ request()->routeIs('agent.course.category') ? 'active' : '' }}">
+                    <a href="{{ route('agent.ssdi.category') }}"
+                        class="{{ request()->routeIs('agent.ssdi.category') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Course Category</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.ssdi.create') }}"
+                        class="{{ request()->routeIs('agent.ssdi.create') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.ssdi.courses') }}"
+                        class="{{ request()->routeIs('agent.ssdi.courses') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Course List</span>
+                    </a>
+                </li>
+
+                {{-- <li>
+                    <a href="{{ route('agent.course.trainer') }}"
+                        class="{{ request()->routeIs('agent.course.trainer') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Course Trainer</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="{{ route('agent.course.feature') }}"
+                        class="{{ request()->routeIs('agent.course.feature') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Featured Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.course') }}"
+                        class="{{ request()->routeIs('agent.course.course') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Course List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.ssdi') }}"
+                        class="{{ request()->routeIs('agent.course.ssdi') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>SSDI Course List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.language') }}"
+                        class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Language Course List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.course.ssdi.enroll') }}"
+                        class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
+                    </a>
+                </li> --}}
+
+            </ul>
+        </li><!-- End course Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.language.*') ? '' : 'collapsed' }}"
+                data-bs-target="#language-course-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Language Course</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="language-course-nav"
+                class="nav-content collapse {{ request()->routeIs('agent.language.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.language.create') }}"
+                        class="{{ request()->routeIs('agent.language.create') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.language.courses') }}"
+                        class="{{ request()->routeIs('agent.language.courses') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>List Course</span>
+                    </a>
+                </li>
+                {{-- 
                 <li>
                     <a href="{{ route('agent.course.trainer') }}"
                         class="{{ request()->routeIs('agent.course.trainer') ? 'active' : '' }}">
@@ -135,7 +211,7 @@
                         class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </li><!-- End course Nav -->
@@ -172,34 +248,34 @@
                 </li>
                 <li>
                     <a href="{{ route('agent.jphomes.properties') }}"
-                    class="{{ request()->routeIs('agent.jphomes.properties') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>All Property List</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('agent.jphomes.create.property.video') }}"
-                    class="{{ request()->routeIs('agent.jphomes.create.property.video') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>Video Property</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('agent.jphomes.agent.requests') }}"
-                    class="{{ request()->routeIs('agent.jphomes.agent.requests') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>Agent Request</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('agent.jphomes.comments') }}"
-                    class="{{ request()->routeIs('agent.jphomes.comments') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>Comments</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('agent.jphomes.orders') }}"
-                    class="{{ request()->routeIs('agent.jphomes.orders') ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i><span>Orders</span>
-                </a>
-            </li>
+                        class="{{ request()->routeIs('agent.jphomes.properties') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Property List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.jphomes.create.property.video') }}"
+                        class="{{ request()->routeIs('agent.jphomes.create.property.video') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Video Property</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.jphomes.agent.requests') }}"
+                        class="{{ request()->routeIs('agent.jphomes.agent.requests') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Agent Request</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.jphomes.comments') }}"
+                        class="{{ request()->routeIs('agent.jphomes.comments') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Comments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.jphomes.orders') }}"
+                        class="{{ request()->routeIs('agent.jphomes.orders') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Orders</span>
+                    </a>
+                </li>
 
             </ul>
         </li><!-- End property Nav -->
@@ -208,7 +284,8 @@
                 data-bs-target="#content-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Content</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="content-nav" class="nav-content collapse {{ request()->routeIs('agent.content.*') ? 'show' : '' }}"
+            <ul id="content-nav"
+                class="nav-content collapse {{ request()->routeIs('agent.content.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('agent.content.view.review') }}"
@@ -234,6 +311,30 @@
                         <i class="bi bi-circle"></i><span>SSDI</span>
                     </a>
                 </li>
+
+            </ul>
+        </li><!-- End contact Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.page.*') ? '' : 'collapsed' }}"
+                data-bs-target="#single-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Single Pages</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="single-nav" class="nav-content collapse {{ request()->routeIs('agent.page.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.page.awards') }}"
+                        class="{{ request()->routeIs('agent.page.awards') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Awards</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.page.chairman') }}"
+                        class="{{ request()->routeIs('agent.page.chairman') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Chairman</span>
+                    </a>
+                </li>
+
 
             </ul>
         </li><!-- End contact Nav -->

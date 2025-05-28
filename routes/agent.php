@@ -80,39 +80,43 @@ Route::middleware(['role:agent,admin'])
 
         });
 
+        Route::group(['controller' => CourseController::class, 'as' => 'ssdi.'], function () {
+            Route::get('/course/ssdi/category', 'courseCategory')->name('category');
+            Route::get('/create/ssdi/course', 'createSSDICourse')->name('create');
+            Route::get('/edit/ssdi/course/{course:slug}', 'createSSDiEdit')->name('edit');
+            Route::get('/ssdi/course/list', 'courseSsdi')->name('courses');
+            Route::get('/courses/ssdi/view/{course:slug}', 'courseSSDiView')->name('view');
+        });
+        //language
+        Route::group(['controller' => CourseController::class, 'as' => 'language.'], function () {
+            // Route::get('/courses/language', 'courseLanguage')->name('language');
+            Route::get('/create/language/course', 'createLanguageCourse')->name('create');
+            Route::get('/edit/language/course/{course:slug}', 'createLanguageEdit')->name('edit');
+            Route::get('/language/course/list', 'courseLanguage')->name('courses');
+            Route::get('/courses/language/view/{course:slug}', 'courseLanguageView')->name('view');
+        });
         Route::group(['controller' => CourseController::class, 'as' => 'course.'], function () {
-            Route::get('/course/category', 'courseCategory')->name('category');
+            Route::get('/courses', 'course')->name('course');
+
+            Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('ssdi.enroll');
+            Route::get('/course/all/trainers', 'trainer')->name('trainer');
+            Route::get('/course/feature', 'courseFeatured')->name('feature');
+
+
             Route::post('/course/category/store', 'storeCategory')->name('category.store');
             Route::post('/course/category/update/{category}', 'updateCategory')->name('category.update');
             Route::delete('/course/category/delete/{category}', 'destroyCategory')->name('category.delete');
-
-
-            Route::get('/create/course', 'createCourse')->name('create');
-            Route::get('/edit/course/{course:slug}', 'createEdit')->name('edit');
-            Route::get('/courses', 'course')->name('course');
-            Route::get('/courses/ssdi', 'courseSsdi')->name('ssdi');
-            Route::get('/courses/language', 'courseLanguage')->name('language');
-            Route::get('/courses/view/{course:slug}', 'courseView')->name('view');
             Route::post('/course/store', 'storeCourse')->name('store');
             Route::post('/course/update/{course}', 'updateCourse')->name('update');
             Route::delete('/course/delete/{course}', 'destroyCourse')->name('delete');
-
-
-
             Route::post('/course/store/module', 'storeModule')->name('store.module');
             Route::delete('/course/module/delete/{module}', 'destroyModule')->name('delete.module');
-
-            Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('ssdi.enroll');
             Route::post('/enroll/mark/{enroll}', 'updateMark')->name('enroll.mark');
             Route::post('/enroll/update/{enroll}', 'updateEnroll')->name('update.enroll');
             Route::delete('/course/enroll/delete/{enroll}', 'destroyEnroll')->name('delete.enroll');
-
-            Route::get('/course/all/trainers', 'trainer')->name('trainer');
             Route::post('/course/store/trainer', 'storeTrainer')->name('store.trainer');
             Route::post('/course/updaye/trainer/{trainer}', 'updateTrainer')->name('update.trainer');
             Route::delete('/course/trainer/delete/{trainer}', 'destroyTrainer')->name('delete.trainer');
-
-            Route::get('/course/feature', 'courseFeatured')->name('feature');
             Route::post('/course/store/feature', 'storeFeature')->name('store.feature');
             Route::post('/course/update/feature/{feature}', 'updateFeature')->name('update.feature');
             Route::delete('/course/feature/delete/{feature}', 'destroyFeature')->name('delete.feature');
@@ -155,6 +159,14 @@ Route::middleware(['role:agent,admin'])
             Route::post('/content/update/banner/{banner}', 'updateBanner')->name('update.banner');
             Route::delete('/content/delete/banner/{banner}', 'deleteBanner')->name('delete.banner');
 
+            //awards
+            Route::post('/content/store/award', 'storeAward')->name('store.award');
+            Route::post('/content/update/award/{award}', 'updateAward')->name('update.award');
+            Route::delete('/content/delete/award/{award}', 'deleteAward')->name('delete.award');
+
+            //chairman
+            Route::post('/content/store/chairman', 'storeChairman')->name('store.chairman');
+            Route::post('/content/store/chairman/image', 'storeChairmanImage')->name('store.chairman.image');
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-language-japan', 'language')->name('language');
@@ -204,6 +216,10 @@ Route::middleware(['role:agent,admin'])
         });
         Route::group(['controller' => MedicaController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-medica-limited', 'Medica')->name('medica');
+        });
+        Route::group(['controller' => ContentController::class, 'as' => 'page.'], function () {
+            Route::get('/awards', 'awards')->name('awards');
+            Route::get('/chairman', 'chairman')->name('chairman');
         });
 
 

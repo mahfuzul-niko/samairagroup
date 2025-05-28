@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Create Course</x-slot>
+    <x-slot name="title">Create Language Course</x-slot>
     <section class="createcourse">
         <div class="card">
             <div class="card-body">
@@ -49,30 +49,9 @@
                         <textarea class="form-control" name="subtitle" id="" rows="2"></textarea>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-
-                            <div class="form-group mb-3">
-                                <label for="category">Category</label>
-                                <select class="form-select" name="category_id" id="category" required>
-                                    <option value="" selected>Select Category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group mb-3">
-                                <label for="level">Course For</label>
-                                <select class="form-select" name="course_for" id="level" required>
-                                    <option selected disabled>Select Course</option>
-                                    <option value="ssdi">SSDI</option>
-                                    <option value="language">Language</option>
-                                    <option value="both">Both</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        
+                        <input type="hidden" name="course_for" value="language">
+                        <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="level">Course type</label>
                                 <select class="form-select" name="course_type" id="level" required>

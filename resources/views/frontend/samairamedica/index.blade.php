@@ -47,52 +47,22 @@
     <div class="swiper hero-swiper">
       <div class="swiper-wrapper">
         <!-- Slide 1 -->
+        @foreach ($banners as $banner)
+            
         <div class="swiper-slide">
           <div class="slide-bg">
-            <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/1.jpg" alt="Medica">
+            <img src="{{$banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png')}}" alt="Medica">
           </div>
           <div class="container">
             <div class="hero-content">
-              <span class="welcome-text">Get Enrolled in our Health program</span>
-              <h1>Looking for Samaira Medica !</h1>
-              <p>More than 20 million Americans have already enrolled for Obamacare. Join
-                them now and enjoy a quality healthcare facility, irrespective of your income.</p>
-              <a href="#" class="discover-btn">Get me Enrolled</a>
+              <h1>{{$banner->title}}</h1>
+              <p>{{$banner->subtitle}}</p>
+              <a href="{{$banner->url}}" class="discover-btn">Get me Enrolled</a>
             </div>
           </div>
         </div>
+        @endforeach
 
-        <!-- Slide 2 -->
-        <div class="swiper-slide">
-          <div class="slide-bg">
-            <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/bg.png" alt="Medica">
-          </div>
-          <div class="container">
-            <div class="hero-content">
-              <span class="welcome-text">Get Enrolled in our Health program</span>
-              <h1>Looking for Samaira Medica !</h1>
-              <p>More than 20 million Americans have already enrolled for Obamacare. Join
-                them now and enjoy a quality healthcare facility, irrespective of your income.</p>
-              <a href="#" class="discover-btn">Get me Enrolled</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="swiper-slide">
-          <div class="slide-bg">
-            <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/bg.png" alt="Medica">
-          </div>
-          <div class="container">
-            <div class="hero-content">
-              <span class="welcome-text">Get Enrolled in our Health program</span>
-              <h1>Looking for Samaira Medica !</h1>
-              <p>More than 20 million Americans have already enrolled for Obamacare. Join
-                them now and enjoy a quality healthcare facility, irrespective of your income.</p>
-              <a href="#" class="discover-btn">Get me Enrolled</a>
-            </div>
-          </div>
-        </div>
 
       <!-- Slider Navigation -->
       <div class="slider-nav">

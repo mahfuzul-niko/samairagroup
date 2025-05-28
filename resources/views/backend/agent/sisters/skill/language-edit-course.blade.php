@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Update Course</x-slot>
+    <x-slot name="title">Update Language Course</x-slot>
     <section class="createcourse">
         <div class="card">
             <div class="card-body">
@@ -56,35 +56,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group mb-3">
-                                <label for="category">Category</label>
-                                <select class="form-select" name="category_id" id="category" required>
-                                    <option value="">Select Category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"
-                                            {{ $course->category_id == $category->id ? 'selected' : '' }}>
-                                            {{ $category->title }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group mb-3">
-                                <label for="level">Course For</label>
-                                <select class="form-select" name="course_for" id="level" required>
-                                    <option disabled>Select Course</option>
-                                    <option value="ssdi" {{ $course->course_for == 'ssdi' ? 'selected' : '' }}>SSDI
-                                    </option>
-                                    <option value="language" {{ $course->course_for == 'language' ? 'selected' : '' }}>
-                                        Language</option>
-                                    <option value="both" {{ $course->course_for == 'both' ? 'selected' : '' }}>Both
-                                    </option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        
+                        <input type="hidden" name="course_for" value="ssdi">
+                        <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="course_type">Course Type</label>
                                 <select class="form-select" name="course_type" id="course_type" required>

@@ -70,22 +70,27 @@ class CourseController extends Controller
     {
 
         $lagCourses = Course::latest()->where('course_for', 'language')->with('category')->get();
-
         return view('backend.agent.sisters.skill.langcourse', compact('lagCourses'));
     }
-    public function createCourse(Request $request)
+    public function createSSDICourse(Request $request)
     {
         $categories = CourseCategory::latest()->get();
         $trainers = Trainer::latest()->get();
 
-        return view('backend.agent.sisters.skill.create-course', compact('categories', 'trainers'));
+        return view('backend.agent.sisters.skill.ssdi-create-course', compact('categories', 'trainers'));
+    }
+    public function createLanguageCourse(Request $request)
+    {
+        
+        $trainers = Trainer::latest()->get();
+
+        return view('backend.agent.sisters.skill.language-create-course', compact( 'trainers'));
     }
     public function storeCourse(Request $request)
     {
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'category_id' => 'required|exists:course_categories,id',
             'trainer_id' => 'required|exists:users,id',
             'price' => 'required',
         ]);
@@ -128,18 +133,22 @@ class CourseController extends Controller
         $course->save();
         return redirect()->back()->with('success', 'Course created successfully.');
     }
-    public function createEdit(Course $course, Request $request)
+    public function createSSDiEdit(Course $course, Request $request)
     {
         $categories = CourseCategory::latest()->get();
         $trainers = Trainer::latest()->get();
-
-        return view('backend.agent.sisters.skill.editcourse', compact('categories', 'trainers', 'course'));
+        return view('backend.agent.sisters.skill.ssdi-edit-course', compact('categories', 'trainers', 'course'));
+    }
+    public function createLanguageEdit (Course $course, Request $request)
+    {
+        
+        $trainers = Trainer::latest()->get();
+        return view('backend.agent.sisters.skill.language-edit-course', compact( 'trainers', 'course'));
     }
     public function updateCourse(Request $request, Course $course)
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'category_id' => 'required|exists:course_categories,id',
             'price' => 'required',
         ]);
 
@@ -185,10 +194,15 @@ class CourseController extends Controller
 
     }
 
-    public function courseView(Course $course)
+    public function courseSSDiView(Course $course)
     {
 
-        return view('backend.agent.sisters.skill.viewcourse', compact('course'));
+        return view('backend.agent.sisters.skill.ssdi-viewcourse', compact('course'));
+    }
+    public function courseLanguageView(Course $course)
+    {
+
+        return view('backend.agent.sisters.skill.language-viewcourse', compact('course'));
     }
 
     public function destroyCourse(Course $course)
