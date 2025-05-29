@@ -367,6 +367,7 @@ class ContentController extends Controller
     public function chairman()
     {
         $chairman = Chairman::all()->pluck('value', 'key');
+        // dd($chairman);
         $banners = Banner::where('key', 'chairman_banner')->latest()->get();
         $info = Chairman::all();
         return view('backend.agent.content.chairman ', compact('chairman', 'banners', 'info'));

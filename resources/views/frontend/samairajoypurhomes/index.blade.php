@@ -100,7 +100,9 @@
                                 <img src="{{ $property->image ? Storage::url($property->image) : asset('assets/img/no-profile.png') }}"
                                     alt="{{ $property->title }}" class="property-img">
                                 <div class="property-badges">
-                                    <span class="badge badge-sale">{{ $property->category->title }}</span>
+                                    <span
+                                        class="badge badge-sale">{{ $property->category ? $property->category->title : '' }}
+                                    </span>
                                 </div>
                             </div>
                             <div class="property-body">
