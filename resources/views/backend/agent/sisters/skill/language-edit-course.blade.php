@@ -57,7 +57,7 @@
 
                     <div class="row">
                         
-                        <input type="hidden" name="course_for" value="ssdi">
+                        <input type="hidden" name="course_for" value="language">
                         <div class="col-md-6">
                             <div class="form-group mb-3">
                                 <label for="course_type">Course Type</label>

@@ -109,7 +109,8 @@
                         @endif
 
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
-                        <input type="hidden" name="at" value="ssdi">
+
+                        <input type="hidden" name="at" value="{{$course->course_for}}">
 
                         <div class="mb-3">
                             <label class="form-label">Your Name</label>

@@ -86,6 +86,9 @@ Route::middleware(['role:agent,admin'])
             Route::get('/edit/ssdi/course/{course:slug}', 'createSSDiEdit')->name('edit');
             Route::get('/ssdi/course/list', 'courseSsdi')->name('courses');
             Route::get('/courses/ssdi/view/{course:slug}', 'courseSSDiView')->name('view');
+            Route::get('/course/all/trainers', 'trainer')->name('trainer');
+            Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('enroll');
+            Route::get('/ssdi/course/feature', 'courseSSDIFeatured')->name('feature');
         });
         //language
         Route::group(['controller' => CourseController::class, 'as' => 'language.'], function () {
@@ -94,14 +97,15 @@ Route::middleware(['role:agent,admin'])
             Route::get('/edit/language/course/{course:slug}', 'createLanguageEdit')->name('edit');
             Route::get('/language/course/list', 'courseLanguage')->name('courses');
             Route::get('/courses/language/view/{course:slug}', 'courseLanguageView')->name('view');
+            Route::get('/language/enroll/list', 'languageEnrollList')->name('enroll');
+            Route::get('/language/course/feature', 'courseLanguageFeatured')->name('feature');
         });
+
         Route::group(['controller' => CourseController::class, 'as' => 'course.'], function () {
             Route::get('/courses', 'course')->name('course');
 
-            Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('ssdi.enroll');
-            Route::get('/course/all/trainers', 'trainer')->name('trainer');
-            Route::get('/course/feature', 'courseFeatured')->name('feature');
-
+            // Route::get('/course/feature', 'courseFeatured')->name('feature');
+    
 
             Route::post('/course/category/store', 'storeCategory')->name('category.store');
             Route::post('/course/category/update/{category}', 'updateCategory')->name('category.update');

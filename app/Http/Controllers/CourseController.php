@@ -81,16 +81,16 @@ class CourseController extends Controller
     }
     public function createLanguageCourse(Request $request)
     {
-        
+
         $trainers = Trainer::latest()->get();
 
-        return view('backend.agent.sisters.skill.language-create-course', compact( 'trainers'));
+        return view('backend.agent.sisters.skill.language-create-course', compact('trainers'));
     }
     public function storeCourse(Request $request)
     {
 
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:courses,title',
             'trainer_id' => 'required|exists:users,id',
             'price' => 'required',
         ]);
@@ -139,11 +139,11 @@ class CourseController extends Controller
         $trainers = Trainer::latest()->get();
         return view('backend.agent.sisters.skill.ssdi-edit-course', compact('categories', 'trainers', 'course'));
     }
-    public function createLanguageEdit (Course $course, Request $request)
+    public function createLanguageEdit(Course $course, Request $request)
     {
-        
+
         $trainers = Trainer::latest()->get();
-        return view('backend.agent.sisters.skill.language-edit-course', compact( 'trainers', 'course'));
+        return view('backend.agent.sisters.skill.language-edit-course', compact('trainers', 'course'));
     }
     public function updateCourse(Request $request, Course $course)
     {
@@ -189,8 +189,14 @@ class CourseController extends Controller
         }
 
         $course->save();
+        if ($request->course_for == 'ssdi') {
+            $route = route('agent.ssdi.courses');
+        } else {
+            $route = route('agent.language.courses');
+        }
+        ;
 
-        return redirect(route("agent.course.course"))->with('success', 'Course updated successfully.');
+        return redirect($route)->with('success', 'Course updated successfully.');
 
     }
 
@@ -268,15 +274,26 @@ class CourseController extends Controller
             $user->save();
         }
         $course = Course::find($request->course_id);
+
         $course->users()->syncWithoutDetaching([$user->id]);
         Mail::to($enroll->email)->send(new CourseEnrolledMail($enroll, $course));
-        return redirect(route('page.ssdi'))->with('success', 'Course Enroll Successfully')->with('info', 'Please check your email');
+        if ($course->course_for == 'ssdi') {
+            $route = route('page.ssdi');
+        } else {
+            $route = route('page.japan');
+        }
+        return redirect($route)->with('success', 'Course Enroll Successfully')->with('info', 'Please check your email');
     }
 
     public function ssdiEnrollList()
     {
         $enrolls = Enroll::latest()->where('at', 'ssdi')->get();
         return view('backend.agent.sisters.skill.ssdi-enroll', compact('enrolls'));
+    }
+    public function languageEnrollList()
+    {
+        $enrolls = Enroll::latest()->where('at', 'language')->get();
+        return view('backend.agent.sisters.skill.language-enroll', compact('enrolls'));
     }
     public function updateMark(Request $request, Enroll $enroll)
     {
@@ -347,11 +364,25 @@ class CourseController extends Controller
     }
 
     //featured course
-    public function courseFeatured()
+    public function courseSSDIFeatured()
     {
-        $courses = Course::latest()->get();
-        $features = FeaturedCourse::latest()->get();
-        return view('backend.agent.sisters.skill.featured', compact('courses', 'features'));
+        $courses = Course::latest()->where('course_for', 'ssdi')->get();
+        $features = FeaturedCourse::latest()
+            ->whereHas('course', function ($query) {
+                $query->where('course_for', 'ssdi');
+            })
+            ->get();
+        return view('backend.agent.sisters.skill.ssdi-featured', compact('courses', 'features'));
+    }
+    public function courseLanguageFeatured()
+    {
+        $courses = Course::latest()->where('course_for', 'language')->get();
+        $features = FeaturedCourse::latest()
+            ->whereHas('course', function ($query) {
+                $query->where('course_for', 'language');
+            })
+            ->get();
+        return view('backend.agent.sisters.skill.language-featured', compact('courses', 'features'));
     }
     public function storeFeature(Request $request)
     {
