@@ -247,6 +247,16 @@ class PagesController extends Controller
           return view('frontend.samairamedica.single-product');
      }
 
+     public function samairamedicaShop()
+     {
+          return view('frontend.samairamedica.shop');
+     }
+
+     public function samairamedicaCheckout()
+     {
+          return view('frontend.samairamedica.checkout');
+     }
+
 
 
      //soon
