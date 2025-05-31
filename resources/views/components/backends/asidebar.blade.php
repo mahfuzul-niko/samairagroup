@@ -95,6 +95,12 @@
                         <i class="bi bi-circle"></i><span>Course Category</span>
                     </a>
                 </li>
+                 <li>
+                    <a href="{{ route('agent.ssdi.trainer') }}"
+                        class="{{ request()->routeIs('agent.ssdi.trainer') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Course Trainer</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{{ route('agent.ssdi.create') }}"
                         class="{{ request()->routeIs('agent.ssdi.create') ? 'active' : '' }}">
@@ -107,8 +113,21 @@
                         <i class="bi bi-circle"></i><span>Course List</span>
                     </a>
                 </li>
-
-                {{-- <li>
+                <li>
+                    <a href="{{ route('agent.ssdi.feature') }}"
+                        class="{{ request()->routeIs('agent.ssdi.feature') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Feature Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.ssdi.enroll') }}"
+                        class="{{ request()->routeIs('agent.ssdi.enroll') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Enroll List</span>
+                    </a>
+                </li>
+               
+                {{--
+                 <li>
                     <a href="{{ route('agent.course.trainer') }}"
                         class="{{ request()->routeIs('agent.course.trainer') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Course Trainer</span>
@@ -167,6 +186,18 @@
                     <a href="{{ route('agent.language.courses') }}"
                         class="{{ request()->routeIs('agent.language.courses') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>List Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.language.feature') }}"
+                        class="{{ request()->routeIs('agent.language.feature') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Feature Course</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.language.enroll') }}"
+                        class="{{ request()->routeIs('agent.language.enroll') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Enroll List</span>
                     </a>
                 </li>
                 {{-- 

@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Select Image</label>
-                            <select class="form-select mb-3" aria-label="Default select example" name="key">
+                            <select class="form-select mb-3" aria-label="Default select example" name="key" required>
                                 <option selected disabled>Select Where Image goes</option>
                                 <option value="chairman_top_image">Top Image</option>
                                 <option value="chairman_bottom_image">Bottom Image</option>
@@ -88,8 +88,9 @@
                             Top Image
                         </th>
                         <td>
-                            <img src="{{ $chairman['chairman_top_image'] ? Storage::url($chairman['chairman_top_image']) : asset('assets/img/no-profile.png') }}"
+                            <img src="{{ isset($chairman['chairman_top_image']) && $chairman['chairman_top_image'] ? Storage::url($chairman['chairman_top_image']) : asset('assets/img/no-profile.png') }}"
                                 alt="" class="img-fluid" style="height: 100px; width: auto;">
+
 
                         </td>
                     </tr>
@@ -98,9 +99,11 @@
                             Bottom Image
                         </th>
                         <td>
-                            <img src="{{ $chairman['chairman_bottom_image'] ? Storage::url($chairman['chairman_bottom_image']) : asset('assets/img/no-profile.png') }}"
+                            
+                                <img src="{{ isset($chairman['chairman_bottom_image']) && $chairman['chairman_bottom_image'] ? Storage::url($chairman['chairman_bottom_image']) : asset('assets/img/no-profile.png') }}"
                                 alt="" class="img-fluid" style="height: 100px; width: auto;">
                         </td>
+
                     </tr>
 
                 </table>

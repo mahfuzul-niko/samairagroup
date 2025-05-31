@@ -1,8 +1,8 @@
 <x-app>
     @push('styles')
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css" rel="stylesheet">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
     <x-slot name="title">View A Course</x-slot>
     <section class="view-ourse">
@@ -10,8 +10,8 @@
             <div class="card-body">
                 <div class="text-end p-3">
                     <a href="{{route('agent.course.edit',$course)}}" class="btn btn-primary btn-sm">Edit Course</a>
-                    <form action="{{ route('agent.course.delete', $course) }}"
-                        method="POST" class="d-inline-block" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                    <form action="{{ route('agent.course.delete', $course) }}" method="POST" class="d-inline-block"
+                        onsubmit="return confirm('Are you sure you want to delete this course?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <th>Category ID</th>
-                        <td>{{ $course->category->title }}</td>
+                        <td>{{ $course->category?->title ?? '' }}</td>
                     </tr>
                     <tr>
                         <th>Trainer</th>
@@ -83,13 +83,13 @@
                         <th>File</th>
                         <td>
                             @if (!empty($course->file))
-                                <a href="{{ asset('storage/' . $course->file) }}" target="_blank">View File</a>
+                            <a href="{{ asset('storage/' . $course->file) }}" target="_blank">View File</a>
                             @else
-                                N/A
+                            N/A
                             @endif
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <th>Status</th>
                         <td class="text-{{ $course->status == 'active' ? 'success' : 'danger' }}">
@@ -119,23 +119,23 @@
                     @foreach ($course->modules as $module)
                     <div class="border p-3 rounded mt-3">
                         <div class="d-flex justify-content-between">
-                          <h5 class="fw-bold">
-                            {{$module->title}}
-                          </h5>
-                          <form action="{{ route('agent.course.delete.module', $module) }}"
-                            method="POST" class="d-inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
-                        </form>
+                            <h5 class="fw-bold">
+                                {{$module->title}}
+                            </h5>
+                            <form action="{{ route('agent.course.delete.module', $module) }}" method="POST"
+                                class="d-inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                            </form>
                         </div>
-                          
-                          <div class="">
+
+                        <div class="">
                             {!! $module->description !!}
-                          </div>
-                      </div>
+                        </div>
+                    </div>
                     @endforeach
-                    
+
                 </div>
             </div>
         </div>
@@ -163,12 +163,12 @@
         </div>
     </section>
     @push('scripts')
-        <script>
-            $(document).ready(function() {
-                $('#summernote').summernote({
-                    height: 200 // Set editor height
-                });
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 200 // Set editor height
             });
-        </script>
+        });
+    </script>
     @endpush
 </x-app>
