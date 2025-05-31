@@ -257,6 +257,11 @@ class PagesController extends Controller
           return view('frontend.samairamedica.checkout');
      }
 
+     public function samairajobs()
+     {
+          return view('frontend.samaira-jobs-bridge.index');
+     }
+
 
 
      //soon
