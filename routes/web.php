@@ -69,7 +69,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
 
-
+    // jobs
+    Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('samairajobs');
 
 
 
