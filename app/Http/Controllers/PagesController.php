@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\Award;
 use App\Models\Banner;
+use App\Models\Chairman;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\Course;
@@ -14,6 +16,10 @@ use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\JpPartner;
 use App\Models\JpReview;
+use App\Models\medicaCategory;
+use App\Models\medicaPartner;
+use App\Models\medicaReview;
+use App\Models\News;
 use App\Models\Partner;
 use App\Models\Property;
 use App\Models\PropertyCategory;
@@ -106,8 +112,12 @@ class PagesController extends Controller
      //medica
      public function samairamedica()
      {
+          $partners = medicaPartner::latest()->get();
+          $reviews = medicaReview::latest()->get();
+
           $banners = Banner::latest()->where('key', 'medica')->get();
-          return view('frontend.samairamedica.index', compact('banners'));
+          $categories = medicaCategory::latest()->get();
+          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews'));
      }
 
 
@@ -221,19 +231,26 @@ class PagesController extends Controller
      }
      public function awards()
      {
-          return view('frontend.content.awards-and-achievement');
+          $awards = Award::latest()->take(9)->get();
+          $banners = Banner::where('key', 'award_banner')->latest()->get();
+          return view('frontend.content.awards-and-achievement', compact('awards', 'banners'));
      }
      public function chairman()
      {
-          return view('frontend.content.chairman-and-managing-diretor');
+          $banners = Banner::where('key', 'chairman_banner')->latest()->get();
+          $chairman = Chairman::all()->pluck('value', 'key');
+          return view('frontend.content.chairman-and-managing-diretor', compact('chairman', 'banners'));
      }
-     public function blogs()
+     public function news()
      {
-          return view('frontend.content.news-and-events');
+          $banners = Banner::where('key', 'news_banner')->latest()->get();
+          $newses = News::latest()->paginate(9);
+          return view('frontend.content.news-and-events', compact('banners', 'newses'));
      }
-     public function newssingle()
+     public function newssingle(News $news)
      {
-          return view('frontend.content.news-and-events-single');
+          $newses = News::latest()->take(6);
+          return view('frontend.content.news-and-events-single', compact('news','newses'));
      }
      public function carrer()
      {

@@ -14,6 +14,7 @@ use App\Models\ContactInfo;
 use App\Models\ContactSubject;
 use App\Models\Course;
 use App\Models\Enroll;
+use App\Models\News;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -363,14 +364,13 @@ class ContentController extends Controller
 
         return redirect()->back()->with('success', 'Award deleted successfully.');
     }
-    //awards
+    //chairman
     public function chairman()
     {
         $chairman = Chairman::all()->pluck('value', 'key');
-        // dd($chairman);
         $banners = Banner::where('key', 'chairman_banner')->latest()->get();
-        $info = Chairman::all();
-        return view('backend.agent.content.chairman ', compact('chairman', 'banners', 'info'));
+        
+        return view('backend.agent.content.chairman ', compact('chairman', 'banners'));
     }
     public function storeChairman(Request $request)
     {
@@ -384,15 +384,15 @@ class ContentController extends Controller
     }
     public function storeChairmanImage(Request $request)
     {
-       
 
-       
+
+
         if ($request->hasFile('value')) {
             $image = $request->file('value');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('uploads/chairman', $filename, 'public');
 
-            
+
             Chairman::updateOrCreate(
                 ['key' => $request->key],
                 ['value' => $path]
@@ -401,5 +401,59 @@ class ContentController extends Controller
 
         return redirect()->back()->with('success', 'Chairman image updated successfully.');
     }
+    //news 
+    public function newses()
+    {
+        $newses = News::latest()->paginate(10);
+        $banners = Banner::where('key', 'news_banner')->latest()->get();
+        return view('backend.agent.content.news ', compact('newses', 'banners'));
+    }
+    public function editNews(News $news)
+    {
+        return view('backend.agent.content.edit-news ', compact('news'));
+    }
+
+    public function storeNews(Request $request)
+    {
+        $news = new News;
+        $news->title = $request->title;
+        $news->description = $request->description;
+        $news->name = $request->name;
+        $news->url = $request->url;
+        if ($request->hasFile('image')) {
+            $news->image = $request->file('image')->store('news', 'public');
+        }
+        $news->save();
+        return redirect()->back()->with('success', 'News Added successfully.');
+    }
+    public function updateNews(Request $request, News $news)
+    {
+
+        $news->title = $request->title;
+        $news->description = $request->description;
+        $news->name = $request->name;
+        $news->url = $request->url;
+        if ($request->hasFile('image')) {
+            if ($news->image && Storage::disk('public')->exists($news->image)) {
+                Storage::disk('public')->delete($news->image);
+            }
+
+            $news->image = $request->file('image')->store('news', 'public');
+        }
+        $news->save();
+        return redirect()->back()->with('success', 'News Added successfully.');
+    }
+    public function deleteNews(News $news)
+    {
+        if ($news->image && Storage::disk('public')->exists($news->image)) {
+            Storage::disk('public')->delete($news->image);
+        }
+
+        $news->delete();
+
+        return redirect()->back()->with('success', 'News deleted successfully.');
+    }
+
+
 
 }

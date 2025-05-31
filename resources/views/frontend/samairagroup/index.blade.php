@@ -88,17 +88,18 @@
                     </div>
                 </li>
 
-                
-              
-        <li class="rg-navbar-has-dropdown">
-          <a href="#">About <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
-          <div class="rg-dropdown-menu">
-            <a  href="{{ route('page.home.about') }}">About Us</a>
-           <a  href="{{ route('page.awards') }}">Awards and Achievements</a>
-            <a  href="{{ route('page.chairman') }}">About Manageing Director</a>
-            <a  href="{{ route('page.blogs') }}">News & Events</a>
-          </div>
-        </li>
+
+
+                <li class="rg-navbar-has-dropdown">
+                    <a href="#">About <span class="rg-navbar-chevron"><i
+                                class="fa fa-chevron-down"></i></span></a>
+                    <div class="rg-dropdown-menu">
+                        <a href="{{ route('page.home.about') }}">About Us</a>
+                        <a href="{{ route('page.awards') }}">Awards and Achievements</a>
+                        <a href="{{ route('page.chairman') }}">About Manageing Director</a>
+                        <a href="{{ route('page.news') }}">News & Events</a>
+                    </div>
+                </li>
                 <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
             </ul>
             <!-- Desktop Mega Menu (outside <li>) -->
@@ -128,7 +129,7 @@
                                     alt="TEER">
                             </div>
                             <div class="rg-brand-content">
-                                <p>{{ $concern->concern_text }}</p>
+                                <p>{{ \Illuminate\Support\Str::words($concern->concern_text, 55, '...') }}</p>
                                 <a href="{{ $concern->concern_link }}" class="rg-brand-btn">Read More</a>
                             </div>
                         </div>

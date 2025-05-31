@@ -35,9 +35,9 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/contact-us', 'samairagroupContact')->name('home.contact');
 
     Route::get('/awards', 'awards')->name('awards');
-    Route::get('/chairman', 'chairman')->name('chairman');
-    Route::get('/blogs', 'blogs')->name('blogs');
-    Route::get('/news/single', 'newssingle')->name('newssingle');
+    Route::get('/chairman-profile', 'chairman')->name('chairman');
+    Route::get('/news', 'news')->name('news');
+    Route::get('/news/{news}', 'newssingle')->name('single.news');
     Route::get('/carrer', 'carrer')->name('carrer');
 
     //ssdi

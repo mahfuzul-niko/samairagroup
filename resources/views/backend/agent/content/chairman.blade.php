@@ -64,7 +64,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="">Select Image</label>
-                            <select class="form-select mb-3" aria-label="Default select example" name="key" required>
+                            <select class="form-select mb-3" aria-label="Default select example" name="key"
+                                required>
                                 <option selected disabled>Select Where Image goes</option>
                                 <option value="chairman_top_image">Top Image</option>
                                 <option value="chairman_bottom_image">Bottom Image</option>
@@ -99,8 +100,8 @@
                             Bottom Image
                         </th>
                         <td>
-                            
-                                <img src="{{ isset($chairman['chairman_bottom_image']) && $chairman['chairman_bottom_image'] ? Storage::url($chairman['chairman_bottom_image']) : asset('assets/img/no-profile.png') }}"
+
+                            <img src="{{ isset($chairman['chairman_bottom_image']) && $chairman['chairman_bottom_image'] ? Storage::url($chairman['chairman_bottom_image']) : asset('assets/img/no-profile.png') }}"
                                 alt="" class="img-fluid" style="height: 100px; width: auto;">
                         </td>
 
@@ -120,7 +121,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="">Select Info</label>
-                        <select class="form-select mb-3" aria-label="Default select example" name="key">
+                        <select class="form-select mb-3" aria-label="Default select example" name="key" required>
                             <option selected disabled>Select Where Info goes</option>
                             <option value="chairman_top_info">Top Info</option>
                             <option value="chairman_bottom_info">Bottom Info</option>
@@ -130,7 +131,35 @@
                         <label for="">Wright Info</label>
                         <textarea id="summernote" name="value"></textarea>
                     </div>
+                    <button type="submit" class="btn btn-sm btn-success">save</button>
                 </form>
+                <div class="card-title">
+                    Chairman Info View
+                </div>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>
+                            Top Info
+                        </th>
+                        <td>
+    
+                            {!! $chairman['chairman_top_info'] ?? '' !!}
+    
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Bottom Info
+                        </th>
+                        <td>
+    
+                            {!! $chairman['chairman_bottom_info'] ?? '' !!}
+    
+                        </td>
+    
+                    </tr>
+    
+                </table>
             </div>
         </div>
     </section>

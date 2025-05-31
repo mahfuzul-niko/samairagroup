@@ -125,7 +125,10 @@ Route::middleware(['role:agent,admin'])
             Route::post('/course/update/feature/{feature}', 'updateFeature')->name('update.feature');
             Route::delete('/course/feature/delete/{feature}', 'destroyFeature')->name('delete.feature');
         });
-
+        Route::group(['controller' => ContentController::class, 'as' => 'editional.'], function () {
+            Route::get('/editional/review', 'review')->name('view.review');
+            Route::get('/editional/certificate', 'certificate')->name('certificate');
+        });
         Route::group(['controller' => ContentController::class, 'as' => 'content.'], function () {
             //about banner
             Route::post('/content/store/about/banner', 'storeAboutBanner')->name('about.store.banner');
@@ -147,14 +150,14 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/content/delete/contact/{contact}}', 'deleteContact')->name('contact.delete');
 
             //review views
-            Route::get('/content/review', 'review')->name('view.review');
+    
             Route::post('/content/store/review', 'storeReview')->name('store.review');
             Route::post('/content/update/review/{review}', 'updateReview')->name('update.review');
             Route::delete('/content/delete/review/{review}', 'deleteReview')->name('delete.review');
             Route::post('/content/review/{review}', 'updateMarkReview')->name('review.mark');
 
             //certificate
-            Route::get('/content/certificate', 'certificate')->name('certificate');
+    
             Route::post('/content/store/certificate', 'storeCertificate')->name('store.certificate');
             Route::delete('/content/delete/certificate/{certificate}', 'deleteCertificate')->name('delete.certificate');
 
@@ -171,6 +174,11 @@ Route::middleware(['role:agent,admin'])
             //chairman
             Route::post('/content/store/chairman', 'storeChairman')->name('store.chairman');
             Route::post('/content/store/chairman/image', 'storeChairmanImage')->name('store.chairman.image');
+
+            //news
+            Route::post('/content/store/news', 'storeNews')->name('store.news');
+            Route::post('/content/update/news/{news}', 'updateNews')->name('update.news');
+            Route::delete('/content/delete/news/{news}', 'deleteNews')->name('delete.news');
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-language-japan', 'language')->name('language');
@@ -224,6 +232,30 @@ Route::middleware(['role:agent,admin'])
         Route::group(['controller' => ContentController::class, 'as' => 'page.'], function () {
             Route::get('/awards', 'awards')->name('awards');
             Route::get('/chairman', 'chairman')->name('chairman');
+            Route::get('/news-&-event', 'newses')->name('news');
+            Route::get('/news-&-event/edit/{news}', 'editNews')->name('edit.news');
+        });
+        Route::group(['controller' => MedicaController::class, 'as' => 'medica.'], function () {
+            Route::get('/samaira-medica-limited/categories', 'categories')->name('categories');
+            Route::post('/samaira-medica-limited/store/category', 'storeCategory')->name('store.category');
+            Route::post('/samaira-medica-limited/update/category/{category}', 'updateCategory')->name('update.category');
+            Route::delete('/samaira-medica-limited/delete/category/{category}', 'deleteCategory')->name('delete.category');
+
+
+            Route::get('/samaira-medica-limited/reviews', 'reviews')->name('reviews');
+            Route::post('/samaira-medica-limited/store/review', 'storeReview')->name('store.review');
+            Route::post('/samaira-medica-limited/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/samaira-medica-limited/delete/review/{review}', 'deleteReview')->name('delete.review');
+
+            Route::post('/samaira-medica-limited/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/samaira-medica-limited/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
+
+            Route::get('/samaira-medica-limited/products', 'products')->name('products');
+            Route::get('/samaira-medica-limited/create/product', 'productCreate')->name('product.create');
+            Route::get('/samaira-medica-limited/edit/products', 'productEdit')->name('product.edit');
+            Route::post('/samaira-medica-limited/store/products', 'storeProduct')->name('store.product');
+            Route::post('/samaira-medica-limited/update/products/{product}', 'updateProduct')->name('update.product');
+            Route::delete('/samaira-medica-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
         });
 
 

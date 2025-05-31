@@ -62,92 +62,202 @@
                     <button type="submit" class="btn btn-primary btn-sm">save</button>
                 </form>
                 <div class="card-title">
-                    <table class="table table-striped">
+                    Table
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Sub Title</th>
+                        <th>Url</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($banners as $banner)
                         <tr>
-                            <th>#</th>
-                            <th>Image</th>
-                            <th>Title</th>
-                            <th>Sub Title</th>
-                            <th>Url</th>
-                            <th>Action</th>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $banner->title }}</td>
+                            <td>{{ $banner->subtitle }}</td>
+                            <td><a href="{{ $banner->url }}" class="btn btn-success btn-sm"><i
+                                        class="bi bi-eye"></i></a></td>
+                            <td>
+                                <img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="Banner Image" class="img-fluid" style="height: 100px; object-fit: cover;">
+                            </td>
+                            <td>
+                                <div class="text-nowrap">
+                                    <a class="btn btn-primary btn-sm d-inline-block" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#banner{{ $banner->id }}"><i
+                                            class="bi bi-pen"></i></a>
+                                    <form action="{{ route('agent.content.delete.banner', $banner) }}" method="POST"
+                                        class="d-inline-block m-0 p-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
-                        @foreach ($banners as $banner)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $banner->title }}</td>
-                                <td>{{ $banner->subtitle }}</td>
-                                <td><a href="{{ $banner->url }}" class="btn btn-success btn-sm"><i
-                                            class="bi bi-eye"></i></a></td>
-                                <td>
-                                    <img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
-                                        alt="Banner Image" class="img-fluid" style="height: 100px; object-fit: cover;">
-                                </td>
-                                <td>
-                                    <div class="text-nowrap">
-                                        <a class="btn btn-primary btn-sm d-inline-block" type="button"
-                                            data-bs-toggle="modal" data-bs-target="#banner{{ $banner->id }}"><i
-                                                class="bi bi-pen"></i></a>
-                                        <form action="{{ route('agent.content.delete.banner', $banner) }}"
-                                            method="POST" class="d-inline-block m-0 p-0">
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="banner{{ $banner->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update baneer</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ route('agent.content.update.banner', $banner) }}"
+                                            method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i
-                                                    class="bi bi-trash"></i></button>
+                                            <input type="hidden" name="key" value="medica" class="form-control"
+                                                required>
+                                            <div class="form-group my-3">
+                                                <label for="banner">Banner Image</label>
+                                                <input type="file" name="image" class="form-control">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="">Title</label>
+                                                <input type="text" name="title" class="form-control"
+                                                    value="{{ $banner->title }}" placeholder="Enter title"required>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="">Sub Title</label>
+                                                <textarea name="subtitle" class="form-control" rows="5" id="">{{ $banner->subtitle }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="">Url</label>
+                                                <input type="url" name="url" class="form-control"
+                                                    value="{{ $banner->url }}" placeholder="Enter Url"required>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-sm">save</button>
                                         </form>
                                     </div>
-                                </td>
-                            </tr>
 
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="banner{{ $banner->id }}" tabindex="-1"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update baneer</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{ route('agent.content.update.banner', $banner) }}"
-                                                method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <input type="hidden" name="key" value="medica"
-                                                    class="form-control" required>
-                                                <div class="form-group my-3">
-                                                    <label for="banner">Banner Image</label>
-                                                    <input type="file" name="image" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="">Title</label>
-                                                    <input type="text" name="title" class="form-control"
-                                                        value="{{ $banner->title }}"
-                                                        placeholder="Enter title"required>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="">Sub Title</label>
-                                                    <textarea name="subtitle" class="form-control" rows="5" id="">{{ $banner->subtitle }}</textarea>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="">Url</label>
-                                                    <input type="url" name="url" class="form-control"
-                                                        value="{{ $banner->url }}" placeholder="Enter Url"required>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary btn-sm">save</button>
-                                            </form>
-                                        </div>
-
-                                    </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </table>
-                </div>
+                        </div>
+                    @endforeach
+                </table>
             </div>
         </div>
     </section>
+
+
+    <section class="how-it-works">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    FREE AND FAST DELIVERY
+                </div>
+                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <select class="form-select" aria-label="Default select example" name="key" required>
+                                <option selected>Select social option</option>
+                                <option value="system_medica_delevery">FREE AND FAST DELIVERY</option>
+                                <option value="system_medica_service">24/7 CUSTOMER SERVICE</option>
+                                <option value="system_medica_money">MONEY BACK GUARANTEE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="inputEmail4" name="value" required>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-3 btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    FREE AND FAST DELIVERY List
+                </div>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="bg-light">FREE AND FAST DELIVERY:</th>
+                            <td>{{ system_key('system_medica_delevery') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">24/7 CUSTOMER SERVICE:</th>
+                            <td>{{ system_key('system_medica_service') }}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-light">MONEY BACK GUARANTEE:</th>
+                            <td>{{ system_key('system_medica_money') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="partners">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Partners store
+                </div>
+                <form action="{{ route('agent.medica.store.partner') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="">Partner Name</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Image</label>
+                        <input type="file" class="form-control" name="image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Partners List
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($partners as $partner)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $partner->title }}</td>
+                                <td>
+                                    <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Partner Image" class="img-fluid"
+                                        style="height: 80px; object-fit: cover;">
+                                </td>
+                                <td class="text-center">
+                                    <form action="{{ route('agent.medica.delete.partner', $partner) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+
+
 
 
 
@@ -208,7 +318,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                 About Section
+                    About Section
                 </div>
                 @if (is_null($about))
                     <form action="{{ route('agent.content.store.about') }}" method="POST"

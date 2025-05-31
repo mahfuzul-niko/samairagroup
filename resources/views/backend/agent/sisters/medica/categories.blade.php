@@ -1,45 +1,50 @@
 <x-app>
-    <x-slot name="title">Wecome Joyput Homes Category</x-slot>
-
-    <section class="category">
+    @push('styles')
+        <link rel="stylesheet" href="https://samairagroup.test/assets/frontassets/fonts/css/all.min.css">
+    @endpush
+    <x-slot name="title">Wecome Medica Categories</x-slot>
+    <section class="category-store">
         <div class="card">
-            <div class="card-body ">
-                <h5 class="card-title">Category</h5>
-                <form action="{{ route('agent.jphomes.store.category') }}" method="POST" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="card-title">
+                    Create Category
+                </div>
+                <form action="{{ route('agent.medica.store.category') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="">Image</label>
-                        <input type="file" name="image" class="form-control" required>
+                        <label for="">Title</label>
+                        <input type="text" name="title" id="" class="form-control" required>
+                        <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
+                                target="_blank">Click here</a></i>
                     </div>
-                    <div class="form-group my-3">
-                        <label for="category">Category Name</label>
-                        <input type="text" name="title" class="form-control" placeholder="Enter category name"
-                            required>
+
+                    <div class="mb-3">
+                        <label for="">Icon</label>
+                        <input type="text" name="icon" id="" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                    <button class="btn btn-sm btn-success">Save</button>
                 </form>
-                <div class="card-title">List of categories</div>
-                <table class="table table-striped">
+                <div class="card-title">
+                    Categories Table
+                </div>
+                <table class="table">
                     <tr>
                         <th>#</th>
-                        <th>Image</th>
+                        <th>Icon</th>
                         <th>Title</th>
                         <th>Action</th>
                     </tr>
-                    @foreach ($categories as $category)
+                    @foreach ($categories as $key => $category)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <img src="{{ $category->image ? Storage::url($category->image) : asset('assets/img/no-profile.png') }}"
-                                    alt="Property Image" class="img-fluid" style="height: 50px; object-fit: cover;">
-                            </td>
-                            <td>{{ $category->title }}</td>
+                            <td> {{ $key + 1 }} </td>
+                            <td>{!! $category->icon !!}</td>
+                            <td> {{ $category->title }} </td>
                             <td>
                                 <a class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"
                                     data-bs-target="#category{{ $category->id }}">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <form class="d-inline" action="{{ route('agent.jphomes.delete.category', $category) }}"
+                                <form class="d-inline" action="{{ route('agent.medica.delete.category', $category) }}"
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -60,12 +65,16 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('agent.jphomes.update.category', $category) }}"
+                                            <form action="{{ route('agent.medica.update.category', $category) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="mb-3">
-                                                    <label for="">Image</label>
-                                                    <input type="file" name="image" class="form-control">
+                                                    <label for="">Icon</label>
+                                                    <input type="text" name="icon" class="form-control"
+                                                        value="{{ $category->icon }}">
+                                                    <i class="text-secondary fs-6">looking for icon? <a
+                                                            href="https://fontawesome.com/search" target="_blank">Click
+                                                            here</a></i>
                                                 </div>
                                                 <div class="form-group my-3">
                                                     <label for="category">Category Name</label>
@@ -86,6 +95,5 @@
             </div>
         </div>
     </section>
-
 
 </x-app>
