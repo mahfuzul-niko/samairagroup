@@ -11,4 +11,8 @@ class medicaProduct extends Model
     {
         return $this->belongsTo(medicaCategory::class, 'category_id');
     }
+    public function images()
+    {
+        return $this->hasMany(medicaImages::class, 'product_id');
+    }
 }
