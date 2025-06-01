@@ -49,13 +49,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Weight</label>
-                                <input type="text" class="form-control" name="weight">
+                                <input type="text" class="form-control" name="weight" placeholder="xxx, xxx">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Size</label>
-                                <input type="text" class="form-control" name="size">
+                                <input type="text" class="form-control" name="size" placeholder="xxx, xxx">
                             </div>
                         </div>
                     </div>

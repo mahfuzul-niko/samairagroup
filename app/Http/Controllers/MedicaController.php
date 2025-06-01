@@ -138,10 +138,11 @@ class MedicaController extends Controller
         $categories = medicaCategory::latest()->get();
         return view('backend.agent.sisters.medica.create', compact('categories'));
     }
-    public function productEdit()
+    public function productEdit(medicaProduct $product)
     {
-        $products = medicaProduct::latest()->get();
-        return view('backend.agent.sisters.medica.edit', compact('products'));
+
+        $categories = medicaCategory::latest()->get();
+        return view('backend.agent.sisters.medica.edit', compact('categories', 'product'));
     }
 
     public function storeProduct(Request $request)
@@ -154,8 +155,15 @@ class MedicaController extends Controller
         $product->title = $request->title;
         $product->price = $request->price;
         $product->descount_price = $request->descount_price;
-        $product->weight = $request->weight ? json_encode($request->weight) : null;
-        $product->size = $request->size ? json_encode($request->size) : null;
+        $product->weight = $request->weight
+            ? json_encode(array_map('trim', explode(',', $request->weight)))
+            : null;
+
+        $product->size = $request->size
+            ? json_encode(array_map('trim', explode(',', $request->size)))
+            : null;
+
+
         $product->description = $request->description;
         $product->image = $imagePath;
         $product->save();
@@ -174,8 +182,15 @@ class MedicaController extends Controller
         $product->title = $request->title;
         $product->price = $request->price;
         $product->descount_price = $request->descount_price;
-        $product->weight = $request->weight ? json_encode($request->weight) : null;
-        $product->size = $request->size ? json_encode($request->size) : null;
+        $product->weight = $request->weight
+            ? json_encode(array_map('trim', explode(',', $request->weight)))
+            : null;
+
+        $product->size = $request->size
+            ? json_encode(array_map('trim', explode(',', $request->size)))
+            : null;
+
+
         $product->description = $request->description;
         $product->save();
 

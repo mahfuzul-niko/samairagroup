@@ -18,6 +18,7 @@ use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\medicaCategory;
 use App\Models\medicaPartner;
+use App\Models\medicaProduct;
 use App\Models\medicaReview;
 use App\Models\News;
 use App\Models\Partner;
@@ -114,10 +115,12 @@ class PagesController extends Controller
      {
           $partners = medicaPartner::latest()->get();
           $reviews = medicaReview::latest()->get();
+          $categories = medicaCategory::latest()->get();
+          $products = medicaProduct::latest()->take(6)->get();
+
 
           $banners = Banner::latest()->where('key', 'medica')->get();
-          $categories = medicaCategory::latest()->get();
-          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews'));
+          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews','products'));
      }
 
 
@@ -250,7 +253,7 @@ class PagesController extends Controller
      public function newssingle(News $news)
      {
           $newses = News::latest()->take(6);
-          return view('frontend.content.news-and-events-single', compact('news','newses'));
+          return view('frontend.content.news-and-events-single', compact('news', 'newses'));
      }
      public function carrer()
      {
@@ -259,9 +262,9 @@ class PagesController extends Controller
 
 
 
-     public function samairamedicasingleproduct()
+     public function medicaProduct(medicaProduct $product)
      {
-          return view('frontend.samairamedica.single-product');
+          return view('frontend.samairamedica.single-product',compact('product'));
      }
 
      public function samairamedicaShop()

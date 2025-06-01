@@ -58,7 +58,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/joypur-homes-limited/single-property/{property:slug}', 'jphomesSingleProperty')->name('jphomes.SingleProperty');
     //medica
     Route::get('/samaira-medica-limited', 'samairamedica')->name('medica');
-    Route::get('/samaira-medica-limited/single-product', 'samairamedicasingleproduct')->name('medica.singleproduct');
+    Route::get('/samaira-medica-limited/product/{product}', 'medicaProduct')->name('medica.product');
     Route::get('/samaira-medica-limited/about-us', 'samairamedicaAbout')->name('medica.about');
     Route::get('/samaira-medica-limited/contact-us', 'samairamedicaContact')->name('medica.contact');
     Route::get('/samaira-medica-limited/shop', 'samairamedicaShop')->name('medica.shop');
