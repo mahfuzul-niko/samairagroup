@@ -285,9 +285,9 @@
   }
   .rg-navbar .mini-cart-icon span{
     position: absolute;
-    top: -50%;
-    background: #0cb1ee;
-    padding: 0px 7px;
+    top: -64%;
+    background: red;
+    padding: 0px 4px;
     border-radius: 50px;
     font-size: 12px;
     color: white;
