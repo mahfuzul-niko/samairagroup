@@ -26,7 +26,10 @@
 </head>
 
 <body>
-
+    @php
+        $weights = json_decode($product->weight, true);
+        $sizes = json_decode($product->size, true);
+    @endphp
     <!-- Top Header Section Start -->
     <x-layouts.header />
     <!-- Top Header Section End -->
@@ -95,18 +98,18 @@
                 <div class="product-details enhanced-details">
 
                     <div class="d-flex align-items-center justify-content-between mb-2">
-                        <h2 class="product-title mb-1">Embrace Sideboard</h2>
+                        <h2 class="product-title mb-1">{{ $product->title }}</h2>
                         <div class="icon-group">
 
                             <button class="icon-btn share-btn" id="shareBtn" title="Share"><i
                                     class="fa fa-share-alt"></i></button>
                         </div>
                     </div>
-                   
+
                     <div class="product-meta-row d-flex align-items-start mb-3 flex-wrap">
                         <div class="price-col d-flex flex-column align-items-start me-4">
-                            <span class="product-price-new main-price">$71.56</span>
-                            <span class="product-price-old">$71.56</span>
+                            <span class="product-price-new main-price">{{ $product->descount_price }} Taka</span>
+                            <span class="product-price-old">{{ $product->price }} Taka</span>
                         </div>
 
                     </div>
@@ -115,11 +118,13 @@
                     <div class="mb-4">
                         <div class="mb-2 choose-label">Choose a Weight</div>
                         <div class="size-options enhanced-sizes" id="weightOptions">
-                            <label><input type="radio" name="weight" value="Small" checked> Small</label>
-                            <label><input type="radio" name="weight" value="Medium"> Medium</label>
-                            <label><input type="radio" name="weight" value="Large"> Large</label>
-                            <label><input type="radio" name="weight" value="Extra Large"> Extra Large</label>
-                            <label><input type="radio" name="weight" value="XXL"> XXL</label>
+                            @foreach ($weights as $weight)
+                                <label>
+                                    <input type="radio" name="weight" value="{{ $weight }}"
+                                        @if ($loop->first) checked @endif>
+                                    {{ $weight }}
+                                </label>
+                            @endforeach
                         </div>
                     </div>
 
@@ -129,13 +134,16 @@
                     <div class="mb-4">
                         <div class="mb-2 choose-label">Choose a Size</div>
                         <div class="size-options enhanced-sizes" id="quantityOptions">
-                            <label><input type="radio" name="quantity" value="Small" checked> Small</label>
-                            <label><input type="radio" name="quantity" value="Medium"> Medium</label>
-                            <label><input type="radio" name="quantity" value="Large"> Large</label>
-                            <label><input type="radio" name="quantity" value="Extra Large"> Extra Large</label>
-                            <label><input type="radio" name="quantity" value="XXL"> XXL</label>
+                            @foreach ($sizes as $size)
+                                <label>
+                                    <input type="radio" name="size" value="{{ $size }}"
+                                        @if ($loop->first) checked @endif>
+                                    {{ $size }}
+                                </label>
+                            @endforeach
                         </div>
                     </div>
+
 
                     <div class="d-flex align-items-center mb-4">
                         <div class="quantity-box enhanced-qty me-3">
@@ -150,7 +158,7 @@
                         <div class="delivery-card free-delivery mb-2">
                             <i class="fa fa-truck me-2"></i>
                             <div>
-                                <span class="delivery-title">Free Delivery</span>
+                                <span class="delivery-title">Fase Delivery</span>
                                 <span class="delivery-desc">Enter your Postal code for Delivery Availability</span>
                             </div>
                         </div>
@@ -158,8 +166,7 @@
                             <i class="fa fa-undo me-2"></i>
                             <div>
                                 <span class="delivery-title">Return Delivery</span>
-                                <span class="delivery-desc">Free 30 days Delivery Return. <a href="#"
-                                        class="delivery-link">Details</a></span>
+                                <span class="delivery-desc">Free 30 days Delivery Return.
                             </div>
                         </div>
                     </div>
@@ -172,23 +179,22 @@
                     <button class="nav-link active" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc"
                         type="button" role="tab">Description</button>
                 </li>
-                <li class="nav-item" role="presentation">
+                {{-- <li class="nav-item" role="presentation">
                     <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews"
                         type="button" role="tab">Reviews</button>
-                </li>
+                </li> --}}
             </ul>
             <div class="tab-content product-tab-content" id="productTabContent">
                 <!-- Description Tab -->
                 <div class="tab-pane fade show active" id="desc" role="tabpanel">
                     <div class="product-description p-4">
                         <h5>Product Description</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu
-                            consectetur consectetur, nisl nisi consectetur nisi, eu consectetur nisl nisi euismod nisi.
+                        <p>{{ $product->description }}
                         </p>
                     </div>
                 </div>
                 <!-- Reviews Tab -->
-                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                {{-- <div class="tab-pane fade" id="reviews" role="tabpanel">
                     <div class="reviews-section p-4">
                         <h5 class="mb-3">Customers Feedback</h5>
                         <div class="review-summary-card d-flex mb-4">
@@ -325,7 +331,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -335,140 +341,24 @@
         <h3 class="mb-4 fw-bold">Similar Items You Might Also Like</h3>
         <div class="swiper similar-items-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/product1.png"
-                                alt="TDX Sinkers"></div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers</div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available</div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
+                @foreach ($prods as $prod)
+                    <div class="swiper-slide">
+                        <div class="similar-card">
+                            <div class="similar-card-img"><img
+                                    src="{{ $prod->image ? Storage::url($prod->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="TDX Sinkers"></div>
+                            <div class="similar-card-body">
+                                <div class="similar-title">{{$prod->title}}</div>
+                                <div class="similar-price">₹ 675.00</div>
+                                <div class="similar-price text-decoration-line-through fw-light text-secondary" style="font-size: 14px">₹ 675.00</div>
+                                <div class="similar-sub">Check it out now <a href="{{route('page.medica.product',$prod)}}">click here</a>
+                                </div>
+                               
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/product2.png"
-                                alt="TDX Sinkers"></div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers hello i am here a long product title given here do
-                                not know what to write here</div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available </div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/product2.png"
-                                alt="TDX Sinkers"></div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers available now </div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available</div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/product1.png"
-                                alt="TDX Sinkers"></div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers</div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available</div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/similar/4.png" alt="TDX Sinkers">
-                        </div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers</div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available</div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/similar/5.png" alt="TDX Sinkers">
-                        </div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers</div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available</div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="similar-card">
-                        <div class="similar-card-img"><img
-                                src="{{ asset('assets/frontassets/') }}/images/similar/6.png" alt="TDX Sinkers">
-                        </div>
-                        <button class="similar-fav-btn"><i class="fa fa-heart"></i></button>
-                        <div class="similar-card-body">
-                            <div class="similar-title">TDX Sinkers</div>
-                            <div class="similar-price">₹ 675.00</div>
-                            <div class="similar-sub">5 types of shoos available</div>
-                            <div class="similar-rating"><span class="star"><i class="fa fa-star"></i></span> <span
-                                    class="star"><i class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="star"><i
-                                        class="fa fa-star"></i></span> <span class="similar-rating-count">(121)</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
             <div class="swiper-button-prev similar-swiper-prev"></div>
             <div class="swiper-button-next similar-swiper-next"></div>

@@ -132,12 +132,16 @@
             <div class="swiper best-selling-swiper">
                 <div class="swiper-wrapper">
                     @foreach ($products as $product)
+                        @php
+                            $weights = json_decode($product->weight, true);
+                            $sizes = json_decode($product->size, true);
+                        @endphp
                         <!-- Product Card Start -->
                         <div class="swiper-slide">
                             <div class="product-card">
                                 <div class="product-img position-relative">
                                     <span class="product-badge">{{ $product->category->title }}</span>
-                                    <img src="{{ $product->image ? Storage::url( $product->image) : asset('assets/img/no-profile.png') }}"
+                                    <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                                         alt="Product" class="img-fluid">
 
                                      <button type="submit" class="add-to-cart-btn">Add to Cart</button>
@@ -145,14 +149,15 @@
                                 <div class="product-info">
                                     <a href="" class="text-decoration-none text-dark">
                                         <h4 class="product-title">
-                                            {{$product->description}}
+                                            {{ $product->description }}
                                         </h4>
                                     </a>
                                     <div class="price">
-                                        <span class="new-price">{{$product->descount_price}} Taka</span>
-                                        <span class="old-price">{{$product->price}} Taka</span>
+                                        <span class="new-price">{{ $product->descount_price }} Taka</span>
+                                        <span class="old-price">{{ $product->price }} Taka</span>
                                     </div>
-                                    <a href="{{route('page.medica.product',$product)}}" class="buy-now-btn">Buy Now</a>
+                                    <a href="{{ route('page.medica.product', $product) }}" class="buy-now-btn">Buy
+                                        Now</a>
                                 </div>
                             </div>
                         </div>

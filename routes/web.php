@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PagesController;
@@ -94,6 +95,11 @@ Route::group(['controller' => PropertyController::class, 'as' => 'property.'], f
     Route::post('/store/agent', 'storeAgent')->name('store.agent');
     Route::post('/store/comment', 'storeComment')->name('store.comment');
     Route::post('/store/order', 'storeOrder')->name('store.order');
+});
+Route::group(['controller' => CartController::class, 'as' => 'cart.'], function () {
+    Route::post('/carta/add', 'add')->name('add');
+    Route::post('/carta/remove', 'remove')->name('remove');
+
 });
 
 Auth::routes();

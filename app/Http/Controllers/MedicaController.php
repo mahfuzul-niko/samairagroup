@@ -8,6 +8,7 @@ use App\Models\Banner;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\medicaCategory;
+use App\Models\medicaImages;
 use App\Models\medicaPartner;
 use App\Models\medicaProduct;
 use App\Models\medicaReview;
@@ -204,6 +205,38 @@ class MedicaController extends Controller
         $product->delete();
         return redirect()->back()->with('success', 'Product deleted successfully.');
     }
+    //storeImages
+    public function storeImages(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required|exists:medica_products,id',
 
+        ]);
+
+        if ($request->hasFile('multi_images')) {
+            foreach ($request->file('multi_images') as $image) {
+                $path = $image->store('product_id', 'public');
+
+                medicaImages::create([
+                    'product_id' => $request->product_id,
+                    'image' => $path,
+                ]);
+            }
+        }
+
+        return back()->with('success', 'Images uploaded successfully.');
+    }
+    public function deleteImage($id)
+    {
+        $image = medicaImages::findOrFail($id);
+
+        // Delete the file from storage
+        Storage::disk('public')->delete($image->image);
+
+        // Delete the database record
+        $image->delete();
+
+        return back()->with('success', 'Image deleted successfully.');
+    }
 
 }

@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Descount price</label>
-                                <input type="number" class="form-control" name="descount_price"
+                                <input type="number" class="form-control" name="descount_price" required
                                     value="{{ $product->descount_price }}">
                             </div>
                         </div>
@@ -81,5 +81,52 @@
                 </form>
             </div>
         </div>
+    </section>
+
+    <section class="multi-image">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Product Images
+                </div>
+                <div class="row g-2">
+                    @forelse ($product->images as $image)
+                        <div class="col-md-4 position-relative">
+                            <img src="{{ asset('storage/' . $image->image) }}" class="img-fluid rounded" alt=""
+                                style="height: 200px; object-fit: cover; width: 100%;">
+
+                            <form action="{{ route('agent.medica.delete.images', $image->id) }}" method="POST"
+                                onsubmit="return confirm('Are you sure you want to delete this image?')"
+                                class="position-absolute top-0 end-0 m-2">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger p-1" title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    @empty
+                        <div class="col-md-4">
+                            <img src="{{ asset('assets/img/no-profile.png') }}" class="img-fluid" alt="">
+                        </div>
+                    @endforelse
+                </div>
+
+                <div class="card-title">
+                    Upload Multi Images
+                </div>
+                <form action="{{ route('agent.medica.store.images') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                    <div class="mb-3">
+                        <label for="multi_images">Multi Images</label>
+                        <input type="file" class="form-control" id="multi_images" name="multi_images[]" multiple>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+
     </section>
 </x-app>
