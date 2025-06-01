@@ -278,6 +278,21 @@
     box-shadow: none;
     /* backdrop-filter: blur(6px); */
   }
+  .rg-navbar .mini-cart-icon {
+    position: relative;
+    color: var(--text-color) !important;
+    text-decoration: none;
+  }
+  .rg-navbar .mini-cart-icon span{
+    position: absolute;
+    top: -50%;
+    background: #0cb1ee;
+    padding: 0px 7px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: white;
+    right: -20px;
+  }
   .rg-navbar-container {
     max-width: 1516px;
     margin: 0 auto;
@@ -428,6 +443,7 @@
   .rg-mega-menu-content img:hover {
     transform: scale(1.08);
   }
+  
   @media (max-width: 1920px) {
     .rg-navbar-container{
       max-width: 1900px !important;
