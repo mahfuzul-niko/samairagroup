@@ -37,7 +37,10 @@
     <x-layouts.navbar>
 
         <x-slot name="nav">
-            <i class="fa-solid fa-cart-shopping"></i>
+            <a class="mini-cart-icon" href="">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="pro-count blue productCount">0</span>
+            </a>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
