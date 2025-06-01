@@ -117,12 +117,21 @@ class PagesController extends Controller
           $reviews = medicaReview::latest()->get();
           $categories = medicaCategory::latest()->get();
           $products = medicaProduct::latest()->take(6)->get();
-
-
+          $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'medica')->get();
-          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews','products'));
+          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
      }
-
+     public function medicaProduct(medicaProduct $product)
+     {
+          $totalItems = collect(session('cart'))->sum('quantity');
+          $prods = medicaProduct::where('category_id', $product->category_id)->take(9)->get();
+          return view('frontend.samairamedica.single-product', compact('product', 'prods', 'totalItems'));
+     }
+     public function medicaCheckout()
+     {
+          $totalItems = collect(session('cart'))->sum('quantity');
+          return view('frontend.samairamedica.checkout',compact('totalItems'));
+     }
 
      //abouts
      public function samairagroupAbout()
@@ -262,21 +271,12 @@ class PagesController extends Controller
 
 
 
-     public function medicaProduct(medicaProduct $product)
-     {
-          $prods = medicaProduct::where('category_id' , $product->category_id)->take(9)->get();
-          return view('frontend.samairamedica.single-product',compact('product','prods'));
-     }
-
      public function samairamedicaShop()
      {
           return view('frontend.samairamedica.shop');
      }
 
-     public function samairamedicaCheckout()
-     {
-          return view('frontend.samairamedica.checkout');
-     }
+
 
      public function samairajobs()
      {

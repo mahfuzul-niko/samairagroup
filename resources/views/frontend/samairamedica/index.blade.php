@@ -39,7 +39,7 @@
         <x-slot name="nav">
             <a class="mini-cart-icon" href="">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span class="pro-count blue productCount">0</span>
+                <span class="pro-count blue productCount">{{ $totalItems }}</span>
             </a>
         </x-slot>
     </x-layouts.navbar>
@@ -143,8 +143,17 @@
                                     <span class="product-badge">{{ $product->category->title }}</span>
                                     <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                                         alt="Product" class="img-fluid">
-
-                                     <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                                    <form action="{{ route('cart.add') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                                        <input type="hidden" name="weight"
+                                            value="{{ is_array($weights) && isset($weights[0]) ? $weights[0] : '' }}">
+                                        <input type="hidden" name="size"
+                                            value="{{ is_array($sizes) && isset($sizes[0]) ? $sizes[0] : '' }}">
+                                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
                                 </div>
                                 <div class="product-info">
                                     <a href="" class="text-decoration-none text-dark">
@@ -158,6 +167,7 @@
                                     </div>
                                     <a href="{{ route('page.medica.product', $product) }}" class="buy-now-btn">Buy
                                         Now</a>
+
                                 </div>
                             </div>
                         </div>

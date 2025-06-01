@@ -63,7 +63,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samaira-medica-limited/about-us', 'samairamedicaAbout')->name('medica.about');
     Route::get('/samaira-medica-limited/contact-us', 'samairamedicaContact')->name('medica.contact');
     Route::get('/samaira-medica-limited/shop', 'samairamedicaShop')->name('medica.shop');
-    Route::get('/samaira-medica-limited/checkout', 'samairamedicaCheckout')->name('medica.checkout');
+    Route::get('/samaira-medica-limited/checkout', 'medicaCheckout')->name('medica.checkout');
 
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
