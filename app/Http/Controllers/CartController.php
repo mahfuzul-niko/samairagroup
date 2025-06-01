@@ -8,9 +8,11 @@ class CartController extends Controller
 {
     public function add(Request $request)
     {
-        
+
         $productId = $request->product_id;
+        $productName = $request->product_name;
         $productPrice = $request->price;
+        $productImage = $request->image;
         $productWeight = $request->weight;
         $productSize = $request->size;
         $productQuantity = $request->quantity ?? 1; // default to 1 if not sent
@@ -24,7 +26,9 @@ class CartController extends Controller
         } else {
             $cart[$variantKey] = [
                 'product_id' => $productId,
+                'name' => $productName,
                 'price' => $productPrice,
+                'image' => $productImage,
                 'quantity' => $productQuantity,
                 'weight' => $productWeight,
                 'size' => $productSize,

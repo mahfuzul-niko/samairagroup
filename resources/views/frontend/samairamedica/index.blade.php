@@ -37,7 +37,7 @@
     <x-layouts.navbar>
 
         <x-slot name="nav">
-            <a class="mini-cart-icon" href="">
+            <a class="mini-cart-icon" href="{{route('page.medica.checkout')}}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="pro-count blue productCount">{{ $totalItems }}</span>
             </a>
@@ -146,7 +146,8 @@
                                     <form action="{{ route('cart.add') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                                        <input type="hidden" name="product_name" value="{{ $product->title }}">
+                                        <input type="hidden" name="image" value="{{ $product->image }}">
                                         <input type="hidden" name="price" value="{{ $product->descount_price }}">
                                         <input type="hidden" name="weight"
                                             value="{{ is_array($weights) && isset($weights[0]) ? $weights[0] : '' }}">

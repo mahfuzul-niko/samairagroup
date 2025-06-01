@@ -129,9 +129,19 @@ class PagesController extends Controller
      }
      public function medicaCheckout()
      {
-          $totalItems = collect(session('cart'))->sum('quantity');
-          return view('frontend.samairamedica.checkout',compact('totalItems'));
+          $cart = session()->get('cart', []);
+          $grandTotal = 0;
+
+          foreach ($cart as $id => $item) {
+               $cart[$id]['subtotal'] = $item['price'] * $item['quantity'];
+               $grandTotal += $cart[$id]['subtotal'];
+          }
+
+          $totalItems = collect($cart)->sum('quantity');
+
+          return view('frontend.samairamedica.checkout', compact('cart', 'totalItems', 'grandTotal'));
      }
+
 
      //abouts
      public function samairagroupAbout()

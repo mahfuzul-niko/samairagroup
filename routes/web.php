@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
@@ -97,8 +98,12 @@ Route::group(['controller' => PropertyController::class, 'as' => 'property.'], f
     Route::post('/store/order', 'storeOrder')->name('store.order');
 });
 Route::group(['controller' => CartController::class, 'as' => 'cart.'], function () {
-    Route::post('/carta/add', 'add')->name('add');
-    Route::post('/carta/remove', 'remove')->name('remove');
+    Route::post('/cart/add', 'add')->name('add');
+    Route::post('/cart/remove', 'remove')->name('remove');
+
+});
+Route::group(['controller' => OrderController::class, 'as' => 'order.'], function () {
+    Route::post('/order/store', 'store')->name('store');
 
 });
 
