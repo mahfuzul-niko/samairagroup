@@ -596,7 +596,7 @@
     transition: all 0.3s;
     white-space: nowrap;
     background: #5C50E3;
-    color: white;
+    color: white !important;
     font-size: 14px;
   }
 
