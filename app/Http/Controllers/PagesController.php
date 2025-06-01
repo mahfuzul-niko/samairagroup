@@ -264,7 +264,8 @@ class PagesController extends Controller
 
      public function medicaProduct(medicaProduct $product)
      {
-          return view('frontend.samairamedica.single-product',compact('product'));
+          $prods = medicaProduct::where('category_id' , $product->category_id)->take(9)->get();
+          return view('frontend.samairamedica.single-product',compact('product','prods'));
      }
 
      public function samairamedicaShop()

@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Descount price</label>
-                                <input type="number" class="form-control" name="descount_price"
+                                <input type="number" class="form-control" name="descount_price" required
                                     value="{{ $product->descount_price }}">
                             </div>
                         </div>
