@@ -285,13 +285,18 @@
   }
   .rg-navbar .mini-cart-icon span{
     position: absolute;
-    top: -50%;
-    background: #0cb1ee;
-    padding: 0px 7px;
+    top: -64%;
+    background: red;
+    padding: 0px 4px;
     border-radius: 50px;
-    font-size: 14px;
+    font-size: 12px;
     color: white;
-    right: -20px;
+    right: -17px;
+    height: 22px;
+    width: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .rg-navbar-container {
     max-width: 1516px;

@@ -645,20 +645,24 @@
     function pfGoToNext() {
       if(pfCurrent < pfCards.length - pfCardsPerView) {
         pfCurrent++;
-      } else {
-        pfCurrent = 0;
-      }
-      updatePfSlider();
+         updatePfSlider();
       updatePfDots();
+      } 
+      // else {
+      //   pfCurrent = 0;
+      // }
+     
     }
     function pfGoToPrev() {
       if(pfCurrent > 0) {
         pfCurrent--;
-      } else {
-        pfCurrent = pfCards.length - pfCardsPerView;
-      }
-      updatePfSlider();
+        updatePfSlider();
       updatePfDots();
+      } 
+      // else {
+      //   pfCurrent = pfCards.length - pfCardsPerView;
+      // }
+      
     }
     function pfStartAutoSlide() {
       if(pfAutoSlide) clearInterval(pfAutoSlide);

@@ -71,6 +71,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
     // jobs
     Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('samairajobs');
+    // princess gold
+    Route::get('/princess-gold-and-diamond-cottation', 'princessgold')->name('princessgold');
 
 
 

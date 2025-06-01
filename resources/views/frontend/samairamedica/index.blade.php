@@ -140,7 +140,7 @@
                                     <img src="{{ $product->image ? Storage::url( $product->image) : asset('assets/img/no-profile.png') }}"
                                         alt="Product" class="img-fluid">
 
-                                    <a href="facebook.com" class="add-to-cart-btn">Add to Cart</a>
+                                     <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                                 </div>
                                 <div class="product-info">
                                     <a href="" class="text-decoration-none text-dark">
