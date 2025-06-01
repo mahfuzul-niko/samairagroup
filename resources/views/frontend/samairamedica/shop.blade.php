@@ -73,11 +73,7 @@
                 <div class="product-img position-relative">
                   <span class="product-badge">NEW</span>
                   <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/product1.png" alt="Product" class="img-fluid">
-                  <!-- <div class="card-icons">
-                    <a href="#"><i class="far fa-heart"></i></a>
-                    <a href="#"><i class="far fa-eye"></i></a>
-                  </div> -->
-                  <a href="facebook.com" class="add-to-cart-btn">Add to Cart</a>
+                  <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                 </div>
                 <div class="product-info">
                   <a href="" class="text-decoration-none text-dark"><h4 class="product-title">do you know about this product? The north coat The north coat The north coat The north coat The north coat The north coatThe north coat The north coat The north coat The north coat The north coat</h4></a>

@@ -2453,6 +2453,9 @@ body{
 .checkout-summary{
   background: var(--checkout-summary);
 }
+.checkout-summary .delete-product-btn{
+  font-size: 1.7rem;
+}
 .checkout-summary .product-image{
   width: 80px; height: 80px; background: var(--swiper-pagination-color); object-fit: cover;
 }

@@ -53,6 +53,11 @@
             <h4 class="mb-4">Order summary</h4>
             <div class="mb-4">
               <div class="d-flex align-items-start mb-3 rounded p-2">
+                <div class="d-flex align-items-center justify-content-center">
+                  <a class="btn btn-link p-0 me-2 delete-product-btn text-white mt-3"  title="Delete">
+                    <i class="fas fa-times"></i>
+                  </a>
+                </div>
                 <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/checkout/1.png" alt="Colorful racing shoes" class="rounded product-image">
                 <div class="ms-3 text-white w-100">
                   <div class="fw-bold mb-2">Colorful racing shoes</div>
@@ -62,6 +67,11 @@
                 </div>
               </div>
               <div class="d-flex align-items-start mb-3 rounded p-2">
+                <div class="d-flex align-items-center justify-content-center">
+                  <a class="btn btn-link p-0 me-2 delete-product-btn text-white mt-3"  title="Delete">
+                    <i class="fas fa-times"></i>
+                  </a>
+                </div>
                 <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/checkout/2.jpg" alt="Basket shoes" class="rounded product-image">
                 <div class="ms-3 text-white w-100">
                   <div class="fw-bold mb-2">Basket shoes</div>
