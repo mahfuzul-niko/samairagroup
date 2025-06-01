@@ -38,7 +38,10 @@
     <x-layouts.navbar>
 
         <x-slot name="nav">
-
+            <a class="mini-cart-icon" href="">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="pro-count blue productCount">{{ $totalItems }}</span>
+            </a>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -48,44 +51,27 @@
             <!-- Left: Image Slider -->
             <div class="col-md-6">
                 <div class="product-image-slider-container">
-                    <div class="main-image">
-                        <img id="mainProductImage"
-                            src="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/img.png"
+                    <div class="main-image mt-5">
+                        <img id="mainProductImage" class=" rounded"
+                            src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                             alt="Product Image" />
                     </div>
                     <div class="thumbnail-images">
                         <div class="swiper thumbnail-swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide"><img class="thumbnail selected"
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/img.png"
+                                        src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                                         alt="Thumbnail 1"
-                                        data-img="{{ asset('assets/frontassets/') }}/images/samaira-medica/single-product/img.png" />
+                                        data-img="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}" />
                                 </div>
-                                <div class="swiper-slide"><img class="thumbnail"
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/2.png"
-                                        alt="Thumbnail 2"
-                                        data-img="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/2.png" />
-                                </div>
-                                <div class="swiper-slide"><img class="thumbnail"
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png"
-                                        alt="Thumbnail 3"
-                                        data-img="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png" />
-                                </div>
-                                <div class="swiper-slide"><img class="thumbnail"
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png"
-                                        alt="Thumbnail 3"
-                                        data-img="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png" />
-                                </div>
-                                <div class="swiper-slide"><img class="thumbnail"
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png"
-                                        alt="Thumbnail 3"
-                                        data-img="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png" />
-                                </div>
-                                <div class="swiper-slide"><img class="thumbnail"
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png"
-                                        alt="Thumbnail 3"
-                                        data-img="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/3.png" />
-                                </div>
+                                @foreach ($product->Images as $image)
+                                    <div class="swiper-slide"><img class="thumbnail"
+                                            src="{{ $image->image ? Storage::url($image->image) : asset('assets/img/no-profile.png') }}"
+                                            alt="Thumbnail 2"
+                                            data-img="{{ $image->image ? Storage::url($image->image) : asset('assets/img/no-profile.png') }}" />
+                                    </div>
+                                @endforeach
+
                             </div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
@@ -113,47 +99,54 @@
                         </div>
 
                     </div>
-                    <hr>
-                    <!-- Weight Options -->
-                    <div class="mb-4">
-                        <div class="mb-2 choose-label">Choose a Weight</div>
-                        <div class="size-options enhanced-sizes" id="weightOptions">
-                            @foreach ($weights as $weight)
-                                <label>
-                                    <input type="radio" name="weight" value="{{ $weight }}"
-                                        @if ($loop->first) checked @endif>
-                                    {{ $weight }}
-                                </label>
-                            @endforeach
+                    <form action="{{ route('cart.add') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                        <hr>
+                        <!-- Weight Options -->
+                        <div class="mb-4">
+                            <div class="mb-2 choose-label">Choose a Weight</div>
+                            <div class="size-options enhanced-sizes" id="weightOptions">
+                                @foreach ($weights as $weight)
+                                    <label>
+                                        <input type="radio" name="weight" value="{{ $weight }}"
+                                            @if ($loop->first) checked @endif>
+                                        {{ $weight }}
+                                    </label>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
 
-                    <hr>
+                        <hr>
 
-                    <!-- Quantity Options -->
-                    <div class="mb-4">
-                        <div class="mb-2 choose-label">Choose a Size</div>
-                        <div class="size-options enhanced-sizes" id="quantityOptions">
-                            @foreach ($sizes as $size)
-                                <label>
-                                    <input type="radio" name="size" value="{{ $size }}"
-                                        @if ($loop->first) checked @endif>
-                                    {{ $size }}
-                                </label>
-                            @endforeach
+                        <!-- Quantity Options -->
+                        <div class="mb-4">
+                            <div class="mb-2 choose-label">Choose a Size</div>
+                            <div class="size-options enhanced-sizes" id="quantityOptions">
+                                @foreach ($sizes as $size)
+                                    <label>
+                                        <input type="radio" name="size" value="{{ $size }}"
+                                            @if ($loop->first) checked @endif>
+                                        {{ $size }}
+                                    </label>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
 
 
-                    <div class="d-flex align-items-center mb-4">
-                        <div class="quantity-box enhanced-qty me-3">
-                            <button class="qty-btn" id="qty-minus">-</button>
-                            <input type="text" id="qty-input" value="1" readonly>
-                            <button class="qty-btn" id="qty-plus">+</button>
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="quantity-box enhanced-qty me-3">
+                                <a class="qty-btn  text-decoration-none "  style="cursor: pointer" id="qty-minus">-</a>
+                                <input type="text" id="qty-input" name="quantity" value="1" readonly>
+                                <a class="qty-btn   text-decoration-none  " style="cursor: pointer"  id="qty-plus">+</a>
+                            </div>
+                            <button class="btn btn-primary add-to-cart-btn enhanced-cart-btn"><i
+                                    class="fa fa-shopping-cart me-2"></i>Add To Cart</button>
                         </div>
-                        <button class="btn btn-primary add-to-cart-btn enhanced-cart-btn"><i
-                                class="fa fa-shopping-cart me-2"></i>Order Now</button>
-                    </div>
+
+                    </form>
                     <div class="delivery-info enhanced-delivery-info">
                         <div class="delivery-card free-delivery mb-2">
                             <i class="fa fa-truck me-2"></i>
@@ -348,12 +341,14 @@
                                     src="{{ $prod->image ? Storage::url($prod->image) : asset('assets/img/no-profile.png') }}"
                                     alt="TDX Sinkers"></div>
                             <div class="similar-card-body">
-                                <div class="similar-title">{{$prod->title}}</div>
+                                <div class="similar-title">{{ $prod->title }}</div>
                                 <div class="similar-price">₹ 675.00</div>
-                                <div class="similar-price text-decoration-line-through fw-light text-secondary" style="font-size: 14px">₹ 675.00</div>
-                                <div class="similar-sub">Check it out now <a href="{{route('page.medica.product',$prod)}}">click here</a>
+                                <div class="similar-price text-decoration-line-through fw-light text-secondary"
+                                    style="font-size: 14px">₹ 675.00</div>
+                                <div class="similar-sub">Check it out now <a
+                                        href="{{ route('page.medica.product', $prod) }}">click here</a>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>

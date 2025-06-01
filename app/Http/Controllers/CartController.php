@@ -8,25 +8,31 @@ class CartController extends Controller
 {
     public function add(Request $request)
     {
+        
         $productId = $request->product_id;
         $productPrice = $request->price;
         $productWeight = $request->weight;
         $productSize = $request->size;
+        $productQuantity = $request->quantity ?? 1; // default to 1 if not sent
+
+        $variantKey = $productId . '_' . $productWeight . '_' . $productSize;
 
         $cart = session()->get('cart', []);
 
-        if (isset($cart[$productId])) {
-            $cart[$productId]['quantity']++;
+        if (isset($cart[$variantKey])) {
+            $cart[$variantKey]['quantity'] += $productQuantity;
         } else {
-            $cart[$productId] = [
+            $cart[$variantKey] = [
+                'product_id' => $productId,
                 'price' => $productPrice,
-                'quantity' => 1,
+                'quantity' => $productQuantity,
                 'weight' => $productWeight,
                 'size' => $productSize,
             ];
         }
 
         session()->put('cart', $cart);
+
 
         return back()->with('success', 'Product added to cart!');
     }
