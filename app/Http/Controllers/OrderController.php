@@ -53,13 +53,15 @@ class OrderController extends Controller
             $order->products()->attach($item['product_id'], [
                 'quantity' => $item['quantity'],
                 'price' => $item['price'],
+                'weight' => $item['weight'] ?? null,
+                'size' => $item['size'] ?? null,
             ]);
         }
 
 
         DB::commit();
 
-        session()->forget('cart'); 
+        session()->forget('cart');
 
         return back()->with('success', 'Order placed successfully!');
 

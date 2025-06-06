@@ -141,8 +141,13 @@ class PagesController extends Controller
 
           return view('frontend.samairamedica.checkout', compact('cart', 'totalItems', 'grandTotal'));
      }
-
-
+     //shop
+     public function samairamedicaShop()
+     {
+          $totalItems = collect(session('cart'))->sum('quantity');
+          $categories = medicaCategory::latest()->get();
+          return view('frontend.samairamedica.shop', compact('categories', 'totalItems'));
+     }
      //abouts
      public function samairagroupAbout()
      {
@@ -281,10 +286,7 @@ class PagesController extends Controller
 
 
 
-     public function samairamedicaShop()
-     {
-          return view('frontend.samairamedica.shop');
-     }
+
 
 
 

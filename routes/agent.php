@@ -256,9 +256,12 @@ Route::middleware(['role:agent,admin'])
             Route::post('/samaira-medica-limited/store/products', 'storeProduct')->name('store.product');
             Route::post('/samaira-medica-limited/update/products/{product}', 'updateProduct')->name('update.product');
             Route::delete('/samaira-medica-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
-
+            
             Route::post('/samaira-medica-limited/store/images', 'storeImages')->name('store.images');
             Route::delete('/samaira-medica-limited/delete/images/{id}', 'deleteImage')->name('delete.images');
+            
+            
+            Route::get('/samaira-medica-limited/product/orders', 'orders')->name('orders');
         });
 
 

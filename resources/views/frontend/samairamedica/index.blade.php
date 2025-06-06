@@ -36,8 +36,11 @@
     <!-- Navbar Start -->
     <x-layouts.navbar>
 
+        <x-slot name="shop">
+            <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
+        </x-slot>
         <x-slot name="nav">
-            <a class="mini-cart-icon" href="{{route('page.medica.checkout')}}">
+            <a class="mini-cart-icon" href="{{ route('page.medica.checkout') }}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="pro-count blue productCount">{{ $totalItems }}</span>
             </a>
@@ -101,7 +104,7 @@
                 <div class="swiper-wrapper">
                     @foreach ($categories as $category)
                         <div class="swiper-slide">
-                            <a href="#" class="text-decoration-none">
+                            <a href="{{ route('page.medica.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
                                     <div class="category-icon">{!! $category->icon !!}</div>
                                     <div class="category-name">{{ $category->title }}</div>
@@ -153,7 +156,7 @@
                                             value="{{ is_array($weights) && isset($weights[0]) ? $weights[0] : '' }}">
                                         <input type="hidden" name="size"
                                             value="{{ is_array($sizes) && isset($sizes[0]) ? $sizes[0] : '' }}">
-                                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                                        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                                     </form>
                                 </div>
                                 <div class="product-info">
@@ -175,7 +178,7 @@
                     @endforeach
                 </div>
             </div>
-            <a href="#" class="view-all-btn">View All Products</a>
+            <a href="{{ route('page.medica.shop') }}" class="view-all-btn">View All Products</a>
         </div>
     </section>
     <!-- Best Selling Products Section End -->

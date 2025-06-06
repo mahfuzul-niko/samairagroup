@@ -35,9 +35,14 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-
+<x-slot name="shop">
+            <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
+        </x-slot>
         <x-slot name="nav">
-
+            <a class="mini-cart-icon" href="{{ route('page.medica.checkout') }}">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="pro-count blue productCount">{{ $totalItems }}</span>
+            </a>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -103,18 +108,18 @@
                             <div class="col-md-12 mb-3">
                                 <label for="first-name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="first-name"
-                                    placeholder="Enter Your Name..." name="name">
+                                    placeholder="Enter Your Name..." name="name" required>
                             </div>
 
                             <div class="col-md-6 mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email"
-                                    placeholder="Enter Your Email..." name="email">
+                                    placeholder="Enter Your Email..." name="email" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="phone" class="form-label">Phone Number</label>
                                 <input type="text" class="form-control" id="phone"
-                                    placeholder="Enter Your Phone Number..." name="phone">
+                                    placeholder="Enter Your Phone Number..." name="phone" required>
                             </div>
                         </div>
                         <h5 class="mb-3 checkout-section-title">Shipping Address</h5>
@@ -122,26 +127,26 @@
                             <div class="col-12 mb-3">
                                 <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address"
-                                    placeholder="Your Complete Address..." name="address">
+                                    placeholder="Your Complete Address..." name="address" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="city" class="form-label">City</label>
                                 <input type="text" class="form-control" id="city" name="city"
-                                    placeholder="Enter Your City...">
+                                    placeholder="Enter Your City..." required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="state" class="form-label">State</label>
-                                <input type="text" class="form-control" id="state" name="state"
+                                <input type="text" class="form-control" id="state" name="state" required
                                     placeholder="Enter Your State...">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="landmark" class="form-label">Landmark</label>
-                                <input type="text" class="form-control" id="landmark" name="landmark"
+                                <input type="text" class="form-control" id="landmark" name="landmark" required
                                     placeholder="Any Landmark (Famous Place Or Mail)">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="postal-code" class="form-label">Postal Code</label>
-                                <input type="text" class="form-control" id="postal-code" name="postal_code"
+                                <input type="text" class="form-control" id="postal-code" name="postal_code" required
                                     placeholder="Zip Code (231216)">
                             </div>
                         </div>
@@ -152,7 +157,7 @@
                                 <input type="radio" name="method" value="cod" class="form-check-input"
                                     checked> <span class="mt-2">Cash on Delivery (COD)</span>
                             </label>
-                            
+
                         </div>
                         <button type="submit" class="btn btn-primary w-50 mt-3 complete-purchase-btn">Complete
                             Purchase</button>

@@ -320,6 +320,12 @@
                         <i class="bi bi-circle"></i><span>Products</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.medica.orders') }}"
+                        class="{{ request()->routeIs('agent.medica.orders') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Orders</span>
+                    </a>
+                </li>
                 
                 <li>
                     <a href="{{ route('agent.medica.reviews') }}"

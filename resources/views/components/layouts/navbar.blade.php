@@ -75,7 +75,7 @@
             Route::is('page.jphomes.about')
             => system_key('samaira_jphomes_logo'),
         default => system_key('samaira_group_logo'),
-         Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
+        Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
             'samaira_medica_logo',
         ),
     };
@@ -94,6 +94,9 @@
         </button>
         <ul class="rg-navbar-menu">
             <li><a href="{{ route('page.home') }}">Home</a></li>
+            @if (isset($shop))
+                {{ $shop }}
+            @endif
 
             <li class="rg-navbar-has-mega" id="brands-trigger">
                 <a href="#">Our Concerns <span class="rg-navbar-chevron"><i
