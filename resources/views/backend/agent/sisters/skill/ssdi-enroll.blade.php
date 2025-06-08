@@ -94,6 +94,7 @@
                         </tr>
                     @endforeach
                 </table>
+                {{ $orders->links() }}
             </div>
         </div>
     </section>

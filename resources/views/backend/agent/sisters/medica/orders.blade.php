@@ -13,9 +13,7 @@
                             <th>Customer Name</th>
                             <th>Customer Phone</th>
                             <th>Total order Price</th>
-                            <th>
-                                Products
-                            </th>
+                            <th>Approve</th>
                             <th>
                                 action
                             </th>
@@ -26,18 +24,25 @@
                                 <td>{{ $order->phone }}</td>
                                 <td>{{ $order->total }}</td>
                                 <td>
-                                    <ul>
-
-                                        @foreach ($order->products as $product)
-                                            <li>{{$product->title}}</li>
-                                            <li>{{$order->size}}</li>
-                                        @endforeach
-                                    </ul>
+                                    <form action="{{ route('agent.medica.order.mark', $order) }}" method="POST">
+                                        @csrf
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" role="switch"
+                                                id="order{{ $order->id }}" name="mark" value="1"
+                                                {{ $order->mark == 1 ? 'checked' : '' }} onchange="this.form.submit()">
+                                            <label class="form-check-label"
+                                                for="order{{ $order->id }}">Approve</label>
+                                        </div>
+                                    </form>
                                 </td>
-                                <td></td>
+                                <td>
+                                    <a href="{{ route('agent.medica.order', $order) }}"
+                                        class="btn btn-sm btn-success"><i class="bi bi-eye"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>
+                    
                 </div>
             </div>
         </div>

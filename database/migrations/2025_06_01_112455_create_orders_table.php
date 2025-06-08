@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->string('method');
             $table->boolean('mark')->default(false);
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

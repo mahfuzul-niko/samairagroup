@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
-    public function products()
+public function products()
 {
     return $this->belongsToMany(medicaProduct::class, 'order_product')
-                ->withPivot('quantity', 'price')
+                ->withPivot(['quantity', 'price', 'size', 'weight'])
                 ->withTimestamps();
 }
+
 
 }
