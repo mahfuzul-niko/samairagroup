@@ -1,5 +1,6 @@
 <x-app>
-    <x-slot name="title">Wecome Medica</x-slot>
+    <x-slot name="title">Wecome Princess Gold and Diamond Cottation</x-slot>
+
     <section class="logo-section">
         <div class="card">
 
@@ -8,10 +9,10 @@
 
                 <div class="text-center my-3">
                     <div class=" d-inline-block" style="height: 150px; width: auto;">
-                        <img src="{{ system_key('samaira_medica_logo') ? Storage::url(system_key('samaira_medica_logo')) : asset('assets/img/no-profile.png') }}"
+                        <img src="{{ system_key('samaira_gold_logo') ? Storage::url(system_key('samaira_gold_logo')) : asset('assets/img/no-profile.png') }}"
                             alt="Group Logo" class="img-fluid rounded " style="height: 200px; object-fit: cover;">
 
-                        <form action="{{ route('agent.system.destroy.image', 'samaira_medica_logo') }}" method="POST"
+                        <form action="{{ route('agent.system.destroy.image', 'samaira_gold_logo') }}" method="POST"
                             class="mt-2">
                             @csrf
                             <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
@@ -25,7 +26,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="key" placeholder="Enter key" class="form-control"
-                        value="samaira_medica_logo" required>
+                        value="samaira_gold_logo" required>
                     <div class="form-group my-3">
                         <label for="value">Logo</label>
                         <input type="file" name="value" class="form-control" required>
@@ -42,7 +43,7 @@
                 <h5 class="card-title">Banner</h5>
                 <form action="{{ route('agent.content.store.banner') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="key" value="medica" class="form-control" required>
+                    <input type="hidden" name="key" value="gold" class="form-control" required>
                     <div class="form-group my-3">
                         <label for="banner">Banner Image</label>
                         <input type="file" name="image" class="form-control" required>
@@ -84,7 +85,7 @@
                             <td>{{ $banner->subtitle }}</td>
                             <td><a href="{{ $banner->url }}" class="btn btn-success btn-sm"><i
                                         class="bi bi-eye"></i></a></td>
-                            
+
                             <td>
                                 <div class="text-nowrap">
                                     <a class="btn btn-primary btn-sm d-inline-block" type="button"
@@ -116,7 +117,7 @@
                                         <form action="{{ route('agent.content.update.banner', $banner) }}"
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
-                                            <input type="hidden" name="key" value="medica" class="form-control"
+                                            <input type="hidden" name="key" value="gold" class="form-control"
                                                 required>
                                             <div class="form-group my-3">
                                                 <label for="banner">Banner Image</label>
@@ -151,51 +152,288 @@
     </section>
 
 
-    <section class="how-it-works">
+    <section class="servises">
         <div class="card">
             <div class="card-body">
-                <div class="card-title">
-                    FREE AND FAST DELIVERY
-                </div>
-                <form action="{{ route('agent.system.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="card-title"> Add Services</div>
+                <form action="{{ route('agent.gold.store.service') }}" method="POST">
                     @csrf
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <select class="form-select" aria-label="Default select example" name="key" required>
-                                <option selected>Select social option</option>
-                                <option value="system_medica_delevery">FREE AND FAST DELIVERY</option>
-                                <option value="system_medica_service">24/7 CUSTOMER SERVICE</option>
-                                <option value="system_medica_money">MONEY BACK GUARANTEE</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" id="inputEmail4" name="value" required>
-                        </div>
+                    <input type="hidden" name="key" value="service">
+                    <div class="mb-3">
+                        <label for="">Title</label>
+                        <input type="text" id="title" name="title" class="form-control" required>
                     </div>
-                    <button class="btn btn-primary mt-3 btn-sm">Submit</button>
+                    <div class="mb-3">
+                        <label for="">Discretion</label>
+                        <textarea name="discretion" id="discretion" rows="5" class="form-control"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Icon</label>
+                        <input type="text" name="icon" id="" class="form-control" required>
+                        <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
+                                target="_blank">Click here</a></i>
+                    </div>
+                    <button class="btn btn-primary btn-sm">Save</button>
                 </form>
-                <div class="card-title">
-                    FREE AND FAST DELIVERY List
-                </div>
-                <table class="table table-bordered">
-                    <tbody>
+                <div class="card-title"> Services Table</div>
+                <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Discretion</th>
+                        <th>Icon</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($services as $service)
                         <tr>
-                            <th class="bg-light">FREE AND FAST DELIVERY:</th>
-                            <td>{{ system_key('system_medica_delevery') }}</td>
+                            <td>{{ $service->title }}</td>
+                            <td>{{ $service->discretion }}</td>
+                            <td>{{ $service->icon }}</td>
+                            <td>
+                                <div class="text-nowrap">
+                                    <a class="btn btn-primary btn-sm d-inline-block" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#service{{ $service->id }}"><i
+                                            class="bi bi-pen"></i></a>
+                                    <form action="{{ route('agent.gold.delete.service', $service) }}" method="POST"
+                                        class="d-inline-block m-0 p-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                            <div class="modal fade" id="service{{ $service->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Service</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('agent.gold.update.service', $service) }}"
+                                                method="POST">
+                                                @csrf
+                                                <input type="hidden" name="key" value="service">
+                                                <div class="mb-3">
+                                                    <label for="">Title</label>
+                                                    <input type="text" id="title" name="title"
+                                                        class="form-control" required value="{{ $service->title }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Discretion</label>
+                                                    <textarea name="discretion" id="discretion" rows="5" class="form-control">{{ $service->discretion }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Icon</label>
+                                                    <input type="text" name="icon" id=""
+                                                        class="form-control" required value="{{ $service->icon }}">
+                                                    <i class="text-secondary fs-6">looking for icon? <a
+                                                            href="https://fontawesome.com/search"
+                                                            target="_blank">Click here</a></i>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm">Save</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
+                    @endforeach
+                </table>
+            </div>
+
+        </div>
+    </section>
+    <section class="why_us">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title"> Why Us </div>
+                <form action="{{ route('agent.gold.store.service') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="key" value="why_us">
+                    <div class="mb-3">
+                        <label for="">Title</label>
+                        <input type="text" id="title" name="title" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Discretion</label>
+                        <textarea name="discretion" id="discretion" rows="5" class="form-control"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Icon</label>
+                        <input type="text" name="icon" id="" class="form-control" required>
+                        <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
+                                target="_blank">Click here</a></i>
+                    </div>
+                    <button class="btn btn-primary btn-sm">Save</button>
+                </form>
+                <div class="card-title"> Why Us Table</div>
+                <table class="table">
+                    <tr>
+                        <th>Title</th>
+                        <th>Discretion</th>
+                        <th>Icon</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($why_we as $why_us)
                         <tr>
-                            <th class="bg-light">24/7 CUSTOMER SERVICE:</th>
-                            <td>{{ system_key('system_medica_service') }}</td>
+                            <td>{{ $why_us->title }}</td>
+                            <td>{{ $why_us->discretion }}</td>
+                            <td>{{ $why_us->icon }}</td>
+                            <td>
+                                <div class="text-nowrap">
+                                    <a class="btn btn-primary btn-sm d-inline-block" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#why_us{{ $why_us->id }}"><i
+                                            class="bi bi-pen"></i></a>
+                                    <form action="{{ route('agent.gold.delete.service', $why_us) }}" method="POST"
+                                        class="d-inline-block m-0 p-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                            <div class="modal fade" id="why_us{{ $why_us->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update why us</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('agent.gold.update.service', $why_us) }}"
+                                                method="POST">
+                                                @csrf
+                                                <input type="hidden" name="key" value="why_us">
+                                                <div class="mb-3">
+                                                    <label for="">Title</label>
+                                                    <input type="text" id="title" name="title"
+                                                        class="form-control" required value="{{ $why_us->title }}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Discretion</label>
+                                                    <textarea name="discretion" id="discretion" rows="5" class="form-control">{{ $why_us->discretion }}</textarea>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Icon</label>
+                                                    <input type="text" name="icon" id=""
+                                                        class="form-control" required value="{{ $why_us->icon }}">
+                                                    <i class="text-secondary fs-6">looking for icon? <a
+                                                            href="https://fontawesome.com/search"
+                                                            target="_blank">Click here</a></i>
+                                                </div>
+                                                <button class="btn btn-primary btn-sm">Save</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
+                    @endforeach
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="review">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Gold Review</div>
+                <form action="{{ route('agent.gold.store.review') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Profile Image</label>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Review</label>
+                        <textarea name="review" id="" class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                </form>
+                <div class="card-title">Gold Review Table</div>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Review</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($reviews as $review)
                         <tr>
-                            <th class="bg-light">MONEY BACK GUARANTEE:</th>
-                            <td>{{ system_key('system_medica_money') }}</td>
+                            <td>{{ $review->name }}</td>
+                            <td>
+                                <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="Banner Image" class="img-fluid" style="height: 100px; object-fit: cover;">
+                            </td>
+                            <td>{{ $review->review }}</td>
+                            <td>
+                                <div class="text-nowrap">
+                                    <a class="btn btn-primary btn-sm d-inline-block" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#review{{ $review->id }}"><i
+                                            class="bi bi-pen"></i></a>
+                                    <form action="{{ route('agent.gold.delete.review', $review) }}" method="POST"
+                                        class="d-inline-block m-0 p-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                            <div class="modal fade" id="review{{ $review->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Review</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('agent.gold.update.review', $review) }}"
+                                                method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label for="">Name</label>
+                                                    <input type="text" class="form-control" name="name"
+                                                        value="{{ $review->name }}" id="name" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Profile Image</label>
+                                                    <input type="file" class="form-control" name="image">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Review</label>
+                                                    <textarea name="review" id="" class="form-control" rows="5" required>{{ $review->review }}</textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
-                    </tbody>
+                    @endforeach
                 </table>
             </div>
         </div>
     </section>
+
+
 
 
     <section class="partners">
@@ -204,8 +442,7 @@
                 <div class="card-title">
                     Partners store
                 </div>
-                <form action="{{ route('agent.medica.store.partner') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('agent.gold.store.partner') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="">Partner Name</label>
@@ -240,8 +477,7 @@
                                         style="height: 80px; object-fit: cover;">
                                 </td>
                                 <td class="text-center">
-                                    <form action="{{ route('agent.medica.delete.partner', $partner) }}"
-                                        method="POST">
+                                    <form action="{{ route('agent.gold.delete.partner', $partner) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i
@@ -256,18 +492,6 @@
         </div>
     </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
     {{-- //about and contact   --}}
 
     <section class="about-image">
@@ -279,7 +503,7 @@
                 <form action="{{ route('agent.content.about.store.banner') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="key" value="medica">
+                    <input type="hidden" name="key" value="gold">
                     <div class="mb-3">
                         <label for="">Banner Image</label>
                         <input type="file" name="image" id="" class="form-control">
@@ -325,7 +549,7 @@
                     <form action="{{ route('agent.content.store.about') }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
-                        <input type="hidden" name="key" value="medica">
+                        <input type="hidden" name="key" value="gold">
                         <div class="mb-3">
                             <div class="label">About Name</div>
                             <input type="text" name="name" class="form-control" required>
@@ -366,7 +590,7 @@
                                     <form action="{{ route('agent.content.update.about', $about) }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input type="hidden" name="key" value="medica">
+                                        <input type="hidden" name="key" value="gold">
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
                                             <input type="text" name="name"
@@ -418,7 +642,7 @@
                 <form action="{{ route('agent.content.contact.store.banner') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="key" value="medica">
+                    <input type="hidden" name="key" value="gold">
                     <div class="mb-3">
                         <label for="">Banner Image</label>
                         <input type="file" name="image" id="" class="form-control">
@@ -462,7 +686,7 @@
                 </div>
                 <form action="{{ route('agent.content.save.contact.info') }}" method="POST">
                     @csrf
-                    <input type="hidden" name="key" value="medica">
+                    <input type="hidden" name="key" value="gold">
 
                     <div class="mb-3">
                         <label for="">Reach Email</label>

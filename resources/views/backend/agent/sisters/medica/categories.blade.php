@@ -21,6 +21,8 @@
                     <div class="mb-3">
                         <label for="">Icon</label>
                         <input type="text" name="icon" id="" class="form-control">
+                         <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
+                                target="_blank">Click here</a></i>
                     </div>
                     <button class="btn btn-sm btn-success">Save</button>
                 </form>

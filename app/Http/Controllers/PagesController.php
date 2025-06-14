@@ -12,6 +12,9 @@ use App\Models\ContactInfo;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\FeaturedCourse;
+use App\Models\goldPartner;
+use App\Models\goldReview;
+use App\Models\goldServices;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\JpPartner;
@@ -147,6 +150,18 @@ class PagesController extends Controller
           $totalItems = collect(session('cart'))->sum('quantity');
           $categories = medicaCategory::latest()->get();
           return view('frontend.samairamedica.shop', compact('categories', 'totalItems'));
+     }
+
+
+     //gold
+     public function princessgold()
+     {
+          $partners = goldPartner::latest()->get();
+          $services = goldServices::latest()->where('key', 'service')->take(4)->get();
+          $why_we = goldServices::latest()->where('key', 'why_us')->take(6)->get();
+          $reviews = goldReview::latest()->get();
+          $banners = Banner::latest()->where('key', 'gold')->get();
+          return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews'));
      }
      //abouts
      public function samairagroupAbout()
@@ -294,10 +309,7 @@ class PagesController extends Controller
      {
           return view('frontend.samaira-jobs-bridge.index');
      }
-     public function princessgold()
-     {
-          return view('frontend.princessgold.index');
-     }
+
 
 
 
