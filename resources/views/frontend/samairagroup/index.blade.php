@@ -122,19 +122,20 @@
         <div class="container py-5">
             <div class="row justify-content-center g-4">
                 @foreach ($concerns as $concern)
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-                        <div class="rg-brand-card h-100">
-                            <div class="rg-brand-logo mx-auto">
-                                <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                                    alt="TEER">
-                            </div>
-                            <div class="rg-brand-content">
-                                <p>{{ \Illuminate\Support\Str::words($concern->concern_text, 55, '...') }}</p>
-                                <a href="{{ $concern->concern_link }}" class="rg-brand-btn">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
+        <div class="rg-brand-card h-100 d-flex flex-column">
+            <div class="rg-brand-logo mx-auto">
+                <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                    alt="TEER">
+            </div>
+            <div class="rg-brand-content d-flex flex-column flex-grow-1">
+                <p>{{ \Illuminate\Support\Str::words($concern->concern_text, 55, '...') }}</p>
+                <a href="{{ $concern->concern_link }}" class="rg-brand-btn mt-auto">Read More</a>
+            </div>
+        </div>
+    </div>
+@endforeach
+
             </div>
         </div>
     </section>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\GoldController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MedicaController;
 use App\Http\Controllers\PropertyController;
@@ -259,6 +260,26 @@ Route::middleware(['role:agent,admin'])
 
             Route::post('/samaira-medica-limited/store/images', 'storeImages')->name('store.images');
             Route::delete('/samaira-medica-limited/delete/images/{id}', 'deleteImage')->name('delete.images');
+
+
+            Route::get('/samaira-medica-limited/orders', 'orders')->name('orders');
+            Route::get('/samaira-medica-limited/order/{order}', 'order')->name('order');
+            Route::post('/samaira-medica-limited/order/mark/{order}', 'updateMark')->name('order.mark');
+        });
+        Route::group(['controller' => GoldController::class, 'as' => 'group.'], function () {
+            Route::get('/princess-gold-and-diamond-cottation', 'gold')->name('gold');
+        });
+        Route::group(['controller' => GoldController::class, 'as' => 'gold.'], function () {
+            Route::post('/princess-gold-and-diamond-cottation/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/princess-gold-and-diamond-cottation/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
+
+            Route::post('/princess-gold-and-diamond-cottation/store/service', 'storeService')->name('store.service');
+            Route::post('/princess-gold-and-diamond-cottation/update/service/{service}', 'updateService')->name('update.service');
+            Route::delete('/princess-gold-and-diamond-cottation/delete/service/{service}', 'deleteService')->name('delete.service');
+
+            Route::post('/princess-gold-and-diamond-cottation/store/review', 'storeReview')->name('store.review');
+            Route::post('/princess-gold-and-diamond-cottation/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/princess-gold-and-diamond-cottation/delete/review/{review}', 'deleteReview')->name('delete.review');
         });
 
 

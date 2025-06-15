@@ -36,9 +36,11 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-
+<x-slot name="shop">
+            <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
+        </x-slot>
         <x-slot name="nav">
-            <a class="mini-cart-icon" href="">
+            <a class="mini-cart-icon" href="{{ route('page.medica.checkout') }}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="pro-count blue productCount">{{ $totalItems }}</span>
             </a>
@@ -102,8 +104,9 @@
                     <form action="{{ route('cart.add') }}" method="POST">
                         @csrf
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="product_name" value="{{ $product->title }}">
                         <input type="hidden" name="price" value="{{ $product->descount_price }}">
-                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                        <input type="hidden" name="image" value="{{ $product->image }}">
                         <hr>
                         <!-- Weight Options -->
                         <div class="mb-4">
@@ -138,9 +141,10 @@
 
                         <div class="d-flex align-items-center mb-4">
                             <div class="quantity-box enhanced-qty me-3">
-                                <a class="qty-btn  text-decoration-none "  style="cursor: pointer" id="qty-minus">-</a>
+                                <a class="qty-btn  text-decoration-none " style="cursor: pointer" id="qty-minus">-</a>
                                 <input type="text" id="qty-input" name="quantity" value="1" readonly>
-                                <a class="qty-btn   text-decoration-none  " style="cursor: pointer"  id="qty-plus">+</a>
+                                <a class="qty-btn   text-decoration-none  " style="cursor: pointer"
+                                    id="qty-plus">+</a>
                             </div>
                             <button class="btn btn-primary add-to-cart-btn enhanced-cart-btn"><i
                                     class="fa fa-shopping-cart me-2"></i>Add To Cart</button>

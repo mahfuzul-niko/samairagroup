@@ -15,4 +15,12 @@ class medicaProduct extends Model
     {
         return $this->hasMany(medicaImages::class, 'product_id');
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_product')
+            ->withPivot(['quantity', 'price', 'size', 'weight'])
+            ->withTimestamps();
+    }
+
+
 }

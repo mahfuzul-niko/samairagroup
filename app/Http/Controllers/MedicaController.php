@@ -12,8 +12,10 @@ use App\Models\medicaImages;
 use App\Models\medicaPartner;
 use App\Models\medicaProduct;
 use App\Models\medicaReview;
+use App\Models\Order;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 use Storage;
 
 class MedicaController extends Controller
@@ -238,5 +240,21 @@ class MedicaController extends Controller
 
         return back()->with('success', 'Image deleted successfully.');
     }
-
+    //orders
+    public function orders()
+    {
+        $orders = Order::latest()->paginate(20);
+        return view('backend.agent.sisters.medica.orders', compact('orders'));
+    }
+    public function order(Order $order)
+    {
+        return view('backend.agent.sisters.medica.order', compact('order'));
+    }
+    public function updateMark(Request $request, Order $order)
+    {
+        $order->mark = $request->has('mark') ? 1 : 0;
+        $order->save();
+        $message = $order->mark ? 'Order approved successfully.' : 'Order approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
 }

@@ -12,6 +12,9 @@ use App\Models\ContactInfo;
 use App\Models\Course;
 use App\Models\CourseCategory;
 use App\Models\FeaturedCourse;
+use App\Models\goldPartner;
+use App\Models\goldReview;
+use App\Models\goldServices;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\JpPartner;
@@ -129,10 +132,37 @@ class PagesController extends Controller
      }
      public function medicaCheckout()
      {
+          $cart = session()->get('cart', []);
+          $grandTotal = 0;
+
+          foreach ($cart as $id => $item) {
+               $cart[$id]['subtotal'] = $item['price'] * $item['quantity'];
+               $grandTotal += $cart[$id]['subtotal'];
+          }
+
+          $totalItems = collect($cart)->sum('quantity');
+
+          return view('frontend.samairamedica.checkout', compact('cart', 'totalItems', 'grandTotal'));
+     }
+     //shop
+     public function samairamedicaShop()
+     {
           $totalItems = collect(session('cart'))->sum('quantity');
-          return view('frontend.samairamedica.checkout',compact('totalItems'));
+          $categories = medicaCategory::latest()->get();
+          return view('frontend.samairamedica.shop', compact('categories', 'totalItems'));
      }
 
+
+     //gold
+     public function princessgold()
+     {
+          $partners = goldPartner::latest()->get();
+          $services = goldServices::latest()->where('key', 'service')->take(4)->get();
+          $why_we = goldServices::latest()->where('key', 'why_us')->take(6)->get();
+          $reviews = goldReview::latest()->get();
+          $banners = Banner::latest()->where('key', 'gold')->get();
+          return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews'));
+     }
      //abouts
      public function samairagroupAbout()
      {
@@ -271,10 +301,7 @@ class PagesController extends Controller
 
 
 
-     public function samairamedicaShop()
-     {
-          return view('frontend.samairamedica.shop');
-     }
+
 
 
 

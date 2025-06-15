@@ -23,22 +23,7 @@
 
         <li class="nav-heading">Pages</li>
 
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
-                data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="category-nav" class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
-                data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{ route('agent.system.index') }}"
-                        class="{{ request()->routeIs('agent.system.index') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>System</span>
-                    </a>
-                </li>
-                
-            </ul>
-        </li><!-- End Category Nav --> --}}
+        
 
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.group.*') ? '' : 'collapsed' }}" data-bs-target="#group-nav"
@@ -76,6 +61,12 @@
                     <a href="{{ route('agent.group.medica') }}"
                         class="{{ request()->routeIs('agent.group.medica') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Medica</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.group.gold') }}"
+                        class="{{ request()->routeIs('agent.group.gold') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Princess Gold</span>
                     </a>
                 </li>
             </ul>
@@ -162,49 +153,7 @@
                         <i class="bi bi-circle"></i><span>Enroll List</span>
                     </a>
                 </li>
-                {{-- 
-                <li>
-                    <a href="{{ route('agent.course.trainer') }}"
-                        class="{{ request()->routeIs('agent.course.trainer') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Course Trainer</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.course.create') }}"
-                        class="{{ request()->routeIs('agent.course.create') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Create Course</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.course.feature') }}"
-                        class="{{ request()->routeIs('agent.course.feature') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Create Featured Course</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.course.course') }}"
-                        class="{{ request()->routeIs('agent.course.course') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>All Course List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.course.ssdi') }}"
-                        class="{{ request()->routeIs('agent.course.ssdi') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>SSDI Course List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.course.language') }}"
-                        class="{{ request()->routeIs('agent.course.language') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Language Course List</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.course.ssdi.enroll') }}"
-                        class="{{ request()->routeIs('agent.course.ssdi.enroll') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>SSDI Enroll List</span>
-                    </a>
-                </li> --}}
+               
 
             </ul>
         </li><!-- End course Nav -->
@@ -234,14 +183,7 @@
 
 
 
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.profile') ? '' : 'collapsed' }}"
-                href="{{ route('agent.profile') }}">
-                <i class="bi bi-person"></i>
-                <span>Profile</span>
-            </a>
-        </li> --}}
-
+        
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.jphomes.*') ? '' : 'collapsed' }}"
                 data-bs-target="#property-nav" data-bs-toggle="collapse" href="#">
@@ -318,6 +260,12 @@
                     <a href="{{ route('agent.medica.products') }}"
                         class="{{ request()->routeIs('agent.medica.products') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.medica.orders') }}"
+                        class="{{ request()->routeIs('agent.medica.orders') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Orders</span>
                     </a>
                 </li>
                 
