@@ -325,10 +325,7 @@ class PagesController extends Controller
      {
           return view('frontend.samaira-jobs-bridge.index');
      }
-     public function princessgold()
-     {
-          return view('frontend.princessgold.index');
-     }
+    
      public function joypuragro()
      {
           return view('frontend.joypuragro.index');
