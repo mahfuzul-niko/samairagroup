@@ -74,6 +74,10 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('samairajobs');
     // princess gold
     Route::get('/princess-gold-and-diamond-cottation', 'princessgold')->name('princessgold');
+    // joypur agro
+    Route::get('/joypur-agro-limited', 'joypuragro')->name('joypuragro');
+    // Samaira Aviation
+    Route::get('/samaira-aviation-limited', 'samairaaviation')->name('samairaaviation');
 
 
 

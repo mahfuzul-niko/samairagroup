@@ -65,7 +65,7 @@
     width: 35px;
     height: 35px;
     border-radius:50%;
-    color: #333;
+    color: #333 !important;
     background-color: #fff;
     justify-content: center;
     align-items: center;
