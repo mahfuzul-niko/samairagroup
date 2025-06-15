@@ -79,6 +79,10 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     // jobs
     Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('samairajobs');
 
+    // joypur agro
+    Route::get('/joypur-agro-limited', 'joypuragro')->name('joypuragro');
+    // Samaira Aviation
+    Route::get('/samaira-aviation-limited', 'samairaaviation')->name('samairaaviation');
 
 
 
