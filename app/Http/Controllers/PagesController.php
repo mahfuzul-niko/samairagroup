@@ -163,6 +163,8 @@ class PagesController extends Controller
           $banners = Banner::latest()->where('key', 'gold')->get();
           return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews'));
      }
+
+
      //abouts
      public function samairagroupAbout()
      {
@@ -199,6 +201,13 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'medica')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function goldAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'gold')->get();
+          $about = About::latest()->where('key', 'gold')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -233,6 +242,13 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'medica')->get();
           $info = ContactInfo::latest()->where('key', 'medica')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function goldContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'gold')->get();
+          $info = ContactInfo::latest()->where('key', 'gold')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }

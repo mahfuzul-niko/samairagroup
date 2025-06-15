@@ -20,6 +20,9 @@
         Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => route(
             'page.medica.about',
         ),
+        Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => route(
+            'page.gold.about',
+        ),
         default => route('page.home.about'),
     };
     $contactRoute = match (true) {
@@ -37,10 +40,13 @@
             Route::is('page.jphomes.about') ||
             Route::is('page.jphomes.contact')
             => route('page.jphomes.contact'),
-        default => route('page.home.contact'),
         Route::is('page.medica') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
             'page.medica.contact',
         ),
+        Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route(
+            'page.gold.contact',
+        ),
+        default => route('page.home.contact'),
     };
     $logourl = match (true) {
         Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route('page.ssdi'),
@@ -54,10 +60,11 @@
             Route::is('page.jphomes.contact')
             => route('page.jphomes'),
 
-        default => route('page.home'),
         Route::is('page.medica') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
             'page.medica',
         ),
+        Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route('page.gold'),
+        default => route('page.home'),
     };
     $logo = match (true) {
         Route::is('page.home.contact') => null,
@@ -74,10 +81,13 @@
             Route::is('page.jphomes.contact') ||
             Route::is('page.jphomes.about')
             => system_key('samaira_jphomes_logo'),
-        default => system_key('samaira_group_logo'),
         Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
             'samaira_medica_logo',
         ),
+        Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => system_key(
+            'samaira_gold_logo',
+        ),
+        default => system_key('samaira_group_logo'),
     };
 @endphp
 

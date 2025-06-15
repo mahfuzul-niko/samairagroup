@@ -65,6 +65,11 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samaira-medica-limited/contact-us', 'samairamedicaContact')->name('medica.contact');
     Route::get('/samaira-medica-limited/shop', 'samairamedicaShop')->name('medica.shop');
     Route::get('/samaira-medica-limited/checkout', 'medicaCheckout')->name('medica.checkout');
+    //gold
+    Route::get('/princess-gold-and-diamond-cottation', 'princessgold')->name('gold');
+    Route::get('/princess-gold-and-diamond-cottation/about-us', 'goldAbout')->name('gold.about');
+    Route::get('/princess-gold-and-diamond-cottation/contact-us', 'goldContact')->name('gold.contact');
+
 
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
@@ -73,8 +78,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
     // jobs
     Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('samairajobs');
-    // princess gold
-    Route::get('/princess-gold-and-diamond-cottation', 'princessgold')->name('princessgold');
+
 
 
 
