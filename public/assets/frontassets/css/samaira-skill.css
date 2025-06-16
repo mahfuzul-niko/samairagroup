@@ -1735,7 +1735,7 @@
 
 .enrollment-discount-section .enrollment-image img {
     width: 100%;
-    height: auto;
+    height: 370px;
     display: block;
 }
 
@@ -1925,12 +1925,15 @@
 
     .enrollment-discount-section .enrollment-image {
         position: relative; 
-        width: 60%; 
+        width: 100%; 
         max-width: 400px;
         margin: 0 auto 2rem auto; 
         left: 1%;
         bottom: auto;
-        display: none;
+        /* display: none; */
+    }
+    .enrollment-discount-section .enrollment-image img{
+        height: auto !important;
     }
 
     .enrollment-discount-section .enrollment-content {
