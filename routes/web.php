@@ -69,6 +69,10 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/princess-gold-and-diamond-cottation', 'princessgold')->name('gold');
     Route::get('/princess-gold-and-diamond-cottation/about-us', 'goldAbout')->name('gold.about');
     Route::get('/princess-gold-and-diamond-cottation/contact-us', 'goldContact')->name('gold.contact');
+    //job
+    Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('job');
+    Route::get('/samaira-jobs-bridge-limited/about-us', 'jobAbout')->name('job.about');
+    Route::get('/samaira-jobs-bridge-limited/contact-us', 'jobContact')->name('job.contact');
 
 
     Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
@@ -76,8 +80,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
 
-    // jobs
-    Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('samairajobs');
+    
 
     // joypur agro
     Route::get('/joypur-agro-limited', 'joypuragro')->name('joypuragro');

@@ -23,6 +23,9 @@
         Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => route(
             'page.gold.about',
         ),
+        Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => route(
+            'page.job.about',
+        ),
         default => route('page.home.about'),
     };
     $contactRoute = match (true) {
@@ -46,6 +49,9 @@
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route(
             'page.gold.contact',
         ),
+        Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route(
+            'page.job.contact',
+        ),
         default => route('page.home.contact'),
     };
     $logourl = match (true) {
@@ -64,6 +70,7 @@
             'page.medica',
         ),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route('page.gold'),
+        Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route('page.job'),
         default => route('page.home'),
     };
     $logo = match (true) {
@@ -84,8 +91,8 @@
         Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
             'samaira_medica_logo',
         ),
-        Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => system_key(
-            'samaira_gold_logo',
+        Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => system_key(
+            'samaira_job_logo',
         ),
         default => system_key('samaira_group_logo'),
     };

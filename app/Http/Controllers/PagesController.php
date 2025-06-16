@@ -17,6 +17,8 @@ use App\Models\goldReview;
 use App\Models\goldServices;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
+use App\Models\jobAbout;
+use App\Models\jobPartner;
 use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\medicaCategory;
@@ -163,6 +165,14 @@ class PagesController extends Controller
           $banners = Banner::latest()->where('key', 'gold')->get();
           return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews'));
      }
+     //job
+     public function samairajobs()
+     {
+          $partners = jobPartner::latest()->get();
+          $banners = Banner::latest()->where('key', 'job')->get();
+          $jobAbout = jobAbout::latest()->first();
+          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout'));
+     }
 
 
      //abouts
@@ -208,6 +218,13 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'gold')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function jobAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'job')->get();
+          $about = About::latest()->where('key', 'job')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -249,6 +266,13 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'gold')->get();
           $info = ContactInfo::latest()->where('key', 'gold')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function jobContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'job')->get();
+          $info = ContactInfo::latest()->where('key', 'job')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
@@ -321,11 +345,8 @@ class PagesController extends Controller
 
 
 
-     public function samairajobs()
-     {
-          return view('frontend.samaira-jobs-bridge.index');
-     }
-    
+
+
      public function joypuragro()
      {
           return view('frontend.joypuragro.index');
