@@ -69,13 +69,19 @@
                         <i class="bi bi-circle"></i><span>Princess Gold</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.job') }}"
+                        class="{{ request()->routeIs('agent.group.job') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Jobs Bridge</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.ssdi.*') ? '' : 'collapsed' }}"
                 data-bs-target="#ssdi-course-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>SSDI Course</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-mortarboard"></i><span>SSDI Course</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="ssdi-course-nav"
                 class="nav-content collapse {{ request()->routeIs('agent.ssdi.*') ? 'show' : '' }}"
@@ -123,7 +129,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.language.*') ? '' : 'collapsed' }}"
                 data-bs-target="#language-course-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Language Course</span><i
+                <i class="bi bi-mortarboard"></i><span>Language Course</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="language-course-nav"
@@ -160,7 +166,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.editional.*') ? '' : 'collapsed' }}"
                 data-bs-target="#editional-course-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Editional</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-mortarboard"></i><span>Editional</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="editional-course-nav"
                 class="nav-content collapse {{ request()->routeIs('agent.editional.*') ? 'show' : '' }}"
@@ -187,7 +193,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.jphomes.*') ? '' : 'collapsed' }}"
                 data-bs-target="#property-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Property</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-map"></i></i><span>Property</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="property-nav"
                 class="nav-content collapse {{ request()->routeIs('agent.jphomes.*') ? 'show' : '' }}"
@@ -240,7 +246,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.medica.*') ? '' : 'collapsed' }}"
                 data-bs-target="#medica-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Madica</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-hospital"></i><span>Madica</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="medica-nav" class="nav-content collapse {{ request()->routeIs('agent.medica.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
@@ -281,7 +287,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.content.*') ? '' : 'collapsed' }}"
                 data-bs-target="#content-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Contact</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-person-lines-fill"></i></i><span>Contact</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="content-nav"
                 class="nav-content collapse {{ request()->routeIs('agent.content.*') ? 'show' : '' }}"
@@ -305,7 +311,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.page.*') ? '' : 'collapsed' }}"
                 data-bs-target="#single-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Single Pages</span><i
+                <i class="bi bi-file-earmark"></i><span>Single Pages</span><i
                     class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="single-nav" class="nav-content collapse {{ request()->routeIs('agent.page.*') ? 'show' : '' }}"
@@ -335,7 +341,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
                 data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-gear"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="system-nav" class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">

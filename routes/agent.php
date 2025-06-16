@@ -4,6 +4,7 @@ use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GoldController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MedicaController;
 use App\Http\Controllers\PropertyController;
@@ -280,6 +281,17 @@ Route::middleware(['role:agent,admin'])
             Route::post('/princess-gold-and-diamond-cottation/store/review', 'storeReview')->name('store.review');
             Route::post('/princess-gold-and-diamond-cottation/update/review/{review}', 'updateReview')->name('update.review');
             Route::delete('/princess-gold-and-diamond-cottation/delete/review/{review}', 'deleteReview')->name('delete.review');
+        });
+        Route::group(['controller' => JobController::class, 'as' => 'group.'], function () {
+            Route::get('/samaira-jobs-bridge-limited', 'job')->name('job');
+        });
+        Route::group(['controller' => JobController::class, 'as' => 'job.'], function () {
+            Route::post('/samaira-jobs-bridge-limited/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/samaira-jobs-bridge-limited/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
+
+            Route::post('/samaira-jobs-bridge-limited/store/jobAbout', 'storeAbout')->name('store.jobAbout');
+            Route::post('/samaira-jobs-bridge-limited/update/jobAbout/{jobAbout}', 'updateAbout')->name('update.jobAbout');
+            Route::delete('/samaira-jobs-bridge-limited/delete/jobAbout/{jobAbout}', 'deleteAbout')->name('delete.jobAbout');
         });
 
 

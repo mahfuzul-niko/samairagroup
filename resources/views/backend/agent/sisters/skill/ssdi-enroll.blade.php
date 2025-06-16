@@ -94,7 +94,7 @@
                         </tr>
                     @endforeach
                 </table>
-                {{ $orders->links() }}
+                {{-- {{ $enrolls->links() }} --}}
             </div>
         </div>
     </section>
