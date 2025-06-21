@@ -75,6 +75,12 @@
                         <i class="bi bi-circle"></i><span>Jobs Bridge</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.agro') }}"
+                        class="{{ request()->routeIs('agent.group.agro') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>JP Agro</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 

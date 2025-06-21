@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Agent\PagesController;
+use App\Http\Controllers\AgroController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GoldController;
@@ -292,6 +293,29 @@ Route::middleware(['role:agent,admin'])
             Route::post('/samaira-jobs-bridge-limited/store/jobAbout', 'storeAbout')->name('store.jobAbout');
             Route::post('/samaira-jobs-bridge-limited/update/jobAbout/{jobAbout}', 'updateAbout')->name('update.jobAbout');
             Route::delete('/samaira-jobs-bridge-limited/delete/jobAbout/{jobAbout}', 'deleteAbout')->name('delete.jobAbout');
+        });
+        Route::group(['controller' => AgroController::class, 'as' => 'group.'], function () {
+            Route::get('/joypur-agro-limited', 'agro')->name('agro');
+        });
+        Route::group(['controller' => AgroController::class, 'as' => 'agro.'], function () {
+            Route::post('/joypur-agro-limited/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/joypur-agro-limited/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
+
+            Route::post('/joypur-agro-limited/store/agroAbout', 'storeAbout')->name('store.agroAbout');
+            Route::post('/joypur-agro-limited/update/agroAbout/{agroAbout}', 'updateAbout')->name('update.agroAbout');
+            Route::delete('/joypur-agro-limited/delete/agroAbout/{agroAbout}', 'deleteAbout')->name('delete.agroAbout');
+
+            Route::post('/joypur-agro-limited/store/introduction', 'storeIntroduction')->name('store.introduction');
+            Route::post('/joypur-agro-limited/update/introduction/{introduction}', 'updateIntroduction')->name('update.introduction');
+            Route::delete('/joypur-agro-limited/delete/introduction/{introduction}', 'deleteIntroduction')->name('delete.introduction');
+
+            Route::post('/joypur-agro-limited/store/benefit', 'storeBenefit')->name('store.benefit');
+            Route::post('/joypur-agro-limited/update/benefit/{benefit}', 'updateBenefit')->name('update.benefit');
+            Route::delete('/joypur-agro-limited/delete/benefit/{benefit}', 'deleteBenefit')->name('delete.benefit');
+
+            Route::post('/joypur-agro-limited/store/project', 'storeProject')->name('store.project');
+            Route::post('/joypur-agro-limited/update/project/{project}', 'updateProject')->name('update.project');
+            Route::delete('/joypur-agro-limited/delete/project/{project}', 'deleteProject')->name('delete.project');
         });
 
 
