@@ -9,6 +9,7 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\jobAbout;
 use App\Models\jobPartner;
+use App\Models\jobProject;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -95,5 +96,58 @@ class JobController extends Controller
         $partner->delete();
 
         return redirect()->back()->with('success', 'partner deleted successfully.');
+    }
+//project
+    public function jobProject()
+    {
+        $projects = jobProject::orderBy('order')->get();
+        return view('backend.agent.sisters.job.projects', compact('projects'));
+    }
+    public function storeProject(Request $request)
+    {
+        $project = new jobProject;
+
+        $project->order = $request->order;
+        $project->title = $request->title;
+        if ($request->hasFile('image')) {
+            $project->image = $request->file('image')->store('project', 'public');
+        } else {
+            $project->image = null;
+        }
+        $project->save();
+        return redirect()->back()->with('success', 'Project created successfully.');
+    }
+    public function updateProject(Request $request, jobProject $project)
+    {
+        $project->order = $request->order;
+        $project->title = $request->title;
+
+        if ($request->hasFile('image')) {
+
+            if ($project->image && Storage::disk('public')->exists($project->image)) {
+                Storage::disk('public')->delete($project->image);
+            }
+
+            $project->image = $request->file('image')->store('project', 'public');
+        }
+
+        $project->save();
+        return redirect()->back()->with('success', 'Project updated successfully.');
+    }
+
+    public function deleteProject(jobProject $project)
+    {
+        if ($project->image && Storage::disk('public')->exists($project->image)) {
+            Storage::disk('public')->delete($project->image);
+        }
+        $project->delete();
+
+        return redirect()->back()->with('success', 'Project deleted successfully.');
+    }
+    //work
+    public function jobWork()
+    {
+
+        return view('backend.agent.sisters.job.works');
     }
 }

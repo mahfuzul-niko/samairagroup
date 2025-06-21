@@ -142,11 +142,11 @@
                             </div>
                         </div>
                         <!-- Slide 2 -->
-                       
+
                     </div>
                 </div>
             </div>
-        </section>
+        </section>  
         <!-- Recent Works Section End -->
 
         <!-- Categories Section Start -->
@@ -154,72 +154,24 @@
             <div class="container">
                 <h2 class="sjb-categories-title">Our Completed <span>Projects</span></h2>
                 <div class="sjb-categories-grid">
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category1.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Graphic&Design</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category2.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Cartoon Animation</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category3.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Illustration</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category3.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Flyers & Vouchers</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category2.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Logo Design</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category1.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Social graphics</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category2.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Article writing</span>
-                        </div>
-                    </a>
-                    <a href="">
-                        <div class="sjb-category-card"
-                            style="background-image:url('{{ asset('assets/frontassets/') }}/images/samaira-jobs/category3.png')">
-                            <div class="sjb-category-overlay"></div>
-                            <span>Video Editing</span>
-                        </div>
-                        <a href="">
+                    @foreach ($projects as $project)
+                        <a href="#">
+                            <div class="sjb-category-card"
+                                style="background-image:url('{{ $project->image ? Storage::url($project->image) : asset('assets/img/no-profile.png') }}')">
+                                <div class="sjb-category-overlay"></div>
+                                <span>{{ $project->title }}</span>
+                            </div>
+                        </a>
+                    @endforeach
+
                 </div>
-                <div class="sjb-categories-btn-row">
-                    <a href="#" class="sjb-categories-btn">More Categories</a>
-                </div>
+
             </div>
         </section>
         <!-- Categories Section End -->
 
         <!-- Portfolio Slider Section Start -->
-        <section class="sjb-portfolio-section">
+        {{-- <section class="sjb-portfolio-section">
             <div class="container">
                 <div class="sjb-portfolio-header">
                     <div class="sjb-portfolio-subtitle">Logos, websites, book covers & more!</div>
@@ -335,7 +287,7 @@
                     <div class="sjb-portfolio-dots"></div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Portfolio Slider Section End -->
 
         <!-- Newsletter Subscription Section Start -->
@@ -395,7 +347,7 @@
         <!-- Sister Concern End  -->
 
         <!-- Custom Footer Section Start -->
-          <x-layouts.footer />
+        <x-layouts.footer />
         <!-- Custom Footer Section End -->
     </main>
 

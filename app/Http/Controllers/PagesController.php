@@ -19,6 +19,7 @@ use App\Models\GroupAbout;
 use App\Models\GroupBanner;
 use App\Models\jobAbout;
 use App\Models\jobPartner;
+use App\Models\jobProject;
 use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\medicaCategory;
@@ -171,7 +172,8 @@ class PagesController extends Controller
           $partners = jobPartner::latest()->get();
           $banners = Banner::latest()->where('key', 'job')->get();
           $jobAbout = jobAbout::latest()->first();
-          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout'));
+          $projects = jobProject::orderBy('order')->get();
+          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout','projects'));
      }
 
 

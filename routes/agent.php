@@ -293,6 +293,13 @@ Route::middleware(['role:agent,admin'])
             Route::post('/samaira-jobs-bridge-limited/store/jobAbout', 'storeAbout')->name('store.jobAbout');
             Route::post('/samaira-jobs-bridge-limited/update/jobAbout/{jobAbout}', 'updateAbout')->name('update.jobAbout');
             Route::delete('/samaira-jobs-bridge-limited/delete/jobAbout/{jobAbout}', 'deleteAbout')->name('delete.jobAbout');
+
+            Route::get('/samaira-jobs-bridge-limited/projects', 'jobProject')->name('project');
+            Route::post('/samaira-jobs-bridge-limited/store/projects', 'storeProject')->name('store.project');
+            Route::post('/samaira-jobs-bridge-limited/update/projects/{project}', 'updateProject')->name('update.project');
+            Route::delete('/samaira-jobs-bridge-limited/delete/projects/{project}', 'deleteProject')->name('delete.project');
+            
+            Route::get('/samaira-jobs-bridge-limited/works', 'jobWork')->name('work');
         });
         Route::group(['controller' => AgroController::class, 'as' => 'group.'], function () {
             Route::get('/joypur-agro-limited', 'agro')->name('agro');
