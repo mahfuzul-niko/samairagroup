@@ -176,6 +176,9 @@ class PagesController extends Controller
           return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout','projects'));
      }
 
+     public function emerging(){
+          return view('frontend.emerging.index');
+     }
 
      //abouts
      public function samairagroupAbout()
@@ -277,6 +280,9 @@ class PagesController extends Controller
           $info = ContactInfo::latest()->where('key', 'job')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function jobApply(){
+          return view('frontend.samaira-jobs-bridge.jobapplication');
      }
      //others
 

@@ -131,6 +131,7 @@
                     <div class="sjb-slider">
                         <!-- Slide 1 -->
                         <div class="sjb-work-card">
+                            <div class="ribbon"><span>Deadline: 25 June, 2025</span></div>
                             <div class="sjb-work-icon"><img
                                     src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/MaterialUi.png"
                                     alt="Logo Design"></div>

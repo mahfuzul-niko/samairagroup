@@ -1522,6 +1522,32 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 280px;
+  position: relative;
+}
+.ribbon{
+  position: absolute;
+    top: 0;
+    right: -10px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 2;
+    border-top-left-radius: 8px;
+}
+.ribbon::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 11px solid var(--primary-color);
+  border-right: 11px solid transparent;
+}
+.ribbon span{
+  font-size:11px;
 }
 .sjb-work-card:hover {
   transform: translateY(-4px);
@@ -2109,3 +2135,213 @@ Sister Concern CSS Start
   Sister Concern CSS End
   -------------------------------------
   */
+
+  
+
+  /* --------------------------------------------
+  Single Samaira job Application Page Start 
+  -------------------------------------------- */
+  .job-application-section {
+    min-height: 100vh;
+    padding: 5rem 0 3rem 0;
+  }
+  
+  .job-application-section .job-application-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+  
+  .job-application-section .job-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .job-application-section .job-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 1rem 0; 
+  }
+  
+  .job-application-section .job-category {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    display: inline-block;
+    font-size: 0.9rem;
+  }
+  
+  .job-application-section .job-details {
+    padding: 2rem;
+  }
+  
+  .job-application-section .job-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .job-application-section .job-info-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .job-application-section .job-info-label {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .job-application-section .job-info-value {
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .job-application-section .job-description {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+  }
+  
+  .job-application-section .job-description h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+  
+  .job-application-section .application-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .job-application-section .form-section {
+    margin-bottom: 2rem;
+  }
+  
+  .job-application-section .form-section h5 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .job-application-section .form-control, .form-select {
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .job-application-section .form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  }
+  
+  .job-application-section .btn-apply-job {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .job-application-section .btn-apply-job:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    color: white;
+  }
+  
+  .job-application-section .btn-back {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .job-application-section .btn-back:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  
+  .job-application-section .file-upload-area {
+    border: 2px dashed var(--primary-color);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+  }
+  
+  .job-application-section .file-upload-area:hover {
+    background: #e3f2fd;
+    border-color: #764ba2;
+  }
+  
+  .job-application-section .file-upload-icon {
+    font-size: 3rem;
+    color: var(--primary-color);;
+    margin-bottom: 1rem;
+  }
+  
+  .job-application-section .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .job-application-section .skill-tag {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 768px) {
+  .job-application-section .job-title {
+      font-size: 2rem;
+    }
+    
+  .job-application-section .job-info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 500px) {
+    .job-application-section .job-title {
+      font-size: 22px;
+      margin-top: 15px;
+    }
+    .job-application-section .job-header p{
+      font-size:12px;
+    }
+    .form-control::placeholder,
+    .form-select{
+      font-size:14px !important;
+    }
+  }
+  @media (max-width: 418px) {
+    .job-application-section .d-grid button,
+    .job-application-section .btn-back{
+      font-size: 11px !important;
+    }
+  }
+  /* --------------------------------------------
+  Single Samaira job Application Page End 
+  -------------------------------------------- */
