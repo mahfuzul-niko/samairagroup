@@ -137,63 +137,12 @@
                             <h3>Logo Design</h3>
                             <p>Need a professional logo with writing underneath for our jewellery company</p>
                             <div class="sjb-work-bid-row">
-                                <span>Highest bid</span>
-                                <span class="sjb-work-bid-amount">$500</span>
+                                <span class="sjb-work-bid-amount">BDT 500</span>
                                 <a href="#" class="sjb-work-apply">Apply now</a>
                             </div>
                         </div>
                         <!-- Slide 2 -->
-                        <div class="sjb-work-card">
-                            <div class="sjb-work-icon"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/CanvaApp.png"
-                                    alt="Graphic Design"></div>
-                            <h3>Graphic Design</h3>
-                            <p>We need a graphic designer with UI/UX skills for our Furniture company</p>
-                            <div class="sjb-work-bid-row">
-                                <span>Highest bid</span>
-                                <span class="sjb-work-bid-amount">$500</span>
-                                <a href="#" class="sjb-work-apply">Apply now</a>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="sjb-work-card">
-                            <div class="sjb-work-icon"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/Account.png"
-                                    alt="SEO"></div>
-                            <h3>Need a SEO</h3>
-                            <p>Need a SEO for our company who will let our company to a higher level</p>
-                            <div class="sjb-work-bid-row">
-                                <span>Highest bid</span>
-                                <span class="sjb-work-bid-amount">$300</span>
-                                <a href="#" class="sjb-work-apply">Apply now</a>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="sjb-work-card">
-                            <div class="sjb-work-icon"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/Account.png"
-                                    alt="SEO"></div>
-                            <h3>Need a SEO</h3>
-                            <p>Need a SEO for our company who will let our company to a higher level</p>
-                            <div class="sjb-work-bid-row">
-                                <span>Highest bid</span>
-                                <span class="sjb-work-bid-amount">$300</span>
-                                <a href="#" class="sjb-work-apply">Apply now</a>
-                            </div>
-                        </div>
-                        <!-- Slide 3 -->
-                        <div class="sjb-work-card">
-                            <div class="sjb-work-icon"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/CanvaApp.png"
-                                    alt="SEO"></div>
-                            <h3>Need a SEO</h3>
-                            <p>Need a SEO for our company who will let our company to a higher level</p>
-                            <div class="sjb-work-bid-row">
-                                <span>Highest bid</span>
-                                <span class="sjb-work-bid-amount">$300</span>
-                                <a href="#" class="sjb-work-apply">Apply now</a>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
