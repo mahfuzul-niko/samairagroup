@@ -8,8 +8,10 @@ use App\Models\Banner;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\jobAbout;
+use App\Models\jobApply;
 use App\Models\jobPartner;
 use App\Models\jobProject;
+use App\Models\jobWork;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -97,7 +99,7 @@ class JobController extends Controller
 
         return redirect()->back()->with('success', 'partner deleted successfully.');
     }
-//project
+    //project
     public function jobProject()
     {
         $projects = jobProject::orderBy('order')->get();
@@ -149,5 +151,103 @@ class JobController extends Controller
     {
 
         return view('backend.agent.sisters.job.works');
+    }
+    public function jobWorks()
+    {
+        $works = jobWork::latest()->get();
+        return view('backend.agent.sisters.job.work-list', compact('works'));
+    }
+    public function storeWork(Request $request)
+    {
+        $work = new jobWork;
+
+        $work->title = $request->title;
+        $work->subtitle = $request->subtitle;
+        $work->salary = $request->salary;
+        $work->deadline = $request->deadline;
+        $work->discription = $request->discription;
+        if ($request->hasFile('logo')) {
+            $work->logo = $request->file('logo')->store('work', 'public');
+        } else {
+            $work->logo = null;
+        }
+
+        $work->save();
+        return redirect()->back()->with('success', 'work created successfully.');
+    }
+
+    public function editWork(jobWork $work)
+    {
+        return view('backend.agent.sisters.job.edit-work', compact('work'));
+    }
+    public function updateWork(Request $request, jobWork $work)
+    {
+        $work->title = $request->title;
+        $work->subtitle = $request->subtitle;
+        $work->salary = $request->salary;
+        $work->deadline = $request->deadline;
+        $work->discription = $request->discription;
+
+        if ($request->hasFile('logo')) {
+
+            if ($work->logo && Storage::disk('public')->exists($work->logo)) {
+                Storage::disk('public')->delete($work->logo);
+            }
+
+            $work->logo = $request->file('logo')->store('work', 'public');
+        }
+
+        $work->save();
+        return redirect()->back()->with('success', 'work updated successfully.');
+    }
+    public function deleteWork(jobWork $work)
+    {
+        if ($work->logo && Storage::disk('public')->exists($work->logo)) {
+            Storage::disk('public')->delete($work->logo);
+        }
+        $work->delete();
+        return redirect()->back()->with('success', 'work deleted successfully.');
+    }
+
+    //apply
+    public function storeApply(Request $request)
+    {
+        $apply = new jobApply;
+        $apply->job_work_id = $request->job_work_id;
+        $apply->name = $request->name;
+        $apply->number = $request->number;
+        $apply->email = $request->email;
+        $apply->email = $request->email;
+
+        if ($request->hasFile('file')) {
+            $apply->file = $request->file('file')->store('apply', 'public');
+        } else {
+            $apply->file = null;
+        }
+
+        $apply->save();
+        return redirect()->back()->with('success', 'Applied successfully.');
+    }
+
+    public function applies()
+    {
+        $applies = jobApply::latest()->get();
+        return view('backend.agent.sisters.job.applies', compact('applies'));
+    }
+
+    public function deleteApply(jobApply $apply)
+    {
+        if ($apply->file && Storage::disk('public')->exists($apply->file)) {
+            Storage::disk('public')->delete($apply->file);
+        }
+        $apply->delete();
+        return redirect()->back()->with('success', 'apply deleted successfully.');
+    }
+    public function updateMark(Request $request, jobApply $apply)
+    {
+        $apply->mark = $request->has('mark') ? 1 : 0;
+        $apply->save();
+        $message = $apply->mark ? 'apply approved successfully.' : 'apply approval removed.';
+        return redirect()->back()->with('success', $message);
     }
 }

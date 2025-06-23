@@ -296,19 +296,31 @@
             </a>
             <ul id="job" class="nav-content collapse {{ request()->routeIs('agent.job.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
-
+                <li>
+                    <a href="{{ route('agent.job.work') }}"
+                        class="{{ request()->routeIs('agent.job.work') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Works</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.job.works') }}"
+                        class="{{ request()->routeIs('agent.job.works') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Works List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.job.applies') }}"
+                        class="{{ request()->routeIs('agent.job.applies') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Works applies</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{{ route('agent.job.project') }}"
                         class="{{ request()->routeIs('agent.job.project') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Completed Projects</span>
-                    </a>
+                    </a>    
                 </li>
-                <li>
-                    <a href="{{ route('agent.job.work') }}"
-                        class="{{ request()->routeIs('agent.job.work') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Works</span>
-                    </a>
-                </li>
+
 
             </ul>
         </li><!-- End contact Nav -->
@@ -371,7 +383,8 @@
                 data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-gear"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="system-nav" class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
+            <ul id="system-nav"
+                class="nav-content collapse {{ request()->routeIs('agent.system.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ route('agent.system.header') }}"

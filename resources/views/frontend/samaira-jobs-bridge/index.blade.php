@@ -130,24 +130,28 @@
                 <div class="sjb-slider-wrapper">
                     <div class="sjb-slider">
                         <!-- Slide 1 -->
-                        <div class="sjb-work-card">
-                            <div class="ribbon"><span>Deadline: 25 June, 2025</span></div>
-                            <div class="sjb-work-icon"><img
-                                    src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/MaterialUi.png"
-                                    alt="Logo Design"></div>
-                            <h3>Logo Design</h3>
-                            <p>Need a professional logo with writing underneath for our jewellery company</p>
-                            <div class="sjb-work-bid-row">
-                                <span class="sjb-work-bid-amount">BDT 500</span>
-                                <a href="#" class="sjb-work-apply">Apply now</a>
+                        @foreach ($works as $work)
+                            <div class="sjb-work-card">
+                                <div class="ribbon"><span>Deadline:
+                                        {{ \Carbon\Carbon::parse($work->deadline)->format('d M ') }}
+                                    </span></div>
+                                <div class="sjb-work-icon"><img
+                                        src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/MaterialUi.png"
+                                        alt="Logo Design"></div>
+                                <h3>{{ $work->title }}</h3>
+                                <p>{{ $work->subtitle }}</p>
+                                <div class="sjb-work-bid-row">
+                                    <span class="sjb-work-bid-amount">BDT {{ $work->salary }}</span>
+                                    <a href="{{route('page.job.apply',$work)}}" class="sjb-work-apply">Apply now</a>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                         <!-- Slide 2 -->
 
                     </div>
                 </div>
             </div>
-        </section>  
+        </section>
         <!-- Recent Works Section End -->
 
         <!-- Categories Section Start -->

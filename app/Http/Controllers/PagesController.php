@@ -20,6 +20,7 @@ use App\Models\GroupBanner;
 use App\Models\jobAbout;
 use App\Models\jobPartner;
 use App\Models\jobProject;
+use App\Models\jobWork;
 use App\Models\JpPartner;
 use App\Models\JpReview;
 use App\Models\medicaCategory;
@@ -173,10 +174,18 @@ class PagesController extends Controller
           $banners = Banner::latest()->where('key', 'job')->get();
           $jobAbout = jobAbout::latest()->first();
           $projects = jobProject::orderBy('order')->get();
-          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout','projects'));
+          $works = jobWork::latest()->take(6)->get();
+          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout', 'projects', 'works'));
+     }
+     public function jobApply(jobWork $work)
+     {
+
+          return view('frontend.samaira-jobs-bridge.jobapplication', compact('work'));
      }
 
-     public function emerging(){
+
+     public function emerging()
+     {
           return view('frontend.emerging.index');
      }
 
@@ -230,6 +239,13 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'job')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function agroAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'agro')->get();
+          $about = About::latest()->where('key', 'agro')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -281,9 +297,14 @@ class PagesController extends Controller
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
-     public function jobApply(){
-          return view('frontend.samaira-jobs-bridge.jobapplication');
+     public function agroContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'agro')->get();
+          $info = ContactInfo::latest()->where('key', 'agro')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }
+
      //others
 
      public function samairatravels()

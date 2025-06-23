@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
@@ -73,11 +74,13 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/samaira-jobs-bridge-limited', 'samairajobs')->name('job');
     Route::get('/samaira-jobs-bridge-limited/about-us', 'jobAbout')->name('job.about');
     Route::get('/samaira-jobs-bridge-limited/contact-us', 'jobContact')->name('job.contact');
-    Route::get('/samaira-jobs-bridge-limited/apply/job', 'jobApply')->name('job.apply');
+    Route::get('/samaira-jobs-bridge-limited/apply/works/{work}', 'jobApply')->name('job.apply');
     // joypur agro
-    Route::get('/joypur-agro-limited', 'joypuragro')->name('joypuragro');
+    Route::get('/joypur-agro-limited', 'joypuragro')->name('agro');
+    Route::get('/joypur-agro-limited/about-us', 'agroAbout')->name('agro.about');
+    Route::get('/joypur-agro-limited/contact-us', 'agroContact')->name('agro.contact');
 
-    Route::get('/samaira-aviation-limithed', 'samairatravels')->name('samairatravels');
+
     Route::get('/mp-travels-limited', 'samairamptravels')->name('samairamptravels');
     Route::get('/samairaskills/contact', 'samairacontact')->name('samairacontact');
     Route::get('/enroll/page', 'enrollpage')->name('enrollpage');
@@ -117,6 +120,10 @@ Route::group(['controller' => CartController::class, 'as' => 'cart.'], function 
 });
 Route::group(['controller' => OrderController::class, 'as' => 'order.'], function () {
     Route::post('/order/store', 'store')->name('store');
+
+});
+Route::group(['controller' => JobController::class, 'as' => 'job.'], function () {
+    Route::post('/job/apply', 'storeApply')->name('store.apply');
 
 });
 

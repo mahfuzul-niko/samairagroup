@@ -298,8 +298,16 @@ Route::middleware(['role:agent,admin'])
             Route::post('/samaira-jobs-bridge-limited/store/projects', 'storeProject')->name('store.project');
             Route::post('/samaira-jobs-bridge-limited/update/projects/{project}', 'updateProject')->name('update.project');
             Route::delete('/samaira-jobs-bridge-limited/delete/projects/{project}', 'deleteProject')->name('delete.project');
-            
+
             Route::get('/samaira-jobs-bridge-limited/works', 'jobWork')->name('work');
+            Route::get('/samaira-jobs-bridge-limited/works/list', 'jobWorks')->name('works');
+            Route::get('/samaira-jobs-bridge-limited/works/applies', 'applies')->name('applies');
+            Route::get('/samaira-jobs-bridge-limited/edit/work/{work}', 'editWork')->name('edit.work');
+            Route::post('/samaira-jobs-bridge-limited/store/works', 'storeWork')->name('store.work');
+            Route::post('/samaira-jobs-bridge-limited/update/works/{work}', 'updateWork')->name('update.work');
+            Route::delete('/samaira-jobs-bridge-limited/delete/works/{work}', 'deleteWork')->name('delete.work');
+            Route::delete('/samaira-jobs-bridge-limited/delete/apply/{apply}', 'deleteApply')->name('delete.apply');
+            Route::post('/samaira-jobs-bridge-limited/apply/mark/{apply}', 'updateMark')->name('apply.mark');
         });
         Route::group(['controller' => AgroController::class, 'as' => 'group.'], function () {
             Route::get('/joypur-agro-limited', 'agro')->name('agro');

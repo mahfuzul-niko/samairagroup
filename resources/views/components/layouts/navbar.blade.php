@@ -26,6 +26,9 @@
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => route(
             'page.job.about',
         ),
+        Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => route(
+            'page.agro.about',
+        ),
         default => route('page.home.about'),
     };
     $contactRoute = match (true) {
@@ -52,6 +55,9 @@
         Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route(
             'page.job.contact',
         ),
+        Route::is('page.agro') || Route::is('page.agro.about') || Route::is('page.agro.contact') => route(
+            'page.agro.contact',
+        ),
         default => route('page.home.contact'),
     };
     $logourl = match (true) {
@@ -71,6 +77,7 @@
         ),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route('page.gold'),
         Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route('page.job'),
+        Route::is('page.agro') || Route::is('page.agro.about') || Route::is('page.agro.contact') => route('page.agro'),
         default => route('page.home'),
     };
     $logo = match (true) {
@@ -93,6 +100,9 @@
         ),
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => system_key(
             'samaira_job_logo',
+        ),
+        Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => system_key(
+            'samaira_agro_logo',
         ),
         default => system_key('samaira_group_logo'),
     };

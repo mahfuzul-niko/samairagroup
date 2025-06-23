@@ -16,7 +16,7 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->text('logo')->nullable();
             $table->string('title')->nullable();
-            $table->text('subtitle')->nullable();
+            $table->text(column: 'subtitle')->nullable();
             $table->text('discription')->nullable();
             $table->string('salary')->nullable();
             $table->date('deadline');
