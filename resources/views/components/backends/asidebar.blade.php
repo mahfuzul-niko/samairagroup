@@ -335,7 +335,47 @@
 
 
             </ul>
-        </li><!-- End contact Nav -->
+        </li><!-- End job Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.emeriging.*') ? '' : 'collapsed' }}"
+                data-bs-target="#emeriging" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-shop"></i><span>Emerging</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="emeriging"
+                class="nav-content collapse {{ request()->routeIs('agent.emerging.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.emerging.categories') }}"
+                        class="{{ request()->routeIs('agent.emerging.categories') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.emerging.product.create') }}"
+                        class="{{ request()->routeIs('agent.emerging.product.create') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Product</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.emerging.products') }}"
+                        class="{{ request()->routeIs('agent.emerging.products') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.emerging.reviews') }}"
+                        class="{{ request()->routeIs('agent.emerging.reviews') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Reviews</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.emerging.orders') }}"
+                        class="{{ request()->routeIs('agent.emerging.orders') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Orders</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Emerging Nav -->
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.content.*') ? '' : 'collapsed' }}"
                 data-bs-target="#content-nav" data-bs-toggle="collapse" href="#">

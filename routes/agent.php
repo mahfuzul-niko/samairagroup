@@ -344,8 +344,33 @@ Route::middleware(['role:agent,admin'])
         Route::group(['controller' => EmergingController::class, 'as' => 'group.'], function () {
             Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');
         });
-        Route::group(['controller' => EmergingController::class, 'as' => 'aviation.'], function () {
+        Route::group(['controller' => EmergingController::class, 'as' => 'emerging.'], function () {
+            Route::get('/emerging-office-supplies-limited/categories', 'categories')->name('categories');
+            Route::post('/emerging-office-supplies-limited/store/category', 'storeCategory')->name('store.category');
+            Route::post('/emerging-office-supplies-limited/update/category/{category}', 'updateCategory')->name('update.category');
+            Route::delete('/emerging-office-supplies-limited/delete/category/{category}', 'deleteCategory')->name('delete.category');
 
+            Route::get('/emerging-office-supplies-limited/products', 'products')->name('products');
+            Route::get('/emerging-office-supplies-limited/create/product', 'productCreate')->name('product.create');
+            Route::get('/emerging-office-supplies-limited/edit/product/{product}', 'productEdit')->name('product.edit');
+            Route::post('/emerging-office-supplies-limited/store/products', 'storeProduct')->name('store.product');
+            Route::post('/emerging-office-supplies-limited/update/products/{product}', 'updateProduct')->name('update.product');
+            Route::delete('/emerging-office-supplies-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
+
+            Route::post('/emerging-office-supplies-limited/store/images', 'storeImages')->name('store.images');
+            Route::delete('/emerging-office-supplies-limited/delete/images/{id}', 'deleteImage')->name('delete.images');
+
+            Route::get('/emerging-office-supplies-limited/reviews', 'reviews')->name('reviews');
+            Route::post('/emerging-office-supplies-limited/store/review', 'storeReview')->name('store.review');
+            Route::post('/emerging-office-supplies-limited/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/emerging-office-supplies-limited/delete/review/{review}', 'deleteReview')->name('delete.review');
+
+            Route::post('/emerging-office-supplies-limited/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/emerging-office-supplies-limited/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
+
+            Route::get('/emerging-office-supplies-limited/orders', 'orders')->name('orders');
+            Route::get('/emerging-office-supplies-limited/order/{order}', 'order')->name('order');
+            Route::post('/emerging-office-supplies-limited/order/mark/{order}', 'updateMark')->name('order.mark');
         });
 
 

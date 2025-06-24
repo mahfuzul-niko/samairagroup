@@ -15,6 +15,10 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\emergingCategory;
+use App\Models\emergingPartner;
+use App\Models\emergingProduct;
+use App\Models\emergingReview;
 use App\Models\FeaturedCourse;
 use App\Models\goldPartner;
 use App\Models\goldReview;
@@ -197,12 +201,37 @@ class PagesController extends Controller
           return view('frontend.samaira-jobs-bridge.jobapplication', compact('work'));
      }
 
-
+     //emerging
      public function emerging()
      {
-          return view('frontend.emerging.index');
+          $partners = emergingPartner::latest()->get();
+          $reviews = emergingReview::latest()->get();
+          $categories = emergingCategory::latest()->get();
+          $products = emergingProduct::latest()->take(6)->get();
+          $totalItems = collect(session('cart'))->sum('quantity');
+          $banners = Banner::latest()->where('key', 'emerging')->get();
+          return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
      }
+     public function emergingProduct(emergingProduct $product)
+     {
+          $totalItems = collect(session('cart'))->sum('quantity');
+          $prods = emergingProduct::where('category_id', $product->category_id)->take(9)->get();
+          return view('frontend.emerging.single-product', compact('product', 'prods', 'totalItems'));
+     }
+     public function emergingCheckout()
+     {
+          $cart = session()->get('cart', []);
+          $grandTotal = 0;
 
+          foreach ($cart as $id => $item) {
+               $cart[$id]['subtotal'] = $item['price'] * $item['quantity'];
+               $grandTotal += $cart[$id]['subtotal'];
+          }
+
+          $totalItems = collect($cart)->sum('quantity');
+
+          return view('frontend.emerging.checkout', compact('cart', 'totalItems', 'grandTotal'));
+     }
      //abouts
      public function samairagroupAbout()
      {
