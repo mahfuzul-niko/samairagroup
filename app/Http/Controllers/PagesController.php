@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\agroBenefit;
+use App\Models\agroIntroduction;
+use App\Models\agroPartner;
+use App\Models\agroProject;
 use App\Models\Award;
 use App\Models\Banner;
 use App\Models\Chairman;
@@ -167,6 +171,16 @@ class PagesController extends Controller
           $banners = Banner::latest()->where('key', 'gold')->get();
           return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews'));
      }
+     //jp agro
+     public function joypuragro()
+     {
+          $partners = agroPartner::latest()->get();
+          $banners = Banner::latest()->where('key', 'agro')->get();
+          $introduction = agroIntroduction::latest()->first();
+          $projects = agroProject::latest()->take(4)->get();
+          $benefit = agroBenefit::latest()->first();
+          return view('frontend.joypuragro.index', compact('partners', 'banners', 'introduction', 'projects', 'benefit'));
+     }
      //job
      public function samairajobs()
      {
@@ -321,10 +335,7 @@ class PagesController extends Controller
           return view('frontend.samairaskills.contact');
      }
 
-     public function enrollpage()
-     {
-          return view('frontend.samairaskills.enroll');
-     }
+
 
 
 
@@ -376,10 +387,7 @@ class PagesController extends Controller
 
 
 
-     public function joypuragro()
-     {
-          return view('frontend.joypuragro.index');
-     }
+
      public function samairaaviation()
      {
           return view('frontend.samairaaviation.index');

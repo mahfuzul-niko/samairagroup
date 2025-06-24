@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Agent\PagesController;
 use App\Http\Controllers\AgroController;
+use App\Http\Controllers\AviationController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EmergingController;
 use App\Http\Controllers\GoldController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LanguageController;
@@ -331,6 +333,19 @@ Route::middleware(['role:agent,admin'])
             Route::post('/joypur-agro-limited/store/project', 'storeProject')->name('store.project');
             Route::post('/joypur-agro-limited/update/project/{project}', 'updateProject')->name('update.project');
             Route::delete('/joypur-agro-limited/delete/project/{project}', 'deleteProject')->name('delete.project');
+        });
+        Route::group(['controller' => AviationController::class, 'as' => 'group.'], function () {
+            Route::get('/samaira-aviation-limited', 'aviation')->name('aviation');
+        });
+        Route::group(['controller' => AviationController::class, 'as' => 'aviation.'], function () {
+            Route::post('/samaira-aviation-limited/store/airline', 'storeAirline')->name('store.airline');
+            Route::delete('/samaira-aviation-limited/delete/airline/{airline}', 'deleteAirline')->name('delete.airline');
+        });
+        Route::group(['controller' => EmergingController::class, 'as' => 'group.'], function () {
+            Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');
+        });
+        Route::group(['controller' => EmergingController::class, 'as' => 'aviation.'], function () {
+
         });
 
 

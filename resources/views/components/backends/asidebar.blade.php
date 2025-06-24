@@ -81,6 +81,18 @@
                         <i class="bi bi-circle"></i><span>JP Agro</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.aviation') }}"
+                        class="{{ request()->routeIs('agent.group.aviation') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Aviation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('agent.group.emerging') }}"
+                        class="{{ request()->routeIs('agent.group.emerging') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Emerging</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 
@@ -318,7 +330,7 @@
                     <a href="{{ route('agent.job.project') }}"
                         class="{{ request()->routeIs('agent.job.project') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>Completed Projects</span>
-                    </a>    
+                    </a>
                 </li>
 
 
