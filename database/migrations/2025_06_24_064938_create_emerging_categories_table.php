@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('aviation_requests', function (Blueprint $table) {
+        Schema::create('emerging_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('icon')->nullable();
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('aviation_requests');
+        Schema::dropIfExists('emerging_categories');
     }
 };

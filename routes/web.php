@@ -79,7 +79,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/joypur-agro-limited', 'joypuragro')->name('agro');
     Route::get('/joypur-agro-limited/about-us', 'agroAbout')->name('agro.about');
     Route::get('/joypur-agro-limited/contact-us', 'agroContact')->name('agro.contact');
-    
+
     // Samaira Aviation
     Route::get('/samaira-aviation-limited', 'samairaaviation')->name('samairaaviation');
     // emerging
@@ -88,6 +88,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/raisa-trade-international', 'raisatrade')->name('raisatrade');
 
 
+    Route::get('/emerging-office-supplies-limited/product/{product}', 'emergingProduct')->name('emerging.product');
+    Route::get('/emerging-office-supplies-limited/checkout', 'emergingCheckout')->name('emerging.checkout');
 
 
 
@@ -124,6 +126,7 @@ Route::group(['controller' => CartController::class, 'as' => 'cart.'], function 
 });
 Route::group(['controller' => OrderController::class, 'as' => 'order.'], function () {
     Route::post('/order/store', 'store')->name('store');
+    Route::post('/emerging/order/store', 'storeEmerging')->name('store.emerging');
 
 });
 Route::group(['controller' => JobController::class, 'as' => 'job.'], function () {

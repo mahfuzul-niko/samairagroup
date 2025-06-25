@@ -39,7 +39,7 @@
             <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
         </x-slot>
         <x-slot name="nav">
-            <a class="mini-cart-icon" href="{{ route('page.medica.checkout') }}">
+            <a class="mini-cart-icon" href="{{ route('page.emerging.checkout') }}">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span class="pro-count blue productCount">{{ $totalItems }}</span>
             </a>
@@ -55,7 +55,7 @@
                 <div
                     class="col-lg-5 col-md-5 text-white p-5 rounded-start d-flex flex-column justify-content-between checkout-summary">
                     <div>
-                        <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/logo.png"
+                        <img src="{{ system_key('samaira_emerging_logo') ? Storage::url(system_key('samaira_emerging_logo')) : asset('assets/img/no-profile.png') }}"
                             class="summary-logo" alt="Logo">
                         <h4 class="mb-4">Order summary</h4>
                         <div class="mb-4">
@@ -101,8 +101,9 @@
                 <!-- Checkout Form -->
                 <div class="col-lg-7 col-md-7 p-5 rounded-end checkout-form-wrap">
                     <h2 class="fw-bold mb-4">Complete your order</h2>
-                    <form id="checkout-form" action="{{ route('order.store') }}" method="POST">
+                    <form id="checkout-form" action="{{ route('order.store.emerging') }}" method="POST">
                         @csrf
+                        
                         <h5 class="mb-3 checkout-section-title">Personal Details</h5>
                         <div class="row mb-4">
                             <div class="col-md-12 mb-3">

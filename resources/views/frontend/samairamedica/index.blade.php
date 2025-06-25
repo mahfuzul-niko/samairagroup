@@ -184,7 +184,7 @@
     <!-- Best Selling Products Section End -->
 
     <!-- Featured Section Start -->
-    <section class="featured-section py-5">
+    {{-- <section class="featured-section py-5">
         <div class="container">
             <div class="section-header mb-4">
                 <span class="featured-label">Featured</span>
@@ -228,7 +228,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Featured Section End -->
 
     <!-- Service Features Section Start -->
