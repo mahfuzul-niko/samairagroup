@@ -425,6 +425,10 @@ class PagesController extends Controller
      {
           return view('frontend.samairaaviation.index');
      }
+     public function samairaaviationcheckout()
+     {
+          return view('frontend.samairaaviation.checkout');
+     }
 
 
 

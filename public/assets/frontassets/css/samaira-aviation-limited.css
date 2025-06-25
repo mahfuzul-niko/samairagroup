@@ -857,6 +857,275 @@ We are certified By CSS End
 -------------------------------------
 */
 
+/* Footer Section Styles Start */
+.footer-section {
+    background: #24231D;
+    padding: 30px 0;
+    color: #fff;
+}
+.footer-section ul li a{
+    color: #A5A49A;
+}
+.footer-section ul li a:hover{
+    color: #4BAF47;
+}
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: auto;
+}
+
+.footer-description {
+    color: #A5A49A;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    color: #fff;
+    text-decoration:none;
+    transition: color 0.3s ease;
+    background:#1F1E17;
+    padding:5px 10px;
+    border-radius:50px;
+}
+
+.footer-social a:hover {
+    color: #4BAF47;
+}
+
+.footer-widget h3 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-widget h3::after {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-image: url(../images/joypur-agro/divider.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-links a:hover {
+    color: #4BAF47;
+}
+
+.footer-links i {
+    font-size: 12px;
+    color: #EEC044;
+}
+
+.news-list {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.news-item {
+    margin-bottom: 20px;
+}
+
+.news-date {
+    color: #EEC044;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.news-title {
+    color: white;
+    text-decoration:none;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.news-title:hover {
+    color: #4BAF47;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 15px;
+}
+
+.contact-info i {
+    color: #4BAF47;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.footer-newsletter {
+    position: relative;
+    margin-top: 20px;
+}
+
+.footer-newsletter input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.footer-newsletter input::placeholder {
+    color: #878680;
+}
+.footer-newsletter input:focus{
+    border: 1px solid #4BAF47 !important;
+    outline: none;
+}
+
+.footer-newsletter button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #4BAF47;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+    background: #3d8b40;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.footer-links-bottom {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links-bottom a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links-bottom a:hover {
+    color: #4BAF47;
+}
+
+@media (max-width: 991px) {
+    .footer-widget {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-widget {
+        text-align: center;
+    }
+
+    .footer-widget h3 {
+        text-align: center;
+    }
+
+    .footer-widget h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-links a {
+        justify-content: center;
+    }
+
+    .contact-info li {
+        justify-content: center;
+    }
+
+    .footer-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-links-bottom {
+        justify-content: center;
+    }
+}
+/* Footer Section Styles End */
+
 /* Journey Search Section Styles Start*/
 .journey-search-section {
     position: absolute;
@@ -928,9 +1197,9 @@ We are certified By CSS End
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background: #FFF6E2;
+    /* background: #FFF6E2; */
     box-shadow: 0 2px 8px rgba(44, 62, 80, 0.06);
-    border: 3px solid #1B0BAF;
+    border: 1px solid #dbdde0;
     padding: 0.5rem 1.1rem 0.5rem 1.1rem;
     min-height: 80px;
     transition: box-shadow 0.2s, border 0.2s;
@@ -942,10 +1211,11 @@ We are certified By CSS End
 }
 .journey-search-section .journey-input-box:focus-within,
 .journey-search-section .journey-input-box:hover {
-    box-shadow: 0 0 0 2px #32ADE6;
-    border: 3px solid #32ADE6;
+    box-shadow: 0 0 0 1px #dbdde0;
+    border: 1px solid #dbdde0;
 }
-.journey-search-section .journey-label-sm {
+.journey-search-section .journey-label-sm,
+.journey-search-section .journey-label-sm2 {
     font-size: 10px;
     font-weight: 600;
     color: #13CAEA;
@@ -970,7 +1240,7 @@ We are certified By CSS End
     color: var(--text-color-dark);
     min-width: 32px;
     min-height: 32px;
-    background: #fff6e2;
+    /* background: #fff6e2; */
     border-radius: 8px;
     margin-right: 0.5rem;
 }
@@ -1044,7 +1314,7 @@ We are certified By CSS End
 }
 .journey-search-section .journey-search-btn {
     background: #32ADE6;
-    color: var(--text-color-dark);
+    color: white;
     border-radius: 12px;
     font-weight: 600;
     font-size: 13px;
@@ -1079,6 +1349,7 @@ We are certified By CSS End
     font-weight: 500;
     box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     transition: background 0.2s, color 0.2s;
+    margin-top: 10px;
 }
 .journey-search-section .journey-popular-search .btn:hover {
     background: #32ADE6;
@@ -1147,6 +1418,9 @@ We are certified By CSS End
     flex-direction: column;
     justify-content: center;
 }
+.journey-search-section .custom-input {
+    flex-direction: inherit !important;
+}
 
 /* Center the swap icon perfectly between the boxes */
 .journey-search-section .swap-icon-box {
@@ -1186,14 +1460,20 @@ We are certified By CSS End
       max-width: 100%;
     }
     .journey-search-section .journey-form {
-      row-gap: 0.7rem;
+      /* row-gap: 0.7rem; */
     }
     .journey-search-section .journey-input-box,
     .journey-search-section .swap-icon-box {
       min-width: 100%;
       width: 100%;
       height: 0;
-      margin-bottom: 10px;
+      /* margin-bottom: 10px; */
+    }
+    .journey-search-section .swap-icon-box img{
+      display: none;
+    }
+    .journey-search-section .col-auto{
+      margin: 0;
     }
 }
 @media (max-width: 767.98px) {
@@ -1307,7 +1587,7 @@ We are certified By CSS End
     height: 90px; /* Fixed height for consistent cards */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft initial shadow */
     transition: all 0.3s ease;
-    width:200px;
+    width:250px;
 }
 
 .airline-logo-item:hover {
@@ -1381,3 +1661,402 @@ We are certified By CSS End
     }
 }
 /* Popular Airlines Section End */
+
+/* travelers wrapper Start */
+/* Update the journey-input-box to have position relative */
+.journey-input-box {
+    position: relative;
+}
+
+/* Travelers Dropdown Styles */
+.travelers-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 320px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1050;
+    padding: 16px;
+}
+
+.travelers-dropdown.active {
+    display: block;
+}
+  
+  .traveler-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB;
+  }
+  
+  .traveler-info {
+    flex: 1;
+  }
+  
+  .traveler-type {
+    color: #1E3A8A;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  
+  .traveler-age {
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+  
+  .traveler-counter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .counter-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E5E7EB;
+    border-radius: 50%;
+    background: #fff;
+    color: #1E3A8A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
+  }
+  
+  .counter-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .counter-btn:hover:not(:disabled) {
+    background: #F3F4F6;
+  }
+  
+  .counter-value {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 500;
+    color: #1E3A8A;
+  }
+  
+  .class-selection {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #E5E7EB;
+  }
+  
+  .class-type {
+    color: #1E3A8A;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  
+  .class-options {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .class-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  .class-option input[type="radio"] {
+    display: none;
+  }
+  
+  .class-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #E5E7EB;
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .class-option input[type="radio"]:checked + .class-radio {
+    border-color: #1E3A8A;
+  }
+  
+  .class-option input[type="radio"]:checked + .class-radio:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #1E3A8A;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .class-label {
+    color: #1E3A8A;
+  }
+  
+  .done-btn {
+    width: 100%;
+    padding: 12px;
+    background: #FFD700;
+    color: #1E3A8A;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .done-btn:hover {
+    background: #FFC700;
+  }
+  
+  .children-age-container {
+    display: flex;
+  gap: 10px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+  }
+  
+  .child-age-row {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+  }
+  
+  .child-age-label {
+    font-size: 12px;
+  color: #555;
+  margin-bottom: 2px;
+  text-align: center;
+  }
+  
+  .child-age-select {
+    width: 48px;
+  height: 32px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 2px 4px;
+  background: #fafbfc;
+  }
+  .multicity-row {
+    position: relative;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 15px;
+}
+
+.remove-flight-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    padding: 5px;
+    color: #dc3545;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.remove-flight-btn:hover {
+    color: #c82333;
+}
+
+.add-flight-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: #fff;
+    color: #0d6efd;
+    border: 1px solid #0d6efd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-flight-btn:hover {
+    background: #0d6efd;
+    color: #fff;
+}
+
+/* Hide remove button for first two rows */
+.multicity-row:nth-child(-n+2) .remove-flight-btn {
+    display: none;
+}
+/* Multi City Styles */
+.journey-input-box {
+    background: #fff;
+    border: 1px solid #E7E7E7;
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.journey-input-box:hover {
+    border-color: #0052CC;
+}
+
+.input-label {
+    color: #0052CC;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.city-name {
+    color: #1A1A1A;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.airport-code {
+    color: #666666;
+    font-size: 12px;
+}
+
+.date-select {
+    color: #1A1A1A;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Add City Box Styles */
+.add-city-container {
+    background: #fff;
+    border: 1px solid #E7E7E7;
+    border-radius: 8px;
+    padding: 12px 16px;
+    min-height: 72px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-city-text {
+    color: #0052CC;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.remove-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E0E0E0;
+    border: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.remove-btn i {
+    color: #666;
+    font-size: 12px;
+}
+
+/* Hide remove button in first two rows */
+.journey-form:nth-child(-n+2) .remove-btn {
+    display: none;
+}
+
+/* Journey input box styles (if not already defined) */
+.journey-input-box {
+    background: #fff;
+    border: 1px solid #E7E7E7;
+    border-radius: 8px;
+    padding: 12px 16px;
+    min-height: 72px; /* Match the height of other boxes */
+}
+@media all and (max-width:992px){
+  #multicity-second-row,
+  #multicity-container .row{
+    border-top: 1px solid rgb(190, 190, 190) !important;
+  }
+  .journey-form > div:nth-child(3), 
+  .journey-form > div:nth-child(4), 
+  .journey-form > div:nth-child(5),
+  .journey-search-btn{
+    margin-top: 10px;
+  }
+}
+@media all and (max-width:500px){
+  .journey-form > div:nth-child(3), 
+  .journey-form > div:nth-child(4), 
+  .journey-form > div:nth-child(5),
+  .journey-search-btn{
+    margin-top: 0;
+  }
+}
+/* travelers wrapper ENd */
+
+
+/* -----------------------------------------
+checkout page styles
+----------------------------------------- */
+.aviation-checkout-container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.08); padding: 32px 28px; }
+    .aviation-checkout-container .checkout-title { font-size: 2rem; font-weight: 700; margin-bottom: 24px; color: #1a2236; text-align: center; }
+    .aviation-checkout-container .section-title { font-size: 1.2rem; font-weight: 600; color: #1a9be6; margin-top: 32px; margin-bottom: 12px; }
+    .aviation-checkout-container .checkout-summary { margin-bottom: 24px; }
+    .aviation-checkout-container .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    .aviation-checkout-container .summary-label { color: #888; font-weight: 500; }
+    .aviation-checkout-container .summary-value { font-weight: 600; color: #1a2236; }
+    .aviation-checkout-container .checkout-btn { width: 100%; background: #1a9be6; color: #fff; font-size: 1.1rem; font-weight: 600; border: none; border-radius: 8px; padding: 14px 0; transition: background 0.2s; margin-top: 30px;}
+    .aviation-checkout-container .checkout-btn:hover { background: #0d7bbd; }
+    .aviation-checkout-container .edit-link { display: block; text-align: right; margin-top: 10px; color: #1a9be6; text-decoration: underline; font-size: 0.95rem; cursor: pointer; }
+    .user-info-form {
+      background: #f7f9fb;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(30,80,180,0.06);
+      padding: 24px 18px 10px 18px;
+      margin-bottom: 36px;
+    }
+    .user-info-form .form-label {
+      font-weight: 500;
+      color: #1a2236;
+    }
+    .user-info-form .form-control {
+      border-radius: 8px;
+      border: 1.5px solid #e0e6ed;
+      padding-left: 38px;
+      transition: border-color 0.2s;
+    }
+    .user-info-form .form-control:focus {
+      border-color: #1a9be6;
+      box-shadow: 0 0 0 2px rgba(26,155,230,0.08);
+    }
+    .user-info-form .input-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      color: #1a9be6;
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+    .user-info-form .form-group {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 700px) {
+      .user-info-form {
+        padding: 14px 6px 2px 6px;
+      }
+    }
+    @media (max-width: 700px) { 
+        .aviation-checkout-container { 
+            padding: 18px 30px; 
+            margin: 40px 35px;
+        } 
+        .aviation-checkout-container .checkout-title { 
+            font-size: 1.3rem; 
+        } 
+    }   
