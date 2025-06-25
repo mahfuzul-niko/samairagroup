@@ -225,6 +225,12 @@ class PagesController extends Controller
           $banners = Banner::latest()->where('key', 'emerging')->get();
           return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
      }
+     public function emergingShop()
+     {
+          $totalItems = collect(session('cart'))->sum('quantity');
+          $categories = emergingCategory::latest()->get();
+          return view('frontend.emerging.shop', compact('categories', 'totalItems'));
+     }
      public function emergingProduct(emergingProduct $product)
      {
           $totalItems = collect(session('cart'))->sum('quantity');

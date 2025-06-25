@@ -38,7 +38,7 @@
 
         <x-slot name="nav">
             <x-slot name="shop">
-                <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
+                <li><a href="{{ route('page.emerging.shop') }}">Shop</a></li>
             </x-slot>
             <x-slot name="nav">
                 <a class="mini-cart-icon" href="{{ route('page.emerging.checkout') }}">
@@ -159,7 +159,7 @@
                 <div class="swiper-wrapper">
                     @foreach ($categories as $category)
                         <div class="swiper-slide">
-                            <a href="{{ route('page.medica.shop') }}" class="text-decoration-none">
+                            <a href="{{ route('page.emerging.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
                                     <div class="category-icon">{!! $category->icon !!}</div>
                                     <div class="category-name">{{ $category->title }}</div>
@@ -233,7 +233,7 @@
                     @endforeach
                 </div>
             </div>
-            <a href="{{ route('page.medica.shop') }}" class="view-all-btn">View All Products</a>
+            <a href="{{ route('page.emerging.shop') }}" class="view-all-btn">View All Products</a>
         </div>
     </section>
     <!-- Best Selling Products Section End -->
