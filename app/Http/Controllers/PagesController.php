@@ -181,6 +181,10 @@ class PagesController extends Controller
           $benefit = agroBenefit::latest()->first();
           return view('frontend.joypuragro.index', compact('partners', 'banners', 'introduction', 'projects', 'benefit'));
      }
+     //raisatrade
+     public function raisatrade(){
+          return view('frontend.raisatrade.index');
+     }
      //job
      public function samairajobs()
      {

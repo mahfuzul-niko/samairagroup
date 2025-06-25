@@ -705,6 +705,7 @@
     color: #fff;
     font-weight: 600;
     box-shadow: 0 2px 8px #ffb34733;
+    margin-bottom: 0.5rem;
   }
   .course-details-sticky-section .course-details-title {
     font-size: 2.2rem;

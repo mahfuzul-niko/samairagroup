@@ -218,12 +218,17 @@
 
     <!-- jQuery -->
     <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="{{ asset('assets/frontassets/') }}/js/swiper-bundle.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="{{ asset('assets/frontassets/') }}/js/bootstrap.bundle.min.js"></script>
     <!-- Popper JS -->
     <script src="{{ asset('assets/frontassets/') }}/js/popper.min.js"></script>
     <!-- Custom JS -->
     <script src="{{ asset('assets/frontassets/') }}/js/samaira-new-index.js"></script>
+
+    <!-- Lightbox Start  -->
+    <script src="{{ asset('assets/frontassets/') }}/js/glightbox.min.js"></script>
 </body>
 
 </html>

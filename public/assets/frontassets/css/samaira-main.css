@@ -75,7 +75,7 @@
 
 .top-header .social-icon:hover {
     background-color: #333;
-    color: #fff;
+    color: #fff !important;
     transform: translateY(-2px);
 }
 
