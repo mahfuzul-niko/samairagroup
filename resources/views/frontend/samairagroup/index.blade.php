@@ -122,19 +122,19 @@
         <div class="container py-5">
             <div class="row justify-content-center g-4">
                 @foreach ($concerns as $concern)
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
-        <div class="rg-brand-card h-100 d-flex flex-column">
-            <div class="rg-brand-logo mx-auto">
-                <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
-                    alt="TEER">
-            </div>
-            <div class="rg-brand-content d-flex flex-column flex-grow-1">
-                <p>{{ \Illuminate\Support\Str::words($concern->concern_text, 55, '...') }}</p>
-                <a href="{{ $concern->concern_link }}" class="rg-brand-btn mt-auto">Read More</a>
-            </div>
-        </div>
-    </div>
-@endforeach
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
+                        <div class="rg-brand-card h-100 d-flex flex-column">
+                            <div class="rg-brand-logo mx-auto">
+                                <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
+                                    alt="TEER">
+                            </div>
+                            <div class="rg-brand-content d-flex flex-column flex-grow-1">
+                                <p>{{ \Illuminate\Support\Str::words($concern->concern_text, 55, '...') }}</p>
+                                <a href="{{ $concern->concern_link }}" class="rg-brand-btn mt-auto">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
 
             </div>
         </div>
@@ -154,11 +154,14 @@
             Subscribe to get information
         </h2>
 
-        <form
+        <form action="{{ route('system.store.newsletter') }}" method="POST"
             class="d-flex input-group-custom align-items-center justify-content-center position-relative gap-3 flex-wrap">
+            @csrf
             <div class="position-relative flex-grow-1 me-2">
+
                 <i class="fas fa-envelope input-icon"></i>
-                <input type="email" class="form-control ps-5" placeholder="Your email" required>
+                <input type="hidden" name="key" value="group">
+                <input type="email" class="form-control ps-5" placeholder="Your email" name="email" required>
             </div>
             <button type="submit" class="subscribe-btn">Subscribe</button>
         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\FooterConcern;
 use App\Models\FooterLink;
 use App\Models\header;
+use App\Models\NewsLetter;
 use App\Models\Role;
 use App\Models\System;
 use App\Models\User;
@@ -204,6 +205,14 @@ class SystemController extends Controller
         return redirect()->back()->with('success', 'Member information deleted successfully.');
     }
 
+    public function storeNewsLetter(Request $request)
+    {
+        $email = new NewsLetter;
+        $email->key = $request->key;
+        $email->email = $request->email;
+        $email->save();
+        return redirect()->back()->with('success', 'Subscribe to newsletter successfully.');
+    }
 
 
 

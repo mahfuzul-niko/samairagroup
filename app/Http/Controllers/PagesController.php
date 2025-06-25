@@ -39,6 +39,9 @@ use App\Models\News;
 use App\Models\Partner;
 use App\Models\Property;
 use App\Models\PropertyCategory;
+use App\Models\raisaPartner;
+use App\Models\raisaReview;
+use App\Models\raisaServices;
 use App\Models\Review;
 use App\Models\SamairaGroup;
 use App\Models\SkillAdvertise;
@@ -186,8 +189,13 @@ class PagesController extends Controller
           return view('frontend.joypuragro.index', compact('partners', 'banners', 'introduction', 'projects', 'benefit'));
      }
      //raisatrade
-     public function raisatrade(){
-          return view('frontend.raisatrade.index');
+     public function raisatrade()
+     {
+          $banners = Banner::latest()->where('key', 'raisa')->get();
+          $services = raisaServices::latest()->take(6)->get();
+          $reviews = raisaReview::latest()->get();
+          $partners = raisaPartner::latest()->get();
+          return view('frontend.raisatrade.index', compact('banners', 'services', 'reviews', 'partners'));
      }
      //job
      public function samairajobs()

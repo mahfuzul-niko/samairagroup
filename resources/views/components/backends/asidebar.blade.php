@@ -93,6 +93,12 @@
                         <i class="bi bi-circle"></i><span>Emerging</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('agent.group.raisa') }}"
+                        class="{{ request()->routeIs('agent.group.raisa') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Raisa Trade</span>
+                    </a>
+                </li>
             </ul>
         </li><!-- End Group Nav -->
 

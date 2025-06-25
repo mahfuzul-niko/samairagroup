@@ -11,6 +11,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MedicaController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\RaisaController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
@@ -373,6 +374,21 @@ Route::middleware(['role:agent,admin'])
             Route::post('/emerging-office-supplies-limited/order/mark/{order}', 'updateMark')->name('order.mark');
         });
 
+        Route::group(['controller' => RaisaController::class, 'as' => 'group.'], function () {
+            Route::get('/raisa-trade-international', 'raisa')->name('raisa');
+        });
+        Route::group(['controller' => RaisaController::class, 'as' => 'raisa.'], function () {
+            Route::post('/raisa-trade-international/store/partner', 'storePartner')->name('store.partner');
+            Route::delete('/raisa-trade-international/delete/partner/{partner}', 'deletePartner')->name('delete.partner');
+
+            Route::post('/raisa-trade-international/store/service', 'storeService')->name('store.service');
+            Route::post('/raisa-trade-international/update/service/{service}', 'updateService')->name('update.service');
+            Route::delete('/raisa-trade-international/delete/service/{service}', 'deleteService')->name('delete.service');
+
+            Route::post('/raisa-trade-international/store/review', 'storeReview')->name('store.review');
+            Route::post('/raisa-trade-international/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/raisa-trade-international/delete/review/{review}', 'deleteReview')->name('delete.review');
+        });
 
 
 

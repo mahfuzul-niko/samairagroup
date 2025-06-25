@@ -2,33 +2,33 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raisa Trade International</title>
-  <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/raisa-trade/logo.png" type="image/png">
-  
-  <!-- Bootstrap CSS -->
-  <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
-  
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/fonts/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raisa Trade International</title>
+    <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/raisa-trade/logo.png" type="image/png">
 
-  <!-- Custom CSS -->
-  <link href="{{ asset('assets/frontassets/') }}/css/samaira-skill.css" rel="stylesheet">
-  <link href="{{ asset('assets/frontassets/') }}/css/raisa-trade-international.css" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/samaira-main.css">
+    <!-- Bootstrap CSS -->
+    <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
 
-   <!-- Swiper CSS -->
-   <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/fonts/css/all.min.css">
 
-   <!-- GLightbox CSS -->
-   <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/glightbox.min.css" />
+    <!-- Custom CSS -->
+    <link href="{{ asset('assets/frontassets/') }}/css/samaira-skill.css" rel="stylesheet">
+    <link href="{{ asset('assets/frontassets/') }}/css/raisa-trade-international.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/samaira-main.css">
 
-  </head>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/swiper-bundle.min.css" />
+
+    <!-- GLightbox CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/frontassets/') }}/css/glightbox.min.css" />
+
+</head>
 
 <body>
 
-   <!-- Top Header Section Start -->
+    <!-- Top Header Section Start -->
     <x-layouts.header />
     <!-- Top Header Section End -->
 
@@ -41,98 +41,55 @@
     </x-layouts.navbar>
     <!-- Navbar End -->
 
-  <!-- Slider Start -->
-  <div class="contact-slider-container samaira-skill-slider">
-    <div class="swiper about-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="hero-content">
-            <h1 class="hero-title">
-              Build Your Skills
-            </h1>
-            <h2 class="hero-subtitle">With Experts Any Time, Anywhere</h2>
-            <p class="hero-text">Free online courses from the world's Leading experts.</p>
-            <p class="join-text">Join <span class="highlight">10+ Million</span> Learners today</p>
-            <a href="#" class="join-btn">Join Us Today</a>
-          </div>
-          <div class="slide-bg-wrap">
-            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/back.png" alt="Slide 1" class="slide-bg-img">
-          </div>
+    <!-- Slider Start -->
+    <div class="contact-slider-container">
+        <div class="swiper about-swiper">
+            <div class="swiper-wrapper">
+                @foreach ($banners as $banner)
+                    <div class="swiper-slide">
+                        <div class="hero-content">
+                            <h1 class="hero-title">
+                                {{ $banner->title }}
+                            </h1>
+                            <p class="hero-text">{{ $banner->subtitle }}</p>
+                            <a href="{{ $banner->url }}" class="join-btn">Join Us Today</a>
+                        </div>
+                        <div class="slide-bg-wrap">
+                            <img src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                alt="Slide 1" class="slide-bg-img">
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
-        <div class="swiper-slide">
-          <div class="hero-content">
-            <h1 class="hero-title">
-              Build Your <span class="highlight">Skills</span> <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/cap.png" alt="Graduation Cap" class="cap-icon">
-            </h1>
-            <h2 class="hero-subtitle">With Experts Any Time, Anywhere</h2>
-            <p class="hero-text">Free online courses from the world's Leading experts.</p>
-            <p class="join-text">Join <span class="highlight">10+ Million</span> Learners today</p>
-            <a href="#" class="join-btn">Join Us Today</a>
-          </div>
-          <div class="slide-bg-wrap">
-            <img src="{{ asset('assets/frontassets/') }}/images/samaira-joypur-homes/back.png" alt="Slide 1" class="slide-bg-img">
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Slider End -->
+    <!-- Slider End -->
 
-  <!-- Building Company Section Start -->
-  <section class="building-company-section">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="building-title">Building Company</h2>
-        <p class="building-subtitle">From renovations and room additions to masonry and other handyman services</p>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4 col-sm-6">
-          <div class="bc-card">
-            <img src="{{ asset('assets/frontassets/') }}/images/raisa-trade/1.png" alt="Design-Build" class="bc-card-img">
-            <h5 class="bc-card-title">Design-Build</h5>
-            <p class="bc-card-text">Sample text. Click to select the text box. Click again or double click to start editing the text. Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-            <!-- <a href="#" class="bc-card-link">MORE</a> -->
-          </div>
+    <!-- Building Company Section Start -->
+    <section class="building-company-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="building-title">Building Company</h2>
+                <p class="building-subtitle">From renovations and room additions to masonry and other handyman services
+                </p>
+            </div>
+            <div class="row g-4 justify-content-center">
+                @foreach ($services as $service)
+                    <div class="col-md-4 col-sm-6">
+                        <div class="bc-card">
+                            <img src="{{ $service->image ? Storage::url($service->image) : asset('assets/img/no-profile.png') }}"
+                                alt="Design-Build" class="bc-card-img">
+                            <h5 class="bc-card-title">{{ $service->title }}</h5>
+                            <p class="bc-card-text">{{ $service->discretion }}</p>
+                            <!-- <a href="#" class="bc-card-link">MORE</a> -->
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="bc-card">
-            <img src="{{ asset('assets/frontassets/') }}/images/raisa-trade/1.png" alt="Remodeling" class="bc-card-img">
-            <h5 class="bc-card-title">Remodeling</h5>
-            <p class="bc-card-text">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="bc-card">
-            <img src="{{ asset('assets/frontassets/') }}/images/raisa-trade/1.png" alt="City Spaces" class="bc-card-img">
-            <h5 class="bc-card-title">City Spaces</h5>
-            <p class="bc-card-text">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="bc-card">
-            <img src="{{ asset('assets/frontassets/') }}/images/raisa-trade/1.png" alt="City Spaces" class="bc-card-img">
-            <h5 class="bc-card-title">City Spaces</h5>
-            <p class="bc-card-text">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="bc-card">
-            <img src="{{ asset('assets/frontassets/') }}/images/raisa-trade/1.png" alt="City Spaces" class="bc-card-img">
-            <h5 class="bc-card-title">City Spaces</h5>
-            <p class="bc-card-text">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <div class="bc-card">
-            <img src="{{ asset('assets/frontassets/') }}/images/raisa-trade/1.png" alt="City Spaces" class="bc-card-img">
-            <h5 class="bc-card-title">City Spaces</h5>
-            <p class="bc-card-text">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Building Company Section End -->
+    </section>
+    <!-- Building Company Section End -->
 
     <!-- Testimonials Section Start -->
     <section class="testimonials-section">
@@ -145,88 +102,29 @@
             <div class="swiper testimonial-swiper">
                 <div class="swiper-wrapper">
                     <!-- Testimonial 1 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser1.png" alt="Orlando Diggs" class="author-image">
-                                <div class="author-info">
-                                    <h4>Orlando Diggs</h4>
-                                    <p>Position, Company name</p>
+                    @foreach ($reviews as $review)
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">{{ $review->review }}</p>
+                                <div class="testimonial-author">
+                                    <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Orlando Diggs" class="author-image">
+                                    <div class="author-info">
+                                        <h4>{{ $review->review }}</h4>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <!-- Testimonial 2 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser2.png" alt="Mollie Hall" class="author-image">
-                                <div class="author-info">
-                                    <h4>Mollie Hall</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser3.png" alt="Lori Bryson" class="author-image">
-                                <div class="author-info">
-                                    <h4>Lori Bryson</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 4 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="{{ asset('assets/frontassets/') }}/images/samaira-skills/tuser1.png" alt="Lori Bryson" class="author-image">
-                                <div class="author-info">
-                                    <h4>Lori Bryson</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Navigation and Pagination Container -->
@@ -248,73 +146,33 @@
 
     <!-- Our Partners Logo start  -->
     <section class="sister-concern py-5">
-      <div class="container text-center">
-        <h3 class="mb-4">Our Partners Logo</h3>
-        <div class="logos-wrapper">
-          <div class="logos-slider">
-            <!-- First set of logos -->
-            <div class="d-flex">
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
-              </div>
+        <div class="container text-center">
+            <h3 class="mb-4">Our Partners Logo</h3>
+            <div class="logos-wrapper">
+                <div class="logos-slider">
+                    <!-- First set of logos -->
+                    <div class="d-flex">
+                        @foreach ($partners as $partner)
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="Logo 1" class="sister-logo">
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="d-flex">
+                        @foreach ($partners as $partner)
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="Logo 1" class="sister-logo">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Duplicate set of logos for seamless loop -->
+
+                </div>
             </div>
-            <!-- Duplicate set of logos for seamless loop -->
-            <div class="d-flex">
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo1.png" alt="Logo 1" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo2.png" alt="Logo 2" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo3.png" alt="Logo 3" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo4.png" alt="Logo 4" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo5.png" alt="Logo 5" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo6.png" alt="Logo 6" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo7.png" alt="Logo 7" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo8.png" alt="Logo 8" class="sister-logo">
-              </div>
-              <div class="logo-item">
-                <img src="{{ asset('assets/frontassets/') }}/images/sister-concern/logo9.png" alt="Logo 9" class="sister-logo">
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
     <!-- Our Partners Logo End  -->
 
@@ -322,7 +180,7 @@
     <x-layouts.footer />
     <!-- Custom Footer Section End -->
 
- <!-- jQuery -->
+    <!-- jQuery -->
     <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
     <!-- Swiper JS -->
     <script src="{{ asset('assets/frontassets/') }}/js/swiper-bundle.min.js"></script>
@@ -338,36 +196,39 @@
         var swiper = new Swiper('.about-swiper', {
             effect: 'fade',
             loop: true,
-            autoplay: { delay: 4000, disableOnInteraction: false },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
             speed: 1000,
         });
 
         // Initialize testimonial swiper
-            const testimonialSwiper = new Swiper('.testimonial-swiper', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
+        const testimonialSwiper = new Swiper('.testimonial-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.testimonial-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.testimonial-next',
+                prevEl: '.testimonial-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
                 },
-                pagination: {
-                    el: '.testimonial-pagination',
-                    clickable: true,
+                1024: {
+                    slidesPerView: 3,
                 },
-                navigation: {
-                    nextEl: '.testimonial-next',
-                    prevEl: '.testimonial-prev',
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 2,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                    },
-                }
-            });
+            }
+        });
     </script>
 </body>
 

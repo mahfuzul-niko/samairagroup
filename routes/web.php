@@ -9,6 +9,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SystemController;
 use App\Models\CourseCategory;
 use Illuminate\Support\Facades\Route;
 
@@ -131,7 +132,9 @@ Route::group(['controller' => OrderController::class, 'as' => 'order.'], functio
 });
 Route::group(['controller' => JobController::class, 'as' => 'job.'], function () {
     Route::post('/job/apply', 'storeApply')->name('store.apply');
-
+});
+Route::group(['controller' => SystemController::class, 'as' => 'system.'], function () {
+    Route::post('/store/news/letter', 'storeNewsLetter')->name('store.newsletter');
 });
 
 Auth::routes();

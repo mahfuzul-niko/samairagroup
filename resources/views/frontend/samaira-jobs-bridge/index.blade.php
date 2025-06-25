@@ -142,7 +142,7 @@
                                 <p>{{ $work->subtitle }}</p>
                                 <div class="sjb-work-bid-row">
                                     <span class="sjb-work-bid-amount">BDT {{ $work->salary }}</span>
-                                    <a href="{{route('page.job.apply',$work)}}" class="sjb-work-apply">Apply now</a>
+                                    <a href="{{ route('page.job.apply', $work) }}" class="sjb-work-apply">Apply now</a>
                                 </div>
                             </div>
                         @endforeach
@@ -301,8 +301,10 @@
                 <h2 class="sjb-newsletter-title">Newsletter Subscription</h2>
                 <div class="sjb-newsletter-subtitle">Subscribe to our newsletter to get new freelance work and projects
                 </div>
-                <form class="sjb-newsletter-form">
-                    <input type="email" class="sjb-newsletter-input" placeholder="Enter your email address"
+                <form class="sjb-newsletter-form" action="{{ route('system.store.newsletter') }}" method="POST">
+                    @csrf
+                     <input type="hidden" name="key" value="job">
+                    <input type="email" class="sjb-newsletter-input" name="email" placeholder="Enter your email address"
                         required />
                     <button type="submit" class="sjb-newsletter-btn">Subscribe</button>
                 </form>
