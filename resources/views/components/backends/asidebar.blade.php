@@ -343,6 +343,25 @@
             </ul>
         </li><!-- End job Nav -->
         <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.aviation.*') ? '' : 'collapsed' }}"
+                data-bs-target="#aviation" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-airplane-engines"></i><span>Aviation</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="aviation"
+                class="nav-content collapse {{ request()->routeIs('agent.aviation.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.aviation.destination') }}"
+                        class="{{ request()->routeIs('agent.aviation.destination') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Destinations</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </li><!-- End job Nav -->
+        <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.emeriging.*') ? '' : 'collapsed' }}"
                 data-bs-target="#emeriging" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-shop"></i><span>Emerging</span><i class="bi bi-chevron-down ms-auto"></i>

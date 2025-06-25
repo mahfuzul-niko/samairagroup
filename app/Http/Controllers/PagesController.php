@@ -8,6 +8,7 @@ use App\Models\agroBenefit;
 use App\Models\agroIntroduction;
 use App\Models\agroPartner;
 use App\Models\agroProject;
+use App\Models\aviationAirline;
 use App\Models\Award;
 use App\Models\Banner;
 use App\Models\Chairman;
@@ -244,6 +245,21 @@ class PagesController extends Controller
 
           return view('frontend.emerging.checkout', compact('cart', 'totalItems', 'grandTotal'));
      }
+
+     //aviation
+     public function samairaaviation()
+     {
+          $banners = Banner::latest()->where('key', 'aviation')->get();
+          $airlines = aviationAirline::latest()->get();
+          return view('frontend.samairaaviation.index', compact('banners', 'airlines'));
+     }
+     public function samairaaviationcheckout()
+     {
+          return view('frontend.samairaaviation.checkout');
+     }
+
+
+
      //abouts
      public function samairagroupAbout()
      {
@@ -429,14 +445,7 @@ class PagesController extends Controller
 
 
 
-     public function samairaaviation()
-     {
-          return view('frontend.samairaaviation.index');
-     }
-     public function samairaaviationcheckout()
-     {
-          return view('frontend.samairaaviation.checkout');
-     }
+
 
 
 

@@ -341,6 +341,14 @@ Route::middleware(['role:agent,admin'])
         Route::group(['controller' => AviationController::class, 'as' => 'aviation.'], function () {
             Route::post('/samaira-aviation-limited/store/airline', 'storeAirline')->name('store.airline');
             Route::delete('/samaira-aviation-limited/delete/airline/{airline}', 'deleteAirline')->name('delete.airline');
+
+            Route::get('/samaira-aviation-limited/destination', 'destination')->name('destination');
+            Route::post('/samaira-aviation-limited/destination/store/from', 'storefrom')->name('store.from');
+            Route::post('/samaira-aviation-limited/destination/update/from/{from}', 'updatefrom')->name('update.from');
+            Route::delete('/samaira-aviation-limited/destination/delete/from/{from}', 'deletefrom')->name('delete.from');
+            Route::post('/samaira-aviation-limited/destination/store/to', 'storeTo')->name('store.to');
+            Route::post('/samaira-aviation-limited/destination/update/to/{to}', 'updateTo')->name('update.to');
+            Route::delete('/samaira-aviation-limited/destination/delete/to/{to}', 'deleteTo')->name('delete.to');
         });
         Route::group(['controller' => EmergingController::class, 'as' => 'group.'], function () {
             Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');

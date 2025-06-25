@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\aviationAirline;
+use App\Models\aviationFrom;
+use App\Models\aviationTo;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\About;
@@ -38,7 +40,7 @@ class AviationController extends Controller
 
     public function deleteAirline(aviationAirline $airline)
     {
-       
+
         if ($airline->image && Storage::disk('public')->exists($airline->image)) {
             Storage::disk('public')->delete($airline->image);
         }
@@ -46,5 +48,49 @@ class AviationController extends Controller
 
         return redirect()->back()->with('success', 'airline deleted successfully.');
     }
+    //destination
+    public function destination()
+    {
+        $froms = aviationFrom::all();
+        $tos = aviationTo::all();
+        return view('backend.agent.sisters.aviation.destination', compact('froms', 'tos'));
+    }
+    public function storeFrom(Request $request)
+    {
+        $from = new aviationFrom;
+        $from->name = $request->name;
+        $from->save();
+        return redirect()->back()->with('success', 'Destination Created Successfully.');
+    }
+    public function updateFrom(Request $request, aviationFrom $from)
+    {
+        $from->name = $request->name;
+        $from->save();
+        return redirect()->back()->with('success', 'Destination Updated Successfully.');
+    }
+    public function deleteFrom(Request $request, aviationFrom $from)
+    {
+        $from->delete();
+        return redirect()->back()->with('success', 'Destination Deleted Successfully.');
+    }
+    public function storeto(Request $request)
+    {
+        $to = new aviationTo;
+        $to->name = $request->name;
+        $to->save();
+        return redirect()->back()->with('success', 'Destination Created Successfully.');
+    }
+    public function updateTo(Request $request, aviationTo $to)
+    {
+        $to->name = $request->name;
+        $to->save();
+        return redirect()->back()->with('success', 'Destination Updated Successfully.');
+    }
+    public function deleteTo(Request $request, aviationTo $to)
+    {
+        $to->delete();
+        return redirect()->back()->with('success', 'Destination Deleted Successfully.');
+    }
+
 
 }
