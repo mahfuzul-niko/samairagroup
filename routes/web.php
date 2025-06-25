@@ -83,6 +83,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
     // Samaira Aviation
     Route::get('/samaira-aviation-limited', 'samairaaviation')->name('samairaaviation');
+    Route::get('/samaira-aviation-limited/checkout', 'samairaaviationcheckout')->name('samairaaviation.checkout');
     // emerging
     Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');
     //raisa trade
