@@ -47,11 +47,13 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     //ssdi
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('ssdi');
     Route::get('/samaira-skill-development-institute/about-us', 'samairaskillsAbout')->name('ssdi.about');
-    Route::get('/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
-    Route::get('/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('ssdi.course.enroll');
+    Route::get('/ssdi/course/{course:slug}', 'ssdiCourse')->name('ssdi.course');
+    Route::get('/ssdi/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('ssdi.course.enroll');
     Route::get('/samaira-skill-development-institute/contact-us', 'ssdiContact')->name('ssdi.contact');
     //language
     Route::get('/samaira-language-institute', 'samairaskillsJapan')->name('japan');
+    Route::get('/samaira-language-institute/course/{course:slug}', 'ssdiCourse')->name('japan.course');
+    Route::get('/samaira-language-institute/course/enroll/{course:slug}', 'ssdiCourseEnroll')->name('japan.course.enroll');
     Route::get('/samaira-language-institute/about-us', 'samairaskillsJapanAbout')->name('japan.about');
     Route::get('/samaira-language-institute/contact-us', 'samairaskillsJapanContact')->name('japan.contact');
     //jphomes
@@ -87,12 +89,16 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     // emerging
     Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');
     Route::get('/emerging-office-supplies-limited/shop', 'emergingShop')->name('emerging.shop');
-    //raisa trade
-    Route::get('/raisa-trade-international', 'raisatrade')->name('raisatrade');
-
-
+    Route::get('/emerging-office-supplies-limited/about-us', 'emergingAbout')->name('emerging.about');
+    Route::get('/emerging-office-supplies-limited/contact-us', 'emergingContact')->name('emerging.contact');
     Route::get('/emerging-office-supplies-limited/product/{product}', 'emergingProduct')->name('emerging.product');
     Route::get('/emerging-office-supplies-limited/checkout', 'emergingCheckout')->name('emerging.checkout');
+    //raisa trade
+    Route::get('/raisa-trade-international', 'raisatrade')->name('raisa');
+    Route::get('/raisa-trade-international/about-us', 'raisaAbout')->name('raisa.about');
+    Route::get('/raisa-trade-international/contact-us', 'raisaContact')->name('raisa.contact');
+
+
 
 
 

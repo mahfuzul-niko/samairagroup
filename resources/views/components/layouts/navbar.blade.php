@@ -4,12 +4,17 @@
 
     $aboutRoute = match (true) {
         Route::is('page.home.contact') => route('page.home.about'),
-        Route::is('page.ssdi') || Route::is('page.ssdi.contact') || Route::is('page.ssdi.about') => route(
-            'page.ssdi.about',
-        ),
-        Route::is('page.japan') || Route::is('page.japan.contact') || Route::is('page.japan.about') => route(
-            'page.japan.about',
-        ),
+        Route::is('page.ssdi') ||
+            Route::is('page.ssdi.contact') ||
+            Route::is('page.ssdi.course') ||
+            Route::is('page.ssdi.course.enroll') ||
+            Route::is('page.ssdi.about')
+            => route('page.ssdi.about'),
+        Route::is('page.japan') ||
+            Route::is('page.japan.contact') ||
+            Route::is('page.japan.course') ||
+            Route::is('page.japan.about')
+            => route('page.japan.about'),
         Route::is('page.jphomes') ||
             Route::is('page.jphomes.SingleProperty') ||
             Route::is('page.jphomes.properties') ||
@@ -20,6 +25,9 @@
         Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => route(
             'page.medica.about',
         ),
+        Route::is('page.emerging') || Route::is('page.emerging.contact') || Route::is('page.emerging.about') => route(
+            'page.emerging.about',
+        ),
         Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => route(
             'page.gold.about',
         ),
@@ -29,16 +37,24 @@
         Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => route(
             'page.agro.about',
         ),
+        Route::is('page.raisa') || Route::is('page.raisa.contact') || Route::is('page.raisa.about') => route(
+            'page.raisa.about',
+        ),
         default => route('page.home.about'),
     };
     $contactRoute = match (true) {
         Route::is('page.home.about') => route('page.home.contact'),
-        Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route(
-            'page.ssdi.contact',
-        ),
-        Route::is('page.japan') || Route::is('page.japan.about') || Route::is('page.japan.contact') => route(
-            'page.japan.contact',
-        ),
+        Route::is('page.ssdi') ||
+            Route::is('page.ssdi.about') ||
+            Route::is('page.ssdi.course') ||
+            Route::is('page.ssdi.course.enroll') ||
+            Route::is('page.ssdi.contact')
+            => route('page.ssdi.contact'),
+        Route::is('page.japan') ||
+            Route::is('page.japan.about') ||
+            Route::is('page.japan.course') ||
+            Route::is('page.japan.contact')
+            => route('page.japan.contact'),
 
         Route::is('page.jphomes') ||
             Route::is('page.jphomes.SingleProperty') ||
@@ -49,6 +65,9 @@
         Route::is('page.medica') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
             'page.medica.contact',
         ),
+        Route::is('page.emerging') || Route::is('page.emerging.about') || Route::is('page.emerging.contact') => route(
+            'page.emerging.contact',
+        ),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route(
             'page.gold.contact',
         ),
@@ -58,13 +77,23 @@
         Route::is('page.agro') || Route::is('page.agro.about') || Route::is('page.agro.contact') => route(
             'page.agro.contact',
         ),
+        Route::is('page.raisa') || Route::is('page.raisa.about') || Route::is('page.raisa.contact') => route(
+            'page.raisa.contact',
+        ),
         default => route('page.home.contact'),
     };
     $logourl = match (true) {
-        Route::is('page.ssdi') || Route::is('page.ssdi.about') || Route::is('page.ssdi.contact') => route('page.ssdi'),
-        Route::is('page.japan') || Route::is('page.japan.about') || Route::is('page.japan.contact') => route(
-            'page.japan',
-        ),
+        Route::is('page.ssdi') ||
+            Route::is('page.ssdi.about') ||
+            Route::is('page.ssdi.course') ||
+            Route::is('page.ssdi.course.enroll') ||
+            Route::is('page.ssdi.contact')
+            => route('page.ssdi'),
+        Route::is('page.japan') ||
+            Route::is('page.japan.about') ||
+            Route::is('page.japan.course') ||
+            Route::is('page.japan.contact')
+            => route('page.japan'),
         Route::is('page.jphomes') ||
             Route::is('page.jphomes.SingleProperty') ||
             Route::is('page.jphomes.properties') ||
@@ -75,20 +104,31 @@
         Route::is('page.medica') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
             'page.medica',
         ),
+        Route::is('page.emerging') || Route::is('page.emerging.about') || Route::is('page.emerging.contact') => route(
+            'page.emerging',
+        ),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route('page.gold'),
         Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route('page.job'),
         Route::is('page.agro') || Route::is('page.agro.about') || Route::is('page.agro.contact') => route('page.agro'),
+        Route::is('page.raisa') || Route::is('page.raisa.about') || Route::is('page.raisa.contact') => route(
+            'page.raisa',
+        ),
         default => route('page.home'),
     };
     $logo = match (true) {
         Route::is('page.home.contact') => null,
         Route::is('page.home.about') => null,
-        Route::is('page.ssdi') || Route::is('page.ssdi.contact') || Route::is('page.ssdi.about') => system_key(
-            'samaira_skills_logo',
-        ),
-        Route::is('page.japan') || Route::is('page.japan.contact') || Route::is('page.japan.about') => system_key(
-            'samaira_language_logo',
-        ),
+        Route::is('page.ssdi') ||
+            Route::is('page.ssdi.contact') ||
+            Route::is('page.ssdi.course') ||
+            Route::is('page.ssdi.course.enroll') ||
+            Route::is('page.ssdi.about')
+            => system_key('samaira_skills_logo'),
+        Route::is('page.japan') ||
+            Route::is('page.japan.contact') ||
+            Route::is('page.japan.course') ||
+            Route::is('page.japan.about')
+            => system_key('samaira_language_logo'),
         Route::is('page.jphomes') ||
             Route::is('page.jphomes.SingleProperty') ||
             Route::is('page.jphomes.properties') ||
@@ -98,11 +138,16 @@
         Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
             'samaira_medica_logo',
         ),
+        Route::is('page.emerging') || Route::is('page.emerging.contact') || Route::is('page.emerging.about')
+            => system_key('samaira_emerging_logo'),
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => system_key(
             'samaira_job_logo',
         ),
         Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => system_key(
             'samaira_agro_logo',
+        ),
+        Route::is('page.raisa') || Route::is('page.raisa.contact') || Route::is('page.raisa.about') => system_key(
+            'samaira_raisa_logo',
         ),
         default => system_key('samaira_group_logo'),
     };

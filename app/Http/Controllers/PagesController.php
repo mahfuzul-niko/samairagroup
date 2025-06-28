@@ -327,6 +327,20 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'agro')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function emergingAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'emerging')->get();
+          $about = About::latest()->where('key', 'emerging')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
+     public function raisaAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'raisa')->get();
+          $about = About::latest()->where('key', 'raisa')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -382,6 +396,20 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'agro')->get();
           $info = ContactInfo::latest()->where('key', 'agro')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function emergingContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'emerging')->get();
+          $info = ContactInfo::latest()->where('key', 'emerging')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function raisaContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'raisa')->get();
+          $info = ContactInfo::latest()->where('key', 'raisa')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }

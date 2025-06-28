@@ -31,9 +31,9 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-        
+
         <x-slot name="nav">
-           
+
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->
@@ -53,6 +53,7 @@
     <!-- Slider End -->
 
     <!-- Profile of Chairman and Managing Director Section Start -->
+
     <section class="cmd-profile-section py-5">
         <div class="container">
             <h2 class="cmd-title text-center mb-2">Profile of <br> <span>Chairman and Managing Director</span></h2>
@@ -82,26 +83,28 @@
             </div>
         </div>
     </section>
-    <section class="cmd-profile-section2 py-5">
-        <div class="container">
-            <div class="cmd-card d-flex flex-column flex-md-row align-items-start p-4">
-                <!-- For Mobile -->
-                <div class="cmd-img-wrapper mb-4 mb-md-0 me-md-4 d-none cmd-img-wrapper-mobile">
-                    <img src="{{ asset('assets/frontassets/') }}/images/client/client.png" alt="Chairman Photo"
-                        class="cmd-img img-fluid rounded shadow">
-                </div>
-                <div class="cmd-profile-text">
-                    <h3 class="cmd-name mb-3">Chairman (Samaira Group)</h3>
-                    <p> {!! $chairman['chairman_bottom_info'] ?? '' !!}</p>
-                </div>
-                <!-- For Desktop -->
-                <div class="cmd-img-wrapper mb-4 mb-md-0 ms-md-4 cmd-img-wrapper-desktop">
-                    <img src="{{ isset($chairman['chairman_bottom_image']) && $chairman['chairman_bottom_image'] ? Storage::url($chairman['chairman_bottom_image']) : asset('assets/img/no-profile.png') }}"
-                        alt="Chairman Photo" class="cmd-img img-fluid rounded shadow">
+   @if (!empty($chairman['chairman_bottom_info']))
+        <section class="cmd-profile-section2 py-5">
+            <div class="container">
+                <div class="cmd-card d-flex flex-column flex-md-row align-items-start p-4">
+                    <!-- For Mobile -->
+                    <div class="cmd-img-wrapper mb-4 mb-md-0 me-md-4 d-none cmd-img-wrapper-mobile">
+                        <img src="{{ asset('assets/frontassets/') }}/images/client/client.png" alt="Chairman Photo"
+                            class="cmd-img img-fluid rounded shadow">
+                    </div>
+                    <div class="cmd-profile-text">
+                        <h3 class="cmd-name mb-3">Chairman (Samaira Group)</h3>
+                        <p> {!! $chairman['chairman_bottom_info'] ?? '' !!}</p>
+                    </div>
+                    <!-- For Desktop -->
+                    <div class="cmd-img-wrapper mb-4 mb-md-0 ms-md-4 cmd-img-wrapper-desktop">
+                        <img src="{{ isset($chairman['chairman_bottom_image']) && $chairman['chairman_bottom_image'] ? Storage::url($chairman['chairman_bottom_image']) : asset('assets/img/no-profile.png') }}"
+                            alt="Chairman Photo" class="cmd-img img-fluid rounded shadow">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     <!-- Profile of Chairman and Managing Director Section End -->
 
     <!-- Footer Section Start -->

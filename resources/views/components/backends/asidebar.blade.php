@@ -11,14 +11,15 @@
                 </a>
             </li><!-- End Dashboard Nav -->
         @endif
-
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.dashboard') ? '' : 'collapsed' }}"
-                href="{{ route('agent.dashboard') }}">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-            </a>
-        </li><!-- End Dashboard Nav --> --}}
+        @if (auth()->user()->role->name != 'admin')
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('agent.dashboard') ? '' : 'collapsed' }}"
+                    href="{{ route('agent.dashboard') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+        @endif
 
         <li class="nav-heading">Pages</li>
 
