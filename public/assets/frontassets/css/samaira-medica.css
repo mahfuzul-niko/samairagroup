@@ -362,6 +362,10 @@ body{
   color: var(--text-color-dark);
   margin-bottom: 18px;
 }
+.category-slider-section .category-card img{
+  width: 50px;
+  margin-bottom: 8px;
+}
 .category-slider-section .category-name {
   font-size: 1.1rem;
   color: var(--text-color-dark);

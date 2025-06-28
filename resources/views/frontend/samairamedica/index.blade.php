@@ -106,13 +106,13 @@
                         <div class="swiper-slide">
                             <a href="{{ route('page.medica.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
-                                    <div class="category-icon">{!! $category->icon !!}</div>
+                                    {{-- <div class="category-icon">{!! $category->icon !!}</div> --}}
+                                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/blood-cancer.png">
                                     <div class="category-name">{{ $category->title }}</div>
                                 </div>
                             </a>
                         </div>
                     @endforeach
-
                 </div>
             </div>
         </div>
