@@ -195,6 +195,7 @@
                                                                 data-type="adults">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="adults" placeholder="1" value="1">
                                                             <span class="counter-value" id="adultsCount">1</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="adults">
@@ -214,6 +215,7 @@
                                                                 data-type="children">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="children" placeholder="0" value="0">
                                                             <span class="counter-value" id="childrenCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="children">
@@ -233,6 +235,7 @@
                                                                 data-type="infant">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="infant" placeholder="0" value="0">
                                                             <span class="counter-value" id="infantCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="infant">
@@ -393,6 +396,7 @@
                                                                 data-type="adults">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="adults" placeholder="1" value="1">
                                                             <span class="counter-value" id="adultsCount">1</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="adults">
@@ -412,6 +416,7 @@
                                                                 data-type="children">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="children" placeholder="0" value="0">
                                                             <span class="counter-value" id="childrenCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="children">
@@ -419,9 +424,6 @@
                                                             </button>
                                                         </div>
                                                     </div>
-
-
-
 
                                                     <!-- Infant -->
                                                     <div class="traveler-row">
@@ -434,6 +436,7 @@
                                                                 data-type="infant">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="infant" placeholder="0" value="0">
                                                             <span class="counter-value" id="infantCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="infant">
@@ -581,6 +584,7 @@
                                                                 data-type="adults">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="adults" placeholder="1" value="1">
                                                             <span class="counter-value" id="adultsCount">1</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="adults">
@@ -600,6 +604,7 @@
                                                                 data-type="children">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="children" placeholder="0" value="0">
                                                             <span class="counter-value" id="childrenCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="children">
@@ -607,8 +612,6 @@
                                                             </button>
                                                         </div>
                                                     </div>
-
-
 
                                                     <!-- Infant -->
                                                     <div class="traveler-row">
@@ -621,6 +624,7 @@
                                                                 data-type="infant">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
+                                                            <input type="text" name="infant" placeholder="0" value="0">
                                                             <span class="counter-value" id="infantCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="infant">
@@ -1176,7 +1180,17 @@
                             }
                         }
 
-                        box.querySelector(`#${type}Count`).textContent = state[type];
+                        // Update both the span and input field
+                        const spanElement = box.querySelector(`#${type}Count`);
+                        const inputElement = box.querySelector(`input[name="${type}"]`);
+                        
+                        if (spanElement) {
+                            spanElement.textContent = state[type];
+                        }
+                        if (inputElement) {
+                            inputElement.value = state[type];
+                        }
+                        
                         updateButtonStates();
                     }
 
