@@ -162,7 +162,7 @@
                                 <div class="product-info">
                                     <a href="" class="text-decoration-none text-dark">
                                         <h4 class="product-title">
-                                            {{ $product->description }}
+                                            {{ $product->title }}
                                         </h4>
                                     </a>
                                     <div class="price">
