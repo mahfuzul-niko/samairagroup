@@ -97,7 +97,7 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between">
 
-                                    <a href="{{ route('page.ssdi.course', $course) }}"
+                                    <a href="{{ route('page.japan.course', $course) }}"
                                         class="text-decoration-none text-dark">
                                         <h5 class="card-title">{{ $course->title }}</h5>
                                     </a>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="course-meta mt-3">
                                     <span class="course-rating">
-                                        <a href="{{ route('page.ssdi.course.enroll', $course) }}" class="btn-sm"
+                                        <a href="{{ route('page.japan.course.enroll', $course) }}" class="btn-sm"
                                             title="Enroll Now">Enroll Now</a>
                                     </span>
 
