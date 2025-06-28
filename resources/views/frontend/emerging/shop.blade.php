@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop | Samaira Medica Limited</title>
-    <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-medica/logo.png" type="image/png">
+    <title>Shop | Emerging Office Supplies Limited</title>
+    <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-emerging/logo.jpg" type="image/png">
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">

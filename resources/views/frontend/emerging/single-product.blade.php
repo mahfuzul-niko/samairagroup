@@ -9,7 +9,7 @@
     <meta property="og:description" content="Teixeira Design Studio" />
     <meta property="og:image" content="URL_TO_PRODUCT_IMAGE" />
     <meta property="og:url" content="PAGE_URL" />
-    <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-medica/logo.png" type="image/png">
+    <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/samaira-emerging/logo.jpg" type="image/png">
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('assets/frontassets/') }}/css/bootstrap.min.css" rel="stylesheet">
