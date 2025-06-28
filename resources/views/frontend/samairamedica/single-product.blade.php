@@ -155,7 +155,7 @@
                         <div class="delivery-card free-delivery mb-2">
                             <i class="fa fa-truck me-2"></i>
                             <div>
-                                <span class="delivery-title">Fase Delivery</span>
+                                <span class="delivery-title">Free Delivery</span>
                                 <span class="delivery-desc">Enter your Postal code for Delivery Availability</span>
                             </div>
                         </div>
@@ -346,9 +346,9 @@
                                     alt="TDX Sinkers"></div>
                             <div class="similar-card-body">
                                 <div class="similar-title">{{ $prod->title }}</div>
-                                <div class="similar-price">₹ 675.00</div>
+                                <div class="similar-price">BDT {{ $product->descount_price }} </div>
                                 <div class="similar-price text-decoration-line-through fw-light text-secondary"
-                                    style="font-size: 14px">₹ 675.00</div>
+                                    style="font-size: 14px">BDT {{ $product->price }} </div>
                                 <div class="similar-sub">Check it out now <a
                                         href="{{ route('page.medica.product', $prod) }}">click here</a>
                                 </div>
