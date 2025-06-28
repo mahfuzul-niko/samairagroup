@@ -85,6 +85,7 @@
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="oneway" role="tabpanel">
+                                {{-- form  --}}
                                 <form class="row g-3 align-items-end journey-form">
                                     <div class="col-md-2">
                                         <div class="journey-input-box clickable" tabindex="0">
@@ -96,17 +97,14 @@
                                                         alt="Plane Departure"></span>
                                                 <div class="custom-dropdown w-100 position-relative">
                                                     <input type="text"
-                                                        class="journey-value-input custom-dropdown-input"
-                                                        placeholder="Dhaka" name="from" autocomplete="off">
+                                                        class="journey-value-input custom-dropdown-input" placeholder=""
+                                                        name="from" autocomplete="off">
                                                     <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1"
                                                         style="z-index: 10; max-height: 220px; overflow-y: auto;">
-                                                        <div class="custom-dropdown-option">Dhaka</div>
-                                                        <div class="custom-dropdown-option">Chittagong</div>
-                                                        <div class="custom-dropdown-option">Sylhet</div>
-                                                        <div class="custom-dropdown-option">Barisal</div>
-                                                        <div class="custom-dropdown-option">Rajshahi</div>
-                                                        <div class="custom-dropdown-option">Singapore</div>
-                                                        <div class="custom-dropdown-option">Kolkata</div>
+                                                        @foreach ($froms as $from)
+                                                            <div class="custom-dropdown-option">{{ $from->name }}
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,16 +127,13 @@
                                                 <div class="custom-dropdown w-100 position-relative">
                                                     <input type="text"
                                                         class="journey-value-input custom-dropdown-input"
-                                                        placeholder="Singapore" name="to" autocomplete="off">
+                                                        placeholder="" name="to" autocomplete="off">
                                                     <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1"
                                                         style="z-index: 10; max-height: 220px; overflow-y: auto;">
-                                                        <div class="custom-dropdown-option">Dhaka</div>
-                                                        <div class="custom-dropdown-option">Chittagong</div>
-                                                        <div class="custom-dropdown-option">Sylhet</div>
-                                                        <div class="custom-dropdown-option">Barisal</div>
-                                                        <div class="custom-dropdown-option">Rajshahi</div>
-                                                        <div class="custom-dropdown-option">Singapore</div>
-                                                        <div class="custom-dropdown-option">Kolkata</div>
+                                                        @foreach ($tos as $to)
+                                                            <div class="custom-dropdown-option">{{ $to->name }}
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,8 +148,9 @@
                                                     <span class="journey-icon-center me-2"><i
                                                             class="fas fa-calendar-alt"></i></span>
                                                     <input type="text" class="journey-value-input date-picker"
-                                                        placeholder="24 April, 2025" name="date"
-                                                        autocomplete="off">
+                                                        placeholder="" name="journey" autocomplete="off"
+                                                        id="dateInput">
+
                                                     <a href="#" class="journey-add-return ms-2">
                                                         <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/hyperlink.png"
                                                             alt="Return"> Add Return Trip
@@ -167,8 +163,7 @@
                                                     <span class="journey-icon-center me-2"><i
                                                             class="fas fa-calendar-alt"></i></span>
                                                     <input type="text" class="journey-value-input date-picker"
-                                                        placeholder="Return Date" name="return_date"
-                                                        autocomplete="off">
+                                                        placeholder="Return Date" name="return" autocomplete="off">
                                                 </div>
                                             </div>
                                         </div>
@@ -226,10 +221,6 @@
                                                             </button>
                                                         </div>
                                                     </div>
-
-                                                    <!-- Children Age Selects Container -->
-                                                    <div id="childrenAgeContainer"
-                                                        class="children-age-container mt-2"></div>
 
                                                     <!-- Infant -->
                                                     <div class="traveler-row">
@@ -429,9 +420,8 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- Children Age Selects Container -->
-                                                    <div id="childrenAgeContainer"
-                                                        class="children-age-container mt-2"></div>
+
+
 
                                                     <!-- Infant -->
                                                     <div class="traveler-row">
@@ -618,9 +608,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- Children Age Selects Container -->
-                                                    <div id="childrenAgeContainer"
-                                                        class="children-age-container mt-2"></div>
+
 
                                                     <!-- Infant -->
                                                     <div class="traveler-row">
@@ -1512,6 +1500,21 @@
             });
         });
     </script>
+    <script>
+        const input = document.getElementById('dateInput');
+        const today = new Date();
+
+        const options = {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        };
+        const formattedDate = today.toLocaleDateString('en-US', options);
+
+        input.placeholder = formattedDate;
+        input.value = formattedDate;
+    </script>
+
 </body>
 
 </html>

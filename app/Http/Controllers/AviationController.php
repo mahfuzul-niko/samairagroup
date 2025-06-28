@@ -92,5 +92,6 @@ class AviationController extends Controller
         return redirect()->back()->with('success', 'Destination Deleted Successfully.');
     }
 
+    
 
 }

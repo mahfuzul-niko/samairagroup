@@ -113,4 +113,8 @@ class OrderController extends Controller
         return back()->with('success', 'Order placed successfully!');
     }
 
+    public function aviationRequest(){
+        
+    }
+
 }

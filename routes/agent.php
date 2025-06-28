@@ -52,31 +52,37 @@ Route::middleware(['role:agent,admin'])
             Route::Delete('/system/delete/member/{id}', 'destroyMember')->name('destroy.member');
 
         });
+        Route::group(['controller' => SystemController::class, 'as' => 'news.'], function () {
+
+            Route::get('/system/news-letter', 'systemNewsLetter')->name('letter');
+
+
+        });
         Route::group(['controller' => SamairaGroupController::class, 'as' => 'group.'], function () {
-            Route::get('/SamairaGroup', 'index')->name('index');
-            Route::post('/SamairaGroup/banner/store', 'storeBanner')->name('store.banner');
-            Route::post('/SamairaGroup/banner/update/{group_banner}', 'updateBanner')->name('update.banner');
-            Route::delete('/SamairaGroup/banner/delete/{group_banner}', 'destroyBanner')->name('delete.banner');
+            Route::get('/samaira-group', 'index')->name('index');
+            Route::post('/samaira-group/banner/store', 'storeBanner')->name('store.banner');
+            Route::post('/samaira-group/banner/update/{group_banner}', 'updateBanner')->name('update.banner');
+            Route::delete('/samaira-group/banner/delete/{group_banner}', 'destroyBanner')->name('delete.banner');
 
-            Route::post('/SamairaGroup/concern/store', 'storeConcern')->name('store.concern');
-            Route::post('/SamairaGroup/concern/update/{concern}', 'updateConcern')->name('update.concern');
-            Route::delete('/SamairaGroup/concern/delete/{concern}', 'destroyConcern')->name('delete.concern');
+            Route::post('/samaira-group/concern/store', 'storeConcern')->name('store.concern');
+            Route::post('/samaira-group/concern/update/{concern}', 'updateConcern')->name('update.concern');
+            Route::delete('/samaira-group/concern/delete/{concern}', 'destroyConcern')->name('delete.concern');
 
-            Route::post('/SamairaGroup/partner/store', 'storePartner')->name('store.partner');
-            Route::post('/SamairaGroup/partner/update/{partner}', 'updatePartner')->name('update.partner');
-            Route::delete('/SamairaGroup/partner/delete/{partner}', 'destroyPartner')->name('delete.partner');
+            Route::post('/samaira-group/partner/store', 'storePartner')->name('store.partner');
+            Route::post('/samaira-group/partner/update/{partner}', 'updatePartner')->name('update.partner');
+            Route::delete('/samaira-group/partner/delete/{partner}', 'destroyPartner')->name('delete.partner');
 
-            Route::post('/SamairaGroup/about/store', 'storeAbout')->name('store.about');
-            Route::post('/SamairaGroup/about/update/{about}', 'updateAbout')->name('update.about');
-            Route::delete('/SamairaGroup/about/delete/{about}', 'destroyAbout')->name('delete.about');
+            Route::post('/samaira-group/about/store', 'storeAbout')->name('store.about');
+            Route::post('/samaira-group/about/update/{about}', 'updateAbout')->name('update.about');
+            Route::delete('/samaira-group/about/delete/{about}', 'destroyAbout')->name('delete.about');
 
         });
         Route::group(['controller' => SamariaSkill::class, 'as' => 'group.'], function () {
             Route::get('/samairaskills', 'samairaSkill')->name('samairaskill');
-            Route::post('/SamairaGroup/certified/store', 'storeCertified')->name('store.certified');
-            Route::post('/SamairaGroup/certified/update/{certified}', 'updateCertified')->name('update.certified');
-            Route::delete('/SamairaGroup/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
-            Route::post('/SamairaGroup/advertise/store', 'storeAdvertise')->name('store.advertise');
+            Route::post('/samaira-group/certified/store', 'storeCertified')->name('store.certified');
+            Route::post('/samaira-group/certified/update/{certified}', 'updateCertified')->name('update.certified');
+            Route::delete('/samaira-group/certified/delete/{certified}', 'destroyCertified')->name('delete.certified');
+            Route::post('/samaira-group/advertise/store', 'storeAdvertise')->name('store.advertise');
 
             Route::post('samairaskills/banner/store', 'storeBanner')->name('ssdi.store.banner');
             Route::post('samairaskills/banner/update/{banner}', 'updateBanner')->name('ssdi.update.banner');

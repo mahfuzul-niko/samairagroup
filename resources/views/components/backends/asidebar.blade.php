@@ -12,14 +12,13 @@
             </li><!-- End Dashboard Nav -->
         @endif
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.dashboard') ? '' : 'collapsed' }}"
                 href="{{ route('agent.dashboard') }}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-
-        </li><!-- End Dashboard Nav -->
+        </li><!-- End Dashboard Nav --> --}}
 
         <li class="nav-heading">Pages</li>
 
@@ -455,6 +454,22 @@
 
             </ul>
         </li><!-- End contact Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('agent.news.*') ? '' : 'collapsed' }}"
+                data-bs-target="#news-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-envelope-paper"></i><span>News Letter</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="news-nav" class="nav-content collapse {{ request()->routeIs('agent.news.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('agent.news.letter') }}"
+                        class="{{ request()->routeIs('agent.news.letter') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>News Letter Emails</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End System Nav -->
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('agent.system.*') ? '' : 'collapsed' }}"
                 data-bs-target="#system-nav" data-bs-toggle="collapse" href="#">

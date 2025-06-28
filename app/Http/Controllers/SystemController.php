@@ -213,6 +213,13 @@ class SystemController extends Controller
         $email->save();
         return redirect()->back()->with('success', 'Subscribe to newsletter successfully.');
     }
+    public function systemNewsLetter()
+    {
+
+        $groups = NewsLetter::where('key', 'group')->paginate(20);
+        $jobs = NewsLetter::where('key', 'job')->paginate(20);
+        return view('backend.agent.system.news-letter', compact('groups', 'jobs'));
+    }
 
 
 
