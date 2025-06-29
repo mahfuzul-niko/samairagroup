@@ -1,6 +1,6 @@
 <x-app>
     <x-slot name="title">Roles</x-slot>
-    <section class="roles">
+    {{-- <section class="roles">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -25,7 +25,7 @@
                 </form>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="show-table">
         <div class="card">
             <div class="card-body">
@@ -39,7 +39,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                {{-- <th scope="col">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -53,20 +53,20 @@
                                             {{ $role->status }}
                                         </div>
                                     </td>
-                                    <td><a class="btn btn-success" href="#"><i class="bi bi-eye"></i></a>
-                                        <a class="btn btn-primary" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#roleModal{{ $role->id }}"><i
-                                                class="bi bi-pencil-square"></i></a>
-                                        <form action="{{ route('agent.system.destroy.role', $role->id) }}"
-                                            method="POST" class="d-inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="bi bi-trash"></i></button>
-                                        </form>
-                                    </td>
+                                        {{-- <td><a class="btn btn-success" href="#"><i class="bi bi-eye"></i></a>
+                                            <a class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#roleModal{{ $role->id }}"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                            <form action="{{ route('agent.system.destroy.role', $role->id) }}"
+                                                method="POST" class="d-inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="bi bi-trash"></i></button>
+                                            </form>
+                                        </td> --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="roleModal{{ $role->id }}" tabindex="-1"
+                                    {{-- <div class="modal fade" id="roleModal{{ $role->id }}" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -103,7 +103,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </tr>
                             @endforeach
                         </tbody>

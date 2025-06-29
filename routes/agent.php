@@ -17,8 +17,7 @@ use App\Http\Controllers\SamariaSkill;
 use App\Http\Controllers\SystemController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['role:agent,admin'])
-    ->prefix('agent')
+Route::prefix('agent')
     ->group(function () {
         Route::group(['controller' => PagesController::class], function () {
             Route::get('/dashboard', 'dashboard')->name('dashboard');
@@ -49,6 +48,7 @@ Route::middleware(['role:agent,admin'])
 
             Route::get('/system/member', 'systemMember')->name('member');
             Route::post('/system/store/member', 'storeMember')->name('store.member');
+            Route::post('/system/update/member/role/{member}', 'updateMemberRole')->name('update.member.role');
             Route::Delete('/system/delete/member/{id}', 'destroyMember')->name('destroy.member');
 
         });
@@ -98,7 +98,6 @@ Route::middleware(['role:agent,admin'])
             Route::get('/edit/ssdi/course/{course:slug}', 'createSSDiEdit')->name('edit');
             Route::get('/ssdi/course/list', 'courseSsdi')->name('courses');
             Route::get('/courses/ssdi/view/{course:slug}', 'courseSSDiView')->name('view');
-            Route::get('/course/all/trainers', 'trainer')->name('trainer');
             Route::get('/ssdi/enroll/list', 'ssdiEnrollList')->name('enroll');
             Route::get('/ssdi/course/feature', 'courseSSDIFeatured')->name('feature');
         });
@@ -138,6 +137,7 @@ Route::middleware(['role:agent,admin'])
             Route::delete('/course/feature/delete/{feature}', 'destroyFeature')->name('delete.feature');
         });
         Route::group(['controller' => ContentController::class, 'as' => 'editional.'], function () {
+            Route::get('/editional/all/trainers', 'trainer')->name('trainer');
             Route::get('/editional/review', 'review')->name('view.review');
             Route::get('/editional/certificate', 'certificate')->name('certificate');
         });
