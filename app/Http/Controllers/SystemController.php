@@ -197,6 +197,12 @@ class SystemController extends Controller
 
         return redirect()->back()->with('success', 'User created successfully.');
     }
+    public function updateMemberRole(Request $request, User $member)
+    {
+        $member->role_id = $request->role;
+        $member->save();
+        return redirect()->back()->with('success', 'User role updated successfully.');
+    }
     public function destroyMember($id)
     {
         $member = User::findOrFail($id);
