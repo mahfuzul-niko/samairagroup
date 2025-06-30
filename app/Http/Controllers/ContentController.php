@@ -16,6 +16,7 @@ use App\Models\Course;
 use App\Models\Enroll;
 use App\Models\News;
 use App\Models\Review;
+use App\Models\Trainer;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Storage;
@@ -454,6 +455,10 @@ class ContentController extends Controller
         return redirect()->back()->with('success', 'News deleted successfully.');
     }
 
-
+public function trainer()
+    {
+        $trainers = Trainer::latest()->get();
+        return view('backend.agent.sisters.skill.tranier', compact('trainers'));
+    }
 
 }

@@ -317,11 +317,7 @@ class CourseController extends Controller
     }
 
     ///trainer
-    public function trainer()
-    {
-        $trainers = Trainer::latest()->get();
-        return view('backend.agent.sisters.skill.tranier', compact('trainers'));
-    }
+    
     public function storeTrainer(Request $request)
     {
         $imagePath = $request->file('image')->store('trainers', 'public');
