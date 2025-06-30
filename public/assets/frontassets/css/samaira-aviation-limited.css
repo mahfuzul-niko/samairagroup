@@ -510,6 +510,7 @@
     color: white;
     margin-bottom: 30px;
     font-family: 'Volkhov', cursive;
+    text-align: justify;
 }
 
 .hero-content p {
@@ -518,6 +519,7 @@
     color: white;
     margin-bottom: 40px;
     max-width: 500px;
+    text-align: justify;
 }
 
 .discover-btn {

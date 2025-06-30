@@ -107,6 +107,7 @@ body{
   line-height: 1.2;
   color: var(--text-color-primary);
   margin-bottom: 30px;
+  text-align: justify;
 }
 
 .hero-slider .hero-content p {
@@ -115,6 +116,7 @@ body{
   color: var(--text-color-secondary);
   margin-bottom: 40px;
   max-width: 500px;
+  text-align: justify;
 }
 
 .hero-slider .discover-btn {

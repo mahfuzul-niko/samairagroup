@@ -66,6 +66,7 @@
   color: #666;
   margin-bottom: 18px;
   flex: 1 1 auto;
+  text-align: justify;
 }
 
 .bc-card-link {

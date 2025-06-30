@@ -430,6 +430,7 @@ News and Events Blog Page Start
   font-size: 1rem;
   margin-bottom: 1.2rem;
   flex: 1 1 auto;
+  text-align: justify;
 }
 .news-events-section .blog-card-link {
   color: var(--secondary-color);
@@ -544,6 +545,7 @@ Single News Blog Page Start
   font-size: 1.13rem;
   color: #222;
   line-height: 1.8;
+  text-align: justify;
 }
 .single-news-section .single-news-sidebar {
   background: #f8fafc;

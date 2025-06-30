@@ -1382,6 +1382,7 @@ body {
   color: #666;
   font-size: 1.08rem;
   line-height: 1.7;
+  text-align: justify;
 }
 @media (max-width: 900px) {
   .sjb-highlight-container {

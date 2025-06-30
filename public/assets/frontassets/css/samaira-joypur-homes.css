@@ -856,6 +856,9 @@ display: block;
   .joypur-whywork-section .whywork-content {
     max-width: 500px;
   }
+   .joypur-whywork-section .whywork-content p{
+    text-align: justify !important;
+   }
   .joypur-whywork-section .whywork-content h2 {
     font-size: 2.4rem;
     font-weight: 500;
@@ -1655,6 +1658,7 @@ display: block;
   color: #333;
   margin-bottom: 18px;
   margin-top: 0;
+  text-align: justify;
 }
 .joypur-double-testimonial-section .testimonial-author {
   font-weight: 700;

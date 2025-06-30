@@ -66,6 +66,7 @@ body{
   color: #222;
   line-height: 1.6;
   padding-left: 52px;
+  text-align: justify;
 }
 /* Responsive */
 @media all and (max-width: 600px) {
