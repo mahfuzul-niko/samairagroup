@@ -9,20 +9,17 @@
                 <div class="card-title">
                     Create Category
                 </div>
-                <form action="{{ route('agent.emerging.store.category') }}" method="POST">
+                <form action="{{ route('agent.emerging.store.category') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="">Title</label>
                         <input type="text" name="title" id="" class="form-control" required>
-                        <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
-                                target="_blank">Click here</a></i>
-                    </div>
 
+                    </div>
                     <div class="mb-3">
                         <label for="">Icon</label>
-                        <input type="text" name="icon" id="" class="form-control">
-                         <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
-                                target="_blank">Click here</a></i>
+                        <input type="file" name="icon" id="" class="form-control">
+
                     </div>
                     <button class="btn btn-sm btn-success">Save</button>
                 </form>
@@ -39,7 +36,8 @@
                     @foreach ($categories as $key => $category)
                         <tr>
                             <td> {{ $key + 1 }} </td>
-                            <td>{!! $category->icon !!}</td>
+                            <td><img src="{{ $category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png') }}"
+                                    style="height: 100px; width: auto;" alt=""></td>
                             <td> {{ $category->title }} </td>
                             <td>
                                 <a class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"
@@ -72,11 +70,8 @@
                                                 @csrf
                                                 <div class="mb-3">
                                                     <label for="">Icon</label>
-                                                    <input type="text" name="icon" class="form-control"
-                                                        value="{{ $category->icon }}">
-                                                    <i class="text-secondary fs-6">looking for icon? <a
-                                                            href="https://fontawesome.com/search" target="_blank">Click
-                                                            here</a></i>
+                                                    <input type="file" name="icon" id=""
+                                                        class="form-control">
                                                 </div>
                                                 <div class="form-group my-3">
                                                     <label for="category">Category Name</label>
