@@ -40,14 +40,23 @@ class EmergingController extends Controller
     public function storeCategory(Request $request)
     {
         $category = new emergingCategory;
-        $category->icon = $request->icon;
+        if ($request->hasFile('icon')) {
+            $category->icon = $request->file('icon')->store('category', 'public');
+        } else {
+            $category->icon = null;
+        }
         $category->title = $request->title;
         $category->save();
         return back()->with('success', 'Category created successfully.');
     }
     public function updateCategory(emergingCategory $category, Request $request)
     {
-        $category->icon = $request->icon;
+       if ($request->hasFile('icon')) {
+            if ($category->icon && Storage::disk('public')->exists($category->icon)) {
+                Storage::disk('public')->delete($category->icon);
+            }
+            $category->icon = $request->file('icon')->store('category', 'public');
+        }
         $category->title = $request->title;
         $category->save();
         return back()->with('success', 'Category updated successfully.');

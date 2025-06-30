@@ -107,7 +107,7 @@
                             <a href="{{ route('page.medica.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
                                     {{-- <div class="category-icon">{!! $category->icon !!}</div> --}}
-                                    <img src="{{ asset('assets/frontassets/') }}/images/samaira-medica/blood-cancer.png">
+                                    <img src="{{$category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png')}}">
                                     <div class="category-name">{{ $category->title }}</div>
                                 </div>
                             </a>
@@ -160,9 +160,9 @@
                                     </form>
                                 </div>
                                 <div class="product-info">
-                                    <a href="" class="text-decoration-none text-dark">
+                                    <a href="{{ route('page.medica.product', $product) }}" class="text-decoration-none text-dark">
                                         <h4 class="product-title">
-                                            {{ $product->description }}
+                                            {{ $product->title }}
                                         </h4>
                                     </a>
                                     <div class="price">

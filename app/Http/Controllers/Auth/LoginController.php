@@ -31,9 +31,9 @@ class LoginController extends Controller
         if (Auth::check()) {
             return match (Auth::user()->role->name) {
                 'admin' => '/admin/dashboard',
-                'agent' => '/agent/dashboard',
+                'user' => '/',
                 'student' => '/student/dashboard',
-                default => '/',
+                default => '/agent/dashboard',
             };
         }
 

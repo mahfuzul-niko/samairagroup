@@ -90,7 +90,7 @@
                 @foreach ($courses as $course)
                     <div class="col-md-4">
                         <div class="card shadow">
-                            <div class="ribbon">nice</div>
+                            <div class="ribbon"> {{ $course->course_type == 'both' ? 'online/offline' : $course->course_type }}</div>
                             <img src="{{ $course->image ? Storage::url($course->image) : asset('assets/img/no-profile.png') }}"
                                 class="img-fluid w-100" alt="Course Image">
 

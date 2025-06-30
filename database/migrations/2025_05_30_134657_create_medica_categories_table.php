@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('medica_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('icon')->nullable();
+            $table->text('icon')->nullable();
             $table->string('title');
             $table->timestamps();
         });
