@@ -367,11 +367,18 @@
                     class="nav-content collapse {{ request()->routeIs('agent.aviation.*') ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
+                        <a href="{{ route('agent.aviation.requests') }}"
+                            class="{{ request()->routeIs('agent.aviation.requests') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Requests</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('agent.aviation.destination') }}"
                             class="{{ request()->routeIs('agent.aviation.destination') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Destinations</span>
                         </a>
                     </li>
+
 
                 </ul>
             </li><!-- End aviation Nav -->

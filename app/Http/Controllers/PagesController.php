@@ -10,6 +10,7 @@ use App\Models\agroPartner;
 use App\Models\agroProject;
 use App\Models\aviationAirline;
 use App\Models\aviationFrom;
+use App\Models\aviationRequest;
 use App\Models\aviationTo;
 use App\Models\Award;
 use App\Models\Banner;
@@ -265,8 +266,13 @@ class PagesController extends Controller
      }
      public function samairaaviationcheckout()
      {
-          return view('frontend.samairaaviation.checkout');
+          $data = session('request');
+          if (empty($data)) {
+               return redirect()->back()->with('danger', 'Session expired or invalid request.');
+          }
+          return view('frontend.samairaaviation.checkout', compact('data'));
      }
+     
 
 
 

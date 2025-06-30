@@ -355,6 +355,8 @@ Route::prefix('agent')
             Route::post('/samaira-aviation-limited/destination/store/to', 'storeTo')->name('store.to');
             Route::post('/samaira-aviation-limited/destination/update/to/{to}', 'updateTo')->name('update.to');
             Route::delete('/samaira-aviation-limited/destination/delete/to/{to}', 'deleteTo')->name('delete.to');
+
+            Route::get('/samaira-aviation-limited/requests', 'viewAviationRequest')->name('requests');
         });
         Route::group(['controller' => EmergingController::class, 'as' => 'group.'], function () {
             Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');

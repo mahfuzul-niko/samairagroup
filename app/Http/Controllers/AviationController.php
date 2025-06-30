@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\aviationAirline;
 use App\Models\aviationFrom;
+use App\Models\aviationRequest;
 use App\Models\aviationTo;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
@@ -91,7 +92,48 @@ class AviationController extends Controller
         $to->delete();
         return redirect()->back()->with('success', 'Destination Deleted Successfully.');
     }
+    public function avaitionRequest(Request $request)
+    {
+        session(['request' => $request->all()]);
+        return redirect(route('page.aviation.checkout'))->with('warning', 'Please complete the info');
 
-    
+    }
+    public function storeAviationRequest(Request $request)
+    {
+
+
+        $sessionData = session('request');
+
+        if (!$sessionData) {
+            return back()->with('warning', 'Session data not found.');
+        }
+
+        $data = new aviationRequest; // Replace with your model
+
+        $data->type = $sessionData['type'] ?? null;
+        $data->from = $sessionData['from'] ?? null;
+        $data->to = $sessionData['to'] ?? null;
+        $data->journey = $sessionData['journey'] ?? null;
+        $data->return = $sessionData['return'] ?? null;
+        $data->travelers = $sessionData['travelers'] ?? null;
+        $data->adults = $sessionData['adults'] ?? null;
+        $data->children = $sessionData['children'] ?? null;
+        $data->class = $sessionData['class'] ?? null;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->number = $request->number;
+        $data->special_request = $request->special_request;
+
+        $data->save();
+        session()->forget('request');
+
+        return redirect(route('page.samairaaviation'))->with('success', 'Booking saved successfully!');
+    }
+    public function viewAviationRequest()
+    {
+        $aviations = aviationRequest::latest()->get();
+        return view('backend.agent.sisters.aviation.aviations', compact('aviations'));
+    }
+
 
 }

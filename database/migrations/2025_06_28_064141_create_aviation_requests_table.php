@@ -12,18 +12,20 @@ return new class extends Migration {
     {
         Schema::create('aviation_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
             $table->string('from')->nullable();
             $table->string('to')->nullable();
             $table->string('journey')->nullable();
             $table->string('return')->nullable();
-            $table->integer('traveler')->nullable();
-            $table->integer('adult')->nullable();
-            $table->integer('child')->nullable();
+            $table->string('travelers')->nullable();
+            $table->string('adults')->nullable();
+            $table->string('children')->nullable();
             $table->string('class')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('number')->nullable();
-            $table->string('request')->nullable();
+            $table->string('special_request')->nullable();
+            $table->boolean('mark')->default(false);
             $table->timestamps();
         });
     }

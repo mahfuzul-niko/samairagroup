@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AviationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\CourseController;
@@ -85,7 +86,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
     // Samaira Aviation
     Route::get('/samaira-aviation-limited', 'samairaaviation')->name('samairaaviation');
-    Route::get('/samaira-aviation-limited/checkout', 'samairaaviationcheckout')->name('samairaaviation.checkout');
+    Route::get('/samaira-aviation-limited/checkout', 'samairaaviationcheckout')->name('aviation.checkout');
     // emerging
     Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');
     Route::get('/emerging-office-supplies-limited/shop', 'emergingShop')->name('emerging.shop');
@@ -140,6 +141,10 @@ Route::group(['controller' => OrderController::class, 'as' => 'order.'], functio
 });
 Route::group(['controller' => JobController::class, 'as' => 'job.'], function () {
     Route::post('/job/apply', 'storeApply')->name('store.apply');
+});
+Route::group(['controller' => AviationController::class, 'as' => 'aviation.'], function () {
+    Route::post('/avaition/request', 'avaitionRequest')->name('request');
+    Route::post('/store/avaition/request', 'storeAviationRequest')->name('request.store');
 });
 Route::group(['controller' => SystemController::class, 'as' => 'system.'], function () {
     Route::post('/store/news/letter', 'storeNewsLetter')->name('store.newsletter');
