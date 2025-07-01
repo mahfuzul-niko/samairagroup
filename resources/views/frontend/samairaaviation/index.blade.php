@@ -86,7 +86,10 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="oneway" role="tabpanel">
                                 {{-- form  --}}
-                                <form class="row g-3 align-items-end journey-form">
+                                <form class="row g-3 align-items-end journey-form"
+                                    action="{{ route('aviation.request') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="type" value="one_way">
                                     <div class="col-md-2">
                                         <div class="journey-input-box clickable" tabindex="0">
                                             <div class="journey-label-sm text-orange mb-1">Flying from</div>
@@ -163,7 +166,7 @@
                                                     <span class="journey-icon-center me-2"><i
                                                             class="fas fa-calendar-alt"></i></span>
                                                     <input type="text" class="journey-value-input date-picker"
-                                                        placeholder="Return Date" name="return" autocomplete="off">
+                                                        placeholder="Return Date" name="" autocomplete="off">
                                                 </div>
                                             </div>
                                         </div>
@@ -195,7 +198,8 @@
                                                                 data-type="adults">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
-                                                            <input type="text" name="adults" placeholder="1" value="1">
+                                                            <input type="text" name="adults" placeholder="1"
+                                                                value="1">
                                                             <span class="counter-value" id="adultsCount">1</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="adults">
@@ -215,7 +219,8 @@
                                                                 data-type="children">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
-                                                            <input type="text" name="children" placeholder="0" value="0">
+                                                            <input type="text" name="children" placeholder="0"
+                                                                value="0">
                                                             <span class="counter-value" id="childrenCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="children">
@@ -224,38 +229,19 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- Infant -->
-                                                    <div class="traveler-row">
-                                                        <div class="traveler-info">
-                                                            <div class="traveler-type">Infant</div>
-                                                            <div class="traveler-age">Below 2 years</div>
-                                                        </div>
-                                                        <div class="traveler-counter">
-                                                            <button type="button" class="counter-btn minus"
-                                                                data-type="infant">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
-                                                            <input type="text" name="infant" placeholder="0" value="0">
-                                                            <span class="counter-value" id="infantCount">0</span>
-                                                            <button type="button" class="counter-btn plus"
-                                                                data-type="infant">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
 
                                                     <!-- Class Selection -->
                                                     <div class="class-selection">
                                                         <div class="class-type">Class</div>
                                                         <div class="class-options">
                                                             <label class="class-option">
-                                                                <input type="radio" name="cabinClass"
-                                                                    value="economy" checked>
+                                                                <input type="radio" name="class" value="economy"
+                                                                    checked>
                                                                 <span class="class-radio"></span>
                                                                 <span class="class-label">Economy</span>
                                                             </label>
                                                             <label class="class-option">
-                                                                <input type="radio" name="cabinClass"
+                                                                <input type="radio" name="class"
                                                                     value="business">
                                                                 <span class="class-radio"></span>
                                                                 <span class="class-label">Business</span>
@@ -271,12 +257,16 @@
                                     </div>
                                     <div class="col-md-1 d-flex align-items-center mt-0">
                                         <button type="submit" class="btn journey-search-btn w-100"><i
-                                                class="fas fa-search"></i> Search</button>
+                                                class="fas fa-search"></i> Submit</button>
                                     </div>
                                 </form>
                             </div>
                             <div class="tab-pane fade show" id="roundway" role="tabpanel">
-                                <form class="row g-3 align-items-end journey-form">
+                                <form class="row g-3 align-items-end journey-form"
+                                    action="{{ route('aviation.request') }}" method="post">
+
+                                    @csrf
+                                    <input type="hidden" name="type" value="round_way">
                                     <div class="col-md-2">
                                         <div class="journey-input-box clickable" tabindex="0">
                                             <div class="journey-label-sm text-orange mb-1">Flying from</div>
@@ -288,16 +278,13 @@
                                                 <div class="custom-dropdown w-100 position-relative">
                                                     <input type="text"
                                                         class="journey-value-input custom-dropdown-input"
-                                                        placeholder="Dhaka" name="from" autocomplete="off">
+                                                        placeholder="" name="from" autocomplete="off">
                                                     <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1"
                                                         style="z-index: 10; max-height: 220px; overflow-y: auto;">
-                                                        <div class="custom-dropdown-option">Dhaka</div>
-                                                        <div class="custom-dropdown-option">Chittagong</div>
-                                                        <div class="custom-dropdown-option">Sylhet</div>
-                                                        <div class="custom-dropdown-option">Barisal</div>
-                                                        <div class="custom-dropdown-option">Rajshahi</div>
-                                                        <div class="custom-dropdown-option">Singapore</div>
-                                                        <div class="custom-dropdown-option">Kolkata</div>
+                                                        @foreach ($froms as $from)
+                                                            <div class="custom-dropdown-option">{{ $from->name }}
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -320,16 +307,13 @@
                                                 <div class="custom-dropdown w-100 position-relative">
                                                     <input type="text"
                                                         class="journey-value-input custom-dropdown-input"
-                                                        placeholder="Singapore" name="to" autocomplete="off">
+                                                        placeholder="" name="to" autocomplete="off">
                                                     <div class="custom-dropdown-list d-none position-absolute w-100 bg-white shadow rounded-3 mt-1"
                                                         style="z-index: 10; max-height: 220px; overflow-y: auto;">
-                                                        <div class="custom-dropdown-option">Dhaka</div>
-                                                        <div class="custom-dropdown-option">Chittagong</div>
-                                                        <div class="custom-dropdown-option">Sylhet</div>
-                                                        <div class="custom-dropdown-option">Barisal</div>
-                                                        <div class="custom-dropdown-option">Rajshahi</div>
-                                                        <div class="custom-dropdown-option">Singapore</div>
-                                                        <div class="custom-dropdown-option">Kolkata</div>
+                                                        @foreach ($tos as $to)
+                                                            <div class="custom-dropdown-option">{{ $to->name }}
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
@@ -344,7 +328,7 @@
                                                     <span class="journey-icon-center me-2"><i
                                                             class="fas fa-calendar-alt"></i></span>
                                                     <input type="text" class="journey-value-input date-picker"
-                                                        placeholder="24 April, 2025" name="date"
+                                                        placeholder="24 April, 2025" name="journey"
                                                         autocomplete="off">
                                                     <a href="#" class="journey-add-return ms-2">
                                                         <img src="{{ asset('assets/frontassets/') }}/images/samaira-mptravels/hyperlink.png"
@@ -358,8 +342,7 @@
                                                     <span class="journey-icon-center me-2"><i
                                                             class="fas fa-calendar-alt"></i></span>
                                                     <input type="text" class="journey-value-input date-picker"
-                                                        placeholder="Return Date" name="return_date"
-                                                        autocomplete="off">
+                                                        placeholder="Return Date" name="return" autocomplete="off">
                                                 </div>
                                             </div>
                                         </div>
@@ -396,7 +379,8 @@
                                                                 data-type="adults">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
-                                                            <input type="text" name="adults" placeholder="1" value="1">
+                                                            <input type="text" name="adults" placeholder="1"
+                                                                value="1">
                                                             <span class="counter-value" id="adultsCount">1</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="adults">
@@ -416,7 +400,8 @@
                                                                 data-type="children">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
-                                                            <input type="text" name="children" placeholder="0" value="0">
+                                                            <input type="text" name="children" placeholder="0"
+                                                                value="0">
                                                             <span class="counter-value" id="childrenCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="children">
@@ -425,38 +410,20 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- Infant -->
-                                                    <div class="traveler-row">
-                                                        <div class="traveler-info">
-                                                            <div class="traveler-type">Infant</div>
-                                                            <div class="traveler-age">Below 2 years</div>
-                                                        </div>
-                                                        <div class="traveler-counter">
-                                                            <button type="button" class="counter-btn minus"
-                                                                data-type="infant">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
-                                                            <input type="text" name="infant" placeholder="0" value="0">
-                                                            <span class="counter-value" id="infantCount">0</span>
-                                                            <button type="button" class="counter-btn plus"
-                                                                data-type="infant">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+
 
                                                     <!-- Class Selection -->
                                                     <div class="class-selection">
                                                         <div class="class-type">Class</div>
                                                         <div class="class-options">
                                                             <label class="class-option">
-                                                                <input type="radio" name="cabinClass"
+                                                                <input type="radio" name="class"
                                                                     value="economy" checked>
                                                                 <span class="class-radio"></span>
                                                                 <span class="class-label">Economy</span>
                                                             </label>
                                                             <label class="class-option">
-                                                                <input type="radio" name="cabinClass"
+                                                                <input type="radio" name="class"
                                                                     value="business">
                                                                 <span class="class-radio"></span>
                                                                 <span class="class-label">Business</span>
@@ -472,7 +439,7 @@
                                     </div>
                                     <div class="col-md-1 d-flex align-items-center mt-0">
                                         <button type="submit" class="btn journey-search-btn w-100"><i
-                                                class="fas fa-search"></i> Search</button>
+                                                class="fas fa-search"></i> Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -584,7 +551,8 @@
                                                                 data-type="adults">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
-                                                            <input type="text" name="adults" placeholder="1" value="1">
+                                                            <input type="text" name="adults" placeholder="1"
+                                                                value="1">
                                                             <span class="counter-value" id="adultsCount">1</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="adults">
@@ -604,7 +572,8 @@
                                                                 data-type="children">
                                                                 <i class="fas fa-minus"></i>
                                                             </button>
-                                                            <input type="text" name="children" placeholder="0" value="0">
+                                                            <input type="text" name="children" placeholder="0"
+                                                                value="0">
                                                             <span class="counter-value" id="childrenCount">0</span>
                                                             <button type="button" class="counter-btn plus"
                                                                 data-type="children">
@@ -613,25 +582,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- Infant -->
-                                                    <div class="traveler-row">
-                                                        <div class="traveler-info">
-                                                            <div class="traveler-type">Infant</div>
-                                                            <div class="traveler-age">Below 2 years</div>
-                                                        </div>
-                                                        <div class="traveler-counter">
-                                                            <button type="button" class="counter-btn minus"
-                                                                data-type="infant">
-                                                                <i class="fas fa-minus"></i>
-                                                            </button>
-                                                            <input type="text" name="infant" placeholder="0" value="0">
-                                                            <span class="counter-value" id="infantCount">0</span>
-                                                            <button type="button" class="counter-btn plus"
-                                                                data-type="infant">
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+
 
                                                     <!-- Class Selection -->
                                                     <div class="class-selection">
@@ -1183,14 +1134,14 @@
                         // Update both the span and input field
                         const spanElement = box.querySelector(`#${type}Count`);
                         const inputElement = box.querySelector(`input[name="${type}"]`);
-                        
+
                         if (spanElement) {
                             spanElement.textContent = state[type];
                         }
                         if (inputElement) {
                             inputElement.value = state[type];
                         }
-                        
+
                         updateButtonStates();
                     }
 
