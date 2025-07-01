@@ -102,6 +102,11 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
 
 
+Route::get('/developers', function () {
+    return view('frontend.content.developers');
+});
+
+
 
 
 
