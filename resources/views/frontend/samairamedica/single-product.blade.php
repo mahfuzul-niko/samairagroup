@@ -36,7 +36,7 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-<x-slot name="shop">
+        <x-slot name="shop">
             <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
         </x-slot>
         <x-slot name="nav">
@@ -96,9 +96,14 @@
 
                     <div class="product-meta-row d-flex align-items-start mb-3 flex-wrap">
                         <div class="price-col d-flex flex-column align-items-start me-4">
-                            <span class="product-price-new main-price">{{ $product->descount_price }} Taka</span>
-                            <span class="product-price-old">{{ $product->price }} Taka</span>
+                            @if ($product->descount_price)
+                                <span class="product-price-new main-price">{{ $product->descount_price }} Taka</span>
+                                <span class="product-price-old">{{ $product->price }} Taka</span>
+                            @else
+                                <span class="product-price-new main-price">{{ $product->price }} Taka</span>
+                            @endif
                         </div>
+
 
                     </div>
                     <form action="{{ route('cart.add') }}" method="POST">
@@ -141,7 +146,8 @@
 
                         <div class="d-flex align-items-center mb-4">
                             <div class="quantity-box enhanced-qty me-3">
-                                <a class="qty-btn  text-decoration-none " style="cursor: pointer" id="qty-minus">-</a>
+                                <a class="qty-btn  text-decoration-none " style="cursor: pointer"
+                                    id="qty-minus">-</a>
                                 <input type="text" id="qty-input" name="quantity" value="1" readonly>
                                 <a class="qty-btn   text-decoration-none  " style="cursor: pointer"
                                     id="qty-plus">+</a>
@@ -346,9 +352,16 @@
                                     alt="TDX Sinkers"></div>
                             <div class="similar-card-body">
                                 <div class="similar-title">{{ $prod->title }}</div>
-                                <div class="similar-price">BDT {{ $product->descount_price }} </div>
-                                <div class="similar-price text-decoration-line-through fw-light text-secondary"
-                                    style="font-size: 14px">BDT {{ $product->price }} </div>
+                                @if ($product->descount_price)
+                                    <div class="similar-price">BDT {{ $product->descount_price }}</div>
+                                    <div class="similar-price text-decoration-line-through fw-light text-secondary"
+                                        style="font-size: 14px">
+                                        BDT {{ $product->price }}
+                                    </div>
+                                @else
+                                    <div class="similar-price">BDT {{ $product->price }}</div>
+                                @endif
+
                                 <div class="similar-sub">Check it out now <a
                                         href="{{ route('page.medica.product', $prod) }}">click here</a>
                                 </div>

@@ -81,20 +81,25 @@
                                 <div class="col-md-4 mb-4 product-card-show" data-category="{{ $category->title }}">
                                     <div class="product-card">
                                         <div class="product-img position-relative">
-                                            <span class="product-badge">NEW</span>
-                                            <img src="{{ asset('assets/frontassets/images/samaira-medica/product1.png') }}"
+                                            <span class="product-badge">{{ $product->category->title }}</span>
+                                            <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                                                 alt="Product" class="img-fluid">
-                                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                                            {{-- <button type="submit" class="add-to-cart-btn">Add to Cart</button> --}}
                                         </div>
                                         <div class="product-info">
-                                            <a href="#" class="text-decoration-none text-dark">
+                                            <a href="{{ route('page.medica.product', $product) }}" class="text-decoration-none text-dark">
                                                 <h4 class="product-title">
                                                     {{ Str::limit($product->title ?? 'Product Title', 100) }}
                                                 </h4>
                                             </a>
                                             <div class="price">
-                                                <span class="new-price">${{ $product->descount_price ?? 0 }}</span>
-                                                <span class="old-price">${{ $product->price ?? '' }}</span>
+                                                @if ($product->descount_price)
+                                                    <span class="new-price">{{ $product->descount_price }} Taka</span>
+                                                    <span class="old-price">{{ $product->price }} Taka</span>
+                                                @else
+                                                    <span class="new-price">{{ $product->price }} Taka</span>
+                                                @endif
+
                                             </div>
                                             <a href="{{ route('page.medica.product', $product) }}"
                                                 class="buy-now-btn">Buy Now</a>
