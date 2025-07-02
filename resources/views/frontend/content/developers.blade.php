@@ -242,7 +242,6 @@
             <div class="dev-role">Backend Developer</div>
             <div class="dev-contact">
               <div><i class="fas fa-envelope"></i><a href="mailto:mahfuzul1125@gmail.com">mahfuzul1125@gmail.com</a></div>
-              <div><i class="fas fa-phone"></i><a href="tel:+8801890517777">+880 1890517777</a></div>
             </div>
             <div class="dev-desc">
               Expert in architecting scalable, secure, and high-performance server-side applications. Passionate about clean code, automation, and building robust APIs that power seamless user experiences.
@@ -258,7 +257,6 @@
               <a href="https://github.com/mahfuzul-niko" title="GitHub"><i class="fab fa-github"></i></a>
               <a href="https://www.facebook.com/thisismahfuzofficial" title="Facebook"><i class="fab fa-facebook"></i></a>
               <a href="https://www.instagram.com/thisismahfuzofficial/" title="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="https://wa.me/8801890517777" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
           </div>
         </div>
@@ -272,7 +270,6 @@
             <div class="dev-role">Frontend Designer</div>
             <div class="dev-contact">
               <div><i class="fas fa-envelope"></i><a href="mailto:sadia.haque207@gmail.com">sadia.haque207@gmail.com</a></div>
-              <div><i class="fas fa-phone"></i><a href="tel:+8801968521097">+8801968521097</a></div>
             </div>
             <div class="dev-desc">
               Creative UI/UX designer and frontend developer with a keen eye for detail. Specializes in crafting beautiful, intuitive interfaces and bringing brands to life through modern web technologies.
@@ -289,7 +286,6 @@
               <a href="https://github.com/sadia-haque207" title="GitHub"><i class="fab fa-github"></i></a>
               <a href="https://www.facebook.com/sadiahaque207/" title="Facebook"><i class="fab fa-facebook"></i></a>
               <a href="https://www.instagram.com/sadia.haque207/" title="Instagram"><i class="fab fa-instagram"></i></a>
-              <a href="https://wa.me/8801968521097" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
           </div>
         </div>
