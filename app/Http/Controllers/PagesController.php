@@ -347,6 +347,13 @@ class PagesController extends Controller
           $about = About::latest()->where('key', 'raisa')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns'));
      }
+     public function aviationAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'aviation')->get();
+          $about = About::latest()->where('key', 'aviation')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+     }
 
      //contacts
      public function samairaGroupContact()
@@ -416,6 +423,13 @@ class PagesController extends Controller
      {
           $banners = ContactBanner::latest()->where('key', 'raisa')->get();
           $info = ContactInfo::latest()->where('key', 'raisa')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+     }
+     public function aviationContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'aviation')->get();
+          $info = ContactInfo::latest()->where('key', 'aviation')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
      }

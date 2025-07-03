@@ -107,7 +107,8 @@
                             <a href="{{ route('page.medica.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
                                     {{-- <div class="category-icon">{!! $category->icon !!}</div> --}}
-                                    <img src="{{$category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png')}}">
+                                    <img
+                                        src="{{ $category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png') }}">
                                     <div class="category-name">{{ $category->title }}</div>
                                 </div>
                             </a>
@@ -151,7 +152,7 @@
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <input type="hidden" name="product_name" value="{{ $product->title }}">
                                         <input type="hidden" name="image" value="{{ $product->image }}">
-                                        <input type="hidden" name="price" value="{{ $product->descount_price }}">
+                                        <input type="hidden" name="price" value="{{ $product->descount_price ?? $product->price }}">
                                         <input type="hidden" name="weight"
                                             value="{{ is_array($weights) && isset($weights[0]) ? $weights[0] : '' }}">
                                         <input type="hidden" name="size"
@@ -160,14 +161,20 @@
                                     </form>
                                 </div>
                                 <div class="product-info">
-                                    <a href="{{ route('page.medica.product', $product) }}" class="text-decoration-none text-dark">
+                                    <a href="{{ route('page.medica.product', $product) }}"
+                                        class="text-decoration-none text-dark">
                                         <h4 class="product-title">
                                             {{ $product->title }}
                                         </h4>
                                     </a>
                                     <div class="price">
-                                        <span class="new-price">{{ $product->descount_price }} Taka</span>
-                                        <span class="old-price">{{ $product->price }} Taka</span>
+                                        @if ($product->descount_price)
+                                            <span class="new-price">{{ $product->descount_price }} Taka</span>
+                                            <span class="old-price">{{ $product->price }} Taka</span>
+                                        @else
+                                            <span class="new-price">{{ $product->price }} Taka</span>
+                                        @endif
+
                                     </div>
                                     <a href="{{ route('page.medica.product', $product) }}" class="buy-now-btn">Buy
                                         Now</a>

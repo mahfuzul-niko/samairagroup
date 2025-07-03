@@ -40,6 +40,9 @@
         Route::is('page.raisa') || Route::is('page.raisa.contact') || Route::is('page.raisa.about') => route(
             'page.raisa.about',
         ),
+        Route::is('page.aviation') || Route::is('page.aviation.contact') || Route::is('page.aviation.about') => route(
+            'page.aviation.about',
+        ),
         default => route('page.home.about'),
     };
     $contactRoute = match (true) {
@@ -80,6 +83,9 @@
         Route::is('page.raisa') || Route::is('page.raisa.about') || Route::is('page.raisa.contact') => route(
             'page.raisa.contact',
         ),
+        Route::is('page.aviation') || Route::is('page.aviation.about') || Route::is('page.aviation.contact') => route(
+            'page.aviation.contact',
+        ),
         default => route('page.home.contact'),
     };
     $logourl = match (true) {
@@ -113,6 +119,9 @@
         Route::is('page.raisa') || Route::is('page.raisa.about') || Route::is('page.raisa.contact') => route(
             'page.raisa',
         ),
+        Route::is('page.aviation') || Route::is('page.aviation.about') || Route::is('page.aviation.contact') => route(
+            'page.aviation',
+        ),
         default => route('page.home'),
     };
     $logo = match (true) {
@@ -143,12 +152,17 @@
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => system_key(
             'samaira_job_logo',
         ),
+        Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => system_key(
+            'samaira_gold_logo',
+        ),
         Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => system_key(
             'samaira_agro_logo',
         ),
         Route::is('page.raisa') || Route::is('page.raisa.contact') || Route::is('page.raisa.about') => system_key(
             'samaira_raisa_logo',
         ),
+        Route::is('page.aviation') || Route::is('page.aviation.contact') || Route::is('page.aviation.about')
+            => system_key('samaira_aviation_logo'),
         default => system_key('samaira_group_logo'),
     };
 @endphp

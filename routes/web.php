@@ -85,7 +85,9 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/joypur-agro-limited/contact-us', 'agroContact')->name('agro.contact');
 
     // Samaira Aviation
-    Route::get('/samaira-aviation-limited', 'samairaaviation')->name('samairaaviation');
+    Route::get('/samaira-aviation-limited', 'samairaaviation')->name('aviation');
+    Route::get('/samaira-aviation-limited/about-us', 'aviationAbout')->name('aviation.about');
+    Route::get('/samaira-aviation-limited/contact-us', 'aviationContact')->name('aviation.contact');
     Route::get('/samaira-aviation-limited/checkout', 'samairaaviationcheckout')->name('aviation.checkout');
     // emerging
     Route::get('/emerging-office-supplies-limited', 'emerging')->name('emerging');
@@ -103,9 +105,9 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
 
 
 
-Route::get('/developers', function () {
-    return view('frontend.content.developers');
-});
+    Route::get('/developers', function () {
+        return view('frontend.content.developers');
+    });
 
 
 
