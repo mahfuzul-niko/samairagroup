@@ -4,6 +4,9 @@
   --text-color: #fff;
   --text-color-dark: #000;
 }
+.h-100 {
+  height: 87% !important;
+}
 .bg-lightblue {
 background-color: #d6f0ff; /* Very light blue */
 }
