@@ -1950,6 +1950,9 @@ Single Property Page CSS Start
     .similar-items-section .similar-card{
       min-width: 210px !important;
     }
+    .about-swiper .swiper-slide img{
+      height: 100%;
+    }
   }
   .product-main-container .size-options label {
     background: #f4f6fb;
