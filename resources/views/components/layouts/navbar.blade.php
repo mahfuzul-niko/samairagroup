@@ -22,7 +22,7 @@
             Route::is('page.jphomes.contact')
             => route('page.jphomes.about'),
 
-        Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => route(
+        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.contact') || Route::is('page.medica.about') => route(
             'page.medica.about',
         ),
         Route::is('page.emerging') || Route::is('page.emerging.contact') || Route::is('page.emerging.about') => route(
@@ -65,7 +65,7 @@
             Route::is('page.jphomes.about') ||
             Route::is('page.jphomes.contact')
             => route('page.jphomes.contact'),
-        Route::is('page.medica') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
+        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
             'page.medica.contact',
         ),
         Route::is('page.emerging') || Route::is('page.emerging.about') || Route::is('page.emerging.contact') => route(
@@ -107,7 +107,7 @@
             Route::is('page.jphomes.contact')
             => route('page.jphomes'),
 
-        Route::is('page.medica') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
+        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
             'page.medica',
         ),
         Route::is('page.emerging') || Route::is('page.emerging.about') || Route::is('page.emerging.contact') => route(
@@ -144,7 +144,7 @@
             Route::is('page.jphomes.contact') ||
             Route::is('page.jphomes.about')
             => system_key('samaira_jphomes_logo'),
-        Route::is('page.medica') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
+        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
             'samaira_medica_logo',
         ),
         Route::is('page.emerging') || Route::is('page.emerging.contact') || Route::is('page.emerging.about')

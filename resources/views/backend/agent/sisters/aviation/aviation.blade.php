@@ -190,7 +190,7 @@
                                 <form action="{{ route('agent.aviation.delete.airline', $airline) }}" method="POST"
                                     class="d-inline-block m-0 p-0">
                                     @csrf
-                                    @method('DELETE')   
+                                    @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm"><i
                                             class="bi bi-trash"></i></button>
                                 </form>
@@ -202,7 +202,61 @@
         </div>
     </section>
 
-
+    <section class="partners">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Partners store
+                </div>
+                <form action="{{ route('agent.aviation.store.partner') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="">Partner Name</label>
+                        <input type="text" class="form-control" id="inputEmail4" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Image</label>
+                        <input type="file" class="form-control" name="image" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                </form>
+                <div class="card-title">
+                    Partners List
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($partners as $partner)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $partner->title }}</td>
+                                <td>
+                                    <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Partner Image" class="img-fluid"
+                                        style="height: 80px; object-fit: cover;">
+                                </td>
+                                <td class="text-center">
+                                    <form action="{{ route('agent.aviation.delete.partner', $partner) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 
 
     <section class="about-image">

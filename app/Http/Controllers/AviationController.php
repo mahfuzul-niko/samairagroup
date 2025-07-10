@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\aviationAirline;
 use App\Models\aviationFrom;
+use App\Models\aviationPartner;
 use App\Models\aviationRequest;
 use App\Models\aviationTo;
 use App\Models\ContactBanner;
@@ -18,13 +19,13 @@ class AviationController extends Controller
     public function aviation()
     {
         $airlines = aviationAirline::latest()->get();
-
+        $partners = aviationPartner::latest()->get();
         $banners = Banner::latest()->where('key', 'aviation')->get();
         $aboutbanners = AboutBanner::latest()->where('key', 'aviation')->get();
         $about = About::latest()->where('key', 'aviation')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'aviation')->get();
         $info = ContactInfo::latest()->where('key', 'aviation')->first();
-        return view('backend.agent.sisters.aviation.aviation', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'airlines'));
+        return view('backend.agent.sisters.aviation.aviation', compact('partners','banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'airlines'));
     }
     public function storeAirline(Request $request)
     {
@@ -133,6 +134,30 @@ class AviationController extends Controller
     {
         $aviations = aviationRequest::latest()->get();
         return view('backend.agent.sisters.aviation.aviations', compact('aviations'));
+    }
+
+    public function storePartner(Request $request)
+    {
+
+        $partner = new aviationPartner;
+        $partner->title = $request->title;
+        if ($request->hasFile('image')) {
+            $partner->image = $request->file('image')->store('partner', 'public');
+        } else {
+            $partner->image = null;
+        }
+        $partner->save();
+        return redirect()->back()->with('success', 'Partner created successfully.');
+    }
+
+    public function deletePartner(aviationPartner $partner)
+    {
+        if ($partner->image && Storage::disk('public')->exists($partner->image)) {
+            Storage::disk('public')->delete($partner->image);
+        }
+        $partner->delete();
+
+        return redirect()->back()->with('success', 'partner deleted successfully.');
     }
 
 
