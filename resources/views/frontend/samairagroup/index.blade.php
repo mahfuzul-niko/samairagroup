@@ -129,7 +129,7 @@
                                     alt="TEER">
                             </div>
                             <div class="rg-brand-content d-flex flex-column flex-grow-1">
-                                <p>{{ \Illuminate\Support\Str::words($concern->concern_text, 55, '...') }}</p>
+                                <p>{{ \Illuminate\Support\Str::limit($concern->concern_text, 200, '...') }}</p>
                                 <a href="{{ $concern->concern_link }}" class="rg-brand-btn mt-auto">Read More</a>
                             </div>
                         </div>
