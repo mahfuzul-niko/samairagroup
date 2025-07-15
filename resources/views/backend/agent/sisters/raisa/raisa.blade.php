@@ -9,10 +9,10 @@
 
                 <div class="text-center my-3">
                     <div class=" d-inline-block" style="height: 150px; width: auto;">
-                        <img src="{{ system_key('samaira_rasia_logo') ? Storage::url(system_key('samaira_rasia_logo')) : asset('assets/img/no-profile.png') }}"
+                        <img src="{{ system_key('samaira_raisa_logo') ? Storage::url(system_key('samaira_raisa_logo')) : asset('assets/img/no-profile.png') }}"
                             alt="Group Logo" class="img-fluid rounded " style="height: 200px; object-fit: cover;">
 
-                        <form action="{{ route('agent.system.destroy.image', 'samaira_rasia_logo') }}" method="POST"
+                        <form action="{{ route('agent.system.destroy.image', 'samaira_raisa_logo') }}" method="POST"
                             class="mt-2">
                             @csrf
                             <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
@@ -26,7 +26,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="key" placeholder="Enter key" class="form-control"
-                        value="samaira_rasia_logo" required>
+                        value="samaira_raisa_logo" required>
                     <div class="form-group my-3">
                         <label for="value">Logo</label>
                         <input type="file" name="value" class="form-control" required>

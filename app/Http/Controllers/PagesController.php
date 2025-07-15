@@ -10,6 +10,7 @@ use App\Models\agroPartner;
 use App\Models\agroProject;
 use App\Models\aviationAirline;
 use App\Models\aviationFrom;
+use App\Models\aviationPartner;
 use App\Models\aviationRequest;
 use App\Models\aviationTo;
 use App\Models\Award;
@@ -260,9 +261,10 @@ class PagesController extends Controller
      {
           $banners = Banner::latest()->where('key', 'aviation')->get();
           $airlines = aviationAirline::latest()->get();
+          $partners = aviationPartner::latest()->get();
           $froms = aviationFrom::all();
           $tos = aviationTo::all();
-          return view('frontend.samairaaviation.index', compact('banners', 'airlines', 'froms', 'tos'));
+          return view('frontend.samairaaviation.index', compact('banners','partners', 'airlines', 'froms', 'tos'));
      }
      public function samairaaviationcheckout()
      {
