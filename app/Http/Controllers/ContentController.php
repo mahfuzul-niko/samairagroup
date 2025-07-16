@@ -370,7 +370,7 @@ class ContentController extends Controller
     {
         $chairman = Chairman::all()->pluck('value', 'key');
         $banners = Banner::where('key', 'chairman_banner')->latest()->get();
-        
+
         return view('backend.agent.content.chairman ', compact('chairman', 'banners'));
     }
     public function storeChairman(Request $request)
@@ -455,10 +455,15 @@ class ContentController extends Controller
         return redirect()->back()->with('success', 'News deleted successfully.');
     }
 
-public function trainer()
+    public function trainer()
     {
         $trainers = Trainer::latest()->get();
         return view('backend.agent.sisters.skill.tranier', compact('trainers'));
+    }
+
+    public function privacies()
+    {
+        return view('backend.agent.content.privacies');
     }
 
 }

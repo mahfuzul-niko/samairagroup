@@ -480,6 +480,12 @@
                             <i class="bi bi-circle"></i><span>News</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('agent.page.privacies') }}"
+                            class="{{ request()->routeIs('agent.page.privacies') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>privacies</span>
+                        </a>
+                    </li>
 
 
                 </ul>

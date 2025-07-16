@@ -100,7 +100,10 @@ class PagesController extends Controller
      {
 
 
-          $featured = FeaturedCourse::latest()->where('for', 'language')->first();
+          $featured = FeaturedCourse::latest()
+               ->whereHas('course', function ($query) {
+                    $query->where('course_for', 'language');
+               })->first();
           $certifieds = SkillCertified::latest()->get();
           $reviews = Review::latest()->get();
           $courses = Course::where('course_for', 'language')->latest()->take(6)->get();
@@ -264,7 +267,7 @@ class PagesController extends Controller
           $partners = aviationPartner::latest()->get();
           $froms = aviationFrom::all();
           $tos = aviationTo::all();
-          return view('frontend.samairaaviation.index', compact('banners','partners', 'airlines', 'froms', 'tos'));
+          return view('frontend.samairaaviation.index', compact('banners', 'partners', 'airlines', 'froms', 'tos'));
      }
      public function samairaaviationcheckout()
      {
@@ -274,8 +277,12 @@ class PagesController extends Controller
           }
           return view('frontend.samairaaviation.checkout', compact('data'));
      }
-     
 
+     //Privacy
+     public function samairagroupPrivacy()
+     {
+          return view('frontend.content.privacy');
+     }
 
 
      //abouts

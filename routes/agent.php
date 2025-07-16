@@ -183,6 +183,10 @@ Route::prefix('agent')
             Route::post('/content/update/award/{award}', 'updateAward')->name('update.award');
             Route::delete('/content/delete/award/{award}', 'deleteAward')->name('delete.award');
 
+            //Privacy
+            Route::post('/content/store/privacy', 'storePrivacy')->name('store.privacy');
+            Route::post('/content/save/privacy/{privacy}', 'savePrivacy')->name('save.privacy');
+
             //chairman
             Route::post('/content/store/chairman', 'storeChairman')->name('store.chairman');
             Route::post('/content/store/chairman/image', 'storeChairmanImage')->name('store.chairman.image');
@@ -243,6 +247,7 @@ Route::prefix('agent')
         });
         Route::group(['controller' => ContentController::class, 'as' => 'page.'], function () {
             Route::get('/awards', 'awards')->name('awards');
+            Route::get('/privacies', 'privacies')->name('privacies');
             Route::get('/chairman', 'chairman')->name('chairman');
             Route::get('/news-&-event', 'newses')->name('news');
             Route::get('/news-&-event/edit/{news}', 'editNews')->name('edit.news');

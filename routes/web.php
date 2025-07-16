@@ -38,6 +38,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/', 'samairagroup')->name('home');
     Route::get('/about-us', 'samairagroupAbout')->name('home.about');
     Route::get('/contact-us', 'samairagroupContact')->name('home.contact');
+    Route::get('/privacies', 'samairagroupPrivacy')->name('home.privacy');
 
     Route::get('/awards', 'awards')->name('awards');
     Route::get('/chairman-profile', 'chairman')->name('chairman');
