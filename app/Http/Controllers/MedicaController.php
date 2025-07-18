@@ -266,4 +266,11 @@ class MedicaController extends Controller
         $message = $order->mark ? 'Order approved successfully.' : 'Order approval removed.';
         return redirect()->back()->with('success', $message);
     }
+    public function bestSelling(Request $request, medicaProduct $product)
+    {
+        $product->best = $request->has('best') ? 1 : 0;
+        $product->save();
+        $message = $product->best ? 'Product featured successfully.' : 'Product featured removed.';
+        return redirect()->back()->with('success', $message);
+    }
 }

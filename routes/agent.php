@@ -272,6 +272,7 @@ Route::prefix('agent')
             Route::get('/samaira-medica-limited/edit/product/{product}', 'productEdit')->name('product.edit');
             Route::post('/samaira-medica-limited/store/products', 'storeProduct')->name('store.product');
             Route::post('/samaira-medica-limited/update/products/{product}', 'updateProduct')->name('update.product');
+            Route::post('/samaira-medica-limited/update/product/best-selling/{product}', 'bestSelling')->name('product.bestselling');
             Route::delete('/samaira-medica-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
 
             Route::post('/samaira-medica-limited/store/images', 'storeImages')->name('store.images');

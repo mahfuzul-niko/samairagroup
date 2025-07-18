@@ -139,7 +139,7 @@ class PagesController extends Controller
           $partners = medicaPartner::latest()->get();
           $reviews = medicaReview::latest()->get();
           $categories = medicaCategory::latest()->get();
-          $products = medicaProduct::latest()->take(6)->get();
+          $products = medicaProduct::latest()->where('best', true)->get();
           $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'medica')->get();
           return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
@@ -264,7 +264,7 @@ class PagesController extends Controller
           $partners = aviationPartner::latest()->get();
           $froms = aviationFrom::all();
           $tos = aviationTo::all();
-          return view('frontend.samairaaviation.index', compact('banners','partners', 'airlines', 'froms', 'tos'));
+          return view('frontend.samairaaviation.index', compact('banners', 'partners', 'airlines', 'froms', 'tos'));
      }
      public function samairaaviationcheckout()
      {
@@ -274,9 +274,10 @@ class PagesController extends Controller
           }
           return view('frontend.samairaaviation.checkout', compact('data'));
      }
-     
+
      //Privacy
-     public function samairagroupPrivacy(){
+     public function samairagroupPrivacy()
+     {
           return view('frontend.content.privacy');
      }
 
