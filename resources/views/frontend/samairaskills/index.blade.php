@@ -332,7 +332,7 @@
     </section>
     <!-- We are certified By End  -->
 
-    @if (!is_null($featured))
+    {{-- @if (!is_null($featured))
         <section class="enrollment-discount-section mt-5 pt-5">
             <div class="container">
                 <div class="row align-items-center">
@@ -354,7 +354,7 @@
                 </div>
             </div>
         </section>
-    @endif
+    @endif --}}
 
     <!-- Footer Section Start -->
     <x-layouts.footer />
