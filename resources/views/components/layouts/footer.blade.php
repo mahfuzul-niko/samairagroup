@@ -28,7 +28,7 @@
 
 
 
-                    <li><a href="#" class="text-decoration-none">Privacy</a></li>
+                    <li><a href="{{route('page.home.privacy')}}" class="text-decoration-none">Privacy</a></li>
 
                 </ul>
             </div>

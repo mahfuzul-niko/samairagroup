@@ -42,6 +42,7 @@ use App\Models\medicaProduct;
 use App\Models\medicaReview;
 use App\Models\News;
 use App\Models\Partner;
+use App\Models\Privacy;
 use App\Models\Property;
 use App\Models\PropertyCategory;
 use App\Models\raisaPartner;
@@ -278,7 +279,8 @@ class PagesController extends Controller
      //Privacy
      public function samairagroupPrivacy()
      {
-          return view('frontend.content.privacy');
+          $privacy = Privacy::pluck('value', 'key');
+          return view('frontend.content.privacy',compact('privacy'));
      }
 
 

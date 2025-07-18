@@ -195,6 +195,11 @@ Route::prefix('agent')
             Route::post('/content/store/news', 'storeNews')->name('store.news');
             Route::post('/content/update/news/{news}', 'updateNews')->name('update.news');
             Route::delete('/content/delete/news/{news}', 'deleteNews')->name('delete.news');
+            //privecy
+            Route::post('/content/privacy/update/image', 'updatePrivacyImage')->name('privacy.update.image');
+            Route::post('/content/privacy/update/content', 'updatePrivacyContent')->name('privacy.update.content');
+
+
         });
         Route::group(['controller' => LanguageController::class, 'as' => 'group.'], function () {
             Route::get('/samaira-language-japan', 'language')->name('language');

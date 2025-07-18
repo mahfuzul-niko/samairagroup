@@ -15,6 +15,7 @@ use App\Models\ContactSubject;
 use App\Models\Course;
 use App\Models\Enroll;
 use App\Models\News;
+use App\Models\Privacy;
 use App\Models\Review;
 use App\Models\Trainer;
 use App\Models\User;
@@ -463,7 +464,37 @@ class ContentController extends Controller
 
     public function privacies()
     {
-        return view('backend.agent.content.privacies');
+        $privacy = Privacy::pluck('value', 'key');
+        return view('backend.agent.content.privacies', compact('privacy'));
     }
+    public function updatePrivacyImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|max:2048',
+        ]);
+
+        $path = $request->file('image')->store('privacies', 'public');
+
+        Privacy::updateOrCreate(
+            ['key' => 'background_image'],
+            ['value' => $path]
+        );
+
+        return back()->with('success', 'Background image updated.');
+    }
+
+    public function updatePrivacyContent(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'discription' => 'required|string',
+        ]);
+
+        Privacy::updateOrCreate(['key' => 'title'], ['value' => $request->title]);
+        Privacy::updateOrCreate(['key' => 'discription'], ['value' => $request->discription]);
+
+        return back()->with('success', 'Content updated.');
+    }
+
 
 }

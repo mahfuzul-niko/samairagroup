@@ -44,12 +44,14 @@
     <!-- Navbar End -->
 
     <div class="about-slider-container content-margin-top">
+        <img src="{{ isset($privacy['background_image']) ? Storage::url($privacy['background_image']) : asset('assets/img/no-profile.png') }}"
+            alt="" class="img-fluid">
 
 
         <section class="about-overlap">
             <h1>Privacy</h1>
-            <h2>Title</h2>
-            <p>description</p>
+            <h2>{{ $privacy['title'] ?? '' }}</h2>
+            <p>{{ $privacy['discription'] ?? '' }}</p>
         </section>
         <!-- About Section Overlap -->
     </div>
