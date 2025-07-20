@@ -880,7 +880,7 @@ Logo and Description CSS Start
 .hero-slider .swiper-wrapper {
   position: relative !important; 
 }
-.hero-slider .swiper-wrapper::after{
+/* .hero-slider .swiper-wrapper::after{
   content: '';
   position: absolute !important;
   top: 0;
@@ -890,8 +890,7 @@ Logo and Description CSS Start
   z-index: 1;
   pointer-events: none;
   background: linear-gradient(to right, rgba(57, 170, 255, 0.12) 50%, transparent 50%) !important;
-  /* background: linear-gradient(90deg, rgba(57, 170, 255, 0.12) -43.62%, rgba(57, 170, 255, 0.12) -17.23%, rgba(251, 252, 252, 0.15) 83.36%); */
-}
+} */
 .slide-bg {
   z-index: 0;
 }
@@ -947,13 +946,12 @@ Logo and Description CSS Start
   line-height: 1.2;
   color: var(--text-color-primary);
   margin-bottom: 30px;
-  text-align: justify;
 }
 
 .hero-slider .hero-content p {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text-color-secondary);
+  color: var(--text-color-dark);
   margin-bottom: 40px;
   max-width: 500px;
   text-align: justify;
