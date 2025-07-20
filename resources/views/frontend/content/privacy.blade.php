@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Privacy Policy</title>
     <link rel="icon" href="{{ asset('assets/frontassets/') }}/images/loader-logo.png" type="image/png">
 
     <!-- Bootstrap CSS -->
@@ -43,10 +43,9 @@
     </x-layouts.navbar>
     <!-- Navbar End -->
 
-    <div class="about-slider-container content-margin-top">
-        <img src="{{ isset($privacy['background_image']) ? Storage::url($privacy['background_image']) : asset('assets/img/no-profile.png') }}"
-            alt="" class="img-fluid">
-
+    <div class="about-slider-container content-margin-top" style="background: url('{{ asset('assets/frontassets/') }}/images/samaira-princess-gold/slider1.jpeg') no-repeat center center; background-size: cover;">
+        {{-- <img src="{{ isset($privacy['background_image']) ? Storage::url($privacy['background_image']) : asset('assets/img/no-profile.png') }}"
+            alt="" class="img-fluid"> --}}
 
         <section class="about-overlap">
             <h1>Privacy</h1>

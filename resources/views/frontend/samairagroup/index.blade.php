@@ -188,7 +188,7 @@
             setTimeout(() => {
                 document.body.classList.add('loaded');
                 document.getElementById('content').style.display = 'block';
-            }, 2500); // Delay to allow full animation
+            }, 1000); // Delay to allow full animation
         });
     </script>
 </body>

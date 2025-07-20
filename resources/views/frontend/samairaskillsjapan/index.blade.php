@@ -596,11 +596,10 @@
     <!-- Slider Animation  -->
     <script>
         var swiper = new Swiper('.about-swiper', {
-            direction: 'vertical',
-            effect: 'coverflow',
+            effect: 'fade',
             loop: true,
             autoplay: {
-                delay: 4000,
+                delay: 5000,
                 disableOnInteraction: false
             },
             speed: 1000,
