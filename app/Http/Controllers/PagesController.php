@@ -503,18 +503,6 @@ class PagesController extends Controller
      }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
      //soon
      public function comingsoon()
      {
