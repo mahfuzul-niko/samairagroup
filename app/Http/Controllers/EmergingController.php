@@ -51,7 +51,7 @@ class EmergingController extends Controller
     }
     public function updateCategory(emergingCategory $category, Request $request)
     {
-       if ($request->hasFile('icon')) {
+        if ($request->hasFile('icon')) {
             if ($category->icon && Storage::disk('public')->exists($category->icon)) {
                 Storage::disk('public')->delete($category->icon);
             }
@@ -263,6 +263,13 @@ class EmergingController extends Controller
         $order->mark = $request->has('mark') ? 1 : 0;
         $order->save();
         $message = $order->mark ? 'Order approved successfully.' : 'Order approval removed.';
+        return redirect()->back()->with('success', $message);
+    }
+    public function bestSelling(Request $request, emergingProduct $product)
+    {
+        $product->best = $request->has('best') ? 1 : 0;
+        $product->save();
+        $message = $product->best ? 'Product featured successfully.' : 'Product featured removed.';
         return redirect()->back()->with('success', $message);
     }
 }

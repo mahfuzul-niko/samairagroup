@@ -386,6 +386,7 @@ Route::prefix('agent')
             Route::get('/emerging-office-supplies-limited/edit/product/{product}', 'productEdit')->name('product.edit');
             Route::post('/emerging-office-supplies-limited/store/products', 'storeProduct')->name('store.product');
             Route::post('/emerging-office-supplies-limited/update/products/{product}', 'updateProduct')->name('update.product');
+            Route::post('/emerging-office-supplies-limited/update/product/best-selling/{product}', 'bestSelling')->name('product.bestselling');
             Route::delete('/emerging-office-supplies-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
 
             Route::post('/emerging-office-supplies-limited/store/images', 'storeImages')->name('store.images');

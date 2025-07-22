@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
                 $table->foreignId('category_id');
                 $table->string('title');
-                $table->decimal('price');
+                $table->decimal('price')->nullable();
                 $table->decimal('descount_price')->nullable();
                 $table->json('weight')->nullable();
                 $table->json('size')->nullable();
