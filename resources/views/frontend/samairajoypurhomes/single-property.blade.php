@@ -285,7 +285,7 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary px-5 py-2"
                                         style="border-radius: 30px; font-weight: 600; font-size: 1.1rem; background: #3b4266; border: none;">Submit
-                                        Commente</button>
+                                        Comment</button>
                                 </form>
                             </div>
                         </div>
