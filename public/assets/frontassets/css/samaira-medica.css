@@ -455,9 +455,10 @@ body{
   padding: 20px;
 }
 .best-selling-products .product-img img {
-  max-width: 500px; /* Smaller width */
+  max-width: 290px; /* Smaller width */
   height: auto;
   transition: transform 0.4s ease;
+  border-radius: 14px 14px 0 0;
 }
 .best-selling-products .product-card:hover .product-img img {
   transform: scale(1.08);
@@ -496,8 +497,8 @@ body{
   font-weight: 600;
   margin-bottom: 10px;
   line-height: 1.5;
-  min-height: 48px;         
-  max-height: 48px;         
+  min-height: 30px;         
+  max-height: 30px;         
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -554,14 +555,14 @@ body{
   padding: 0;
 }
 .best-selling-products .product-img {
-  height: 200px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f5f7fa;
   border-radius: 14px 14px 0 0;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .best-selling-products .product-info {
   flex: 1 1 auto;
