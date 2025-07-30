@@ -161,7 +161,9 @@
                         <div class="swiper-slide">
                             <a href="{{ route('page.emerging.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
-                                    <div class="category-icon">{!! $category->icon !!}</div>
+                                    {{-- <div class="category-icon">{!! $category->icon !!}</div> --}}
+                                    <img
+                                        src="{{ $category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png') }}" style="width: 50px; height: 50px;">
                                     <div class="category-name">{{ $category->title }}</div>
                                 </div>
                             </a>
@@ -333,34 +335,34 @@
     <!-- Testimonials Section End -->
 
     <!-- Sister Concern start  -->
-        <section class="sister-concern py-5">
-            <div class="container text-center">
-                <h3 class="mb-4">Our Partners</h3>
-                <div class="logos-wrapper">
-                    <div class="logos-slider">
-                        <!-- First set of logos -->
-                        <div class="d-flex">
-                            @foreach ($partners as $partner)
-                                <div class="logo-item">
-                                    <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
-                                        alt="{{ $partner->title }}" class="sister-logo">
-                                </div>
-                            @endforeach
+    <section class="sister-concern py-5">
+        <div class="container text-center">
+            <h3 class="mb-4">Our Partners</h3>
+            <div class="logos-wrapper">
+                <div class="logos-slider">
+                    <!-- First set of logos -->
+                    <div class="d-flex">
+                        @foreach ($partners as $partner)
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $partner->title }}" class="sister-logo">
+                            </div>
+                        @endforeach
 
-                        </div>
-                        <!-- Duplicate set of logos for seamless loop -->
-                        <div class="d-flex">
-                            @foreach ($partners as $partner)
-                                <div class="logo-item">
-                                    <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
-                                        alt="{{ $partner->title }}" class="sister-logo">
-                                </div>
-                            @endforeach
-                        </div>
+                    </div>
+                    <!-- Duplicate set of logos for seamless loop -->
+                    <div class="d-flex">
+                        @foreach ($partners as $partner)
+                            <div class="logo-item">
+                                <img src="{{ $partner->image ? Storage::url($partner->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="{{ $partner->title }}" class="sister-logo">
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
     <!-- Sister Concern End  -->
 
 

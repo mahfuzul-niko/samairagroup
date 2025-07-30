@@ -128,7 +128,7 @@ class AviationController extends Controller
         $data->save();
         session()->forget('request');
 
-        return redirect(route('page.samairaaviation'))->with('success', 'Booking saved successfully!');
+        return redirect(route('page.aviation'))->with('success', 'Booking saved successfully!');
     }
     public function viewAviationRequest()
     {

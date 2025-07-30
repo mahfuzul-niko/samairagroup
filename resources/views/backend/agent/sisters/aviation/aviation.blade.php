@@ -5,7 +5,6 @@
 
             <div class="card-body ">
                 <h5 class="card-title">Logo</h5>
-
                 <div class="text-center my-3">
                     <div class=" d-inline-block" style="height: 150px; width: auto;">
                         <img src="{{ system_key('samaira_aviation_logo') ? Storage::url(system_key('samaira_aviation_logo')) : asset('assets/img/no-profile.png') }}"

@@ -44,8 +44,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Price</label>
-                                <input type="number" class="form-control" name="price" value="{{ $product->price }}"
-                                    required>
+                                <input type="number" class="form-control" name="price" value="{{ $product->price }}">
                             </div>
                         </div>
                         <div class="col-md-6">

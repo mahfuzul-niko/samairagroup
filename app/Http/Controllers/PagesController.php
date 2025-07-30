@@ -225,7 +225,7 @@ class PagesController extends Controller
           $partners = emergingPartner::latest()->get();
           $reviews = emergingReview::latest()->get();
           $categories = emergingCategory::latest()->get();
-          $products = emergingProduct::latest()->take(6)->get();
+          $products = emergingProduct::latest()->where('best', true)->get();
           $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'emerging')->get();
           return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
@@ -280,7 +280,7 @@ class PagesController extends Controller
      public function samairagroupPrivacy()
      {
           $privacy = Privacy::pluck('value', 'key');
-          return view('frontend.content.privacy',compact('privacy'));
+          return view('frontend.content.privacy', compact('privacy'));
      }
 
 
@@ -501,18 +501,6 @@ class PagesController extends Controller
      {
           return view('frontend.content.carrer');
      }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
      //soon
