@@ -632,7 +632,8 @@ body{
 }
 
 /* Best Selling Products Slider Nav Style (like Category Slider) */
-.best-selling-products .best-selling-nav {
+.best-selling-products .best-selling-nav,
+.best-selling-products .hot-selling-nav {
   position: absolute;
   top: 0;
   right: 0;
@@ -641,7 +642,9 @@ body{
   z-index: 2;
 }
 .best-selling-products .best-selling-prev.swiper-button-disabled,
-.best-selling-products .best-selling-next.swiper-button-disabled {
+.best-selling-products .best-selling-next.swiper-button-disabled,
+.best-selling-products .hot-selling-prev.swiper-button-disabled,
+.best-selling-products .hot-selling-next.swiper-button-disabled {
   opacity: 0.35 !important;
   cursor: not-allowed !important;
   pointer-events: none !important;
@@ -652,7 +655,9 @@ body{
   transition: background 0.2s, color 0.2s;
 }
 .best-selling-products .best-selling-prev,
-.best-selling-products .best-selling-next {
+.best-selling-products .best-selling-next,
+.best-selling-products .hot-selling-prev,
+.best-selling-products .hot-selling-next {
   background: var(--swiper-pagination-color) !important;
   border: 1px solid var(--swiper-pagination-color) !important;
   border-radius: 50px !important;
