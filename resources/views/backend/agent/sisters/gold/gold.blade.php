@@ -259,12 +259,12 @@
                         <input type="text" id="title" name="title" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="">Discretion</label>
+                        <label for="">Description</label>
                         <textarea name="discretion" id="discretion" rows="5" class="form-control"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="">Icon</label>
-                        <input type="text" name="icon" id="" class="form-control" required>
+                        <input type="text" name="icon" id="" class="form-control" >
                         <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
                                 target="_blank">Click here</a></i>
                     </div>
