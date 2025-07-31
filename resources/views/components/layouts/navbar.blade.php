@@ -24,6 +24,7 @@
 
         Route::is('page.medica') ||
             Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
             Route::is('page.medica.contact') ||
             Route::is('page.medica.about')
             => route('page.medica.about'),
@@ -71,6 +72,7 @@
             => route('page.jphomes.contact'),
         Route::is('page.medica') ||
             Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
             Route::is('page.medica.about') ||
             Route::is('page.medica.contact')
             => route('page.medica.contact'),
@@ -117,6 +119,7 @@
 
         Route::is('page.medica') ||
             Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
             Route::is('page.medica.about') ||
             Route::is('page.medica.contact')
             => route('page.medica'),
@@ -158,6 +161,7 @@
             => system_key('samaira_jphomes_logo'),
         Route::is('page.medica') ||
             Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
             Route::is('page.medica.contact') ||
             Route::is('page.medica.about')
             => system_key('samaira_medica_logo'),
