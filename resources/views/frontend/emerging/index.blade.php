@@ -240,6 +240,76 @@
     </section>
     <!-- Best Selling Products Section End -->
 
+    <!-- Hot Selling Products Section Start -->
+    <section class="best-selling-products py-5">
+        <div class="container">
+            <div class="category-slider-header d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <span class="category-label fw-semibold">Our</span>
+                    <h2 class="category-title">Hot Selling Products</h2>
+                </div>
+                <div class="hot-selling-nav">
+                    <button class="hot-selling-prev"><i class="fas fa-arrow-left"></i></button>
+                    <button class="hot-selling-next"><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="swiper hot-selling-swiper">
+                <div class="swiper-wrapper">
+                    @foreach ($products as $product)
+                        @php
+                            $weights = json_decode($product->weight, true);
+                            $sizes = json_decode($product->size, true);
+                        @endphp
+                        <!-- Product Card Start -->
+                        <div class="swiper-slide">
+                            <div class="product-card">
+                                <div class="product-img position-relative">
+                                    <span class="product-badge">{{ $product->category->title }}</span>
+                                    <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Product" class="img-fluid">
+                                    <form action="{{ route('cart.add') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                        <input type="hidden" name="product_name" value="{{ $product->title }}">
+                                        <input type="hidden" name="image" value="{{ $product->image }}">
+                                        <input type="hidden" name="price" value="{{ $product->descount_price ?? $product->price }}">
+                                        <input type="hidden" name="weight"
+                                            value="{{ is_array($weights) && isset($weights[0]) ? $weights[0] : '' }}">
+                                        <input type="hidden" name="size"
+                                            value="{{ is_array($sizes) && isset($sizes[0]) ? $sizes[0] : '' }}">
+                                        <button type="submit" class="add-to-cart-btn">Add to Cart</button>
+                                    </form>
+                                </div>
+                                <div class="product-info">
+                                    <a href="{{ route('page.medica.product', $product) }}"
+                                        class="text-decoration-none text-dark">
+                                        <h4 class="product-title">
+                                            {{ $product->title }}
+                                        </h4>
+                                    </a>
+                                    <div class="price">
+                                        @if ($product->descount_price)
+                                            <span class="new-price">{{ $product->descount_price }} Taka</span>
+                                            <span class="old-price">{{ $product->price }} Taka</span>
+                                        @else
+                                            <span class="new-price">{{ $product->price }} Taka</span>
+                                        @endif
+
+                                    </div>
+                                    <a href="{{ route('page.medica.product', $product) }}" class="buy-now-btn">Buy
+                                        Now</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <a href="{{ route('page.medica.shop') }}" class="view-all-btn">View All Products</a>
+        </div>
+    </section>
+    <!-- Hot Selling Products Section End -->
+
     <!-- Featured Section Start -->
     {{-- <section class="featured-section py-5">
     <div class="container">
@@ -510,6 +580,54 @@
                 } else {
                     nav.style.display = 'none';
                 }
+            }
+        }
+    </script>
+
+    <!-- Hot Selling Products Section Init -->
+    <script>
+        var hotSellingSwiper = new Swiper('.hot-selling-swiper', {
+            slidesPerView: 4,
+            spaceBetween: 24,
+            navigation: {
+            nextEl: '.hot-selling-next',
+            prevEl: '.hot-selling-prev',
+            },
+            breakpoints: {
+            1200: { slidesPerView: 4 },
+            992: { slidesPerView: 3 },
+            768: { slidesPerView: 2 },
+            0: { slidesPerView: 1 }
+            },
+            on: {
+            init: function () {
+                toggleHotSellingNav(this);
+            },
+            slideChange: function () {
+                toggleHotSellingNav(this);
+            },
+            resize: function () {
+                toggleHotSellingNav(this);
+            }
+            }
+        });
+
+        function toggleHotSellingNav(swiper) {
+            var totalSlides = swiper.slides.length;
+            var slidesPerView = swiper.params.slidesPerView;
+
+            if (swiper.params.breakpoints) {
+            var ww = window.innerWidth;
+            var bp = swiper.params.breakpoints;
+            if (ww >= 1200 && bp[1200]) slidesPerView = bp[1200].slidesPerView;
+            else if (ww >= 992 && bp[992]) slidesPerView = bp[992].slidesPerView;
+            else if (ww >= 768 && bp[768]) slidesPerView = bp[768].slidesPerView;
+            else if (bp[0]) slidesPerView = bp[0].slidesPerView;
+            }
+
+            var nav = document.querySelector('.hot-selling-nav');
+            if (nav) {
+            nav.style.display = (totalSlides > slidesPerView) ? 'flex' : 'none';
             }
         }
     </script>
