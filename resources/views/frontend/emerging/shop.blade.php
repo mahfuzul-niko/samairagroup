@@ -81,10 +81,9 @@
                                 <div class="col-md-4 mb-4 product-card-show" data-category="{{ $category->title }}">
                                     <div class="product-card">
                                         <div class="product-img position-relative">
-                                            <span class="product-badge">NEW</span>
-                                            <img src="{{ asset('assets/frontassets/images/samaira-medica/product1.png') }}"
+                                            <span class="product-badge">{{ $category->title }}</span>
+                                            <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                                                 alt="Product" class="img-fluid">
-                                            <button type="submit" class="add-to-cart-btn">Add to Cart</button>
                                         </div>
                                         <div class="product-info">
                                             <a href="#" class="text-decoration-none text-dark">

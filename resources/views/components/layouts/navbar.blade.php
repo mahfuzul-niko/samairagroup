@@ -22,12 +22,17 @@
             Route::is('page.jphomes.contact')
             => route('page.jphomes.about'),
 
-        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.contact') || Route::is('page.medica.about') => route(
-            'page.medica.about',
-        ),
-        Route::is('page.emerging') || Route::is('page.emerging.contact') || Route::is('page.emerging.about') => route(
-            'page.emerging.about',
-        ),
+        Route::is('page.medica') ||
+            Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
+            Route::is('page.medica.contact') ||
+            Route::is('page.medica.about')
+            => route('page.medica.about'),
+        Route::is('page.emerging') ||
+            Route::is('page.emerging.product') ||
+            Route::is('page.emerging.contact') ||
+            Route::is('page.emerging.about')
+            => route('page.emerging.about'),
         Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => route(
             'page.gold.about',
         ),
@@ -65,12 +70,17 @@
             Route::is('page.jphomes.about') ||
             Route::is('page.jphomes.contact')
             => route('page.jphomes.contact'),
-        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
-            'page.medica.contact',
-        ),
-        Route::is('page.emerging') || Route::is('page.emerging.about') || Route::is('page.emerging.contact') => route(
-            'page.emerging.contact',
-        ),
+        Route::is('page.medica') ||
+            Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
+            Route::is('page.medica.about') ||
+            Route::is('page.medica.contact')
+            => route('page.medica.contact'),
+        Route::is('page.emerging') ||
+            Route::is('page.emerging.product') ||
+            Route::is('page.emerging.about') ||
+            Route::is('page.emerging.contact')
+            => route('page.emerging.contact'),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route(
             'page.gold.contact',
         ),
@@ -107,12 +117,17 @@
             Route::is('page.jphomes.contact')
             => route('page.jphomes'),
 
-        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.about') || Route::is('page.medica.contact') => route(
-            'page.medica',
-        ),
-        Route::is('page.emerging') || Route::is('page.emerging.about') || Route::is('page.emerging.contact') => route(
-            'page.emerging',
-        ),
+        Route::is('page.medica') ||
+            Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
+            Route::is('page.medica.about') ||
+            Route::is('page.medica.contact')
+            => route('page.medica'),
+        Route::is('page.emerging') ||
+            Route::is('page.emerging.product') ||
+            Route::is('page.emerging.about') ||
+            Route::is('page.emerging.contact')
+            => route('page.emerging'),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route('page.gold'),
         Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route('page.job'),
         Route::is('page.agro') || Route::is('page.agro.about') || Route::is('page.agro.contact') => route('page.agro'),
@@ -144,10 +159,17 @@
             Route::is('page.jphomes.contact') ||
             Route::is('page.jphomes.about')
             => system_key('samaira_jphomes_logo'),
-        Route::is('page.medica') || Route::is('page.medica.shop') || Route::is('page.medica.contact') || Route::is('page.medica.about') => system_key(
-            'samaira_medica_logo',
-        ),
-        Route::is('page.emerging') || Route::is('page.emerging.contact') || Route::is('page.emerging.about')
+        Route::is('page.medica') ||
+            Route::is('page.medica.shop') ||
+            Route::is('page.medica.product') ||
+            Route::is('page.medica.contact') ||
+            Route::is('page.medica.about')
+            => system_key('samaira_medica_logo'),
+        Route::is('page.emerging') ||
+            Route::is('page.emerging.product') ||
+            Route::is('page.emerging.shop') ||
+            Route::is('page.emerging.contact') ||
+            Route::is('page.emerging.about')
             => system_key('samaira_emerging_logo'),
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => system_key(
             'samaira_job_logo',
