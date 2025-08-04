@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joyput Homes Video Property Create</x-slot>
+    <x-slot name="title"> Joyput Homes Video Property Create</x-slot>
     <section class="creat-property">
         <div class="card">
             <div class="card-body">
@@ -100,28 +100,32 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('agent.jphomes.update.property.video',$videoProperty) }}"
+                                            <form
+                                                action="{{ route('agent.jphomes.update.property.video', $videoProperty) }}"
                                                 method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="mb-3">
                                                     <label for="title" class="form-label">Property Title</label>
                                                     <input type="text" class="form-control" id="title"
-                                                        name="title" placeholder="Enter property title" value="{{$videoProperty->title}}" required>
+                                                        name="title" placeholder="Enter property title"
+                                                        value="{{ $videoProperty->title }}" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="">Thumbnail</label>
-                                                    <input type="file" class="form-control" id="thumbnail" 
-                                                        name="image" >
+                                                    <input type="file" class="form-control" id="thumbnail"
+                                                        name="image">
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="video" class="form-label">Video URL</label>
-                                                    <input type="text" class="form-control" id="video" value="{{$videoProperty->video_url}}"
-                                                        name="video_url" placeholder="Enter video URL" required>
+                                                    <input type="text" class="form-control" id="video"
+                                                        value="{{ $videoProperty->video_url }}" name="video_url"
+                                                        placeholder="Enter video URL" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="video" class="form-label">Custom Url</label>
-                                                    <input type="text" class="form-control" id="video" value="{{$videoProperty->url}}"
-                                                        name="url" placeholder="Enter video URL" required>
+                                                    <input type="text" class="form-control" id="video"
+                                                        value="{{ $videoProperty->url }}" name="url"
+                                                        placeholder="Enter video URL" required>
                                                 </div>
                                                 <button class="btn btn-primary btn-sm">Save</button>
                                             </form>

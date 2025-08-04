@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome To Samaira Language</x-slot>
+    <x-slot name="title"> To Samaira Language</x-slot>
     <section class="logo-section">
         <div class="card">
             <div class="card-body ">

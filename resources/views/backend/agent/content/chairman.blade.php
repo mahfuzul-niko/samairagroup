@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Wecome Chairman and Managing Director</x-slot>
+    <x-slot name="title"> Chairman and Managing Director</x-slot>
     <section class="chairman-banner">
         <div class="card">
             <div class="card-body">
@@ -142,9 +142,9 @@
                             Top Info
                         </th>
                         <td>
-    
+
                             {!! $chairman['chairman_top_info'] ?? '' !!}
-    
+
                         </td>
                     </tr>
                     <tr>
@@ -152,13 +152,13 @@
                             Bottom Info
                         </th>
                         <td>
-    
+
                             {!! $chairman['chairman_bottom_info'] ?? '' !!}
-    
+
                         </td>
-    
+
                     </tr>
-    
+
                 </table>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome to Completed Projects</x-slot>
+    <x-slot name="title"> to Completed Projects</x-slot>
     <section>
         <div class="card">
             <div class="card-body">
@@ -44,7 +44,8 @@
                                     <a class="btn btn-primary btn-sm d-inline-block" type="button"
                                         data-bs-toggle="modal" data-bs-target="#project{{ $project->id }}"><i
                                             class="bi bi-pen"></i></a>
-                                    <form action="{{ route('agent.job.delete.project', $project) }}" method="POST" class="d-inline-block m-0 p-0">
+                                    <form action="{{ route('agent.job.delete.project', $project) }}" method="POST"
+                                        class="d-inline-block m-0 p-0">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i
@@ -78,7 +79,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="">Image</label>
-                                                <input type="file" class="form-control" name="image" >
+                                                <input type="file" class="form-control" name="image">
                                             </div>
                                             <button class="btn btn-sm btn-primary">save</button>
                                         </form>

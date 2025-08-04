@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome To Emerging</x-slot>
+    <x-slot name="title"> To Emerging</x-slot>
     <section class="logo-section">
         <div class="card">
 

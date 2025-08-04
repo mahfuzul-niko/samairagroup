@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Wecome To Samaira Skills Development</x-slot>
+    <x-slot name="title"> To Samaira Skills Development</x-slot>
     <section class="logo-section">
         <div class="card">
             <div class="card-body ">
@@ -44,7 +44,8 @@
                 <div class="card-title">
                     Add New Banner
                 </div>
-                <form action="{{ route('agent.group.ssdi.store.banner') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.group.ssdi.store.banner') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="key" value="ssdi">
                     <div class="mb-3">
@@ -94,7 +95,8 @@
                                         data-bs-target="#banner{{ $banner->id }}"><i
                                             class="bi bi-pencil-square"></i></a>
 
-                                    <form action="{{ route('agent.group.ssdi.delete.banner', $banner) }}" method="POST">
+                                    <form action="{{ route('agent.group.ssdi.delete.banner', $banner) }}"
+                                        method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-outline-danger btn-sm"><i
@@ -112,28 +114,29 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('agent.group.ssdi.update.banner',$banner) }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('agent.group.ssdi.update.banner', $banner) }}"
+                                                    method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="key" value="ssdi">
                                                     <div class="mb-3">
                                                         <label for="">Title</label>
                                                         <input type="text" name="title" class="form-control"
-                                                            required value="{{$banner->title}}">
+                                                            required value="{{ $banner->title }}">
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="">Banner Image</label>
                                                         <input type="file" name="image" id=""
-                                                            class="form-control" >
+                                                            class="form-control">
 
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="">Sub Title</label>
-                                                        <textarea name="subtitle" class="form-control" rows="5" id="" required>{{$banner->subtitle}}</textarea>
+                                                        <textarea name="subtitle" class="form-control" rows="5" id="" required>{{ $banner->subtitle }}</textarea>
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="">Url</label>
-                                                        <input type="url" class="form-control" name="url" value="{{$banner->url}}">
+                                                        <input type="url" class="form-control" name="url"
+                                                            value="{{ $banner->url }}">
                                                     </div>
                                                     <button class="btn btn-sm btn-primary" type="submit">
                                                         Submit
@@ -479,7 +482,8 @@
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
                                             <input type="text" name="name"
-                                                value="{{ $about ? $about->name : '' }}" class="form-control" required>
+                                                value="{{ $about ? $about->name : '' }}" class="form-control"
+                                                required>
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>

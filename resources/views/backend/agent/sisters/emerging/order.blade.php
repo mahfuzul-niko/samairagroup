@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Single Order</x-slot>
+    <x-slot name="title"> Single Order</x-slot>
     <section class="order">
         <div class="card">
             <div class="card-body">

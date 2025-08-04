@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Princess Gold and Diamond Cottation</x-slot>
+    <x-slot name="title"> Princess Gold and Diamond Cottation</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -264,7 +264,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="">Icon</label>
-                        <input type="text" name="icon" id="" class="form-control" >
+                        <input type="text" name="icon" id="" class="form-control">
                         <i class="text-secondary fs-6">looking for icon? <a href="https://fontawesome.com/search"
                                 target="_blank">Click here</a></i>
                     </div>

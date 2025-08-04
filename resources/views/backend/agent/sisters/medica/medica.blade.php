@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Medica</x-slot>
+    <x-slot name="title"> Medica</x-slot>
     <section class="logo-section">
         <div class="card">
 
@@ -84,7 +84,7 @@
                             <td>{{ $banner->subtitle }}</td>
                             <td><a href="{{ $banner->url }}" class="btn btn-success btn-sm"><i
                                         class="bi bi-eye"></i></a></td>
-                            
+
                             <td>
                                 <div class="text-nowrap">
                                     <a class="btn btn-primary btn-sm d-inline-block" type="button"

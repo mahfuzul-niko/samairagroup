@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Properties</x-slot>
+    <x-slot name="title"> Properties</x-slot>
     <section class="properties">
         <div class="card">
             <div class="card-body">

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Samaira Aviation Limited</x-slot>
+    <x-slot name="title"> Samaira Aviation Limited</x-slot>
     <section class="logo-section">
         <div class="card">
 
@@ -207,7 +207,8 @@
                 <div class="card-title">
                     Partners store
                 </div>
-                <form action="{{ route('agent.aviation.store.partner') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.aviation.store.partner') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="">Partner Name</label>
@@ -242,7 +243,8 @@
                                         style="height: 80px; object-fit: cover;">
                                 </td>
                                 <td class="text-center">
-                                    <form action="{{ route('agent.aviation.delete.partner', $partner) }}" method="POST">
+                                    <form action="{{ route('agent.aviation.delete.partner', $partner) }}"
+                                        method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i

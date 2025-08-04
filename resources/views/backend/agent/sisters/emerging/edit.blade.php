@@ -1,11 +1,11 @@
 <x-app>
-    <x-slot name="title">Wecome Edit Product</x-slot>
+    <x-slot name="title"> Edit Product</x-slot>
 
     <section class="product">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">Edit Product</div>
-                
+
                 <div class="mb-3">
                     <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                         class="img-fluid" style="height: 300px; width: auto;" alt="">

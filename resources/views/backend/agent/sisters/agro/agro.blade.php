@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joypur Agro Limited</x-slot>
+    <x-slot name="title"> Joypur Agro Limited</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -633,8 +633,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body ">
-                                                <form action="{{ route('agent.agro.update.project',$project) }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('agent.agro.update.project', $project) }}"
+                                                    method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="">Image</label>
@@ -643,8 +643,8 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="">Title</label>
-                                                        <input type="text" class="form-control" name="title" value="{{$project->title}}"
-                                                            id="title">
+                                                        <input type="text" class="form-control" name="title"
+                                                            value="{{ $project->title }}" id="title">
                                                     </div>
                                                     <button class="btn btn-primary btn-sm mt-2">Submit</button>
                                                 </form>

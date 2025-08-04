@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome To Raisa Trade International</x-slot>
+    <x-slot name="title"> To Raisa Trade International</x-slot>
 
     <section class="logo-section">
         <div class="card">

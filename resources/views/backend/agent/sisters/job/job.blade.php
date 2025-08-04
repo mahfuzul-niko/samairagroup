@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Samaira Jobs Bridge Limited</x-slot>
+    <x-slot name="title"> Samaira Jobs Bridge Limited</x-slot>
 
     <section class="logo-section">
         <div class="card">

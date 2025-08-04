@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joyput Homes Property Create</x-slot>
+    <x-slot name="title"> Joyput Homes Property Create</x-slot>
     <section class="creat-property">
         <div class="card">
             <div class="card-body">
@@ -17,7 +17,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <form action="{{route('agent.jphomes.store.property')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.jphomes.store.property') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">Property Title</label>
@@ -33,7 +33,7 @@
                         <select class="form-select" id="category" name="category_id" required>
                             <option value="" selected disabled>Select Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title}}</option>
+                                <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -50,7 +50,7 @@
                             <div class="mb-3">
                                 <label for="price" class="form-label">Price</label>
                                 <input type="number" class="form-control" id="price" name="price"
-                                    placeholder="Enter property price" >
+                                    placeholder="Enter property price">
                             </div>
                         </div>
                     </div>

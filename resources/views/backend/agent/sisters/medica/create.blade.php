@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Create Product</x-slot>
+    <x-slot name="title"> Create Product</x-slot>
 
     <section class="product">
         <div class="card">
@@ -35,13 +35,13 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Price</label>
-                                <input type="number" class="form-control" name="price" >
+                                <input type="number" class="form-control" name="price">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Descount price</label>
-                                <input type="number" class="form-control" name="descount_price" >
+                                <input type="number" class="form-control" name="descount_price">
                             </div>
                         </div>
                     </div>

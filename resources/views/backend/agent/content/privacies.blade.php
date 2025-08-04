@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Privacies</x-slot>
+    <x-slot name="title"> Privacies</x-slot>
 
     <section>
         <div class="card">
@@ -7,8 +7,8 @@
                 <div class="card-title">
                     Privacy Background Update
                 </div>
-                <img src="{{ isset($privacy['background_image']) ? asset('storage/' . $privacy['background_image']) : '' }}" class="img-fluid"
-                    style="max-height: 400px;">
+                <img src="{{ isset($privacy['background_image']) ? asset('storage/' . $privacy['background_image']) : '' }}"
+                    class="img-fluid" style="max-height: 400px;">
                 <form action="{{ route('agent.content.privacy.update.image') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf

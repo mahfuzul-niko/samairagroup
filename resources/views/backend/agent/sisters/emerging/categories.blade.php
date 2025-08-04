@@ -2,7 +2,7 @@
     @push('styles')
         <link rel="stylesheet" href="https://samairagroup.test/assets/frontassets/fonts/css/all.min.css">
     @endpush
-    <x-slot name="title">Wecome emerging Categories</x-slot>
+    <x-slot name="title"> emerging Categories</x-slot>
     <section class="category-store">
         <div class="card">
             <div class="card-body">

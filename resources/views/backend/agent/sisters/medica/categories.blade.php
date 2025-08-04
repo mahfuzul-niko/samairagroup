@@ -2,7 +2,7 @@
     @push('styles')
         <link rel="stylesheet" href="https://samairagroup.test/assets/frontassets/fonts/css/all.min.css">
     @endpush
-    <x-slot name="title">Wecome Medica Categories</x-slot>
+    <x-slot name="title"> Medica Categories</x-slot>
     <section class="category-store">
         <div class="card">
             <div class="card-body">
@@ -37,7 +37,8 @@
                     @foreach ($categories as $key => $category)
                         <tr>
                             <td> {{ $key + 1 }} </td>
-                            <td><img src="{{$category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png')}}" style="height: 100px; width: auto;" alt=""></td>
+                            <td><img src="{{ $category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png') }}"
+                                    style="height: 100px; width: auto;" alt=""></td>
                             <td> {{ $category->title }} </td>
                             <td>
                                 <a class="btn btn-primary btn-sm me-2" data-bs-toggle="modal"

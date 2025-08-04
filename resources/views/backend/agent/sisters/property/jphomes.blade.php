@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joypur Homes</x-slot>
+    <x-slot name="title"> Joypur Homes</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -378,7 +378,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                   About Banner Image
+                    About Banner Image
                 </div>
                 <form action="{{ route('agent.content.about.store.banner') }}" method="POST"
                     enctype="multipart/form-data">

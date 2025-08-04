@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joyput Homes Property Create</x-slot>
+    <x-slot name="title"> Joyput Homes Property Create</x-slot>
     <section class="creat-property">
         <div class="card">
             <div class="card-body">
@@ -53,7 +53,7 @@
                             <div class="mb-3">
                                 <label for="price" class="form-label">Price</label>
                                 <input type="number" class="form-control" id="price" name="price"
-                                    placeholder="Enter property price" value="{{ $property->price }}" >
+                                    placeholder="Enter property price" value="{{ $property->price }}">
                             </div>
                         </div>
                     </div>
@@ -88,22 +88,22 @@
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="">Start Date</label>
-                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ $property->start_date }}"
-                                    placeholder="Enter start date" required>
+                                <input type="date" class="form-control" id="start_date" name="start_date"
+                                    value="{{ $property->start_date }}" placeholder="Enter start date" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="">Complie Date</label>
-                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $property->end_date }}"
-                                    placeholder="Enter Complite date" required>
+                                <input type="date" class="form-control" id="end_date" name="end_date"
+                                    value="{{ $property->end_date }}" placeholder="Enter Complite date" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="">Whats App Number</label>
-                                <input type="text" class="form-control" id="whats_app" name="whats_app" value="{{ $property->whats_app }}"
-                                    placeholder="Enter Whats App number" required>
+                                <input type="text" class="form-control" id="whats_app" name="whats_app"
+                                    value="{{ $property->whats_app }}" placeholder="Enter Whats App number" required>
                             </div>
                         </div>
                     </div>
