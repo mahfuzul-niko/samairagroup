@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Salary</label>
-                                <input type="number" class="form-control" name="salary" required>
+                                <input type="string" class="form-control" name="salary" required>
                             </div>
                         </div>
                         <div class="col-md-6">

@@ -136,7 +136,7 @@
                                         {{ \Carbon\Carbon::parse($work->deadline)->format('d M ') }}
                                     </span></div>
                                 <div class="sjb-work-icon"><img
-                                        src="{{ asset('assets/frontassets/') }}/images/samaira-jobs/MaterialUi.png"
+                                        src="{{ $work->logo ? Storage::url($work->logo) : asset('assets/img/no-profile.png') }}"
                                         alt="Logo Design"></div>
                                 <h3>{{ $work->title }}</h3>
                                 <p>{{ $work->subtitle }}</p>
