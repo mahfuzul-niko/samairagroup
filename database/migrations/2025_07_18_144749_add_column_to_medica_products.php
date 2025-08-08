@@ -24,6 +24,7 @@ return new class extends Migration
     {
         Schema::table('medica_products', function (Blueprint $table) {
             $table->dropColumn('best');
+            $table->dropColumn('phone');
         });
     }
 };

@@ -23,6 +23,7 @@ return new class extends Migration {
     {
         Schema::table('emerging_products', function (Blueprint $table) {
             $table->dropColumn('best');
+            $table->dropColumn('phone');
         });
     }
 };
