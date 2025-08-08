@@ -201,7 +201,7 @@
             <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
         </button>
         <ul class="rg-navbar-menu">
-            <li><a href="{{ route('page.home') }}">Home</a></li>
+            <li><a href="{{ $logourl }}">Home</a></li>
             @if (isset($shop))
                 {{ $shop }}
             @endif

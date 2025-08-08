@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\AboutBanner;
 use App\Models\Banner;
+use App\Models\concernContent;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\goldPartner;
@@ -27,7 +28,8 @@ class GoldController extends Controller
         $about = About::latest()->where('key', 'gold')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'gold')->get();
         $info = ContactInfo::latest()->where('key', 'gold')->first();
-        return view('backend.agent.sisters.gold.gold', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'services', 'why_we', 'reviews'));
+        $content = concernContent::latest()->where('key', 'gold')->first();
+        return view('backend.agent.sisters.gold.gold', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'services', 'why_we', 'reviews','content'));
     }
     public function storePartner(Request $request)
     {

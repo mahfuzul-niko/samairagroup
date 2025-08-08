@@ -16,6 +16,7 @@ use App\Models\aviationTo;
 use App\Models\Award;
 use App\Models\Banner;
 use App\Models\Chairman;
+use App\Models\concernContent;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\Course;
@@ -84,15 +85,18 @@ class PagesController extends Controller
           $featured = FeaturedCourse::latest()->where('for', 'ssdi')->first();
           $reviews = Review::where('mark', true)->latest()->take(9)->get();
           $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
-          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'concerns', 'categories', 'courses', 'featured', 'reviews', 'banners'));
+          $content = concernContent::latest()->where('key', 'ssdi')->first();
+          return view('frontend.samairaskills.index', compact('certifieds', 'advertise', 'concerns', 'categories', 'courses', 'featured', 'reviews', 'banners', 'content'));
      }
      public function ssdiCourse(Course $course)
      {
-          return view('frontend.samairaskills.single-course', compact('course'));
+          $content = concernContent::latest()->where('key', 'ssdi')->first();
+          return view('frontend.samairaskills.single-course', compact('course', 'content'));
      }
 
      public function ssdiCourseEnroll(Course $course)
      {
+
           return view('frontend.samairaskills.enroll', compact('course'));
      }
 
@@ -107,7 +111,8 @@ class PagesController extends Controller
           $courses = Course::where('course_for', 'language')->latest()->take(6)->get();
           $stories = SuccessStorie::latest()->take(6)->get();
           $banners = Banner::latest()->where('key', 'language')->get();
-          return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories', 'banners', 'reviews'));
+          $content = concernContent::latest()->where('key', 'language')->first();
+          return view('frontend.samairaskillsjapan.index', compact('certifieds', 'featured', 'courses', 'stories', 'banners', 'reviews', 'content'));
      }
      //jphomes
      public function jphomes()
@@ -120,18 +125,21 @@ class PagesController extends Controller
           $oreviews = JpReview::latest()->where('type', 'owner')->get();
           $videos = VideoProperty::latest()->take(6)->get();
           $partners = JpPartner::latest()->get();
-          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories', 'properties', 'propertiesCount', 'creviews', 'oreviews', 'videos', 'partners'));
+          $content = concernContent::latest()->where('key', 'jphomes')->first();
+          return view('frontend.samairajoypurhomes.index', compact('banners', 'categories', 'properties', 'propertiesCount', 'creviews', 'oreviews', 'videos', 'partners', 'content'));
      }
      public function properties(PropertyCategory $category)
      {
-          return view('frontend.samairajoypurhomes.properties', compact('category'));
+          $content = concernContent::latest()->where('key', 'jphomes')->first();
+          return view('frontend.samairajoypurhomes.properties', compact('category', 'content'));
      }
      public function jphomesSingleProperty(Property $property)
      {
           $category = $property->category_id;
           $properties = Property::where('category_id', $category)->latest()->take(6)->get();
           $comments = $property->comments()->where('mark', true)->latest()->take(10)->get();
-          return view('frontend.samairajoypurhomes.single-property', compact('property', 'properties', 'comments'));
+          $content = concernContent::latest()->where('key', 'jphomes')->first();
+          return view('frontend.samairajoypurhomes.single-property', compact('property', 'properties', 'comments', 'content'));
      }
 
      //medica
@@ -143,13 +151,15 @@ class PagesController extends Controller
           $products = medicaProduct::latest()->where('best', true)->get();
           $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'medica')->get();
-          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
+          $content = concernContent::latest()->where('key', 'medica')->first();
+          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems', 'content'));
      }
      public function medicaProduct(medicaProduct $product)
      {
           $totalItems = collect(session('cart'))->sum('quantity');
           $prods = medicaProduct::where('category_id', $product->category_id)->take(9)->get();
-          return view('frontend.samairamedica.single-product', compact('product', 'prods', 'totalItems'));
+          $content = concernContent::latest()->where('key', 'medica')->first();
+          return view('frontend.samairamedica.single-product', compact('product', 'prods', 'totalItems', 'content'));
      }
      public function medicaCheckout()
      {
@@ -162,15 +172,17 @@ class PagesController extends Controller
           }
 
           $totalItems = collect($cart)->sum('quantity');
+          $content = concernContent::latest()->where('key', 'medica')->first();
 
-          return view('frontend.samairamedica.checkout', compact('cart', 'totalItems', 'grandTotal'));
+          return view('frontend.samairamedica.checkout', compact('cart', 'totalItems', 'grandTotal', 'content'));
      }
      //shop
      public function samairamedicaShop()
      {
           $totalItems = collect(session('cart'))->sum('quantity');
           $categories = medicaCategory::latest()->get();
-          return view('frontend.samairamedica.shop', compact('categories', 'totalItems'));
+          $content = concernContent::latest()->where('key', 'medica')->first();
+          return view('frontend.samairamedica.shop', compact('categories', 'totalItems', 'content'));
      }
 
 
@@ -182,7 +194,8 @@ class PagesController extends Controller
           $why_we = goldServices::latest()->where('key', 'why_us')->take(6)->get();
           $reviews = goldReview::latest()->get();
           $banners = Banner::latest()->where('key', 'gold')->get();
-          return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews'));
+          $content = concernContent::latest()->where('key', 'gold')->first();
+          return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews', 'content'));
      }
      //jp agro
      public function joypuragro()
@@ -192,7 +205,8 @@ class PagesController extends Controller
           $introduction = agroIntroduction::latest()->first();
           $projects = agroProject::latest()->take(4)->get();
           $benefit = agroBenefit::latest()->first();
-          return view('frontend.joypuragro.index', compact('partners', 'banners', 'introduction', 'projects', 'benefit'));
+          $content = concernContent::latest()->where('key', 'agro')->first();
+          return view('frontend.joypuragro.index', compact('partners', 'banners', 'introduction', 'projects', 'benefit', 'content'));
      }
      //raisatrade
      public function raisatrade()
@@ -201,7 +215,8 @@ class PagesController extends Controller
           $services = raisaServices::latest()->take(6)->get();
           $reviews = raisaReview::latest()->get();
           $partners = raisaPartner::latest()->get();
-          return view('frontend.raisatrade.index', compact('banners', 'services', 'reviews', 'partners'));
+          $content = concernContent::latest()->where('key', 'raisa')->first();
+          return view('frontend.raisatrade.index', compact('banners', 'services', 'reviews', 'partners', 'content'));
      }
      //job
      public function samairajobs()
@@ -211,12 +226,13 @@ class PagesController extends Controller
           $jobAbout = jobAbout::latest()->first();
           $projects = jobProject::orderBy('order')->get();
           $works = jobWork::latest()->take(6)->get();
-          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout', 'projects', 'works'));
+          $content = concernContent::latest()->where('key', 'job')->first();
+          return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout', 'projects', 'works', 'content'));
      }
      public function jobApply(jobWork $work)
      {
-
-          return view('frontend.samaira-jobs-bridge.jobapplication', compact('work'));
+          $content = concernContent::latest()->where('key', 'job')->first();
+          return view('frontend.samaira-jobs-bridge.jobapplication', compact('work', 'content'));
      }
 
      //emerging
@@ -228,19 +244,22 @@ class PagesController extends Controller
           $products = emergingProduct::latest()->where('best', true)->get();
           $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'emerging')->get();
-          return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems'));
+          $content = concernContent::latest()->where('key', 'emerging')->first();
+          return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems', 'content'));
      }
      public function emergingShop()
      {
           $totalItems = collect(session('cart'))->sum('quantity');
           $categories = emergingCategory::latest()->get();
-          return view('frontend.emerging.shop', compact('categories', 'totalItems'));
+          $content = concernContent::latest()->where('key', 'emerging')->first();
+          return view('frontend.emerging.shop', compact('categories', 'totalItems', 'content'));
      }
      public function emergingProduct(emergingProduct $product)
      {
           $totalItems = collect(session('cart'))->sum('quantity');
           $prods = emergingProduct::where('category_id', $product->category_id)->take(9)->get();
-          return view('frontend.emerging.single-product', compact('product', 'prods', 'totalItems'));
+          $content = concernContent::latest()->where('key', 'emerging')->first();
+          return view('frontend.emerging.single-product', compact('product', 'prods', 'totalItems', 'content'));
      }
      public function emergingCheckout()
      {
@@ -253,8 +272,8 @@ class PagesController extends Controller
           }
 
           $totalItems = collect($cart)->sum('quantity');
-
-          return view('frontend.emerging.checkout', compact('cart', 'totalItems', 'grandTotal'));
+          $content = concernContent::latest()->where('key', 'emerging')->first();
+          return view('frontend.emerging.checkout', compact('cart', 'totalItems', 'grandTotal', 'content'));
      }
 
      //aviation
@@ -265,7 +284,8 @@ class PagesController extends Controller
           $partners = aviationPartner::latest()->get();
           $froms = aviationFrom::all();
           $tos = aviationTo::all();
-          return view('frontend.samairaaviation.index', compact('banners', 'partners', 'airlines', 'froms', 'tos'));
+          $content = concernContent::latest()->where('key', 'aviation')->first();
+          return view('frontend.samairaaviation.index', compact('banners', 'partners', 'airlines', 'froms', 'tos', 'content'));
      }
      public function samairaaviationcheckout()
      {
@@ -280,6 +300,7 @@ class PagesController extends Controller
      public function samairagroupPrivacy()
      {
           $privacy = Privacy::pluck('value', 'key');
+
           return view('frontend.content.privacy', compact('privacy'));
      }
 
@@ -290,77 +311,88 @@ class PagesController extends Controller
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'samairagroup')->get();
           $about = About::latest()->where('key', 'samairagroup')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'samairagroup')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns','content'));
      }
      public function samairaskillsAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'ssdi')->get();
           $about = About::latest()->where('key', 'ssdi')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'ssdi')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function jphomesAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'jphomes')->get();
           $about = About::latest()->where('key', 'jphomes')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'jphomes')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function samairaskillsJapanAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'language')->get();
           $about = About::latest()->where('key', 'language')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'language')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function samairamedicaAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'medica')->get();
           $about = About::latest()->where('key', 'medica')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'medica')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function goldAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'gold')->get();
           $about = About::latest()->where('key', 'gold')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'gold')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function jobAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'job')->get();
           $about = About::latest()->where('key', 'job')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'job')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function agroAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'agro')->get();
           $about = About::latest()->where('key', 'agro')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'agro')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function emergingAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'emerging')->get();
           $about = About::latest()->where('key', 'emerging')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'emerging')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function raisaAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'raisa')->get();
           $about = About::latest()->where('key', 'raisa')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'raisa')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function aviationAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
           $banners = AboutBanner::latest()->where('key', 'aviation')->get();
           $about = About::latest()->where('key', 'aviation')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns'));
+          $content = concernContent::latest()->where('key', 'aviation')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
 
      //contacts
@@ -369,80 +401,92 @@ class PagesController extends Controller
           $banners = ContactBanner::latest()->where('key', 'samairagroup')->get();
           $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'samairagroup')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns','content'));
      }
      public function ssdiContact()
      {
           $banners = ContactBanner::latest()->where('key', 'ssdi')->get();
           $info = ContactInfo::latest()->where('key', 'ssdi')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'ssdi')->first();
+
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function samairaskillsJapanContact()
      {
           $banners = ContactBanner::latest()->where('key', 'language')->get();
           $info = ContactInfo::latest()->where('key', 'language')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'language')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function jphomesContact()
      {
           $banners = ContactBanner::latest()->where('key', 'jphomes')->get();
           $info = ContactInfo::latest()->where('key', 'jphomes')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'jphomes')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function samairamedicaContact()
      {
           $banners = ContactBanner::latest()->where('key', 'medica')->get();
           $info = ContactInfo::latest()->where('key', 'medica')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'medica')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function goldContact()
      {
           $banners = ContactBanner::latest()->where('key', 'gold')->get();
           $info = ContactInfo::latest()->where('key', 'gold')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'gold')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function jobContact()
      {
           $banners = ContactBanner::latest()->where('key', 'job')->get();
           $info = ContactInfo::latest()->where('key', 'job')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'job')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function agroContact()
      {
           $banners = ContactBanner::latest()->where('key', 'agro')->get();
           $info = ContactInfo::latest()->where('key', 'agro')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'agro')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function emergingContact()
      {
           $banners = ContactBanner::latest()->where('key', 'emerging')->get();
           $info = ContactInfo::latest()->where('key', 'emerging')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'emerging')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function raisaContact()
      {
           $banners = ContactBanner::latest()->where('key', 'raisa')->get();
           $info = ContactInfo::latest()->where('key', 'raisa')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'raisa')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function aviationContact()
      {
           $banners = ContactBanner::latest()->where('key', 'aviation')->get();
           $info = ContactInfo::latest()->where('key', 'aviation')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns'));
+          $content = concernContent::latest()->where('key', 'aviation')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
 
-     //others
+     //others 
 
      public function samairatravels()
      {

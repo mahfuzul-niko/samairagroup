@@ -51,6 +51,9 @@ Route::prefix('agent')
             Route::post('/system/update/member/role/{member}', 'updateMemberRole')->name('update.member.role');
             Route::Delete('/system/delete/member/{id}', 'destroyMember')->name('destroy.member');
 
+
+            Route::post('/system/store/concern/content', 'storeOrUpdateConcernContent')->name('store.concern.content');
+
         });
         Route::group(['controller' => SystemController::class, 'as' => 'news.'], function () {
 
