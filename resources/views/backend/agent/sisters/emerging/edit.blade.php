@@ -77,6 +77,11 @@
                         <label for="">Description</label>
                         <textarea name="description" id="" class="form-control" rows="5">{{ $product->description }}</textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="">Phone</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter phone number"
+                            value="{{ $product->phone }}">
+                    </div>
                     <button class="btn btn-sm btn-success">save</button>
                 </form>
             </div>
@@ -115,7 +120,8 @@
                 <div class="card-title">
                     Upload Multi Images
                 </div>
-                <form action="{{ route('agent.emerging.store.images') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.emerging.store.images') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 

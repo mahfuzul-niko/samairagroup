@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::table('medica_products', function (Blueprint $table) {
             $table->boolean('best')->default(0);
+            $table->string('phone')->nullable();
         });
     }
 

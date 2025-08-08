@@ -63,6 +63,10 @@
                         <label for="">Description</label>
                         <textarea name="description" id="" class="form-control" rows="5"></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="">Phone</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter phone number">
+                    </div>
                     <button class="btn btn-sm btn-success">save</button>
                 </form>
             </div>

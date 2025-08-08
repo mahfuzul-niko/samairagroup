@@ -31,7 +31,7 @@ class MedicaController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'medica')->get();
         $info = ContactInfo::latest()->where('key', 'medica')->first();
         $content = concernContent::latest()->where('key', 'medica')->first();
-        return view('backend.agent.sisters.medica.medica', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners','content'));
+        return view('backend.agent.sisters.medica.medica', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'content'));
     }
 
     public function categories()
@@ -179,6 +179,8 @@ class MedicaController extends Controller
 
 
         $product->description = $request->description;
+        $product->phone = $request->phone;
+
         $product->image = $imagePath;
         $product->save();
 
@@ -206,6 +208,7 @@ class MedicaController extends Controller
 
 
         $product->description = $request->description;
+        $product->phone = $request->phone;
         $product->save();
 
         return redirect()->back()->with('success', 'Product Updated successfully.');
