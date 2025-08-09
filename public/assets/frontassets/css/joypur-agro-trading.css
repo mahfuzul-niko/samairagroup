@@ -810,7 +810,6 @@
     color: white;
     margin-bottom: 30px;
     font-family: 'Covered By Your Grace', cursive;
-    text-align: justify;
 }
 
 .hero-content p {
@@ -1157,6 +1156,7 @@
     line-height: 1.6;
     color: #666;
     margin-bottom: 30px;
+    text-align: justify;
 }
 
 .intro-features {
