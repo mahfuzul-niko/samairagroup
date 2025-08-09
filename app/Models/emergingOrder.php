@@ -10,7 +10,7 @@ class emergingOrder extends Model
     public function products()
     {
         return $this->belongsToMany(emergingProduct::class, 'emerging_order_product')
-            ->withPivot(['quantity', 'price', 'size', 'weight'])
+            ->withPivot(['quantity', 'price', 'size', 'weight','delivery'])
             ->withTimestamps();
     }
 }

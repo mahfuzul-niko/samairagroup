@@ -162,8 +162,8 @@
                             <a href="{{ route('page.emerging.shop') }}" class="text-decoration-none">
                                 <div class="category-card">
                                     {{-- <div class="category-icon">{!! $category->icon !!}</div> --}}
-                                    <img
-                                        src="{{ $category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png') }}" style="width: 50px; height: 50px;">
+                                    <img src="{{ $category->icon ? Storage::url($category->icon) : asset('assets/img/no-profile.png') }}"
+                                        style="width: 50px; height: 50px;">
                                     <div class="category-name">{{ $category->title }}</div>
                                 </div>
                             </a>
@@ -222,10 +222,20 @@
                                             {{ $product->title }}
                                         </h4>
                                     </a>
-                                    <div class="price">
-                                        <span class="new-price">{{ $product->descount_price }} Taka</span>
-                                        <span class="old-price">{{ $product->price }} Taka</span>
-                                    </div>
+                                    @if ($product->price == null)
+                                        <a href="https://wa.me/{{ preg_replace('/\D/', '', $product->phone) }}?text={{ urlencode('Hello, I want to know more about this product: ' . $product->title) }}"
+                                            target="_blank" class="btn btn-outline-success">
+                                            Contact on WhatsApp
+                                        </a>    
+                                    @else
+                                        @if ($product->descount_price)
+                                            <span class="new-price">{{ $product->descount_price }} Taka</span>
+                                            <span class="old-price">{{ $product->price }} Taka</span>
+                                        @else
+                                            <span class="new-price">{{ $product->price }} Taka</span>
+                                        @endif
+                                    @endif
+
                                     <a href="{{ route('page.emerging.product', $product) }}" class="buy-now-btn">Buy
                                         Now</a>
 
@@ -272,7 +282,8 @@
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                                         <input type="hidden" name="product_name" value="{{ $product->title }}">
                                         <input type="hidden" name="image" value="{{ $product->image }}">
-                                        <input type="hidden" name="price" value="{{ $product->descount_price ?? $product->price }}">
+                                        <input type="hidden" name="price"
+                                            value="{{ $product->descount_price ?? $product->price }}">
                                         <input type="hidden" name="weight"
                                             value="{{ is_array($weights) && isset($weights[0]) ? $weights[0] : '' }}">
                                         <input type="hidden" name="size"
@@ -287,15 +298,20 @@
                                             {{ $product->title }}
                                         </h4>
                                     </a>
-                                    <div class="price">
+                                    @if ($product->price == null)
+                                        <a href="https://wa.me/{{ preg_replace('/\D/', '', $product->phone) }}?text={{ urlencode('Hello, I want to know more about this product: ' . $product->title) }}"
+                                            target="_blank" class="btn btn-outline-success">
+                                            Contact on WhatsApp
+                                        </a>
+                                    @else
                                         @if ($product->descount_price)
                                             <span class="new-price">{{ $product->descount_price }} Taka</span>
                                             <span class="old-price">{{ $product->price }} Taka</span>
                                         @else
                                             <span class="new-price">{{ $product->price }} Taka</span>
                                         @endif
+                                    @endif
 
-                                    </div>
                                     <a href="{{ route('page.medica.product', $product) }}" class="buy-now-btn">Buy
                                         Now</a>
 
@@ -590,25 +606,33 @@
             slidesPerView: 4,
             spaceBetween: 24,
             navigation: {
-            nextEl: '.hot-selling-next',
-            prevEl: '.hot-selling-prev',
+                nextEl: '.hot-selling-next',
+                prevEl: '.hot-selling-prev',
             },
             breakpoints: {
-            1200: { slidesPerView: 4 },
-            992: { slidesPerView: 3 },
-            768: { slidesPerView: 2 },
-            0: { slidesPerView: 1 }
+                1200: {
+                    slidesPerView: 4
+                },
+                992: {
+                    slidesPerView: 3
+                },
+                768: {
+                    slidesPerView: 2
+                },
+                0: {
+                    slidesPerView: 1
+                }
             },
             on: {
-            init: function () {
-                toggleHotSellingNav(this);
-            },
-            slideChange: function () {
-                toggleHotSellingNav(this);
-            },
-            resize: function () {
-                toggleHotSellingNav(this);
-            }
+                init: function() {
+                    toggleHotSellingNav(this);
+                },
+                slideChange: function() {
+                    toggleHotSellingNav(this);
+                },
+                resize: function() {
+                    toggleHotSellingNav(this);
+                }
             }
         });
 
@@ -617,17 +641,17 @@
             var slidesPerView = swiper.params.slidesPerView;
 
             if (swiper.params.breakpoints) {
-            var ww = window.innerWidth;
-            var bp = swiper.params.breakpoints;
-            if (ww >= 1200 && bp[1200]) slidesPerView = bp[1200].slidesPerView;
-            else if (ww >= 992 && bp[992]) slidesPerView = bp[992].slidesPerView;
-            else if (ww >= 768 && bp[768]) slidesPerView = bp[768].slidesPerView;
-            else if (bp[0]) slidesPerView = bp[0].slidesPerView;
+                var ww = window.innerWidth;
+                var bp = swiper.params.breakpoints;
+                if (ww >= 1200 && bp[1200]) slidesPerView = bp[1200].slidesPerView;
+                else if (ww >= 992 && bp[992]) slidesPerView = bp[992].slidesPerView;
+                else if (ww >= 768 && bp[768]) slidesPerView = bp[768].slidesPerView;
+                else if (bp[0]) slidesPerView = bp[0].slidesPerView;
             }
 
             var nav = document.querySelector('.hot-selling-nav');
             if (nav) {
-            nav.style.display = (totalSlides > slidesPerView) ? 'flex' : 'none';
+                nav.style.display = (totalSlides > slidesPerView) ? 'flex' : 'none';
             }
         }
     </script>

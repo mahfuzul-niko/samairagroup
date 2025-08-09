@@ -258,10 +258,12 @@ class MedicaController extends Controller
     public function orders()
     {
         $orders = Order::latest()->paginate(20);
+
         return view('backend.agent.sisters.medica.orders', compact('orders'));
     }
     public function order(Order $order)
     {
+        
         return view('backend.agent.sisters.medica.order', compact('order'));
     }
     public function updateMark(Request $request, Order $order)

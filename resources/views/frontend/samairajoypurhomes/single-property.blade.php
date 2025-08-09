@@ -89,7 +89,7 @@
                         </div>
                         <div class="product-meta-row d-flex align-items-start mb-3 flex-wrap">
                             <div class="price-col d-flex flex-column align-items-start me-4">
-                                <span class="product-price-new main-price">{{ $property->price }} Taka</span>
+                                <span class="product-price-new main-price">{{ $property->price ? $property->price . ' Taka' : '' }}</span>
                             </div>
                         </div>
                         <hr>
@@ -322,7 +322,10 @@
                                         class="text-decoration-none">
                                         <div class="property-title">{{ $property->title }}</div>
                                     </a>
-                                    <div class="property-price text-sale">{{ $property->price }} Taka</div>
+                                    <div class="property-price text-sale">
+                                        {{ $property->price ? $property->price . ' Taka' : '' }}
+                                    </div>
+
                                 </div>
                                 <div class="property-address"><i class="fa fa-map-marker-alt"></i>
                                     {{ $property->address }}</div>

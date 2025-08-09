@@ -8,13 +8,14 @@ class CartController extends Controller
 {
     public function add(Request $request)
     {
-
+        
         $productId = $request->product_id;
         $productName = $request->product_name;
         $productPrice = $request->price;
         $productImage = $request->image;
         $productWeight = $request->weight;
         $productSize = $request->size;
+        $productDelivery = $request->delivery ; 
         $productQuantity = $request->quantity ?? 1; // default to 1 if not sent
 
         $variantKey = $productId . '_' . $productWeight . '_' . $productSize;
@@ -32,6 +33,7 @@ class CartController extends Controller
                 'quantity' => $productQuantity,
                 'weight' => $productWeight,
                 'size' => $productSize,
+                'delivery' => $productDelivery,
             ];
         }
 
