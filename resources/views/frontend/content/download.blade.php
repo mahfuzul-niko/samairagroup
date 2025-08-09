@@ -50,15 +50,6 @@
             </div>
         </div>
     </div> --}}
-    <div class="about-slider-container">
-        <div class="swiper about-swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="assets/images/hero-slider/bg0.png" alt="Slide 1"></div>
-            <div class="swiper-slide"><img src="assets/images/hero-slider/bg.png" alt="Slide 2"></div>
-            <div class="swiper-slide"><img src="assets/images/hero-slider/bg1.png" alt="Slide 3"></div>
-        </div>
-        </div>
-    </div>
     <!-- Slider End -->
 
     <!-- Awards and Achievements Section Start -->
