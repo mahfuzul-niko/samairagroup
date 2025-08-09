@@ -25,7 +25,7 @@
 
     <!-- Loader -->
     <div id="loader"
-        style="background:url({{ asset('assets/frontassets/') }}/images/loding-page.jpg) no-repeat center center; background-size: cover;">
+        style="background:url({{ asset('assets/frontassets/') }}/images/loding-page.jpg) no-repeat center center; background-size: cover; loading:lazy;">
         <div class="animated-text font-weight-bold text-uppercase">
             <!-- <img src="assets/images/loding-page.jpg" alt="Samaira Group Logo" class="img-fluid"> -->
         </div>
@@ -188,8 +188,15 @@
             setTimeout(() => {
                 document.body.classList.add('loaded');
                 document.getElementById('content').style.display = 'block';
-            }, 1000); // Delay to allow full animation
+            }, 500); 
         });
+        // document.addEventListener('DOMContentLoaded', () => {
+        // setTimeout(() => {
+        // document.body.classList.add('loaded');
+        // const content = document.getElementById('content');
+        // if (content) content.style.display = 'block';
+        // }, 500);
+        // });
     </script>
 </body>
 

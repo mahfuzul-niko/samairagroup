@@ -45,6 +45,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/news', 'news')->name('news');
     Route::get('/news/{news}', 'newssingle')->name('single.news');
     Route::get('/carrer', 'carrer')->name('carrer');
+    Route::get('/download', 'download')->name('download');
 
     //ssdi
     Route::get('/samaira-skill-development-institute', 'samairaskills')->name('ssdi');

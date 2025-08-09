@@ -1,6 +1,9 @@
 :root {
     --primary-color: #2293ce;
     --secondary-color: #fecc30;
+    --card-border:#e6e6e6;
+    --shadow:0 6px 18px rgba(0,0,0,.06);
+    --shadow-hover:0 14px 30px rgba(0,0,0,.12);
   }
   /* -------------------------------------------------------
   Awards and Achievements Page Css Start
@@ -754,3 +757,69 @@ Career Page Section Start
 /* -------------------------------------------------------
 Career Page Section End
 ------------------------------------------------------- */
+
+/* -------------------------------------------------------
+Download Page Section Start
+------------------------------------------------------- */
+.download-section .doc-card{
+  display:block;               
+  height:100%;
+  border:1px solid var(--card-border);
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow: var(--shadow);
+  text-decoration:none;        
+  color:#222;                 
+  transition:transform .2s ease, box-shadow .2s ease;
+  cursor:pointer;
+}
+.download-section .doc-card:hover{
+  transform:translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  text-decoration:none;
+}
+
+.download-section .doc-card-top{
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+}
+.download-section .doc-card-top .file-icon{
+  width:64px;height:64px;
+  border-radius:14px;
+  background:var(--secondary-color);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+}
+
+.download-section .doc-card-footer{
+  background:var(--primary-color);
+  color:#fff;
+  padding:.95rem 1.1rem;
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  font-weight:600;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;  
+  font-size: 14px;;
+}
+.download-section .doc-card-footer i{
+  font-size:1rem;
+}
+@media (max-width: 1400px) {
+  .download-section .doc-card-footer {
+    font-size: 13px;
+  }
+}
+/* -------------------------------------------------------
+Download Page Section End
+------------------------------------------------------- */
+
