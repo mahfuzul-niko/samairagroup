@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Agent Request</x-slot>
+    <x-slot name="title"> Agent Request</x-slot>
     <section class="request">
         <div class="card">
             <div class="card-body">
@@ -28,7 +28,7 @@
                                             <a href="{{ Storage::url($request->nid) }}" target="_blank"
                                                 class="btn btn-info"><i class="bi bi-file-earmark-arrow-down"></i></a>
                                         @else
-                                            <a  class="btn btn-danger"><i class="bi bi-file-earmark-excel"></i></a>
+                                            <a class="btn btn-danger"><i class="bi bi-file-earmark-excel"></i></a>
                                         @endif
                                     </td>
                                     <td>
@@ -36,7 +36,7 @@
                                             <a href="{{ Storage::url($request->resume) }}" target="_blank"
                                                 class="btn btn-info"><i class="bi bi-file-earmark-arrow-down"></i></a>
                                         @else
-                                            <a  class="btn btn-danger"><i class="bi bi-file-earmark-excel"></i></a>
+                                            <a class="btn btn-danger"><i class="bi bi-file-earmark-excel"></i></a>
                                         @endif
                                     </td>
                                     <td>

@@ -12,6 +12,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -49,6 +50,7 @@ class OrderController extends Controller
                 'price' => $item['price'],
                 'weight' => $item['weight'] ?? null,
                 'size' => $item['size'] ?? null,
+                'delivery' => $item['delivery'] ?? null,
             ]);
         }
         DB::commit();
@@ -103,6 +105,7 @@ class OrderController extends Controller
                 'price' => $item['price'],
                 'weight' => $item['weight'] ?? null,
                 'size' => $item['size'] ?? null,
+                'delivery' => $item['delivery'] ?? null,
             ]);
         }
 
@@ -113,8 +116,9 @@ class OrderController extends Controller
         return back()->with('success', 'Order placed successfully!');
     }
 
-    public function aviationRequest(){
-        
+    public function aviationRequest()
+    {
+
     }
 
 }

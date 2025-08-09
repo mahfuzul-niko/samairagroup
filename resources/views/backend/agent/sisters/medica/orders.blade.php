@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome to Medica Product Orders</x-slot>
+    <x-slot name="title"> to Medica Product Orders</x-slot>
     <section class="orders">
         <div class="card">
             <div class="card-body">
@@ -42,7 +42,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    
+
                 </div>
             </div>
         </div>

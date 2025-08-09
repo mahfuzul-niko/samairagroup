@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome To Aviation Requests</x-slot>
+    <x-slot name="title"> To Aviation Requests</x-slot>
     <section>
         <div class="card">
             <div class="card-body">

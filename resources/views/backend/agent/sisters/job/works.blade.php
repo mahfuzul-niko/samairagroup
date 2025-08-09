@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Wecome to Works</x-slot>
+    <x-slot name="title"> to Works</x-slot>
     <section>
         <div class="card">
             <div class="card-body">
@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Salary</label>
-                                <input type="number" class="form-control" name="salary" required>
+                                <input type="string" class="form-control" name="salary" required>
                             </div>
                         </div>
                         <div class="col-md-6">

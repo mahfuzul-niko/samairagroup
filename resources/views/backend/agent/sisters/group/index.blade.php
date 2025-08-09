@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Wecome To Samaira Group</x-slot>
+    <x-slot name="title"> To Samaira Group</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -209,7 +209,7 @@
                             @foreach ($concerns as $concern)
                                 <tr>
                                     <td>
-                                        {{$concern->order}}
+                                        {{ $concern->order }}
                                     </td>
                                     <td>
                                         <img src="{{ $concern->concern_image ? Storage::url($concern->concern_image) : asset('assets/img/no-profile.png') }}"
@@ -252,7 +252,8 @@
                                                             <div class="form-group mt-2">
                                                                 <label for="">Order</label>
                                                                 <input type="number" class="form-control"
-                                                                    id="" name="order" value="{{ $concern->order }}">
+                                                                    id="" name="order"
+                                                                    value="{{ $concern->order }}">
                                                             </div>
                                                             <div class="form-group mt-2">
                                                                 <label for="">Concern Title</label>
@@ -389,7 +390,8 @@
                                         <div class="mb-3">
                                             <div class="label">About Name</div>
                                             <input type="text" name="name"
-                                                value="{{ $about ? $about->name : '' }}" class="form-control" required>
+                                                value="{{ $about ? $about->name : '' }}" class="form-control"
+                                                required>
                                         </div>
                                         <div class="mb-3">
                                             <div class="label">About Title</div>

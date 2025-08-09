@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome {{ auth()->user()->name }}</x-slot>
+    <x-slot name="title"> {{ auth()->user()->name }}</x-slot>
     <div class="row">
         <div class="col-md-6">
             <div class="card">

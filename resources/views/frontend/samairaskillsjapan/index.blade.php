@@ -27,7 +27,7 @@
 
 <body>
 
-    <x-layouts.header />
+    <x-layouts.header :content="$content" />
     <!-- Navbar Start -->
       <x-layouts.navbar>
           

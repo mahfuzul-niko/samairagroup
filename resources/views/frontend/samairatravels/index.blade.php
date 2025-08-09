@@ -28,7 +28,7 @@
 <body>
 
     <!-- Top Header Section Start -->
-    <x-layouts.header />
+    <x-layouts.header :content="$content" />
     <!-- Top Header Section End -->
 
     <!-- Hero Carousel Start-->

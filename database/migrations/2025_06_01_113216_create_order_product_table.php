@@ -15,9 +15,10 @@ return new class extends Migration {
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->foreignId('medica_product_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
-            $table->decimal('price', 10, 2); // price at the time of order
+            $table->decimal('price', 10, 2)->nullable(); // price at the time of order
             $table->string('size')->nullable();
             $table->decimal('weight', 8, 2)->nullable();
+            
             $table->timestamps();
         });
     }

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Medica Products</x-slot>
+    <x-slot name="title"> Medica Products</x-slot>
     <section class="product-list">
         <div class="card">
             <div class="card-body">

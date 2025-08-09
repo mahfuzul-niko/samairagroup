@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Emerging Products</x-slot>
+    <x-slot name="title"> Emerging Products</x-slot>
     <section class="product-list">
         <div class="card">
             <div class="card-body">
@@ -29,7 +29,8 @@
                             <td>{{ $product->price }}</td>
                             <td>{{ $product->descount_price }}</td>
                             <td>
-                                <form action="{{ route('agent.emerging.product.bestselling', $product) }}" method="POST">
+                                <form action="{{ route('agent.emerging.product.bestselling', $product) }}"
+                                    method="POST">
                                     @csrf
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch"

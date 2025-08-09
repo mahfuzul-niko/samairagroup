@@ -97,7 +97,6 @@
                                 <option selected>Select contact option</option>
                                 <option value="system_email">Email</option>
                                 <option value="system_phone">Phone</option>
-                                <option value="system_address_top">Address Top</option>
                                 <option value="system_address_bottom">Address Bottom</option>
                             </select>
                         </div>
@@ -120,10 +119,7 @@
                             <th class="bg-light">Phone:</th>
                             <td>{{ system_key('system_phone') }}</td>
                         </tr>
-                        <tr>
-                            <th class="bg-light">Address Top:</th>
-                            <td>{{ system_key('system_address_top') }}</td>
-                        </tr>
+                       
                         <tr>
                             <th class="bg-light">Address Bottom:</th>
                             <td>{{ system_key('system_address_bottom') }}</td>

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joypur Homes</x-slot>
+    <x-slot name="title"> Joypur Homes</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -378,7 +378,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                   About Banner Image
+                    About Banner Image
                 </div>
                 <form action="{{ route('agent.content.about.store.banner') }}" method="POST"
                     enctype="multipart/form-data">
@@ -650,5 +650,80 @@
             </div>
         </section>
     @endif
+     <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Concern Content
+                </div>
+                <form action="{{ route('agent.system.store.concern.content') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="key" value="jphomes">
+                    <div class="mb-3">
+                        <label for="">Phone</label>
+                        <input type="tel" class="form-control" name="phone"
+                            value="{{ $content->phone ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" name="email"
+                            value="{{ $content->email ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Address</label>
+                        <input type="text" class="form-control" name="address"
+                            value="{{ $content->address ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Facebook</label>
+                        <input type="url" class="form-control" name="facebook"
+                            value="{{ $content->facebook ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Twitter</label>
+                        <input type="url" class="form-control" name="twitter"
+                            value="{{ $content->twitter ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Instagram</label>
+                        <input type="url" class="form-control" name="instagram"
+                            value="{{ $content->instagram ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Pinterest</label>
+                        <input type="url" class="form-control" name="pinterst"
+                            value="{{ $content->pinterst ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="map">Map Embed Code</label>
+                        <textarea name="map" class="form-control" rows="5">{{ $content->map ?? '' }}</textarea>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="office">Office</label>
+                        <input type="text" class="form-control" name="office"
+                            value="{{ $content->office ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="whatsapp">Whatsapp</label>
+                        <input type="text" class="form-control" name="whatsapp"
+                            value="{{ $content->whatsapp ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="youtube">Youtube</label>
+                        <input type="url" class="form-control" name="youtube"
+                            value="{{ $content->youtube ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkedin">Linkedin</label>
+                        <input type="url" class="form-control" name="linkedin"
+                            value="{{ $content->linkedin ?? '' }}">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
 </x-app>

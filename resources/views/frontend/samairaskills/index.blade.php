@@ -28,7 +28,7 @@
 <body>
 
     <!-- Top Header Section Start -->
-    <x-layouts.header />
+    <x-layouts.header :content="$content" />
     <!-- Top Header Section End -->
 
 
@@ -44,7 +44,8 @@
                 <div class="nav-auth">
                     <div class="nav-item signup-btn">
                         @auth
-                            <a href="{{ route('student.dashboard') }}"><i class="fa-solid fa-user"></i> <span>{{ auth()->user()->name }}</span></a>
+                            <a href="{{ route('student.dashboard') }}"><i class="fa-solid fa-user"></i>
+                                <span>{{ auth()->user()->name }}</span></a>
                         @else
                             <a class="nav-link" href="{{ route('student.login') }}">Login</a>
                         @endauth
@@ -357,7 +358,7 @@
     @endif
 
     <!-- Footer Section Start -->
-    <x-layouts.footer />
+    <x-layouts.footer :content="$content" />
     <!-- Footer Section End -->
 
     <!-- jQuery -->

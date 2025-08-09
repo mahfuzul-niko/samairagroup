@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joyput Homes Category</x-slot>
+    <x-slot name="title"> Joyput Homes Category</x-slot>
 
     <section class="category">
         <div class="card">

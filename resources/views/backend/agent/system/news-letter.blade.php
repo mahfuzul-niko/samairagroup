@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome to News Letter</x-slot>
+    <x-slot name="title"> to News Letter</x-slot>
     <section>
         <div class="card">
             <div class="card-body">

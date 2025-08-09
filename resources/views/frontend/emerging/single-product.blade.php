@@ -96,8 +96,20 @@
 
                     <div class="product-meta-row d-flex align-items-start mb-3 flex-wrap">
                         <div class="price-col d-flex flex-column align-items-start me-4">
-                            <span class="product-price-new main-price">{{ $product->descount_price }} Taka</span>
-                            <span class="product-price-old">{{ $product->price }} Taka</span>
+                            @if ($product->price == null)
+                                <a href="https://wa.me/{{ preg_replace('/\D/', '', $product->phone) }}?text={{ urlencode('Hello, I want to know more about this product: ' . $product->title) }}"
+                                    target="_blank" class="btn btn-outline-success">
+                                    Contact on WhatsApp
+                                </a>
+                            @else
+                                @if ($product->descount_price)
+                                    <span class="product-price-new main-price">{{ $product->descount_price }}
+                                        Taka</span>
+                                    <span class="product-price-old">{{ $product->price }} Taka</span>
+                                @else
+                                    <span class="product-price-new main-price">{{ $product->price }} Taka</span>
+                                @endif
+                            @endif
                         </div>
 
                     </div>
@@ -137,11 +149,26 @@
                                 @endforeach
                             </div>
                         </div>
+                        <div class="mb-4">
+                            <div class="mb-2 choose-label">Delivery Option</div>
+                            <div class="size-options enhanced-sizes" id="quantityOptions">
 
+                                <label>
+                                    <input type="radio" name="delivery" value="pick_up" checked>
+                                    Pick Up
+                                </label>
+                                <label>
+                                    <input type="radio" name="delivery" value="home_delivery">
+                                    Home Delivery
+                                </label>
+
+                            </div>
+                        </div>
 
                         <div class="d-flex align-items-center mb-4">
                             <div class="quantity-box enhanced-qty me-3">
-                                <a class="qty-btn  text-decoration-none " style="cursor: pointer" id="qty-minus">-</a>
+                                <a class="qty-btn  text-decoration-none " style="cursor: pointer"
+                                    id="qty-minus">-</a>
                                 <input type="text" id="qty-input" name="quantity" value="1" readonly>
                                 <a class="qty-btn   text-decoration-none  " style="cursor: pointer"
                                     id="qty-plus">+</a>
@@ -151,22 +178,7 @@
                         </div>
 
                     </form>
-                    <div class="delivery-info enhanced-delivery-info">
-                        <div class="delivery-card free-delivery mb-2">
-                            <i class="fa fa-truck me-2"></i>
-                            <div>
-                                <span class="delivery-title">Free Delivery</span>
-                                <span class="delivery-desc">Enter your Postal code for Delivery Availability</span>
-                            </div>
-                        </div>
-                        <div class="delivery-card return-delivery">
-                            <i class="fa fa-undo me-2"></i>
-                            <div>
-                                <span class="delivery-title">Return Delivery</span>
-                                <span class="delivery-desc">Free 30 days Delivery Return.
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>

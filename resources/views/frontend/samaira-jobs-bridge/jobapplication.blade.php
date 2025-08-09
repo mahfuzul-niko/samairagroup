@@ -51,7 +51,7 @@
 
                     <!-- Job Description -->
                     <div class="job-description">
-                        <h4>Work Deadline : {{ \Carbon\Carbon::parse($work->deadline)->format('d M Y') }}</h4>
+                        <h4>Application Deadline : {{ \Carbon\Carbon::parse($work->deadline)->format('d M Y') }}</h4>
                     </div>
                     <div class="job-description">
                         <h4>Work Description</h4>

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Joypur Agro Limited</x-slot>
+    <x-slot name="title"> Joypur Agro Limited</x-slot>
 
     <section class="logo-section">
         <div class="card">
@@ -633,8 +633,8 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body ">
-                                                <form action="{{ route('agent.agro.update.project',$project) }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('agent.agro.update.project', $project) }}"
+                                                    method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="mb-3">
                                                         <label for="">Image</label>
@@ -643,8 +643,8 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="">Title</label>
-                                                        <input type="text" class="form-control" name="title" value="{{$project->title}}"
-                                                            id="title">
+                                                        <input type="text" class="form-control" name="title"
+                                                            value="{{ $project->title }}" id="title">
                                                     </div>
                                                     <button class="btn btn-primary btn-sm mt-2">Submit</button>
                                                 </form>
@@ -945,6 +945,80 @@
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
                 </form>
 
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Concern Content
+                </div>
+                <form action="{{ route('agent.system.store.concern.content') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="key" value="agro">
+                    <div class="mb-3">
+                        <label for="">Phone</label>
+                        <input type="tel" class="form-control" name="phone"
+                            value="{{ $content->phone ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control" name="email"
+                            value="{{ $content->email ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Address</label>
+                        <input type="text" class="form-control" name="address"
+                            value="{{ $content->address ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Facebook</label>
+                        <input type="url" class="form-control" name="facebook"
+                            value="{{ $content->facebook ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Twitter</label>
+                        <input type="url" class="form-control" name="twitter"
+                            value="{{ $content->twitter ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Instagram</label>
+                        <input type="url" class="form-control" name="instagram"
+                            value="{{ $content->instagram ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Pinterest</label>
+                        <input type="url" class="form-control" name="pinterst"
+                            value="{{ $content->pinterst ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="map">Map Embed Code</label>
+                        <textarea name="map" class="form-control" rows="5">{{ $content->map ?? '' }}</textarea>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="office">Office</label>
+                        <input type="text" class="form-control" name="office"
+                            value="{{ $content->office ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="whatsapp">Whatsapp</label>
+                        <input type="text" class="form-control" name="whatsapp"
+                            value="{{ $content->whatsapp ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="youtube">Youtube</label>
+                        <input type="url" class="form-control" name="youtube"
+                            value="{{ $content->youtube ?? '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="linkedin">Linkedin</label>
+                        <input type="url" class="form-control" name="linkedin"
+                            value="{{ $content->linkedin ?? '' }}">
+                    </div>
+                    <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                </form>
             </div>
         </div>
     </section>

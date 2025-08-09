@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->decimal('price', 10, 2)->nullable();
             $table->string('size')->nullable();
             $table->string('weight')->nullable();
+           
             $table->timestamps();
         });
     }

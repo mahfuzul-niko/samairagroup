@@ -28,7 +28,7 @@
 <body>
 
     <!-- Top Header Section Start -->
-    <x-layouts.header />
+    <x-layouts.header :content="$content" />
     <!-- Top Header Section End -->
 
     <!-- Navbar Start -->
@@ -417,8 +417,8 @@
                                                         <div class="class-type">Class</div>
                                                         <div class="class-options">
                                                             <label class="class-option">
-                                                                <input type="radio" name="class"
-                                                                    value="economy" checked>
+                                                                <input type="radio" name="class" value="economy"
+                                                                    checked>
                                                                 <span class="class-radio"></span>
                                                                 <span class="class-label">Economy</span>
                                                             </label>

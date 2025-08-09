@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\concernContent;
 use App\Models\FooterConcern;
 use App\Models\FooterLink;
 use App\Models\header;
@@ -225,6 +226,30 @@ class SystemController extends Controller
         $groups = NewsLetter::where('key', 'group')->paginate(20);
         $jobs = NewsLetter::where('key', 'job')->paginate(20);
         return view('backend.agent.system.news-letter', compact('groups', 'jobs'));
+    }
+
+    public function storeOrUpdateConcernContent(Request $request)
+    {
+
+        concernContent::updateOrCreate(
+            ['key' => $request->key],
+            [
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'address' => $request->address,
+                'map' => $request->map,
+                'office' => $request->office,
+                'whatsapp' => $request->whatsapp,
+                'twitter' => $request->twitter,
+                'facebook' => $request->facebook,
+                'instagram' => $request->instagram,
+                'pinterst' => $request->pinterst,
+                'youtube' => $request->youtube,
+                'linkedin' => $request->linkedin,
+            ]
+        );
+
+        return back()->with('success', 'Content saved successfully.');
     }
 
 

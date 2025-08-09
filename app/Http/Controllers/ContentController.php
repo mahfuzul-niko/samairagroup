@@ -45,8 +45,8 @@ class ContentController extends Controller
     public function deleteAboutBanner(AboutBanner $banner)
     {
 
-        if ($banner->image && \Storage::disk('public')->exists($banner->image)) {
-            \Storage::disk('public')->delete($banner->image);
+        if ($banner->image && Storage::disk('public')->exists($banner->image)) {
+            Storage::disk('public')->delete($banner->image);
         }
 
         $banner->delete();
@@ -102,8 +102,8 @@ class ContentController extends Controller
     public function deleteContactBanner(ContactBanner $banner)
     {
 
-        if ($banner->image && \Storage::disk('public')->exists($banner->image)) {
-            \Storage::disk('public')->delete($banner->image);
+        if ($banner->image && Storage::disk('public')->exists($banner->image)) {
+            Storage::disk('public')->delete($banner->image);
         }
 
         $banner->delete();

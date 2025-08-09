@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Wecome Edit News & Events</x-slot>
+    <x-slot name="title"> Edit News & Events</x-slot>
 
     <section class="create-news">
         <div class="card">
@@ -33,11 +33,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="">Description</label>
-                        <textarea id="summernote" name="description"  required>{!!$news->description!!}</textarea>
+                        <textarea id="summernote" name="description" required>{!! $news->description !!}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="">Posted By</label>
-                        <input type="text" name="name" class="form-control" value="{{$news->name}}" required>
+                        <input type="text" name="name" class="form-control" value="{{ $news->name }}" required>
                     </div>
 
                     <button type="submit" class="btn btn-sm btn-success">Save</button>

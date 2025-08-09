@@ -6,6 +6,7 @@ use App\Models\aviationFrom;
 use App\Models\aviationPartner;
 use App\Models\aviationRequest;
 use App\Models\aviationTo;
+use App\Models\concernContent;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\About;
@@ -25,7 +26,8 @@ class AviationController extends Controller
         $about = About::latest()->where('key', 'aviation')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'aviation')->get();
         $info = ContactInfo::latest()->where('key', 'aviation')->first();
-        return view('backend.agent.sisters.aviation.aviation', compact('partners','banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'airlines'));
+        $content = concernContent::latest()->where('key', 'aviation')->first();
+        return view('backend.agent.sisters.aviation.aviation', compact('partners','banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'airlines', 'content'));
     }
     public function storeAirline(Request $request)
     {

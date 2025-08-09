@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Single Order</x-slot>
+    <x-slot name="title"> Single Order</x-slot>
     <section class="order">
         <div class="card">
             <div class="card-body">
@@ -68,6 +68,10 @@
                                         <div class="d-flex">
                                             <strong class="me-2 w-25">Weight:</strong>
                                             <span>{{ $product->pivot->weight }}</span>
+                                        </div>
+                                        <div class="d-flex">
+                                            <strong class="me-2 w-25">Delivery:</strong>
+                                            <span>{{ $product->pivot->delivery }}</span>
                                         </div>
                                     </li>
                                     <hr>

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('medica_products', function (Blueprint $table) {
-            $table->boolean('best')->default(0);
-            $table->string('phone')->nullable();
+        Schema::table('order_product', function (Blueprint $table) {
+             $table->string('delivery')->nullable();
         });
     }
 
@@ -22,9 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('medica_products', function (Blueprint $table) {
-            $table->dropColumn('best');
-            $table->dropColumn('phone');
+        Schema::table('order_product', function (Blueprint $table) {
+            $table->dropColumn('delivery');
         });
     }
 };

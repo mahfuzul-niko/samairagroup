@@ -9,6 +9,7 @@ use App\Models\agroIntroduction;
 use App\Models\agroPartner;
 use App\Models\agroProject;
 use App\Models\Banner;
+use App\Models\concernContent;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class AgroController extends Controller
         $about = About::latest()->where('key', 'agro')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'agro')->get();
         $info = ContactInfo::latest()->where('key', 'agro')->first();
-        return view('backend.agent.sisters.agro.agro', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'introduction', 'benefit', 'projects'));
+        $content = concernContent::latest()->where('key', 'agro')->first();
+        return view('backend.agent.sisters.agro.agro', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'introduction', 'benefit', 'projects','content'));
     }
     //partner
     public function storePartner(Request $request)

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Reviews</x-slot>
+    <x-slot name="title"> Reviews</x-slot>
     <section class="reviews">
         <div class="card">
             <div class="card-body">
@@ -76,8 +76,8 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('agent.medica.update.review' , $review) }}" method="POST"
-                                            enctype="multipart/form-data">
+                                        <form action="{{ route('agent.medica.update.review', $review) }}"
+                                            method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="">Name</label>
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="">Description</label>
-                                                <textarea name="description" id="description" class="form-control">{{ $review->description  }}</textarea>
+                                                <textarea name="description" id="description" class="form-control">{{ $review->description }}</textarea>
                                             </div>
                                             <button class="btn btn-sm btn-success">Save</button>
                                         </form>

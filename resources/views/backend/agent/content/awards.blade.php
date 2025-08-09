@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Awards</x-slot>
+    <x-slot name="title"> Awards</x-slot>
 
     <section class="awards-banner">
         <div class="card">
@@ -25,10 +25,12 @@
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
-                    @foreach ($banners as $key=> $banner)
+                    @foreach ($banners as $key => $banner)
                         <tr>
-                            <td> {{$key+1}} </td>
-                            <td> <img src="{{$banner->image ? Storage::url($banner->image) :asset('assets/img/no-profile.png')}}" class="img-fluid" style="height: 100px; width: auto;" alt=""> </td>
+                            <td> {{ $key + 1 }} </td>
+                            <td> <img
+                                    src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                                    class="img-fluid" style="height: 100px; width: auto;" alt=""> </td>
                             <td>
                                 <form class="d-inline" action="{{ route('agent.content.delete.banner', $banner) }}"
                                     method="POST">

@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome to Emergin Product Orders</x-slot>
+    <x-slot name="title"> to Emergin Product Orders</x-slot>
     <section class="orders">
         <div class="card">
             <div class="card-body">

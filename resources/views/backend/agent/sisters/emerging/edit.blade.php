@@ -1,11 +1,11 @@
 <x-app>
-    <x-slot name="title">Wecome Edit Product</x-slot>
+    <x-slot name="title"> Edit Product</x-slot>
 
     <section class="product">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">Edit Product</div>
-                
+
                 <div class="mb-3">
                     <img src="{{ $product->image ? Storage::url($product->image) : asset('assets/img/no-profile.png') }}"
                         class="img-fluid" style="height: 300px; width: auto;" alt="">
@@ -50,7 +50,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="">Descount price</label>
-                                <input type="number" class="form-control" name="descount_price" required
+                                <input type="number" class="form-control" name="descount_price" 
                                     value="{{ $product->descount_price }}">
                             </div>
                         </div>
@@ -76,6 +76,11 @@
                     <div class="mb-3">
                         <label for="">Description</label>
                         <textarea name="description" id="" class="form-control" rows="5">{{ $product->description }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Phone</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter phone number"
+                            value="{{ $product->phone }}">
                     </div>
                     <button class="btn btn-sm btn-success">save</button>
                 </form>
@@ -115,7 +120,8 @@
                 <div class="card-title">
                     Upload Multi Images
                 </div>
-                <form action="{{ route('agent.emerging.store.images') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.emerging.store.images') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="product_id" value="{{ $product->id }}">
 

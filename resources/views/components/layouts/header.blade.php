@@ -22,7 +22,7 @@
                         class="contact-icon">
                     <div class="contact-text">
                         <small>Call anytime</small>
-                        <strong>{{ system_key('system_phone') ?? 'system_phone' }}</strong>
+                        <strong>{{ $content->phone ?? (system_key('system_phone') ?? 'system_phone') }}</strong>
                     </div>
                 </div>
                 <div class="contact-item">
@@ -30,28 +30,28 @@
                         class="contact-icon">
                     <div class="contact-text">
                         <small>Send email</small>
-                        <strong>{{ system_key('system_email') ?? 'system_email' }}</strong>
+                        <strong>{{ $content->email ?? (system_key('system_email') ?? 'system_email') }}</strong>
                     </div>
                 </div>
                 <div class="contact-item">
                     <img src="{{ asset('assets/frontassets/') }}/images/top-header/location.png" alt="Location Icon"
                         class="contact-icon">
                     <div class="contact-text">
-                        <small>{{ system_key('system_address_top') ?? 'system_address_top' }}</small>
-                        <strong>{{ system_key('system_address_bottom') ?? 'system_address_bottom' }}</strong>
+                        <small>Address</small>
+                        <strong>{{ $content->address ?? (system_key('system_address_bottom') ?? 'system_address_bottom') }}</strong>
                     </div>
                 </div>
                 <div class="contact-item">
                     <!-- Social Icons -->
                     <div class="social-icons-center">
-                        <a href="{{ system_key('system_twitter') ?? 'system_twitter' }}" class="social-icon"><i
-                                class="fab fa-twitter"></i></a>
-                        <a href="{{ system_key('system_facebook') ?? 'system_facebook' }}" class="social-icon"><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a href="{{ system_key('system_pinterest') ?? 'system_pinterest' }}" class="social-icon"><i
-                                class="fab fa-pinterest-p"></i></a>
-                        <a href="{{ system_key('system_instagram') ?? 'system_instagram' }}" class="social-icon"><i
-                                class="fab fa-instagram"></i></a>
+                        <a href="{{ $content->twitter ?? (system_key('system_twitter') ?? 'system_twitter') }}"
+                            class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="{{ $content->facebook ?? (system_key('system_facebook') ?? 'system_facebook') }}"
+                            class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ $content->pinterst ?? (system_key('system_pinterest') ?? 'system_pinterest') }}"
+                            class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="{{ $content->instagram ?? (system_key('system_instagram') ?? 'system_instagram') }}"
+                            class="social-icon"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>

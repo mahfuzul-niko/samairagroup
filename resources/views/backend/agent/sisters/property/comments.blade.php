@@ -1,5 +1,5 @@
 <x-app>
-    <x-slot name="title">Wecome Jphomes Comments</x-slot>
+    <x-slot name="title"> Jphomes Comments</x-slot>
     <section class="comments">
         <div class="card">
             <div class="card-body">

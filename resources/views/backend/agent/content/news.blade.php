@@ -4,7 +4,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.js"></script>
     @endpush
-    <x-slot name="title">Wecome News & Events</x-slot>
+    <x-slot name="title"> News & Events</x-slot>
     <section class="news_banner-banner">
         <div class="card">
             <div class="card-body">

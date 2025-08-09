@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\AboutBanner;
 use App\Models\Banner;
+use App\Models\concernContent;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\medicaCategory;
@@ -29,7 +30,8 @@ class MedicaController extends Controller
         $about = About::latest()->where('key', 'medica')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'medica')->get();
         $info = ContactInfo::latest()->where('key', 'medica')->first();
-        return view('backend.agent.sisters.medica.medica', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners'));
+        $content = concernContent::latest()->where('key', 'medica')->first();
+        return view('backend.agent.sisters.medica.medica', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'content'));
     }
 
     public function categories()
@@ -177,6 +179,8 @@ class MedicaController extends Controller
 
 
         $product->description = $request->description;
+        $product->phone = $request->phone;
+
         $product->image = $imagePath;
         $product->save();
 
@@ -204,6 +208,7 @@ class MedicaController extends Controller
 
 
         $product->description = $request->description;
+        $product->phone = $request->phone;
         $product->save();
 
         return redirect()->back()->with('success', 'Product Updated successfully.');
@@ -253,10 +258,12 @@ class MedicaController extends Controller
     public function orders()
     {
         $orders = Order::latest()->paginate(20);
+
         return view('backend.agent.sisters.medica.orders', compact('orders'));
     }
     public function order(Order $order)
     {
+        
         return view('backend.agent.sisters.medica.order', compact('order'));
     }
     public function updateMark(Request $request, Order $order)

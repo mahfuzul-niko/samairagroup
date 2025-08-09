@@ -87,19 +87,29 @@
                                             {{-- <button type="submit" class="add-to-cart-btn">Add to Cart</button> --}}
                                         </div>
                                         <div class="product-info">
-                                            <a href="{{ route('page.medica.product', $product) }}" class="text-decoration-none text-dark">
+                                            <a href="{{ route('page.medica.product', $product) }}"
+                                                class="text-decoration-none text-dark">
                                                 <h4 class="product-title">
                                                     {{ Str::limit($product->title ?? 'Product Title', 100) }}
                                                 </h4>
                                             </a>
                                             <div class="price">
-                                                @if ($product->descount_price)
-                                                    <span class="new-price">{{ $product->descount_price }} Taka</span>
-                                                    <span class="old-price">{{ $product->price }} Taka</span>
-                                                @else
-                                                    <span class="new-price">{{ $product->price }} Taka</span>
-                                                @endif
 
+
+                                                @if ($product->price == null)
+                                                    <a href="https://wa.me/{{ preg_replace('/\D/', '', $product->phone) }}?text={{ urlencode('Hello, I want to know more about this product: ' . $product->title) }}"
+                                                        target="_blank" class="btn btn-outline-success">
+                                                        Contact on WhatsApp
+                                                    </a>
+                                                @else
+                                                    @if ($product->descount_price)
+                                                        <span class="new-price">{{ $product->descount_price }}
+                                                            Taka</span>
+                                                        <span class="old-price">{{ $product->price }} Taka</span>
+                                                    @else
+                                                        <span class="new-price">{{ $product->price }} Taka</span>
+                                                    @endif
+                                                @endif
                                             </div>
                                             <a href="{{ route('page.medica.product', $product) }}"
                                                 class="buy-now-btn">Buy Now</a>

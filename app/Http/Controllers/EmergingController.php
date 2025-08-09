@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\concernContent;
 use App\Models\emergingCategory;
 use App\Models\emergingImages;
 use App\Models\emergingOrder;
@@ -27,8 +28,9 @@ class EmergingController extends Controller
         $about = About::latest()->where('key', 'emerging')->first();
         $contactbanners = ContactBanner::latest()->where('key', 'emerging')->get();
         $info = ContactInfo::latest()->where('key', 'emerging')->first();
+        $content = concernContent::latest()->where('key', 'emerging')->first();
 
-        return view('backend.agent.sisters.emerging.emerging', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners'));
+        return view('backend.agent.sisters.emerging.emerging', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'content'));
     }
 
     public function categories()
@@ -107,6 +109,7 @@ class EmergingController extends Controller
 
 
         $product->description = $request->description;
+        $product->phone = $request->phone;
         $product->image = $imagePath;
         $product->save();
 
@@ -133,6 +136,7 @@ class EmergingController extends Controller
 
 
         $product->description = $request->description;
+        $product->phone = $request->phone;
         $product->save();
 
         return redirect()->back()->with('success', 'Product Updated successfully.');
