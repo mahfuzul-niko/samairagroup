@@ -556,5 +556,9 @@ class PagesController extends Controller
      {
           return view('frontend.content.download');
      }
+     public function gallery()
+     {
+          return view('frontend.content.gallery');
+     }
 
 }

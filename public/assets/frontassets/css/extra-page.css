@@ -134,7 +134,7 @@
       padding: 1.5rem 0;
     }
     .awards-section .awards-img {
-      height: 234px;
+      height: 234px !important;
     }
     .awards-section .awards-gallery > .col-md-4 {
         flex: 0 0 100%;
@@ -821,5 +821,56 @@ Download Page Section Start
 }
 /* -------------------------------------------------------
 Download Page Section End
+------------------------------------------------------- */
+
+/* -------------------------------------------------------
+Gallery Page Section Start
+------------------------------------------------------- */
+.gallery-section .awards-img{
+  box-shadow: none !important;
+}
+/* Filter bar */
+.gallery-section .filter-bar .btn-filter{
+  border:1px solid #d8e2f0;
+  color:#4b5b6a;
+  background:#fff;
+  border-radius: 999px;
+  padding:.45rem 1rem;
+  transition: all .2s ease;
+}
+.gallery-section .filter-bar .btn-filter.active,
+.gallery-section .filter-bar .btn-filter:hover{
+  background: var(--primary-color);
+  color:#fff;
+  border-color: var(--primary-color);
+  box-shadow: 0 8px 20px rgba(30,91,159,.2);
+}
+
+/* Gallery Card */
+.gallery-section .gallery-card{
+  display:block;              
+  background: linear-gradient(180deg, #f5f9ff 0%, #fff 100%);
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  height:100%;
+  text-decoration:none;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gallery-section .gallery-card:hover{
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-strong);
+  text-decoration:none;
+}
+/* Caption */
+.caption{
+  padding: .9rem 1.1rem 1.2rem;
+  color:#344b63;
+  font-weight:600;
+  text-align:center;
+}
+/* -------------------------------------------------------
+Gallery Page Section End
 ------------------------------------------------------- */
 
