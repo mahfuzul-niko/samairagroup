@@ -1558,8 +1558,8 @@ body {
   margin-bottom: 16px;
 }
 .sjb-work-icon img {
-  width: 48px;
-  height: 48px;
+  /* width: 45%; */
+  height: 55px;
   object-fit: contain;
 }
 .sjb-work-card h3 {

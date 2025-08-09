@@ -719,6 +719,7 @@ Sister Concern CSS Start
   font-size: 1rem;
   margin: 0;
   font-weight: 400;
+  text-align: justify;
 }
 .pg-service-card-active .pg-service-card-text {
   color: #fff;
@@ -746,6 +747,12 @@ Sister Concern CSS Start
     min-width: 90vw;
     max-width: 95vw;
     padding: 18px 6vw 14px 6vw;
+  }
+}
+@media (max-width: 992px) {
+  .pg-service-card{
+    min-width: 260px;
+    max-width: 290px;
   }
 }
 

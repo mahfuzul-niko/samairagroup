@@ -172,6 +172,11 @@
     <x-layouts.footer />
     <!-- Custom Footer Section End -->
 
+    <!-- Whatsapp icon -->
+    <a id="whatsappFab" class="whatsapp-fab text-decoration-none" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <!-- jQuery -->
     <script src="{{ asset('assets/frontassets/') }}/js/jquery-3.7.1.min.js"></script>
     <!-- Swiper JS -->
@@ -198,6 +203,31 @@
         // }, 500);
         // });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const fab = document.getElementById('whatsappFab');
+
+            // 1) Configure your number (international format, no +, spaces or dashes)
+            const PHONE_NUMBER = '01313770461';
+
+            // 2) Optional pre-filled message (includes page title and URL)
+            const message = `Hello! I need help regarding: ${document.title} — ${location.href}`;
+            const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+            fab.href = url;
+
+            // 3) Show the FAB after scrolling a bit
+            const threshold = 150; // px
+            const toggleFab = () => {
+            if (window.scrollY > threshold) {
+                fab.classList.add('show');
+            } else {
+                fab.classList.remove('show');
+            }
+            };
+            toggleFab(); // initial
+            window.addEventListener('scroll', toggleFab, { passive: true });
+        });
+        </script>
 </body>
 
 </html>

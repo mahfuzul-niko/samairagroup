@@ -103,7 +103,8 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/raisa-trade-international', 'raisatrade')->name('raisa');
     Route::get('/raisa-trade-international/about-us', 'raisaAbout')->name('raisa.about');
     Route::get('/raisa-trade-international/contact-us', 'raisaContact')->name('raisa.contact');
-
+    // sps filling station
+    Route::get('/sps-filling-station', 'spsFillingStation')->name('sps.filling.station');
 
 
 

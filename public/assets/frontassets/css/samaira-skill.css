@@ -363,15 +363,18 @@
     }
 }
 @media all and (max-width: 500px) {
-    .swiper-slide{
+    /* .swiper-slide{
       padding-top: 10vh !important;
-    }
+    } */
     .rg-navbar-logo img{
         height: 35px !important;
     }
     .margin-bottom-100{
         margin-bottom: -4.5rem !important;
     }
+    /* .course-categories .course-card{
+        margin-left: 15px;
+    } */
   }
   .about-swiper, .about-swiper .swiper-wrapper, .about-swiper .swiper-slide {
     width: 100%;
@@ -752,6 +755,9 @@
     }
     .swiper-slide .hero-content {
         margin-right: 11vw !important;
+    }
+    .enrollment-discount-section .enrollment-image img{
+        height: 335px;
     }
 }
 @media (max-width: 500px) {
@@ -1203,7 +1209,6 @@
 .course-categories .card-image img {
     width: 100%;
     height: 220px;
-    object-fit: cover;
     transition: transform 0.3s ease;
 }
 

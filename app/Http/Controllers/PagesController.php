@@ -560,5 +560,10 @@ class PagesController extends Controller
      {
           return view('frontend.content.gallery');
      }
+     public function spsFillingStation()
+     {
+           $content = concernContent::latest()->where('key', 'gold')->first();
+          return view('frontend.spsfillingstation.index', compact('content'));
+     }
 
 }

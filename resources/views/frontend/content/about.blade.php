@@ -65,6 +65,51 @@
         <!-- About Section Overlap -->
     </div>
     <!-- Slider End -->
+
+    {{-- Mission Vission Start --}}
+    <section class="section-pad about-info-section">
+        <div class="container p-4 p-md-5">
+            <div class="row g-4 position-relative" style="z-index:1;">
+            <!-- Mission -->
+            <div class="col-12 col-md-6">
+                <div class="info-card" style="--accent:#1e88e5; background: #ebebec;">
+                <span class="top-strip"></span>
+                <div class="fill"></div>
+
+                <div class="content">
+                    <div class="icon-badge"><i class="fa-solid fa-bullseye"></i></div>
+                    <h4 class="info-title">Our Mission</h4>
+                    <p class="info-text">
+                    At Samaira Group, our mission is to empower individuals and organizations by providing
+                    exceptional recruitment services and skill development solutions. We create pathways
+                    for success, enhance employability, and drive growth through ethical practices and
+                    innovative training.
+                    </p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Vision -->
+            <div class="col-12 col-md-6 vission-col">
+                <div class="info-card" style="--accent:#F7B729;">
+                <span class="top-strip"></span>
+                <div class="fill"></div>
+
+                <div class="content">
+                    <div class="icon-badge"><i class="fa-regular fa-lightbulb"></i></div>
+                    <h4 class="info-title">Our Vision</h4>
+                    <p class="info-text">
+                    We aim to be a leading global player in recruitment and human resource development —
+                    connecting people to meaningful opportunities and building sustainable partnerships,
+                    so everyone can access the support they need to achieve their aspirations.
+                    </p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    {{-- Mission Vission End --}}
     <x-layouts.footer />
 
     <!-- jQuery -->

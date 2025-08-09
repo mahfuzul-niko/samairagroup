@@ -143,12 +143,11 @@
     <!-- Testimonial Slider Section End -->
 
     <!-- Sister Concern start  -->
-    <section class="sister-concern py-5">
+    {{-- <section class="sister-concern py-5">
         <div class="container text-center">
             <h3 class="mb-4">Our Partners</h3>
             <div class="logos-wrapper">
                 <div class="logos-slider">
-                    <!-- First set of logos -->
                     <div class="d-flex">
                         @foreach ($partners as $partner)
                             <div class="logo-item">
@@ -180,7 +179,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Sister Concern End  -->
 
     <!-- Custom Footer Section Start -->

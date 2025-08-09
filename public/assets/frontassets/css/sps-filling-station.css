@@ -1,0 +1,333 @@
+:root{
+    /* Tweak these to match your brand */
+    --brand: #1772A6;        /* petrol teal */
+    --brand-2: #008349;      /* green accent */
+    --ink: #0f172a;          /* heading color */
+    --muted: #64748b;        /* body text */
+    --card: #ffffff;
+    --line: #e2e8f0;         /* borders */
+    --bg: #f8fafc;           /* section bg */
+    --shadow: 0 14px 30px rgba(15, 23, 42, .08);
+    --shadow-lg: 0 22px 50px rgba(15, 23, 42, .14);
+    --grad: linear-gradient(135deg, var(--brand), var(--brand-2));
+}
+
+body{ background:#fff; color:var(--ink); }
+
+.section-pad{ padding: 72px 0; }
+.section-sub{ color:var(--muted); }
+
+/* soft background shapes */
+.soft-bg{
+    position:relative;
+    background: var(--bg);
+    overflow:hidden;
+}
+.soft-bg::before,
+.soft-bg::after{
+    content:'';
+    position:absolute;
+    width:420px; height:420px; border-radius:50%;
+    background: radial-gradient(closest-side, rgba(34,197,94,.16), transparent 70%);
+    filter: blur(8px);
+    z-index:0;
+}
+.soft-bg::before{ top:-140px; left:-140px; }
+.soft-bg::after{ bottom:-180px; right:-180px; }
+
+/* ---------- Services (modern cards) ---------- */
+.service-card{
+    display:block; text-decoration:none; color:inherit;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 20px;
+    position:relative;
+    overflow:hidden;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow: var(--shadow);
+    z-index:1;
+    height:100%;
+}
+.service-card:hover{
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+}
+/* gradient top bar */
+.service-card::before{
+    content:"";
+    position:absolute; inset:0 0 auto 0; height:4px;
+    background: var(--grad);
+    opacity:.85;
+    transform: scaleX(.4);
+    transform-origin: left;
+    transition: transform .25s ease;
+}
+.service-card:hover::before{ transform: scaleX(1); }
+
+.icon-ring{
+    width:56px; height:56px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #f1f5f9);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; z-index:1;
+    margin-bottom:14px;
+}
+.icon-ring i{
+    background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-size: 22px;
+}
+
+.service-title{ font-weight:700; margin-bottom:6px; }
+.service-desc{ color:var(--muted); font-size: .95rem; }
+
+.service-cta{
+    display:flex; align-items:center; gap:.45rem;
+    color:var(--brand); font-weight:600; font-size:.95rem;
+    margin-top: 12px;
+}
+.service-card:hover .service-cta i{ transform: translateX(3px); }
+.service-cta i{ transition: transform .2s ease; }
+
+/* ---------- Why Us (clean tiles) ---------- */
+.why-tile{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.why-tile:hover{ transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+
+/* left color strip grows on hover */
+.why-tile::before{
+    content:"";
+    position:absolute; left:0; top:0; bottom:0; width:4px;
+    background: var(--grad); opacity:.9;
+    transform: scaleY(.35);
+    transform-origin: top;
+    transition: transform .25s ease;
+}
+.why-tile:hover::before{ transform: scaleY(1); }
+
+.why-icon{
+    width:48px; height:48px; border-radius:12px;
+    background: #f1f5f9;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--brand);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.why-title{ font-weight:800; margin-bottom:8px; }
+.why-desc{ color:var(--muted); }
+
+/* headings */
+.section-heading{
+    font-weight:800; letter-spacing:.3px;
+}
+.underline-grad{
+    width:74px; height:4px; border-radius:99px; background: var(--grad); margin:10px auto 0;
+}
+
+/* Testimonials Section Start */
+.testimonials-section {
+    padding: 40px 0 0px 0;
+    background-color: rgba(245, 245, 249, 1);
+    position: relative;
+    overflow: hidden;
+    background: url('../images/contact/contact-bg.jpg') center center/cover no-repeat;
+}
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 20, 30, 0.65); /* dark overlay */
+    z-index: 1;
+}
+.testimonials-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.testimonials-section .section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+    /* margin-bottom: 2rem; */
+}
+
+.testimonials-section .trustpilot-info {
+    display: flex;
+        align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.testimonials-section .trustpilot-logo {
+    height: 30px;
+    object-fit: contain;
+}
+
+.testimonials-section .rating {
+    color: #00B67A;
+    font-size: 1.2rem;
+}
+.testimonials-section .rating i{
+    background:#008349;
+    padding:5px;
+    color: white;
+    font-size: 12px;
+}
+
+.testimonials-section .review-count {
+    font-size: 1rem;
+    color: #2D3436;
+        margin: 0;
+    }
+
+.testimonials-section .review-count span {
+    font-weight: 600;
+}
+
+/* Testimonial Cards */
+.testimonials-section .testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.testimonials-section .testimonial-card:hover {
+    transform: translateY(-5px);
+}
+
+.testimonials-section .testimonial-card .rating {
+    margin-bottom: 1.5rem;
+}
+
+.testimonials-section .testimonial-card .testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #2D3436;
+    margin-bottom: 2rem;
+    min-height: 80px;
+    text-align: justify;
+}
+
+.testimonials-section .testimonial-card .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.testimonials-section .testimonial-card .author-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonials-section .testimonial-card .author-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2D3436;
+    margin: 0;
+}
+
+.testimonials-section .testimonial-card .author-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Slider Navigation */
+.testimonials-section .testimonial-swiper {
+    margin-bottom: 30px;
+}
+
+.testimonials-section .testimonial-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 2rem; */
+}
+
+.testimonials-section .control-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.testimonials-section .testimonial-prev,
+.testimonials-section .testimonial-next {
+    position: static !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    background: #f5f5f5 !important;
+    border-radius: 50%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.testimonials-section .testimonial-prev:after,
+.testimonials-section .testimonial-next:after {
+    display: none;
+}
+
+.testimonials-section .testimonial-prev i,
+.testimonials-section .testimonial-next i {
+    font-size: 14px;
+    color: #666;
+}
+
+.testimonials-section .testimonial-prev:hover,
+.testimonials-section .testimonial-next:hover {
+    background: #6C5CE7 !important;
+}
+
+.testimonials-section .testimonial-prev:hover i,
+.testimonials-section .testimonial-next:hover i {
+    color: white;
+}
+
+.testimonials-section .testimonial-pagination {
+    position: static !important;
+    width: auto !important;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 1rem !important;
+}
+
+.testimonials-section .testimonial-pagination .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #e0e0e0;
+    opacity: 1;
+    margin: 0 2px !important;
+    transition: all 0.3s ease;
+}
+
+.testimonials-section .testimonial-pagination .swiper-pagination-bullet-active {
+    background: #6C5CE7;
+    transform: scale(1);
+}
+/* Testimonials Section End */
