@@ -9,6 +9,7 @@ use App\Models\header;
 use App\Models\NewsLetter;
 use App\Models\Role;
 use App\Models\System;
+use App\Models\UsefullLink;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -251,7 +252,7 @@ class SystemController extends Controller
 
         return back()->with('success', 'Content saved successfully.');
     }
-
+    
 
 
 

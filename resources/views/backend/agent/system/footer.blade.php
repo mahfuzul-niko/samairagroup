@@ -1,7 +1,7 @@
 <x-app>
     <x-slot name="title">System Edit Footer</x-slot>
 
-    {{-- <section class="show-table">
+    <section class="show-table">
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -59,7 +59,7 @@
                 </table>
             </div>
         </div>
-    </section> --}}
+    </section>
     <section class="contact">
         <div class="card">
             <div class="card-body">

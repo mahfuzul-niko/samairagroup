@@ -7,6 +7,7 @@
         Route::is('page.samairaskills') => route('page.ssdi.about'),
         default => route('page.home.about'),
     };
+    $footerlinks = App\Models\FooterLink::orderBy('order')->get();
 @endphp
 
 <footer class="cg-footer-section py-4">
@@ -30,6 +31,13 @@
 
 
                     <li><a href="{{ route('page.home.privacy') }}" class="text-decoration-none">Privacy</a></li>
+                    @foreach ($footerlinks as $links)
+                        <li>
+                            <a href="{{ $links->value }}" class="text-decoration-none">
+                                {{ $links->key }}
+                            </a>
+                        </li>
+                    @endforeach
 
                 </ul>
             </div>
