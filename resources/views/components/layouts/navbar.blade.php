@@ -222,7 +222,19 @@
             </li>
             <li><a href="{{ $aboutRoute }}">About Us</a></li>
             <li><a href="{{ $contactRoute }}">Contact Us</a></li>
+            <li class="rg-navbar-has-dropdown">
+                <a href="#">Media <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
+                <div class="rg-dropdown-menu">
+                    <a href="{{ route('page.home.about') }}">About Us</a>
+                    <a href="{{ route('page.awards') }}">Awards and Achievements</a>
+                    <a href="{{ route('page.chairman') }}">About Manageing Director</a>
+                    <a href="{{ route('page.news') }}">News & Events</a>
+                    <a href="{{ route('page.download') }}">Download</a>
+                    <a href="{{ route('page.gallery') }}">Gallery</a>
+                </div>
+            </li>
             {{ $nav }}
+
         </ul>
         <!-- Desktop Mega Menu (outside <li>) -->
         <div class="rg-mega-menu desktop-mega-menu" id="brands-mega-menu-desktop">

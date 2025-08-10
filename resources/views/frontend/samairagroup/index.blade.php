@@ -98,6 +98,8 @@
                         <a href="{{ route('page.awards') }}">Awards and Achievements</a>
                         <a href="{{ route('page.chairman') }}">About Manageing Director</a>
                         <a href="{{ route('page.news') }}">News & Events</a>
+                        <a href="{{ route('page.download') }}">Download</a>
+                        <a href="{{ route('page.gallery') }}">Gallery</a>
                     </div>
                 </li>
                 <li><a href="{{ route('page.home.contact') }}">Contact Us</a></li>
