@@ -86,7 +86,7 @@
                 </div>
             </div>
 
-            <div class="row g-3">
+            <div class="row g-3 course-row">
                 @foreach ($courses as $course)
                     <div class="col-md-4">
                         <div class="card shadow">

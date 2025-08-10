@@ -375,6 +375,9 @@
     /* .course-categories .course-card{
         margin-left: 15px;
     } */
+     .courses-section .course-row{
+        margin-top: 70px;
+     }
   }
   .about-swiper, .about-swiper .swiper-wrapper, .about-swiper .swiper-slide {
     width: 100%;
@@ -762,7 +765,7 @@
 }
 @media (max-width: 500px) {
     .swiper-slide .hero-content {
-        margin: -85px auto 0 auto !important;
+        margin: 0 auto 0 auto !important;
     }
 }
 /* Navbar End */
