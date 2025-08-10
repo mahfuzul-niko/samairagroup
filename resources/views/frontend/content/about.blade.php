@@ -71,7 +71,7 @@
         <div class="container p-4 p-md-5">
             <div class="row g-4 position-relative" style="z-index:1;">
             <!-- Mission -->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-md-6 mission-col">
                 <div class="info-card" style="--accent:#1e88e5; background: #ebebec;">
                 <span class="top-strip"></span>
                 <div class="fill"></div>
@@ -131,6 +131,20 @@
                 disableOnInteraction: false
             },
             speed: 1000,
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('.about-overlap');
+            const hero = document.querySelector('.about-slider-container');
+            const applySpace = () => {
+                if (!card || !hero) return;
+                const overlap = 60; // jehetu top/bottom diya overlap korchen (px)
+                const extra = Math.max(0, card.offsetHeight - overlap);
+                hero.style.marginBottom = (extra + 24) + 'px';
+            };
+            applySpace();
+            window.addEventListener('resize', applySpace);
         });
     </script>
 </body>

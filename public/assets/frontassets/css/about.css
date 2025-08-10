@@ -6,11 +6,11 @@ body{
 .about-slider-container {
   position: relative;
   width: 100%;
-  height: 90vh;
-  min-height: 400px;
+  height: clamp(320px, 70vh, 720px); 
+  min-height: 320px;
   overflow: visible;
   background: #222;
-  margin-bottom:30rem;
+  z-index: 1;
 }
 .about-swiper, .about-swiper .swiper-wrapper, .about-swiper .swiper-slide {
   width: 100%;
@@ -24,18 +24,16 @@ body{
 }
 /* About Overlap Section */
 .about-overlap {
-    position: absolute;
-    left: 50%;
-    top: 95%;
-    transform: translate(-50%, -40px);
-    background: white;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
-    border-radius: 16px;
-    padding: 40px 32px 32px 32px;
-    max-width: 1400px;
-    width: 90vw;
-    z-index: 10;
-    border-top: 10px solid #2293ce;
+    --overlap: clamp(16px, 6vw, 72px); 
+  position: relative;
+  z-index: 10;
+  width: min(90vw, 1400px);
+  margin: calc(-1 * var(--overlap)) auto 24px; 
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 40px 32px 32px;
+  border-top: 10px solid #2293ce;
 }
 .about-overlap h1 {
   font-size: 20px;
@@ -142,6 +140,7 @@ body{
   border-color: rgba(255,255,255,.28);
   color:#fff;
 }
+
 /* Responsive */
 @media all and (max-width: 600px) {
   .about-overlap h1 {
@@ -149,12 +148,15 @@ body{
   }
 }
 @media all and (max-width: 768px) {
-  .about-slider-container,
   .contact-slider-container {
     height: 50vh !important;
     min-height: 220px !important;
     text-align: center;
   }
+  .about-slider-container{
+    height: clamp(220px, 50vh, 420px);
+  }
+  .about-overlap{ --overlap: 24px; padding: 24px; }
   .about-overlap h1{
     font-size: 16px;
   }
@@ -169,8 +171,9 @@ body{
   .about-overlap h2::before{
     display: none;
   }
-  .vission-col .info-card{
-    margin-top: 30px !important;
+  .about-info-section .mission-col,
+  .about-info-section .vission-col{
+    padding-top: 40px !important;
   }
 }
 @media all and (max-width: 500px) {
