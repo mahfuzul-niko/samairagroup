@@ -724,7 +724,38 @@
             </div>
         </div>
     </section>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Review Image
+                </div>
+                <div class="mb-3">
+                    <img class="img-fluid " style="height: 200px"
+                        src="{{ system_key('samaira_gold_review') ? Storage::url(system_key('samaira_gold_review')) : asset('assets/img/no-profile.png') }}"
+                        alt="">
+                    <form action="{{ route('agent.system.destroy.image', 'samaira_gold_review') }}" method="POST"
+                        class="mt-2">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                    </form>
+                </div>
+                <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="key" placeholder="Enter key" class="form-control"
+                        value="samaira_gold_review" required>
+                    <div class="form-group my-3">
+                        <label for="value">Background Image</label>
+                        <input type="file" name="value" value="samaira_gold_review" class="form-control"
+                            required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                </form>
 
+            </div>
+        </div>
+    </section>
      <section>
         <div class="card">
             <div class="card-body">

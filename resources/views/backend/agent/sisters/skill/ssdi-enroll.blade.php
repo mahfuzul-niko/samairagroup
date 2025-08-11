@@ -23,7 +23,7 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $enroll->name }}</td>
-                            <td>{{ $enroll->course->course_code }}</td>
+                            <td>{{ $enroll->course->course_code ?? '' }}</td>
                             <td>{{ $enroll->email }}</td>
                             <td>{{ $enroll->phone }}</td>
                             <td>
