@@ -42,11 +42,11 @@
     <div class="about-slider-container content-margin-top">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
-                {{-- @foreach ($banners as $banner)
+                @foreach ($banners as $banner)
                     <div class="swiper-slide"><img
                             src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
                             alt="Slide 1"></div>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </div>
@@ -79,56 +79,17 @@
                 <button class="btn btn-filter" data-filter="event">Events</button>
             </div>
             <div class="row g-4 awards-gallery mt-4" id="galleryGrid">
-                <div class="col-md-4 col-sm-6" data-category="award">
-                    <a href="{{ asset('assets/frontassets/images/gallery/awards.png') }}" class="awards-lightbox gallery-card"
-                        data-caption="Sample Image 1">
-                        <img src="{{ asset('assets/frontassets/images/gallery/awards.png') }}" alt="Award 1"
-                            class="img-fluid rounded shadow awards-img">
-                            <div class="caption">Appreciation Award</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6" data-category="certificate">
-                    <a href="assets/img/no-profile.png" class="awards-lightbox gallery-card"
-                        data-caption="Sample Image 2">
-                        <img src="assets/img/no-profile.png" alt="Award 1"
-                            class="img-fluid rounded shadow awards-img">
-                            <div class="caption">Certificate</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6" data-category="event">
-                    <a href="{{ asset('assets/frontassets/images/gallery/awards.png') }}" class="awards-lightbox gallery-card"
-                        data-caption="Sample Image 3">
-                        <img src="{{ asset('assets/frontassets/images/gallery/awards.png') }}" alt="Award 1"
-                            class="img-fluid rounded shadow awards-img">
-                            <div class="caption">Appreciation</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6" data-category="award">
-                    <a href="assets/img/no-profile.png" class="awards-lightbox gallery-card"
-                        data-caption="Sample Image 4">
-                        <img src="assets/img/no-profile.png" alt="Award 1"
-                            class="img-fluid rounded shadow awards-img">
-                            <div class="caption">Award</div>
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6" data-category="event">
-                    <a href="{{ asset('assets/frontassets/images/gallery/awards.png') }}" class="awards-lightbox gallery-card"
-                        data-caption="Sample Image 5">
-                        <img src="{{ asset('assets/frontassets/images/gallery/awards.png') }}" alt="Award 1"
-                            class="img-fluid rounded shadow awards-img">
-                            <div class="caption">event</div>
-                    </a>
-                </div>
-              {{-- @foreach ($awards as $award)
-                  
-              <div class="col-md-4 col-sm-6">
-                  <a href="{{$award->image ? Storage::url($award->image) : asset('assets/img/no-profile.png')}}" class="awards-lightbox"
-                      data-caption="{{$award->title}}">
-                      <img src="{{$award->image ? Storage::url($award->image) : asset('assets/img/no-profile.png')}}" alt="Award 1"
-                          class="img-fluid rounded shadow awards-img">
-                  </a>
-              </div>
-              @endforeach --}}
+                @foreach ($gallaries as $gallary)
+                    <div class="col-md-4 col-sm-6" data-category="{{$gallary->type}}">
+                        <a href="{{ $gallary->image ? Storage::url($gallary->image) : asset('assets/img/no-profile.png') }}"
+                            class="awards-lightbox gallery-card" data-caption="Sample Image 1">
+                            <img src="{{ $gallary->image ? Storage::url($gallary->image) : asset('assets/img/no-profile.png') }}" alt="Award 1"
+                                class="img-fluid rounded shadow awards-img">
+                            <div class="caption">{{ $gallary->title }}</div>
+                        </a>
+                    </div>
+                @endforeach
+
             </div>
         </div>
         <!-- Lightbox Modal -->
@@ -244,15 +205,15 @@
         // Filter
         const buttons = document.querySelectorAll('.btn-filter');
         const items = document.querySelectorAll('#galleryGrid > [data-category]');
-        buttons.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-            buttons.forEach(b=>b.classList.remove('active'));
-            btn.classList.add('active');
-            const f = btn.dataset.filter;
-            items.forEach(it=>{
-            it.style.display = (f==='all' || it.dataset.category===f) ? '' : 'none';
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const f = btn.dataset.filter;
+                items.forEach(it => {
+                    it.style.display = (f === 'all' || it.dataset.category === f) ? '' : 'none';
+                });
             });
-        });
         });
     </script>
 </body>

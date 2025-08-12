@@ -26,6 +26,7 @@ use App\Models\emergingPartner;
 use App\Models\emergingProduct;
 use App\Models\emergingReview;
 use App\Models\FeaturedCourse;
+use App\Models\gallary;
 use App\Models\goldPartner;
 use App\Models\goldReview;
 use App\Models\goldServices;
@@ -312,7 +313,7 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'samairagroup')->get();
           $about = About::latest()->where('key', 'samairagroup')->first();
           $content = concernContent::latest()->where('key', 'samairagroup')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns','content'));
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
      public function samairaskillsAbout()
      {
@@ -402,7 +403,7 @@ class PagesController extends Controller
           $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           $content = concernContent::latest()->where('key', 'samairagroup')->first();
-          return view('frontend.content.contact', compact('banners', 'info', 'concerns','content'));
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function ssdiContact()
      {
@@ -558,11 +559,13 @@ class PagesController extends Controller
      }
      public function gallery()
      {
-          return view('frontend.content.gallery');
+          $gallaries = gallary::latest()->get();
+          $banners = Banner::where('key', 'gallary_banner')->latest()->get();
+          return view('frontend.content.gallery',compact('gallaries', 'banners'));
      }
      public function spsFillingStation()
      {
-           $content = concernContent::latest()->where('key', 'gold')->first();
+          $content = concernContent::latest()->where('key', 'gold')->first();
           return view('frontend.spsfillingstation.index', compact('content'));
      }
 

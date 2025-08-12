@@ -469,6 +469,18 @@
                         </a>
                     </li>
                     <li>
+                        <a href="{{ route('agent.page.gallary') }}"
+                            class="{{ request()->routeIs('agent.page.gallary') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Gallary</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('agent.page.downloads') }}"
+                            class="{{ request()->routeIs('agent.page.downloads') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Downloads</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('agent.page.chairman') }}"
                             class="{{ request()->routeIs('agent.page.chairman') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Chairman</span>

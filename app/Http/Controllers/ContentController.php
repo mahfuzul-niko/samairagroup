@@ -14,6 +14,7 @@ use App\Models\ContactInfo;
 use App\Models\ContactSubject;
 use App\Models\Course;
 use App\Models\Enroll;
+use App\Models\gallary;
 use App\Models\News;
 use App\Models\Privacy;
 use App\Models\Review;
@@ -494,6 +495,34 @@ class ContentController extends Controller
         Privacy::updateOrCreate(['key' => 'discription'], ['value' => $request->discription]);
 
         return back()->with('success', 'Content updated.');
+    }
+    public function gallary()
+    {
+        $gallaries = gallary::latest()->get();
+        $banners = Banner::where('key', 'gallary_banner')->latest()->get();
+        return view('backend.agent.content.gallary', compact('gallaries', 'banners'));
+    }
+    public function storeGallary(Request $request)
+    {
+        $gallary = new gallary;
+        $gallary->title = $request->title;
+        $gallary->type = $request->type;
+        if ($request->hasFile('image')) {
+            $gallary->image = $request->file('image')->store('news', 'public');
+        }
+        $gallary->save();
+        return redirect()->back()->with('success', 'Gallary Image Created Successfully.');
+
+    }
+    public function deleteGallary(gallary $gallary)
+    {
+        if ($gallary->image && Storage::disk('public')->exists($gallary->image)) {
+            Storage::disk('public')->delete($gallary->image);
+        }
+
+        $gallary->delete();
+
+        return redirect()->back()->with('success', 'Gallary deleted successfully.');
     }
 
 
