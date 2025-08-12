@@ -822,6 +822,9 @@
     border-top: 11px solid #a71d2a;
     border-left: 11px solid transparent;
   }
+  .courses-section .card{
+    height: 100% !important;
+  }
   /* Add position relative to the swiper container */
 .courses-section .courses-swiper {
       position: relative;
@@ -1591,6 +1594,7 @@
     margin: 1rem;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
+    height: 100%;
 }
 
 .testimonials-section .testimonial-card:hover {
@@ -1645,7 +1649,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 2rem; */
+    margin-top: 2rem;
 }
 
 .testimonials-section .control-wrapper {
@@ -1716,7 +1720,29 @@
     transform: scale(1);
 }
 
+/* Make all testimonial cards equal height inside Swiper */
+.testimonials-section .testimonial-swiper .swiper-wrapper{
+  align-items: stretch;           /* stretch all slides to tallest */
+}
+.testimonials-section .testimonial-swiper .swiper-slide{
+  height: auto;                   /* let slide auto-height */
+  display: flex;                  /* so child can use height:100% */
+}
+.testimonials-section .testimonial-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;                   /* fill the whole slide height */
+}
 
+/* Text takes remaining space; author sits at bottom */
+.testimonials-section .testimonial-card .testimonial-text{
+  min-height: 0;
+  flex: 1 1 auto;                 /* grow to fill */
+  margin-bottom: 1.25rem;
+}
+.testimonials-section .testimonial-card .testimonial-author{
+  margin-top: auto;               /* push author row to bottom */
+}
 
 
 /* Testimonials Section End */

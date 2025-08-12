@@ -537,11 +537,19 @@ display: block;
     .joypur-cities-section .joypur-cities-title { font-size: 1.5rem; }
     .joypur-cities-section .joypur-city-card { min-width: 140px; padding: 10px 8px; }
     .joypur-cities-section .joypur-city-img { width: 38px; height: 38px; }
+    .product-main-container .enhanced-cart-btn{
+      margin: 10px 0;
+    }
   }
   @media (max-width: 575.98px) {
     .joypur-cities-section .joypur-cities-title { font-size: 1.1rem; }
     .joypur-cities-section .joypur-city-card { min-width: 100px; padding: 8px 4px; }
     .joypur-cities-section .joypur-city-img { width: 28px; height: 28px; }
+  }
+  @media (max-width: 404px) {
+    .product-main-container .enhanced-cart-btn{
+      margin: 10px 0;
+    }
   }
   /* Joypur Cities Section End*/
 

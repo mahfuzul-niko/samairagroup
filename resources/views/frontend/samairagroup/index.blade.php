@@ -22,6 +22,33 @@
 </head>
 
 <body>
+    <style>
+        .rg-navbar-menu li a {
+            font-size: 1.2em !important;
+            font-weight: 500 !important;
+            position: relative;
+        }
+        .rg-navbar-menu li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2.2px;
+            background: #fff;
+            transition: width 0.5s ease;
+        }
+        .rg-navbar-menu li a:hover{
+            color: #fff !important;
+        }
+        .rg-navbar-menu li a:hover::after {
+            width: 100%;
+        }
+        .rg-navbar-has-dropdown .rg-dropdown-menu a {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+    </style>
 
     <!-- Loader -->
     <div id="loader"
@@ -119,10 +146,66 @@
         </div>
     </nav>
 
+    {{-- Countdown Timer Section Start --}}
+    <section class="stats-counter py-5">
+        <div class="container-fluid">
+            <div class="row text-center justify-content-center gy-5">
+
+                <!-- Counter Item 1 -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="counter-item">
+                        <i class="fa-solid fa-calendar-days icon"></i>
+                        <h3 class="counter-number" data-target="48">0</h3>
+                        <p class="counter-label">Years of Legacy</p>
+                    </div>
+                </div>
+
+                <!-- Counter Item 2 -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="counter-item">
+                        <i class="fa-solid fa-globe icon"></i>
+                        <h3 class="counter-number" data-target="20">0</h3>
+                        <p class="counter-label">Countries</p>
+                    </div>
+                </div>
+
+                <!-- Counter Item 3 -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="counter-item">
+                        <i class="fa-solid fa-people-roof icon"></i>
+                        <h3 class="counter-number" data-target="15">0</h3>
+                        <p class="counter-label">Business Units</p>
+                    </div>
+                </div>
+
+                <!-- Counter Item 4 -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="counter-item">
+                        <i class="fa-solid fa-snowflake icon"></i>
+                        <h3 class="counter-number" data-target="12">0</h3>
+                        <p class="counter-label">Brands</p>
+                    </div>
+                </div>
+
+                <!-- Counter Item 5 -->
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="counter-item">
+                        <i class="fa-solid fa-user-plus icon"></i>
+                        <h3 class="counter-number" data-target="200">0</h3>
+                        <p class="counter-label">Employees</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    {{-- Countdown Timer Section End --}}
+
     <!-- Brands Section -->
     <section class="rg-brands-section py-5">
         <div class="container py-5">
             <div class="row justify-content-center g-4">
+                <h2 class="text-center mb-2">Our Sister Concerns</h2>
                 @foreach ($concerns as $concern)
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3 margin-top7rem">
                         <div class="rg-brand-card h-100 d-flex flex-column">
@@ -139,6 +222,12 @@
                 @endforeach
 
             </div>
+        </div>
+    </section>
+
+    <section class="parallax-section">
+        <div class="container">
+            <h1 class="animated-title">Here is the Title</h1>
         </div>
     </section>
 
@@ -229,7 +318,52 @@
             toggleFab(); // initial
             window.addEventListener('scroll', toggleFab, { passive: true });
         });
-        </script>
+    </script>
+    <script>
+        /*--------------------------------------------------------------
+        # Custom JS for the Count-Up Animation
+        --------------------------------------------------------------*/
+        document.addEventListener("DOMContentLoaded", () => {
+            const counters = document.querySelectorAll('.counter-number');
+            const animationDuration = 2000; // Animation duration in milliseconds
+            const frameDuration = 1000 / 60; // 60 frames per second
+
+            // Function to animate a single counter
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const totalFrames = Math.round(animationDuration / frameDuration);
+                const increment = target / totalFrames;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        counter.innerText = target.toLocaleString() + '+';
+                    } else {
+                        counter.innerText = Math.ceil(current).toLocaleString();
+                    }
+                }, frameDuration);
+            };
+
+            // Use Intersection Observer to trigger the animation when the element is visible
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target); // Animate only once
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            // Observe each counter
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        });
+    </script>
 </body>
 
 </html>

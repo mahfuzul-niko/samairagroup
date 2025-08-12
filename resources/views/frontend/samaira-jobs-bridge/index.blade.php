@@ -131,6 +131,7 @@
                     <div class="sjb-slider">
                         <!-- Slide 1 -->
                         @foreach ($works as $work)
+                        <a href="{{ route('page.job.apply', $work) }}" class="text-decoration-none">
                             <div class="sjb-work-card">
                                 <div class="ribbon"><span>Deadline:
                                         {{ \Carbon\Carbon::parse($work->deadline)->format('d M ') }}
@@ -144,7 +145,7 @@
                                     <span class="sjb-work-bid-amount">BDT {{ $work->salary }}</span>
                                     <a href="{{ route('page.job.apply', $work) }}" class="sjb-work-apply">Apply now</a>
                                 </div>
-                            </div>
+                            </div></a>
                         @endforeach
                         <!-- Slide 2 -->
 

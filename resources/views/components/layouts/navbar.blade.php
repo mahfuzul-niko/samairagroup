@@ -200,6 +200,12 @@
             </span>
             <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
         </button>
+        <div class="mobile-menu-cart">
+            <a class="mini-cart-icon" href="http://127.0.0.1:8000/samaira-medica-limited/checkout">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="pro-count blue productCount">0</span>
+            </a>
+        </div>
         <ul class="rg-navbar-menu">
             <li><a href="{{ route('page.home') }}"><i class="fa fa-home"></i></a></li>
             <li><a href="{{ $logourl }}">Home</a></li>
@@ -226,7 +232,7 @@
             <li class="rg-navbar-has-dropdown">
                 <a href="#">Media <span class="rg-navbar-chevron"><i class="fa fa-chevron-down"></i></span></a>
                 <div class="rg-dropdown-menu">
-                    <a href="{{ route('page.home.about') }}">About Us</a>
+                    {{-- <a href="{{ route('page.home.about') }}">About Us</a> --}}
                     <a href="{{ route('page.awards') }}">Awards and Achievements</a>
                     <a href="{{ route('page.chairman') }}">About Manageing Director</a>
                     <a href="{{ route('page.news') }}">News & Events</a>

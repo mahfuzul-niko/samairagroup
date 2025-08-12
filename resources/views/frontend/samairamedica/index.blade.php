@@ -35,15 +35,16 @@
 
     <!-- Navbar Start -->
     <x-layouts.navbar>
-
         <x-slot name="shop">
             <li><a href="{{ route('page.medica.shop') }}">Shop</a></li>
         </x-slot>
         <x-slot name="nav">
-            <a class="mini-cart-icon" href="{{ route('page.medica.checkout') }}">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="pro-count blue productCount">{{ $totalItems }}</span>
-            </a>
+            <li class="medica-cart-icon">
+                <a class="mini-cart-icon" href="{{ route('page.medica.checkout') }}">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="pro-count blue productCount">{{ $totalItems }}</span>
+                </a>
+            </li>
         </x-slot>
     </x-layouts.navbar>
     <!-- Navbar End -->

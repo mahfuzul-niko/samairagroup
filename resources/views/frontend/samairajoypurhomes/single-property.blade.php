@@ -196,7 +196,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="btn btn-primary add-to-cart-btn enhanced-cart-btn"
+                            <a class="btn btn-primary add-to-cart-btn enhanced-cart-btn" style="background:#4AC459;"
                                 href="https://wa.me/{{ $property->whats_app }}?text={{ urlencode('I want more information on this:') }}%0A{{ urlencode(url()->current()) }}%0A%0A"
                                 target="_blank">
                                 <i class="fa-brands fa-whatsapp"></i> WhatsApp

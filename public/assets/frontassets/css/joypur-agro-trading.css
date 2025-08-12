@@ -58,6 +58,9 @@
     .subscribe-wrapper{
       padding: 50px 20px !important;
     }
+    .benefit-icon{
+        width: 80px;
+    }
   }
   .rg-navbar {
     width: 100%;
@@ -1521,8 +1524,8 @@
 }
 
 .benefit-icon {
-    width: 39px;
-  height: 35px;
+    width: 60px;
+  height: 32px;
     min-width: 24px;
     background: #C5CE38;
     border-radius: 50%;

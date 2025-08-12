@@ -1926,7 +1926,7 @@ Logo and Description CSS Start
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 2rem; */
+  margin-top: 2rem;
 }
 
 .testimonials-section .control-wrapper {
@@ -2041,6 +2041,29 @@ Logo and Description CSS Start
   .testimonials-section .section-title{
     font-size: 2rem !important;
   }
+}
+/* Make all testimonial cards equal height inside Swiper */
+.testimonials-section .testimonial-swiper .swiper-wrapper{
+  align-items: stretch;           /* stretch all slides to tallest */
+}
+.testimonials-section .testimonial-swiper .swiper-slide{
+  height: auto;                   /* let slide auto-height */
+  display: flex;                  /* so child can use height:100% */
+}
+.testimonials-section .testimonial-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;                   /* fill the whole slide height */
+}
+
+/* Text takes remaining space; author sits at bottom */
+.testimonials-section .testimonial-card .testimonial-text{
+  min-height: 0;
+  flex: 1 1 auto;                 
+  margin-bottom: 1.25rem;
+}
+.testimonials-section .testimonial-card .testimonial-author{
+  margin-top: auto;              
 }
 /* Testimonials Section Styles End */
 

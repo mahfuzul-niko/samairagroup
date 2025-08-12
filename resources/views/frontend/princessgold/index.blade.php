@@ -143,9 +143,9 @@
     <!-- Testimonial Slider Section End -->
 
     <!-- Sister Concern start  -->
-    {{-- <section class="sister-concern py-5">
+    <section class="sister-concern py-5">
         <div class="container text-center">
-            <h3 class="mb-4">Our Partners</h3>
+            {{-- <h3 class="mb-4">Our Partners</h3> --}}
             <div class="logos-wrapper">
                 <div class="logos-slider">
                     <div class="d-flex">
@@ -179,7 +179,7 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- Sister Concern End  -->
 
     <!-- Custom Footer Section Start -->

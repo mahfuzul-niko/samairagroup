@@ -58,7 +58,7 @@ body{ background:#fff; color:var(--ink); }
 .service-card::before{
     content:"";
     position:absolute; inset:0 0 auto 0; height:4px;
-    background: var(--grad);
+    background: linear-gradient(135deg, #FCB92E, var(--brand-2));
     opacity:.85;
     transform: scaleX(.4);
     transform-origin: left;
@@ -67,16 +67,16 @@ body{ background:#fff; color:var(--ink); }
 .service-card:hover::before{ transform: scaleX(1); }
 
 .icon-ring{
-    width:56px; height:56px; border-radius:50%;
-    background: radial-gradient(circle at 30% 30%, #fff, #f1f5f9);
+    width:100px; height:100px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, #fff, #FCBC2D);
     border:1px solid var(--line);
     display:flex; align-items:center; justify-content:center;
     position:relative; z-index:1;
     margin-bottom:14px;
 }
 .icon-ring i{
-    background: var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
-    font-size: 22px;
+    background: var(--grad); -webkit-background-clip:text; background-clip:text; color:black;
+    font-size: 50px;
 }
 
 .service-title{ font-weight:700; margin-bottom:6px; }
@@ -84,7 +84,7 @@ body{ background:#fff; color:var(--ink); }
 
 .service-cta{
     display:flex; align-items:center; gap:.45rem;
-    color:var(--brand); font-weight:600; font-size:.95rem;
+    color:#FCB92E; font-weight:600; font-size:.95rem;
     margin-top: 12px;
 }
 .service-card:hover .service-cta i{ transform: translateX(3px); }
@@ -108,7 +108,7 @@ body{ background:#fff; color:var(--ink); }
 .why-tile::before{
     content:"";
     position:absolute; left:0; top:0; bottom:0; width:4px;
-    background: var(--grad); opacity:.9;
+    background: linear-gradient(135deg, #1D88BF, var(--brand-2)); opacity:.9;
     transform: scaleY(.35);
     transform-origin: top;
     transition: transform .25s ease;
@@ -116,11 +116,11 @@ body{ background:#fff; color:var(--ink); }
 .why-tile:hover::before{ transform: scaleY(1); }
 
 .why-icon{
-    width:48px; height:48px; border-radius:12px;
-    background: #f1f5f9;
+    width:100px; height:100px; border-radius:12px;
+    background: #1D88BF;
     display:flex; align-items:center; justify-content:center;
-    color:var(--brand);
-    font-size: 20px;
+    color:white;
+    font-size: 40px;
     margin-bottom: 10px;
 }
 .why-title{ font-weight:800; margin-bottom:8px; }
@@ -260,7 +260,7 @@ body{ background:#fff; color:var(--ink); }
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: 2rem; */
+    margin-top: 2rem;
 }
 
 .testimonials-section .control-wrapper {
@@ -329,5 +329,28 @@ body{ background:#fff; color:var(--ink); }
 .testimonials-section .testimonial-pagination .swiper-pagination-bullet-active {
     background: #6C5CE7;
     transform: scale(1);
+}
+/* Make all testimonial cards equal height inside Swiper */
+.testimonials-section .testimonial-swiper .swiper-wrapper{
+  align-items: stretch;           /* stretch all slides to tallest */
+}
+.testimonials-section .testimonial-swiper .swiper-slide{
+  height: auto;                   /* let slide auto-height */
+  display: flex;                  /* so child can use height:100% */
+}
+.testimonials-section .testimonial-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;                   /* fill the whole slide height */
+}
+
+/* Text takes remaining space; author sits at bottom */
+.testimonials-section .testimonial-card .testimonial-text{
+  min-height: 0;
+  flex: 1 1 auto;                 
+  margin-bottom: 1.25rem;
+}
+.testimonials-section .testimonial-card .testimonial-author{
+  margin-top: auto;              
 }
 /* Testimonials Section End */

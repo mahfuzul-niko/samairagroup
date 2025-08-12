@@ -1013,3 +1013,26 @@ Sister Concern CSS Start
     font-size: 2rem;
   }
 }
+/* Make all slides equal height */
+.testimonial-section .swiper-wrapper{
+  align-items: stretch;              /* stretch all slides to the tallest one */
+}
+
+.testimonial-section .swiper-slide{
+  display: flex;                     /* so child can take height:100% */
+  height: auto;                      /* let it grow */
+}
+
+/* Card fills the whole slide height */
+.testimonial-section .testimonial-card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Let text expand to fill vertical space; author/top stays at top */
+.testimonial-section .testimonial-text{
+  flex: 1 1 auto;
+  /* If you had any fixed/min-height earlier, remove/override it here */
+  min-height: 0;
+}

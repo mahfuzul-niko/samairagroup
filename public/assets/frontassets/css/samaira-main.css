@@ -281,6 +281,16 @@
     box-shadow: none;
     /* backdrop-filter: blur(6px); */
   }
+  .mobile-menu-cart .mini-cart-icon{
+      display: none;
+  }
+  .medica-cart-icon{
+    margin-top: 10px;
+  }
+  .medica-cart-icon .mini-cart-icon span{
+    left: 34px !important;
+    top: -17% !important;
+  }
   .rg-navbar .mini-cart-icon {
     position: relative;
     color: var(--text-color) !important;
@@ -566,6 +576,9 @@
     }
     .rg-mega-menu{
       transform: translateX(0%) !important;
+    }
+    .mobile-menu-cart .mini-cart-icon{
+      display: block;
     }
   }
   /* Mega menu visibility for desktop/mobile */

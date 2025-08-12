@@ -65,11 +65,11 @@
     </div>
     <!-- Slider End -->
 
-    <!-- Building Company Section Start -->
+    <!-- Service Section Start -->
     <section class="building-company-section">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="building-title">Building Company</h2>
+                <h2 class="building-title">Service</h2>
                 <p class="building-subtitle">From renovations and room additions to masonry and other handyman services
                 </p>
             </div>
@@ -89,7 +89,7 @@
             </div>
         </div>
     </section>
-    <!-- Building Company Section End -->
+    <!-- Service Section End -->
 
     <!-- Testimonials Section Start -->
     <section class="testimonials-section">
