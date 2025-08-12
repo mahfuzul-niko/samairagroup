@@ -43,7 +43,7 @@ class SystemController extends Controller
             'key' => 'required|string|unique:systems,key',
             'value' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
-
+       
         $image = $request->file('value');
         $imagePath = $image->store('uploads/system', 'public'); // storage/app/public/uploads/system
 
