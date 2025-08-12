@@ -114,7 +114,8 @@
             </div>
         </div>
     </section>
-    <section class="testimonial-section">
+    <section class="testimonial-section"
+        style="background: url('{{ system_key('samaira_gold_review') ? Storage::url(system_key('samaira_gold_review')) : asset('assets/img/no-profile.png') }}') center center/cover no-repeat;">
         <div class="container">
             <div class="testimonial-swiper swiper">
                 <div class="swiper-wrapper">

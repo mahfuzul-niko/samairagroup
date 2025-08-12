@@ -1528,7 +1528,6 @@
     background-color: rgba(245, 245, 249, 1);
     position: relative;
     overflow: hidden;
-    background: url('../images/contact/contact-bg.jpg') center center/cover no-repeat;
 }
 .testimonials-section::before {
     content: '';

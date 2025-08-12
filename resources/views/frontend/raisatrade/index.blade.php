@@ -69,7 +69,7 @@
     <section class="building-company-section">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="building-title">Service</h2>
+                <h2 class="building-title">Our Service</h2>
                 <p class="building-subtitle">From renovations and room additions to masonry and other handyman services
                 </p>
             </div>
@@ -92,7 +92,8 @@
     <!-- Service Section End -->
 
     <!-- Testimonials Section Start -->
-    <section class="testimonials-section">
+     <section class="testimonials-section"
+        style="background: url('{{ system_key('samaira_raisa_review') ? Storage::url(system_key('samaira_raisa_review')) : asset('assets/img/no-profile.png') }}') center center/cover no-repeat;">
         <div class="container">
             <div class="text-center mb-3 margin-bottom-100">
                 <h2 class="section-title">Nothing less than excellent</h2>

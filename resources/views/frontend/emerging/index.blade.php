@@ -373,7 +373,8 @@
 
 
     <!-- Testimonials Section Start -->
-    <section class="testimonials-section">
+     <section class="testimonials-section"
+        style="background: url('{{ system_key('samaira_emerging_review') ? Storage::url(system_key('samaira_emerging_review')) : asset('assets/img/no-profile.png') }}') center center/cover no-repeat;">
         <div class="container">
             <div class="text-center mb-3 margin-bottom-100">
                 <h2 class="section-title">What Our Customers Say</h2>
