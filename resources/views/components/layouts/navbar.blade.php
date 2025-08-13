@@ -200,12 +200,14 @@
             </span>
             <span class="rg-navbar-close"><i class="fa fa-times"></i></span>
         </button>
-        <div class="mobile-menu-cart">
-            <a class="mini-cart-icon" href="http://127.0.0.1:8000/samaira-medica-limited/checkout">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span class="pro-count blue productCount">0</span>
-            </a>
-        </div>
+        @if (Route::is('page.medica*', 'page.emerging*'))
+            <div class="mobile-menu-cart">
+                <a class="mini-cart-icon" href="http://127.0.0.1:8000/samaira-medica-limited/checkout">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="pro-count blue productCount">0</span>
+                </a>
+            </div>
+        @endif
         <ul class="rg-navbar-menu">
             <li><a href="{{ route('page.home') }}"><i class="fa fa-home"></i></a></li>
             <li><a href="{{ $logourl }}">Home</a></li>
