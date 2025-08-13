@@ -58,7 +58,7 @@
                     <a href="tel:{{ $content->phone ?? system_key('system_footer_phone') }}"
                         class="text-info text-decoration-underline">Phone:</a><br>
                     <a href="tel:{{ $content->phone ?? system_key('system_footer_phone') }}"
-                        class="text-decoration-none text-dark">{{ system_key('system_footer_phone') }}</a><br>
+                        class="text-decoration-none text-dark">{{ $content->phone ?? system_key('system_footer_phone') }}</a><br>
                     <a href="https://wa.me/{{ ltrim($content->whatsapp ?? system_key('system_footer_whatsapp'), '+') }}"
                         target="_blank" class="text-info text-decoration-underline">WhatsApp:</a><br>
                     <a href="https://wa.me/{{ ltrim($content->whatsapp ?? system_key('system_footer_whatsapp'), '+') }}"

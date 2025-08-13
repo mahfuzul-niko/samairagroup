@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
-                    Footer Links</div>
+                    Useful Links</div>
                 <form action="{{ route('agent.system.store.footerlink') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-4">
