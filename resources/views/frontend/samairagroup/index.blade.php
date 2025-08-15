@@ -155,7 +155,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="counter-item">
                         <i class="fa-solid fa-calendar-days icon"></i>
-                        <h3 class="counter-number" data-target="48">0</h3>
+                        <h3 class="counter-number" data-target="22">0</h3>
                         <p class="counter-label">Years of Legacy</p>
                     </div>
                 </div>
@@ -225,14 +225,75 @@
         </div>
     </section>
 
-    <section class="parallax-section">
+    <!-- Awards Section Start -->
+    <section class="awards-section">
         <div class="container">
-            <h1 class="animated-title">Here is the Title</h1>
+            <div class="row align-items-center">
+                
+                <!-- Left Column: Text Content -->
+                <div class="col-lg-5 col-md-12">
+                    <div class="awards-text-content">
+                        <h2 class="section-title">Awards & Achievements</h2>
+                        <!-- This Title and Description will be updated by JavaScript -->
+                        <h3 id="award-title"></h3>
+                        <p id="award-description"></p>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Slider -->
+                <div class="col-lg-7 col-md-12">
+                    <div class="awards-slider-wrapper">
+                        <!-- Swiper container -->
+                        <div class="swiper awards-slider">
+                            <div class="swiper-wrapper" id="awards-swiper-wrapper">
+                                <!-- Slides will be dynamically injected here by JavaScript -->
+                            </div>
+                        </div>
+                        <!-- Slider Navigation Arrows -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Awards Section End -->
+
+    <section class="parallax-section">
+        <div class="container-fluid">
+            <h1 class="animated-title">Making Business Possible</h1>
+            <div class="subscribe-wrapper">
+                <div class="paper-plane-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+
+                <div class="bg-left-circles"></div>
+                <div class="bg-right-circles"></div>
+                <div class="bg-dots"></div>
+
+                <h2 class="subscribe-title">
+                    Subscribe to get information
+                </h2>
+
+                <form action="{{ route('system.store.newsletter') }}" method="POST"
+                    class="d-flex input-group-custom align-items-center justify-content-center position-relative gap-3 flex-wrap">
+                    @csrf
+                    <div class="position-relative flex-grow-1 me-2">
+
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="hidden" name="key" value="group">
+                        <input type="email" class="form-control ps-5" placeholder="Your email" name="email" required>
+                    </div>
+                    <button type="submit" class="subscribe-btn">Subscribe</button>
+                </form>
+            </div>
         </div>
     </section>
 
     <!-- Subscribe Section Start-->
-    <section class="subscribe-wrapper container">
+    {{-- <section class="subscribe-wrapper container">
         <div class="paper-plane-icon">
             <i class="fas fa-paper-plane"></i>
         </div>
@@ -256,7 +317,7 @@
             </div>
             <button type="submit" class="subscribe-btn">Subscribe</button>
         </form>
-    </section>
+    </section> --}}
     <!-- Subscribe Section End-->
 
     <!-- Custom Footer Section Start -->
@@ -363,6 +424,103 @@
                 observer.observe(counter);
             });
         });
+    </script>
+    <script>
+        // --- Awards SLider ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const awardsData = [
+                {
+                    imgSrc: '{{ asset("assets/frontassets/images/awards/1.png") }}',
+                    title: 'Awards Title',
+                    description: 'Recognized for outstanding performance for two consecutive years, 2017-18 & 2018-19. A testament to our consistent quality of service.'
+                },
+                {
+                    imgSrc: '{{ asset("assets/frontassets/images/awards/2.png") }}',
+                    title: 'Awards Title 1',
+                    description: 'Received this crest of honor for our significant contributions and excellence within the travel and tourism industry in Bangladesh.'
+                },
+                {
+                    imgSrc: '{{ asset("assets/frontassets/images/awards/3.png") }}',
+                    title: 'Awards Title 2',
+                    description: 'Honored as a top travel partner for generating the highest volume of successful tours and maintaining exceptional customer satisfaction.'
+                },
+                {
+                    imgSrc: '{{ asset("assets/frontassets/images/awards/4.jpg") }}',
+                    title: 'Excellence in Service Award',
+                    description: 'This award celebrates our dedication to providing an unparalleled customer experience, from booking to post-travel support.'
+                }
+            ];
+
+            // 2. Function to dynamically create slider items from the data
+            const swiperWrapper = document.getElementById('awards-swiper-wrapper');
+            awardsData.forEach(award => {
+                const slide = document.createElement('div');
+                slide.classList.add('swiper-slide');
+                slide.innerHTML = `<img src="${award.imgSrc}" alt="${award.title}">`;
+                swiperWrapper.appendChild(slide);
+            });
+
+
+            // 3. Select the HTML elements we need to update
+            const awardTitleElement = document.getElementById('award-title');
+            const awardDescriptionElement = document.getElementById('award-description');
+
+            // 4. Function to update the text content based on the active slide
+            function updateAwardInfo(activeIndex) {
+                const currentAward = awardsData[activeIndex];
+
+                // Add a fade-out effect for a smooth transition
+                awardTitleElement.style.opacity = 0;
+                awardDescriptionElement.style.opacity = 0;
+
+                setTimeout(() => {
+                    awardTitleElement.textContent = currentAward.title;
+                    awardDescriptionElement.textContent = currentAward.description;
+                    // Fade the text back in
+                    awardTitleElement.style.opacity = 1;
+                    awardDescriptionElement.style.opacity = 1;
+                }, 300); // This delay should match the CSS transition duration
+            }
+
+            // 5. Initialize Swiper.js
+            const swiper = new Swiper('.awards-slider', {
+                // How many slides to show
+                slidesPerView: 1, // Default for mobile
+                spaceBetween: 20,
+                
+                // Make the slider continuous
+                loop: true,
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // Responsive settings
+                breakpoints: {
+                    // When window width is >= 768px (tablets)
+                    768: {
+                        slidesPerView: 2, // Show 2 slides
+                        spaceBetween: 30
+                    }
+                },
+                
+                // Events - This is the core of the functionality
+                on: {
+                    // When the slider is first created
+                    init: function () {
+                        // 'this.realIndex' gives the correct index even in a loop
+                        updateAwardInfo(this.realIndex); 
+                    },
+                    // When the slide changes
+                    slideChange: function () {
+                        updateAwardInfo(this.realIndex);
+                    },
+                },
+            });
+        });
+
     </script>
 </body>
 
