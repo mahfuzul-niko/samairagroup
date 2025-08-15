@@ -1,4 +1,3 @@
 <x-app>
-    <x-slot name="title"> {{ auth()->user()->name }}</x-slot>
-
+    <x-slot name="title">Agent Dashboard</x-slot>
 </x-app>

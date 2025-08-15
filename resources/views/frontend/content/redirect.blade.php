@@ -47,7 +47,18 @@
             <div class="already-loggedin-title-unique">You are Already Logged In!</div>
             <div class="already-loggedin-desc-unique">No need to login again. Go directly to your dashboard and continue
                 learning!</div>
-            <a href="dashboard.html" class="already-loggedin-btn-unique">Go to Dashboard</a>
+            <a href="{{ Auth::check()
+                ? match (Auth::user()->role->name) {
+                    'admin' => '/admin/dashboard',
+                    'user' => '/',
+                    'student' => '/student/dashboard',
+                    default => '/agent/dashboard',
+                }
+                : '/' }}"
+                class="already-loggedin-btn-unique">
+                Go to Dashboard
+            </a>
+
         </div>
     </section>
     <!-- Register/Login Split Section End -->
