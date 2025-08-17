@@ -72,103 +72,25 @@
                 </svg>
             </div>
             <div class="row g-4 mt-3">
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="files/gppl-company-profile-foreign.pdf" target="_blank" rel="noopener" download>
-                        <div class="doc-card-top">
-                            <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
-                            </span>
-                        </div>
-                        <div class="doc-card-footer">
-                            <i class="fa-solid fa-download"></i>
-                            GPPL Company Profile Foreign
-                        </div>
-                    </a>
-                </div>
 
+                @foreach ($downloads as $download)
                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="profile.pdf" target="_blank" rel="noopener" download>
+                    <a class="doc-card" href="{{ Storage::url($download->file) }}" target="_blank" rel="noopener"
+                        download>
                         <div class="doc-card-top">
                             <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
+                                <i class="fa-regular fa-file-lines"></i>
                             </span>
                         </div>
                         <div class="doc-card-footer">
                             <i class="fa-solid fa-download"></i>
-                            Samaira Group - Company Profile
+                            {{ $download->title }}
                         </div>
                     </a>
                 </div>
+                @endforeach
 
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="profile.pdf" target="_blank" rel="noopener" download>
-                        <div class="doc-card-top">
-                            <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
-                            </span>
-                        </div>
-                        <div class="doc-card-footer">
-                            <i class="fa-solid fa-download"></i>
-                            Samaira Group - Company Profile
-                        </div>
-                    </a>
-                </div>
 
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="profile.pdf" target="_blank" rel="noopener" download>
-                        <div class="doc-card-top">
-                            <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
-                            </span>
-                        </div>
-                        <div class="doc-card-footer">
-                            <i class="fa-solid fa-download"></i>
-                            Samaira Group - Company Profile
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="profile.pdf" target="_blank" rel="noopener" download>
-                        <div class="doc-card-top">
-                            <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
-                            </span>
-                        </div>
-                        <div class="doc-card-footer">
-                            <i class="fa-solid fa-download"></i>
-                            Samaira Group - Company Profile
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="profile.pdf" target="_blank" rel="noopener" download>
-                        <div class="doc-card-top">
-                            <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
-                            </span>
-                        </div>
-                        <div class="doc-card-footer">
-                            <i class="fa-solid fa-download"></i>
-                            Samaira Group - Company Profile
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-                    <a class="doc-card" href="profile.pdf" target="_blank" rel="noopener" download>
-                        <div class="doc-card-top">
-                            <span class="file-icon">
-                            <i class="fa-regular fa-file-lines"></i>
-                            </span>
-                        </div>
-                        <div class="doc-card-footer">
-                            <i class="fa-solid fa-download"></i>
-                            Samaira Group - Company Profile
-                        </div>
-                    </a>
-                </div>
             </div>
         </div>
     </section>

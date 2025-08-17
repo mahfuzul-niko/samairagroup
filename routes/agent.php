@@ -191,6 +191,10 @@ Route::prefix('agent')
             Route::post('/content/update/gallary/{gallary}', 'updateGallary')->name('update.gallary');
             Route::delete('/content/delete/gallary/{gallary}', 'deleteGallary')->name('delete.gallary');
 
+            //download
+            Route::post('/content/store/download', 'storeDownload')->name('store.download');
+            Route::delete('/content/delete/download/{download}', 'deleteDownload')->name('delete.download');
+
             //Privacy
             Route::post('/content/store/privacy', 'storePrivacy')->name('store.privacy');
             Route::post('/content/save/privacy/{privacy}', 'savePrivacy')->name('save.privacy');
