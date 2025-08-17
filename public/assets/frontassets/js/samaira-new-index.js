@@ -15,7 +15,7 @@ document.querySelectorAll('.rg-slide').forEach(slide => {
     });
   });
   
-  
+
   function animateCurrentSlide(swiper) {
     document.querySelectorAll('.rg-slide').forEach(slide => slide.classList.remove('rg-animate'));
     const active = swiper.slides[swiper.activeIndex];

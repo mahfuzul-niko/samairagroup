@@ -125,8 +125,7 @@
                                             {{ $property->area }} sqft</span>
                                     </div>
                                     <a type="button" data-bs-toggle="modal" data-bs-target="#buynowbutton"
-                                        class="btn btn-sm agent-btn" style="white-space: nowrap;">Order
-                                        Now</a>
+                                        class="btn btn-sm agent-btn" style="white-space: nowrap;">Prebook</a>
                                     <div class="modal fade" id="buynowbutton" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-lg">

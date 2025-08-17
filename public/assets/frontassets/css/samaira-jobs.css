@@ -4,6 +4,22 @@
     --text-color: #222;
     --light-bg: #F8F9FA;
     --white-color: #fff;
+    --peach:#fee8db;
+    --sky:#D3EFFB;
+    --tile:#eef1f4;
+    --title:#2386c9;
+    --text:#1f1f1f;
+
+    --radius-card:24px;
+    --radius-tile:16px;
+
+    --shadow-card:0 8px 18px rgba(0,0,0,.12);
+    --shadow-tile:2px 4px 14px rgba(26, 23, 23, 0.49);
+
+    /* Uniform card heights per breakpoint */
+    --card-h-xs: 148px;
+    --card-h-md: 156px;
+    --card-h-lg: 164px;
 }
 /* Global box-sizing fix */
 *, *::before, *::after {
@@ -838,6 +854,9 @@ body {
   }
   .contact-slider-container .sjb-search-form {
     max-width: 585px;
+  }
+  .sjb-categories-section .container{
+    max-width: 1312px;
   }
 }
 
@@ -2137,7 +2156,72 @@ Sister Concern CSS Start
   -------------------------------------
   */
 
-  
+  /* Completed project section start */
+.sjb-project-new .company-card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: var(--card-h-xs);
+    padding: 18px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    color: var(--text);
+    background-clip: padding-box;
+    overflow: hidden; /* keep exact height */
+  }
+  @media (min-width: 768px){ .sjb-project-new .company-card{ height: var(--card-h-md); } }
+  @media (min-width: 992px){ .sjb-project-new .company-card{ height: var(--card-h-lg); } }
+
+  .sjb-project-new .company-card.peach{ background: var(--peach); }
+  .sjb-project-new .company-card.sky{   background: var(--sky);   }
+
+  .sjb-project-new .logo-tile{
+    width: 77px;
+    height: 81px;
+    border-radius: var(--radius-tile);
+    background: var(--tile);
+    box-shadow: var(--shadow-tile);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 85px;
+  }
+  .sjb-project-new .logo-tile img{
+    max-width: 80px;
+    max-height: 64px;
+    object-fit: contain;
+  }
+
+  .sjb-project-new .company-body{
+    flex: 1;
+    min-width: 0;
+  }
+
+  .sjb-project-new .company-name{
+    color: var(--title);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: .35rem;
+    font-size: 15px;
+  }
+  .sjb-project-new .roles-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.35;
+  }
+  .sjb-project-new .roles-list li{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: .15rem 0;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  /* Completed project section end */
 
   /* --------------------------------------------
   Single Samaira job Application Page Start 

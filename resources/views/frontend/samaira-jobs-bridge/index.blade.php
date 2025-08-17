@@ -159,19 +159,299 @@
         <section class="sjb-categories-section">
             <div class="container">
                 <h2 class="sjb-categories-title">Our Completed <span>Projects</span></h2>
-                <div class="sjb-categories-grid">
-                    @foreach ($projects as $project)
-                        <a href="#">
-                            <div class="sjb-category-card"
-                                style="background-image:url('{{ $project->image ? Storage::url($project->image) : asset('assets/img/no-profile.png') }}')">
-                                <div class="sjb-category-overlay"></div>
-                                <span>{{ $project->title }}</span>
+                <div class="row sjb-project-new">
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                            <div class="logo-tile">
+                                <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
                             </div>
-                        </a>
-                    @endforeach
+                            <div class="company-body">
+                                <a href="#" class="company-name">Joypur Homes Ltd</a>
+                                <div class="roles-wrap">
+                                <ul class="roles-list">
+                                    <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                            <div class="logo-tile">
+                                <img src="{{ asset('assets/frontassets/images/samaira-jobs/samaira.png') }}" alt="Joypur Homes Ltd">
+                            </div>
+                            <div class="company-body">
+                                <a href="#" class="company-name">Samaira Group</a>
+                                <div class="roles-wrap">
+                                <ul class="roles-list">
+                                    <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Security Guard (42) <i class="fa fa-caret-down"></i></li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Samaira Skill Development Institute</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Princess Diamond and Gold Cottation</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Joypur Homes Ltd</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Joypur Homes Ltd</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Security Guard (42) <i class="fa fa-caret-down"></i></li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Joypur Homes Ltd</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Joypur Homes Ltd</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                            <div class="logo-tile">
+                                <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                            </div>
+                            <div class="company-body">
+                                <a href="#" class="company-name">Joypur Homes Ltd</a>
+                                <div class="roles-wrap">
+                                <ul class="roles-list">
+                                    <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                            <div class="logo-tile">
+                                <img src="{{ asset('assets/frontassets/images/samaira-jobs/samaira.png') }}" alt="Joypur Homes Ltd">
+                            </div>
+                            <div class="company-body">
+                                <a href="#" class="company-name">Samaira Group</a>
+                                <div class="roles-wrap">
+                                <ul class="roles-list">
+                                    <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                    <li><i class="fa-solid fa-angles-right"></i> Security Guard (42) <i class="fa fa-caret-down"></i></li>
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Samaira Skill Development Institute</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card peach">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Princess Diamond and Gold Cottation</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Princess Diamond and Gold Cottation</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Princess Diamond and Gold Cottation</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Princess Diamond and Gold Cottation</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col mb-4 col-lg-3">
+                        <div class="company-card sky">
+                        <div class="logo-tile">
+                            <img src="{{ asset('assets/frontassets/images/samaira-jobs/jp.png') }}" alt="Joypur Homes Ltd">
+                        </div>
+                        <div class="company-body">
+                            <a href="#" class="company-name">Princess Diamond and Gold Cottation</a>
+                            <div class="roles-wrap">
+                            <ul class="roles-list">
+                                <li><i class="fa-solid fa-angles-right"></i> Driver (55)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Chef/Cook (43)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Cleaner (34)</li>
+                                <li><i class="fa-solid fa-angles-right"></i> Delivery Man (20)</li>
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </section>
         <!-- Categories Section End -->

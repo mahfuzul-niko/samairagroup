@@ -818,6 +818,12 @@ Download Page Section Start
   .download-section .doc-card-footer {
     font-size: 13px;
   }
+  .news-events-section .blog-card-title{
+    font-size: 17px;
+  }
+  .news-events-section .blog-card-text{
+    font-size: 15px;
+  }
 }
 /* -------------------------------------------------------
 Download Page Section End
