@@ -99,6 +99,12 @@
                             <i class="bi bi-circle"></i><span>Raisa Trade</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('agent.group.sps') }}"
+                            class="{{ request()->routeIs('agent.group.sps') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>SPS</span>
+                        </a>
+                    </li>
                 </ul>
             </li><!-- End Group Nav -->
         @endif

@@ -14,6 +14,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RaisaController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
+use App\Http\Controllers\SpsController;
 use App\Http\Controllers\SystemController;
 use Illuminate\Support\Facades\Route;
 
@@ -434,6 +435,15 @@ Route::prefix('agent')
             Route::post('/raisa-trade-international/store/review', 'storeReview')->name('store.review');
             Route::post('/raisa-trade-international/update/review/{review}', 'updateReview')->name('update.review');
             Route::delete('/raisa-trade-international/delete/review/{review}', 'deleteReview')->name('delete.review');
+        });
+        Route::group(['controller' => SpsController::class, 'as' => 'group.'], function () {
+            Route::get('/sps-filling-station', 'sps')->name('sps');
+        });
+        Route::group(['controller' => SpsController::class, 'as' => 'sps.'], function () {
+
+            Route::post('/sps-filling-station/store/review', 'storeReview')->name('store.review');
+            Route::post('/sps-filling-station/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/sps-filling-station/delete/review/{review}', 'deleteReview')->name('delete.review');
         });
 
 
