@@ -339,6 +339,17 @@ font-style: normal;
       max-width: 1900px !important;
     }
 }
+@media (max-width: 1600px) {
+  .rg-hero-content{
+    padding: 25px 25px 15px 25px;
+  }
+  .rg-hero-content h2{
+      font-size:24px;
+  }
+  .rg-hero-content p{
+    margin-bottom: 20px;
+  }
+}
 @media (max-width: 1400px) {
   .rg-navbar-container{
     max-width: 1350px !important;
@@ -346,8 +357,15 @@ font-style: normal;
   .rg-hero-content h1{
     font-size: 30px;
   }
+  .rg-hero-content h2{
+      font-size:24px;
+  }
+  .rg-hero-content{
+    padding: 25px 25px 15px 25px;
+  }
   .rg-hero-content p{
     font-size: 14px;
+    margin-bottom: 20px;
   }
   .rg-explore{
     font-size: 13px;
