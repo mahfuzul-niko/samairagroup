@@ -199,6 +199,14 @@ class PagesController extends Controller
           $content = concernContent::latest()->where('key', 'gold')->first();
           return view('frontend.princessgold.index', compact('banners', 'partners', 'services', 'why_we', 'reviews', 'content'));
      }
+     //sps
+     public function sps()
+     {
+          $banners = Banner::latest()->where('key', 'sps')->get();
+          $content = concernContent::latest()->where('key', 'sps')->first();
+          return view('frontend.spsfillingstation.index', compact('content', 'banners'));
+     }
+
      //jp agro
      public function joypuragro()
      {
@@ -356,6 +364,14 @@ class PagesController extends Controller
           $content = concernContent::latest()->where('key', 'gold')->first();
           return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
      }
+     public function spsAbout()
+     {
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $banners = AboutBanner::latest()->where('key', 'sps')->get();
+          $about = About::latest()->where('key', 'sps')->first();
+          $content = concernContent::latest()->where('key', 'sps')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+     }
      public function jobAbout()
      {
           $concerns = SamairaGroup::orderBy('order')->get();
@@ -445,6 +461,14 @@ class PagesController extends Controller
           $info = ContactInfo::latest()->where('key', 'gold')->first();
           $concerns = SamairaGroup::orderBy('order')->get();
           $content = concernContent::latest()->where('key', 'gold')->first();
+          return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
+     }
+     public function spsContact()
+     {
+          $banners = ContactBanner::latest()->where('key', 'sps')->get();
+          $info = ContactInfo::latest()->where('key', 'sps')->first();
+          $concerns = SamairaGroup::orderBy('order')->get();
+          $content = concernContent::latest()->where('key', 'sps')->first();
           return view('frontend.content.contact', compact('banners', 'info', 'concerns', 'content'));
      }
      public function jobContact()
@@ -557,18 +581,13 @@ class PagesController extends Controller
      public function download()
      {
           $downloads = Download::latest()->get();
-          return view('frontend.content.download',compact('downloads'));
+          return view('frontend.content.download', compact('downloads'));
      }
      public function gallery()
      {
           $gallaries = gallary::latest()->get();
           $banners = Banner::where('key', 'gallary_banner')->latest()->get();
           return view('frontend.content.gallery', compact('gallaries', 'banners'));
-     }
-     public function spsFillingStation()
-     {
-          $content = concernContent::latest()->where('key', 'gold')->first();
-          return view('frontend.spsfillingstation.index', compact('content'));
      }
 
 }

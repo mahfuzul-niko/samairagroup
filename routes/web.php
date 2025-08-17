@@ -45,7 +45,7 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/news', 'news')->name('news');
     Route::get('/news/{news}', 'newssingle')->name('single.news');
     Route::get('/carrer', 'carrer')->name('carrer');
-    
+
     Route::get('/download', 'download')->name('download');
     Route::get('/gallery', 'gallery')->name('gallery');
 
@@ -105,8 +105,9 @@ Route::group(['controller' => PagesController::class, 'as' => 'page.'], function
     Route::get('/raisa-trade-international/about-us', 'raisaAbout')->name('raisa.about');
     Route::get('/raisa-trade-international/contact-us', 'raisaContact')->name('raisa.contact');
     // sps filling station
-    Route::get('/sps-filling-station', 'spsFillingStation')->name('sps.filling.station');
-
+    Route::get('/sps-filling-station', 'sps')->name('sps');
+    Route::get('/sps-filling-station/about-us', 'spsAbout')->name('sps.about');
+    Route::get('/sps-filling-station/contact-us', 'spsContact')->name('sps.contact');
 
 
 

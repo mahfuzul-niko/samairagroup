@@ -42,7 +42,7 @@
     <div class="contact-slider-container samaira-skill-slider content-margin-top">
         <div class="swiper about-swiper">
             <div class="swiper-wrapper">
-                {{-- @foreach ($banners as $banner)
+                @foreach ($banners as $banner)
                     <div class="swiper-slide">
                         <div class="hero-content">
                             <div class="sjb-hero-content">
@@ -50,9 +50,7 @@
                                 <p>{{ $banner->subtitle }}</p>
                                 <div>
                                     <a href="{{ $banner->url }}"
-                                        class="sjb-hire-btn2 d-inline-block text-decoration-none">Sell
-                                        Your
-                                        Gold</a>
+                                        class="btn btn-outline-primary d-inline-block text-decoration-none">Button</a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +59,7 @@
                                 alt="Slide 1" class="slide-bg-img">
                         </div>
                     </div>
-                @endforeach --}}
+                @endforeach
             </div>
         </div>
     </div>
@@ -299,7 +297,7 @@
     <!-- Testimonial Slider Section End -->
 
     <!-- Custom Footer Section Start -->
-    <x-layouts.footer />
+    <x-layouts.footer :content="$content" />
     <!-- Custom Footer Section End -->
 
 

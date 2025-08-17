@@ -36,6 +36,9 @@
         Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => route(
             'page.gold.about',
         ),
+        Route::is('page.sps') || Route::is('page.sps.contact') || Route::is('page.sps.about') => route(
+            'page.sps.about',
+        ),
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => route(
             'page.job.about',
         ),
@@ -84,6 +87,9 @@
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route(
             'page.gold.contact',
         ),
+        Route::is('page.sps') || Route::is('page.sps.about') || Route::is('page.sps.contact') => route(
+            'page.sps.contact',
+        ),
         Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route(
             'page.job.contact',
         ),
@@ -129,6 +135,7 @@
             Route::is('page.emerging.contact')
             => route('page.emerging'),
         Route::is('page.gold') || Route::is('page.gold.about') || Route::is('page.gold.contact') => route('page.gold'),
+        Route::is('page.sps') || Route::is('page.sps.about') || Route::is('page.sps.contact') => route('page.sps'),
         Route::is('page.job') || Route::is('page.job.about') || Route::is('page.job.contact') => route('page.job'),
         Route::is('page.agro') || Route::is('page.agro.about') || Route::is('page.agro.contact') => route('page.agro'),
         Route::is('page.raisa') || Route::is('page.raisa.about') || Route::is('page.raisa.contact') => route(
@@ -174,8 +181,8 @@
         Route::is('page.job') || Route::is('page.job.contact') || Route::is('page.job.about') => system_key(
             'samaira_job_logo',
         ),
-        Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => system_key(
-            'samaira_gold_logo',
+        Route::is('page.sps') || Route::is('page.sps.contact') || Route::is('page.sps.about') => system_key(
+            'samaira_sps_logo',
         ),
         Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => system_key(
             'samaira_agro_logo',
