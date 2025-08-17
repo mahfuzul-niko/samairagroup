@@ -14,6 +14,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\RaisaController;
 use App\Http\Controllers\SamairaGroupController;
 use App\Http\Controllers\SamariaSkill;
+use App\Http\Controllers\SpsController;
 use App\Http\Controllers\SystemController;
 use Illuminate\Support\Facades\Route;
 
@@ -191,6 +192,10 @@ Route::prefix('agent')
             Route::post('/content/update/gallary/{gallary}', 'updateGallary')->name('update.gallary');
             Route::delete('/content/delete/gallary/{gallary}', 'deleteGallary')->name('delete.gallary');
 
+            //download
+            Route::post('/content/store/download', 'storeDownload')->name('store.download');
+            Route::delete('/content/delete/download/{download}', 'deleteDownload')->name('delete.download');
+
             //Privacy
             Route::post('/content/store/privacy', 'storePrivacy')->name('store.privacy');
             Route::post('/content/save/privacy/{privacy}', 'savePrivacy')->name('save.privacy');
@@ -259,6 +264,7 @@ Route::prefix('agent')
             Route::get('/samaira-medica-limited', 'Medica')->name('medica');
         });
         Route::group(['controller' => ContentController::class, 'as' => 'page.'], function () {
+            Route::get('/about', 'about')->name('about');
             Route::get('/awards', 'awards')->name('awards');
             Route::get('/gallary', 'gallary')->name('gallary');
             Route::get('/downloads', 'downloads')->name('downloads');
@@ -429,6 +435,15 @@ Route::prefix('agent')
             Route::post('/raisa-trade-international/store/review', 'storeReview')->name('store.review');
             Route::post('/raisa-trade-international/update/review/{review}', 'updateReview')->name('update.review');
             Route::delete('/raisa-trade-international/delete/review/{review}', 'deleteReview')->name('delete.review');
+        });
+        Route::group(['controller' => SpsController::class, 'as' => 'group.'], function () {
+            Route::get('/sps-filling-station', 'sps')->name('sps');
+        });
+        Route::group(['controller' => SpsController::class, 'as' => 'sps.'], function () {
+
+            Route::post('/sps-filling-station/store/review', 'storeReview')->name('store.review');
+            Route::post('/sps-filling-station/update/review/{review}', 'updateReview')->name('update.review');
+            Route::delete('/sps-filling-station/delete/review/{review}', 'deleteReview')->name('delete.review');
         });
 
 

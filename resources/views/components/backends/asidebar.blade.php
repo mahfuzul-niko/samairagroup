@@ -99,6 +99,12 @@
                             <i class="bi bi-circle"></i><span>Raisa Trade</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ route('agent.group.sps') }}"
+                            class="{{ request()->routeIs('agent.group.sps') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>SPS</span>
+                        </a>
+                    </li>
                 </ul>
             </li><!-- End Group Nav -->
         @endif
@@ -462,6 +468,12 @@
                 <ul id="single-nav"
                     class="nav-content collapse {{ request()->routeIs('agent.page.*') ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('agent.page.about') }}"
+                            class="{{ request()->routeIs('agent.page.about') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>About Us</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('agent.page.awards') }}"
                             class="{{ request()->routeIs('agent.page.awards') ? 'active' : '' }}">

@@ -434,7 +434,7 @@
     <!-- Sister Concern End  -->
 
     <!-- Footer Section Start -->
-    <x-layouts.footer />
+    <x-layouts.footer :content="$content" />
     <!-- Footer Section End -->
 
 

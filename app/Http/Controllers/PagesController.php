@@ -21,6 +21,7 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use App\Models\Download;
 use App\Models\emergingCategory;
 use App\Models\emergingPartner;
 use App\Models\emergingProduct;
@@ -555,13 +556,14 @@ class PagesController extends Controller
      }
      public function download()
      {
-          return view('frontend.content.download');
+          $downloads = Download::latest()->get();
+          return view('frontend.content.download',compact('downloads'));
      }
      public function gallery()
      {
           $gallaries = gallary::latest()->get();
           $banners = Banner::where('key', 'gallary_banner')->latest()->get();
-          return view('frontend.content.gallery',compact('gallaries', 'banners'));
+          return view('frontend.content.gallery', compact('gallaries', 'banners'));
      }
      public function spsFillingStation()
      {

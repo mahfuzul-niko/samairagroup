@@ -13,6 +13,7 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\ContactSubject;
 use App\Models\Course;
+use App\Models\Download;
 use App\Models\Enroll;
 use App\Models\gallary;
 use App\Models\News;
@@ -496,6 +497,7 @@ class ContentController extends Controller
 
         return back()->with('success', 'Content updated.');
     }
+    //gallary
     public function gallary()
     {
         $gallaries = gallary::latest()->get();
@@ -508,7 +510,7 @@ class ContentController extends Controller
         $gallary->title = $request->title;
         $gallary->type = $request->type;
         if ($request->hasFile('image')) {
-            $gallary->image = $request->file('image')->store('news', 'public');
+            $gallary->image = $request->file('image')->store('gallary', 'public');
         }
         $gallary->save();
         return redirect()->back()->with('success', 'Gallary Image Created Successfully.');
@@ -524,6 +526,39 @@ class ContentController extends Controller
 
         return redirect()->back()->with('success', 'Gallary deleted successfully.');
     }
+    //downloads
+    public function downloads()
+    {
+        $downloads = Download::latest()->get();
+
+        return view('backend.agent.content.download', compact('downloads'));
+    }
+    public function storeDownload(Request $request)
+    {
+        $download = new Download;
+        $download->title = $request->title;
+        if ($request->hasFile('file')) {
+            $download->file = $request->file('file')->store('downloads', 'public');
+        }
+        $download->save();
+        return redirect()->back()->with('success', 'New Downloads Created Successfully.');
+    }
+    public function deleteDownload(Download $download)
+    {
+        if ($download->file && Storage::disk('public')->exists($download->file)) {
+            Storage::disk('public')->delete($download->file);
+        }
+
+        $download->delete();
+
+        return redirect()->back()->with('success', 'download deleted successfully.');
+    }
+    //about
+    public function about()
+    {
+        return view('backend.agent.content.about');
+    }
+    
 
 
 }
