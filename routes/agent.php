@@ -263,6 +263,7 @@ Route::prefix('agent')
             Route::get('/samaira-medica-limited', 'Medica')->name('medica');
         });
         Route::group(['controller' => ContentController::class, 'as' => 'page.'], function () {
+            Route::get('/about', 'about')->name('about');
             Route::get('/awards', 'awards')->name('awards');
             Route::get('/gallary', 'gallary')->name('gallary');
             Route::get('/downloads', 'downloads')->name('downloads');

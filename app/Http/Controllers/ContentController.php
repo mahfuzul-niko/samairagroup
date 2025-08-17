@@ -526,7 +526,7 @@ class ContentController extends Controller
 
         return redirect()->back()->with('success', 'Gallary deleted successfully.');
     }
-    //gallary
+    //downloads
     public function downloads()
     {
         $downloads = Download::latest()->get();
@@ -553,6 +553,12 @@ class ContentController extends Controller
 
         return redirect()->back()->with('success', 'download deleted successfully.');
     }
+    //about
+    public function about()
+    {
+        return view('backend.agent.content.about');
+    }
+    
 
 
 }

@@ -463,6 +463,12 @@
                     class="nav-content collapse {{ request()->routeIs('agent.page.*') ? 'show' : '' }}"
                     data-bs-parent="#sidebar-nav">
                     <li>
+                        <a href="{{ route('agent.page.about') }}"
+                            class="{{ request()->routeIs('agent.page.about') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>About Us</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('agent.page.awards') }}"
                             class="{{ request()->routeIs('agent.page.awards') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Awards</span>

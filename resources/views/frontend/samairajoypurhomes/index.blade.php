@@ -111,7 +111,10 @@
                                         class="text-decoration-none">
                                         <div class="property-title">{{ $property->title }}</div>
                                     </a>
-                                    <div class="property-price text-sale">{{ $property->price }} Taka</div>
+                                    <div class="property-price text-sale">
+                                        {{ $property->price ? $property->price . ' Taka' : '' }}
+                                    </div>
+
                                 </div>
                                 <div class="property-address"><i class="fa fa-map-marker-alt"></i>
                                     {{ $property->address }}</div>
@@ -454,7 +457,7 @@
     <!-- Become a Real Estate Agent Section End -->
 
     <!-- Footer Section Start -->
-    <x-layouts.footer  :content="$content"/>
+    <x-layouts.footer :content="$content" />
     <!-- Footer Section End -->
     <!-- Button trigger modal -->
 
