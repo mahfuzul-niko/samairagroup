@@ -233,7 +233,7 @@
                 <!-- Left Column: Text Content -->
                 <div class="col-lg-5 col-md-12">
                     <div class="awards-text-content">
-                        <h2 class="section-title">Awards & Achievements</h2>
+                        <h2 class="section-title">News & Events</h2>
                         <!-- This Title and Description will be updated by JavaScript -->
                         <h3 id="award-title"></h3>
                         <p id="award-description"></p>
