@@ -431,6 +431,37 @@
                 </ul>
             </li><!-- End Emerging Nav -->
         @endif
+        @if (in_array(auth()->user()->role->name, ['sps', 'admin']))
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('agent.sps.*') ? '' : 'collapsed' }}" data-bs-target="#sps"
+                    data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-shop"></i><span>Sps</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="sps"
+                    class="nav-content collapse {{ request()->routeIs('agent.sps.*') ? 'show' : '' }}"
+                    data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ route('agent.sps.service') }}"
+                            class="{{ request()->routeIs('agent.sps.service') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Service</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('agent.sps.choose') }}"
+                            class="{{ request()->routeIs('agent.sps.choose') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Chooses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('agent.sps.review') }}"
+                            class="{{ request()->routeIs('agent.sps.review') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Review</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li><!-- End Emerging Nav -->
+        @endif
         @if (in_array(auth()->user()->role->name, ['contact', 'admin']))
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('agent.content.*') ? '' : 'collapsed' }}"

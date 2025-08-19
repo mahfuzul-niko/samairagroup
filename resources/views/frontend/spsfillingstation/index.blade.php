@@ -65,127 +65,63 @@
     </div>
     <!-- Slider End -->
 
-     <!-- Our Services -->
+    <!-- Our Services -->
     <section class="soft-bg section-pad">
         <div class="container position-relative" style="z-index:1;">
-        <div class="text-center mb-4">
-            <h2 class="section-heading">Our Services</h2>
-            <div class="underline-grad"></div>
-            <p class="section-sub mt-3">Everything you need at one stop — fast, safe, and reliable.</p>
-        </div>
+            <div class="text-center mb-4">
+                <h2 class="section-heading">Our Services</h2>
+                <div class="underline-grad"></div>
+                <p class="section-sub mt-3">Everything you need at one stop — fast, safe, and reliable.</p>
+            </div>
 
-        <div class="row g-4">
-            <div class="col-12 col-sm-6 col-lg-4">
-            <a class="service-card" href="#">
-                <div class="icon-ring"><i class="fa-solid fa-gas-pump"></i></div>
-                <h5 class="service-title">Fuel Pumping 24/7</h5>
-                <p class="service-desc">High‑quality petrol and diesel with accurate metering, any time of the day.</p>
-                <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
+            <div class="row g-4">
+                @foreach ($services as $service)
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <a class="service-card" href="{{ $service->url ?? 'url' }}">
+                            <div class="icon-ring"><img
+                                    src="{{ $service->icon ? Storage::url($service->icon) : asset('assets/img/no-profile.png') }}"
+                                    class="img-fluid" style="height: 50px" alt=""></div>
+                            <h5 class="service-title"> {{ $service->title ?? 'title' }}</h5>
+                            <p class="service-desc"> {{ $service->description ?? 'Description' }}</p>
+                            <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                        </a>
+                    </div>
+                @endforeach
+
             </div>
-            <div class="col-12 col-sm-6 col-lg-4">
-            <a class="service-card" href="#">
-                <div class="icon-ring"><i class="fa-solid fa-oil-can"></i></div>
-                <h5 class="service-title">Oil & Lubricants</h5>
-                <p class="service-desc">Engine oils, coolants, and premium lubricants from trusted brands.</p>
-                <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4">
-            <a class="service-card" href="#">
-                <div class="icon-ring"><i class="fa-solid fa-spray-can-sparkles"></i></div>
-                <h5 class="service-title">Car Wash & Detailing</h5>
-                <p class="service-desc">Quick wash to full detailing — spotless finish with eco‑friendly care.</p>
-                <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4">
-            <a class="service-card" href="#">
-                <div class="icon-ring"><i class="fa-regular fa-circle-up"></i></div>
-                <h5 class="service-title">Tyre Air & Nitrogen</h5>
-                <p class="service-desc">Free air checks and optional nitrogen fill for longer tyre life.</p>
-                <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4">
-            <a class="service-card" href="#">
-                <div class="icon-ring"><i class="fa-solid fa-store"></i></div>
-                <h5 class="service-title">Convenience Store</h5>
-                <p class="service-desc">Snacks, beverages, car accessories, and travel essentials on the go.</p>
-                <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-4">
-            <a class="service-card" href="#">
-                <div class="icon-ring"><i class="fa-solid fa-car-battery"></i></div>
-                <h5 class="service-title">Battery Check & Jumpstart</h5>
-                <p class="service-desc">On‑site diagnostics and emergency jumpstart assistance.</p>
-                <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-            </a>
-            </div>
-        </div>
         </div>
     </section>
 
     <!-- Why Choose S.P.S -->
     <section class="section-pad">
         <div class="container">
-        <div class="text-center mb-4">
-            <h2 class="section-heading">Why Choose S.P.S</h2>
-            <div class="underline-grad"></div>
-            <p class="section-sub mt-3">We focus on quality, speed, and a hassle‑free experience.</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-lg-4">
-            <div class="why-tile h-100">
-                <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h5 class="why-title">Assured Quality Fuel</h5>
-                <p class="why-desc mb-0">Sourced from certified depots with strict QA checks and BIS standards.</p>
-            </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-            <div class="why-tile h-100">
-                <div class="why-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-                <h5 class="why-title">Accurate Metering</h5>
-                <p class="why-desc mb-0">Calibrated pumps and routine audits ensure you get exactly what you pay for.</p>
-            </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-            <div class="why-tile h-100">
-                <div class="why-icon"><i class="fa-solid fa-gauge-high"></i></div>
-                <h5 class="why-title">Fast Service</h5>
-                <p class="why-desc mb-0">Optimized lanes and trained staff keep the queues moving quickly.</p>
-            </div>
+            <div class="text-center mb-4">
+                <h2 class="section-heading">Why Choose S.P.S</h2>
+                <div class="underline-grad"></div>
+                <p class="section-sub mt-3">We focus on quality, speed, and a hassle‑free experience.</p>
             </div>
 
-            <div class="col-12 col-md-6 col-lg-4">
-            <div class="why-tile h-100">
-                <div class="why-icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
-                <h5 class="why-title">Safe & Clean Premises</h5>
-                <p class="why-desc mb-0">Regular sanitization and safety protocols for a pleasant stop every time.</p>
+            <div class="row g-4">
+                @foreach ($chooses as $choose)
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="why-tile h-100">
+                            <div class="why-icon"><img
+                                    src="{{ $service->icon ? Storage::url($service->icon) : asset('assets/img/no-profile.png') }}"
+                                    class="img-fluid" style="height: 50px" alt=""></div>
+                            <h5 class="why-title">{{ $choose->title ?? 'title' }}</h5>
+                            <p class="why-desc mb-0">{{ $choose->description ?? 'Description' }}
+                            </p>
+                        </div>
+                    </div>
+                @endforeach
+
             </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-            <div class="why-tile h-100">
-                <div class="why-icon"><i class="fa-solid fa-gift"></i></div>
-                <h5 class="why-title">Loyalty & Rewards</h5>
-                <p class="why-desc mb-0">Earn points and redeem for fuel or store discounts with our loyalty program.</p>
-            </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-            <div class="why-tile h-100">
-                <div class="why-icon"><i class="fa-regular fa-credit-card"></i></div>
-                <h5 class="why-title">Easy Payments</h5>
-                <p class="why-desc mb-0">Cashless options including cards, UPI/QR, and contactless wallets.</p>
-            </div>
-            </div>
-        </div>
         </div>
     </section>
 
     <!-- Testimonial Slider Section Start -->
-    <section class="testimonials-section">
+    <section class="testimonials-section"
+        style="background: url('{{ system_key('samaira_sps_review') ? Storage::url(system_key('samaira_sps_review')) : asset('assets/img/no-profile.png') }}') center center/cover no-repeat;">
         <div class="container">
             <div class="text-center mb-3 margin-bottom-100">
                 <h2 class="section-title">Nothing less than excellent</h2>
@@ -194,89 +130,32 @@
             <!-- Testimonial Slider -->
             <div class="swiper testimonial-swiper">
                 <div class="swiper-wrapper">
+                    @foreach ($reviews as $review)
+                        
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">{{ $review->description }}</p>
+                            <div class="testimonial-author">
+                                <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="Orlando Diggs" class="author-image">
+                                <div class="author-info">
+                                    <h4>{{ $review->name }}</h4>
+                                    <p>{{ $review->subtitle }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                     <!-- Testimonial 1 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/samaira-skills/tuser1.png" alt="Orlando Diggs" class="author-image">
-                                <div class="author-info">
-                                    <h4>Orlando Diggs</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Testimonial 2 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/samaira-skills/tuser2.png" alt="Mollie Hall" class="author-image">
-                                <div class="author-info">
-                                    <h4>Mollie Hall</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/samaira-skills/tuser3.png" alt="Lori Bryson" class="author-image">
-                                <div class="author-info">
-                                    <h4>Lori Bryson</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 4 -->
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"I am incredibly impressed with the outstanding service and user-friendly customer support provided by Remap"</p>
-                            <div class="testimonial-author">
-                                <img src="assets/images/samaira-skills/tuser1.png" alt="Lori Bryson" class="author-image">
-                                <div class="author-info">
-                                    <h4>Lori Bryson</h4>
-                                    <p>Position, Company name</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Navigation and Pagination Container -->

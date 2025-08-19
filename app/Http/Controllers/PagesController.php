@@ -56,6 +56,9 @@ use App\Models\SamairaGroup;
 use App\Models\SkillAdvertise;
 use App\Models\SkillBanner;
 use App\Models\SkillCertified;
+use App\Models\spsChoose;
+use App\Models\spsReview;
+use App\Models\spsService;
 use App\Models\SuccessStorie;
 use App\Models\VideoProperty;
 use Illuminate\Http\Request;
@@ -204,7 +207,10 @@ class PagesController extends Controller
      {
           $banners = Banner::latest()->where('key', 'sps')->get();
           $content = concernContent::latest()->where('key', 'sps')->first();
-          return view('frontend.spsfillingstation.index', compact('content', 'banners'));
+          $services = spsService::latest()->get();
+          $chooses = spsChoose::latest()->get();
+          $reviews = spsReview::latest()->get();
+          return view('frontend.spsfillingstation.index', compact('content', 'banners', 'services', 'chooses', 'reviews'));
      }
 
      //jp agro

@@ -441,9 +441,20 @@ Route::prefix('agent')
         });
         Route::group(['controller' => SpsController::class, 'as' => 'sps.'], function () {
 
+            Route::get('/sps-filling-station/service', 'Service')->name('service');
+            Route::post('/sps-filling-station/store/service', 'storeService')->name('store.service');
+            Route::post('/sps-filling-station/update/service/{service}', 'updateService')->name('update.service');
+            Route::delete('/sps-filling-station/delete/service/{service}', 'deleteService')->name('delete.service');
+
+            Route::get('/sps-filling-station/review', 'Review')->name('review');
             Route::post('/sps-filling-station/store/review', 'storeReview')->name('store.review');
             Route::post('/sps-filling-station/update/review/{review}', 'updateReview')->name('update.review');
             Route::delete('/sps-filling-station/delete/review/{review}', 'deleteReview')->name('delete.review');
+
+            Route::get('/sps-filling-station/choose', 'Choose')->name('choose');
+            Route::post('/sps-filling-station/store/choose', 'storeChoose')->name('store.choose');
+            Route::post('/sps-filling-station/update/choose/{choose}', 'updateChoose')->name('update.choose');
+            Route::delete('/sps-filling-station/delete/choose/{choose}', 'deleteChoose')->name('delete.choose');
         });
 
 

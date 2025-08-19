@@ -6,7 +6,7 @@
                 <div class="card-title">
                     Create Reviews
                 </div>
-                <form action="{{ route('agent.medica.store.review') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.sps.store.review') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="">Name</label>
@@ -45,7 +45,7 @@
                                 <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
                                     alt="review Image" class="img-fluid" style="height: 100px; object-fit: cover;">
                             </td>
-                            <td>{{ $review->name }}</td>
+                            <td>{{ $review->subtitle }}</td>
                             <td>{{ $review->subtitle }}</td>
                             <td>{{ $review->description }}</td>
                             <td>
@@ -53,7 +53,7 @@
                                     <a class="btn btn-primary btn-sm d-inline-block" type="button"
                                         data-bs-toggle="modal" data-bs-target="#review{{ $review->id }}"><i
                                             class="bi bi-pen"></i></a>
-                                    <form action="{{ route('agent.medica.delete.review', $review) }}" method="POST"
+                                    <form action="{{ route('agent.sps.delete.review', $review) }}" method="POST"
                                         class="d-inline-block m-0 p-0">
                                         @csrf
                                         @method('DELETE')
@@ -76,7 +76,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ route('agent.medica.update.review', $review) }}" method="POST"
+                                        <form action="{{ route('agent.sps.update.review', $review) }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">

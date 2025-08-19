@@ -49,12 +49,12 @@
             <div class="col-md-3">
                 <h3 class="text-info fw-bold border-bottom pb-2 mb-3">CONTACT US</h3>
                 <address class="text-info">
+
+                    Head Office:<br>
+                    {{ system_key('system_footer_top_address') }} <br><br>
+
                     Office:<br>
                     {{ $content->office ?? (system_key('system_footer_top_address') ?? 'office address') }}<br><br>
-                    @if (route::is('page.home'))
-                        Branch Office:<br>
-                        {{ system_key('system_footer_bottom_address') }}<br><br>
-                    @endif
                     <a href="tel:{{ $content->phone ?? system_key('system_footer_phone') }}"
                         class="text-info text-decoration-underline">Phone:</a><br>
                     <a href="tel:{{ $content->phone ?? system_key('system_footer_phone') }}"
