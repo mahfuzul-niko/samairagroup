@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
 use App\Models\ContactInfo;
@@ -26,8 +27,10 @@ class SamariaSkill extends Controller
         $info = ContactInfo::latest()->where('key', 'ssdi')->first();
         $banners = SkillBanner::latest()->where('key', 'ssdi')->get();
         $content = concernContent::latest()->where('key', 'ssdi')->first();
+        $mission = allMission::latest()->where('key', 'ssdi')->first();
+        
 
-        return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise', 'aboutbanners', 'about', 'contactbanners', 'info', 'banners', 'content'));
+        return view('backend.agent.sisters.skill.skill', compact('certifieds', 'advertise', 'aboutbanners', 'about', 'contactbanners', 'info', 'banners', 'content','mission'));
     }
 
     //skills

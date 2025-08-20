@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Banner;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
@@ -34,7 +35,8 @@ class PropertyController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'jphomes')->get();
         $info = ContactInfo::latest()->where('key', 'jphomes')->first();
         $content = concernContent::latest()->where('key', 'jphomes')->first();
-        return view('backend.agent.sisters.property.jphomes', compact('banners','aboutbanners', 'reviews', 'partners', 'about', 'info', 'contactbanners','content'));
+        $mission = allMission::latest()->where('key', 'jphomes')->first();
+        return view('backend.agent.sisters.property.jphomes', compact('banners','aboutbanners', 'reviews', 'partners', 'about', 'info', 'contactbanners','content','mission'));
     }
 
     //category

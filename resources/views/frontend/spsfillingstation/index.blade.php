@@ -50,7 +50,7 @@
                                 <p>{{ $banner->subtitle }}</p>
                                 <div>
                                     <a href="{{ $banner->url }}"
-                                        class="btn btn-outline-primary d-inline-block text-decoration-none">Button</a>
+                                        class="btn btn-outline-info d-inline-block text-decoration-none">See More</a>
                                 </div>
                             </div>
                         </div>
@@ -131,27 +131,26 @@
             <div class="swiper testimonial-swiper">
                 <div class="swiper-wrapper">
                     @foreach ($reviews as $review)
-                        
-                    <div class="swiper-slide">
-                        <div class="testimonial-card">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">{{ $review->description }}</p>
-                            <div class="testimonial-author">
-                                <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
-                                    alt="Orlando Diggs" class="author-image">
-                                <div class="author-info">
-                                    <h4>{{ $review->name }}</h4>
-                                    <p>{{ $review->subtitle }}</p>
+                        <div class="swiper-slide">
+                            <div class="testimonial-card">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <p class="testimonial-text">{{ $review->description }}</p>
+                                <div class="testimonial-author">
+                                    <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
+                                        alt="Orlando Diggs" class="author-image">
+                                    <div class="author-info">
+                                        <h4>{{ $review->name }}</h4>
+                                        <p>{{ $review->subtitle }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                     <!-- Testimonial 1 -->
 

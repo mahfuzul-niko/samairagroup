@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Banner;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
@@ -28,7 +29,8 @@ class JobController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'job')->get();
         $info = ContactInfo::latest()->where('key', 'job')->first();
         $content = concernContent::latest()->where('key', 'job')->first();
-        return view('backend.agent.sisters.job.job', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'jobAbout', 'content'));
+        $mission = allMission::latest()->where('key', 'job')->first();
+        return view('backend.agent.sisters.job.job', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'jobAbout', 'content','mission'));
     }
     public function storeAbout(Request $request)
     {

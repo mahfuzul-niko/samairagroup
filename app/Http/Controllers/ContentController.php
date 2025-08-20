@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Award;
 use App\Models\Banner;
 use App\Models\Certificate;
@@ -558,7 +559,23 @@ class ContentController extends Controller
     {
         return view('backend.agent.content.about');
     }
-    
+
+
+    public function storeMission(Request $request)
+    {
+        AllMission::updateOrCreate(
+            ['key' => $request->key],
+            [
+                'mission_title' => $request->mission_title,
+                'mission_description' => $request->mission_description,
+                'vision_title' => $request->vision_title,
+                'vision_description' => $request->vision_description,
+            ]
+        );
+
+        return back()->with('success', 'Mission & Vision saved successfully.');
+    }
+
 
 
 }

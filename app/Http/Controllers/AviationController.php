@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\allMission;
 use App\Models\aviationAirline;
 use App\Models\aviationFrom;
 use App\Models\aviationPartner;
@@ -27,7 +28,8 @@ class AviationController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'aviation')->get();
         $info = ContactInfo::latest()->where('key', 'aviation')->first();
         $content = concernContent::latest()->where('key', 'aviation')->first();
-        return view('backend.agent.sisters.aviation.aviation', compact('partners','banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'airlines', 'content'));
+        $mission = allMission::latest()->where('key', 'aviation')->first();
+        return view('backend.agent.sisters.aviation.aviation', compact('partners', 'banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'airlines', 'mission', 'content'));
     }
     public function storeAirline(Request $request)
     {

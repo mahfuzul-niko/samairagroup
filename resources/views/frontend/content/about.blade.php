@@ -79,7 +79,7 @@
                             <div class="icon-badge"><i class="fa-solid fa-bullseye"></i></div>
                             <h4 class="info-title">Our Mission</h4>
                             <p class="info-text">
-                                {{ system_key('system_about_us_mission') }}
+                                {{ $mission->mission_description ?? system_key('system_about_us_mission') }}
                             </p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                             <div class="icon-badge"><i class="fa-regular fa-lightbulb"></i></div>
                             <h4 class="info-title">Our Vision</h4>
                             <p class="info-text">
-                               {{ system_key('system_about_us_vision') }}
+                               {{ $mission->vision_description ?? system_key('system_about_us_vision') }}
                             </p>
                         </div>
                     </div>

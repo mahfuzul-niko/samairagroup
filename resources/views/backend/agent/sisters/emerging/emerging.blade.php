@@ -411,7 +411,36 @@
             </div>
         </div>
     </section>
-
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Our Mission And Vision</div>
+                <form action="{{ route('agent.content.save.mission') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="key" value="emerging">
+                    {{-- <div class="mb-3">
+                        <label for="">Our Mission Title</label>
+                        <input type="text" class="form-control" name="mission_title"
+                            value="{{ $mission->mission_title ?? '' }}">
+                    </div> --}}
+                    <div class="mb-3">
+                        <label for="">Our Mission Description</label>
+                        <textarea name="mission_description" rows="5" class="form-control" id="">{{ $mission->mission_description ?? '' }}</textarea>
+                    </div>
+                    {{-- <div class="mb-3">
+                        <label for="">Our Vission Title</label>
+                        <input type="text" class="form-control" name="vision_title"
+                            value="{{ $mission->vision_title ?? '' }}">
+                    </div> --}}
+                    <div class="mb-3">
+                        <label for="">Our Vission Description</label>
+                        <textarea name="vision_description" rows="5" class="form-control" id="">{{ $mission->vision_description ?? '' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">save</button>
+                </form>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="card">
             <div class="card-body">
@@ -503,7 +532,7 @@
             </div>
         </div>
     </section>
-     <section>
+    <section>
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -513,8 +542,8 @@
                     <img class="img-fluid " style="height: 200px"
                         src="{{ system_key('samaira_emerging_review') ? Storage::url(system_key('samaira_emerging_review')) : asset('assets/img/no-profile.png') }}"
                         alt="">
-                    <form action="{{ route('agent.system.destroy.image', 'samaira_emerging_review') }}" method="POST"
-                        class="mt-2">
+                    <form action="{{ route('agent.system.destroy.image', 'samaira_emerging_review') }}"
+                        method="POST" class="mt-2">
                         @csrf
                         <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
                     </form>
@@ -604,7 +633,7 @@
                         <input type="url" class="form-control" name="linkedin"
                             value="{{ $content->linkedin ?? '' }}">
                     </div>
-                    
+
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
                 </form>
             </div>

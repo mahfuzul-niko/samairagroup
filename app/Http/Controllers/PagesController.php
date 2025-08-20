@@ -8,6 +8,7 @@ use App\Models\agroBenefit;
 use App\Models\agroIntroduction;
 use App\Models\agroPartner;
 use App\Models\agroProject;
+use App\Models\allMission;
 use App\Models\aviationAirline;
 use App\Models\aviationFrom;
 use App\Models\aviationPartner;
@@ -72,8 +73,8 @@ class PagesController extends Controller
           $banners = GroupBanner::latest()->get();
           $concerns = SamairaGroup::orderBy('order')->get();
           $count = homeCount::latest()->first();
-          $homenews = homeNews::latest()->get();
-          return view('frontend.samairagroup.index', compact('banners', 'concerns', 'count','homenews'));
+          $homenews = News::latest()->get();
+          return view('frontend.samairagroup.index', compact('banners', 'concerns', 'count', 'homenews'));
      }
 
 
@@ -340,7 +341,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'ssdi')->get();
           $about = About::latest()->where('key', 'ssdi')->first();
           $content = concernContent::latest()->where('key', 'ssdi')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'ssdi')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function jphomesAbout()
      {
@@ -348,7 +350,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'jphomes')->get();
           $about = About::latest()->where('key', 'jphomes')->first();
           $content = concernContent::latest()->where('key', 'jphomes')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'jphomes')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function samairaskillsJapanAbout()
      {
@@ -356,7 +359,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'language')->get();
           $about = About::latest()->where('key', 'language')->first();
           $content = concernContent::latest()->where('key', 'language')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'language')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function samairamedicaAbout()
      {
@@ -364,7 +368,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'medica')->get();
           $about = About::latest()->where('key', 'medica')->first();
           $content = concernContent::latest()->where('key', 'medica')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'medica')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function goldAbout()
      {
@@ -372,7 +377,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'gold')->get();
           $about = About::latest()->where('key', 'gold')->first();
           $content = concernContent::latest()->where('key', 'gold')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'gold')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function spsAbout()
      {
@@ -380,7 +386,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'sps')->get();
           $about = About::latest()->where('key', 'sps')->first();
           $content = concernContent::latest()->where('key', 'sps')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'sps')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function jobAbout()
      {
@@ -388,7 +395,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'job')->get();
           $about = About::latest()->where('key', 'job')->first();
           $content = concernContent::latest()->where('key', 'job')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'job')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function agroAbout()
      {
@@ -396,7 +404,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'agro')->get();
           $about = About::latest()->where('key', 'agro')->first();
           $content = concernContent::latest()->where('key', 'agro')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'agro')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function emergingAbout()
      {
@@ -404,7 +413,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'emerging')->get();
           $about = About::latest()->where('key', 'emerging')->first();
           $content = concernContent::latest()->where('key', 'emerging')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'emerging')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function raisaAbout()
      {
@@ -412,7 +422,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'raisa')->get();
           $about = About::latest()->where('key', 'raisa')->first();
           $content = concernContent::latest()->where('key', 'raisa')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'raisa')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
      public function aviationAbout()
      {
@@ -420,7 +431,8 @@ class PagesController extends Controller
           $banners = AboutBanner::latest()->where('key', 'aviation')->get();
           $about = About::latest()->where('key', 'aviation')->first();
           $content = concernContent::latest()->where('key', 'aviation')->first();
-          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content'));
+          $mission = allMission::latest()->where('key', 'aviation')->first();
+          return view('frontend.content.about', compact('banners', 'about', 'concerns', 'content', 'mission'));
      }
 
      //contacts

@@ -333,7 +333,7 @@
             </div>
         </div>
     </section>
-    <section>
+    {{-- <section>
         <div class="card">
             <div class="card-body">
                 <div class="card-title">
@@ -432,7 +432,7 @@
                 </table>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section>
         <div class="card">
             <div class="card-body">

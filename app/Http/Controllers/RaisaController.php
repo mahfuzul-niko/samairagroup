@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Banner;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
@@ -26,7 +27,8 @@ class RaisaController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'raisa')->get();
         $info = ContactInfo::latest()->where('key', 'raisa')->first();
         $content = concernContent::latest()->where('key', 'raisa')->first();
-        return view('backend.agent.sisters.raisa.raisa', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'reviews', 'partners','services','content'));
+        $mission = allMission::latest()->where('key', 'raisa')->first();
+        return view('backend.agent.sisters.raisa.raisa', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'reviews', 'partners','services','content','mission'));
     }
     //review
     public function storeReview(Request $request)

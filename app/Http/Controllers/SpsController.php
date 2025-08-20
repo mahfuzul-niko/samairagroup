@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Banner;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
@@ -24,7 +25,8 @@ class SpsController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'sps')->get();
         $info = ContactInfo::latest()->where('key', 'sps')->first();
         $content = concernContent::latest()->where('key', 'sps')->first();
-        return view('backend.agent.sisters.sps.sps', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'content'));
+        $mission = allMission::latest()->where('key', 'sps')->first();
+        return view('backend.agent.sisters.sps.sps', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'content','mission'));
     }
     public function Service()
     {

@@ -164,6 +164,8 @@ Route::prefix('agent')
             Route::delete('/content/delete/contact/banner/{banner}', 'deleteContactBanner')->name('contact.delete.banner');
             //contact info
             Route::post('/content/save/contact/info', 'saveContactInfo')->name('save.contact.info');
+            //contact info
+            Route::post('/content/save/mission/info', 'storeMission')->name('save.mission');
             //contact subject
             Route::post('/content/store/contact/subject', 'storeContactSubject')->name('contact.store.subject');
             Route::delete('/content/delete/contact/subject/{subject}', 'deleteContactSubject')->name('contact.delete.subject');

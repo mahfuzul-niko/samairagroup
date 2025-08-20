@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Banner;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
@@ -25,7 +26,8 @@ class LanguageController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'language')->get();
         $info = ContactInfo::latest()->where('key', 'language')->first();
         $content = concernContent::latest()->where('key', 'language')->first();
-        return view('backend.agent.sisters.japan.language', compact('stories', 'about', 'info', 'contactbanners', 'aboutbanners', 'banners','content'));
+        $mission = allMission::latest()->where('key', 'language')->first();
+        return view('backend.agent.sisters.japan.language', compact('stories', 'about', 'info', 'contactbanners', 'aboutbanners', 'banners','content','mission'));
     }
     public function storeStory(Request $request)
     {

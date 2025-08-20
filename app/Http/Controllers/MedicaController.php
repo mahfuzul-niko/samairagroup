@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\AboutBanner;
+use App\Models\allMission;
 use App\Models\Banner;
 use App\Models\concernContent;
 use App\Models\ContactBanner;
@@ -31,7 +32,8 @@ class MedicaController extends Controller
         $contactbanners = ContactBanner::latest()->where('key', 'medica')->get();
         $info = ContactInfo::latest()->where('key', 'medica')->first();
         $content = concernContent::latest()->where('key', 'medica')->first();
-        return view('backend.agent.sisters.medica.medica', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'content'));
+        $mission = allMission::latest()->where('key', 'medica')->first();
+        return view('backend.agent.sisters.medica.medica', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'content','mission'));
     }
 
     public function categories()
