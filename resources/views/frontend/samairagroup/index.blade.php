@@ -443,7 +443,7 @@
                     {
                         imgSrc: '{{ Storage::url($news->image) }}',
                         title: '{{ $news->title }}',
-                        description: '{{ $news->description }}'
+                        // description: '{{ $news->description }}'
                     }
                     @if (!$loop->last)
                         ,

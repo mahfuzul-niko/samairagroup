@@ -15,7 +15,7 @@
 
                     <div class="mb-3">
                         <label for="">Image</label>
-                        <input type="file" class="form-control" name="image" >
+                        <input type="file" class="form-control" name="image">
                     </div>
                     <div class="mb-3">
                         <select class="form-select" aria-label="Default select example" name="course_id" required>
@@ -55,9 +55,9 @@
                                     @csrf
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" role="switch"
-                                            id="review{{$review->id}}" name="mark" value="1"
+                                            id="review{{ $review->id }}" name="mark" value="1"
                                             {{ $review->mark == 1 ? 'checked' : '' }} onchange="this.form.submit()">
-                                        <label class="form-check-label" for="review{{$review->id}}">Approve</label>
+                                        <label class="form-check-label" for="review{{ $review->id }}">Approve</label>
                                     </div>
                                 </form>
 
@@ -65,7 +65,7 @@
                             <td>
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#review{{ $review->id }}"><i
+                                        data-bs-target="#modal{{ $review->id }}"><i
                                             class="bi bi-pencil-square"></i></a>
 
                                     <form action="{{ route('agent.content.delete.review', $review) }}" method="POST"
@@ -78,13 +78,12 @@
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="review{{ $review->id }}" tabindex="-1"
+                                <div class="modal fade" id="modal{{ $review->id }}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content ">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Update
-                                                </h1>
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Review</h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -103,8 +102,9 @@
                                                         <input type="file" class="form-control" name="image">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <select class="form-select" name="course_id" required>
-                                                            <option disabled>Select Course</option>
+                                                        <select class="form-select" aria-label="Default select example"
+                                                            name="course_id" required>
+                                                            <option disabled selected>Select Course</option>
                                                             @foreach ($courses as $course)
                                                                 <option value="{{ $course->id }}"
                                                                     {{ $course->id == $review->course_id ? 'selected' : '' }}>
@@ -119,8 +119,8 @@
                                                     </div>
                                                     <button class="btn btn-sm btn-primary">save</button>
                                                 </form>
-
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
