@@ -28,6 +28,7 @@
             font-weight: 500 !important;
             position: relative;
         }
+
         .rg-navbar-menu li a::after {
             content: "";
             position: absolute;
@@ -38,12 +39,15 @@
             background: #fff;
             transition: width 0.5s ease;
         }
-        .rg-navbar-menu li a:hover{
+
+        .rg-navbar-menu li a:hover {
             color: #fff !important;
         }
+
         .rg-navbar-menu li a:hover::after {
             width: 100%;
         }
+
         .rg-navbar-has-dropdown .rg-dropdown-menu a {
             font-size: 14px !important;
             font-weight: 500 !important;
@@ -155,7 +159,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="counter-item">
                         <i class="fa-solid fa-calendar-days icon"></i>
-                        <h3 class="counter-number" data-target="22">0</h3>
+                        <h3 class="counter-number" data-target="{{ $count->legacy ?? 0 }}">0</h3>
                         <p class="counter-label">Years of Legacy</p>
                     </div>
                 </div>
@@ -164,7 +168,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="counter-item">
                         <i class="fa-solid fa-globe icon"></i>
-                        <h3 class="counter-number" data-target="20">0</h3>
+                        <h3 class="counter-number" data-target="{{ $count->countries ?? 0 }}">0</h3>
                         <p class="counter-label">Countries</p>
                     </div>
                 </div>
@@ -173,7 +177,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="counter-item">
                         <i class="fa-solid fa-people-roof icon"></i>
-                        <h3 class="counter-number" data-target="15">0</h3>
+                        <h3 class="counter-number" data-target="{{ $count->units ?? 0 }}">0</h3>
                         <p class="counter-label">Business Units</p>
                     </div>
                 </div>
@@ -182,7 +186,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="counter-item">
                         <i class="fa-solid fa-snowflake icon"></i>
-                        <h3 class="counter-number" data-target="12">0</h3>
+                        <h3 class="counter-number" data-target="{{ $count->brands ?? 0 }}">0</h3>
                         <p class="counter-label">Brands</p>
                     </div>
                 </div>
@@ -191,12 +195,13 @@
                 <div class="col-lg-2 col-md-4 col-sm-6">
                     <div class="counter-item">
                         <i class="fa-solid fa-user-plus icon"></i>
-                        <h3 class="counter-number" data-target="200">0</h3>
+                        <h3 class="counter-number" data-target="{{ $count->employees ?? 0 }}">0</h3>
                         <p class="counter-label">Employees</p>
                     </div>
                 </div>
 
             </div>
+
         </div>
     </section>
     {{-- Countdown Timer Section End --}}
@@ -229,7 +234,7 @@
     <section class="awards-section">
         <div class="container">
             <div class="row align-items-center">
-                
+
                 <!-- Left Column: Text Content -->
                 <div class="col-lg-5 col-md-12">
                     <div class="awards-text-content">
@@ -237,7 +242,7 @@
                         <!-- This Title and Description will be updated by JavaScript -->
                         <h3 id="award-title"></h3>
                         <p id="award-description"></p>
-                        <a href="#" class="view-all-link">View All</a>
+                        <a href="{{ route('page.news') }}" class="view-all-link">View All</a>
                     </div>
                 </div>
 
@@ -261,7 +266,8 @@
     </section>
     <!-- Awards Section End -->
 
-    <section class="parallax-section">
+    <section class="parallax-section"
+        style="background: url({{ system_key('samaira_group_news_backgroup') ? Storage::url(system_key('samaira_group_news_backgroup')) : asset('assets/img/no-profile.png') }})">
         <div class="container-fluid">
             <h1 class="animated-title">Making Business Possible</h1>
             <div class="subscribe-wrapper">
@@ -284,7 +290,8 @@
 
                         <i class="fas fa-envelope input-icon"></i>
                         <input type="hidden" name="key" value="group">
-                        <input type="email" class="form-control ps-5" placeholder="Your email" name="email" required>
+                        <input type="email" class="form-control ps-5" placeholder="Your email" name="email"
+                            required>
                     </div>
                     <button type="submit" class="subscribe-btn">Subscribe</button>
                 </form>
@@ -325,7 +332,8 @@
     <!-- Custom Footer Section End -->
 
     <!-- Whatsapp icon -->
-    <a id="whatsappFab" class="whatsapp-fab text-decoration-none" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+    <a id="whatsappFab" class="whatsapp-fab text-decoration-none" href="#" target="_blank" rel="noopener"
+        aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -345,7 +353,7 @@
             setTimeout(() => {
                 document.body.classList.add('loaded');
                 document.getElementById('content').style.display = 'block';
-            }, 500); 
+            }, 500);
         });
         // document.addEventListener('DOMContentLoaded', () => {
         // setTimeout(() => {
@@ -356,7 +364,7 @@
         // });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function(){
+        document.addEventListener('DOMContentLoaded', function() {
             const fab = document.getElementById('whatsappFab');
 
             // 1) Configure your number (international format, no +, spaces or dashes)
@@ -370,20 +378,22 @@
             // 3) Show the FAB after scrolling a bit
             const threshold = 150; // px
             const toggleFab = () => {
-            if (window.scrollY > threshold) {
-                fab.classList.add('show');
-            } else {
-                fab.classList.remove('show');
-            }
+                if (window.scrollY > threshold) {
+                    fab.classList.add('show');
+                } else {
+                    fab.classList.remove('show');
+                }
             };
             toggleFab(); // initial
-            window.addEventListener('scroll', toggleFab, { passive: true });
+            window.addEventListener('scroll', toggleFab, {
+                passive: true
+            });
         });
     </script>
     <script>
         /*--------------------------------------------------------------
-        # Custom JS for the Count-Up Animation
-        --------------------------------------------------------------*/
+                    # Custom JS for the Count-Up Animation
+                    --------------------------------------------------------------*/
         document.addEventListener("DOMContentLoaded", () => {
             const counters = document.querySelectorAll('.counter-number');
             const animationDuration = 2000; // Animation duration in milliseconds
@@ -429,26 +439,16 @@
         // --- Awards SLider ---
         document.addEventListener("DOMContentLoaded", () => {
             const awardsData = [
-                {
-                    imgSrc: '{{ asset("assets/frontassets/images/awards/1.png") }}',
-                    title: 'Awards Title',
-                    description: 'Recognized for outstanding performance for two consecutive years, 2017-18 & 2018-19. A testament to our consistent quality of service.'
-                },
-                {
-                    imgSrc: '{{ asset("assets/frontassets/images/awards/2.png") }}',
-                    title: 'Awards Title 1',
-                    description: 'Received this crest of honor for our significant contributions and excellence within the travel and tourism industry in Bangladesh.'
-                },
-                {
-                    imgSrc: '{{ asset("assets/frontassets/images/awards/3.png") }}',
-                    title: 'Awards Title 2',
-                    description: 'Honored as a top travel partner for generating the highest volume of successful tours and maintaining exceptional customer satisfaction.'
-                },
-                {
-                    imgSrc: '{{ asset("assets/frontassets/images/awards/4.jpg") }}',
-                    title: 'Excellence in Service Award',
-                    description: 'This award celebrates our dedication to providing an unparalleled customer experience, from booking to post-travel support.'
-                }
+                @foreach ($homenews as $news)
+                    {
+                        imgSrc: '{{ Storage::url($news->image) }}',
+                        title: '{{ $news->title }}',
+                        description: '{{ $news->description }}'
+                    }
+                    @if (!$loop->last)
+                        ,
+                    @endif
+                @endforeach
             ];
 
             // 2. Function to dynamically create slider items from the data
@@ -487,7 +487,7 @@
                 // How many slides to show
                 slidesPerView: 1, // Default for mobile
                 spaceBetween: 20,
-                
+
                 // Make the slider continuous
                 loop: true,
 
@@ -505,22 +505,21 @@
                         spaceBetween: 30
                     }
                 },
-                
+
                 // Events - This is the core of the functionality
                 on: {
                     // When the slider is first created
-                    init: function () {
+                    init: function() {
                         // 'this.realIndex' gives the correct index even in a loop
-                        updateAwardInfo(this.realIndex); 
+                        updateAwardInfo(this.realIndex);
                     },
                     // When the slide changes
-                    slideChange: function () {
+                    slideChange: function() {
                         updateAwardInfo(this.realIndex);
                     },
                 },
             });
         });
-
     </script>
 </body>
 

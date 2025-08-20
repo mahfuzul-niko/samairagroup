@@ -8,6 +8,8 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
+use App\Models\homeCount;
+use App\Models\homeNews;
 use App\Models\Partner;
 use App\Models\SamairaGroup;
 use Illuminate\Http\Request;
@@ -27,12 +29,13 @@ class SamairaGroupController extends Controller
 
         $contactbanners = ContactBanner::latest()->where('key', 'samairagroup')->get();
         $info = ContactInfo::latest()->where('key', 'samairagroup')->first();
-
-        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners', 'about', 'contactbanners', 'info'));
+        $count = homeCount::latest()->first();
+        $homenews = HomeNews::latest()->get();
+        return view('backend.agent.sisters.group.index', compact('banners', 'concerns', 'partners', 'aboutbanners', 'about', 'contactbanners', 'info', 'count', 'homenews'));
     }
     public function storeBanner(Request $request)
     {
-        
+
         $data = $request->validate([
             'title' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',
@@ -110,7 +113,7 @@ class SamairaGroupController extends Controller
 
         $concern = SamairaGroup::findOrFail($id);
 
-       $data = $request->only(['order', 'concern_text', 'concern_link']);
+        $data = $request->only(['order', 'concern_text', 'concern_link']);
 
         if ($request->hasFile('concern_image')) {
             if ($concern->concern_image && Storage::disk('public')->exists($concern->concern_image)) {
@@ -278,5 +281,73 @@ class SamairaGroupController extends Controller
         return redirect()->back()->with('success', 'Group About deleted successfully.');
     }
 
+    public function storeCount(Request $request)
+    {
+        $data = $request->only([
+            'legacy',
+            'countries',
+            'units',
+            'brands',
+            'employees',
+        ]);
+
+        homeCount::updateOrCreate(
+            ['id' => 1],
+            $data
+        );
+
+        return back()->with('success', 'Home counts updated successfully!');
+    }
+    public function storeNews(Request $request)
+    {
+        $imagePath = null;
+
+        if ($request->hasFile('image')) {
+            $imagePath = Storage::put('home_news', $request->file('image'));
+        }
+
+        homeNews::create([
+            'image' => $imagePath,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
+
+        return back()->with('success', 'News created successfully!');
+    }
+
+    // Update existing news
+    public function updateNews(Request $request, $id)
+    {
+        $news = HomeNews::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($news->image) {
+                Storage::delete($news->image);
+            }
+
+            $news->image = Storage::put('home_news', $request->file('image'));
+        }
+
+        $news->title = $request->title;
+        $news->description = $request->description;
+        $news->save();
+
+        return back()->with('success', 'News updated successfully!');
+    }
+
+    // Delete news
+    public function deleteNews($id)
+    {
+        $news = HomeNews::findOrFail($id);
+
+        if ($news->image) {
+            Storage::delete($news->image);
+        }
+
+        $news->delete();
+
+        return back()->with('success', 'News deleted successfully!');
+    }
 
 }

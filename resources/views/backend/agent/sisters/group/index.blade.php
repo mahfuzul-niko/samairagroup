@@ -288,6 +288,184 @@
         </div>
     </section>
 
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Update Count
+                </div>
+                <form action="{{ route('agent.group.store.count') }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="legacy" class="form-label">Years of Legacy</label>
+                        <input type="number" name="legacy" id="legacy" class="form-control"
+                            value="{{ old('legacy', $count->legacy ?? '') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="countries" class="form-label">Countries</label>
+                        <input type="number" name="countries" id="countries" class="form-control"
+                            value="{{ old('countries', $count->countries ?? '') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="units" class="form-label">Units</label>
+                        <input type="number" name="units" id="units" class="form-control"
+                            value="{{ old('units', $count->units ?? '') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="brands" class="form-label">Brands</label>
+                        <input type="number" name="brands" id="brands" class="form-control"
+                            value="{{ old('brands', $count->brands ?? '') }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="employees" class="form-label">Employees</label>
+                        <input type="number" name="employees" id="employees" class="form-control"
+                            value="{{ old('employees', $count->employees ?? '') }}">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Save
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    Home Page News And Events
+                </div>
+                <form action="{{ route('agent.group.store.news') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="">Image</label>
+                        <input type="file" name="image" id="" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Title</label>
+                        <input type="text" name="title" id="" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="">Description</label>
+                        <textarea class="form-control" name="description" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Save
+                    </button>
+                </form>
+                <table class="table">
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($homenews as $news)
+                        <tr>
+                            <td>
+                                <img src="{{ $news->image ? Storage::url($news->image) : asset('assets/img/no-profile.png') }}"
+                                    alt="" style="height: 200px ;  width: auto;">
+                            </td>
+                            <td>
+                                {{ $news->title ?? 'title' }}
+                            </td>
+                            <td>
+                                {{ $news->description ?? 'Description' }}
+                            </td>
+
+                            <td>
+                                <div class="text-nowrap">
+                                    <a class="btn btn-primary btn-sm d-inline-block" type="button"
+                                        data-bs-toggle="modal" data-bs-target="#news{{ $news->id }}"><i
+                                            class="bi bi-pen"></i></a>
+                                    <form action="{{ route('agent.group.delete.news', $news) }}" method="POST"
+                                        class="d-inline-block m-0 p-0">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="bi bi-trash"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                            <div class="modal fade" id="news{{ $news->id }}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Update baneer</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('agent.group.update.news', $news) }}"
+                                                method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="mb-3">
+                                                    <label for="">Image</label>
+                                                    <input type="file" name="image" id=""
+                                                        class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Title</label>
+                                                    <input type="text" name="title" id=""
+                                                        class="form-control" value="{{ $news->title }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="">Description</label>
+                                                    <textarea class="form-control" name="description" rows="5" required>{{ $news->description }}</textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-sm">
+                                                    Save
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    News letter Background Image
+                </div>
+                <div class="mb-3">
+                    <img class="img-fluid " style="height: 200px"
+                        src="{{ system_key('samaira_group_news_backgroup') ? Storage::url(system_key('samaira_group_news_backgroup')) : asset('assets/img/no-profile.png') }}"
+                        alt="">
+                    <form action="{{ route('agent.system.destroy.image', 'samaira_group_news_backgroup') }}" method="POST"
+                        class="mt-2">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                    </form>
+                </div>
+                <form action="{{ route('agent.system.storeImage') }}" class="mt-2" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="key" placeholder="Enter key" class="form-control"
+                        value="samaira_group_news_backgroup" required>
+                    <div class="form-group my-3">
+                        <label for="value">Background Image</label>
+                        <input type="file" name="value" value="samaira_group_news_backgroup" class="form-control"
+                            required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Upload</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
 
     <section class="about-image">
         <div class="card">

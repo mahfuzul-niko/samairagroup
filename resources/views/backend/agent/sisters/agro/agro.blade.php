@@ -182,16 +182,37 @@
                             <th class="bg-light">Image One:</th>
                             <td><img src="{{ system_key('system_agro_image_one') ? Storage::url(system_key('system_agro_image_one')) : asset('asset/img/no-profile.png') }}"
                                     class="ing-fluid" style="height: 100px; width: auto;" alt=""></td>
+                            <td>
+                                <form action="{{ route('agent.system.destroy.image', 'system_agro_image_one') }}"
+                                    method="POST" class="mt-2">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                                </form>
+                            </td>
                         </tr>
                         <tr>
                             <th class="bg-light">Image Two:</th>
                             <td><img src="{{ system_key('system_agro_image_two') ? Storage::url(system_key('system_agro_image_two')) : asset('asset/img/no-profile.png') }}"
                                     class="ing-fluid" style="height: 100px; width: auto;" alt=""></td>
+                            <td>
+                                <form action="{{ route('agent.system.destroy.image', 'system_agro_image_two') }}"
+                                    method="POST" class="mt-2">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                                </form>
+                            </td>
                         </tr>
                         <tr>
                             <th class="bg-light">Image Three:</th>
                             <td><img src="{{ system_key('system_agro_image_three') ? Storage::url(system_key('system_agro_image_three')) : asset('asset/img/no-profile.png') }}"
                                     class="ing-fluid" style="height: 100px; width: auto;" alt=""></td>
+                            <td>
+                                <form action="{{ route('agent.system.destroy.image', 'system_agro_image_three') }}"
+                                    method="POST" class="mt-2">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Remove</button>
+                                </form>
+                            </td>
                         </tr>
 
                     </tbody>

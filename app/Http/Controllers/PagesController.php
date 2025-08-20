@@ -33,6 +33,8 @@ use App\Models\goldReview;
 use App\Models\goldServices;
 use App\Models\GroupAbout;
 use App\Models\GroupBanner;
+use App\Models\homeCount;
+use App\Models\homeNews;
 use App\Models\jobAbout;
 use App\Models\jobPartner;
 use App\Models\jobProject;
@@ -69,7 +71,9 @@ class PagesController extends Controller
      {
           $banners = GroupBanner::latest()->get();
           $concerns = SamairaGroup::orderBy('order')->get();
-          return view('frontend.samairagroup.index', compact('banners', 'concerns', ));
+          $count = homeCount::latest()->first();
+          $homenews = homeNews::latest()->get();
+          return view('frontend.samairagroup.index', compact('banners', 'concerns', 'count','homenews'));
      }
 
 

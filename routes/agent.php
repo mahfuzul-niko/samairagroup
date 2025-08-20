@@ -80,6 +80,12 @@ Route::prefix('agent')
             Route::post('/samaira-group/about/update/{about}', 'updateAbout')->name('update.about');
             Route::delete('/samaira-group/about/delete/{about}', 'destroyAbout')->name('delete.about');
 
+            Route::post('/samaira-group/count/store', 'storeCount')->name('store.count');
+
+            Route::post('/samaira-group/news/store', 'storeNews')->name('store.news');
+            Route::post('/samaira-group/news/update/{news}', 'updateNews')->name('update.news');
+            Route::delete('/samaira-group/news/delete/{news}', 'deleteNews')->name('delete.news');
+
         });
         Route::group(['controller' => SamariaSkill::class, 'as' => 'group.'], function () {
             Route::get('/samairaskills', 'samairaSkill')->name('samairaskill');
