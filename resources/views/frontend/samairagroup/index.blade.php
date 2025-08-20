@@ -306,7 +306,7 @@
 
     
     <section class="parallax-section"
-        style="background: url({{ system_key('samaira_group_news_backgroup') ? Storage::url(system_key('samaira_group_news_backgroup')) : asset('assets/img/no-profile.png') }})">
+        style="background-image: url({{ system_key('samaira_group_news_backgroup') ? Storage::url(system_key('samaira_group_news_backgroup')) : asset('assets/img/no-profile.png') }})">
         <div class="container-fluid">
             <h1 class="animated-title">Making Business Possible</h1>
             <div class="subscribe-wrapper">
