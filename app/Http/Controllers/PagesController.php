@@ -73,7 +73,7 @@ class PagesController extends Controller
           $banners = GroupBanner::latest()->get();
           $concerns = SamairaGroup::orderBy('order')->get();
           $count = homeCount::latest()->first();
-          $homenews = News::latest()->get();
+          $homenews = News::latest()->take(6)->get();
           return view('frontend.samairagroup.index', compact('banners', 'concerns', 'count', 'homenews'));
      }
 
