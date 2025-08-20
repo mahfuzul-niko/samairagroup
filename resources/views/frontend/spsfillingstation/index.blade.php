@@ -106,7 +106,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="why-tile h-100">
                             <div class="why-icon"><img
-                                    src="{{ $service->icon ? Storage::url($service->icon) : asset('assets/img/no-profile.png') }}"
+                                    src="{{ $choose->icon ? Storage::url($choose->icon) : asset('assets/img/no-profile.png') }}"
                                     class="img-fluid" style="height: 50px" alt=""></div>
                             <h5 class="why-title">{{ $choose->title ?? 'title' }}</h5>
                             <p class="why-desc mb-0">{{ $choose->description ?? 'Description' }}
