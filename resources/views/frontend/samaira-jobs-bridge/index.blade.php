@@ -142,7 +142,7 @@
                                 <h3>{{ $work->title }}</h3>
                                 <p>{{ $work->subtitle }}</p>
                                 <div class="sjb-work-bid-row">
-                                    <span class="sjb-work-bid-amount">BDT {{ $work->salary }}</span>
+                                    <span class="sjb-work-bid-amount">{{ $work->salary }}</span>
                                     <a href="{{ route('page.job.apply', $work) }}" class="sjb-work-apply">Apply now</a>
                                 </div>
                             </div></a>

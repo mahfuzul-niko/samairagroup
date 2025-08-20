@@ -92,7 +92,7 @@
     <!-- Service Section End -->
 
     <!-- Testimonials Section Start -->
-     <section class="testimonials-section"
+    <section class="testimonials-section"
         style="background: url('{{ system_key('samaira_raisa_review') ? Storage::url(system_key('samaira_raisa_review')) : asset('assets/img/no-profile.png') }}') center center/cover no-repeat;">
         <div class="container">
             <div class="text-center mb-3 margin-bottom-100">
@@ -118,7 +118,7 @@
                                     <img src="{{ $review->image ? Storage::url($review->image) : asset('assets/img/no-profile.png') }}"
                                         alt="Orlando Diggs" class="author-image">
                                     <div class="author-info">
-                                        <h4>{{ $review->review }}</h4>
+                                        <h4>{{ $review->name }}</h4>
                                     </div>
                                 </div>
                             </div>
