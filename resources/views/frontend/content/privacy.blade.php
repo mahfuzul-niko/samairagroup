@@ -43,10 +43,26 @@
     </x-layouts.navbar>
     <!-- Navbar End -->
 
-    <div class="about-slider-container content-margin-top" style="background: url('{{ asset('assets/frontassets/') }}/images/samaira-princess-gold/slider1.jpeg') no-repeat center center; background-size: cover;">
-        {{-- <img src="{{ isset($privacy['background_image']) ? Storage::url($privacy['background_image']) : asset('assets/img/no-profile.png') }}"
-            alt="" class="img-fluid"> --}}
+   {{-- <div class="about-slider-container content-margin-top" style="background: url('{{ asset('assets/frontassets/') }}/images/samaira-princess-gold/slider1.jpeg') no-repeat center center; background-size: cover;">
+        <img src="{{ isset($privacy['background_image']) ? Storage::url($privacy['background_image']) : asset('assets/img/no-profile.png') }}"
+            alt="" class="img-fluid">
 
+        <section class="about-overlap">
+            <h1>Privacy</h1>
+            <h2>{{ $privacy['title'] ?? '' }}</h2>
+            <p>{{ $privacy['discription'] ?? '' }}</p>
+        </section>
+    </div>  --}}
+    <div class="about-slider-container content-margin-top">
+        <div class="swiper about-swiper">
+            <div class="swiper-wrapper">
+                {{-- @foreach ($banners as $banner)
+                    <div class="swiper-slide"><img
+                            src="{{ $banner->image ? Storage::url($banner->image) : asset('assets/img/no-profile.png') }}"
+                            alt="Slide 1"></div>
+                @endforeach --}}
+            </div>
+        </div>
         <section class="about-overlap">
             <h1>Privacy</h1>
             <h2>{{ $privacy['title'] ?? '' }}</h2>
@@ -76,6 +92,20 @@
                 disableOnInteraction: false
             },
             speed: 1000,
+        });
+    </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('.about-overlap');
+            const hero = document.querySelector('.about-slider-container');
+            const applySpace = () => {
+                if (!card || !hero) return;
+                const overlap = 60; // jehetu top/bottom diya overlap korchen (px)
+                const extra = Math.max(0, card.offsetHeight - overlap);
+                hero.style.marginBottom = (extra + 24) + 'px';
+            };
+            applySpace();
+            window.addEventListener('resize', applySpace);
         });
     </script>
 </body>

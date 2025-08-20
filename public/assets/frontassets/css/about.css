@@ -130,6 +130,7 @@ body{
 .about-info-section .info-text{
   color:#475569; line-height:1.8; margin:0;
   transition: color .25s ease;
+  text-align: justify;
 }
 
 /* Switch to light content when filled */

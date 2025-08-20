@@ -1541,7 +1541,7 @@ transform: scale(1.5);
 }
 
 .awards-section .awards-text-content #award-title {
-    font-size: 1.75rem;
+    font-size: 25px;
     font-weight: 500;
     color: var(--secondary-color);
     margin: 45px 0 15px 0;;
@@ -1554,11 +1554,12 @@ transform: scale(1.5);
     line-height: 1.7;
     min-height: 100px; /* Prevents layout jump during text change */
     transition: opacity 0.3s ease-in-out;
+    text-align: justify;
 }
 
 .awards-section .awards-text-content .view-all-link {
     display: inline-block;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;

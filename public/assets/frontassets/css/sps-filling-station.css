@@ -80,7 +80,7 @@ body{ background:#fff; color:var(--ink); }
 }
 
 .service-title{ font-weight:700; margin-bottom:6px; }
-.service-desc{ color:var(--muted); font-size: .95rem; }
+.service-desc{ color:var(--muted); font-size: .95rem; text-align: justify;}
 
 .service-cta{
     display:flex; align-items:center; gap:.45rem;
@@ -124,7 +124,7 @@ body{ background:#fff; color:var(--ink); }
     margin-bottom: 10px;
 }
 .why-title{ font-weight:800; margin-bottom:8px; }
-.why-desc{ color:var(--muted); }
+.why-desc{ color:var(--muted); text-align: justify;}
 
 /* headings */
 .section-heading{
@@ -354,3 +354,8 @@ body{ background:#fff; color:var(--ink); }
   margin-top: auto;              
 }
 /* Testimonials Section End */
+@media all and (max-width: 500px) {
+    .testimonials-section .section-title{
+        margin-bottom: 5rem;
+    }
+}

@@ -231,7 +231,7 @@
     </section>
 
     <!-- Awards Section Start -->
-    <section class="awards-section">
+    {{-- <section class="awards-section">
         <div class="container">
             <div class="row align-items-center">
 
@@ -263,9 +263,48 @@
 
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Awards Section End -->
+    <section class="awards-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Left Column: Text Content -->
+                <div class="col-lg-5 col-md-12">
+                    <div class="awards-text-content">
+                        <h2 class="section-title">News & Events</h2>
+                        <!-- this will update by js-->
+                        <h3 id="award-title"></h3>
+                        <p id="award-description"></p>
+                        <a href="{{ route('page.news') }}" class="view-all-link">View All</a>
+                    </div>
+                </div>
 
+                <!-- Right Column: Slider -->
+                <div class="col-lg-7 col-md-12">
+                    <div class="awards-slider-wrapper">
+                        <!-- Swiper container -->
+                        <div class="swiper awards-slider">
+                            <div class="swiper-wrapper">
+                                @foreach ($homenews as $news)
+                                    <div class="swiper-slide" 
+                                        data-title="{{ $news->title }}" 
+                                        data-description="{!! \Illuminate\Support\Str::limit(strip_tags($news->description), 200) !!}">
+                                        <img src="{{ Storage::url($news->image) }}">
+                                    </div>
+                                @endforeach
+
+                            </div>
+                        </div>
+                        <!-- Slider Navigation Arrows -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
     <section class="parallax-section"
         style="background: url({{ system_key('samaira_group_news_backgroup') ? Storage::url(system_key('samaira_group_news_backgroup')) : asset('assets/img/no-profile.png') }})">
         <div class="container-fluid">
@@ -347,6 +386,7 @@
     <script src="{{ asset('assets/frontassets/') }}/js/popper.min.js"></script>
     <!-- Custom JS -->
     <script src="{{ asset('assets/frontassets/') }}/js/samaira-new-index.js"></script>
+    <script src="{{ asset('assets/frontassets/') }}/js/homepage.js"></script>
 
     <script>
         window.addEventListener('load', () => {
@@ -387,137 +427,6 @@
             toggleFab(); // initial
             window.addEventListener('scroll', toggleFab, {
                 passive: true
-            });
-        });
-    </script>
-    <script>
-        /*--------------------------------------------------------------
-                    # Custom JS for the Count-Up Animation
-                    --------------------------------------------------------------*/
-        document.addEventListener("DOMContentLoaded", () => {
-            const counters = document.querySelectorAll('.counter-number');
-            const animationDuration = 2000; // Animation duration in milliseconds
-            const frameDuration = 1000 / 60; // 60 frames per second
-
-            // Function to animate a single counter
-            const animateCounter = (counter) => {
-                const target = +counter.getAttribute('data-target');
-                const totalFrames = Math.round(animationDuration / frameDuration);
-                const increment = target / totalFrames;
-                let current = 0;
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        clearInterval(timer);
-                        counter.innerText = target.toLocaleString() + '+';
-                    } else {
-                        counter.innerText = Math.ceil(current).toLocaleString();
-                    }
-                }, frameDuration);
-            };
-
-            // Use Intersection Observer to trigger the animation when the element is visible
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounter(entry.target);
-                        observer.unobserve(entry.target); // Animate only once
-                    }
-                });
-            }, {
-                threshold: 0.1 // Trigger when 10% of the element is visible
-            });
-
-            // Observe each counter
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
-        });
-    </script>
-    <script>
-        // --- Awards SLider ---
-        document.addEventListener("DOMContentLoaded", () => {
-            const awardsData = [
-                @foreach ($homenews as $news)
-                    {
-                        imgSrc: '{{ Storage::url($news->image) }}',
-                        title: '{{ $news->title }}',
-                        description: '{{ $news->description }}'
-                    }
-                    @if (!$loop->last)
-                        ,
-                    @endif
-                @endforeach
-            ];
-
-            // 2. Function to dynamically create slider items from the data
-            const swiperWrapper = document.getElementById('awards-swiper-wrapper');
-            awardsData.forEach(award => {
-                const slide = document.createElement('div');
-                slide.classList.add('swiper-slide');
-                slide.innerHTML = `<img src="${award.imgSrc}" alt="${award.title}">`;
-                swiperWrapper.appendChild(slide);
-            });
-
-
-            // 3. Select the HTML elements we need to update
-            const awardTitleElement = document.getElementById('award-title');
-            const awardDescriptionElement = document.getElementById('award-description');
-
-            // 4. Function to update the text content based on the active slide
-            function updateAwardInfo(activeIndex) {
-                const currentAward = awardsData[activeIndex];
-
-                // Add a fade-out effect for a smooth transition
-                awardTitleElement.style.opacity = 0;
-                awardDescriptionElement.style.opacity = 0;
-
-                setTimeout(() => {
-                    awardTitleElement.textContent = currentAward.title;
-                    awardDescriptionElement.textContent = currentAward.description;
-                    // Fade the text back in
-                    awardTitleElement.style.opacity = 1;
-                    awardDescriptionElement.style.opacity = 1;
-                }, 300); // This delay should match the CSS transition duration
-            }
-
-            // 5. Initialize Swiper.js
-            const swiper = new Swiper('.awards-slider', {
-                // How many slides to show
-                slidesPerView: 1, // Default for mobile
-                spaceBetween: 20,
-
-                // Make the slider continuous
-                loop: true,
-
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                // Responsive settings
-                breakpoints: {
-                    // When window width is >= 768px (tablets)
-                    768: {
-                        slidesPerView: 2, // Show 2 slides
-                        spaceBetween: 30
-                    }
-                },
-
-                // Events - This is the core of the functionality
-                on: {
-                    // When the slider is first created
-                    init: function() {
-                        // 'this.realIndex' gives the correct index even in a loop
-                        updateAwardInfo(this.realIndex);
-                    },
-                    // When the slide changes
-                    slideChange: function() {
-                        updateAwardInfo(this.realIndex);
-                    },
-                },
             });
         });
     </script>

@@ -83,7 +83,7 @@
                                     class="img-fluid" style="height: 50px" alt=""></div>
                             <h5 class="service-title"> {{ $service->title ?? 'title' }}</h5>
                             <p class="service-desc"> {{ $service->description ?? 'Description' }}</p>
-                            <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                            {{-- <span class="service-cta">Learn more <i class="fa-solid fa-arrow-right"></i></span> --}}
                         </a>
                     </div>
                 @endforeach

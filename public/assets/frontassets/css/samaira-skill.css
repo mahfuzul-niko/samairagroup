@@ -767,6 +767,9 @@
     .swiper-slide .hero-content {
         margin: 0 auto 0 auto !important;
     }
+    .testimonials-section .section-title{
+        margin-bottom: 6rem !important;
+    }
 }
 /* Navbar End */
 
