@@ -184,6 +184,9 @@
         Route::is('page.sps') || Route::is('page.sps.contact') || Route::is('page.sps.about') => system_key(
             'samaira_sps_logo',
         ),
+        Route::is('page.gold') || Route::is('page.gold.contact') || Route::is('page.gold.about') => system_key(
+            'samaira_gold_logo',
+        ),
         Route::is('page.agro') || Route::is('page.agro.contact') || Route::is('page.agro.about') => system_key(
             'samaira_agro_logo',
         ),
