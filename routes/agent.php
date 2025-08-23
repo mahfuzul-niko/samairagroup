@@ -344,6 +344,7 @@ Route::prefix('agent')
             Route::delete('/samaira-jobs-bridge-limited/delete/projects/{project}', 'deleteProject')->name('delete.project');
 
             Route::post('/samaira-jobs-bridge-limited/store/completed', 'storeCompleted')->name('store.completed');
+            Route::get('/samaira-jobs-bridge-limited/edit/projects/{completed}', 'editCompleted')->name('edit.completed');
             Route::post('/samaira-jobs-bridge-limited/update/completed/{completed}', 'updateCompleted')->name('update.completed');
             Route::delete('/samaira-jobs-bridge-limited/delete/completed/{completed}', 'deleteCompleted')->name('delete.completed');
 

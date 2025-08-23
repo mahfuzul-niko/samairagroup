@@ -257,7 +257,7 @@ class JobController extends Controller
     }
     public function storeCompleted(Request $request)
     {
-        
+
         $validated = $request->validate([
             'image' => 'nullable',
             'title' => 'required|string|max:255',
@@ -280,36 +280,41 @@ class JobController extends Controller
     }
 
     // Update
-    public function updateCompleted(Request $request, JobCompleted $jobCompleted)
+    public function updateCompleted(Request $request, JobCompleted $completed)
     {
         $validated = $request->validate([
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'title' => 'sometimes|string|max:255',
-            'info' => 'sometimes|array',
+            'title' => 'string|max:255',
+            'info' => 'array',
         ]);
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('job_completeds', 'public');
-            $jobCompleted->image = $imagePath;
+            $completed->image = $imagePath;
         }
 
         if (isset($validated['title'])) {
-            $jobCompleted->title = $validated['title'];
+            $completed->title = $validated['title'];
         }
 
         if (isset($validated['info'])) {
-            $jobCompleted->info = json_encode($validated['info']);
+            $completed->info = json_encode($validated['info']);
         }
 
-        $jobCompleted->save();
+        $completed->save();
 
         return redirect()->back()->with('success', 'Completed Project updated successfully.');
     }
 
     // Delete
-    public function deleteCompleted(JobCompleted $jobCompleted)
+    public function deleteCompleted(JobCompleted $completed)
     {
-        $jobCompleted->delete();
+        $completed->delete();
         return redirect()->back()->with('success', 'Completed project deleted successfully.');
+    }
+
+    public function editCompleted(jobCompleted $completed)
+    {
+        return view('backend.agent.sisters.job.edit-project', compact('completed'));
     }
 }

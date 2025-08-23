@@ -37,6 +37,44 @@
                 <div class="card-title">
                     List of Completed Projects
                 </div>
+                <table class="table">
+                    <tr>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Info</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($projects as $project)
+                        <tr>
+                            <td><img src="{{ $project->image ? Storage::url($project->image) : asset('assets/img/no-profile.png') }}"
+                                    style="height: 60px; width: auto;" class="img-fluid" alt=""></td>
+                            <td>
+                                {{ $project->title }}
+                            </td>
+                            <td>
+                                <ul>
+                                    @foreach (json_decode($project->info, true) as $count)
+                                        <li>
+                                            <i class="fa-solid fa-angles-right"></i>
+                                            {{ $count }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td>
+                                <a href="{{ route('agent.job.edit.completed', $project) }}"
+                                    class="btn btn-primary btn-sm d-inline-block"><i class="bi bi-pen"></i></a>
+                                <form action="{{ route('agent.job.delete.completed', $project) }}" method="POST"
+                                    class="d-inline-block m-0 p-0">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                            class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
             </div>
         </div>
     </section>
