@@ -11,6 +11,7 @@ use App\Models\ContactBanner;
 use App\Models\ContactInfo;
 use App\Models\jobAbout;
 use App\Models\jobApply;
+use App\Models\jobCompleted;
 use App\Models\jobPartner;
 use App\Models\jobProject;
 use App\Models\jobWork;
@@ -30,7 +31,7 @@ class JobController extends Controller
         $info = ContactInfo::latest()->where('key', 'job')->first();
         $content = concernContent::latest()->where('key', 'job')->first();
         $mission = allMission::latest()->where('key', 'job')->first();
-        return view('backend.agent.sisters.job.job', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'jobAbout', 'content','mission'));
+        return view('backend.agent.sisters.job.job', compact('banners', 'about', 'contactbanners', 'info', 'aboutbanners', 'partners', 'jobAbout', 'content', 'mission'));
     }
     public function storeAbout(Request $request)
     {
@@ -106,7 +107,7 @@ class JobController extends Controller
     //project
     public function jobProject()
     {
-        $projects = jobProject::orderBy('order')->get();
+        $projects = jobCompleted::latest()->get();
         return view('backend.agent.sisters.job.projects', compact('projects'));
     }
     public function storeProject(Request $request)
@@ -253,5 +254,62 @@ class JobController extends Controller
         $apply->save();
         $message = $apply->mark ? 'apply approved successfully.' : 'apply approval removed.';
         return redirect()->back()->with('success', $message);
+    }
+    public function storeCompleted(Request $request)
+    {
+        
+        $validated = $request->validate([
+            'image' => 'nullable',
+            'title' => 'required|string|max:255',
+            'info' => 'array',
+        ]);
+
+        // handle image upload if exists
+        $imagePath = null;
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('job_completeds', 'public');
+        }
+
+        $job = jobCompleted::create([
+            'image' => $imagePath,
+            'title' => $validated['title'],
+            'info' => json_encode($validated['info']),
+        ]);
+
+        return redirect()->back()->with('success', 'New Completed project created successfully.');
+    }
+
+    // Update
+    public function updateCompleted(Request $request, JobCompleted $jobCompleted)
+    {
+        $validated = $request->validate([
+            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'title' => 'sometimes|string|max:255',
+            'info' => 'sometimes|array',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('job_completeds', 'public');
+            $jobCompleted->image = $imagePath;
+        }
+
+        if (isset($validated['title'])) {
+            $jobCompleted->title = $validated['title'];
+        }
+
+        if (isset($validated['info'])) {
+            $jobCompleted->info = json_encode($validated['info']);
+        }
+
+        $jobCompleted->save();
+
+        return redirect()->back()->with('success', 'Completed Project updated successfully.');
+    }
+
+    // Delete
+    public function deleteCompleted(JobCompleted $jobCompleted)
+    {
+        $jobCompleted->delete();
+        return redirect()->back()->with('success', 'Completed project deleted successfully.');
     }
 }

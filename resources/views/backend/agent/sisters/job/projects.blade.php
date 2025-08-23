@@ -6,91 +6,65 @@
                 <div class="card-title">
                     Create Completed Projects
                 </div>
-                <form action="{{ route('agent.job.store.project') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('agent.job.store.completed') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="">Order</label>
-                        <input type="number" class="form-control" name="order" required>
+                        <label for="">Image</label>
+                        <input type="file" class="form-control" name="image">
                     </div>
+
                     <div class="mb-3">
                         <label for="">Title</label>
-                        <input type="text" class="form-control" name="title" required>
+                        <input type="text" name="title" class="form-control" required>
                     </div>
+
                     <div class="mb-3">
-                        <label for="">Image</label>
-                        <input type="file" class="form-control" name="image" required>
+                        <label for="">Fields</label>
+                        <div id="fields-container">
+                            <div class="input-group mb-2">
+                                <input type="text" name="info[]" class="form-control" placeholder="Enter value">
+                                <button type="button" class="btn btn-outline-danger"
+                                    onclick="this.parentElement.remove()">Remove</button>
+                            </div>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-outline-primary mt-2" onclick="addField()">+ Add
+                                Field</button>
+                        </div>
                     </div>
                     <button class="btn btn-sm btn-primary">save</button>
                 </form>
                 <div class="card-title">
-                    List Completed Projects
+                    List of Completed Projects
                 </div>
-                <table class="table">
-                    <tr>
-                        <th>Order</th>
-                        <th>Image</th>
-                        <th>title</th>
-                        <th>Action</th>
-                    </tr>
-
-                    @foreach ($projects as $project)
-                        <tr>
-                            <td>{{ $project->order }}</td>
-                            <td><img src="{{ $project->image ? Storage::url($project->image) : asset('assets/img/no-profile.png') }}"
-                                    alt="" style="height: 100px; width: auto;"></td>
-                            <td>{{ $project->title }}</td>
-                            <td>
-                                <div class="text-nowrap">
-                                    <a class="btn btn-primary btn-sm d-inline-block" type="button"
-                                        data-bs-toggle="modal" data-bs-target="#project{{ $project->id }}"><i
-                                            class="bi bi-pen"></i></a>
-                                    <form action="{{ route('agent.job.delete.project', $project) }}" method="POST"
-                                        class="d-inline-block m-0 p-0">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i
-                                                class="bi bi-trash"></i></button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        <div class="modal fade" id="project{{ $project->id }}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Projects</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ route('agent.job.update.project', $project) }}" method="POST"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="mb-3">
-                                                <label for="">Order</label>
-                                                <input type="number" class="form-control" name="order" required
-                                                    value="{{ $project->order }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="">Title</label>
-                                                <input type="text" class="form-control" name="title" required
-                                                    value="{{ $project->title }}">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="">Image</label>
-                                                <input type="file" class="form-control" name="image">
-                                            </div>
-                                            <button class="btn btn-sm btn-primary">save</button>
-                                        </form>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </table>
             </div>
         </div>
     </section>
+    @push('scripts')
+        <script>
+            function addField() {
+                const container = document.getElementById("fields-container");
+
+                const group = document.createElement("div");
+                group.className = "input-group mb-2";
+
+                const input = document.createElement("input");
+                input.type = "text";
+                input.name = "info[]";
+                input.className = "form-control";
+                input.placeholder = "Enter value";
+
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "btn btn-outline-danger";
+                button.textContent = "Remove";
+                button.onclick = () => group.remove();
+
+                group.appendChild(input);
+                group.appendChild(button);
+
+                container.appendChild(group);
+            }
+        </script>
+    @endpush
 </x-app>

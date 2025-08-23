@@ -37,6 +37,7 @@ use App\Models\GroupBanner;
 use App\Models\homeCount;
 use App\Models\homeNews;
 use App\Models\jobAbout;
+use App\Models\jobCompleted;
 use App\Models\jobPartner;
 use App\Models\jobProject;
 use App\Models\jobWork;
@@ -245,7 +246,7 @@ class PagesController extends Controller
           $partners = jobPartner::latest()->get();
           $banners = Banner::latest()->where('key', 'job')->get();
           $jobAbout = jobAbout::latest()->first();
-          $projects = jobProject::orderBy('order')->get();
+          $projects = jobCompleted::latest()->get();
           $works = jobWork::latest()->take(6)->get();
           $content = concernContent::latest()->where('key', 'job')->first();
           return view('frontend.samaira-jobs-bridge.index', compact('partners', 'banners', 'jobAbout', 'projects', 'works', 'content'));
