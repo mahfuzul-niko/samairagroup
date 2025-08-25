@@ -760,7 +760,7 @@
         margin-right: 11vw !important;
     }
     .enrollment-discount-section .enrollment-image img{
-        height: 335px;
+        height: 335px !important;
     }
 }
 @media (max-width: 500px) {

@@ -2155,29 +2155,62 @@ Sister Concern CSS Start
   Sister Concern CSS End
   -------------------------------------
   */
-
-  /* Completed project section start */
-.sjb-project-new .company-card{
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    width: 100%;
-    height: var(--card-h-xs);
-    padding: 18px;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    color: var(--text);
-    background-clip: padding-box;
-    overflow: hidden; /* keep exact height */
-  }
-  @media (min-width: 768px){ .sjb-project-new .company-card{ height: var(--card-h-md); } }
+@media (min-width: 768px){ .sjb-project-new .company-card{ height: var(--card-h-md); } }
   @media (min-width: 992px){ .sjb-project-new .company-card{ height: var(--card-h-lg); } }
 
   .sjb-project-new .company-card.peach{ background: var(--peach); }
   .sjb-project-new .company-card.sky{   background: var(--sky);   }
+/* --- Base Styles --- */
+.sjb-project-new .col { display: flex; }
+.company-card-wrapper { position: relative; width: 100%; flex-grow: 1; }
+.company-card { display: flex; width: 100%; height: 100%; border-radius: 20px; padding: 18px 10px 18px 10px; gap:10px; transition: all 0.3s ease; }
+.company-card .company-body { flex-grow: 1; }
+.company-card.has-more-items { cursor: pointer; }
+.company-card.has-more-items .hidden-item { opacity: 0; max-height: 0; overflow: hidden; margin: 0; padding: 0; transition: all 0.35s ease; }
+.down-arrow { transition: transform 0.3s ease; }
 
-  .sjb-project-new .logo-tile{
+/* --- Mobile Expanded State & Desktop Last Row State (Push Down Effect) --- */
+.company-card.expanded,
+.company-card.last-row-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    position: relative;
+    z-index: 5;
+}
+.company-card.expanded .hidden-item,
+.company-card.last-row-item:hover .hidden-item {
+    opacity: 1; max-height: 50px;
+}
+.company-card.last-row-item:hover {
+    position: absolute; 
+    height: auto;      
+    min-height: 100%;  
+    top: 0;
+    left: 0;
+    z-index: 20;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+}
+.company-card.expanded .down-arrow,
+.company-card.last-row-item:hover .down-arrow {
+    transform: rotate(180deg);
+}
+
+/* --- Desktop Hover State (Overlap Effect) --- */
+@media (min-width: 993px) {
+    .company-card.has-more-items:hover:not(.last-row-item) {
+        position: absolute; top: 0; left: 0; height: auto; z-index: 10;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        transform: scale(1.05);
+    }
+    .company-card.has-more-items:hover:not(.last-row-item) .hidden-item {
+        opacity: 1; max-height: 50px; padding: 0;
+    }
+    .company-card.has-more-items:hover:not(.last-row-item) .down-arrow {
+        transform: rotate(180deg);
+    }
+}
+.sjb-project-new .logo-tile{
     width: 77px;
     height: 81px;
     border-radius: var(--radius-tile);
@@ -2193,33 +2226,27 @@ Sister Concern CSS Start
     max-height: 64px;
     object-fit: contain;
   }
-
-  .sjb-project-new .company-body{
-    flex: 1;
-    min-width: 0;
-  }
-
   .sjb-project-new .company-name{
     color: var(--title);
     font-weight: 600;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     margin-bottom: .35rem;
-    font-size: 15px;
+    font-size: 14px;
   }
   .sjb-project-new .roles-list{
     margin: 0;
     padding: 0;
     list-style: none;
-    line-height: 1.35;
+    line-height: 20px;
   }
   .sjb-project-new .roles-list li{
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: 5px;
     margin: .15rem 0;
     white-space: nowrap;
-    font-size: 13px;
+    font-size: 12px;
   }
   /* Completed project section end */
 

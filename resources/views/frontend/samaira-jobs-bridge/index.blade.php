@@ -158,7 +158,7 @@
         <!-- Recent Works Section End -->
 
         <!-- Categories Section Start -->
-        <section class="sjb-categories-section">
+        {{-- <section class="sjb-categories-section">
             <div class="container">
                 <h2 class="sjb-categories-title">Our Completed <span>Projects</span></h2>
                 <div class="row sjb-project-new">
@@ -188,6 +188,53 @@
                     @endforeach
 
 
+                </div>
+            </div>
+        </section> --}}
+        <section class="sjb-categories-section">
+            <div class="container">
+                <h2 class="sjb-categories-title">Our Completed <span>Projects</span></h2>
+                <div class="row sjb-project-new">
+                    @php
+                        $colors = ['peach', 'sky'];
+                    @endphp
+
+                    @foreach ($projects as $project)
+                        @php
+                            $points = json_decode($project->info, true) ?? [];
+                            $pointCount = count($points);
+                            
+                            $rowIndex = floor(($loop->iteration - 1) / 4);
+                            $colorClass = $colors[$rowIndex % count($colors)];
+                        @endphp
+
+                        <div class="col mb-4 col-lg-3">
+                            <div class="company-card-wrapper"> 
+                                <div class="company-card {{ $colorClass }} {{ $pointCount > 3 ? 'has-more-items' : '' }}">
+                                    <div class="logo-tile">
+                                        <img src="{{ $project->image ? Storage::url($project->image) : asset('assets/img/no-profile.png') }}"
+                                            alt="{{ $project->title }}">
+                                    </div>
+                                    <div class="company-body">
+                                        <a href="#" class="company-name" title="{{ $project->title }}">{{ Str::limit($project->title, 60) }}</a>
+                                        <div class="roles-wrap">
+                                            <ul class="roles-list">
+                                                @foreach ($points as $point)
+                                                    <li class="{{ $loop->iteration > 3 ? 'hidden-item' : '' }}">
+                                                        <i class="fa-solid fa-angles-right"></i>
+                                                        {{ $point }}
+                                                        @if ($loop->iteration == 3 && $pointCount > 3)
+                                                            <i class="fa fa-caret-down down-arrow"></i>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -627,6 +674,70 @@
                 disableOnInteraction: false
             },
             speed: 1000,
+        });
+    </script>
+    <script>
+        // This function will identify the last row and add a specific class to its items
+        function tagLastRowItems() {
+            // Select all company cards. We select the card directly now.
+            const cards = Array.from(document.querySelectorAll('.sjb-project-new .company-card'));
+            if (cards.length === 0) return;
+
+            // First, clear any existing 'last-row-item' tags from all cards
+            cards.forEach(card => card.classList.remove('last-row-item'));
+
+            // This logic should only run on desktop screens
+            if (window.innerWidth < 993) {
+                return;
+            }
+
+            // Get the vertical position (offsetTop) of the very last card in the list
+            // We use getBoundingClientRect().top for better accuracy across browsers
+            const lastCardRect = cards[cards.length - 1].getBoundingClientRect();
+            const lastCardTop = lastCardRect.top;
+
+            // Iterate backwards through all cards
+            for (let i = cards.length - 1; i >= 0; i--) {
+                const currentCard = cards[i];
+                const currentCardRect = currentCard.getBoundingClientRect();
+                
+                // If a card's vertical position is the same as the last card's, it's in the last row
+                // We check within a small tolerance (e.g., 5 pixels) to account for minor rendering differences
+                if (Math.abs(currentCardRect.top - lastCardTop) < 5) {
+                    currentCard.classList.add('last-row-item');
+                } else {
+                    // Once we find a card that is clearly in a different row, we can stop checking
+                    break;
+                }
+            }
+        }
+
+        // --- Main execution block ---
+
+        // Run the logic when the entire page (including images) is fully loaded
+        window.addEventListener('load', function() {
+            
+            // Initial run to tag the last row
+            tagLastRowItems();
+
+            // --- Mobile Click Logic ---
+            const expandableCards = document.querySelectorAll('.company-card.has-more-items');
+            expandableCards.forEach(card => {
+                card.addEventListener('click', function(event) {
+                    // This click listener is only for mobile/tablet
+                    if (window.innerWidth <= 992) {
+                        this.classList.toggle('expanded');
+                    }
+                });
+            });
+        });
+
+        // Add a resize listener to re-calculate the last row if the window size changes
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            // Use a timer to prevent the function from running too frequently during resize
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(tagLastRowItems, 150);
         });
     </script>
 </body>
