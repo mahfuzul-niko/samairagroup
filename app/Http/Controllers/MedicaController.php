@@ -282,4 +282,11 @@ class MedicaController extends Controller
         $message = $product->best ? 'Product featured successfully.' : 'Product featured removed.';
         return redirect()->back()->with('success', $message);
     }
+    public function hotSelling(Request $request, medicaProduct $product)
+    {
+        $product->hot = $request->has('hot') ? 1 : 0;
+        $product->save();
+        $message = $product->hot ? 'Product featured successfully.' : 'Product featured removed.';
+        return redirect()->back()->with('success', $message);
+    }
 }

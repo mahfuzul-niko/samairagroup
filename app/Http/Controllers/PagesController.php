@@ -160,10 +160,11 @@ class PagesController extends Controller
           $reviews = medicaReview::latest()->get();
           $categories = medicaCategory::latest()->get();
           $products = medicaProduct::latest()->where('best', true)->get();
+          $hots = medicaProduct::latest()->where('hot', true)->get();
           $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'medica')->get();
           $content = concernContent::latest()->where('key', 'medica')->first();
-          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems', 'content'));
+          return view('frontend.samairamedica.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems', 'content','hots'));
      }
      public function medicaProduct(medicaProduct $product)
      {
@@ -264,10 +265,11 @@ class PagesController extends Controller
           $reviews = emergingReview::latest()->get();
           $categories = emergingCategory::latest()->get();
           $products = emergingProduct::latest()->where('best', true)->get();
+          $hots = emergingProduct::latest()->where('hot', true)->get();
           $totalItems = collect(session('cart'))->sum('quantity');
           $banners = Banner::latest()->where('key', 'emerging')->get();
           $content = concernContent::latest()->where('key', 'emerging')->first();
-          return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems', 'content'));
+          return view('frontend.emerging.index', compact('banners', 'categories', 'partners', 'reviews', 'products', 'totalItems', 'content','hots'));
      }
      public function emergingShop()
      {

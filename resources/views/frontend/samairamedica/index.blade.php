@@ -214,7 +214,7 @@
             </div>
             <div class="swiper hot-selling-swiper">
                 <div class="swiper-wrapper">
-                    @foreach ($products as $product)
+                    @foreach ($hots as $product)
                         @php
                             $weights = json_decode($product->weight, true);
                             $sizes = json_decode($product->size, true);

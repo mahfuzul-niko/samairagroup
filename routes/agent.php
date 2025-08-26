@@ -302,6 +302,7 @@ Route::prefix('agent')
             Route::post('/samaira-medica-limited/store/products', 'storeProduct')->name('store.product');
             Route::post('/samaira-medica-limited/update/products/{product}', 'updateProduct')->name('update.product');
             Route::post('/samaira-medica-limited/update/product/best-selling/{product}', 'bestSelling')->name('product.bestselling');
+            Route::post('/samaira-medica-limited/update/product/hot-selling/{product}', 'hotSelling')->name('product.hotselling');
             Route::delete('/samaira-medica-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
 
             Route::post('/samaira-medica-limited/store/images', 'storeImages')->name('store.images');
@@ -416,6 +417,7 @@ Route::prefix('agent')
             Route::post('/emerging-office-supplies-limited/store/products', 'storeProduct')->name('store.product');
             Route::post('/emerging-office-supplies-limited/update/products/{product}', 'updateProduct')->name('update.product');
             Route::post('/emerging-office-supplies-limited/update/product/best-selling/{product}', 'bestSelling')->name('product.bestselling');
+            Route::post('/emerging-office-supplies-limited/update/product/hot-selling/{product}', 'hotSelling')->name('product.hotselling');
             Route::delete('/emerging-office-supplies-limited/delete/products/{product}', 'deleteProduct')->name('delete.product');
 
             Route::post('/emerging-office-supplies-limited/store/images', 'storeImages')->name('store.images');

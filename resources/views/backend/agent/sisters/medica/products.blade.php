@@ -15,6 +15,7 @@
                         <th>Price</th>
                         <th>Discount Price</th>
                         <th>Best Selling</th>
+                        <th>Hot Selling</th>
                         <th>Action</th>
                     </tr>
                     @foreach ($products as $product)
@@ -36,6 +37,18 @@
                                             id="product{{ $product->id }}" name="best" value="1"
                                             {{ $product->best == 1 ? 'checked' : '' }} onchange="this.form.submit()">
                                         <label class="form-check-label" for="product{{ $product->id }}">Best
+                                            Selling</label>
+                                    </div>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="{{ route('agent.medica.product.hotselling', $product) }}" method="POST">
+                                    @csrf
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="producthot{{ $product->id }}" name="hot" value="1"
+                                            {{ $product->hot == 1 ? 'checked' : '' }} onchange="this.form.submit()">
+                                        <label class="form-check-label" for="producthot{{ $product->id }}">Hot
                                             Selling</label>
                                     </div>
                                 </form>
